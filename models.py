@@ -19,7 +19,9 @@ from sklearn.metrics import (
     precision_score, 
     recall_score, 
     f1_score,
-    classification_report
+    classification_report,
+    roc_auc_score,
+    average_precision_score
 )
 from sklearn.model_selection import (
     StratifiedShuffleSplit,
@@ -78,7 +80,9 @@ def save_results_to_file(model_name, results, results_dir="/Users/i583975/git/tc
         f.write(f"Acurácia: {results['test_metrics']['accuracy']:.4f}\n")
         f.write(f"Precisão: {results['test_metrics']['precision']:.4f}\n")
         f.write(f"Recall: {results['test_metrics']['recall']:.4f}\n")
-        f.write(f"F1-Score: {results['test_metrics']['f1']:.4f}\n\n")
+        f.write(f"F1-Score: {results['test_metrics']['f1']:.4f}\n")
+        f.write(f"ROC AUC: {results['test_metrics']['roc_auc']:.4f}\n")
+        f.write(f"PR AUC: {results['test_metrics']['pr_auc']:.4f}\n\n")
         
         f.write("RELATÓRIO DETALHADO:\n")
         f.write("-"*30 + "\n")
@@ -103,10 +107,14 @@ def save_results_to_file(model_name, results, results_dir="/Users/i583975/git/tc
 def evaluate_classification_on_test(model, X_test, y_test, return_dict=False):
     """Função para avaliar modelos de classificação no conjunto de teste"""
     y_pred = model.predict(X_test)
+    y_pred_proba = model.predict_proba(X_test)[:, 1]  # Probabilidades para classe positiva
+    
     accuracy = accuracy_score(y_test, y_pred)
     precision = precision_score(y_test, y_pred, average='weighted')
     recall = recall_score(y_test, y_pred, average='weighted')
     f1 = f1_score(y_test, y_pred, average='weighted')
+    roc_auc = roc_auc_score(y_test, y_pred_proba)
+    pr_auc = average_precision_score(y_test, y_pred_proba)
     report = classification_report(y_test, y_pred)
 
     if return_dict:
@@ -115,6 +123,8 @@ def evaluate_classification_on_test(model, X_test, y_test, return_dict=False):
             'precision': precision,
             'recall': recall,
             'f1': f1,
+            'roc_auc': roc_auc,
+            'pr_auc': pr_auc,
             'classification_report': report
         }
     else:
@@ -123,10 +133,12 @@ def evaluate_classification_on_test(model, X_test, y_test, return_dict=False):
         print(f"Precisão: {precision:.4f}")
         print(f"Recall: {recall:.4f}")
         print(f"F1-Score: {f1:.4f}")
+        print(f"ROC AUC: {roc_auc:.4f}")
+        print(f"PR AUC: {pr_auc:.4f}")
         print("\nRelatório detalhado:")
         print(classification_report(y_test, y_pred))
         
-        return accuracy, precision, recall, f1
+        return accuracy, precision, recall, f1, roc_auc, pr_auc
 
 
 def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True):
@@ -305,9 +317,9 @@ def optimize_gradient_boosting_classifier(X, y, n_trials=30, save_results=True):
     trial_data = []
 
     smote = SMOTE(random_state=42, k_neighbors=3)
-    print("äqui")
+
     X_trainval, y_trainval = smote.fit_resample(X_trainval, y_trainval)
-    print("äqui2")
+
     # Validação cruzada estratificada interna (5-fold)
     inner_cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)
     def objective(trial):
@@ -587,10 +599,26 @@ def optimize_mlp_classifier(X, y, n_trials=30, save_results=True):
     study.optimize(objective, n_trials=n_trials)
     total_end = time.time()
 
-    # Treina modelo final com best_params
+    # Treina modelo final com best_params (filtrando parâmetros internos)
+    # Reconstrói os parâmetros corretos para o modelo final
+    best_trial = study.best_trial
+    n_layers = best_trial.params["n_layers"]
+    hidden_layer_sizes = []
+    for i in range(n_layers):
+        layer_size = best_trial.params[f"layer_{i}_size"]
+        hidden_layer_sizes.append(layer_size)
+    
+    final_params = {
+        "hidden_layer_sizes": tuple(hidden_layer_sizes),
+        "activation": best_trial.params["activation"],
+        "alpha": best_trial.params["alpha"],
+        "learning_rate": best_trial.params["learning_rate"],
+        "max_iter": best_trial.params["max_iter"]
+    }
+    
     final_pipeline = Pipeline([
         ("scaler", StandardScaler()),
-        ("classifier", MLPClassifier(random_state=30, **study.best_params))
+        ("classifier", MLPClassifier(random_state=30, **final_params))
     ])
     final_pipeline.fit(X_trainval, y_trainval)
 

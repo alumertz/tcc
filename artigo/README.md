@@ -1,33 +1,33 @@
-# 🧬 Classificação de Genes-Alvo usando Dados Multi-Ômicos
+# Classificação de Genes-Alvo usando Dados Multi-Ômicos
 
 Este projeto implementa uma pipeline completa para classificação de genes-alvo usando dados multi-ômicos (CNA, Gene Expression, Methylation, Mutation Frequency) com otimização automática de hiperparâmetros usando Optuna.
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 /tcc/artigo/
-├── 📋 README.md              # Documentação completa do projeto
-├── 🚀 main.py               # Arquivo principal para experimentos
-├── ⚙️  processamento.py      # Funções de processamento de dados
-├── 🧪 exemplo.py            # Exemplos de uso individual
-├── 🔧 setup.py              # Script de configuração automática
-├── 🔍 test_environment.py   # Teste de ambiente e dependências
-└── 📁 results/              # Diretório para resultados organizados
+├── README.md              # Documentação completa do projeto
+├── main.py               # Arquivo principal para experimentos
+├── processamento.py      # Funções de processamento de dados
+├── exemplo.py            # Exemplos de uso individual
+├── setup.py              # Script de configuração automática
+├── test_environment.py   # Teste de ambiente e dependências
+└── results/              # Diretório para resultados organizados
 ```
 
-## 📦 Modelos Implementados
+## Modelos Implementados
 
-✅ **7 modelos de classificação com otimização Optuna:**
+**7 modelos de classificação com otimização Optuna:**
 
-1. 🌳 **Decision Tree Classifier** - Árvore de decisão com otimização de profundidade e critério
-2. 🌲 **Random Forest Classifier** - Ensemble de árvores com otimização de estimadores e features
-3. 📈 **Gradient Boosting Classifier** - Boosting gradiente com otimização de learning rate
-4. 📊 **Histogram Gradient Boosting Classifier** - Versão otimizada do gradient boosting
-5. 🎯 **K-Nearest Neighbors Classifier** - KNN com otimização de vizinhos e métricas de distância
-6. 🧠 **Multi-Layer Perceptron Classifier** - Rede neural com arquitetura flexível
-7. ⚡ **Support Vector Classifier** - SVM com diferentes kernels
+1. **Decision Tree Classifier** - Árvore de decisão com otimização de profundidade e critério
+2. **Random Forest Classifier** - Ensemble de árvores com otimização de estimadores e features
+3. **Gradient Boosting Classifier** - Boosting gradiente com otimização de learning rate
+4. **Histogram Gradient Boosting Classifier** - Versão otimizada do gradient boosting
+5. **K-Nearest Neighbors Classifier** - KNN com otimização de vizinhos e métricas de distância
+6. **Multi-Layer Perceptron Classifier** - Rede neural com arquitetura flexível
+7. **Support Vector Classifier** - SVM com diferentes kernels
 
-## 🛠️ Dependências
+## Dependências
 
 - **Python 3.8+**
 - **pandas**: Manipulação de dados
@@ -36,9 +36,9 @@ Este projeto implementa uma pipeline completa para classificação de genes-alvo
 - **optuna**: Otimização de hiperparâmetros
 - **imblearn**: Balanceamento de classes (SMOTE)
 
-## 🚀 Instalação e Configuração
+## Instalação e Configuração
 
-### 1️⃣ Configuração Inicial
+### Configuração Inicial
 ```bash
 cd /Users/i583975/git/tcc/artigo
 python setup.py

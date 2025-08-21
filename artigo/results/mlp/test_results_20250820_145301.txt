@@ -1,0 +1,40 @@
+RESULTADOS DO MODELO: MLP
+============================================================
+
+Data/Hora: 2025-08-20 14:53:01
+
+AVALIAÇÃO NO CONJUNTO DE TESTE (CLASSIFICAÇÃO):
+--------------------------------------------------
+Acurácia: 0.9241
+Precisão: 0.8991
+Recall: 0.9241
+F1-Score: 0.9087
+
+RELATÓRIO DETALHADO:
+------------------------------
+              precision    recall  f1-score   support
+
+           0       0.94      0.98      0.96      2584
+           1       0.30      0.12      0.17       181
+
+    accuracy                           0.92      2765
+   macro avg       0.62      0.55      0.57      2765
+weighted avg       0.90      0.92      0.91      2765
+
+
+MELHORES HIPERPARÂMETROS:
+------------------------------
+{
+  "n_layers": 1,
+  "layer_0_size": 117,
+  "activation": "logistic",
+  "alpha": 0.016589545756400273,
+  "learning_rate": "adaptive",
+  "max_iter": 816
+}
+
+HISTÓRICO DE OTIMIZAÇÃO:
+------------------------------
+Número de trials: 20
+Melhor score (CV): 0.9261
+Tempo total de otimização: 424.05 segundos

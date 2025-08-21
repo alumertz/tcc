@@ -1,0 +1,40 @@
+RESULTADOS DO MODELO: RANDOM_FOREST
+============================================================
+
+Data/Hora: 2025-08-20 15:12:58
+
+AVALIAÇÃO NO CONJUNTO DE TESTE (CLASSIFICAÇÃO):
+--------------------------------------------------
+Acurácia: 0.9360
+Precisão: 0.9157
+Recall: 0.9360
+F1-Score: 0.9130
+
+RELATÓRIO DETALHADO:
+------------------------------
+              precision    recall  f1-score   support
+
+           0       0.94      1.00      0.97      2584
+           1       0.58      0.08      0.14       181
+
+    accuracy                           0.94      2765
+   macro avg       0.76      0.54      0.56      2765
+weighted avg       0.92      0.94      0.91      2765
+
+
+MELHORES HIPERPARÂMETROS:
+------------------------------
+{
+  "n_estimators": 100,
+  "max_depth": 30,
+  "min_samples_split": 8,
+  "min_samples_leaf": 1,
+  "max_features": "sqrt",
+  "criterion": "gini"
+}
+
+HISTÓRICO DE OTIMIZAÇÃO:
+------------------------------
+Número de trials: 20
+Melhor score (CV): 0.9382
+Tempo total de otimização: 955.01 segundos

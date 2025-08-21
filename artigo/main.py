@@ -91,13 +91,13 @@ def run_all_models(X, y, n_trials=10):
     
     results = []
     
-    print("🚀 INICIANDO EXPERIMENTAÇÃO COM TODOS OS MODELOS")
-    print(f"📊 Dataset: {X.shape[0]} amostras x {X.shape[1]} features")
-    print(f"🎯 Número de trials por modelo: {n_trials}")
+    print("INICIANDO EXPERIMENTAÇÃO COM TODOS OS MODELOS")
+    print(f"Dataset: {X.shape[0]} amostras x {X.shape[1]} features")
+    print(f"Número de trials por modelo: {n_trials}")
     print()
     
     for i, (model_name, optimizer_func) in enumerate(models_config, 1):
-        print(f"📍 Progresso: {i}/{len(models_config)} modelos")
+        print(f"Progresso: {i}/{len(models_config)} modelos")
         
         result = run_single_model(model_name, optimizer_func, X, y, n_trials)
         results.append(result)
@@ -148,7 +148,7 @@ def main():
     """
     Função principal do experimento
     """
-    print("🧬 CLASSIFICAÇÃO DE GENES-ALVO USANDO DADOS ÔMICOS")
+    print("CLASSIFICAÇÃO DE GENES-ALVO USANDO DADOS ÔMICOS")
     print("="*80)
     
     # Caminhos para os arquivos de dados
@@ -157,24 +157,24 @@ def main():
     
     # Verifica se os arquivos existem
     if not os.path.exists(features_path):
-        print(f"❌ Arquivo de features não encontrado: {features_path}")
+        print(f"Arquivo de features não encontrado: {features_path}")
         return
     
     if not os.path.exists(labels_path):
-        print(f"❌ Arquivo de labels não encontrado: {labels_path}")
+        print(f"Arquivo de labels não encontrado: {labels_path}")
         return
     
     # Prepara o dataset
-    print("📂 Carregando e preparando dados...")
+    print("Carregando e preparando dados...")
     X, y, gene_names, feature_names = prepare_dataset(features_path, labels_path)
     
     if X is None:
-        print("❌ Erro ao preparar dataset. Abortando.")
+        print("Erro ao preparar dataset. Abortando.")
         return
     
     # Mostra informações do dataset
     dataset_info = get_dataset_info(X, y, gene_names, feature_names)
-    print("\n📊 INFORMAÇÕES DO DATASET:")
+    print("\nINFORMAÇÕES DO DATASET:")
     print(f"  Amostras: {dataset_info['n_samples']}")
     print(f"  Features: {dataset_info['n_features']}")
     print(f"  Distribuição das classes: {dataset_info['class_distribution']}")
@@ -186,7 +186,7 @@ def main():
     # Configuração do experimento
     N_TRIALS = 20  # Número de trials por modelo (ajustar conforme necessário)
     
-    print(f"\n🔬 CONFIGURAÇÃO DO EXPERIMENTO:")
+    print(f"\nCONFIGURAÇÃO DO EXPERIMENTO:")
     print(f"  Trials por modelo: {N_TRIALS}")
     print(f"  Validação: Estratificada 5-fold + Holdout 80/20")
     print(f"  Métrica de otimização: Acurácia")
@@ -194,17 +194,17 @@ def main():
     print()
     
     # Executa todos os modelos
-    print("🚀 Iniciando experimentos...")
+    print("Iniciando experimentos...")
     #results = run_all_models(X, y, n_trials=N_TRIALS)
     #results = run_single_model("Gradient Boosting", optimize_gradient_boosting_classifier, X, y, n_trials=N_TRIALS)
-    #results = run_single_model("Support Vector Classifier", optimize_svc_classifier, X, y, n_trials=N_TRIALS)
-    results = run_single_model("Multi-Layer Perceptron", optimize_mlp_classifier, X, y, n_trials=N_TRIALS)
+    results = run_single_model("Support Vector Classifier", optimize_svc_classifier, X, y, n_trials=N_TRIALS)
+    #results = run_single_model("Multi-Layer Perceptron", optimize_mlp_classifier, X, y, n_trials=N_TRIALS)
 
     # Resumo final
     summarize_results(results)
     
-    print("\n🎉 EXPERIMENTO CONCLUÍDO!")
-    print("💾 Resultados salvos em arquivos organizados por modelo.")
+    print("\nEXPERIMENTO CONCLUÍDO!")
+    print("Resultados salvos em arquivos organizados por modelo.")
 
 
 if __name__ == "__main__":

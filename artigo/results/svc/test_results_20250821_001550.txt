@@ -1,0 +1,38 @@
+RESULTADOS DO MODELO: SVC
+============================================================
+
+Data/Hora: 2025-08-21 00:15:50
+
+AVALIAÇÃO NO CONJUNTO DE TESTE (CLASSIFICAÇÃO):
+--------------------------------------------------
+Acurácia: 0.9363
+Precisão: 0.9201
+Recall: 0.9363
+F1-Score: 0.9104
+
+RELATÓRIO DETALHADO:
+------------------------------
+              precision    recall  f1-score   support
+
+           0       0.94      1.00      0.97      2584
+           1       0.67      0.06      0.10       181
+
+    accuracy                           0.94      2765
+   macro avg       0.80      0.53      0.53      2765
+weighted avg       0.92      0.94      0.91      2765
+
+
+MELHORES HIPERPARÂMETROS:
+------------------------------
+{
+  "kernel": "poly",
+  "C": 0.010490286551537057,
+  "degree": 5,
+  "gamma": "auto"
+}
+
+HISTÓRICO DE OTIMIZAÇÃO:
+------------------------------
+Número de trials: 20
+Melhor score (CV): 0.9369
+Tempo total de otimização: 1014.75 segundos
