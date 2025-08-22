@@ -189,7 +189,7 @@ def main():
     print(f"\nCONFIGURAÇÃO DO EXPERIMENTO:")
     print(f"  Trials por modelo: {N_TRIALS}")
     print(f"  Validação: Estratificada 5-fold + Holdout 80/20")
-    print(f"  Métrica de otimização: Acurácia")
+    print(f"  Métrica de otimização: PR AUC (Average Precision)")
     print(f"  Resultados salvos em: /Users/i583975/git/tcc/artigo/results/")
     print()
     

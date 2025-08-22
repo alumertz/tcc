@@ -35,27 +35,6 @@ from imblearn.over_sampling import SMOTE
 from imblearn.pipeline import Pipeline as ImbPipeline
 
 
-def get_optimal_cv_folds(y):
-    """
-    Determina o número otimal de folds baseado no tamanho da classe minoritária
-    
-    Args:
-        y (array): Labels do dataset
-        
-    Returns:
-        int: Número de folds recomendado
-    """
-    unique, counts = np.unique(y, return_counts=True)
-    min_class_size = min(counts)
-    
-    if min_class_size < 6:
-        return 3  # Para datasets muito pequenos
-    elif min_class_size < 10:
-        return 3  # Para datasets pequenos
-    else:
-        return 5  # Para datasets maiores
-
-
 def save_results_to_file(model_name, results, results_dir="/Users/i583975/git/tcc/artigo/results"):
     """Salva os resultados em arquivos organizados por modelo"""
     model_dir = os.path.join(results_dir, model_name)
@@ -151,8 +130,7 @@ def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True):
     trial_data = []
 
     # Validação cruzada estratificada interna com folds adaptativos
-    n_splits = get_optimal_cv_folds(y_trainval)
-    inner_cv = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=42)
+    inner_cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 
     def objective(trial):
         params = {
@@ -172,7 +150,7 @@ def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True):
             score = cross_val_score(
                 pipeline, X_trainval, y_trainval,
                 cv=inner_cv,
-                scoring="accuracy",
+                scoring="average_precision",
                 error_score='raise'
             ).mean()
         except ValueError as e:
@@ -218,8 +196,9 @@ def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True):
         }
         save_results_to_file('decision_tree', results)
     
-    print(f"Decision Tree - Melhor acurácia (CV): {study.best_value:.4f}")
+    print(f"Decision Tree - Melhor PR AUC (CV): {study.best_value:.4f}")
     print(f"Decision Tree - Acurácia no teste: {test_metrics['accuracy']:.4f}")
+    print(f"Decision Tree - PR AUC no teste: {test_metrics['pr_auc']:.4f}")
     print(f"Decision Tree - CV folds utilizados: {n_splits}")
 
     return final_pipeline
@@ -256,7 +235,7 @@ def optimize_random_forest_classifier(X, y, n_trials=30, save_results=True):
         score = cross_val_score(
             pipeline, X_trainval, y_trainval,
             cv=inner_cv,
-            scoring="accuracy"
+            scoring="average_precision"
         ).mean()
         end = time.time()
 
@@ -297,8 +276,9 @@ def optimize_random_forest_classifier(X, y, n_trials=30, save_results=True):
         }
         save_results_to_file('random_forest', results)
     
-    print(f"Random Forest - Melhor acurácia (CV): {study.best_value:.4f}")
+    print(f"Random Forest - Melhor PR AUC (CV): {study.best_value:.4f}")
     print(f"Random Forest - Acurácia no teste: {test_metrics['accuracy']:.4f}")
+    print(f"Random Forest - PR AUC no teste: {test_metrics['pr_auc']:.4f}")
 
     return final_pipeline
 
@@ -329,8 +309,7 @@ def optimize_gradient_boosting_classifier(X, y, n_trials=30, save_results=True):
             "max_depth": trial.suggest_int("max_depth", 3, 15),
             "min_samples_split": trial.suggest_int("min_samples_split", 2, 20),
             "min_samples_leaf": trial.suggest_int("min_samples_leaf", 1, 20),
-            #"subsample": trial.suggest_float("subsample", 0.8, 1.0)
-            "subsample": 1.0
+            "subsample": trial.suggest_float("subsample", 0.8, 1.0)
         }
 
 
@@ -343,7 +322,7 @@ def optimize_gradient_boosting_classifier(X, y, n_trials=30, save_results=True):
         score = cross_val_score(
             pipeline, X_trainval, y_trainval,
             cv=inner_cv,
-            scoring="accuracy"
+            scoring="average_precision"
         ).mean()
         end = time.time()
 
@@ -383,8 +362,9 @@ def optimize_gradient_boosting_classifier(X, y, n_trials=30, save_results=True):
         }
         save_results_to_file('gradient_boosting', results)
     
-    print(f"Gradient Boosting - Melhor acurácia (CV): {study.best_value:.4f}")
+    print(f"Gradient Boosting - Melhor PR AUC (CV): {study.best_value:.4f}")
     print(f"Gradient Boosting - Acurácia no teste: {test_metrics['accuracy']:.4f}")
+    print(f"Gradient Boosting - PR AUC no teste: {test_metrics['pr_auc']:.4f}")
 
     return final_pipeline
 
@@ -419,7 +399,7 @@ def optimize_hist_gradient_boosting_classifier(X, y, n_trials=30, save_results=T
         score = cross_val_score(
             pipeline, X_trainval, y_trainval,
             cv=inner_cv,
-            scoring="accuracy"
+            scoring="average_precision"
         ).mean()
         end = time.time()
 
@@ -460,8 +440,9 @@ def optimize_hist_gradient_boosting_classifier(X, y, n_trials=30, save_results=T
         }
         save_results_to_file('hist_gradient_boosting', results)
     
-    print(f"Hist Gradient Boosting - Melhor acurácia (CV): {study.best_value:.4f}")
+    print(f"Hist Gradient Boosting - Melhor PR AUC (CV): {study.best_value:.4f}")
     print(f"Hist Gradient Boosting - Acurácia no teste: {test_metrics['accuracy']:.4f}")
+    print(f"Hist Gradient Boosting - PR AUC no teste: {test_metrics['pr_auc']:.4f}")
 
     return final_pipeline
 
@@ -495,7 +476,7 @@ def optimize_knn_classifier(X, y, n_trials=30, save_results=True):
         score = cross_val_score(
             pipeline, X_trainval, y_trainval,
             cv=inner_cv,
-            scoring="accuracy"
+            scoring="average_precision"
         ).mean()
         end = time.time()
 
@@ -536,8 +517,9 @@ def optimize_knn_classifier(X, y, n_trials=30, save_results=True):
         }
         save_results_to_file('knn', results)
     
-    print(f"KNN - Melhor acurácia (CV): {study.best_value:.4f}")
+    print(f"KNN - Melhor PR AUC (CV): {study.best_value:.4f}")
     print(f"KNN - Acurácia no teste: {test_metrics['accuracy']:.4f}")
+    print(f"KNN - PR AUC no teste: {test_metrics['pr_auc']:.4f}")
 
     return final_pipeline
 
@@ -579,7 +561,7 @@ def optimize_mlp_classifier(X, y, n_trials=30, save_results=True):
         score = cross_val_score(
             pipeline, X_trainval, y_trainval,
             cv=inner_cv,
-            scoring="accuracy"
+            scoring="average_precision"
         ).mean()
         end = time.time()
 
@@ -636,8 +618,9 @@ def optimize_mlp_classifier(X, y, n_trials=30, save_results=True):
         }
         save_results_to_file('mlp', results)
     
-    print(f"MLP - Melhor acurácia (CV): {study.best_value:.4f}")
+    print(f"MLP - Melhor PR AUC (CV): {study.best_value:.4f}")
     print(f"MLP - Acurácia no teste: {test_metrics['accuracy']:.4f}")
+    print(f"MLP - PR AUC no teste: {test_metrics['pr_auc']:.4f}")
 
     return final_pipeline
 
@@ -670,14 +653,14 @@ def optimize_svc_classifier(X, y, n_trials=30, save_results=True):
 
         pipeline = Pipeline([
             ("scaler", StandardScaler()),
-            ("classifier", SVC(random_state=30, **params))
+            ("classifier", SVC(random_state=30, probability=True, **params))
         ])
 
         start = time.time()
         score = cross_val_score(
             pipeline, X_trainval, y_trainval,
             cv=inner_cv,
-            scoring="accuracy"
+            scoring="average_precision"
         ).mean()
         end = time.time()
 
@@ -700,7 +683,7 @@ def optimize_svc_classifier(X, y, n_trials=30, save_results=True):
     # Treina modelo final com best_params
     final_pipeline = Pipeline([
         ("scaler", StandardScaler()),
-        ("classifier", SVC(random_state=30, **study.best_params))
+        ("classifier", SVC(random_state=30, probability=True, **study.best_params))
     ])
     final_pipeline.fit(X_trainval, y_trainval)
 
@@ -718,7 +701,8 @@ def optimize_svc_classifier(X, y, n_trials=30, save_results=True):
         }
         save_results_to_file('svc', results)
     
-    print(f"SVC - Melhor acurácia (CV): {study.best_value:.4f}")
+    print(f"SVC - Melhor PR AUC (CV): {study.best_value:.4f}")
     print(f"SVC - Acurácia no teste: {test_metrics['accuracy']:.4f}")
+    print(f"SVC - PR AUC no teste: {test_metrics['pr_auc']:.4f}")
 
     return final_pipeline

@@ -1,0 +1,262 @@
+[
+  {
+    "trial_number": 0,
+    "params": {
+      "n_estimators": 100,
+      "learning_rate": 0.06062301968915579,
+      "max_depth": 4,
+      "min_samples_split": 15,
+      "min_samples_leaf": 6,
+      "subsample": 1.0
+    },
+    "score": 0.9795439727132601,
+    "time": 47.47685503959656
+  },
+  {
+    "trial_number": 1,
+    "params": {
+      "n_estimators": 200,
+      "learning_rate": 0.22554000749766465,
+      "max_depth": 10,
+      "min_samples_split": 13,
+      "min_samples_leaf": 14,
+      "subsample": 1.0
+    },
+    "score": 0.9871860270046223,
+    "time": 209.58351111412048
+  },
+  {
+    "trial_number": 2,
+    "params": {
+      "n_estimators": 250,
+      "learning_rate": 0.13064217765507488,
+      "max_depth": 6,
+      "min_samples_split": 7,
+      "min_samples_leaf": 19,
+      "subsample": 1.0
+    },
+    "score": 0.9847163264513502,
+    "time": 174.98371481895447
+  },
+  {
+    "trial_number": 3,
+    "params": {
+      "n_estimators": 250,
+      "learning_rate": 0.27216332126537685,
+      "max_depth": 7,
+      "min_samples_split": 9,
+      "min_samples_leaf": 3,
+      "subsample": 1.0
+    },
+    "score": 0.9853291451366945,
+    "time": 204.43778705596924
+  },
+  {
+    "trial_number": 4,
+    "params": {
+      "n_estimators": 150,
+      "learning_rate": 0.06408028395713927,
+      "max_depth": 5,
+      "min_samples_split": 3,
+      "min_samples_leaf": 18,
+      "subsample": 1.0
+    },
+    "score": 0.9823157815964191,
+    "time": 87.758141040802
+  },
+  {
+    "trial_number": 5,
+    "params": {
+      "n_estimators": 250,
+      "learning_rate": 0.11065624238717083,
+      "max_depth": 15,
+      "min_samples_split": 3,
+      "min_samples_leaf": 9,
+      "subsample": 1.0
+    },
+    "score": 0.988419777164215,
+    "time": 349.95807099342346
+  },
+  {
+    "trial_number": 6,
+    "params": {
+      "n_estimators": 100,
+      "learning_rate": 0.11542954303811472,
+      "max_depth": 14,
+      "min_samples_split": 11,
+      "min_samples_leaf": 16,
+      "subsample": 1.0
+    },
+    "score": 0.9871533620186255,
+    "time": 1048.4357430934906
+  },
+  {
+    "trial_number": 7,
+    "params": {
+      "n_estimators": 250,
+      "learning_rate": 0.10987239742977366,
+      "max_depth": 7,
+      "min_samples_split": 17,
+      "min_samples_leaf": 3,
+      "subsample": 1.0
+    },
+    "score": 0.9847497825296553,
+    "time": 5865.203909873962
+  },
+  {
+    "trial_number": 8,
+    "params": {
+      "n_estimators": 150,
+      "learning_rate": 0.16460968472300155,
+      "max_depth": 13,
+      "min_samples_split": 20,
+      "min_samples_leaf": 9,
+      "subsample": 1.0
+    },
+    "score": 0.9879335666052366,
+    "time": 5143.1184258461
+  },
+  {
+    "trial_number": 9,
+    "params": {
+      "n_estimators": 200,
+      "learning_rate": 0.2821769563691996,
+      "max_depth": 8,
+      "min_samples_split": 14,
+      "min_samples_leaf": 6,
+      "subsample": 1.0
+    },
+    "score": 0.9862003508252343,
+    "time": 4119.26753115654
+  },
+  {
+    "trial_number": 10,
+    "params": {
+      "n_estimators": 300,
+      "learning_rate": 0.019583154823421822,
+      "max_depth": 11,
+      "min_samples_split": 2,
+      "min_samples_leaf": 12,
+      "subsample": 1.0
+    },
+    "score": 0.9862174119232506,
+    "time": 9484.456962108612
+  },
+  {
+    "trial_number": 11,
+    "params": {
+      "n_estimators": 150,
+      "learning_rate": 0.18944769479806112,
+      "max_depth": 15,
+      "min_samples_split": 20,
+      "min_samples_leaf": 9,
+      "subsample": 1.0
+    },
+    "score": 0.9882078400725359,
+    "time": 4703.052679300308
+  },
+  {
+    "trial_number": 12,
+    "params": {
+      "n_estimators": 150,
+      "learning_rate": 0.17854374423645156,
+      "max_depth": 15,
+      "min_samples_split": 5,
+      "min_samples_leaf": 9,
+      "subsample": 1.0
+    },
+    "score": 0.9882392144694704,
+    "time": 6799.589159727097
+  },
+  {
+    "trial_number": 13,
+    "params": {
+      "n_estimators": 200,
+      "learning_rate": 0.20470434676592902,
+      "max_depth": 12,
+      "min_samples_split": 5,
+      "min_samples_leaf": 11,
+      "subsample": 1.0
+    },
+    "score": 0.987900835380383,
+    "time": 7832.77569103241
+  },
+  {
+    "trial_number": 14,
+    "params": {
+      "n_estimators": 300,
+      "learning_rate": 0.1566062627750194,
+      "max_depth": 15,
+      "min_samples_split": 6,
+      "min_samples_leaf": 7,
+      "subsample": 1.0
+    },
+    "score": 0.9881536589988641,
+    "time": 9000.33460521698
+  },
+  {
+    "trial_number": 15,
+    "params": {
+      "n_estimators": 150,
+      "learning_rate": 0.23289318795993544,
+      "max_depth": 13,
+      "min_samples_split": 4,
+      "min_samples_leaf": 1,
+      "subsample": 1.0
+    },
+    "score": 0.987135208807381,
+    "time": 4972.816701889038
+  },
+  {
+    "trial_number": 16,
+    "params": {
+      "n_estimators": 250,
+      "learning_rate": 0.08204447003355625,
+      "max_depth": 10,
+      "min_samples_split": 8,
+      "min_samples_leaf": 13,
+      "subsample": 1.0
+    },
+    "score": 0.9867528111607782,
+    "time": 2362.88058924675
+  },
+  {
+    "trial_number": 17,
+    "params": {
+      "n_estimators": 300,
+      "learning_rate": 0.13946097115403303,
+      "max_depth": 15,
+      "min_samples_split": 2,
+      "min_samples_leaf": 9,
+      "subsample": 1.0
+    },
+    "score": 0.9881955068068144,
+    "time": 342.47860193252563
+  },
+  {
+    "trial_number": 18,
+    "params": {
+      "n_estimators": 100,
+      "learning_rate": 0.01668622935104183,
+      "max_depth": 13,
+      "min_samples_split": 10,
+      "min_samples_leaf": 15,
+      "subsample": 1.0
+    },
+    "score": 0.9833229146793436,
+    "time": 113.33808493614197
+  },
+  {
+    "trial_number": 19,
+    "params": {
+      "n_estimators": 200,
+      "learning_rate": 0.18479202195307995,
+      "max_depth": 3,
+      "min_samples_split": 5,
+      "min_samples_leaf": 7,
+      "subsample": 1.0
+    },
+    "score": 0.981620629219326,
+    "time": 72.82285976409912
+  }
+]

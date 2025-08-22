@@ -58,37 +58,37 @@ source mlenv/bin/activate
 pip install pandas numpy scikit-learn optuna imbalanced-learn
 ```
 
-## 📋 Dados Necessários
+## Dados Necessários
 
-- 📄 **UNION_features.tsv**: Features multi-ômicas (CNA, GE, METH, MF)
-- 🏷️ **UNION_labels.tsv**: Labels de classificação (True/False)
+- **UNION_features.tsv**: Features multi-ômicas (CNA, GE, METH, MF)
+- **UNION_labels.tsv**: Labels de classificação (True/False)
 
 **Localização:**
 - Features: `/Users/i583975/git/tcc/renan/data_files/omics_features/UNION_features.tsv`
 - Labels: `/Users/i583975/git/tcc/renan/data_files/labels/UNION_labels.tsv`
 
-## 🚀 Como Usar
+## Como Usar
 
-### 1️⃣ Teste do Ambiente
+### 1. Teste do Ambiente
 
 ```bash
 cd /Users/i583975/git/tcc/artigo
 python test_environment.py
 ```
 
-### 2️⃣ Exemplo Individual
+### 2. Exemplo Individual
 
 ```bash
 python exemplo.py
 ```
 
-### 3️⃣ Experimento Completo
+### 3. Experimento Completo
 
 ```bash
 python main.py
 ```
 
-### 4️⃣ Uso Programático
+### 4. Uso Programático
 
 ```python
 import sys
@@ -107,70 +107,72 @@ X, y, gene_names, feature_names = prepare_dataset(
 best_model = optimize_random_forest_classifier(X, y, n_trials=50)
 ```
 
-## 🔄 Funcionalidades
+## Funcionalidades
 
-### 📊 Processamento de Dados
-- ✅ Carregamento automático de `UNION_features.tsv` e `UNION_labels.tsv`
-- ✅ Alinhamento automático de features e labels por gene
-- ✅ Tratamento de valores faltantes (preenchimento com 0)
-- ✅ Conversão automática de labels (True/False → 1/0)
-- ✅ Análise exploratória automática do dataset
+### Processamento de Dados
+- Carregamento automático de `UNION_features.tsv` e `UNION_labels.tsv`
+- Alinhamento automático de features e labels por gene
+- Tratamento de valores faltantes (preenchimento com 0)
+- Conversão automática de labels (True/False → 1/0)
+- Análise exploratória automática do dataset
 
-### 🎛️ Otimização de Hiperparâmetros
-- ✅ **Optuna**: Framework para otimização bayesiana
-- ✅ **Validação cruzada estratificada**: 5-fold (adaptativo para datasets pequenos)
-- ✅ **Holdout 80/20**: Divisão para treino/validação e teste final
-- ✅ **Configuração flexível**: Número de trials personalizável
+### Otimização de Hiperparâmetros
+- **Optuna**: Framework para otimização bayesiana
+- **Validação cruzada estratificada**: 5-fold (adaptativo para datasets pequenos)
+- **Holdout 80/20**: Divisão para treino/validação e teste final
+- **Configuração flexível**: Número de trials personalizável
 
-### 📈 Avaliação Completa
-- ✅ **Métricas**: Acurácia, Precisão, Recall, F1-Score
-- ✅ **Classification Report**: Relatório detalhado por classe
-- ✅ **Pipelines**: Integração automática com StandardScaler
-- ✅ **Tracking**: Tempo de execução por trial e modelo
+### Avaliação Completa
+- **Métricas**: Acurácia, Precisão, Recall, F1-Score, ROC AUC, PR AUC
+- **Classification Report**: Relatório detalhado por classe
+- **Pipelines**: Integração automática com StandardScaler
+- **Tracking**: Tempo de execução por trial e modelo
 
-### 💾 Sistema de Resultados
-- ✅ **Salvamento automático** de resultados em arquivos organizados
-- ✅ **Estrutura por modelo**: Diretórios separados para cada algoritmo
-- ✅ **Formatos múltiplos**: JSON (trials) + TXT (relatórios)
-- ✅ **Timestamps**: Arquivos com data/hora para versionamento
+### Sistema de Resultados
+- **Salvamento automático** de resultados em arquivos organizados
+- **Estrutura por modelo**: Diretórios separados para cada algoritmo
+- **Formatos múltiplos**: JSON (trials) + TXT (relatórios)
+- **Timestamps**: Arquivos com data/hora para versionamento
 
-## ⚙️ Características da Implementação
+## Características da Implementação
 
-### 🎯 Validação Robusta
+### Validação Robusta
 - **Estratificação**: Mantém proporção das classes em todas as divisões
 - **Holdout 80/20**: Divisão inicial para treino/validação e teste
 - **5-Fold Stratified CV**: Validação cruzada estratificada interna (adaptativo)
 - **Cross-Validation**: Ajusta automaticamente o número de folds para datasets pequenos
 
-### 🔧 Otimização Automática
+### Otimização Automática
 - **Optuna**: Framework para otimização bayesiana de hiperparâmetros
 - **Trials configuráveis**: Número de tentativas por modelo (padrão: 30)
-- **Métricas**: Acurácia como métrica principal de otimização
+- **Métricas**: PR AUC (Average Precision) como métrica principal de otimização
 - **Sampling**: TPE (Tree-structured Parzen Estimator) para eficiência
 
-### 📊 Avaliação Completa
-- **Acurácia**: Métrica principal para comparação
+### Avaliação Completa
+- **PR AUC**: Métrica principal para comparação (ideal para dados desbalanceados)
+- **ROC AUC**: Área sob a curva ROC
+- **Acurácia**: Métrica complementar para comparação
 - **Precisão**: Média ponderada por classe
 - **Recall**: Média ponderada por classe  
 - **F1-Score**: Média ponderada por classe
 - **Classification Report**: Relatório detalhado por classe
 
-### 🔄 Pré-processamento
+### Pré-processamento
 - **StandardScaler**: Normalização automática das features
 - **Pipeline**: Integração transparente de preprocessamento e modelo
 - **SMOTE**: Técnica de oversampling para balanceamento (quando necessário)
 
-## 🔢 Configuração dos Hiperparâmetros
+## Configuração dos Hiperparâmetros
 
 Cada modelo tem ranges específicos de hiperparâmetros otimizados:
 
-### 🌳 Decision Tree
+### Decision Tree
 - `max_depth`: 2-32
 - `min_samples_split`: 2-20
 - `min_samples_leaf`: 1-20
 - `criterion`: gini, entropy
 
-### 🌲 Random Forest
+### Random Forest
 - `n_estimators`: 100-300 (step 50)
 - `max_depth`: 5-30
 - `min_samples_split`: 2-20
@@ -178,7 +180,7 @@ Cada modelo tem ranges específicos de hiperparâmetros otimizados:
 - `max_features`: sqrt, log2, None
 - `criterion`: gini, entropy
 
-### 📈 Gradient Boosting
+### Gradient Boosting
 - `n_estimators`: 100-300 (step 50)
 - `learning_rate`: 0.01-0.3
 - `max_depth`: 3-10
@@ -186,20 +188,20 @@ Cada modelo tem ranges específicos de hiperparâmetros otimizados:
 - `min_samples_leaf`: 1-20
 - `subsample`: 0.8-1.0
 
-### 📊 Histogram Gradient Boosting
+### Histogram Gradient Boosting
 - `max_iter`: 50-200
 - `learning_rate`: 0.01-0.3
 - `max_depth`: 3-15
 - `min_samples_leaf`: 1-50
 - `l2_regularization`: 0.0-1.0
 
-### 🎯 K-Nearest Neighbors
+### K-Nearest Neighbors
 - `n_neighbors`: 1-20
 - `weights`: uniform, distance
 - `algorithm`: auto, ball_tree, kd_tree, brute
 - `p`: 1 (manhattan), 2 (euclidean)
 
-### 🧠 Multi-Layer Perceptron
+### Multi-Layer Perceptron
 - `n_layers`: 1-3
 - `layer_size`: 10-200 (por camada)
 - `activation`: tanh, relu, logistic
@@ -207,34 +209,34 @@ Cada modelo tem ranges específicos de hiperparâmetros otimizados:
 - `learning_rate`: constant, invscaling, adaptive
 - `max_iter`: 200-1000
 
-### ⚡ Support Vector Classifier
+### Support Vector Classifier
 - `kernel`: linear, poly, rbf, sigmoid
 - `C`: 1e-3 to 1e3 (log scale)
 - `gamma`: scale, auto (para kernels não-lineares)
 - `degree`: 2-5 (apenas para kernel poly)
 
-## 📈 Output Esperado
+## Output Esperado
 
 O experimento produz:
 
-### 📊 Logs Detalhados
+### Logs Detalhados
 - Progresso de cada trial de otimização
 - Melhores hiperparâmetros encontrados para cada modelo
 - Tempo de execução por trial e total
 - Avaliação completa no conjunto de teste
 
-### 💾 Arquivos de Resultados
+### Arquivos de Resultados
 - **`/results/{modelo}/trials_{timestamp}.json`**: Histórico completo de trials
 - **`/results/{modelo}/test_results_{timestamp}.txt`**: Relatório formatado dos resultados
 
-### 📋 Resumo Final
+### Resumo Final
 - Modelos bem-sucedidos vs com erro
 - Comparação de performance entre algoritmos
 - Distribuição final das classes no dataset
 
-## 💡 Exemplos de Uso
+## Exemplos de Uso
 
-### 🔬 Modelo Individual
+### Modelo Individual
 ```python
 from processamento import prepare_dataset
 from models import optimize_random_forest_classifier
@@ -246,19 +248,19 @@ X, y, genes, features = prepare_dataset(features_path, labels_path)
 best_model = optimize_random_forest_classifier(X, y, n_trials=50)
 ```
 
-### 📊 Comparação de Modelos
+### Comparação de Modelos
 ```python
 # Ver exemplo completo em exemplo.py
 python exemplo.py
 ```
 
-### 🚀 Experimento Completo
+### Experimento Completo
 ```python
 # Ver configuração completa em main.py
 python main.py
 ```
 
-### 📁 Análise de Resultados
+### Análise de Resultados
 ```python
 import json
 import pandas as pd
@@ -272,30 +274,30 @@ trials_df = pd.DataFrame(trials_data)
 print(f"Melhor trial: {trials_df.loc[trials_df['score'].idxmax()]}")
 ```
 
-## 🔧 Personalização
+## Personalização
 
-### 🎛️ Alterar Número de Trials
+### Alterar Número de Trials
 ```python
 # Edite a variável N_TRIALS no arquivo main.py (padrão: 30)
 N_TRIALS = 50  # Para otimização mais demorada mas possivelmente melhor
 ```
 
-### 📊 Modificar Métrica de Otimização
+### Modificar Métrica de Otimização
 ```python
 # Altere o parâmetro scoring nas funções de otimização
 score = cross_val_score(
     pipeline, X_trainval, y_trainval,
     cv=inner_cv,
-    scoring="f1_weighted"  # Padrão: "accuracy"
+    scoring="f1_weighted"  # Padrão: "average_precision"
 ).mean()
 ```
 
-### ➕ Adicionar Novos Modelos
+### Adicionar Novos Modelos
 1. Implemente nova função de otimização em `/Users/i583975/git/tcc/models.py`
 2. Siga o padrão: `optimize_{nome}_classifier(X, y, n_trials=30, save_results=True)`
 3. Adicione ao `models_config` em `main.py`
 
-### 🎯 Balanceamento de Classes
+### Balanceamento de Classes
 ```python
 # Para datasets muito desbalanceados, considere usar SMOTE
 from imblearn.over_sampling import SMOTE
@@ -303,18 +305,18 @@ smote = SMOTE(random_state=42)
 X_balanced, y_balanced = smote.fit_resample(X, y)
 ```
 
-## 🎯 Próximos Passos
+## Próximos Passos
 
-1. ✅ **Execute `setup.py`** para verificar ambiente
-2. ✅ **Teste com `test_environment.py`** para validar instalação
-3. ✅ **Execute `exemplo.py`** para validar funcionamento
-4. ✅ **Execute `main.py`** para experimento completo
-5. 📊 **Analise resultados** na pasta `/results/`
-6. 💾 **Salve melhores modelos** para uso futuro
+1. **Execute `setup.py`** para verificar ambiente
+2. **Teste com `test_environment.py`** para validar instalação
+3. **Execute `exemplo.py`** para validar funcionamento
+4. **Execute `main.py`** para experimento completo
+5. **Analise resultados** na pasta `/results/`
+6. **Salve melhores modelos** para uso futuro
 
-## 🚨 Troubleshooting
+## Troubleshooting
 
-### ❌ Erro de Módulo Não Encontrado
+### Erro de Módulo Não Encontrado
 ```bash
 # Ativar ambiente virtual
 source /Users/i583975/git/tcc/mlenv/bin/activate
@@ -323,29 +325,29 @@ source /Users/i583975/git/tcc/mlenv/bin/activate
 pip install pandas scikit-learn optuna imbalanced-learn
 ```
 
-### 📁 Arquivo de Dados Não Encontrado
+### Arquivo de Dados Não Encontrado
 Verifique se os caminhos dos arquivos estão corretos:
 - `UNION_features.tsv`: Features multi-ômicas
 - `UNION_labels.tsv`: Labels de classificação
 
-### 💾 Problemas de Memória
+### Problemas de Memória
 - Reduza o número de trials (`N_TRIALS = 10`)
 - Use menos folds na validação cruzada (modifique `get_optimal_cv_folds`)
 - Filtre features menos relevantes antes do treinamento
 
-### ⚠️ Dataset Desbalanceado
+### Dataset Desbalanceado
 - O projeto já trata automaticamente datasets desbalanceados
 - Classes minoritárias são preservadas na estratificação
 - Considere métricas como F1-Score para datasets muito desbalanceados
 
-### 🐛 Erros de Convergência (MLP/SVC)
+### Erros de Convergência (MLP/SVC)
 - Aumente `max_iter` para MLP
 - Reduza o range de `C` para SVC
 - Use features normalizadas (já implementado via Pipeline)
 
-## 💾 Resultados e Persistência
+## Resultados e Persistência
 
-### 🔄 Salvamento Automático
+### Salvamento Automático
 Os modelos treinados podem ser salvos e reutilizados:
 
 ```python
@@ -362,7 +364,7 @@ predictions = loaded_model.predict(new_data)
 probabilities = loaded_model.predict_proba(new_data)
 ```
 
-### 📊 Análise de Performance
+### Análise de Performance
 ```python
 # Comparar resultados de múltiplos modelos
 import os
@@ -384,7 +386,7 @@ for model_name in os.listdir(results_dir):
 print("Performance dos modelos:", models_performance)
 ```
 
-### 📈 Visualização de Resultados
+### Visualização de Resultados
 ```python
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -404,13 +406,13 @@ plt.show()
 
 ---
 
-## 🎉 Status do Projeto
+## Status do Projeto
 
-**✅ PROJETO PRONTO PARA USO!**
+**PROJETO PRONTO PARA USO!**
 
 Todos os arquivos foram criados e estão funcionais. O sistema está configurado para classificação de genes-alvo usando dados multi-ômicos com otimização automática de hiperparâmetros.
 
-### 📋 Checklist de Funcionalidades
+### Checklist de Funcionalidades
 
 - [x] **Processamento de dados** multi-ômicos
 - [x] **7 algoritmos de ML** implementados
@@ -421,7 +423,7 @@ Todos os arquivos foram criados e estão funcionais. O sistema está configurado
 - [x] **Tratamento de erros** e edge cases
 - [x] **Pipeline automatizada** end-to-end
 
-### 🚀 Capacidades do Sistema
+### Capacidades do Sistema
 
 - **Dataset suportado**: 13.825 genes com features multi-ômicas
 - **Classes balanceadas**: Tratamento automático de desbalanceamento
@@ -431,4 +433,4 @@ Todos os arquivos foram criados e estão funcionais. O sistema está configurado
 
 ---
 
-**Desenvolvido para classificação de oncogenes usando dados multi-ômicos integrados** 🧬
+**Desenvolvido para classificação de oncogenes usando dados multi-ômicos integrados**

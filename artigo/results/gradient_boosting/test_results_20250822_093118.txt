@@ -1,0 +1,41 @@
+RESULTADOS DO MODELO: GRADIENT_BOOSTING
+============================================================
+
+Data/Hora: 2025-08-22 09:31:18
+
+AVALIAÇÃO NO CONJUNTO DE TESTE (CLASSIFICAÇÃO):
+--------------------------------------------------
+Acurácia: 0.9342
+Precisão: 0.9122
+Recall: 0.9342
+F1-Score: 0.9157
+ROC AUC: 0.7127
+PR AUC: 0.1820
+
+RELATÓRIO DETALHADO:
+------------------------------
+              precision    recall  f1-score   support
+
+           0       0.94      0.99      0.97      2584
+           1       0.49      0.13      0.20       181
+
+    accuracy                           0.93      2765
+   macro avg       0.72      0.56      0.58      2765
+weighted avg       0.91      0.93      0.92      2765
+
+
+MELHORES HIPERPARÂMETROS:
+------------------------------
+{
+  "n_estimators": 250,
+  "learning_rate": 0.11065624238717083,
+  "max_depth": 15,
+  "min_samples_split": 3,
+  "min_samples_leaf": 9
+}
+
+HISTÓRICO DE OTIMIZAÇÃO:
+------------------------------
+Número de trials: 20
+Melhor score (CV): 0.9884
+Tempo total de otimização: 62934.92 segundos
