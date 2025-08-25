@@ -86,7 +86,7 @@ def run_all_models(X, y, n_trials=10):
         ("Histogram Gradient Boosting", optimize_hist_gradient_boosting_classifier),
         ("K-Nearest Neighbors", optimize_knn_classifier),
         ("Multi-Layer Perceptron", optimize_mlp_classifier),
-        ("Support Vector Classifier", optimize_svc_classifier)
+        #("Support Vector Classifier", optimize_svc_classifier)
     ]
     
     results = []
@@ -195,9 +195,10 @@ def main():
     
     # Executa todos os modelos
     print("Iniciando experimentos...")
-    #results = run_all_models(X, y, n_trials=N_TRIALS)
+    results = run_all_models(X, y, n_trials=N_TRIALS)
     #results = run_single_model("Gradient Boosting", optimize_gradient_boosting_classifier, X, y, n_trials=N_TRIALS)
-    results = run_single_model("Support Vector Classifier", optimize_svc_classifier, X, y, n_trials=N_TRIALS)
+    #results = run_single_model("Decision Tree", optimize_decision_tree_classifier, X, y, n_trials=N_TRIALS)
+    #results = run_single_model("Support Vector Classifier", optimize_svc_classifier, X, y, n_trials=N_TRIALS)
     #results = run_single_model("Multi-Layer Perceptron", optimize_mlp_classifier, X, y, n_trials=N_TRIALS)
 
     # Resumo final
