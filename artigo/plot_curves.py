@@ -16,22 +16,9 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from datetime import datetime
 import warnings
-warnings.filterwarnings('ignor    # Gerar gráficos
-    print("\nGerando ROC Curves...")
-    roc_save_path = os.path.join(plots_dir, "roc_curves", f"roc_comparison_{timestamp}.png")
-    plot_roc_curve(model_results, X, y, save_path=roc_save_path)
-    
-    print("\nGerando Precision-Recall Curves...")
-    pr_save_path = os.path.join(plots_dir, "pr_curves", f"pr_comparison_{timestamp}.png")
-    plot_precision_recall_curve(model_results, X, y, save_path=pr_save_path)
-    
-    print("\nGerando gráfico combinado...")
-    combined_save_path = os.path.join(plots_dir, "combined", f"combined_curves_{timestamp}.png")
-    plot_combined_curves(model_results, X, y, save_path=combined_save_path)
-    
-    print(f"\nTodos os gráficos gerados com sucesso!")
-    print(f"Gráficos salvos em: {plots_dir}")
-    print(f"Timestamp: {timestamp}") path do projeto
+warnings.filterwarnings('ignore')
+
+# Adicionar path do projeto
 sys.path.append('/Users/i583975/git/tcc')
 
 # Configuração do matplotlib para melhor qualidade
@@ -574,9 +561,9 @@ def generate_all_plots(X=None, y=None):
     pr_save_path = os.path.join(plots_dir, "pr_curves", f"pr_comparison_{timestamp}.png")
     plot_precision_recall_curve(model_results, X, y, save_path=pr_save_path)
     
-    print("\nGerando gráfico combinado...")
-    combined_save_path = os.path.join(plots_dir, "combined", f"combined_curves_{timestamp}.png")
-    plot_combined_curves(model_results, X, y, save_path=combined_save_path)
+    # print("\nGerando gráfico combinado...")
+    # combined_save_path = os.path.join(plots_dir, "combined", f"combined_curves_{timestamp}.png")
+    # plot_combined_curves(model_results, X, y, save_path=combined_save_path)
     
     print(f"\nTodos os gráficos gerados com sucesso!")
     print(f"Gráficos salvos em: {plots_dir}")
