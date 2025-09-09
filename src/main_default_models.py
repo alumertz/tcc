@@ -10,7 +10,7 @@ sys.path.append('/Users/i583975/git/tcc')
 
 import numpy as np
 import pandas as pd
-from processamento import prepare_dataset, get_dataset_info, split_dataset
+from processing import prepare_dataset, get_dataset_info, split_dataset
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, HistGradientBoostingClassifier
 from sklearn.neighbors import KNeighborsClassifier
