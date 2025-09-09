@@ -523,7 +523,7 @@ def generate_all_plots(X=None, y=None):
                 print(f"Arquivo de labels não encontrado: {labels_path}")
                 return
             
-            from processamento import prepare_dataset
+            from processing import prepare_dataset
             print("Carregando dados usando a função padrão do processamento...")
             
             X, y, gene_names, feature_names = prepare_dataset(features_path, labels_path)

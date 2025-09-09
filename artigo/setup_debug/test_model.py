@@ -7,7 +7,7 @@ import sys
 sys.path.append('/Users/i583975/git/tcc')
 
 import numpy as np
-from processamento import prepare_dataset
+from processing import prepare_dataset
 from models import optimize_decision_tree_classifier
 
 def test_single_model():

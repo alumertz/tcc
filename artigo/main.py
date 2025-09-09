@@ -10,7 +10,7 @@ sys.path.append('/Users/i583975/git/tcc')
 
 import numpy as np
 import pandas as pd
-from processamento import prepare_dataset, get_dataset_info, split_dataset
+from processing import prepare_dataset, get_dataset_info, split_dataset
 import models
 from models import (
     optimize_decision_tree_classifier,

@@ -1,10 +1,10 @@
-#!/usr/bin/env python3
+s#!/usr/bin/env python3
 
 import pandas as pd
 import numpy as np
 import sys
 sys.path.append('/Users/i583975/git/tcc/artigo')
-from processamento import load_union_labels
+from processing import load_union_labels
 
 # Testa o carregamento dos labels
 labels_path = "/Users/i583975/git/tcc/renan/data_files/labels/UNION_labels.tsv"

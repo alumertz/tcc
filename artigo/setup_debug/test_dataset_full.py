@@ -2,7 +2,7 @@
 
 import sys
 sys.path.append('/Users/i583975/git/tcc/artigo')
-from processamento import prepare_dataset
+from processing import prepare_dataset
 
 # Testa o dataset completo
 features_path = "/Users/i583975/git/tcc/renan/data_files/omics_features/UNION_features.tsv"

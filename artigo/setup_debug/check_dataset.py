@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import sys
 sys.path.append('/Users/i583975/git/tcc')
-from processamento import prepare_dataset
+from processing import prepare_dataset
 import numpy as np
 
 features_path = '/Users/i583975/git/tcc/renan/data_files/omics_features/UNION_features.tsv'
