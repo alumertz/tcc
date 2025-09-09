@@ -231,15 +231,15 @@ def plot_roc_curve(model_results, X, y, save_path=None):
     
     # Linha diagonal (classificador aleatório)
     plt.plot([0, 1], [0, 1], color='gray', lw=2, linestyle='--', alpha=0.8, 
-             label='Classificador Aleatório (AUC = 0.500)')
+             label='(AUC = 0.500)')
     
     # Configurações do gráfico
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.05])
-    plt.xlabel('Taxa de Falsos Positivos (1 - Especificidade)', fontsize=12)
-    plt.ylabel('Taxa de Verdadeiros Positivos (Sensibilidade)', fontsize=12)
-    plt.title('Curvas ROC - Comparação entre Modelos\nClassificação de Genes-Alvo (Oncogenes)', fontsize=14, pad=20)
-    plt.legend(loc="lower right", fontsize=10, framealpha=0.9)
+    plt.xlabel('False Positive Rate (FPR)', fontsize=22)
+    plt.ylabel('True Positive Rate (TPR)', fontsize=22)
+    #plt.title('Curvas ROC - Comparação entre Modelos\nClassificação de Genes-Alvo (Oncogenes)', fontsize=14, pad=20)
+    plt.legend(loc="lower right", fontsize=22, framealpha=0.9)
     plt.grid(True, alpha=0.3)
     
     # Adicionar informações
@@ -254,7 +254,8 @@ def plot_roc_curve(model_results, X, y, save_path=None):
     plt.tight_layout()
     
     if save_path:
-        plt.savefig(save_path, dpi=300, bbox_inches='tight')
+        plt.savefig(save_path+'.png', dpi=300, bbox_inches='tight')
+        plt.savefig(save_path+'.pdf', bbox_inches='tight')
         print(f"ROC Curve salva em: {save_path}")
     
     plt.show()
@@ -331,15 +332,15 @@ def plot_precision_recall_curve(model_results, X, y, save_path=None):
     
     # Linha base (classificador aleatório)
     plt.axhline(y=pos_rate, color='gray', lw=2, linestyle='--', alpha=0.8,
-                label=f'Classificador Aleatório (AUC = {pos_rate:.3f})')
+                label=f'(AUC = {pos_rate:.3f})')
     
     # Configurações do gráfico
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.05])
-    plt.xlabel('Recall (Sensibilidade)', fontsize=12)
-    plt.ylabel('Precision (Valor Preditivo Positivo)', fontsize=12)
-    plt.title('Curvas Precision-Recall - Comparação entre Modelos\nClassificação de Genes-Alvo (Oncogenes)', fontsize=14, pad=20)
-    plt.legend(loc="lower left", fontsize=10, framealpha=0.9)
+    plt.xlabel('Recall ', fontsize=22)
+    plt.ylabel('Precision', fontsize=22)
+    #plt.title('Curvas Precision-Recall - Comparação entre Modelos\nClassificação de Genes-Alvo (Oncogenes)', fontsize=14, pad=20)
+    plt.legend(loc="upper right", fontsize=22, framealpha=0.9)
     plt.grid(True, alpha=0.3)
     
     # Adicionar informações
@@ -354,7 +355,8 @@ def plot_precision_recall_curve(model_results, X, y, save_path=None):
     plt.tight_layout()
     
     if save_path:
-        plt.savefig(save_path, dpi=300, bbox_inches='tight')
+        plt.savefig(save_path+'.png', dpi=300, bbox_inches='tight')
+        plt.savefig(save_path+'.pdf', bbox_inches='tight')
         print(f"Precision-Recall Curve salva em: {save_path}")
     
     plt.show()
@@ -456,9 +458,9 @@ def plot_combined_curves(model_results, X, y, save_path=None):
                 label=f'Classificador Aleatório (AUC = {pos_rate:.3f})')
     ax2.set_xlim([0.0, 1.0])
     ax2.set_ylim([0.0, 1.05])
-    ax2.set_xlabel('Recall', fontsize=12)
-    ax2.set_ylabel('Precision', fontsize=12)
-    ax2.set_title('Curvas Precision-Recall', fontsize=14)
+    ax2.set_xlabel('Recall', fontsize=16)
+    ax2.set_ylabel('Precision', fontsize=16)
+    #ax2.set_title('Curvas Precision-Recal', fontsize=14)
     ax2.legend(loc="lower left", fontsize=9)
     ax2.grid(True, alpha=0.3)
     
@@ -478,7 +480,8 @@ def plot_combined_curves(model_results, X, y, save_path=None):
     plt.tight_layout()
     
     if save_path:
-        plt.savefig(save_path, dpi=300, bbox_inches='tight')
+        plt.savefig(save_path+'.png', dpi=300, bbox_inches='tight')
+        plt.savefig(save_path+'.pdf', bbox_inches='tight')
         print(f"Gráfico combinado salvo em: {save_path}")
     
     plt.show()
@@ -554,15 +557,15 @@ def generate_all_plots(X=None, y=None):
     
     # Gerar gráficos
     print("\nGerando ROC Curves...")
-    roc_save_path = os.path.join(plots_dir, "roc_curves", f"roc_comparison_{timestamp}.png")
+    roc_save_path = os.path.join(plots_dir, "roc_curves", f"roc_comparison_{timestamp}")
     plot_roc_curve(model_results, X, y, save_path=roc_save_path)
     
     print("\nGerando Precision-Recall Curves...")
-    pr_save_path = os.path.join(plots_dir, "pr_curves", f"pr_comparison_{timestamp}.png")
+    pr_save_path = os.path.join(plots_dir, "pr_curves", f"pr_comparison_{timestamp}")
     plot_precision_recall_curve(model_results, X, y, save_path=pr_save_path)
     
     # print("\nGerando gráfico combinado...")
-    # combined_save_path = os.path.join(plots_dir, "combined", f"combined_curves_{timestamp}.png")
+    # combined_save_path = os.path.join(plots_dir, "combined", f"combined_curves_{timestamp}")
     # plot_combined_curves(model_results, X, y, save_path=combined_save_path)
     
     print(f"\nTodos os gráficos gerados com sucesso!")
