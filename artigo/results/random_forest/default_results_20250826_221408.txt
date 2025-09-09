@@ -1,0 +1,79 @@
+RESULTADOS DO MODELO: RANDOM FOREST (PARÂMETROS PADRÃO)
+================================================================================
+
+Data/Hora: 2025-08-26 22:14:08
+
+PARÂMETROS UTILIZADOS (PADRÃO):
+--------------------------------------------------
+  bootstrap: True
+  ccp_alpha: 0.0
+  class_weight: None
+  criterion: gini
+  max_depth: None
+  max_features: sqrt
+  max_leaf_nodes: None
+  max_samples: None
+  min_impurity_decrease: 0.0
+  min_samples_leaf: 1
+  min_samples_split: 2
+  min_weight_fraction_leaf: 0.0
+  monotonic_cst: None
+  n_estimators: 100
+  n_jobs: None
+  oob_score: False
+  random_state: 30
+  verbose: 0
+  warm_start: False
+
+RESULTADOS DA VALIDAÇÃO CRUZADA (5-FOLD):
+--------------------------------------------------
+ACCURACY:
+  Média: 0.9373
+  Desvio Padrão: 0.0017
+  Scores por fold: [0.9403254972875226, 0.9353526220614828, 0.9380650994575045, 0.9362567811934901, 0.9367088607594937]
+
+PRECISION:
+  Média: 0.7673
+  Desvio Padrão: 0.1446
+  Scores por fold: [1.0, 0.5714285714285714, 0.6818181818181818, 0.8333333333333334, 0.75]
+
+RECALL:
+  Média: 0.0689
+  Desvio Padrão: 0.0247
+  Scores por fold: [0.0896551724137931, 0.05517241379310345, 0.10344827586206896, 0.034482758620689655, 0.06164383561643835]
+
+F1:
+  Média: 0.1250
+  Desvio Padrão: 0.0418
+  Scores por fold: [0.16455696202531644, 0.10062893081761007, 0.17964071856287425, 0.06622516556291391, 0.11392405063291139]
+
+ROC_AUC:
+  Média: 0.7437
+  Desvio Padrão: 0.0288
+  Scores por fold: [0.7267303938741805, 0.728740636938425, 0.7915402966151177, 0.7603006189213085, 0.7109910620748187]
+
+PR_AUC:
+  Média: 0.2845
+  Desvio Padrão: 0.0399
+  Scores por fold: [0.348742343613291, 0.23844996238449118, 0.2941300638803656, 0.29542061490708366, 0.2458805214143907]
+
+AVALIAÇÃO NO CONJUNTO DE TESTE FINAL:
+--------------------------------------------------
+Acurácia: 0.9371
+Precisão: 0.6296
+Recall: 0.0939
+F1-Score: 0.1635
+ROC AUC: 0.7582
+PR AUC: 0.2650
+
+RELATÓRIO DETALHADO:
+------------------------------
+              precision    recall  f1-score   support
+
+  Non-driver       0.94      1.00      0.97      2584
+      Driver       0.63      0.09      0.16       181
+
+    accuracy                           0.94      2765
+   macro avg       0.78      0.55      0.57      2765
+weighted avg       0.92      0.94      0.91      2765
+

@@ -1,0 +1,80 @@
+RESULTADOS DO MODELO: GRADIENT BOOSTING (PARÂMETROS PADRÃO)
+================================================================================
+
+Data/Hora: 2025-08-26 22:17:22
+
+PARÂMETROS UTILIZADOS (PADRÃO):
+--------------------------------------------------
+  ccp_alpha: 0.0
+  criterion: friedman_mse
+  init: None
+  learning_rate: 0.1
+  loss: log_loss
+  max_depth: 3
+  max_features: None
+  max_leaf_nodes: None
+  min_impurity_decrease: 0.0
+  min_samples_leaf: 1
+  min_samples_split: 2
+  min_weight_fraction_leaf: 0.0
+  n_estimators: 100
+  n_iter_no_change: None
+  random_state: 30
+  subsample: 1.0
+  tol: 0.0001
+  validation_fraction: 0.1
+  verbose: 0
+  warm_start: False
+
+RESULTADOS DA VALIDAÇÃO CRUZADA (5-FOLD):
+--------------------------------------------------
+ACCURACY:
+  Média: 0.9358
+  Desvio Padrão: 0.0024
+  Scores por fold: [0.939873417721519, 0.933996383363472, 0.933996383363472, 0.9371609403254972, 0.933996383363472]
+
+PRECISION:
+  Média: 0.5671
+  Desvio Padrão: 0.0998
+  Scores por fold: [0.7307692307692307, 0.4827586206896552, 0.4857142857142857, 0.6363636363636364, 0.5]
+
+RECALL:
+  Média: 0.1075
+  Desvio Padrão: 0.0143
+  Scores por fold: [0.1310344827586207, 0.09655172413793103, 0.11724137931034483, 0.09655172413793103, 0.0958904109589041]
+
+F1:
+  Média: 0.1801
+  Desvio Padrão: 0.0234
+  Scores por fold: [0.2222222222222222, 0.16091954022988506, 0.18888888888888888, 0.16766467065868262, 0.16091954022988506]
+
+ROC_AUC:
+  Média: 0.7481
+  Desvio Padrão: 0.0199
+  Scores por fold: [0.7547653604257378, 0.7393523847655272, 0.7825884590360842, 0.7405118195619171, 0.7233271227572307]
+
+PR_AUC:
+  Média: 0.2697
+  Desvio Padrão: 0.0381
+  Scores por fold: [0.33917188329368925, 0.23541444863150607, 0.2664092310572483, 0.2731176259235153, 0.2343741927115034]
+
+AVALIAÇÃO NO CONJUNTO DE TESTE FINAL:
+--------------------------------------------------
+Acurácia: 0.9363
+Precisão: 0.5714
+Recall: 0.1105
+F1-Score: 0.1852
+ROC AUC: 0.7890
+PR AUC: 0.2813
+
+RELATÓRIO DETALHADO:
+------------------------------
+              precision    recall  f1-score   support
+
+  Non-driver       0.94      0.99      0.97      2584
+      Driver       0.57      0.11      0.19       181
+
+    accuracy                           0.94      2765
+   macro avg       0.76      0.55      0.58      2765
+weighted avg       0.92      0.94      0.92      2765
+
