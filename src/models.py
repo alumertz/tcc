@@ -19,8 +19,8 @@ from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
-from .evaluation import detailed_cross_val_score, evaluate_classification_on_test
-from .reports import save_results_to_file
+from evaluation import detailed_cross_val_score, evaluate_classification_on_test
+from reports import save_results_to_file
 
 
 def _optimize_classifier_generic(
