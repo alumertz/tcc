@@ -19,8 +19,8 @@ from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
-from evaluation import detailed_cross_val_score, evaluate_classification_on_test
-from reports import save_results_to_file
+from src.evaluation import detailed_cross_val_score, evaluate_classification_on_test
+from src.reports import save_results_to_file
 
 
 def _optimize_classifier_generic(
@@ -124,9 +124,13 @@ def _optimize_classifier_generic(
     total_end = time.time()
 
     # Processar parâmetros se necessário (para casos especiais como MLP)
-    final_params = study.best_params
+    final_params = study.best_params.copy()
     if custom_params_processor:
         final_params = custom_params_processor(study.best_trial)
+    
+    # Para SVC, garantir que probability=True esteja sempre presente
+    if classifier_class == SVC:
+        final_params["probability"] = True
 
     # Treina modelo final com best_params
     final_pipeline = Pipeline([
@@ -238,19 +242,21 @@ def _suggest_mlp_params(trial):
 
 
 def _suggest_svc_params(trial):
-    """Sugestões de parâmetros para SVC"""
-    kernel = trial.suggest_categorical("kernel", ["linear", "poly", "rbf", "sigmoid"])
+    """Sugestões de parâmetros para SVC otimizadas para evitar execução infinita"""
+    # Priorizar kernels mais eficientes e limitar opções problemáticas
+    kernel = trial.suggest_categorical("kernel", ["linear", "rbf"])
     
     params = {
         "kernel": kernel,
-        "C": trial.suggest_float("C", 1e-3, 1e3, log=True),
-        "probability": True  # Necessário para predict_proba
+        "C": trial.suggest_float("C", 0.1, 100.0, log=True),  # Range mais restrito
+        "probability": True,  # Necessário para predict_proba
+        "max_iter": 1000,  # Limitar iterações para evitar execução infinita
+        "tol": 1e-3,  # Tolerância menos rigorosa para convergência mais rápida
+        "cache_size": 200,  # Aumentar cache para melhor performance
     }
     
-    # Adicionar parâmetros específicos do kernel
-    if kernel == "poly":
-        params["degree"] = trial.suggest_int("degree", 2, 5)
-    if kernel in ["poly", "rbf", "sigmoid"]:
+    # Adicionar parâmetros específicos do kernel com restrições
+    if kernel == "rbf":
         params["gamma"] = trial.suggest_categorical("gamma", ["scale", "auto"])
     
     return params

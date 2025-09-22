@@ -59,7 +59,7 @@ def detailed_cross_val_score(pipeline, X, y, cv, scoring='average_precision'):
 
 def evaluate_classification_on_test(model, X_test, y_test, return_dict=False):
     """Função para avaliar modelos de classificação no conjunto de teste"""
-    from reports import generate_enhanced_classification_report
+    from src.reports import generate_enhanced_classification_report
     
     y_pred = model.predict(X_test)
     y_pred_proba = model.predict_proba(X_test)[:, 1]  # Probabilidades para classe positiva

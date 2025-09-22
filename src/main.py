@@ -184,7 +184,7 @@ def main():
     print(f"    - Valores zero: {dataset_info['feature_stats']['zeros_percentage']:.2f}%")
     
     # Configuração do experimento
-    N_TRIALS = 20  # Número de trials por modelo (ajustar conforme necessário)
+    N_TRIALS = 30  # Número de trials por modelo (ajustar conforme necessário)
     
     print(f"\nCONFIGURAÇÃO DO EXPERIMENTO:")
     print(f"  Trials por modelo: {N_TRIALS}")
@@ -198,8 +198,8 @@ def main():
     #results = run_all_models(X, y, n_trials=N_TRIALS)
     #results = run_single_model("Gradient Boosting", optimize_gradient_boosting_classifier, X, y, n_trials=N_TRIALS)
     #results = run_single_model("Decision Tree", optimize_decision_tree_classifier, X, y, n_trials=N_TRIALS)
-    #results = run_single_model("Support Vector Classifier", optimize_svc_classifier, X, y, n_trials=N_TRIALS)
-    results = run_single_model("Multi-Layer Perceptron", optimize_mlp_classifier, X, y, n_trials=N_TRIALS)
+    results = run_single_model("Support Vector Classifier", optimize_svc_classifier, X, y, n_trials=N_TRIALS)
+    #results = run_single_model("Multi-Layer Perceptron", optimize_mlp_classifier, X, y, n_trials=N_TRIALS)
 
     # Resumo final
     summarize_results(results)

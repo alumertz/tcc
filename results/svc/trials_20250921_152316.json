@@ -1,0 +1,68 @@
+[
+  {
+    "trial_number": 0,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.6732628510564714,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.20012608662517492,
+    "time": 25.20636296272278
+  },
+  {
+    "trial_number": 1,
+    "params": {
+      "kernel": "linear",
+      "C": 1.2575004085113344,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.07316956528282045,
+    "time": 6.388932943344116
+  },
+  {
+    "trial_number": 2,
+    "params": {
+      "kernel": "linear",
+      "C": 6.662385796433716,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.09495835060206678,
+    "time": 6.272039890289307
+  },
+  {
+    "trial_number": 3,
+    "params": {
+      "kernel": "linear",
+      "C": 34.827283717169216,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.07730591138560855,
+    "time": 6.223355054855347
+  },
+  {
+    "trial_number": 4,
+    "params": {
+      "kernel": "linear",
+      "C": 0.29518981251393156,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.09439177982254586,
+    "time": 6.844103813171387
+  }
+]
