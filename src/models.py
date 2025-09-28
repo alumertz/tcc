@@ -18,6 +18,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+from catboost import CatBoostClassifier
 
 from src.evaluation import detailed_cross_val_score, evaluate_classification_on_test
 from src.reports import save_results_to_file
@@ -262,6 +263,21 @@ def _suggest_svc_params(trial):
     return params
 
 
+def _suggest_catboost_params(trial):
+    """Sugestões de parâmetros para CatBoost"""
+    return {
+        "iterations": trial.suggest_int("iterations", 100, 1000),
+        "learning_rate": trial.suggest_float("learning_rate", 0.01, 0.3),
+        "depth": trial.suggest_int("depth", 4, 10),
+        "l2_leaf_reg": trial.suggest_float("l2_leaf_reg", 1, 10),
+        "border_count": trial.suggest_int("border_count", 32, 255),
+        "bagging_temperature": trial.suggest_float("bagging_temperature", 0.0, 1.0),
+        "random_strength": trial.suggest_float("random_strength", 0.0, 1.0),
+        "verbose": False,  # Silenciar logs durante otimização
+        "allow_writing_files": False  # Não escrever arquivos de log
+    }
+
+
 def _process_mlp_params(best_trial):
     """Processa parâmetros do MLP para o modelo final"""
     n_layers = best_trial.params["n_layers"]
@@ -346,5 +362,15 @@ def optimize_svc_classifier(X, y, n_trials=30, save_results=True):
         SVC,
         _suggest_svc_params,
         'svc',
+        X, y, n_trials, save_results
+    )
+
+
+def optimize_catboost_classifier(X, y, n_trials=30, save_results=True):
+    """Otimização de hiperparâmetros para CatBoost Classifier usando Optuna"""
+    return _optimize_classifier_generic(
+        CatBoostClassifier,
+        _suggest_catboost_params,
+        'catboost',
         X, y, n_trials, save_results
     )
