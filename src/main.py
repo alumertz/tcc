@@ -11,7 +11,7 @@ sys.path.append('/Users/i583975/git/tcc')
 import numpy as np
 import pandas as pd
 from processing import prepare_dataset, get_dataset_info, split_dataset
-from collect_data import process_canonical, process_candidates
+from process_data import process_canonical, process_candidates
 from models import (
     optimize_decision_tree_classifier,
     optimize_random_forest_classifier,
