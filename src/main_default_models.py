@@ -6,7 +6,6 @@ para comparação com os modelos otimizados via Optuna.
 
 import sys
 import os
-sys.path.append('/Users/i583975/git/tcc')
 
 import numpy as np
 import pandas as pd
@@ -137,7 +136,7 @@ def save_default_results(model_name, cv_results, test_metrics, class_report, par
     Salva os resultados em arquivos organizados por modelo
     """
     # Criar diretório base
-    base_dir = "/Users/i583975/git/tcc/artigo/results"
+    base_dir = "artigo/results"
     os.makedirs(base_dir, exist_ok=True)
     
     # Criar diretório específico do modelo
@@ -307,8 +306,8 @@ def main():
     print("="*80)
     
     # Caminhos para os arquivos de dados (mesmos do main.py)
-    features_path = "/Users/i583975/git/tcc/renan/data_files/omics_features/UNION_features.tsv"
-    labels_path = "/Users/i583975/git/tcc/renan/data_files/labels/UNION_labels.tsv"
+    features_path = "renan/data_files/omics_features/UNION_features.tsv"
+    labels_path = "renan/data_files/labels/UNION_labels.tsv"
     
     # Verifica se os arquivos existem
     if not os.path.exists(features_path):
@@ -342,7 +341,7 @@ def main():
     print(f"  Parâmetros: PADRÃO (sem otimização)")
     print(f"  Validação: Estratificada 5-fold + Holdout 80/20")
     print(f"  Métricas: Accuracy, Precision, Recall, F1, ROC AUC, PR AUC")
-    print(f"  Resultados salvos em: /Users/i583975/git/tcc/artigo/results/ (com 'default' no nome)")
+    print(f"  Resultados salvos em: artigo/results/ (com 'default' no nome)")
     print()
     
     # Executa todos os modelos com parâmetros padrão

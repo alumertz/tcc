@@ -220,7 +220,7 @@ def generate_single_trial_cv_table(file_handle, cv_metrics):
     file_handle.write(f"Validação cruzada com {len(cv_metrics)} folds\n")
 
 
-def save_results_to_file(model_name, results, results_dir="../results"):
+def save_results_to_file(model_name, results, results_dir="artigo/results"):
     """Salva os resultados em arquivos organizados por modelo"""
     model_dir = os.path.join(results_dir, model_name)
     os.makedirs(model_dir, exist_ok=True)
@@ -264,6 +264,12 @@ def save_results_to_file(model_name, results, results_dir="../results"):
         f.write("-"*30 + "\n")
         f.write(json.dumps(results['best_params'], indent=2))
         f.write("\n\n")
+
+        # ALTERADO À MÃO
+        f.write("MULTIÔMICAS UTILIZADAS:\n")
+        f.write("-"*30 + "\n")
+        f.write("Gene_Expression, DNA_Methylation, Mutations")
+        f.write("\n\n")
         
         f.write("HISTÓRICO DE OTIMIZAÇÃO:\n")
         f.write("-"*30 + "\n")
@@ -273,3 +279,5 @@ def save_results_to_file(model_name, results, results_dir="../results"):
     
     print(f"Resultados salvos em: {model_dir}")
     return trials_file, test_results_file
+
+

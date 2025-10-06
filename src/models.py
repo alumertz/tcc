@@ -6,6 +6,7 @@ Contém funções de otimização usando Optuna para diferentes algoritmos de cl
 import time
 import numpy as np
 import optuna
+import inspect
 from sklearn.ensemble import (
     GradientBoostingClassifier,
     HistGradientBoostingClassifier,
@@ -19,8 +20,8 @@ from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
-from src.evaluation import detailed_cross_val_score, evaluate_classification_on_test
-from src.reports import save_results_to_file
+from evaluation import detailed_cross_val_score, evaluate_classification_on_test
+from reports import save_results_to_file
 
 
 def _optimize_classifier_generic(
@@ -72,10 +73,17 @@ def _optimize_classifier_generic(
     def objective(trial):
         params = param_suggestions_func(trial)
 
+        classifier_init_params = inspect.signature(classifier_class).parameters
+        if 'random_state' in classifier_init_params:
+            classifier = classifier_class(random_state=30, **params)
+        else:
+            classifier = classifier_class(**params)
+
         pipeline = Pipeline([
             ("scaler", StandardScaler()),
-            ("classifier", classifier_class(random_state=30, **params))
+            ("classifier", classifier)
         ])
+
 
         start = time.time()
         try:
@@ -124,19 +132,22 @@ def _optimize_classifier_generic(
     total_end = time.time()
 
     # Processar parâmetros se necessário (para casos especiais como MLP)
-    final_params = study.best_params.copy()
+    final_params = study.best_params
     if custom_params_processor:
         final_params = custom_params_processor(study.best_trial)
-    
-    # Para SVC, garantir que probability=True esteja sempre presente
-    if classifier_class == SVC:
-        final_params["probability"] = True
 
     # Treina modelo final com best_params
+    classifier_init_params = inspect.signature(classifier_class).parameters
+    if 'random_state' in classifier_init_params:
+        final_classifier = classifier_class(random_state=30, **final_params)
+    else:
+        final_classifier = classifier_class(**final_params)
+
     final_pipeline = Pipeline([
         ("scaler", StandardScaler()),
-        ("classifier", classifier_class(random_state=30, **final_params))
+        ("classifier", final_classifier)
     ])
+
     final_pipeline.fit(X_trainval, y_trainval)
 
     # Avalia no conjunto de teste
@@ -242,21 +253,19 @@ def _suggest_mlp_params(trial):
 
 
 def _suggest_svc_params(trial):
-    """Sugestões de parâmetros para SVC otimizadas para evitar execução infinita"""
-    # Priorizar kernels mais eficientes e limitar opções problemáticas
-    kernel = trial.suggest_categorical("kernel", ["linear", "rbf"])
+    """Sugestões de parâmetros para SVC"""
+    kernel = trial.suggest_categorical("kernel", ["linear", "poly", "rbf", "sigmoid"])
     
     params = {
         "kernel": kernel,
-        "C": trial.suggest_float("C", 0.1, 100.0, log=True),  # Range mais restrito
-        "probability": True,  # Necessário para predict_proba
-        "max_iter": 1000,  # Limitar iterações para evitar execução infinita
-        "tol": 1e-3,  # Tolerância menos rigorosa para convergência mais rápida
-        "cache_size": 200,  # Aumentar cache para melhor performance
+        "C": trial.suggest_float("C", 1e-3, 1e3, log=True),
+        "probability": True  # Necessário para predict_proba
     }
     
-    # Adicionar parâmetros específicos do kernel com restrições
-    if kernel == "rbf":
+    # Adicionar parâmetros específicos do kernel
+    if kernel == "poly":
+        params["degree"] = trial.suggest_int("degree", 2, 5)
+    if kernel in ["poly", "rbf", "sigmoid"]:
         params["gamma"] = trial.suggest_categorical("gamma", ["scale", "auto"])
     
     return params

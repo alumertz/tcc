@@ -18,9 +18,6 @@ from datetime import datetime
 import warnings
 warnings.filterwarnings('ignore')
 
-# Adicionar path do projeto
-sys.path.append('/Users/i583975/git/tcc')
-
 # Configuração do matplotlib para melhor qualidade
 plt.rcParams['figure.dpi'] = 300
 plt.rcParams['savefig.dpi'] = 300
@@ -36,7 +33,7 @@ sns.set_palette("husl")
 
 def create_plots_directory():
     """Cria diretório para salvar os gráficos"""
-    plots_dir = "/Users/i583975/git/tcc/artigo/plots"
+    plots_dir = "artigo/plots"
     os.makedirs(plots_dir, exist_ok=True)
     
     # Criar subdiretórios para diferentes tipos de gráficos
@@ -47,7 +44,7 @@ def create_plots_directory():
     return plots_dir
 
 
-def load_model_results(results_dir="/Users/i583975/git/tcc/artigo/results"):
+def load_model_results(results_dir="artigo/results"):
     """
     Carrega os resultados de todos os modelos testados
     
@@ -511,8 +508,8 @@ def generate_all_plots(X=None, y=None):
     if X is None or y is None:
         try:
             # Usar os mesmos caminhos e função de carregamento do main.py
-            features_path = "/Users/i583975/git/tcc/renan/data_files/omics_features/UNION_features.tsv"
-            labels_path = "/Users/i583975/git/tcc/renan/data_files/labels/UNION_labels.tsv"
+            features_path = "renan/data_files/omics_features/UNION_features.tsv"
+            labels_path = "renan/data_files/labels/UNION_labels.tsv"
             
             # Verificar se os arquivos existem
             if not os.path.exists(features_path):
