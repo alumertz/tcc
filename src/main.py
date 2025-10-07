@@ -6,6 +6,7 @@ para predição de genes-alvo usando dados ômicos.
 
 import sys
 import os
+import argparse
 sys.path.append('/Users/i583975/git/tcc')
 
 import numpy as np
@@ -25,6 +26,61 @@ from models import (
 import warnings
 warnings.filterwarnings('ignore')
 
+def get_data_paths(use_renan=False):
+    """
+    Retorna os caminhos dos arquivos baseado na fonte de dados escolhida
+    
+    Args:
+        use_renan (bool): Se True, usa arquivos do Renan; se False, usa arquivos da Ana
+        
+    Returns:
+        tuple: (features_path, labels_path, data_source)
+    """
+    if use_renan:
+        features_path = "/Users/i583975/git/tcc/renan/data_files/omics_features/UNION_features.tsv"
+        labels_path = "/Users/i583975/git/tcc/renan/data_files/labels/UNION_labels.tsv"
+        data_source = "RENAN"
+        print(f"📁 Usando dados do RENAN:")
+        print(f"   Features: renan/data_files/omics_features/UNION_features.tsv")
+        print(f"   Labels: renan/data_files/labels/UNION_labels.tsv")
+        print(f"   Formato labels: gene, label (True/False/NaN)")
+    else:
+        features_path = "/Users/i583975/git/tcc/data/UNION_features.tsv"
+        labels_path = "/Users/i583975/git/tcc/data/processed/UNION_labels.tsv"
+        data_source = "ANA"
+        print(f"📁 Usando dados da ANA:")
+        print(f"   Features: data/UNION_features.tsv")
+        print(f"   Labels: data/processed/UNION_labels.tsv") 
+        print(f"   Formato labels: symbol, Oncogene, TSG, category")
+    print()
+    
+    return features_path, labels_path, data_source
+
+def parse_arguments():
+    """
+    Processa argumentos da linha de comando
+    
+    Returns:
+        argparse.Namespace: Argumentos processados
+    """
+    parser = argparse.ArgumentParser(
+        description='Experimentação com modelos de classificação para predição de genes-alvo',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Exemplos de uso:
+  python main.py              # Usa arquivos da Ana (formato novo - padrão)
+  python main.py -renan       # Usa arquivos do Renan (formato original)
+  python main.py --help       # Mostra esta ajuda
+        """
+    )
+    
+    parser.add_argument(
+        '-renan', '--renan', 
+        action='store_true',
+        help='Usa arquivos de dados do Renan (formato original: gene, label)'
+    )
+    
+    return parser.parse_args()
 
 def run_single_model(model_name, optimizer_func, X, y, n_trials=10):
     """
@@ -146,37 +202,42 @@ def summarize_results(results):
     print("="*80)
 
 
-def main():
+def main(use_renan=False):
     """
     Função principal do experimento
+    
+    Args:
+        use_renan (bool): Se True, usa arquivos do Renan; se False, usa arquivos da Ana
     """
     print("CLASSIFICAÇÃO DE GENES-ALVO USANDO DADOS ÔMICOS")
     print("="*80)
     
-    # Caminhos para os arquivos de dados
-    features_path = "/Users/i583975/git/tcc/renan/data_files/omics_features/UNION_features.tsv"
-    labels_path = "/Users/i583975/git/tcc/renan/data_files/labels/UNION_labels.tsv"
+    # Obtém os caminhos dos arquivos baseado na fonte escolhida
+    features_path, labels_path, data_source = get_data_paths(use_renan)
     
     # Verifica se os arquivos existem
     if not os.path.exists(features_path):
-        print(f"Arquivo de features não encontrado: {features_path}")
+        print(f"❌ Arquivo de features não encontrado: {features_path}")
         return
     
     if not os.path.exists(labels_path):
-        print(f"Arquivo de labels não encontrado: {labels_path}")
+        print(f"❌ Arquivo de labels não encontrado: {labels_path}")
         return
     
+    print("✅ Arquivos encontrados com sucesso!")
+    
     # Prepara o dataset
-    print("Carregando e preparando dados...")
+    print("🔄 Carregando e preparando dados...")
     X, y, gene_names, feature_names = prepare_dataset(features_path, labels_path)
     
     if X is None:
-        print("Erro ao preparar dataset. Abortando.")
+        print("❌ Erro ao preparar dataset. Abortando.")
         return
     
     # Mostra informações do dataset
     dataset_info = get_dataset_info(X, y, gene_names, feature_names)
-    print("\nINFORMAÇÕES DO DATASET:")
+    print("\n📊 INFORMAÇÕES DO DATASET:")
+    print(f"  Fonte de dados: {data_source}")
     print(f"  Amostras: {dataset_info['n_samples']}")
     print(f"  Features: {dataset_info['n_features']}")
     print(f"  Distribuição das classes: {dataset_info['class_distribution']}")
@@ -188,15 +249,15 @@ def main():
     # Configuração do experimento
     N_TRIALS = 30  # Número de trials por modelo (ajustar conforme necessário)
     
-    print(f"\nCONFIGURAÇÃO DO EXPERIMENTO:")
+    print(f"\n⚙️  CONFIGURAÇÃO DO EXPERIMENTO:")
     print(f"  Trials por modelo: {N_TRIALS}")
     print(f"  Validação: Estratificada 5-fold + Holdout 80/20")
     print(f"  Métrica de otimização: PR AUC (Average Precision)")
-    print(f"  Resultados salvos em: /Users/i583975/git/tcc/artigo/results/")
+    print(f"  Resultados salvos em: /Users/i583975/git/tcc/results/")
     print()
     
     # Executa todos os modelos
-    print("Iniciando experimentos...")
+    print("🚀 Iniciando experimentos...")
     #results = run_all_models(X, y, n_trials=N_TRIALS)
     #results = run_single_model("Gradient Boosting", optimize_gradient_boosting_classifier, X, y, n_trials=N_TRIALS)
     #results = run_single_model("Decision Tree", optimize_decision_tree_classifier, X, y, n_trials=N_TRIALS)
@@ -207,11 +268,13 @@ def main():
     # Resumo final
     summarize_results(results)
     
-    print("\nEXPERIMENTO CONCLUÍDO!")
-    print("Resultados salvos em arquivos organizados por modelo.")
+    print("\n🎉 EXPERIMENTO CONCLUÍDO!")
+    print("💾 Resultados salvos em arquivos organizados por modelo.")
 
 
 if __name__ == "__main__":
-    #process_canonical()
-    #process_candidates()
-    main()
+    # Processa argumentos da linha de comando
+    args = parse_arguments()
+    
+    # Executa o experimento com a fonte de dados escolhida
+    main(args.renan)
