@@ -5,11 +5,8 @@ para predição de genes-alvo usando dados ômicos.
 """
 
 import os
-import sys
 import time
 import warnings
-import numpy as np
-
 
 # Suppress warnings
 warnings.filterwarnings('ignore')
@@ -142,7 +139,7 @@ def main():
         return
 
     # Seleção de features
-    selected_groups = ["Gene_Expression", "DNA_Methylation", "Mutations"]
+    selected_groups = ["CNA"]
     X = select_features(X, selected_groups)
 
     # Informações gerais

@@ -1,119 +1,95 @@
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 import warnings
-warnings.filterwarnings('ignore')
+
+warnings.filterwarnings("ignore")
 
 
-def load_union_features(features_path):
+def load_union_features(path):
     """
-    Carrega o arquivo UNION_features.tsv
-    
-    Args:
-        features_path (str): Caminho para o arquivo UNION_features.tsv
-        
-    Returns:
-        pd.DataFrame: DataFrame com as features dos genes
+    Carrega e processa o arquivo de features UNION_features.tsv
     """
     print("Carregando UNION_features.tsv...")
-    
+
     try:
-        # Carrega o arquivo TSV
-        features_df = pd.read_csv(features_path, sep='\t')
-        print(f"Features carregadas: {features_df.shape[0]} genes x {features_df.shape[1]-1} features")
-        
-        # Remove a coluna 'gene' para análise das features
-        gene_names = features_df['gene'].copy()
-        features_only = features_df.drop('gene', axis=1)
-        
-        # Verifica valores faltantes
-        missing_values = features_only.isnull().sum().sum()
-        if missing_values > 0:
-            print(f"Encontrados {missing_values} valores faltantes nas features")
-            # Preenche valores faltantes com 0 (assumindo que são experimentos não realizados)
-            features_only = features_only.fillna(0)
-        
-        # Informações sobre as features
-        print(f"Tipos de dados das features: {features_only.dtypes.value_counts().to_dict()}")
-        print(f"Range das features: [{features_only.min().min():.4f}, {features_only.max().max():.4f}]")
-        
-        return features_df, gene_names, features_only
-        
+        df = pd.read_csv(path, sep='\t')
+        print(f"Features carregadas: {df.shape[0]} genes x {df.shape[1] - 1} features")
+
+        gene_names = df['gene'].copy()
+        features = df.drop(columns='gene')
+
+        missing = features.isnull().sum().sum()
+        if missing:
+            print(f"Encontrados {missing} valores faltantes. Preenchendo com 0.")
+            features.fillna(0, inplace=True)
+
+        print(f"Tipos de dados: {features.dtypes.value_counts().to_dict()}")
+        print(f"Range das features: [{features.min().min():.4f}, {features.max().max():.4f}]")
+
+        return df, gene_names, features
+
     except Exception as e:
         print(f"Erro ao carregar features: {e}")
         return None, None, None
 
 
-def load_union_labels(labels_path):
+def _convert_labels(label_series):
     """
-    Carrega o arquivo UNION_labels.tsv e processa os labels
-    
-    Args:
-        labels_path (str): Caminho para o arquivo UNION_labels.tsv
-        
-    Returns:
-        pd.DataFrame: DataFrame com os labels processados
+    Converte diferentes tipos de labels para valores binários (0/1)
+    """
+    series = label_series.copy()
+
+    if series.dtype == 'object':
+        unique = set(str(v).lower() for v in series.unique())
+        print(f"Valores únicos (normalizados): {unique}")
+
+        def to_binary(val):
+            val = str(val).lower()
+            return int(val in ['true', '1', 'yes', 'positive'])
+
+        return series.apply(to_binary)
+
+    if series.dtype == 'bool':
+        return series.astype(int)
+
+    if np.issubdtype(series.dtype, np.integer):
+        return series.astype(int)
+
+    try:
+        return series.astype(int)
+    except Exception:
+        print("Erro ao converter labels para inteiros. Verifique os dados.")
+        raise
+
+
+def load_union_labels(path):
+    """
+    Carrega e processa o arquivo de labels UNION_labels.tsv
     """
     print("Carregando UNION_labels.tsv...")
-    
+
     try:
-        # Carrega o arquivo TSV
-        labels_df = pd.read_csv(labels_path, sep='\t')
-        print(f"Labels carregados: {labels_df.shape[0]} genes")
-        
-        # Verifica valores únicos nos labels
-        print("Valores únicos nos labels:", labels_df['label'].value_counts(dropna=False))
-        
-        # Remove genes sem label (valores NaN/vazios)
-        labels_clean = labels_df.dropna(subset=['label'])
-        removed_genes = len(labels_df) - len(labels_clean)
-        if removed_genes > 0:
-            print(f"Removidos {removed_genes} genes sem label")
-        
-        # Converte labels para formato binário (True/False -> 1/0)
-        labels_clean = labels_clean.copy()
-        if labels_clean['label'].dtype == 'object':
-            # Se os labels são strings, tenta diferentes formatos
-            unique_values = set(str(v).lower() for v in labels_clean['label'].unique())
-            print(f"Valores únicos encontrados (lowercase): {unique_values}")
-            
-            if unique_values <= {'true', 'false'}:
-                # Strings 'True'/'False' (case insensitive)
-                labels_clean.loc[:, 'label'] = labels_clean['label'].apply(
-                    lambda x: 1 if str(x).lower() == 'true' else 0
-                )
-            elif unique_values <= {'1', '0'}:
-                # Strings '1'/'0'
-                labels_clean.loc[:, 'label'] = labels_clean['label'].astype(int)
-            else:
-                print(f"AVISO: Valores de label não reconhecidos: {unique_values}")
-                # Tenta conversão genérica
-                labels_clean.loc[:, 'label'] = labels_clean['label'].apply(
-                    lambda x: 1 if str(x).lower() in ['true', '1', 'yes', 'positive'] else 0
-                )
-        elif labels_clean['label'].dtype == 'bool':
-            # Se os labels já são booleanos
-            labels_clean.loc[:, 'label'] = labels_clean['label'].astype(int)
-        elif labels_clean['label'].dtype in ['int64', 'int32', 'int']:
-            # Se já são inteiros, não faz nada
-            pass
-        else:
-            # Conversão forçada para inteiro
-            labels_clean.loc[:, 'label'] = labels_clean['label'].astype(int)
-        
-        # Verifica distribuição das classes
-        class_distribution = labels_clean['label'].value_counts()
+        df = pd.read_csv(path, sep='\t')
+        print(f"Labels carregados: {df.shape[0]} genes")
+
+        df_clean = df.dropna(subset=['label'])
+        removed = df.shape[0] - df_clean.shape[0]
+
+        if removed:
+            print(f"Removidos {removed} genes sem label")
+
+        df_clean['label'] = _convert_labels(df_clean['label'])
+
+        dist = df_clean['label'].value_counts()
         print("Distribuição das classes:")
-        print(f"  Classe 0 (não-alvo): {class_distribution.get(0, 0)} genes")
-        print(f"  Classe 1 (alvo): {class_distribution.get(1, 0)} genes")
-        
-        if len(class_distribution) == 2:
-            ratio = class_distribution[1] / class_distribution[0]
-            print(f"  Razão positivos/negativos: {ratio:.4f}")
-        
-        return labels_clean
-        
+        print(f"  Classe 0: {dist.get(0, 0)}")
+        print(f"  Classe 1: {dist.get(1, 0)}")
+        if 0 in dist and 1 in dist:
+            print(f"  Razão 1/0: {dist[1] / dist[0]:.4f}")
+
+        return df_clean
+
     except Exception as e:
         print(f"Erro ao carregar labels: {e}")
         return None
@@ -121,106 +97,80 @@ def load_union_labels(labels_path):
 
 def align_features_and_labels(features_df, labels_df):
     """
-    Alinha as features e labels, mantendo apenas genes presentes em ambos
-    
-    Args:
-        features_df (pd.DataFrame): DataFrame com features
-        labels_df (pd.DataFrame): DataFrame com labels
-        
-    Returns:
-        tuple: (X, y, gene_names) - features, labels e nomes dos genes alinhados
+    Alinha os dados de features e labels com base no nome do gene
     """
     print("Alinhando features e labels...")
-    
-    # Encontra genes comuns
+
     common_genes = set(features_df['gene']) & set(labels_df['gene'])
-    print(f"Genes comuns entre features e labels: {len(common_genes)}")
-    
-    if len(common_genes) == 0:
-        print("ERRO: Nenhum gene comum encontrado!")
+    print(f"Genes comuns: {len(common_genes)}")
+
+    if not common_genes:
+        print("Erro: Nenhum gene comum encontrado!")
         return None, None, None
-    
-    # Filtra datasets para genes comuns
-    features_aligned = features_df[features_df['gene'].isin(common_genes)].copy()
-    labels_aligned = labels_df[labels_df['gene'].isin(common_genes)].copy()
-    
-    # Ordena por gene para garantir alinhamento
-    features_aligned = features_aligned.sort_values('gene').reset_index(drop=True)
-    labels_aligned = labels_aligned.sort_values('gene').reset_index(drop=True)
-    
-    # Verifica se a ordem dos genes é idêntica
-    if not features_aligned['gene'].equals(labels_aligned['gene']):
-        print("ERRO: Genes não estão alinhados corretamente!")
+
+    f_aligned = features_df[features_df['gene'].isin(common_genes)].copy()
+    l_aligned = labels_df[labels_df['gene'].isin(common_genes)].copy()
+
+    f_aligned.sort_values('gene', inplace=True)
+    l_aligned.sort_values('gene', inplace=True)
+
+    f_aligned.reset_index(drop=True, inplace=True)
+    l_aligned.reset_index(drop=True, inplace=True)
+
+    if not f_aligned['gene'].equals(l_aligned['gene']):
+        print("Erro: Ordem dos genes não coincide!")
         return None, None, None
-    
-    # Extrai features (X) e labels (y)
-    X = features_aligned.drop('gene', axis=1).values
-    y = labels_aligned['label'].values
-    gene_names = features_aligned['gene'].values
-    
-    # Garante que y seja do tipo inteiro para np.bincount
-    # Como os labels já foram processados na função load_union_labels,
-    # apenas garantimos que sejam inteiros
-    y = y.astype(int)
-    
+
+    X = f_aligned.drop(columns='gene').values
+    y = l_aligned['label'].astype(int).values
+    gene_names = f_aligned['gene'].values
+
     print(f"Dataset final: {X.shape[0]} genes x {X.shape[1]} features")
-    print(f"Distribuição final das classes: {np.bincount(y)}")
-    
+    print(f"Distribuição das classes: {np.bincount(y)}")
+
     return X, y, gene_names
 
 
 def prepare_dataset(features_path, labels_path):
     """
-    Função principal para preparar o dataset completo
-    
-    Args:
-        features_path (str): Caminho para UNION_features.tsv
-        labels_path (str): Caminho para UNION_labels.tsv
-        
-    Returns:
-        tuple: (X, y, gene_names, feature_names) - dataset completo preparado
+    Prepara todo o dataset para modelagem
     """
-    print("="*60)
+    print("=" * 60)
     print("PREPARANDO DATASET PARA CLASSIFICAÇÃO")
-    print("="*60)
-    
-    # Carrega features
+    print("=" * 60)
+
     features_df, gene_names_feat, features_only = load_union_features(features_path)
     if features_df is None:
         return None, None, None, None
-    
-    print("-"*40)
-    
-    # Carrega labels
+
+    print("-" * 40)
+
     labels_df = load_union_labels(labels_path)
     if labels_df is None:
         return None, None, None, None
-    
-    print("-"*40)
-    
-    # Alinha features e labels
+
+    print("-" * 40)
+
     X, y, gene_names = align_features_and_labels(features_df, labels_df)
     if X is None:
         return None, None, None, None
-    
-    # Nomes das features
-    feature_names = features_df.drop('gene', axis=1).columns.tolist()
-    
-    print("-"*40)
+
+    feature_names = features_df.drop(columns='gene').columns.tolist()
+
+    print("-" * 40)
     print("DATASET PREPARADO COM SUCESSO!")
-    print(f"Shape final: X={X.shape}, y={y.shape}")
-    print(f"Genes: {len(gene_names)}")
-    print(f"Features: {len(feature_names)}")
-    print("="*60)
-    
+    print(f"Shape: X={X.shape}, y={y.shape}")
+    print(f"Genes: {len(gene_names)}, Features: {len(feature_names)}")
+    print("=" * 60)
+
     return X, y, gene_names, feature_names
 
 
 def get_dataset_info(X, y, gene_names, feature_names):
     """
-    Retorna informações detalhadas sobre o dataset
+    Retorna um resumo estatístico do dataset
     """
-    info = {
+    return {
         'n_samples': X.shape[0],
         'n_features': X.shape[1],
         'n_genes': len(gene_names),
@@ -230,28 +180,23 @@ def get_dataset_info(X, y, gene_names, feature_names):
             'std': np.std(X),
             'min': np.min(X),
             'max': np.max(X),
-            'zeros_percentage': np.mean(X == 0) * 100
+            'zeros_percentage': (X == 0).mean() * 100,
         }
     }
-    
-    return info
 
 
 def split_dataset(X, y, test_size=0.2, random_state=42):
     """
-    Divide o dataset em treino e teste mantendo a proporção das classes
+    Divide o dataset em treino e teste, mantendo a proporção de classes
     """
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, 
-        test_size=test_size, 
-        random_state=random_state, 
-        stratify=y
+        X, y, test_size=test_size, random_state=random_state, stratify=y
     )
-    
-    print(f"Dataset dividido:")
+
+    print("Dataset dividido:")
     print(f"  Treino: {X_train.shape[0]} amostras")
-    print(f"  Teste: {X_test.shape[0]} amostras")
-    print(f"  Distribuição treino: {dict(zip(*np.unique(y_train, return_counts=True)))}")
-    print(f"  Distribuição teste: {dict(zip(*np.unique(y_test, return_counts=True)))}")
-    
+    print(f"  Teste:  {X_test.shape[0]} amostras")
+    print(f"  Classes treino: {dict(zip(*np.unique(y_train, return_counts=True)))}")
+    print(f"  Classes teste:  {dict(zip(*np.unique(y_test, return_counts=True)))}")
+
     return X_train, X_test, y_train, y_test

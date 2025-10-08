@@ -5,7 +5,6 @@ a partir dos resultados dos testes de algoritmos de classificação.
 """
 
 import os
-import sys
 import json
 import numpy as np
 import matplotlib.pyplot as plt
@@ -44,7 +43,7 @@ def create_plots_directory():
     return plots_dir
 
 
-def load_model_results(results_dir="artigo/results"):
+def load_model_results(results_dir="results/omics"):
     """
     Carrega os resultados de todos os modelos testados
     
