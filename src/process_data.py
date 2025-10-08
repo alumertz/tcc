@@ -176,8 +176,10 @@ def get_candidate_genes():
 
 def create_union_labels(canonical_genes, candidate_genes):
     """
-    Cria arquivo UNION_labels.tsv seguindo exatamente a lógica do label_semisupervised.ipynb
-    com as colunas: symbol, Oncogene, TSG, category
+    Cria arquivo UNION_labels.tsv com 3 colunas:
+    - genes: símbolo do gene
+    - 2class: classe binária (cancer=1, candidato=NaN, passenger=0)
+    - 3class: 3classe (TSG=1, OC=2, candidato=NaN, passenger=0)
     """
     print("\n=== CRIANDO UNION_LABELS ===")
     
@@ -185,31 +187,74 @@ def create_union_labels(canonical_genes, candidate_genes):
     all_genes = pd.concat([canonical_genes, candidate_genes], ignore_index=True)
     all_genes = all_genes.drop_duplicates(subset=['symbol']).sort_values(by='symbol').reset_index(drop=True)
     
-    # Cria categorias baseado na lógica do renan
+    # Identifica categorias dos genes
     canonical_symbols = set(canonical_genes['symbol'])
     candidate_symbols = set(candidate_genes['symbol'])
     
-    categories = []
-    for symbol in all_genes['symbol']:
-        if symbol in canonical_symbols:
-            categories.append('canonical')
-        elif symbol in candidate_symbols:
-            categories.append('candidate')
-        else:
-            categories.append('unknown')  # Não deveria acontecer neste caso
+    # Listas para armazenar as classificações
+    genes = []
+    binary_class = []
+    multiclass_labels = []
     
-    # Cria o DataFrame final com as colunas solicitadas
+    for _, row in all_genes.iterrows():
+        symbol = row['symbol']
+        oncogene = row['Oncogene']
+        tsg = row['TSG']
+        
+        genes.append(symbol)
+        
+        if symbol in canonical_symbols:
+            # Gene canônico (cancer) = 1 na classificação binária
+            binary_class.append(1)
+            
+            # Classificação 3classe baseada no tipo
+            if tsg == 'Yes' and oncogene == 'Yes':
+                # Se é tanto TSG quanto oncogene, prioriza TSG
+                multiclass_labels.append(1)  # TSG = 1
+            elif tsg == 'Yes':
+                multiclass_labels.append(1)  # TSG = 1
+            elif oncogene == 'Yes':
+                multiclass_labels.append(2)  # Oncogene = 2
+            else:
+                # Gene canônico mas sem classificação clara (não deveria acontecer)
+                multiclass_labels.append(1)  # Default para TSG
+                
+        elif symbol in candidate_symbols:
+            # Gene candidato = NaN em ambas classificações
+            binary_class.append(np.nan)
+            multiclass_labels.append(np.nan)
+        else:
+            # Gene passenger = 0 em ambas classificações
+            binary_class.append(0)
+            multiclass_labels.append(0)
+    
+    # Cria o DataFrame final com as 3 colunas especificadas
     union_labels = pd.DataFrame({
-        'symbol': all_genes['symbol'],
-        'Oncogene': all_genes['Oncogene'],
-        'TSG': all_genes['TSG'],
-        'category': categories
+        'genes': genes,
+        '2class': binary_class,
+        '3class': multiclass_labels
     })
     
+    # Estatísticas para relatório
+    n_cancer = sum(1 for x in binary_class if x == 1)
+    n_passenger = sum(1 for x in binary_class if x == 0)
+    n_candidate = sum(1 for x in binary_class if pd.isna(x))
+    
+    n_tsg = sum(1 for x in multiclass_labels if x == 1)
+    n_oncogene = sum(1 for x in multiclass_labels if x == 2)
+    n_candidate_multi = sum(1 for x in multiclass_labels if pd.isna(x))
+    n_passenger_multi = sum(1 for x in multiclass_labels if x == 0)
+    
     print(f"Total de genes no UNION_labels: {len(union_labels)}")
-    print(f"Genes canônicos: {sum(1 for x in categories if x == 'canonical')}")
-    print(f"Genes candidatos: {sum(1 for x in categories if x == 'candidate')}")
-    print(f"Genes desconhecidos: {sum(1 for x in categories if x == 'unknown')}")
+    print(f"\nClassificação Binária:")
+    print(f"  Cancer (1): {n_cancer}")
+    print(f"  Candidatos (NaN): {n_candidate}")
+    print(f"  Passengers (0): {n_passenger}")
+    print(f"\nClassificação 3classe:")
+    print(f"  TSG (1): {n_tsg}")
+    print(f"  Oncogenes (2): {n_oncogene}")
+    print(f"  Candidatos (NaN): {n_candidate_multi}")
+    print(f"  Passengers (0): {n_passenger_multi}")
     
     return union_labels
 
@@ -233,7 +278,7 @@ def save_results(canonical_genes, candidate_genes, union_labels):
         candidate_genes.to_csv(candidate_path, sep='\t', index=False)
         print(f"Genes candidatos salvos em: {candidate_path}")
         
-        # Salva UNION_labels
+        # Salva UNION_labels com formatação adequada
         union_path = os.path.join(OUTPUT_DIR, 'UNION_labels.tsv')
         union_labels.to_csv(union_path, sep='\t', index=False)
         print(f"UNION_labels salvos em: {union_path}")
@@ -266,8 +311,13 @@ def main():
     print(canonical_genes.head(10))
     print("\nGenes candidatos (primeiras 10 linhas):")
     print(candidate_genes.head(10))
-    print("\nUNION_labels (primeiras 10 linhas):")
-    print(union_labels.head(10))
+    print("\nUNION_labels (primeiras 15 linhas):")
+    print(union_labels.head(15))
+    print("\nResumo das classificações:")
+    print(f"Classificação binária - Distribuição:")
+    print(union_labels['2class'].value_counts(dropna=False))
+    print(f"\nClassificação multiclasse - Distribuição:")
+    print(union_labels['3class'].value_counts(dropna=False))
 
 if __name__ == "__main__":
     main()

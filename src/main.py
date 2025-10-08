@@ -51,7 +51,7 @@ def get_data_paths(use_renan=False):
         print(f"📁 Usando dados da ANA:")
         print(f"   Features: data/UNION_features.tsv")
         print(f"   Labels: data/processed/UNION_labels.tsv") 
-        print(f"   Formato labels: symbol, Oncogene, TSG, category")
+        print(f"   Formato labels: genes, 2class (binary), 3class (multiclass)")
     print()
     
     return features_path, labels_path, data_source
@@ -68,9 +68,11 @@ def parse_arguments():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Exemplos de uso:
-  python main.py              # Usa arquivos da Ana (formato novo - padrão)
-  python main.py -renan       # Usa arquivos do Renan (formato original)
-  python main.py --help       # Mostra esta ajuda
+  python main.py                    # Usa arquivos da Ana, classificação binária (padrão)
+  python main.py -renan             # Usa arquivos do Renan (formato original)
+  python main.py -multiclass        # Usa classificação multiclasse (TSG vs Oncogene vs Passenger)
+  python main.py -multiclass -renan # Combina ambas opções
+  python main.py --help             # Mostra esta ajuda
         """
     )
     
@@ -78,6 +80,12 @@ Exemplos de uso:
         '-renan', '--renan', 
         action='store_true',
         help='Usa arquivos de dados do Renan (formato original: gene, label)'
+    )
+    
+    parser.add_argument(
+        '-multiclass', '--multiclass',
+        action='store_true',
+        help='Usa classificação multiclasse (TSG=1, Oncogene=2) ao invés de binária (cancer=1)'
     )
     
     return parser.parse_args()
@@ -202,12 +210,13 @@ def summarize_results(results):
     print("="*80)
 
 
-def main(use_renan=False):
+def main(use_renan=False, use_multiclass=False):
     """
     Função principal do experimento
     
     Args:
         use_renan (bool): Se True, usa arquivos do Renan; se False, usa arquivos da Ana
+        use_multiclass (bool): Se True, usa classificação multiclasse; se False, usa binária
     """
     print("CLASSIFICAÇÃO DE GENES-ALVO USANDO DADOS ÔMICOS")
     print("="*80)
@@ -228,7 +237,8 @@ def main(use_renan=False):
     
     # Prepara o dataset
     print("🔄 Carregando e preparando dados...")
-    X, y, gene_names, feature_names = prepare_dataset(features_path, labels_path)
+    classification_type = 'multiclass' if use_multiclass else 'binary'
+    X, y, gene_names, feature_names = prepare_dataset(features_path, labels_path, classification_type)
     
     if X is None:
         print("❌ Erro ao preparar dataset. Abortando.")
@@ -277,4 +287,4 @@ if __name__ == "__main__":
     args = parse_arguments()
     
     # Executa o experimento com a fonte de dados escolhida
-    main(args.renan)
+    main(args.renan, args.multiclass)

@@ -45,72 +45,76 @@ def load_union_features(features_path):
         return None, None, None
 
 
-def load_union_labels(labels_path):
+def load_union_labels(labels_path, classification_type='binary'):
     """
     Carrega o arquivo UNION_labels.tsv e processa os labels
     
     Args:
         labels_path (str): Caminho para o arquivo UNION_labels.tsv
+        classification_type (str): Tipo de classificação - 'binary' (2class) ou 'multiclass' (3class)
         
     Returns:
         pd.DataFrame: DataFrame com os labels processados
     """
-    print("Carregando UNION_labels.tsv...")
+    print(f"Carregando UNION_labels.tsv (classificação: {classification_type})...")
     
     try:
         # Carrega o arquivo TSV
         labels_df = pd.read_csv(labels_path, sep='\t')
         print(f"Labels carregados: {labels_df.shape[0]} genes")
         
-        # Verifica valores únicos nos labels
-        print("Valores únicos nos labels:", labels_df['label'].value_counts(dropna=False))
+        # Verifica se as colunas esperadas existem
+        expected_columns = ['genes', '2class', '3class']
+        if not all(col in labels_df.columns for col in expected_columns):
+            print(f"ERRO: Colunas esperadas {expected_columns} não encontradas!")
+            print(f"Colunas encontradas: {list(labels_df.columns)}")
+            return None
         
-        # Remove genes sem label (valores NaN/vazios)
-        labels_clean = labels_df.dropna(subset=['label'])
-        removed_genes = len(labels_df) - len(labels_clean)
-        if removed_genes > 0:
-            print(f"Removidos {removed_genes} genes sem label")
-        
-        # Converte labels para formato binário (True/False -> 1/0)
-        labels_clean = labels_clean.copy()
-        if labels_clean['label'].dtype == 'object':
-            # Se os labels são strings, tenta diferentes formatos
-            unique_values = set(str(v).lower() for v in labels_clean['label'].unique())
-            print(f"Valores únicos encontrados (lowercase): {unique_values}")
-            
-            if unique_values <= {'true', 'false'}:
-                # Strings 'True'/'False' (case insensitive)
-                labels_clean.loc[:, 'label'] = labels_clean['label'].apply(
-                    lambda x: 1 if str(x).lower() == 'true' else 0
-                )
-            elif unique_values <= {'1', '0'}:
-                # Strings '1'/'0'
-                labels_clean.loc[:, 'label'] = labels_clean['label'].astype(int)
-            else:
-                print(f"AVISO: Valores de label não reconhecidos: {unique_values}")
-                # Tenta conversão genérica
-                labels_clean.loc[:, 'label'] = labels_clean['label'].apply(
-                    lambda x: 1 if str(x).lower() in ['true', '1', 'yes', 'positive'] else 0
-                )
-        elif labels_clean['label'].dtype == 'bool':
-            # Se os labels já são booleanos
-            labels_clean.loc[:, 'label'] = labels_clean['label'].astype(int)
-        elif labels_clean['label'].dtype in ['int64', 'int32', 'int']:
-            # Se já são inteiros, não faz nada
-            pass
+        # Seleciona a coluna de classificação apropriada
+        if classification_type == 'binary':
+            label_column = '2class'
+        elif classification_type == 'multiclass':
+            label_column = '3class'
         else:
-            # Conversão forçada para inteiro
-            labels_clean.loc[:, 'label'] = labels_clean['label'].astype(int)
+            print(f"ERRO: Tipo de classificação '{classification_type}' não reconhecido!")
+            return None
+        
+        # Cria DataFrame com formato padrão (gene, label)
+        labels_clean = pd.DataFrame({
+            'gene': labels_df['genes'],
+            'label': labels_df[label_column]
+        })
+        
+        # Verifica valores únicos nos labels
+        print(f"Valores únicos em {label_column}:", labels_clean['label'].value_counts(dropna=False))
+        
+        # Remove genes sem label (valores NaN/vazios) apenas se estivermos fazendo classificação supervisionada
+        initial_count = len(labels_clean)
+        labels_clean = labels_clean.dropna(subset=['label'])
+        removed_count = initial_count - len(labels_clean)
+        
+        if removed_count > 0:
+            print(f"Removidos {removed_count} genes sem label (candidatos com NaN)")
+        
+        # Converte labels para inteiros (já devem estar no formato correto)
+        labels_clean = labels_clean.copy()
+        labels_clean.loc[:, 'label'] = labels_clean['label'].astype(int)
         
         # Verifica distribuição das classes
-        class_distribution = labels_clean['label'].value_counts()
+        class_distribution = labels_clean['label'].value_counts().sort_index()
         print("Distribuição das classes:")
-        print(f"  Classe 0 (não-alvo): {class_distribution.get(0, 0)} genes")
-        print(f"  Classe 1 (alvo): {class_distribution.get(1, 0)} genes")
         
-        if len(class_distribution) == 2:
-            ratio = class_distribution[1] / class_distribution[0]
-            print(f"  Razão positivos/negativos: {ratio:.4f}")
+        if classification_type == 'binary':
+            print(f"  Classe 0 (passenger): {class_distribution.get(0, 0)} genes")
+            print(f"  Classe 1 (cancer): {class_distribution.get(1, 0)} genes")
+            
+            if len(class_distribution) == 2:
+                ratio = class_distribution[1] / class_distribution[0] if class_distribution.get(0, 0) > 0 else float('inf')
+                print(f"  Razão cancer/passenger: {ratio:.4f}")
+        else:  # multiclass
+            print(f"  Classe 0 (passenger): {class_distribution.get(0, 0)} genes")
+            print(f"  Classe 1 (TSG): {class_distribution.get(1, 0)} genes") 
+            print(f"  Classe 2 (Oncogene): {class_distribution.get(2, 0)} genes")
         
         return labels_clean
         
@@ -169,30 +173,31 @@ def align_features_and_labels(features_df, labels_df):
     return X, y, gene_names
 
 
-def prepare_dataset(features_path, labels_path):
+def prepare_dataset(features_path, labels_path, classification_type='binary'):
     """
     Função principal para preparar o dataset completo
     
     Args:
         features_path (str): Caminho para UNION_features.tsv
         labels_path (str): Caminho para UNION_labels.tsv
+        classification_type (str): Tipo de classificação - 'binary' ou 'multiclass'
         
     Returns:
         tuple: (X, y, gene_names, feature_names) - dataset completo preparado
     """
     print("="*60)
-    print("PREPARANDO DATASET PARA CLASSIFICAÇÃO")
+    print(f"PREPARANDO DATASET PARA CLASSIFICAÇÃO ({classification_type.upper()})")
     print("="*60)
     
     # Carrega features
     features_df, gene_names_feat, features_only = load_union_features(features_path)
     if features_df is None:
         return None, None, None, None
-    
+
     print("-"*40)
     
     # Carrega labels
-    labels_df = load_union_labels(labels_path)
+    labels_df = load_union_labels(labels_path, classification_type)
     if labels_df is None:
         return None, None, None, None
     

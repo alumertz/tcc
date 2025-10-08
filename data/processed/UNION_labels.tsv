@@ -1,3009 +1,3009 @@
-symbol	Oncogene	TSG	category
-A1CF	Yes	No	canonical
-AAAS	No	No	candidate
-AANAT	No	No	candidate
-AARS1	No	No	candidate
-AARS2	No	No	candidate
-AASS	No	No	candidate
-ABCA1	No	No	candidate
-ABCA12	No	No	candidate
-ABCA3	No	No	candidate
-ABCA4	No	No	candidate
-ABCB1	Yes	No	canonical
-ABCB11	No	No	candidate
-ABCB4	No	No	candidate
-ABCB7	No	No	candidate
-ABCC2	No	No	candidate
-ABCC6	No	No	candidate
-ABCC8	No	No	candidate
-ABCC9	No	No	candidate
-ABCD1	No	No	candidate
-ABCD1P4	No	No	candidate
-ABI1	No	Yes	canonical
-ABL1	Yes	No	canonical
-ABL2	Yes	No	canonical
-ABRAXAS1	No	Yes	canonical
-ACAD8	No	No	candidate
-ACAD9	No	No	candidate
-ACADM	No	No	candidate
-ACADS	No	No	candidate
-ACADSB	No	No	candidate
-ACADVL	No	No	candidate
-ACE	No	No	candidate
-ACKR3	Yes	Yes	canonical
-ACOX1	No	No	candidate
-ACSL3	No	No	candidate
-ACSL4	No	No	candidate
-ACSL6	No	No	candidate
-ACTA1	No	No	candidate
-ACTA2	No	No	candidate
-ACTB	No	No	candidate
-ACTC1	No	No	candidate
-ACTG1	No	Yes	canonical
-ACTN2	No	No	candidate
-ACTN4	No	No	candidate
-ACVR1	Yes	No	canonical
-ACVR1B	No	Yes	canonical
-ACVR2A	Yes	Yes	canonical
-ACVRL1	No	No	candidate
-ACY1	No	No	candidate
-ADAM33	No	No	candidate
-ADAM9	No	No	candidate
-ADAMTS10	No	No	candidate
-ADAMTS13	No	No	candidate
-ADAMTS2	No	No	candidate
-ADAMTSL4	No	No	candidate
-ADARB2	Yes	No	canonical
-ADGB	No	No	candidate
-ADGRA2	Yes	No	canonical
-ADGRG1	No	No	candidate
-ADGRG4	No	No	candidate
-ADGRV1	No	No	candidate
-ADHFE1	Yes	No	canonical
-ADIPOQ	No	No	candidate
-ADRA1B	No	No	candidate
-AFDN	Yes	Yes	canonical
-AFF1	No	No	candidate
-AFF2	No	No	candidate
-AFF3	Yes	No	canonical
-AFF4	Yes	No	canonical
-AFG3L2	No	No	candidate
-AGA	No	No	candidate
-AGBL3	No	No	candidate
-AGGF1	Yes	No	canonical
-AGK	Yes	No	canonical
-AGL	No	No	candidate
-AGO1	Yes	No	canonical
-AGO2	No	No	candidate
-AGPAT2	No	No	candidate
-AGPS	No	No	candidate
-AGRP	No	No	candidate
-AGT	No	No	candidate
-AGTR1	No	No	candidate
-AGTR2	No	No	candidate
-AGXT	No	No	candidate
-AICDA	No	No	candidate
-AIFM1	No	No	candidate
-AIP	Yes	Yes	canonical
-AIPL1	No	No	candidate
-AIRE	No	No	candidate
-AJUBA	No	Yes	canonical
-AK1	No	No	candidate
-AK2	No	No	candidate
-AKAP10	No	No	candidate
-AKAP9	No	No	candidate
-AKT1	Yes	No	canonical
-AKT1S1	Yes	No	canonical
-AKT2	Yes	No	canonical
-AKT3	Yes	No	canonical
-ALAD	No	No	candidate
-ALAS2	No	No	candidate
-ALB	No	No	candidate
-ALDH1L2	Yes	No	canonical
-ALDH2	No	Yes	canonical
-ALDH3A2	No	No	candidate
-ALDOB	No	No	candidate
-ALG1	No	No	candidate
-ALG11	No	No	candidate
-ALG12	No	No	candidate
-ALG2	No	No	candidate
-ALG3	No	No	candidate
-ALG6	No	No	candidate
-ALG8	No	No	candidate
-ALG9	No	No	candidate
-ALK	Yes	No	canonical
-ALMS1	No	No	candidate
-ALOX12B	Yes	Yes	canonical
-ALOX15B	No	Yes	canonical
-ALOX5	Yes	Yes	canonical
-ALOX5AP	No	No	candidate
-ALOXE3	No	No	candidate
-ALPL	No	No	candidate
-ALS2	No	No	candidate
-ALX4	No	No	candidate
-AMELX	No	No	candidate
-AMER1	No	Yes	canonical
-AMH	No	No	candidate
-AMHR2	No	No	candidate
-AMN	No	No	candidate
-AMT	No	No	candidate
-ANG	No	No	candidate
-ANGPTL3	No	No	candidate
-ANK1	No	No	candidate
-ANK2	No	No	candidate
-ANKH	No	No	candidate
-ANKRD1	No	No	candidate
-ANKRD11	No	Yes	canonical
-ANKRD26	Yes	No	canonical
-ANKRD7	No	No	candidate
-ANO10	No	No	candidate
-ANO5	No	No	candidate
-ANO6	No	No	candidate
-ANOS1	No	No	candidate
-ANTXR1	No	No	candidate
-ANTXR2	No	No	candidate
-AP1S2	No	No	candidate
-AP3B1	No	No	candidate
-AP4E1	No	No	candidate
-AP4M1	No	No	candidate
-AP5Z1	No	No	candidate
-APC	No	Yes	canonical
-APCDD1	No	No	candidate
-APEH	No	No	candidate
-APEX1	Yes	No	canonical
-APH1A	No	No	candidate
-APLNR	Yes	Yes	canonical
-APOA1	No	No	candidate
-APOA5	No	No	candidate
-APOB	No	No	candidate
-APOBEC3B	Yes	Yes	canonical
-APOC2	No	No	candidate
-APOE	No	No	candidate
-APOL1	No	No	candidate
-APP	No	No	candidate
-APTX	No	No	candidate
-AQP12B	No	No	candidate
-AQP2	No	No	candidate
-AR	Yes	No	canonical
-ARAF	Yes	No	canonical
-ARFGEF2	No	No	candidate
-ARFRP1	No	No	candidate
-ARG1	No	No	candidate
-ARHGAP20	No	No	candidate
-ARHGAP24	No	No	candidate
-ARHGAP26	Yes	Yes	canonical
-ARHGAP31	No	No	candidate
-ARHGAP35	Yes	Yes	canonical
-ARHGAP5	Yes	No	canonical
-ARHGEF10	No	Yes	canonical
-ARHGEF10L	No	Yes	canonical
-ARHGEF12	Yes	Yes	canonical
-ARHGEF28	Yes	No	canonical
-ARHGEF6	No	No	candidate
-ARID1A	No	Yes	canonical
-ARID1B	No	Yes	canonical
-ARID2	No	Yes	canonical
-ARID3A	No	Yes	canonical
-ARID3B	Yes	No	canonical
-ARID3C	No	No	candidate
-ARID4A	No	Yes	canonical
-ARID4B	No	Yes	canonical
-ARID5A	No	No	candidate
-ARID5B	No	Yes	canonical
-ARL11	No	No	candidate
-ARL6	No	No	candidate
-ARMS2	No	No	candidate
-ARNT	Yes	Yes	canonical
-ARSA	No	No	candidate
-ARSB	No	No	candidate
-ARSL	No	No	candidate
-ARX	No	No	candidate
-ASAH1	No	No	candidate
-ASCC1	No	No	candidate
-ASCL1	Yes	No	canonical
-ASL	No	No	candidate
-ASMTL	No	No	candidate
-ASPA	No	No	candidate
-ASPM	No	No	candidate
-ASPN	No	No	candidate
-ASPSCR1	No	No	candidate
-ASS1	No	No	candidate
-ASXL1	No	Yes	canonical
-ASXL2	No	Yes	canonical
-ATCAY	No	No	candidate
-ATF1	Yes	No	canonical
-ATG16L1	No	No	candidate
-ATG5	No	No	candidate
-ATIC	Yes	No	canonical
-ATL1	No	No	candidate
-ATM	No	Yes	canonical
-ATMIN	No	Yes	canonical
-ATN1	No	No	candidate
-ATOH7	No	No	candidate
-ATP10A	No	No	candidate
-ATP13A2	No	No	candidate
-ATP13A4	No	No	candidate
-ATP1A1	Yes	Yes	canonical
-ATP1A2	No	No	candidate
-ATP1A3	No	No	candidate
-ATP2A2	No	No	candidate
-ATP2B3	No	Yes	canonical
-ATP2C1	No	No	candidate
-ATP6	No	No	candidate
-ATP6AP1	No	No	candidate
-ATP6AP2	No	No	candidate
-ATP6V0A2	No	No	candidate
-ATP6V0A4	No	No	candidate
-ATP6V1B1	No	No	candidate
-ATP6V1B2	No	Yes	canonical
-ATP7A	No	No	candidate
-ATP7B	No	No	candidate
-ATP8B1	No	No	candidate
-ATR	No	Yes	canonical
-ATRIP	No	Yes	canonical
-ATRX	No	Yes	canonical
-ATXN1	No	No	candidate
-ATXN10	No	No	candidate
-ATXN2	No	Yes	canonical
-ATXN3	No	No	candidate
-ATXN7	Yes	No	canonical
-AURKA	Yes	No	canonical
-AURKB	Yes	No	canonical
-AVP	No	No	candidate
-AVPR2	No	No	candidate
-AXIN1	No	Yes	canonical
-AXIN2	No	Yes	canonical
-AXL	Yes	No	canonical
-B2M	No	Yes	canonical
-B3GNT2	No	No	candidate
-B4GALT1	No	No	candidate
-B4GALT7	No	No	candidate
-BAALC	Yes	No	canonical
-BABAM1	No	No	candidate
-BACH2	No	Yes	canonical
-BAG3	No	No	candidate
-BANK1	No	No	candidate
-BAP1	No	Yes	canonical
-BARD1	No	Yes	canonical
-BAX	No	Yes	canonical
-BAZ1A	No	Yes	canonical
-BBC3	No	Yes	canonical
-BBS1	No	No	candidate
-BBS10	No	No	candidate
-BBS12	No	No	candidate
-BBS2	No	No	candidate
-BBS4	No	No	candidate
-BBS5	No	No	candidate
-BBS7	No	No	candidate
-BBS9	No	No	candidate
-BCKDHA	No	No	candidate
-BCKDHB	No	No	candidate
-BCL10	No	Yes	canonical
-BCL11A	Yes	No	canonical
-BCL11B	Yes	Yes	canonical
-BCL2	Yes	No	canonical
-BCL2L1	No	No	candidate
-BCL2L11	No	Yes	canonical
-BCL2L12	Yes	No	canonical
-BCL2L2	Yes	No	canonical
-BCL3	Yes	No	canonical
-BCL6	Yes	No	canonical
-BCL7A	No	Yes	canonical
-BCL9	Yes	No	canonical
-BCL9L	Yes	Yes	canonical
-BCLAF1	No	No	candidate
-BCO1	No	No	candidate
-BCOR	No	Yes	canonical
-BCORL1	Yes	Yes	canonical
-BCR	Yes	No	canonical
-BDNF	No	No	candidate
-BEAN1	No	No	candidate
-BEST1	No	No	candidate
-BIN1	No	No	candidate
-BIRC3	Yes	Yes	canonical
-BIRC6	Yes	No	canonical
-BLK	No	No	candidate
-BLM	No	Yes	canonical
-BLNK	No	No	candidate
-BLOC1S3	No	No	candidate
-BLOC1S6	No	No	candidate
-BLVRA	No	No	candidate
-BMP15	No	No	candidate
-BMP4	No	No	candidate
-BMP5	No	No	candidate
-BMPR1A	Yes	Yes	canonical
-BMPR2	No	No	candidate
-BRAF	Yes	No	canonical
-BRCA1	No	Yes	canonical
-BRCA2	No	Yes	canonical
-BRCC3	No	No	candidate
-BRD3	Yes	No	canonical
-BRD4	Yes	No	canonical
-BRIP1	No	Yes	canonical
-BRSK1	No	Yes	canonical
-BRWD3	No	No	candidate
-BSCL2	No	No	candidate
-BSN	No	No	candidate
-BSND	No	No	candidate
-BTBD9	No	No	candidate
-BTD	No	No	candidate
-BTG1	No	Yes	canonical
-BTG2	No	Yes	canonical
-BTK	Yes	Yes	canonical
-BTLA	No	No	candidate
-BTNL2	No	No	candidate
-BUB1B	Yes	Yes	canonical
-BUD13	No	No	candidate
-C15orf65	No	No	candidate
-C1QTNF5	No	No	candidate
-C1orf141	No	No	candidate
-C2orf16	No	No	candidate
-C3	No	No	candidate
-C4A	No	No	candidate
-C4B	No	No	candidate
-C4B_2	No	No	candidate
-C6orf15	No	No	candidate
-C6orf223	No	No	candidate
-C7orf69	No	No	candidate
-C9orf72	No	No	candidate
-CA2	No	No	candidate
-CA4	No	No	candidate
-CACNA1A	No	No	candidate
-CACNA1C	No	No	candidate
-CACNA1D	Yes	No	canonical
-CACNA1F	No	No	candidate
-CACNA1H	No	No	candidate
-CACNA1S	No	No	candidate
-CACNA2D4	No	No	candidate
-CACNB2	No	No	candidate
-CACNB4	No	No	candidate
-CACNG2	No	No	candidate
-CAD	Yes	No	canonical
-CALR	Yes	No	canonical
-CALR3	No	No	candidate
-CAMK4	No	No	candidate
-CAMTA1	No	Yes	canonical
-CANT1	Yes	No	canonical
-CAPN10	No	No	candidate
-CAPN3	No	No	candidate
-CARD11	Yes	No	canonical
-CARD9	No	No	candidate
-CARM1	No	No	candidate
-CARS	No	Yes	canonical
-CARS1	No	Yes	canonical
-CASK	No	No	candidate
-CASP10	No	No	candidate
-CASP3	No	Yes	canonical
-CASP8	No	Yes	canonical
-CASP9	No	Yes	canonical
-CASR	Yes	Yes	canonical
-CAT	No	No	candidate
-CATSPER1	No	No	candidate
-CATSPER2	No	No	candidate
-CAV1	No	No	candidate
-CAV3	No	No	candidate
-CAVIN1	No	No	candidate
-CAVIN4	No	No	candidate
-CBFA2T3	No	Yes	canonical
-CBFB	No	Yes	canonical
-CBL	Yes	Yes	canonical
-CBLB	No	Yes	canonical
-CBLC	No	No	candidate
-CBS	No	No	candidate
-CBX2	No	No	candidate
-CC2D1A	No	No	candidate
-CCDC121	No	No	candidate
-CCDC122	No	No	candidate
-CCDC39	No	No	candidate
-CCDC40	No	No	candidate
-CCDC6	No	Yes	canonical
-CCHCR1	No	No	candidate
-CCM2	No	No	candidate
-CCN6	Yes	Yes	canonical
-CCNB1IP1	No	Yes	canonical
-CCNB3	Yes	No	canonical
-CCNC	No	Yes	canonical
-CCND1	Yes	No	canonical
-CCND2	Yes	No	canonical
-CCND3	Yes	No	canonical
-CCNE1	Yes	No	canonical
-CCNQ	No	Yes	canonical
-CCNY	No	No	candidate
-CCR4	Yes	No	canonical
-CCR5	No	No	candidate
-CCR7	Yes	No	canonical
-CCSER1	No	No	candidate
-CCT5	No	No	candidate
-CCT6B	No	No	candidate
-CD19	Yes	No	canonical
-CD209	No	No	candidate
-CD22	No	No	candidate
-CD24	No	No	candidate
-CD247	No	No	candidate
-CD274	Yes	Yes	canonical
-CD276	Yes	No	canonical
-CD28	Yes	No	canonical
-CD2AP	No	No	candidate
-CD36	No	No	candidate
-CD40	No	No	candidate
-CD40LG	No	No	candidate
-CD46	No	No	candidate
-CD58	No	Yes	canonical
-CD70	Yes	No	canonical
-CD74	Yes	No	canonical
-CD79A	Yes	No	canonical
-CD79B	Yes	No	canonical
-CD81	No	No	candidate
-CDAN1	No	No	candidate
-CDC42	Yes	No	canonical
-CDC5L	No	No	candidate
-CDC73	No	Yes	canonical
-CDH1	No	Yes	canonical
-CDH10	No	Yes	canonical
-CDH11	Yes	Yes	canonical
-CDH15	No	No	candidate
-CDH17	Yes	No	canonical
-CDH2	Yes	No	canonical
-CDH23	No	No	candidate
-CDH3	No	No	candidate
-CDH4	Yes	No	canonical
-CDHR1	No	No	candidate
-CDK12	No	Yes	canonical
-CDK4	Yes	No	canonical
-CDK6	Yes	No	canonical
-CDK8	Yes	No	canonical
-CDKAL1	No	No	candidate
-CDKL5	No	No	candidate
-CDKN1A	No	Yes	canonical
-CDKN1B	No	Yes	canonical
-CDKN1C	No	Yes	canonical
-CDKN2A	No	Yes	canonical
-CDKN2B	No	Yes	canonical
-CDKN2C	No	Yes	canonical
-CDKN3	No	No	candidate
-CDON	No	No	candidate
-CDSN	No	No	candidate
-CDX2	No	Yes	canonical
-CEBPA	No	Yes	canonical
-CEL	No	No	candidate
-CENPA	No	No	candidate
-CENPC	No	No	candidate
-CEP290	No	No	candidate
-CEP43	No	No	candidate
-CEP72	No	No	candidate
-CEP89	No	No	candidate
-CERKL	No	No	candidate
-CETP	No	No	candidate
-CFAP126	No	No	candidate
-CFB	No	No	candidate
-CFC1	No	No	candidate
-CFD	No	No	candidate
-CFH	No	No	candidate
-CFHR5	No	No	candidate
-CFI	No	No	candidate
-CFL2	No	No	candidate
-CFTR	No	No	candidate
-CGNL1	No	No	candidate
-CHAT	No	No	candidate
-CHCHD7	No	No	candidate
-CHD2	No	Yes	canonical
-CHD4	Yes	No	canonical
-CHD7	No	No	candidate
-CHEK1	No	Yes	canonical
-CHEK2	No	Yes	canonical
-CHIC2	No	No	candidate
-CHM	No	No	candidate
-CHMP2B	No	No	candidate
-CHN1	No	No	candidate
-CHRNA1	No	No	candidate
-CHRNA2	No	No	candidate
-CHRNA4	No	No	candidate
-CHRNB1	No	No	candidate
-CHRNB2	No	No	candidate
-CHRND	No	No	candidate
-CHRNE	No	No	candidate
-CHST11	Yes	No	canonical
-CHST14	No	No	candidate
-CHST3	No	No	candidate
-CHST6	No	No	candidate
-CHTF8	No	Yes	canonical
-CIC	Yes	Yes	canonical
-CIITA	No	Yes	canonical
-CILK1	No	No	candidate
-CILP	No	No	candidate
-CISD2	No	No	candidate
-CKS1B	No	No	candidate
-CLCN1	No	No	candidate
-CLCN2	No	No	candidate
-CLCN5	No	No	candidate
-CLCN7	No	No	candidate
-CLCNKA	No	No	candidate
-CLCNKB	No	No	candidate
-CLEC7A	No	No	candidate
-CLIP1	No	No	candidate
-CLN3	No	No	candidate
-CLN5	No	No	candidate
-CLN6	No	No	candidate
-CLN8	No	No	candidate
-CLP1	No	No	candidate
-CLRN1	No	No	candidate
-CLTC	No	Yes	canonical
-CLTCL1	No	Yes	canonical
-CMC4	No	No	candidate
-CMTR2	No	Yes	canonical
-CNBD1	No	No	candidate
-CNBP	No	Yes	canonical
-CNGA1	No	No	candidate
-CNGA3	No	No	candidate
-CNGB1	No	No	candidate
-CNGB3	No	No	candidate
-CNNM4	No	No	candidate
-CNOT3	No	Yes	canonical
-CNTNAP2	No	Yes	candidate
-CNTNAP5	No	No	candidate
-CNTRL	No	No	candidate
-COA1	No	No	candidate
-COA5	No	No	candidate
-COG1	No	No	candidate
-COG4	No	No	candidate
-COG5	No	No	candidate
-COG6	No	No	candidate
-COG7	No	No	candidate
-COG8	No	No	candidate
-COL11A2	No	No	candidate
-COL17A1	No	No	candidate
-COL18A1	No	No	candidate
-COL1A1	Yes	No	canonical
-COL1A2	No	No	candidate
-COL2A1	No	Yes	canonical
-COL3A1	No	No	candidate
-COL4A1	No	No	candidate
-COL4A3	No	No	candidate
-COL4A4	No	No	candidate
-COL4A5	No	No	candidate
-COL5A1	No	No	candidate
-COL5A2	No	No	candidate
-COL6A1	No	No	candidate
-COL6A2	No	No	candidate
-COL6A3	No	No	candidate
-COL6A5	No	No	candidate
-COL7A1	No	No	candidate
-COL8A2	No	No	candidate
-COL9A1	No	No	candidate
-COL9A2	No	No	candidate
-COL9A3	No	No	candidate
-COLQ	No	No	candidate
-COMP	No	No	candidate
-COP1	Yes	Yes	canonical
-COQ8A	No	No	candidate
-COX1	No	No	candidate
-COX10	No	No	candidate
-COX15	No	No	candidate
-COX2	No	No	candidate
-COX3	No	No	candidate
-COX4I2	No	No	candidate
-COX6B1	No	No	candidate
-COX6C	No	No	candidate
-CPA6	No	No	candidate
-CPEB3	No	Yes	canonical
-CPOX	No	No	candidate
-CPS1	No	No	candidate
-CR2	No	No	candidate
-CRB1	No	No	candidate
-CRBN	No	Yes	canonical
-CREB1	Yes	No	canonical
-CREB3L1	No	Yes	canonical
-CREB3L2	Yes	No	canonical
-CREBBP	Yes	Yes	canonical
-CRELD1	No	No	candidate
-CREM	No	No	candidate
-CRKL	Yes	No	canonical
-CRLF2	Yes	No	canonical
-CRNKL1	No	No	candidate
-CRTAP	No	No	candidate
-CRTC1	Yes	No	canonical
-CRTC3	No	No	candidate
-CRX	No	No	candidate
-CRYAA	No	No	candidate
-CRYGC	No	No	candidate
-CRYGD	No	No	candidate
-CSDE1	No	No	candidate
-CSF1	No	No	candidate
-CSF1R	Yes	No	canonical
-CSF2RA	No	No	candidate
-CSF3R	Yes	No	canonical
-CSMD3	No	Yes	candidate
-CSNK1D	No	No	candidate
-CSRP3	No	No	candidate
-CST3	No	No	candidate
-CSTB	No	No	candidate
-CTC1	No	No	candidate
-CTCF	No	Yes	canonical
-CTDNEP1	No	Yes	canonical
-CTDP1	No	No	candidate
-CTHRC1	No	No	candidate
-CTLA4	Yes	No	canonical
-CTNNA1	No	Yes	canonical
-CTNNA2	Yes	No	canonical
-CTNNB1	Yes	No	canonical
-CTNND1	No	No	candidate
-CTNND2	Yes	No	canonical
-CTNS	No	No	candidate
-CTR9	No	Yes	canonical
-CTSA	No	No	candidate
-CTSC	No	No	candidate
-CTSD	No	No	candidate
-CTSK	No	No	candidate
-CUBN	No	No	candidate
-CUL3	No	Yes	canonical
-CUL4A	Yes	No	canonical
-CUL4B	No	No	candidate
-CUX1	Yes	Yes	canonical
-CX3CR1	No	No	candidate
-CXCR1	No	No	candidate
-CXCR2	No	No	candidate
-CXCR4	Yes	No	canonical
-CYB5A	No	No	candidate
-CYB5R3	No	No	candidate
-CYBB	No	No	candidate
-CYCS	No	No	candidate
-CYCSP42	No	No	candidate
-CYLD	No	Yes	canonical
-CYP11B1	No	No	candidate
-CYP11B2	No	No	candidate
-CYP17A1	No	No	candidate
-CYP19A1	Yes	No	canonical
-CYP1B1	No	No	candidate
-CYP21A2	No	No	candidate
-CYP24A1	No	No	candidate
-CYP27A1	No	No	candidate
-CYP27B1	No	No	candidate
-CYP27C1	No	No	candidate
-CYP2C8	No	No	candidate
-CYP2R1	No	No	candidate
-CYP4F22	No	No	candidate
-CYP7B1	No	No	candidate
-CYSLTR2	Yes	No	canonical
-CYTB	No	No	candidate
-DAB2	No	No	candidate
-DAB2IP	No	No	candidate
-DAGLA	No	No	candidate
-DAP	No	No	candidate
-DAXX	Yes	Yes	canonical
-DAZ1	No	No	candidate
-DAZ2	No	No	candidate
-DAZ3	No	No	candidate
-DAZ4	No	No	candidate
-DAZAP1	No	No	candidate
-DBT	No	No	candidate
-DCAF12L2	No	No	candidate
-DCC	No	No	candidate
-DCDC2	No	No	candidate
-DCLRE1C	No	No	candidate
-DCN	No	No	candidate
-DCTN1	No	No	candidate
-DCUN1D1	Yes	No	canonical
-DCX	No	No	candidate
-DDB2	Yes	Yes	canonical
-DDIT3	Yes	No	canonical
-DDR1	No	No	candidate
-DDR2	Yes	No	canonical
-DDX10	No	Yes	canonical
-DDX3X	No	Yes	canonical
-DDX3Y	No	No	candidate
-DDX4	Yes	No	canonical
-DDX41	No	Yes	canonical
-DDX5	Yes	No	canonical
-DDX6	Yes	No	canonical
-DEK	Yes	No	canonical
-DES	No	No	candidate
-DGCR8	Yes	No	canonical
-DHCR7	No	No	candidate
-DHDDS	No	No	candidate
-DHFR	No	No	candidate
-DHFRP2	No	No	candidate
-DHH	No	No	candidate
-DHODH	No	No	candidate
-DHX15	Yes	Yes	canonical
-DIAPH1	No	No	candidate
-DIAPH2	No	No	candidate
-DICER1	No	Yes	canonical
-DIRC1	No	No	candidate
-DIS3	No	Yes	canonical
-DIS3L2	Yes	Yes	canonical
-DKC1	No	No	candidate
-DKK1	No	No	candidate
-DKK2	No	No	candidate
-DKK3	No	No	candidate
-DKK4	No	No	candidate
-DLD	No	No	candidate
-DLEC1	No	No	candidate
-DLG3	No	No	candidate
-DLL3	Yes	No	canonical
-DLX3	No	No	candidate
-DMBT1	No	No	candidate
-DMD	No	No	candidate
-DMP1	No	No	candidate
-DMPK	No	No	candidate
-DNAAF1	No	No	candidate
-DNAAF2	No	No	candidate
-DNAAF4	No	No	candidate
-DNAH11	No	No	candidate
-DNAH5	No	No	candidate
-DNAI1	No	No	candidate
-DNAI2	No	No	candidate
-DNAJB1	No	No	candidate
-DNAJC19	No	No	candidate
-DNAJC5	No	No	candidate
-DNAL1	No	No	candidate
-DNASE1	No	No	candidate
-DNM2	Yes	Yes	canonical
-DNMT1	Yes	No	canonical
-DNMT3A	No	Yes	canonical
-DNMT3B	No	Yes	canonical
-DOCK8	No	No	candidate
-DOK7	No	No	candidate
-DOLK	No	No	candidate
-DOT1L	Yes	No	canonical
-DPAGT1	No	No	candidate
-DPM1	No	No	candidate
-DPP10	No	No	candidate
-DPP4	No	No	candidate
-DPP6	No	No	candidate
-DPYD	No	No	candidate
-DPYS	No	No	candidate
-DRD2	No	No	candidate
-DRD3	No	No	candidate
-DROSHA	No	Yes	canonical
-DSC2	No	No	candidate
-DSG1	No	No	candidate
-DSG2	No	No	candidate
-DSG4	No	No	candidate
-DSP	No	No	candidate
-DSPP	No	No	candidate
-DTNA	No	No	candidate
-DTNBP1	No	No	candidate
-DTX1	No	Yes	canonical
-DUOX2	No	No	candidate
-DUOXA2	No	No	candidate
-DUSP2	No	No	candidate
-DUSP22	No	Yes	canonical
-DUSP4	No	Yes	canonical
-DUSP9	No	No	candidate
-DYNC1H1	No	No	candidate
-DYNC2H1	No	No	candidate
-DYRK1A	No	No	candidate
-DYSF	No	No	candidate
-E2F3	Yes	No	canonical
-EBF1	No	Yes	canonical
-EBP	No	No	candidate
-ECM1	No	No	candidate
-ECSIT	Yes	No	canonical
-ECT2L	No	Yes	canonical
-EDA	No	No	candidate
-EDAR	No	No	candidate
-EDARADD	No	No	candidate
-EDIL3	No	No	candidate
-EDN3	No	No	candidate
-EDNRB	No	No	candidate
-EED	No	Yes	canonical
-EFEMP2	No	No	candidate
-EFHC1	No	No	candidate
-EGFL7	Yes	No	canonical
-EGFR	Yes	No	canonical
-EGLN1	No	No	candidate
-EGR1	No	Yes	canonical
-EGR2	No	Yes	canonical
-EHBP1	No	No	candidate
-EHMT1	No	No	candidate
-EIF1AX	Yes	No	canonical
-EIF2AK3	No	No	candidate
-EIF2B1	No	Yes	canonical
-EIF2B2	No	No	candidate
-EIF2B3	No	No	candidate
-EIF2B4	No	No	candidate
-EIF2B5	No	No	candidate
-EIF3A	No	No	candidate
-EIF3E	No	Yes	canonical
-EIF4A2	Yes	No	canonical
-EIF4E	Yes	No	canonical
-EIF4G1	No	No	candidate
-ELAC2	No	No	candidate
-ELANE	No	No	candidate
-ELF3	Yes	Yes	canonical
-ELF4	Yes	Yes	canonical
-ELK4	Yes	No	canonical
-ELL	Yes	Yes	canonical
-ELL2	Yes	Yes	canonical
-ELN	Yes	No	canonical
-ELOC	No	No	candidate
-ELOVL4	No	No	candidate
-ELP1	No	No	candidate
-ELP2	No	No	candidate
-EMD	No	No	candidate
-EML4	Yes	No	canonical
-EMSY	Yes	No	canonical
-EMX2	No	No	candidate
-ENAM	No	No	candidate
-ENG	No	No	candidate
-ENPP1	No	No	candidate
-EOMES	No	No	candidate
-EP300	No	Yes	canonical
-EP400	No	Yes	canonical
-EPAS1	Yes	Yes	canonical
-EPB41	No	No	candidate
-EPB41L1	No	No	candidate
-EPB42	No	No	candidate
-EPCAM	No	Yes	canonical
-EPHA3	No	Yes	canonical
-EPHA4	No	No	candidate
-EPHA5	No	No	candidate
-EPHA7	Yes	Yes	canonical
-EPHB1	Yes	Yes	canonical
-EPHB2	No	No	candidate
-EPHB4	Yes	No	canonical
-EPM2A	No	No	candidate
-EPO	No	No	candidate
-EPOR	Yes	No	canonical
-EPS15	No	Yes	canonical
-ERAP1	No	No	candidate
-ERBB2	Yes	No	canonical
-ERBB3	Yes	No	canonical
-ERBB4	Yes	Yes	canonical
-ERC1	Yes	No	canonical
-ERCC1	No	Yes	canonical
-ERCC2	No	Yes	canonical
-ERCC3	No	Yes	canonical
-ERCC4	No	Yes	canonical
-ERCC5	No	Yes	canonical
-ERCC6	Yes	No	canonical
-ERCC8	No	No	candidate
-ERF	No	Yes	canonical
-ERG	Yes	No	canonical
-ERRFI1	No	Yes	canonical
-ESCO2	No	Yes	canonical
-ESR1	Yes	Yes	canonical
-ETAA1	No	Yes	canonical
-ETFA	No	No	candidate
-ETFB	No	No	candidate
-ETFDH	No	No	candidate
-ETNK1	No	Yes	canonical
-ETS1	Yes	Yes	canonical
-ETV1	Yes	No	canonical
-ETV4	Yes	No	canonical
-ETV5	Yes	No	canonical
-ETV6	No	Yes	canonical
-EVC	No	No	candidate
-EVC2	No	No	candidate
-EWSR1	Yes	No	canonical
-EXOSC6	No	No	candidate
-EXT1	No	Yes	canonical
-EXT2	No	Yes	canonical
-EYA1	No	No	candidate
-EYA4	No	No	candidate
-EYS	No	No	candidate
-EZH1	Yes	No	canonical
-EZH2	Yes	Yes	canonical
-EZHIP	Yes	No	canonical
-EZR	No	No	candidate
-F10	No	No	candidate
-F11	No	No	candidate
-F12	No	No	candidate
-F13A1	No	No	candidate
-F13B	No	No	candidate
-F2	No	No	candidate
-F3	No	No	candidate
-F5	No	No	candidate
-F7	No	No	candidate
-F8	No	No	candidate
-F9	No	No	candidate
-FA2H	No	No	candidate
-FADD	No	No	candidate
-FAF1	No	No	candidate
-FAH	No	No	candidate
-FAM131B	No	No	candidate
-FAM135B	No	No	candidate
-FAM161A	No	No	candidate
-FAM47C	No	No	candidate
-FAM83H	No	No	candidate
-FANCA	No	Yes	canonical
-FANCB	No	No	candidate
-FANCC	No	Yes	canonical
-FANCD2	No	Yes	canonical
-FANCE	No	Yes	canonical
-FANCF	No	Yes	canonical
-FANCG	No	Yes	canonical
-FANCI	No	No	candidate
-FANCL	No	Yes	canonical
-FANCM	No	Yes	canonical
-FAS	No	Yes	canonical
-FASLG	No	No	candidate
-FAT1	No	Yes	canonical
-FAT3	No	No	candidate
-FAT4	No	Yes	canonical
-FBLN1	No	No	candidate
-FBLN2	No	Yes	canonical
-FBLN5	No	No	candidate
-FBN1	No	No	candidate
-FBP1	No	No	candidate
-FBXO11	No	Yes	canonical
-FBXO15	No	No	candidate
-FBXO25	No	No	candidate
-FBXO31	No	No	candidate
-FBXO7	No	No	candidate
-FBXW2	No	No	candidate
-FBXW4	No	No	candidate
-FBXW7	No	Yes	canonical
-FCGR2A	No	No	candidate
-FCGR2B	Yes	No	canonical
-FCRL3	No	No	candidate
-FCRL4	Yes	No	canonical
-FECH	No	No	candidate
-FEN1	No	Yes	canonical
-FERMT3	No	No	candidate
-FES	Yes	Yes	canonical
-FEV	Yes	No	canonical
-FGA	No	No	candidate
-FGB	No	No	candidate
-FGD1	No	No	candidate
-FGD4	No	No	candidate
-FGF1	Yes	No	canonical
-FGF10	Yes	No	canonical
-FGF12	No	No	candidate
-FGF14	No	Yes	canonical
-FGF19	Yes	No	canonical
-FGF2	Yes	No	canonical
-FGF20	No	No	candidate
-FGF23	Yes	No	canonical
-FGF3	Yes	No	canonical
-FGF4	Yes	No	canonical
-FGF5	Yes	No	canonical
-FGF6	Yes	No	canonical
-FGF7	Yes	No	canonical
-FGF8	Yes	No	canonical
-FGF9	Yes	No	canonical
-FGFR1	Yes	No	canonical
-FGFR1OP	No	No	candidate
-FGFR1OP2	No	No	candidate
-FGFR2	Yes	No	canonical
-FGFR3	Yes	No	canonical
-FGFR4	Yes	No	canonical
-FGG	No	No	candidate
-FGGY	No	No	candidate
-FH	No	Yes	canonical
-FHIT	No	Yes	canonical
-FHL1	No	No	candidate
-FIG4	No	No	candidate
-FIGLA	No	No	candidate
-FIP1L1	No	No	candidate
-FKBP10	No	No	candidate
-FKBP9	No	No	candidate
-FKRP	No	No	candidate
-FKTN	No	No	candidate
-FLCN	No	Yes	canonical
-FLG	No	No	candidate
-FLI1	Yes	No	canonical
-FLII	No	No	candidate
-FLNA	No	No	candidate
-FLNB	No	No	candidate
-FLNC	No	No	candidate
-FLT1	Yes	No	canonical
-FLT3	Yes	No	canonical
-FLT4	Yes	No	canonical
-FLVCR2	No	No	candidate
-FLYWCH1	No	No	candidate
-FMR1	No	No	candidate
-FNBP1	No	No	candidate
-FOLH1	Yes	No	canonical
-FOLR1	Yes	No	canonical
-FOXA1	Yes	Yes	canonical
-FOXC2	No	No	candidate
-FOXE3	No	No	candidate
-FOXF1	Yes	Yes	canonical
-FOXG1	No	No	candidate
-FOXJ1	No	No	candidate
-FOXL2	Yes	Yes	canonical
-FOXN4	Yes	No	canonical
-FOXO1	Yes	Yes	canonical
-FOXO3	Yes	Yes	canonical
-FOXO4	Yes	Yes	canonical
-FOXP1	Yes	Yes	canonical
-FOXP2	No	No	candidate
-FOXP3	No	No	candidate
-FOXR1	Yes	No	canonical
-FRAS1	No	No	candidate
-FREM2	No	No	candidate
-FRMD7	No	No	candidate
-FRS2	Yes	No	canonical
-FRYL	No	No	candidate
-FRZB	No	No	candidate
-FSCN2	No	No	candidate
-FSHR	No	No	candidate
-FSTL1	Yes	No	canonical
-FSTL3	Yes	No	canonical
-FTL	No	No	candidate
-FTSJ1	No	No	candidate
-FUBP1	Yes	Yes	canonical
-FUCA1	No	No	candidate
-FURIN	Yes	No	canonical
-FUS	Yes	Yes	canonical
-FXN	No	No	candidate
-FYN	Yes	No	canonical
-FZD4	No	No	candidate
-FZR1	Yes	Yes	canonical
-G6PC	No	No	candidate
-G6PC3	No	No	candidate
-G6PD	No	No	candidate
-GAA	No	No	candidate
-GAB1	Yes	No	canonical
-GAB2	Yes	No	canonical
-GABRA1	No	No	candidate
-GABRA6	Yes	No	canonical
-GABRB3	No	No	candidate
-GABRD	No	No	candidate
-GABRG2	No	No	candidate
-GAD1	No	No	candidate
-GADD45B	No	No	candidate
-GALC	No	No	candidate
-GALE	No	No	candidate
-GALK1	No	No	candidate
-GALNS	No	No	candidate
-GALNT12	No	No	candidate
-GALNT3	No	No	candidate
-GALT	No	No	candidate
-GAN	No	No	candidate
-GAPDHP26	No	No	candidate
-GARS1	No	No	candidate
-GAS7	No	No	candidate
-GATA1	Yes	Yes	canonical
-GATA2	Yes	Yes	canonical
-GATA3	Yes	Yes	canonical
-GATA4	No	Yes	canonical
-GATA6	Yes	No	canonical
-GATD3A	No	No	candidate
-GBA	No	No	candidate
-GBE1	No	No	candidate
-GCDH	No	No	candidate
-GCH1	No	No	candidate
-GCKR	No	No	candidate
-GCLC	No	No	candidate
-GCM2	No	No	candidate
-GCSH	No	No	candidate
-GDAP1	No	No	candidate
-GDF1	No	No	candidate
-GDF5	No	No	candidate
-GDF6	No	No	candidate
-GDI1	No	No	candidate
-GDNF	No	No	candidate
-GEN1	No	No	candidate
-GFAP	No	No	candidate
-GFER	No	No	candidate
-GFM1	No	No	candidate
-GGCX	No	No	candidate
-GH1	No	No	candidate
-GHR	No	No	candidate
-GHRHR	No	No	candidate
-GHSR	No	No	candidate
-GID4	No	No	candidate
-GIGYF2	No	No	candidate
-GJA1	No	No	candidate
-GJA3	No	No	candidate
-GJA5	No	No	candidate
-GJB1	No	No	candidate
-GJB2	No	No	candidate
-GJB3	No	No	candidate
-GJB4	No	No	candidate
-GJB6	No	No	candidate
-GJC2	No	No	candidate
-GLA	No	No	candidate
-GLB1	No	No	candidate
-GLDC	No	No	candidate
-GLE1	No	No	candidate
-GLI1	Yes	No	canonical
-GLI2	No	No	candidate
-GLI3	No	No	candidate
-GLIS3	No	No	candidate
-GLMN	No	No	candidate
-GLRA1	No	No	candidate
-GLRB	No	No	candidate
-GLUD1	No	No	candidate
-GM2A	No	No	candidate
-GMPS	No	No	candidate
-GNA11	Yes	No	canonical
-GNA12	Yes	No	canonical
-GNA13	Yes	Yes	canonical
-GNAQ	Yes	No	canonical
-GNAS	Yes	No	canonical
-GNAT2	No	No	candidate
-GNB1	Yes	No	canonical
-GNE	No	No	candidate
-GNPAT	No	No	candidate
-GNPTAB	No	No	candidate
-GNPTG	No	No	candidate
-GNRHR	No	No	candidate
-GNS	No	No	candidate
-GOLGA5	No	No	candidate
-GOLPH3	No	No	candidate
-GOPC	No	No	candidate
-GOSR2	No	No	candidate
-GOT1	No	No	candidate
-GP1BB	No	No	candidate
-GP9	No	No	candidate
-GPC3	Yes	Yes	canonical
-GPC5	No	Yes	canonical
-GPD1L	No	No	candidate
-GPHN	No	No	candidate
-GPI	No	No	candidate
-GPN1	No	No	candidate
-GPR12	No	No	candidate
-GPR143	No	No	candidate
-GPR176	No	No	candidate
-GPR35	No	No	candidate
-GPS2	No	Yes	canonical
-GRB7	Yes	No	canonical
-GREM1	Yes	No	canonical
-GRHPR	No	No	candidate
-GRIA3	No	No	candidate
-GRIK2	No	No	candidate
-GRIN1	No	No	candidate
-GRIN2A	No	Yes	canonical
-GRIN2B	No	No	candidate
-GRM3	Yes	No	canonical
-GRN	No	No	candidate
-GSDMB	No	No	candidate
-GSK3B	Yes	No	canonical
-GSN	No	No	candidate
-GSTP1	No	Yes	canonical
-GTF2H5	No	No	candidate
-GTF2I	Yes	No	canonical
-GTSE1	No	No	candidate
-GUCA1A	No	No	candidate
-GUCA1B	No	No	candidate
-GUCY2D	No	No	candidate
-GUSB	No	No	candidate
-GYS1	No	No	candidate
-GYS2	No	No	candidate
-H1-2	No	No	candidate
-H1-3	No	Yes	canonical
-H1-4	Yes	No	canonical
-H1-5	No	Yes	canonical
-H2AC11	No	No	candidate
-H2AC16	No	No	candidate
-H2AC17	Yes	No	canonical
-H2AC6	No	No	candidate
-H2BC11	No	No	candidate
-H2BC12	No	No	candidate
-H2BC17	No	No	candidate
-H2BC4	No	No	candidate
-H2BC5	No	No	candidate
-H2BC8	No	No	candidate
-H3-3A	Yes	No	canonical
-H3-3B	Yes	No	canonical
-H3-4	No	No	candidate
-H3-5	No	No	candidate
-H3C1	No	No	candidate
-H3C10	No	No	candidate
-H3C11	No	No	candidate
-H3C12	No	No	candidate
-H3C13	No	No	candidate
-H3C14	No	No	candidate
-H3C15	No	No	candidate
-H3C2	Yes	No	canonical
-H3C3	No	No	candidate
-H3C4	No	No	candidate
-H3C6	No	No	candidate
-H3C7	No	No	candidate
-H3C8	No	No	candidate
-H3F3A	Yes	No	canonical
-H3F3B	Yes	No	canonical
-H3P6	No	No	candidate
-H4C6	No	No	candidate
-H4C9	No	No	candidate
-HACE1	No	No	candidate
-HADHA	No	No	candidate
-HADHAP1	No	No	candidate
-HAMP	No	No	candidate
-HBA1	No	No	candidate
-HBA2	No	No	candidate
-HBB	No	No	candidate
-HBG2	No	No	candidate
-HCG22	No	No	candidate
-HCG26	No	No	candidate
-HCG27	No	No	candidate
-HCG9	No	No	candidate
-HCN4	No	No	candidate
-HCP5	No	No	candidate
-HCRT	No	No	candidate
-HDAC1	Yes	No	canonical
-HDAC2	Yes	No	canonical
-HDAC4	Yes	Yes	canonical
-HDAC7	Yes	No	canonical
-HERPUD1	No	No	candidate
-HESX1	No	No	candidate
-HEXA	No	No	candidate
-HEXB	No	No	candidate
-HEY1	Yes	No	canonical
-HFE	Yes	No	canonical
-HGD	No	No	candidate
-HGF	Yes	No	canonical
-HGSNAT	No	No	candidate
-HIF1A	Yes	No	canonical
-HIP1	Yes	No	canonical
-HIRA	No	Yes	canonical
-HIST1H3B	Yes	No	canonical
-HJV	No	No	candidate
-HK1	No	No	candidate
-HLA-A	No	Yes	canonical
-HLA-B	No	Yes	canonical
-HLA-C	No	Yes	canonical
-HLA-DQA1	No	No	candidate
-HLA-DQA2	No	No	candidate
-HLA-DQB1	No	No	candidate
-HLA-DRA	No	No	candidate
-HLA-DRB1	No	No	candidate
-HLA-DRB5	No	No	candidate
-HLA-DRB6	No	No	candidate
-HLA-DRB9	No	No	candidate
-HLA-G	No	No	candidate
-HLA-S	No	No	candidate
-HLA-X	No	No	candidate
-HLCS	No	No	candidate
-HLF	Yes	No	canonical
-HMBS	No	No	candidate
-HMCN1	No	No	candidate
-HMGA1	Yes	No	canonical
-HMGA2	Yes	No	canonical
-HMGN2P46	No	No	candidate
-HNF1A	No	Yes	canonical
-HNF1B	No	No	candidate
-HNF4A	No	No	candidate
-HNRNPA2B1	Yes	No	canonical
-HOGA1	No	No	candidate
-HOOK3	No	No	candidate
-HOXA1	No	No	candidate
-HOXA11	Yes	Yes	canonical
-HOXA13	Yes	No	canonical
-HOXA3	No	No	candidate
-HOXA9	Yes	Yes	canonical
-HOXB13	Yes	Yes	canonical
-HOXC11	Yes	No	canonical
-HOXC13	Yes	No	canonical
-HOXD10	No	No	candidate
-HOXD11	Yes	No	canonical
-HOXD13	Yes	No	canonical
-HPD	No	No	candidate
-HPGD	No	No	candidate
-HPRT1	No	No	candidate
-HPS1	No	No	candidate
-HPS3	No	No	candidate
-HPS4	No	No	candidate
-HPS5	No	No	candidate
-HPS6	No	No	candidate
-HR	No	No	candidate
-HRAS	Yes	No	canonical
-HRG	No	No	candidate
-HSD11B2	No	No	candidate
-HSD17B10	No	No	candidate
-HSD17B2	No	Yes	canonical
-HSD17B3	No	No	candidate
-HSD17B4	No	No	candidate
-HSD3B1	Yes	No	canonical
-HSD3B2	No	No	candidate
-HSF4	No	No	candidate
-HSP90AA1	Yes	No	canonical
-HSP90AB1	No	No	candidate
-HSPA5	No	No	candidate
-HSPB1	No	No	candidate
-HSPB3	No	No	candidate
-HSPB8	No	No	candidate
-HSPBAP1	No	No	candidate
-HSPD1	No	No	candidate
-HSPG2	No	No	candidate
-HTATIP2	No	Yes	canonical
-HTRA1	No	No	candidate
-HTRA2	No	No	candidate
-HTT	No	No	candidate
-HUWE1	No	No	candidate
-HYAL1	No	No	candidate
-ICOS	No	No	candidate
-ICOSLG	Yes	No	canonical
-ID1	Yes	No	canonical
-ID3	No	Yes	canonical
-IDH1	Yes	No	canonical
-IDH2	Yes	No	canonical
-IDH3B	No	No	candidate
-IDS	No	No	candidate
-IDUA	No	No	candidate
-IER3	No	No	candidate
-IFIH1	No	No	candidate
-IFITM4P	No	No	candidate
-IFNAR1	No	No	candidate
-IFNG	No	No	candidate
-IFNGR1	No	Yes	canonical
-IFNGR2	No	No	candidate
-IGBP1	No	No	candidate
-IGF1	Yes	No	canonical
-IGF1R	Yes	No	canonical
-IGF2	Yes	No	canonical
-IGF2BP2	No	Yes	canonical
-IGH	No	No	candidate
-IGHMBP2	No	No	candidate
-IGK	No	No	candidate
-IGL	No	No	candidate
-IGLL1	No	No	candidate
-IKBKB	Yes	No	canonical
-IKBKE	Yes	No	canonical
-IKBKG	No	No	candidate
-IKZF1	No	Yes	canonical
-IKZF2	No	No	candidate
-IKZF3	Yes	Yes	canonical
-IL10	No	No	candidate
-IL10RA	No	No	candidate
-IL10RB	No	No	candidate
-IL12B	No	No	candidate
-IL12RB1	No	No	candidate
-IL12RB2	No	No	candidate
-IL13	No	No	candidate
-IL17F	No	No	candidate
-IL17RA	No	No	candidate
-IL17REL	No	No	candidate
-IL1R1	No	No	candidate
-IL1R2	No	No	candidate
-IL1RAPL1	No	No	candidate
-IL1RN	No	No	candidate
-IL2	No	No	candidate
-IL21R	No	No	candidate
-IL23R	No	No	candidate
-IL2RA	No	No	candidate
-IL2RG	No	No	candidate
-IL3	Yes	No	canonical
-IL4	No	No	candidate
-IL6	No	No	candidate
-IL6ST	Yes	No	canonical
-IL7R	Yes	No	canonical
-IMMP2L	No	No	candidate
-IMPDH1	No	No	candidate
-IMPG2	No	No	candidate
-INAVA	No	No	candidate
-INF2	No	No	candidate
-ING1	No	Yes	canonical
-ING3	No	No	candidate
-INHA	No	Yes	canonical
-INHBA	Yes	Yes	canonical
-INPP4A	No	No	candidate
-INPP4B	No	Yes	canonical
-INPP5D	No	No	candidate
-INPPL1	No	Yes	canonical
-INS	No	No	candidate
-INSL3	No	No	candidate
-INSR	Yes	No	canonical
-INTS6	No	Yes	canonical
-IQGAP1	Yes	No	canonical
-IQSEC2	No	No	candidate
-IRF1	No	Yes	canonical
-IRF2	No	Yes	canonical
-IRF4	Yes	Yes	canonical
-IRF5	No	No	candidate
-IRF6	No	No	candidate
-IRF8	No	Yes	canonical
-IRGM	No	No	candidate
-IRS1	Yes	No	canonical
-IRS2	Yes	No	canonical
-IRS4	Yes	Yes	canonical
-ISCU	No	No	candidate
-ISX	No	No	candidate
-ITCH	No	No	candidate
-ITGA2B	No	No	candidate
-ITGA6	No	No	candidate
-ITGA7	No	No	candidate
-ITGAM	No	No	candidate
-ITGAV	No	No	candidate
-ITGB2	No	No	candidate
-ITGB3	No	No	candidate
-ITGB4	No	No	candidate
-ITK	No	No	candidate
-ITM2B	No	No	candidate
-ITPKB	Yes	No	canonical
-ITPKC	No	No	candidate
-ITPR1	No	No	candidate
-IYD	No	No	candidate
-JAG1	No	No	candidate
-JAK1	Yes	Yes	canonical
-JAK2	Yes	No	canonical
-JAK3	Yes	No	canonical
-JARID2	Yes	Yes	canonical
-JAZF1	Yes	No	canonical
-JPH2	No	No	candidate
-JUN	Yes	No	canonical
-JUP	No	No	candidate
-KALRN	No	No	candidate
-KANK1	No	No	candidate
-KARS1	No	No	candidate
-KAT6A	Yes	No	canonical
-KAT6B	No	Yes	canonical
-KAT7	Yes	No	canonical
-KBTBD13	No	No	candidate
-KBTBD4	No	No	candidate
-KCNA1	No	No	candidate
-KCNA5	No	No	candidate
-KCNC3	No	No	candidate
-KCND2	No	No	candidate
-KCNE1	No	No	candidate
-KCNE2	No	No	candidate
-KCNE3	No	No	candidate
-KCNH2	No	No	candidate
-KCNJ1	No	No	candidate
-KCNJ13	No	No	candidate
-KCNJ2	No	No	candidate
-KCNJ5	Yes	No	canonical
-KCNJ8	No	No	candidate
-KCNK18	No	No	candidate
-KCNMA1	No	No	candidate
-KCNQ1	No	No	candidate
-KCNQ2	No	No	candidate
-KCNQ3	No	No	candidate
-KCNV2	No	No	candidate
-KCP	No	No	candidate
-KCTD7	No	No	candidate
-KDM2B	No	No	candidate
-KDM4C	No	No	candidate
-KDM5A	Yes	No	canonical
-KDM5C	No	Yes	canonical
-KDM5D	Yes	Yes	canonical
-KDM6A	Yes	Yes	canonical
-KDR	Yes	No	canonical
-KDSR	No	No	candidate
-KEAP1	No	Yes	canonical
-KEL	Yes	No	canonical
-KHDC3L	No	No	candidate
-KIAA0319	No	No	candidate
-KIAA1549	Yes	No	canonical
-KIF1A	No	No	candidate
-KIF1B	No	No	candidate
-KIF21A	No	No	candidate
-KIF21B	No	No	candidate
-KIF5A	No	No	candidate
-KIF5B	No	No	candidate
-KIF7	No	No	candidate
-KIRREL3	No	No	candidate
-KISS1R	No	No	candidate
-KIT	Yes	No	canonical
-KITLG	No	No	candidate
-KL	No	No	candidate
-KLF1	No	No	candidate
-KLF11	No	No	candidate
-KLF2	No	Yes	canonical
-KLF3	No	Yes	canonical
-KLF4	Yes	Yes	canonical
-KLF5	Yes	No	canonical
-KLF6	No	Yes	canonical
-KLHDC8B	No	No	candidate
-KLHL6	Yes	Yes	canonical
-KLHL7	No	No	candidate
-KLK2	No	No	candidate
-KLK4	No	No	candidate
-KMT2A	Yes	Yes	canonical
-KMT2B	No	Yes	canonical
-KMT2C	No	Yes	canonical
-KMT2D	Yes	Yes	canonical
-KMT5A	No	No	candidate
-KNG1	No	No	candidate
-KNL1	No	Yes	canonical
-KNSTRN	Yes	No	canonical
-KPNA7	No	No	candidate
-KPNB1	No	No	candidate
-KRAS	Yes	No	canonical
-KRIT1	No	No	candidate
-KRT1	No	No	candidate
-KRT10	No	No	candidate
-KRT12	No	No	candidate
-KRT13	No	No	candidate
-KRT14	No	No	candidate
-KRT16	No	No	candidate
-KRT17	No	No	candidate
-KRT18	No	No	candidate
-KRT2	No	No	candidate
-KRT3	No	No	candidate
-KRT5	No	No	candidate
-KRT6A	No	No	candidate
-KRT6B	No	No	candidate
-KRT74	No	No	candidate
-KRT75	No	No	candidate
-KRT8	No	No	candidate
-KRT81	No	No	candidate
-KRT83	No	No	candidate
-KRT86	No	No	candidate
-KRT9	No	No	candidate
-KSR2	Yes	No	canonical
-KTN1	No	No	candidate
-L1CAM	No	No	candidate
-LACC1	No	No	candidate
-LAMA3	No	No	candidate
-LAMB2	No	No	candidate
-LAMB3	No	No	candidate
-LAMC2	No	No	candidate
-LAMP2	No	No	candidate
-LAMTOR2	No	No	candidate
-LARGE1	No	No	candidate
-LARP4B	No	Yes	canonical
-LASP1	No	No	candidate
-LATS1	No	Yes	canonical
-LATS2	No	Yes	canonical
-LBR	No	No	candidate
-LCA5	No	No	candidate
-LCAT	No	No	candidate
-LCK	Yes	No	canonical
-LCP1	No	No	candidate
-LDB3	No	No	candidate
-LDHA	No	No	candidate
-LDLR	No	No	candidate
-LDLRAP1	No	No	candidate
-LEF1	Yes	Yes	canonical
-LEMD3	No	No	candidate
-LEP	No	No	candidate
-LEPROTL1	No	Yes	canonical
-LGI1	No	No	candidate
-LGR5	Yes	No	canonical
-LHCGR	No	No	candidate
-LHFPL6	No	No	candidate
-LHX3	No	No	candidate
-LHX4	No	No	candidate
-LIFR	No	No	candidate
-LIG4	No	No	candidate
-LINC01235	No	No	candidate
-LINC01548	No	No	candidate
-LIPA	No	No	candidate
-LIPC	No	No	candidate
-LIPH	No	No	candidate
-LIPI	No	No	candidate
-LIPN	No	No	candidate
-LITAF	No	No	candidate
-LMAN1	No	No	candidate
-LMBR1	No	No	candidate
-LMNA	Yes	No	canonical
-LMNB2	No	No	candidate
-LMO1	Yes	No	canonical
-LMO2	Yes	No	canonical
-LMX1B	No	No	candidate
-LNP1	No	No	candidate
-LOC353007	No	No	candidate
-LOC353010	No	No	candidate
-LOC400867	No	No	candidate
-LOR	No	No	candidate
-LOX	No	No	candidate
-LOXL1	No	No	candidate
-LPAR6	No	No	candidate
-LPIN1	No	No	candidate
-LPL	No	No	candidate
-LPP	Yes	No	canonical
-LRAT	No	No	candidate
-LRATD2	No	No	candidate
-LRIG3	No	Yes	canonical
-LRP1B	No	Yes	canonical
-LRP5	Yes	Yes	canonical
-LRP6	Yes	No	canonical
-LRP8	No	No	candidate
-LRPPRC	No	No	candidate
-LRRC32	No	No	candidate
-LRRC8A	No	No	candidate
-LRRK2	No	No	candidate
-LSM14A	No	No	candidate
-LSP1	No	No	candidate
-LTA	No	No	candidate
-LTA4H	No	No	candidate
-LTB	Yes	Yes	canonical
-LTBR	No	No	candidate
-LTK	Yes	No	canonical
-LYL1	Yes	No	canonical
-LYN	Yes	No	canonical
-LYST	No	No	candidate
-LYZ	No	No	candidate
-LZTR1	No	Yes	canonical
-LZTS1	No	No	candidate
-MACC1	Yes	No	canonical
-MACROD1	No	No	candidate
-MACROH2A1	No	No	candidate
-MAD1L1	No	No	candidate
-MAD2L2	Yes	Yes	canonical
-MAF	Yes	No	canonical
-MAFB	Yes	No	canonical
-MAGEC2	No	No	candidate
-MAGED1	No	No	candidate
-MAGI2	No	Yes	canonical
-MAGT1	No	No	candidate
-MAK	No	No	candidate
-MAL2	No	Yes	canonical
-MALAT1	Yes	Yes	candidate
-MALRD1	No	No	candidate
-MALT1	Yes	No	canonical
-MAML2	Yes	No	canonical
-MAN1B1	No	No	candidate
-MAN2B1	No	No	candidate
-MANBA	No	No	candidate
-MAP2K1	Yes	No	canonical
-MAP2K2	Yes	No	canonical
-MAP2K3	No	No	candidate
-MAP2K4	Yes	Yes	canonical
-MAP3K1	Yes	Yes	canonical
-MAP3K13	Yes	Yes	canonical
-MAP3K14	Yes	No	canonical
-MAP3K21	Yes	No	canonical
-MAP3K6	No	No	candidate
-MAP3K7	Yes	No	canonical
-MAP3K9	No	No	candidate
-MAP4K4	Yes	No	canonical
-MAPK1	Yes	No	canonical
-MAPK3	Yes	No	canonical
-MAPK8IP1	No	No	candidate
-MAPKAP1	No	No	candidate
-MAPT	No	No	candidate
-MASTL	No	No	candidate
-MATN3	No	No	candidate
-MATR3	No	No	candidate
-MAX	No	Yes	canonical
-MB21D2	No	No	candidate
-MBD4	No	Yes	canonical
-MBD5	No	No	candidate
-MBD6	No	Yes	canonical
-MBNL1	No	No	candidate
-MC1R	No	No	candidate
-MC4R	No	No	candidate
-MCF2L2	No	No	candidate
-MCFD2	No	No	candidate
-MCL1	Yes	No	canonical
-MCOLN1	No	No	candidate
-MDC1	No	No	candidate
-MDM2	Yes	No	canonical
-MDM4	Yes	No	canonical
-MDS2	No	No	candidate
-MECOM	Yes	No	canonical
-MECP2	No	No	candidate
-MED12	Yes	Yes	canonical
-MED13L	No	No	candidate
-MED23	No	No	candidate
-MED25	No	No	candidate
-MEF2A	No	No	candidate
-MEF2B	Yes	No	canonical
-MEF2C	Yes	Yes	canonical
-MEF2D	Yes	No	canonical
-MEFV	No	No	candidate
-MEIS1	No	No	candidate
-MELK	No	No	candidate
-MEN1	No	Yes	canonical
-MERTK	Yes	No	canonical
-MET	Yes	No	canonical
-MEX3C	No	No	candidate
-MFAP4	No	No	candidate
-MFHAS1	No	No	candidate
-MFN2	No	No	candidate
-MFRP	No	No	candidate
-MFSD8	No	No	candidate
-MGA	No	Yes	canonical
-MGAM	Yes	No	canonical
-MGAT2	No	No	candidate
-MGMT	No	Yes	canonical
-MIA2	No	No	candidate
-MIB1	No	No	candidate
-MICA	No	No	candidate
-MICB	No	No	candidate
-MICE	No	No	candidate
-MICU3	No	No	candidate
-MID1	No	No	candidate
-MIDEAS	No	Yes	canonical
-MIF	No	No	candidate
-MIP	No	No	candidate
-MITF	Yes	Yes	canonical
-MKI67	Yes	No	canonical
-MKKS	No	No	candidate
-MKNK1	No	No	candidate
-MKS1	No	No	candidate
-MLC1	No	No	candidate
-MLF1	No	Yes	canonical
-MLH1	No	Yes	canonical
-MLH3	No	Yes	canonical
-MLLT1	No	No	candidate
-MLLT10	Yes	No	canonical
-MLLT11	No	No	candidate
-MLLT3	Yes	No	canonical
-MLLT6	No	No	candidate
-MMP2	No	No	candidate
-MMP20	No	No	candidate
-MMP9	No	No	candidate
-MN1	Yes	No	canonical
-MNX1	No	No	candidate
-MOB3B	No	Yes	canonical
-MOG	No	No	candidate
-MOGS	No	No	candidate
-MPDU1	No	No	candidate
-MPDZ	No	No	candidate
-MPEG1	No	No	candidate
-MPI	No	No	candidate
-MPL	Yes	No	canonical
-MPLKIP	No	No	candidate
-MPZ	No	No	candidate
-MRE11	No	Yes	canonical
-MREG	No	No	candidate
-MRPL49P2	No	No	candidate
-MRPS16	No	No	candidate
-MRPS22	No	No	candidate
-MRTFA	Yes	Yes	canonical
-MS4A1	No	No	candidate
-MSH2	No	Yes	canonical
-MSH3	No	Yes	canonical
-MSH6	No	Yes	canonical
-MSI1	Yes	No	canonical
-MSI2	Yes	No	canonical
-MSLN	No	No	candidate
-MSMB	No	No	candidate
-MSN	No	No	candidate
-MSR1	No	No	candidate
-MST1	No	Yes	canonical
-MST1R	Yes	No	canonical
-MSTN	No	No	candidate
-MSX1	No	No	candidate
-MSX2	No	No	candidate
-MTAP	No	Yes	canonical
-MTCP1	Yes	No	canonical
-MTHFD1	No	No	candidate
-MTHFD2	Yes	No	canonical
-MTHFR	No	No	candidate
-MTM1	No	No	candidate
-MTMR14	No	No	candidate
-MTMR2	No	No	candidate
-MTNR1B	No	No	candidate
-MTOR	Yes	No	canonical
-MTR	No	No	candidate
-MTRR	No	No	candidate
-MTTP	No	No	candidate
-MTUS1	No	No	candidate
-MUC1	No	No	candidate
-MUC16	Yes	No	candidate
-MUC4	Yes	No	candidate
-MUC6	No	No	candidate
-MUC7	No	No	candidate
-MUSK	No	No	candidate
-MUTYH	No	Yes	canonical
-MVK	No	No	candidate
-MXI1	No	No	candidate
-MYB	Yes	No	canonical
-MYBL1	Yes	No	canonical
-MYBPC3	No	No	candidate
-MYC	Yes	No	canonical
-MYCL	Yes	No	canonical
-MYCN	Yes	No	canonical
-MYD88	Yes	No	canonical
-MYF6	No	No	candidate
-MYH11	No	Yes	canonical
-MYH2	No	No	candidate
-MYH6	No	No	candidate
-MYH7	No	No	candidate
-MYH8	No	No	candidate
-MYH9	No	Yes	canonical
-MYL2	No	No	candidate
-MYL3	No	No	candidate
-MYLK	No	No	candidate
-MYLK2	No	No	candidate
-MYO18A	No	No	candidate
-MYO1E	No	No	candidate
-MYO5A	Yes	No	canonical
-MYO6	No	No	candidate
-MYO7A	No	No	candidate
-MYO9B	No	No	candidate
-MYOC	No	No	candidate
-MYOD1	Yes	Yes	canonical
-MYOT	No	No	candidate
-MYOZ2	No	No	candidate
-N4BP2	No	Yes	canonical
-NAB2	Yes	Yes	canonical
-NACA	No	No	candidate
-NADK	Yes	No	canonical
-NAGA	No	No	candidate
-NAGLU	No	No	candidate
-NAV3	No	No	candidate
-NBEA	No	No	candidate
-NBEAL2	No	No	candidate
-NBEAP1	No	No	candidate
-NBN	No	Yes	canonical
-NCF1	No	No	candidate
-NCF2	No	No	candidate
-NCF4	No	No	candidate
-NCKIPSD	No	No	candidate
-NCOA1	No	No	candidate
-NCOA2	Yes	No	canonical
-NCOA3	Yes	No	canonical
-NCOA4	Yes	Yes	canonical
-NCOR1	No	Yes	canonical
-NCOR2	No	Yes	canonical
-NCSTN	Yes	No	canonical
-ND1	No	No	candidate
-ND2	No	No	candidate
-ND3	No	No	candidate
-ND4	No	No	candidate
-ND4L	No	No	candidate
-ND5	No	No	candidate
-ND6	No	No	candidate
-NDE1	No	No	candidate
-NDRG1	No	Yes	canonical
-NDUFA13	No	No	candidate
-NDUFS7	No	No	candidate
-NDUFS8	No	No	candidate
-NDUFV1	No	No	candidate
-NEB	No	No	candidate
-NECTIN1	No	No	candidate
-NEFH	No	No	candidate
-NEFL	No	No	candidate
-NEGR1	No	No	candidate
-NEK1	No	No	candidate
-NETO1	No	No	candidate
-NEU1	No	No	candidate
-NEUROD1	No	No	candidate
-NEUROG3	No	No	candidate
-NEXN	No	No	candidate
-NF1	No	Yes	canonical
-NF2	No	Yes	canonical
-NFATC2	Yes	Yes	canonical
-NFE2	Yes	No	canonical
-NFE2L2	Yes	Yes	canonical
-NFIB	No	No	candidate
-NFKB2	Yes	Yes	canonical
-NFKBIA	No	Yes	canonical
-NFKBIE	No	Yes	canonical
-NFKBIL1	No	No	candidate
-NGF	No	No	candidate
-NHEJ1	No	No	candidate
-NHERF1	Yes	Yes	canonical
-NHLRC1	No	No	candidate
-NHP2	No	No	candidate
-NIN	No	No	candidate
-NIPA1	No	No	candidate
-NIPBL	No	No	candidate
-NKAIN2	No	No	candidate
-NKX2-1	Yes	Yes	canonical
-NKX2-3	No	No	candidate
-NKX2-5	No	No	candidate
-NKX2-6	No	No	candidate
-NKX3-1	No	Yes	canonical
-NLGN4X	No	No	candidate
-NLRP1	No	No	candidate
-NLRP12	No	No	candidate
-NLRP3	No	No	candidate
-NLRP7	No	No	candidate
-NME8	No	No	candidate
-NOBOX	No	No	candidate
-NOD1	No	No	candidate
-NOD2	No	No	candidate
-NODAL	No	No	candidate
-NOG	No	No	candidate
-NONO	No	No	candidate
-NOP10	No	No	candidate
-NOP56	No	No	candidate
-NOTCH1	Yes	Yes	canonical
-NOTCH2	Yes	Yes	canonical
-NOTCH3	Yes	Yes	canonical
-NOTCH4	Yes	Yes	canonical
-NPC1	No	No	candidate
-NPC2	No	No	candidate
-NPHP1	No	No	candidate
-NPHS1	No	No	candidate
-NPHS2	No	No	candidate
-NPM1	Yes	Yes	canonical
-NPPA	No	No	candidate
-NQO1	Yes	No	canonical
-NR0B1	No	No	candidate
-NR0B2	No	No	candidate
-NR2E3	No	No	candidate
-NR2F2	No	No	candidate
-NR3C2	No	No	candidate
-NR4A3	Yes	No	canonical
-NR5A1	No	No	candidate
-NRAD1	No	No	candidate
-NRAS	Yes	No	canonical
-NRG1	Yes	Yes	canonical
-NRIP1	No	No	candidate
-NRL	No	No	candidate
-NSD1	Yes	Yes	canonical
-NSD2	Yes	No	canonical
-NSD3	Yes	No	canonical
-NSMF	No	No	candidate
-NT5C2	Yes	No	canonical
-NT5C3A	No	No	candidate
-NTF4	No	No	candidate
-NTHL1	No	Yes	canonical
-NTRK1	Yes	Yes	canonical
-NTRK2	Yes	No	canonical
-NTRK3	Yes	No	canonical
-NUF2	Yes	No	canonical
-NUMA1	No	No	candidate
-NUP214	Yes	No	canonical
-NUP62	No	No	candidate
-NUP93	No	No	candidate
-NUP98	Yes	No	canonical
-NUTM1	Yes	No	canonical
-NUTM2A	No	No	candidate
-NUTM2B	No	No	candidate
-NUTM2D	No	No	candidate
-NXF5	No	No	candidate
-NXPE1	No	No	candidate
-NYX	No	No	candidate
-OAT	No	No	candidate
-OCA2	No	No	candidate
-OCRL	No	No	candidate
-OFD1	No	No	candidate
-OGG1	No	No	candidate
-OLIG1	No	No	candidate
-OLIG2	Yes	No	canonical
-OLIG3	No	No	candidate
-OLR1	No	No	candidate
-OMD	No	No	candidate
-ONECUT2	Yes	No	canonical
-OPA1	No	No	candidate
-OPA3	No	No	candidate
-OPCML	No	No	candidate
-OPHN1	No	No	candidate
-OPN1LW	No	No	candidate
-OPN1MW	No	No	candidate
-OPN1MW2	No	No	candidate
-OPN1SW	No	No	candidate
-OPTN	No	No	candidate
-OR7H2P	No	No	candidate
-ORMDL3	No	No	candidate
-OSBPL3	No	No	candidate
-OSGIN2	No	No	candidate
-OSMR	No	No	candidate
-OSTM1	No	No	candidate
-OTC	No	No	candidate
-OTUD3	No	No	candidate
-P2RY8	Yes	Yes	canonical
-P3H1	No	No	candidate
-PABPC1	Yes	Yes	candidate
-PABPC1P9	No	No	candidate
-PABPN1	No	No	candidate
-PADI4	No	No	candidate
-PAFAH1B1	No	No	candidate
-PAFAH1B2	No	No	candidate
-PAG1	No	No	candidate
-PAH	No	No	candidate
-PAK1	Yes	No	canonical
-PAK3	No	No	candidate
-PAK5	Yes	No	canonical
-PALB2	No	Yes	canonical
-PALLD	No	No	candidate
-PANK2	No	No	candidate
-PARD3B	No	No	candidate
-PARK7	No	No	candidate
-PARP1	No	Yes	canonical
-PARP2	No	No	candidate
-PARP3	No	No	candidate
-PASK	No	No	candidate
-PATZ1	No	Yes	canonical
-PAX2	No	No	candidate
-PAX3	Yes	No	canonical
-PAX4	No	No	candidate
-PAX5	Yes	Yes	canonical
-PAX6	No	No	candidate
-PAX7	Yes	No	canonical
-PAX8	Yes	No	canonical
-PBRM1	No	Yes	canonical
-PBX1	Yes	No	canonical
-PC	No	No	candidate
-PCARE	No	No	candidate
-PCBD1	No	No	candidate
-PCBP1	No	No	candidate
-PCCA	No	No	candidate
-PCCB	No	No	candidate
-PCDH15	No	No	candidate
-PCLO	No	No	candidate
-PCM1	No	No	candidate
-PCSK7	No	No	candidate
-PCSK9	No	No	candidate
-PDCD1	Yes	No	canonical
-PDCD10	No	No	candidate
-PDCD11	No	No	candidate
-PDCD1LG2	Yes	No	canonical
-PDE4D	No	No	candidate
-PDE4DIP	No	No	candidate
-PDE6A	No	No	candidate
-PDE6B	No	No	candidate
-PDE6C	No	No	candidate
-PDE6G	No	No	candidate
-PDE6H	No	No	candidate
-PDE8B	No	No	candidate
-PDGFB	Yes	No	canonical
-PDGFRA	Yes	No	canonical
-PDGFRB	Yes	No	canonical
-PDGFRL	No	No	candidate
-PDHA1	No	No	candidate
-PDHB	No	No	candidate
-PDK1	Yes	No	canonical
-PDPK1	No	No	candidate
-PDS5B	No	Yes	canonical
-PDX1	No	No	candidate
-PDYN	No	No	candidate
-PDZD7	No	No	candidate
-PEPD	No	No	candidate
-PER1	No	Yes	canonical
-PER2	No	No	candidate
-PEX1	No	No	candidate
-PEX10	No	No	candidate
-PEX12	No	No	candidate
-PEX13	No	No	candidate
-PEX14	No	No	candidate
-PEX16	No	No	candidate
-PEX19	No	No	candidate
-PEX2	No	No	candidate
-PEX26	No	No	candidate
-PEX3	No	No	candidate
-PEX5	No	No	candidate
-PEX6	No	No	candidate
-PEX7	No	No	candidate
-PFKM	No	No	candidate
-PGAM2	No	No	candidate
-PGBD5	Yes	No	canonical
-PGM1	No	No	candidate
-PGR	Yes	No	canonical
-PHEX	No	No	candidate
-PHF1	No	No	candidate
-PHF19	Yes	No	canonical
-PHF23	No	No	candidate
-PHF6	No	Yes	canonical
-PHF8	No	No	candidate
-PHKA1	No	No	candidate
-PHKA2	No	No	candidate
-PHKB	No	No	candidate
-PHKG2	No	No	candidate
-PHLPP1	No	Yes	canonical
-PHLPP2	No	Yes	canonical
-PHOX2B	No	Yes	canonical
-PHYH	No	No	candidate
-PICALM	No	No	candidate
-PIGA	No	Yes	canonical
-PIGV	No	No	candidate
-PIK3C2B	Yes	No	canonical
-PIK3C2G	No	No	candidate
-PIK3C3	No	No	candidate
-PIK3CA	Yes	No	canonical
-PIK3CB	Yes	No	canonical
-PIK3CD	Yes	No	canonical
-PIK3CG	Yes	No	canonical
-PIK3R1	No	Yes	canonical
-PIK3R2	Yes	Yes	canonical
-PIK3R3	No	Yes	canonical
-PIKFYVE	No	No	candidate
-PIM1	Yes	No	canonical
-PINK1	No	No	candidate
-PITPNM3	No	No	candidate
-PITX1	No	No	candidate
-PITX3	No	No	candidate
-PKD1	No	No	candidate
-PKD1L1	No	No	candidate
-PKD2	No	No	candidate
-PKDCC	No	No	candidate
-PKHD1	No	No	candidate
-PKP1	No	No	candidate
-PKP2	No	No	candidate
-PLA2G6	No	No	candidate
-PLA2G7	No	No	candidate
-PLAG1	Yes	No	canonical
-PLCE1	No	No	candidate
-PLCG1	Yes	No	canonical
-PLCG2	Yes	No	canonical
-PLEC	No	No	candidate
-PLEKHG5	No	No	candidate
-PLEKHM1	No	No	candidate
-PLG	No	No	candidate
-PLIN1	No	No	candidate
-PLK2	No	No	candidate
-PLN	No	No	candidate
-PLOD1	No	No	candidate
-PLOD2	No	No	candidate
-PLP1	No	No	candidate
-PMAIP1	No	Yes	canonical
-PML	No	Yes	canonical
-PMM2	No	No	candidate
-PMP22	No	No	candidate
-PMS1	No	Yes	canonical
-PMS2	No	Yes	canonical
-PNKD	No	No	candidate
-PNPLA2	No	No	candidate
-PNPLA6	No	No	candidate
-PNRC1	No	No	candidate
-POF1B	No	No	candidate
-POLD1	No	Yes	canonical
-POLE	No	Yes	canonical
-POLG	No	Yes	canonical
-POLG2	No	No	candidate
-POLH	No	Yes	canonical
-POLQ	Yes	Yes	canonical
-POLR1C	No	No	candidate
-POLR1D	No	No	candidate
-POLR2A	No	No	candidate
-POMC	No	No	candidate
-POMGNT1	No	No	candidate
-POMT1	No	No	candidate
-POMT2	No	No	candidate
-PON1	No	No	candidate
-POR	No	No	candidate
-PORCN	No	No	candidate
-POT1	No	Yes	canonical
-POU2AF1	Yes	No	canonical
-POU2F2	Yes	No	canonical
-POU3F2	Yes	No	canonical
-POU3F4	Yes	No	canonical
-POU5F1	Yes	No	canonical
-POU6F2	No	No	candidate
-PPARG	Yes	Yes	canonical
-PPFIBP1	No	No	candidate
-PPIB	No	No	candidate
-PPM1D	Yes	No	canonical
-PPOX	No	No	candidate
-PPP1CB	No	No	candidate
-PPP1R3A	No	No	candidate
-PPP1R3B	No	No	candidate
-PPP2R1A	Yes	Yes	canonical
-PPP2R2A	No	Yes	canonical
-PPP2R2B	No	No	candidate
-PPP4R2	No	No	candidate
-PPP6C	No	Yes	canonical
-PPT1	No	No	candidate
-PQBP1	No	No	candidate
-PRCC	Yes	No	canonical
-PRCD	No	No	candidate
-PRDM1	No	Yes	canonical
-PRDM14	No	No	candidate
-PRDM16	Yes	No	canonical
-PRDM2	No	Yes	canonical
-PREX2	Yes	No	canonical
-PRF1	No	Yes	canonical
-PRICKLE1	No	No	candidate
-PRICKLE2	No	No	candidate
-PRKACA	Yes	No	canonical
-PRKAG2	No	No	candidate
-PRKAR1A	Yes	Yes	canonical
-PRKCB	Yes	Yes	canonical
-PRKCG	No	No	candidate
-PRKCH	No	No	candidate
-PRKCI	Yes	No	canonical
-PRKD1	No	No	candidate
-PRKDC	Yes	Yes	canonical
-PRKG2	No	No	candidate
-PRKN	No	Yes	canonical
-PRKRA	No	No	candidate
-PRNP	No	No	candidate
-PROC	No	No	candidate
-PROK2	No	No	candidate
-PROKR2	No	No	candidate
-PROM1	No	No	candidate
-PROP1	No	No	candidate
-PROS1	No	No	candidate
-PROX1	No	No	candidate
-PRPF3	No	No	candidate
-PRPF31	No	No	candidate
-PRPF40B	No	No	candidate
-PRPF6	No	No	candidate
-PRPF8	No	Yes	canonical
-PRPH2	No	No	candidate
-PRPS1	No	No	candidate
-PRRT2	No	No	candidate
-PRRX1	No	No	candidate
-PRSS1	No	No	candidate
-PRSS12	No	No	candidate
-PRSS8	No	No	candidate
-PRX	No	No	candidate
-PRXL2B	No	No	candidate
-PSAP	No	No	candidate
-PSEN1	No	No	candidate
-PSEN2	No	No	candidate
-PSENEN	No	No	candidate
-PSIP1	Yes	No	canonical
-PSMB2	Yes	No	canonical
-PSORS1C1	No	No	candidate
-PSORS1C2	No	No	candidate
-PSORS1C3	No	No	candidate
-PTCH1	No	Yes	canonical
-PTCH2	No	No	candidate
-PTEN	No	Yes	canonical
-PTF1A	No	No	candidate
-PTGER4	No	No	candidate
-PTH	No	No	candidate
-PTH1R	No	No	candidate
-PTK6	Yes	Yes	canonical
-PTK7	No	No	candidate
-PTP4A1	No	No	candidate
-PTPN1	Yes	Yes	canonical
-PTPN11	Yes	No	canonical
-PTPN13	No	Yes	canonical
-PTPN14	No	Yes	canonical
-PTPN2	No	Yes	canonical
-PTPN22	No	No	candidate
-PTPN6	No	Yes	canonical
-PTPRB	No	Yes	canonical
-PTPRC	No	Yes	canonical
-PTPRD	No	Yes	canonical
-PTPRK	No	Yes	canonical
-PTPRO	No	No	candidate
-PTPRS	No	Yes	canonical
-PTPRT	No	Yes	canonical
-PUM1	No	No	candidate
-PUS1	No	No	candidate
-PUS10	No	No	candidate
-PWWP2A	No	No	candidate
-PYCR1	No	No	candidate
-PYGL	No	No	candidate
-PYGM	No	No	candidate
-QDPR	No	No	candidate
-QKI	Yes	Yes	canonical
-RAB27A	No	No	candidate
-RAB35	Yes	No	canonical
-RAB39B	No	No	candidate
-RAB7A	No	No	candidate
-RABEP1	No	No	candidate
-RAC1	Yes	No	canonical
-RAC2	Yes	No	canonical
-RAD17	No	Yes	canonical
-RAD21	Yes	Yes	canonical
-RAD50	No	Yes	canonical
-RAD51	No	Yes	canonical
-RAD51B	No	Yes	canonical
-RAD51C	No	Yes	canonical
-RAD51D	No	Yes	canonical
-RAD52	No	No	candidate
-RAD54L	No	No	candidate
-RAF1	Yes	No	canonical
-RAG1	No	No	candidate
-RAG2	No	No	candidate
-RAI1	No	No	candidate
-RALGDS	No	No	candidate
-RALGPS2	No	No	candidate
-RANBP2	Yes	Yes	canonical
-RAP1B	Yes	No	candidate
-RAP1GDS1	Yes	No	canonical
-RAPSN	No	No	candidate
-RARA	Yes	No	canonical
-RASA1	No	Yes	canonical
-RASGEF1A	No	No	candidate
-RASGEF1B	No	No	candidate
-RASGRP1	No	No	candidate
-RAX2	No	No	candidate
-RB1	No	Yes	canonical
-RBM10	No	Yes	canonical
-RBM15	Yes	Yes	canonical
-RBM20	No	No	candidate
-RCL1	No	No	candidate
-RD3	No	No	candidate
-RDH12	No	No	candidate
-RECQL	No	Yes	canonical
-RECQL4	Yes	Yes	canonical
-REEP1	No	No	candidate
-REL	Yes	No	canonical
-RELN	No	No	candidate
-REN	No	No	candidate
-RERE	No	No	candidate
-REST	No	Yes	canonical
-RET	Yes	No	canonical
-REV3L	Yes	No	canonical
-RFT1	No	No	candidate
-RFWD3	No	Yes	canonical
-RFX5	No	No	candidate
-RFXANK	No	No	candidate
-RFXAP	No	No	candidate
-RGPD3	No	No	candidate
-RGR	No	No	candidate
-RGS7	No	No	candidate
-RHEB	Yes	No	canonical
-RHO	No	No	candidate
-RHOA	Yes	Yes	canonical
-RHOH	No	Yes	canonical
-RICTOR	Yes	No	canonical
-RIMS1	No	No	candidate
-RIOK2	Yes	No	canonical
-RIPK2	No	No	candidate
-RIT1	Yes	No	canonical
-RLBP1	No	No	candidate
-RMI2	No	Yes	canonical
-RNASEH2A	Yes	No	canonical
-RNASEH2B	No	Yes	canonical
-RNASEL	No	No	candidate
-RNF139	No	No	candidate
-RNF146	No	No	candidate
-RNF186	No	No	candidate
-RNF213	No	No	candidate
-RNF217-AS1	No	No	candidate
-RNF43	No	Yes	canonical
-RNF6	No	No	candidate
-RNU7-2P	No	No	candidate
-RNU7-31P	No	No	candidate
-RNU7-34P	No	No	candidate
-ROBO1	No	Yes	canonical
-ROBO2	No	Yes	canonical
-ROBO3	No	No	candidate
-ROCK1	Yes	No	candidate
-ROM1	No	No	candidate
-ROR2	No	No	candidate
-ROS1	Yes	No	canonical
-RP1	No	No	candidate
-RP2	No	No	candidate
-RP9	No	No	candidate
-RPE65	No	No	candidate
-RPGR	No	No	candidate
-RPGRIP1	No	No	candidate
-RPL10	No	Yes	canonical
-RPL11	No	No	candidate
-RPL13AP14	No	No	candidate
-RPL22	No	Yes	canonical
-RPL23AP1	No	No	candidate
-RPL23AP12	No	No	candidate
-RPL23P4	No	No	candidate
-RPL28P4	No	No	candidate
-RPL30P9	No	No	candidate
-RPL31P10	No	No	candidate
-RPL31P13	No	No	candidate
-RPL35A	No	No	candidate
-RPL35AP15	No	No	candidate
-RPL35P3	No	No	candidate
-RPL37AP1	No	No	candidate
-RPL39P28	No	No	candidate
-RPL3P11	No	No	candidate
-RPL3P2	No	No	candidate
-RPL5	No	Yes	canonical
-RPL6P5	No	No	candidate
-RPN1	No	No	candidate
-RPS10	No	No	candidate
-RPS14P1	No	No	candidate
-RPS15	Yes	No	canonical
-RPS17	No	No	candidate
-RPS19	No	No	candidate
-RPS20P32	No	No	candidate
-RPS23P3	No	No	candidate
-RPS24	No	No	candidate
-RPS26	No	No	candidate
-RPS3AP42	No	No	candidate
-RPS3AP46	No	No	candidate
-RPS6KA3	No	No	candidate
-RPS6KA4	Yes	No	canonical
-RPS6KB1	Yes	No	canonical
-RPS6KB2	Yes	No	canonical
-RPS7	No	No	candidate
-RPTOR	Yes	No	canonical
-RRAGC	Yes	No	canonical
-RRAS	Yes	No	canonical
-RRAS2	Yes	No	canonical
-RRM2B	No	No	candidate
-RS1	No	No	candidate
-RSPH4A	No	No	candidate
-RSPH9	No	No	candidate
-RSPO1	No	No	candidate
-RSPO2	No	Yes	canonical
-RSPO3	Yes	No	canonical
-RTEL1	No	Yes	canonical
-RUNX1	Yes	Yes	canonical
-RUNX1T1	Yes	Yes	canonical
-RUNX2	No	No	candidate
-RUNX3	No	No	candidate
-RXFP2	No	No	candidate
-RXRA	No	Yes	canonical
-RYBP	No	Yes	canonical
-RYR1	No	No	candidate
-RYR2	No	No	candidate
-S100A7	No	No	candidate
-S1PR2	No	No	candidate
-SAA1	No	No	candidate
-SAA2	No	No	candidate
-SAG	No	No	candidate
-SALL1	No	No	candidate
-SALL4	Yes	No	canonical
-SAMD9	No	No	candidate
-SAMD9L	No	No	candidate
-SAMHD1	No	Yes	canonical
-SAR1B	No	No	candidate
-SART3	No	No	candidate
-SATB2	No	No	candidate
-SBDS	No	Yes	canonical
-SBF2	No	No	candidate
-SCAPER	No	No	candidate
-SCARB2	No	No	candidate
-SCG5	Yes	No	canonical
-SCN1A	No	No	candidate
-SCN1B	No	No	candidate
-SCN2A	No	No	candidate
-SCN3B	No	No	candidate
-SCN4A	No	No	candidate
-SCN4B	No	No	candidate
-SCN5A	No	No	candidate
-SCN9A	No	No	candidate
-SCNN1A	No	No	candidate
-SCNN1B	No	No	candidate
-SCNN1G	No	No	candidate
-SCO1	No	No	candidate
-SCO2	No	No	candidate
-SDC4	No	No	candidate
-SDHA	No	Yes	canonical
-SDHAF2	No	Yes	canonical
-SDHB	No	Yes	canonical
-SDHC	No	Yes	canonical
-SDHD	No	Yes	canonical
-SEC23B	No	No	candidate
-SEC31A	No	No	candidate
-SEC63	No	No	candidate
-SELENON	No	No	candidate
-SELP	No	No	candidate
-SEMA3C	No	No	candidate
-SEMA4A	No	No	candidate
-SEPT5	No	No	candidate
-SEPT6	No	No	candidate
-SEPT9	No	No	candidate
-SEPTIN11	No	No	candidate
-SEPTIN5	No	No	candidate
-SEPTIN6	No	No	candidate
-SEPTIN9	No	No	candidate
-SERP2	No	No	candidate
-SERPINA1	No	No	candidate
-SERPINB3	Yes	Yes	canonical
-SERPINB4	No	No	candidate
-SERPINC1	No	No	candidate
-SERPINE1	No	No	candidate
-SERPINF1	No	No	candidate
-SERPING1	No	No	candidate
-SERPINH1	No	No	candidate
-SESN1	No	Yes	canonical
-SESN2	No	Yes	canonical
-SESN3	No	Yes	canonical
-SET	Yes	No	canonical
-SETBP1	Yes	No	canonical
-SETD1A	Yes	No	canonical
-SETD1B	No	Yes	canonical
-SETD2	No	Yes	canonical
-SETD3	No	No	candidate
-SETD4	No	No	candidate
-SETD5	No	No	candidate
-SETD6	No	No	candidate
-SETD7	No	No	candidate
-SETDB1	Yes	Yes	canonical
-SETDB2	No	Yes	canonical
-SETX	No	No	candidate
-SF3B1	Yes	No	canonical
-SF3B2	Yes	No	canonical
-SFPQ	No	Yes	canonical
-SFRP1	No	Yes	canonical
-SFRP2	Yes	Yes	canonical
-SFRP4	No	Yes	canonical
-SFTPA1	No	No	candidate
-SFTPA2	No	No	candidate
-SFTPB	No	No	candidate
-SFTPC	No	No	candidate
-SGCA	No	No	candidate
-SGCB	No	No	candidate
-SGCD	No	No	candidate
-SGCE	No	No	candidate
-SGCG	No	No	candidate
-SGK1	Yes	No	canonical
-SGSH	No	No	candidate
-SH2B3	No	Yes	canonical
-SH2D1A	No	Yes	canonical
-SH3BP2	No	No	candidate
-SH3GL1	Yes	No	canonical
-SH3TC2	No	No	candidate
-SHH	No	No	candidate
-SHOC2	Yes	No	canonical
-SHQ1	No	Yes	canonical
-SHROOM4	No	No	candidate
-SHTN1	No	No	candidate
-SIAE	No	No	candidate
-SIK1	No	No	candidate
-SIL1	No	No	candidate
-SIRPA	No	Yes	canonical
-SIX1	Yes	No	canonical
-SIX2	Yes	No	canonical
-SIX3	No	No	candidate
-SIX5	No	No	candidate
-SIX6	No	No	candidate
-SKI	Yes	No	canonical
-SLC11A2	No	No	candidate
-SLC12A1	No	No	candidate
-SLC12A3	No	No	candidate
-SLC12A6	No	No	candidate
-SLC16A2	No	No	candidate
-SLC17A5	No	No	candidate
-SLC19A2	No	No	candidate
-SLC19A3	No	No	candidate
-SLC1A2	No	No	candidate
-SLC1A3	No	No	candidate
-SLC22A18	No	No	candidate
-SLC22A4	No	No	candidate
-SLC25A13	No	No	candidate
-SLC25A4	No	No	candidate
-SLC26A2	No	No	candidate
-SLC26A3	No	No	candidate
-SLC26A4	No	No	candidate
-SLC29A3	No	No	candidate
-SLC2A1	No	No	candidate
-SLC2A2	No	No	candidate
-SLC2A4	No	No	candidate
-SLC2A9	No	No	candidate
-SLC33A1	No	No	candidate
-SLC34A1	No	No	candidate
-SLC34A2	No	Yes	canonical
-SLC34A3	No	No	candidate
-SLC35A1	No	No	candidate
-SLC35C1	No	No	candidate
-SLC37A4	No	No	candidate
-SLC3A1	No	No	candidate
-SLC40A1	No	No	candidate
-SLC44A3	No	No	candidate
-SLC45A2	No	No	candidate
-SLC45A3	No	No	candidate
-SLC49A4	No	No	candidate
-SLC4A1	No	No	candidate
-SLC4A11	No	No	candidate
-SLC4A4	No	No	candidate
-SLC52A1	No	No	candidate
-SLC52A3	No	No	candidate
-SLC5A2	No	No	candidate
-SLC5A5	No	No	candidate
-SLC6A19	No	No	candidate
-SLC6A2	No	No	candidate
-SLC6A8	No	No	candidate
-SLC7A9	No	No	candidate
-SLC9A3	No	No	candidate
-SLC9A6	No	No	candidate
-SLFN11	No	Yes	canonical
-SLIT2	No	No	candidate
-SLIT3	No	Yes	canonical
-SLITRK1	No	No	candidate
-SLURP1	No	No	candidate
-SLX4	No	Yes	canonical
-SMAD1	No	No	candidate
-SMAD2	No	Yes	canonical
-SMAD3	No	Yes	canonical
-SMAD4	No	Yes	canonical
-SMAD7	No	No	candidate
-SMAD9	No	No	candidate
-SMARCA1	Yes	Yes	canonical
-SMARCA2	No	Yes	canonical
-SMARCA4	No	Yes	canonical
-SMARCB1	No	Yes	canonical
-SMARCD1	No	Yes	canonical
-SMARCE1	Yes	Yes	canonical
-SMC1A	No	Yes	canonical
-SMC3	No	Yes	canonical
-SMG1	No	Yes	canonical
-SMN1	No	No	candidate
-SMN2	No	No	candidate
-SMO	Yes	No	canonical
-SMOC1	No	No	candidate
-SMPD1	No	No	candidate
-SMS	No	No	candidate
-SMURF1	No	No	candidate
-SMYD3	Yes	No	canonical
-SNAI2	No	No	candidate
-SNCA	No	No	candidate
-SNCAIP	No	No	candidate
-SND1	Yes	No	canonical
-SNORA47	No	No	candidate
-SNRNP200	No	No	candidate
-SNTA1	No	No	candidate
-SNX20	No	No	candidate
-SNX29	No	No	candidate
-SOCS1	No	Yes	canonical
-SOCS2	No	No	candidate
-SOCS3	No	Yes	canonical
-SOD1	No	No	candidate
-SOD2	No	No	candidate
-SOS1	Yes	No	canonical
-SOST	No	No	candidate
-SOX10	Yes	No	canonical
-SOX17	No	Yes	canonical
-SOX2	Yes	No	canonical
-SOX21	No	Yes	canonical
-SOX3	No	No	candidate
-SOX9	Yes	Yes	canonical
-SP110	No	No	candidate
-SP140	No	Yes	canonical
-SP7	No	No	candidate
-SPANXN4	No	No	candidate
-SPART	No	No	candidate
-SPAST	No	No	candidate
-SPATA7	No	No	candidate
-SPECC1	No	No	candidate
-SPEN	No	Yes	canonical
-SPG11	No	No	candidate
-SPG21	No	No	candidate
-SPG7	No	No	candidate
-SPINK1	No	No	candidate
-SPINK5	No	No	candidate
-SPINT2	No	No	candidate
-SPOP	Yes	Yes	canonical
-SPRED1	No	Yes	canonical
-SPRTN	No	Yes	canonical
-SPTA1	No	No	candidate
-SPTB	No	No	candidate
-SPTBN2	No	No	candidate
-SPTLC1	No	No	candidate
-SPTLC2	No	No	candidate
-SQSTM1	Yes	No	canonical
-SRC	Yes	No	canonical
-SRD5A2	No	No	candidate
-SRGAP3	No	No	candidate
-SRP72	Yes	No	canonical
-SRPX2	No	No	candidate
-SRSF2	Yes	No	canonical
-SRSF3	Yes	No	canonical
-SRY	No	No	candidate
-SS18	Yes	No	canonical
-SS18L1	No	No	candidate
-SSBP2	No	No	candidate
-SSX1	Yes	No	canonical
-SSX2	Yes	No	canonical
-SSX2B	No	No	candidate
-SSX4	Yes	No	canonical
-ST13P1	No	No	candidate
-ST13P12	No	No	candidate
-ST3GAL3	No	No	candidate
-ST8SIA4	No	No	candidate
-STAG1	No	Yes	canonical
-STAG2	No	Yes	canonical
-STAR	No	No	candidate
-STAT1	No	No	candidate
-STAT2	No	No	candidate
-STAT3	Yes	No	canonical
-STAT4	Yes	No	canonical
-STAT5A	Yes	No	canonical
-STAT5B	Yes	Yes	canonical
-STAT6	Yes	No	canonical
-STIL	Yes	No	canonical
-STK10	No	No	candidate
-STK11	No	Yes	canonical
-STK19	Yes	No	canonical
-STK40	No	No	candidate
-STOX1	No	No	candidate
-STRC	No	No	candidate
-STRN	No	No	candidate
-STS	No	No	candidate
-STX11	No	No	candidate
-STX16	No	No	candidate
-STXBP2	No	No	candidate
-SUB1	No	No	candidate
-SUFU	No	Yes	canonical
-SUGCT	No	No	candidate
-SUMF1	No	No	candidate
-SUMO2P1	No	No	candidate
-SURF1	No	No	candidate
-SUZ12	Yes	Yes	canonical
-SYF2	No	No	candidate
-SYK	Yes	No	canonical
-SYNE1	No	No	candidate
-SYNE2	No	No	candidate
-SYNGAP1	No	No	candidate
-SYP	No	No	candidate
-SYT14	No	No	candidate
-SZT2	No	No	candidate
-TACO1	No	No	candidate
-TACSTD2	Yes	No	canonical
-TAF1	Yes	No	canonical
-TAF15	Yes	No	canonical
-TAL1	Yes	No	canonical
-TAL2	Yes	No	canonical
-TAP1	No	No	candidate
-TAP2	No	No	candidate
-TARDBP	No	No	candidate
-TAT	No	No	candidate
-TAZ	No	No	candidate
-TBC1D24	No	No	candidate
-TBKBP1	No	No	candidate
-TBL1XR1	Yes	Yes	canonical
-TBP	No	No	candidate
-TBX1	No	No	candidate
-TBX20	No	No	candidate
-TBX21	No	No	candidate
-TBX22	No	No	candidate
-TBX3	Yes	Yes	canonical
-TBX4	No	No	candidate
-TBXT	No	No	candidate
-TCAP	No	No	candidate
-TCEA1	No	No	candidate
-TCF12	No	No	candidate
-TCF3	Yes	Yes	canonical
-TCF7L2	Yes	Yes	canonical
-TCIRG1	No	No	candidate
-TCL1A	Yes	No	canonical
-TCL1B	Yes	No	canonical
-TCOF1	No	No	candidate
-TCTA	No	No	candidate
-TDP1	No	No	candidate
-TEC	Yes	No	canonical
-TECR	No	No	candidate
-TEK	No	No	candidate
-TENT5C	No	Yes	canonical
-TERC	No	No	candidate
-TERT	Yes	Yes	canonical
-TET1	Yes	Yes	canonical
-TET2	No	Yes	canonical
-TET3	No	Yes	canonical
-TFAP2A	No	No	candidate
-TFAP2B	No	No	candidate
-TFE3	Yes	No	canonical
-TFEB	Yes	No	canonical
-TFG	No	No	candidate
-TFPT	No	No	candidate
-TFR2	No	No	candidate
-TFRC	No	No	candidate
-TG	No	No	candidate
-TGFB1	No	No	candidate
-TGFBI	No	No	candidate
-TGFBR1	No	Yes	canonical
-TGFBR2	No	Yes	canonical
-TGIF1	No	No	candidate
-TGM1	No	No	candidate
-TGM6	No	No	candidate
-TH	No	No	candidate
-THAP1	No	No	candidate
-THBD	No	No	candidate
-THBS2	No	No	candidate
-THPO	No	No	candidate
-THRAP3	No	No	candidate
-THRB	No	No	candidate
-TIGAR	Yes	No	canonical
-TIMP3	No	No	candidate
-TINF2	No	No	candidate
-TIPARP	No	No	candidate
-TLE1	No	No	candidate
-TLE2	No	No	candidate
-TLE3	No	No	candidate
-TLE4	No	No	candidate
-TLL1	No	No	candidate
-TLL2	No	No	candidate
-TLR3	No	No	candidate
-TLR4	No	No	candidate
-TLR5	No	No	candidate
-TLX1	Yes	No	canonical
-TLX3	Yes	No	canonical
-TMC6	No	No	candidate
-TMC8	No	No	candidate
-TMEM106B	No	No	candidate
-TMEM126A	No	No	candidate
-TMEM127	No	Yes	canonical
-TMEM167A	No	No	candidate
-TMEM17	No	No	candidate
-TMEM30A	No	No	candidate
-TMEM43	No	No	candidate
-TMEM67	No	No	candidate
-TMPO	No	No	candidate
-TMPRSS2	No	No	candidate
-TMPRSS5	No	No	candidate
-TMPRSS6	No	No	candidate
-TMSB4X	Yes	No	candidate
-TMSB4XP8	No	No	candidate
-TNC	Yes	No	canonical
-TNF	No	No	candidate
-TNFAIP3	No	Yes	canonical
-TNFRSF10B	No	No	candidate
-TNFRSF11A	No	No	candidate
-TNFRSF11B	No	No	candidate
-TNFRSF13B	No	No	candidate
-TNFRSF13C	No	No	candidate
-TNFRSF14	No	Yes	canonical
-TNFRSF17	Yes	No	canonical
-TNFRSF1A	No	No	candidate
-TNFRSF6B	No	No	candidate
-TNFSF11	No	No	candidate
-TNFSF13	Yes	No	canonical
-TNFSF15	No	No	candidate
-TNFSF4	No	No	candidate
-TNKS	No	No	candidate
-TNNC1	No	No	candidate
-TNNI3	No	No	candidate
-TNNT1	No	No	candidate
-TNNT2	No	No	candidate
-TNRC18	No	No	candidate
-TONSL	No	No	candidate
-TOP1	Yes	No	canonical
-TOP2A	Yes	No	canonical
-TOPORS	No	No	candidate
-TOR1A	No	No	candidate
-TP53	Yes	Yes	canonical
-TP53BP1	No	Yes	canonical
-TP63	Yes	Yes	canonical
-TPM1	No	No	candidate
-TPM2	No	No	candidate
-TPM3	Yes	Yes	canonical
-TPM4	No	No	candidate
-TPMT	No	No	candidate
-TPP1	No	No	candidate
-TPR	No	No	candidate
-TRA	Yes	No	canonical
-TRAF2	No	No	candidate
-TRAF3	No	Yes	canonical
-TRAF3IP2	No	No	candidate
-TRAF5	No	Yes	canonical
-TRAF7	No	Yes	canonical
-TRAPPC2	No	No	candidate
-TRAPPC9	No	No	candidate
-TRB	Yes	No	canonical
-TRD	Yes	No	canonical
-TREM2	No	No	candidate
-TREX1	No	No	candidate
-TRG	Yes	No	canonical
-TRIB1	No	No	candidate
-TRIB2	No	No	candidate
-TRIB3	Yes	No	canonical
-TRIM24	Yes	Yes	canonical
-TRIM27	Yes	No	canonical
-TRIM32	No	No	candidate
-TRIM33	No	Yes	canonical
-TRIM37	No	No	candidate
-TRIP11	No	No	candidate
-TRIP13	Yes	Yes	canonical
-TRPC6	No	No	candidate
-TRPM6	No	No	candidate
-TRPM7	No	No	candidate
-TRPS1	No	No	candidate
-TRPV4	No	No	candidate
-TRRAP	Yes	No	canonical
-TSC1	No	Yes	canonical
-TSC2	No	Yes	canonical
-TSHR	Yes	No	canonical
-TSN	No	No	candidate
-TSPAN7	No	No	candidate
-TSPYL1	No	No	candidate
-TTBK2	No	No	candidate
-TTC21B	No	No	candidate
-TTC8	No	No	candidate
-TTL	No	No	candidate
-TTN	No	No	candidate
-TTPA	No	No	candidate
-TTR	No	No	candidate
-TUBA1A	No	No	candidate
-TUBB2B	No	No	candidate
-TULP1	No	No	candidate
-TUSC3	No	No	candidate
-TWIST1	No	No	candidate
-TWIST2	No	No	candidate
-TWNK	No	No	candidate
-TYK2	Yes	No	canonical
-TYMP	No	No	candidate
-TYMS	Yes	No	canonical
-TYR	No	No	candidate
-TYRO3	No	No	candidate
-TYROBP	No	No	candidate
-TYRP1	No	No	candidate
-U2AF1	Yes	No	canonical
-U2AF2	No	No	candidate
-UBA1	Yes	No	canonical
-UBE2A	Yes	No	canonical
-UBE3A	No	No	candidate
-UBIAD1	No	No	candidate
-UBQLN2	No	No	candidate
-UBR5	Yes	No	canonical
-UBTF	Yes	No	canonical
-UCHL1	Yes	No	canonical
-UCP3	No	No	candidate
-UGT1A1	No	No	candidate
-UGT1A4	No	No	candidate
-UMOD	No	No	candidate
-UNC119	No	No	candidate
-UNC13D	No	No	candidate
-UNC93B1	No	No	candidate
-UNG	No	No	candidate
-UPF1	No	No	candidate
-UPF3B	No	No	candidate
-UROD	No	No	candidate
-UROS	No	No	candidate
-USB1	No	No	candidate
-USF1	No	No	candidate
-USH1C	No	No	candidate
-USH1G	No	No	candidate
-USH2A	No	No	candidate
-USP1	Yes	No	canonical
-USP16	No	No	candidate
-USP25	No	No	candidate
-USP44	No	Yes	canonical
-USP6	Yes	No	canonical
-USP8	Yes	No	canonical
-USP9X	No	No	candidate
-USP9Y	No	No	candidate
-UVRAG	No	No	candidate
-VANGL1	No	No	candidate
-VAPB	No	No	candidate
-VAV1	Yes	No	canonical
-VAV2	Yes	No	canonical
-VCL	No	No	candidate
-VCP	No	No	candidate
-VDR	No	No	candidate
-VEGFA	Yes	No	canonical
-VHL	No	Yes	canonical
-VPS13A	No	No	candidate
-VPS35	No	No	candidate
-VRK1	No	No	candidate
-VSX1	No	No	candidate
-VSX2	No	No	candidate
-VTCN1	No	No	candidate
-VTI1A	No	No	candidate
-VWF	No	No	candidate
-WAS	Yes	No	canonical
-WASF5P	No	No	candidate
-WASHC5	No	No	candidate
-WDCP	No	No	candidate
-WDPCP	No	No	candidate
-WDR11	No	No	candidate
-WDR35	No	No	candidate
-WDR36	No	No	candidate
-WDR90	No	No	candidate
-WEE1	No	Yes	canonical
-WFS1	No	No	candidate
-WHRN	No	No	candidate
-WIF1	No	Yes	canonical
-WNK1	No	No	candidate
-WNK2	No	Yes	canonical
-WNK4	No	No	candidate
-WNT10A	No	No	candidate
-WNT4	No	No	candidate
-WNT5A	No	No	candidate
-WNT7A	No	No	candidate
-WRAP53	No	No	candidate
-WRN	No	Yes	canonical
-WSCD1	No	No	candidate
-WT1	Yes	Yes	canonical
-WWOX	No	No	candidate
-WWP1	Yes	No	canonical
-WWTR1	Yes	No	canonical
-XBP1	Yes	No	canonical
-XIAP	Yes	No	canonical
-XK	No	No	candidate
-XPA	No	Yes	canonical
-XPC	No	Yes	canonical
-XPO1	Yes	No	canonical
-XRCC1	No	Yes	canonical
-XRCC2	No	Yes	canonical
-XRCC3	No	No	candidate
-YAP1	Yes	No	canonical
-YARS1	No	No	candidate
-YES1	Yes	No	canonical
-YPEL5	No	No	candidate
-YWHAE	No	Yes	canonical
-YY1	Yes	No	canonical
-YY1AP1	No	No	candidate
-ZBTB16	No	Yes	canonical
-ZBTB20	Yes	Yes	canonical
-ZBTB40	No	No	candidate
-ZBTB7A	Yes	Yes	canonical
-ZCCHC8	No	No	candidate
-ZDHHC15	No	No	candidate
-ZDHHC2	No	No	candidate
-ZDHHC9	No	No	candidate
-ZEB1	Yes	No	canonical
-ZFHX3	No	Yes	canonical
-ZFP36L1	No	Yes	canonical
-ZFP36L2	No	Yes	canonical
-ZFP57	No	No	candidate
-ZFP90	No	No	candidate
-ZFPM2	No	No	candidate
-ZFYVE19	No	No	candidate
-ZFYVE26	No	No	candidate
-ZFYVE27	No	No	candidate
-ZIC2	No	No	candidate
-ZIC3	No	No	candidate
-ZMYM2	No	No	candidate
-ZMYM3	No	Yes	canonical
-ZNF217	Yes	No	canonical
-ZNF24	No	No	candidate
-ZNF292	No	Yes	canonical
-ZNF320	No	No	candidate
-ZNF331	No	Yes	canonical
-ZNF384	No	No	candidate
-ZNF41	No	No	candidate
-ZNF429	No	No	candidate
-ZNF479	No	No	candidate
-ZNF512	No	No	candidate
-ZNF513	No	No	candidate
-ZNF521	Yes	No	canonical
-ZNF592	No	No	candidate
-ZNF644	No	No	candidate
-ZNF674	No	No	candidate
-ZNF703	No	No	candidate
-ZNF711	No	No	candidate
-ZNF750	No	Yes	canonical
-ZNF81	No	No	candidate
-ZNRD1ASP	No	No	candidate
-ZNRF3	No	Yes	canonical
-ZPBP2	No	No	candidate
-ZPR1	No	No	candidate
-ZRSR2	No	Yes	canonical
+genes	2class	3class
+A1CF	1.0	2.0
+AAAS		
+AANAT		
+AARS1		
+AARS2		
+AASS		
+ABCA1		
+ABCA12		
+ABCA3		
+ABCA4		
+ABCB1	1.0	2.0
+ABCB11		
+ABCB4		
+ABCB7		
+ABCC2		
+ABCC6		
+ABCC8		
+ABCC9		
+ABCD1		
+ABCD1P4		
+ABI1	1.0	1.0
+ABL1	1.0	2.0
+ABL2	1.0	2.0
+ABRAXAS1	1.0	1.0
+ACAD8		
+ACAD9		
+ACADM		
+ACADS		
+ACADSB		
+ACADVL		
+ACE		
+ACKR3	1.0	1.0
+ACOX1		
+ACSL3		
+ACSL4		
+ACSL6		
+ACTA1		
+ACTA2		
+ACTB		
+ACTC1		
+ACTG1	1.0	1.0
+ACTN2		
+ACTN4		
+ACVR1	1.0	2.0
+ACVR1B	1.0	1.0
+ACVR2A	1.0	1.0
+ACVRL1		
+ACY1		
+ADAM33		
+ADAM9		
+ADAMTS10		
+ADAMTS13		
+ADAMTS2		
+ADAMTSL4		
+ADARB2	1.0	2.0
+ADGB		
+ADGRA2	1.0	2.0
+ADGRG1		
+ADGRG4		
+ADGRV1		
+ADHFE1	1.0	2.0
+ADIPOQ		
+ADRA1B		
+AFDN	1.0	1.0
+AFF1		
+AFF2		
+AFF3	1.0	2.0
+AFF4	1.0	2.0
+AFG3L2		
+AGA		
+AGBL3		
+AGGF1	1.0	2.0
+AGK	1.0	2.0
+AGL		
+AGO1	1.0	2.0
+AGO2		
+AGPAT2		
+AGPS		
+AGRP		
+AGT		
+AGTR1		
+AGTR2		
+AGXT		
+AICDA		
+AIFM1		
+AIP	1.0	1.0
+AIPL1		
+AIRE		
+AJUBA	1.0	1.0
+AK1		
+AK2		
+AKAP10		
+AKAP9		
+AKT1	1.0	2.0
+AKT1S1	1.0	2.0
+AKT2	1.0	2.0
+AKT3	1.0	2.0
+ALAD		
+ALAS2		
+ALB		
+ALDH1L2	1.0	2.0
+ALDH2	1.0	1.0
+ALDH3A2		
+ALDOB		
+ALG1		
+ALG11		
+ALG12		
+ALG2		
+ALG3		
+ALG6		
+ALG8		
+ALG9		
+ALK	1.0	2.0
+ALMS1		
+ALOX12B	1.0	1.0
+ALOX15B	1.0	1.0
+ALOX5	1.0	1.0
+ALOX5AP		
+ALOXE3		
+ALPL		
+ALS2		
+ALX4		
+AMELX		
+AMER1	1.0	1.0
+AMH		
+AMHR2		
+AMN		
+AMT		
+ANG		
+ANGPTL3		
+ANK1		
+ANK2		
+ANKH		
+ANKRD1		
+ANKRD11	1.0	1.0
+ANKRD26	1.0	2.0
+ANKRD7		
+ANO10		
+ANO5		
+ANO6		
+ANOS1		
+ANTXR1		
+ANTXR2		
+AP1S2		
+AP3B1		
+AP4E1		
+AP4M1		
+AP5Z1		
+APC	1.0	1.0
+APCDD1		
+APEH		
+APEX1	1.0	2.0
+APH1A		
+APLNR	1.0	1.0
+APOA1		
+APOA5		
+APOB		
+APOBEC3B	1.0	1.0
+APOC2		
+APOE		
+APOL1		
+APP		
+APTX		
+AQP12B		
+AQP2		
+AR	1.0	2.0
+ARAF	1.0	2.0
+ARFGEF2		
+ARFRP1		
+ARG1		
+ARHGAP20		
+ARHGAP24		
+ARHGAP26	1.0	1.0
+ARHGAP31		
+ARHGAP35	1.0	1.0
+ARHGAP5	1.0	2.0
+ARHGEF10	1.0	1.0
+ARHGEF10L	1.0	1.0
+ARHGEF12	1.0	1.0
+ARHGEF28	1.0	2.0
+ARHGEF6		
+ARID1A	1.0	1.0
+ARID1B	1.0	1.0
+ARID2	1.0	1.0
+ARID3A	1.0	1.0
+ARID3B	1.0	2.0
+ARID3C		
+ARID4A	1.0	1.0
+ARID4B	1.0	1.0
+ARID5A		
+ARID5B	1.0	1.0
+ARL11		
+ARL6		
+ARMS2		
+ARNT	1.0	1.0
+ARSA		
+ARSB		
+ARSL		
+ARX		
+ASAH1		
+ASCC1		
+ASCL1	1.0	2.0
+ASL		
+ASMTL		
+ASPA		
+ASPM		
+ASPN		
+ASPSCR1		
+ASS1		
+ASXL1	1.0	1.0
+ASXL2	1.0	1.0
+ATCAY		
+ATF1	1.0	2.0
+ATG16L1		
+ATG5		
+ATIC	1.0	2.0
+ATL1		
+ATM	1.0	1.0
+ATMIN	1.0	1.0
+ATN1		
+ATOH7		
+ATP10A		
+ATP13A2		
+ATP13A4		
+ATP1A1	1.0	1.0
+ATP1A2		
+ATP1A3		
+ATP2A2		
+ATP2B3	1.0	1.0
+ATP2C1		
+ATP6		
+ATP6AP1		
+ATP6AP2		
+ATP6V0A2		
+ATP6V0A4		
+ATP6V1B1		
+ATP6V1B2	1.0	1.0
+ATP7A		
+ATP7B		
+ATP8B1		
+ATR	1.0	1.0
+ATRIP	1.0	1.0
+ATRX	1.0	1.0
+ATXN1		
+ATXN10		
+ATXN2	1.0	1.0
+ATXN3		
+ATXN7	1.0	2.0
+AURKA	1.0	2.0
+AURKB	1.0	2.0
+AVP		
+AVPR2		
+AXIN1	1.0	1.0
+AXIN2	1.0	1.0
+AXL	1.0	2.0
+B2M	1.0	1.0
+B3GNT2		
+B4GALT1		
+B4GALT7		
+BAALC	1.0	2.0
+BABAM1		
+BACH2	1.0	1.0
+BAG3		
+BANK1		
+BAP1	1.0	1.0
+BARD1	1.0	1.0
+BAX	1.0	1.0
+BAZ1A	1.0	1.0
+BBC3	1.0	1.0
+BBS1		
+BBS10		
+BBS12		
+BBS2		
+BBS4		
+BBS5		
+BBS7		
+BBS9		
+BCKDHA		
+BCKDHB		
+BCL10	1.0	1.0
+BCL11A	1.0	2.0
+BCL11B	1.0	1.0
+BCL2	1.0	2.0
+BCL2L1		
+BCL2L11	1.0	1.0
+BCL2L12	1.0	2.0
+BCL2L2	1.0	2.0
+BCL3	1.0	2.0
+BCL6	1.0	2.0
+BCL7A	1.0	1.0
+BCL9	1.0	2.0
+BCL9L	1.0	1.0
+BCLAF1		
+BCO1		
+BCOR	1.0	1.0
+BCORL1	1.0	1.0
+BCR	1.0	2.0
+BDNF		
+BEAN1		
+BEST1		
+BIN1		
+BIRC3	1.0	1.0
+BIRC6	1.0	2.0
+BLK		
+BLM	1.0	1.0
+BLNK		
+BLOC1S3		
+BLOC1S6		
+BLVRA		
+BMP15		
+BMP4		
+BMP5		
+BMPR1A	1.0	1.0
+BMPR2		
+BRAF	1.0	2.0
+BRCA1	1.0	1.0
+BRCA2	1.0	1.0
+BRCC3		
+BRD3	1.0	2.0
+BRD4	1.0	2.0
+BRIP1	1.0	1.0
+BRSK1	1.0	1.0
+BRWD3		
+BSCL2		
+BSN		
+BSND		
+BTBD9		
+BTD		
+BTG1	1.0	1.0
+BTG2	1.0	1.0
+BTK	1.0	1.0
+BTLA		
+BTNL2		
+BUB1B	1.0	1.0
+BUD13		
+C15orf65		
+C1QTNF5		
+C1orf141		
+C2orf16		
+C3		
+C4A		
+C4B		
+C4B_2		
+C6orf15		
+C6orf223		
+C7orf69		
+C9orf72		
+CA2		
+CA4		
+CACNA1A		
+CACNA1C		
+CACNA1D	1.0	2.0
+CACNA1F		
+CACNA1H		
+CACNA1S		
+CACNA2D4		
+CACNB2		
+CACNB4		
+CACNG2		
+CAD	1.0	2.0
+CALR	1.0	2.0
+CALR3		
+CAMK4		
+CAMTA1	1.0	1.0
+CANT1	1.0	2.0
+CAPN10		
+CAPN3		
+CARD11	1.0	2.0
+CARD9		
+CARM1		
+CARS	1.0	1.0
+CARS1	1.0	1.0
+CASK		
+CASP10		
+CASP3	1.0	1.0
+CASP8	1.0	1.0
+CASP9	1.0	1.0
+CASR	1.0	1.0
+CAT		
+CATSPER1		
+CATSPER2		
+CAV1		
+CAV3		
+CAVIN1		
+CAVIN4		
+CBFA2T3	1.0	1.0
+CBFB	1.0	1.0
+CBL	1.0	1.0
+CBLB	1.0	1.0
+CBLC		
+CBS		
+CBX2		
+CC2D1A		
+CCDC121		
+CCDC122		
+CCDC39		
+CCDC40		
+CCDC6	1.0	1.0
+CCHCR1		
+CCM2		
+CCN6	1.0	1.0
+CCNB1IP1	1.0	1.0
+CCNB3	1.0	2.0
+CCNC	1.0	1.0
+CCND1	1.0	2.0
+CCND2	1.0	2.0
+CCND3	1.0	2.0
+CCNE1	1.0	2.0
+CCNQ	1.0	1.0
+CCNY		
+CCR4	1.0	2.0
+CCR5		
+CCR7	1.0	2.0
+CCSER1		
+CCT5		
+CCT6B		
+CD19	1.0	2.0
+CD209		
+CD22		
+CD24		
+CD247		
+CD274	1.0	1.0
+CD276	1.0	2.0
+CD28	1.0	2.0
+CD2AP		
+CD36		
+CD40		
+CD40LG		
+CD46		
+CD58	1.0	1.0
+CD70	1.0	2.0
+CD74	1.0	2.0
+CD79A	1.0	2.0
+CD79B	1.0	2.0
+CD81		
+CDAN1		
+CDC42	1.0	2.0
+CDC5L		
+CDC73	1.0	1.0
+CDH1	1.0	1.0
+CDH10	1.0	1.0
+CDH11	1.0	1.0
+CDH15		
+CDH17	1.0	2.0
+CDH2	1.0	2.0
+CDH23		
+CDH3		
+CDH4	1.0	2.0
+CDHR1		
+CDK12	1.0	1.0
+CDK4	1.0	2.0
+CDK6	1.0	2.0
+CDK8	1.0	2.0
+CDKAL1		
+CDKL5		
+CDKN1A	1.0	1.0
+CDKN1B	1.0	1.0
+CDKN1C	1.0	1.0
+CDKN2A	1.0	1.0
+CDKN2B	1.0	1.0
+CDKN2C	1.0	1.0
+CDKN3		
+CDON		
+CDSN		
+CDX2	1.0	1.0
+CEBPA	1.0	1.0
+CEL		
+CENPA		
+CENPC		
+CEP290		
+CEP43		
+CEP72		
+CEP89		
+CERKL		
+CETP		
+CFAP126		
+CFB		
+CFC1		
+CFD		
+CFH		
+CFHR5		
+CFI		
+CFL2		
+CFTR		
+CGNL1		
+CHAT		
+CHCHD7		
+CHD2	1.0	1.0
+CHD4	1.0	2.0
+CHD7		
+CHEK1	1.0	1.0
+CHEK2	1.0	1.0
+CHIC2		
+CHM		
+CHMP2B		
+CHN1		
+CHRNA1		
+CHRNA2		
+CHRNA4		
+CHRNB1		
+CHRNB2		
+CHRND		
+CHRNE		
+CHST11	1.0	2.0
+CHST14		
+CHST3		
+CHST6		
+CHTF8	1.0	1.0
+CIC	1.0	1.0
+CIITA	1.0	1.0
+CILK1		
+CILP		
+CISD2		
+CKS1B		
+CLCN1		
+CLCN2		
+CLCN5		
+CLCN7		
+CLCNKA		
+CLCNKB		
+CLEC7A		
+CLIP1		
+CLN3		
+CLN5		
+CLN6		
+CLN8		
+CLP1		
+CLRN1		
+CLTC	1.0	1.0
+CLTCL1	1.0	1.0
+CMC4		
+CMTR2	1.0	1.0
+CNBD1		
+CNBP	1.0	1.0
+CNGA1		
+CNGA3		
+CNGB1		
+CNGB3		
+CNNM4		
+CNOT3	1.0	1.0
+CNTNAP2		
+CNTNAP5		
+CNTRL		
+COA1		
+COA5		
+COG1		
+COG4		
+COG5		
+COG6		
+COG7		
+COG8		
+COL11A2		
+COL17A1		
+COL18A1		
+COL1A1	1.0	2.0
+COL1A2		
+COL2A1	1.0	1.0
+COL3A1		
+COL4A1		
+COL4A3		
+COL4A4		
+COL4A5		
+COL5A1		
+COL5A2		
+COL6A1		
+COL6A2		
+COL6A3		
+COL6A5		
+COL7A1		
+COL8A2		
+COL9A1		
+COL9A2		
+COL9A3		
+COLQ		
+COMP		
+COP1	1.0	1.0
+COQ8A		
+COX1		
+COX10		
+COX15		
+COX2		
+COX3		
+COX4I2		
+COX6B1		
+COX6C		
+CPA6		
+CPEB3	1.0	1.0
+CPOX		
+CPS1		
+CR2		
+CRB1		
+CRBN	1.0	1.0
+CREB1	1.0	2.0
+CREB3L1	1.0	1.0
+CREB3L2	1.0	2.0
+CREBBP	1.0	1.0
+CRELD1		
+CREM		
+CRKL	1.0	2.0
+CRLF2	1.0	2.0
+CRNKL1		
+CRTAP		
+CRTC1	1.0	2.0
+CRTC3		
+CRX		
+CRYAA		
+CRYGC		
+CRYGD		
+CSDE1		
+CSF1		
+CSF1R	1.0	2.0
+CSF2RA		
+CSF3R	1.0	2.0
+CSMD3		
+CSNK1D		
+CSRP3		
+CST3		
+CSTB		
+CTC1		
+CTCF	1.0	1.0
+CTDNEP1	1.0	1.0
+CTDP1		
+CTHRC1		
+CTLA4	1.0	2.0
+CTNNA1	1.0	1.0
+CTNNA2	1.0	2.0
+CTNNB1	1.0	2.0
+CTNND1		
+CTNND2	1.0	2.0
+CTNS		
+CTR9	1.0	1.0
+CTSA		
+CTSC		
+CTSD		
+CTSK		
+CUBN		
+CUL3	1.0	1.0
+CUL4A	1.0	2.0
+CUL4B		
+CUX1	1.0	1.0
+CX3CR1		
+CXCR1		
+CXCR2		
+CXCR4	1.0	2.0
+CYB5A		
+CYB5R3		
+CYBB		
+CYCS		
+CYCSP42		
+CYLD	1.0	1.0
+CYP11B1		
+CYP11B2		
+CYP17A1		
+CYP19A1	1.0	2.0
+CYP1B1		
+CYP21A2		
+CYP24A1		
+CYP27A1		
+CYP27B1		
+CYP27C1		
+CYP2C8		
+CYP2R1		
+CYP4F22		
+CYP7B1		
+CYSLTR2	1.0	2.0
+CYTB		
+DAB2		
+DAB2IP		
+DAGLA		
+DAP		
+DAXX	1.0	1.0
+DAZ1		
+DAZ2		
+DAZ3		
+DAZ4		
+DAZAP1		
+DBT		
+DCAF12L2		
+DCC		
+DCDC2		
+DCLRE1C		
+DCN		
+DCTN1		
+DCUN1D1	1.0	2.0
+DCX		
+DDB2	1.0	1.0
+DDIT3	1.0	2.0
+DDR1		
+DDR2	1.0	2.0
+DDX10	1.0	1.0
+DDX3X	1.0	1.0
+DDX3Y		
+DDX4	1.0	2.0
+DDX41	1.0	1.0
+DDX5	1.0	2.0
+DDX6	1.0	2.0
+DEK	1.0	2.0
+DES		
+DGCR8	1.0	2.0
+DHCR7		
+DHDDS		
+DHFR		
+DHFRP2		
+DHH		
+DHODH		
+DHX15	1.0	1.0
+DIAPH1		
+DIAPH2		
+DICER1	1.0	1.0
+DIRC1		
+DIS3	1.0	1.0
+DIS3L2	1.0	1.0
+DKC1		
+DKK1		
+DKK2		
+DKK3		
+DKK4		
+DLD		
+DLEC1		
+DLG3		
+DLL3	1.0	2.0
+DLX3		
+DMBT1		
+DMD		
+DMP1		
+DMPK		
+DNAAF1		
+DNAAF2		
+DNAAF4		
+DNAH11		
+DNAH5		
+DNAI1		
+DNAI2		
+DNAJB1		
+DNAJC19		
+DNAJC5		
+DNAL1		
+DNASE1		
+DNM2	1.0	1.0
+DNMT1	1.0	2.0
+DNMT3A	1.0	1.0
+DNMT3B	1.0	1.0
+DOCK8		
+DOK7		
+DOLK		
+DOT1L	1.0	2.0
+DPAGT1		
+DPM1		
+DPP10		
+DPP4		
+DPP6		
+DPYD		
+DPYS		
+DRD2		
+DRD3		
+DROSHA	1.0	1.0
+DSC2		
+DSG1		
+DSG2		
+DSG4		
+DSP		
+DSPP		
+DTNA		
+DTNBP1		
+DTX1	1.0	1.0
+DUOX2		
+DUOXA2		
+DUSP2		
+DUSP22	1.0	1.0
+DUSP4	1.0	1.0
+DUSP9		
+DYNC1H1		
+DYNC2H1		
+DYRK1A		
+DYSF		
+E2F3	1.0	2.0
+EBF1	1.0	1.0
+EBP		
+ECM1		
+ECSIT	1.0	2.0
+ECT2L	1.0	1.0
+EDA		
+EDAR		
+EDARADD		
+EDIL3		
+EDN3		
+EDNRB		
+EED	1.0	1.0
+EFEMP2		
+EFHC1		
+EGFL7	1.0	2.0
+EGFR	1.0	2.0
+EGLN1		
+EGR1	1.0	1.0
+EGR2	1.0	1.0
+EHBP1		
+EHMT1		
+EIF1AX	1.0	2.0
+EIF2AK3		
+EIF2B1	1.0	1.0
+EIF2B2		
+EIF2B3		
+EIF2B4		
+EIF2B5		
+EIF3A		
+EIF3E	1.0	1.0
+EIF4A2	1.0	2.0
+EIF4E	1.0	2.0
+EIF4G1		
+ELAC2		
+ELANE		
+ELF3	1.0	1.0
+ELF4	1.0	1.0
+ELK4	1.0	2.0
+ELL	1.0	1.0
+ELL2	1.0	1.0
+ELN	1.0	2.0
+ELOC		
+ELOVL4		
+ELP1		
+ELP2		
+EMD		
+EML4	1.0	2.0
+EMSY	1.0	2.0
+EMX2		
+ENAM		
+ENG		
+ENPP1		
+EOMES		
+EP300	1.0	1.0
+EP400	1.0	1.0
+EPAS1	1.0	1.0
+EPB41		
+EPB41L1		
+EPB42		
+EPCAM	1.0	1.0
+EPHA3	1.0	1.0
+EPHA4		
+EPHA5		
+EPHA7	1.0	1.0
+EPHB1	1.0	1.0
+EPHB2		
+EPHB4	1.0	2.0
+EPM2A		
+EPO		
+EPOR	1.0	2.0
+EPS15	1.0	1.0
+ERAP1		
+ERBB2	1.0	2.0
+ERBB3	1.0	2.0
+ERBB4	1.0	1.0
+ERC1	1.0	2.0
+ERCC1	1.0	1.0
+ERCC2	1.0	1.0
+ERCC3	1.0	1.0
+ERCC4	1.0	1.0
+ERCC5	1.0	1.0
+ERCC6	1.0	2.0
+ERCC8		
+ERF	1.0	1.0
+ERG	1.0	2.0
+ERRFI1	1.0	1.0
+ESCO2	1.0	1.0
+ESR1	1.0	1.0
+ETAA1	1.0	1.0
+ETFA		
+ETFB		
+ETFDH		
+ETNK1	1.0	1.0
+ETS1	1.0	1.0
+ETV1	1.0	2.0
+ETV4	1.0	2.0
+ETV5	1.0	2.0
+ETV6	1.0	1.0
+EVC		
+EVC2		
+EWSR1	1.0	2.0
+EXOSC6		
+EXT1	1.0	1.0
+EXT2	1.0	1.0
+EYA1		
+EYA4		
+EYS		
+EZH1	1.0	2.0
+EZH2	1.0	1.0
+EZHIP	1.0	2.0
+EZR		
+F10		
+F11		
+F12		
+F13A1		
+F13B		
+F2		
+F3		
+F5		
+F7		
+F8		
+F9		
+FA2H		
+FADD		
+FAF1		
+FAH		
+FAM131B		
+FAM135B		
+FAM161A		
+FAM47C		
+FAM83H		
+FANCA	1.0	1.0
+FANCB		
+FANCC	1.0	1.0
+FANCD2	1.0	1.0
+FANCE	1.0	1.0
+FANCF	1.0	1.0
+FANCG	1.0	1.0
+FANCI		
+FANCL	1.0	1.0
+FANCM	1.0	1.0
+FAS	1.0	1.0
+FASLG		
+FAT1	1.0	1.0
+FAT3		
+FAT4	1.0	1.0
+FBLN1		
+FBLN2	1.0	1.0
+FBLN5		
+FBN1		
+FBP1		
+FBXO11	1.0	1.0
+FBXO15		
+FBXO25		
+FBXO31		
+FBXO7		
+FBXW2		
+FBXW4		
+FBXW7	1.0	1.0
+FCGR2A		
+FCGR2B	1.0	2.0
+FCRL3		
+FCRL4	1.0	2.0
+FECH		
+FEN1	1.0	1.0
+FERMT3		
+FES	1.0	1.0
+FEV	1.0	2.0
+FGA		
+FGB		
+FGD1		
+FGD4		
+FGF1	1.0	2.0
+FGF10	1.0	2.0
+FGF12		
+FGF14	1.0	1.0
+FGF19	1.0	2.0
+FGF2	1.0	2.0
+FGF20		
+FGF23	1.0	2.0
+FGF3	1.0	2.0
+FGF4	1.0	2.0
+FGF5	1.0	2.0
+FGF6	1.0	2.0
+FGF7	1.0	2.0
+FGF8	1.0	2.0
+FGF9	1.0	2.0
+FGFR1	1.0	2.0
+FGFR1OP		
+FGFR1OP2		
+FGFR2	1.0	2.0
+FGFR3	1.0	2.0
+FGFR4	1.0	2.0
+FGG		
+FGGY		
+FH	1.0	1.0
+FHIT	1.0	1.0
+FHL1		
+FIG4		
+FIGLA		
+FIP1L1		
+FKBP10		
+FKBP9		
+FKRP		
+FKTN		
+FLCN	1.0	1.0
+FLG		
+FLI1	1.0	2.0
+FLII		
+FLNA		
+FLNB		
+FLNC		
+FLT1	1.0	2.0
+FLT3	1.0	2.0
+FLT4	1.0	2.0
+FLVCR2		
+FLYWCH1		
+FMR1		
+FNBP1		
+FOLH1	1.0	2.0
+FOLR1	1.0	2.0
+FOXA1	1.0	1.0
+FOXC2		
+FOXE3		
+FOXF1	1.0	1.0
+FOXG1		
+FOXJ1		
+FOXL2	1.0	1.0
+FOXN4	1.0	2.0
+FOXO1	1.0	1.0
+FOXO3	1.0	1.0
+FOXO4	1.0	1.0
+FOXP1	1.0	1.0
+FOXP2		
+FOXP3		
+FOXR1	1.0	2.0
+FRAS1		
+FREM2		
+FRMD7		
+FRS2	1.0	2.0
+FRYL		
+FRZB		
+FSCN2		
+FSHR		
+FSTL1	1.0	2.0
+FSTL3	1.0	2.0
+FTL		
+FTSJ1		
+FUBP1	1.0	1.0
+FUCA1		
+FURIN	1.0	2.0
+FUS	1.0	1.0
+FXN		
+FYN	1.0	2.0
+FZD4		
+FZR1	1.0	1.0
+G6PC		
+G6PC3		
+G6PD		
+GAA		
+GAB1	1.0	2.0
+GAB2	1.0	2.0
+GABRA1		
+GABRA6	1.0	2.0
+GABRB3		
+GABRD		
+GABRG2		
+GAD1		
+GADD45B		
+GALC		
+GALE		
+GALK1		
+GALNS		
+GALNT12		
+GALNT3		
+GALT		
+GAN		
+GAPDHP26		
+GARS1		
+GAS7		
+GATA1	1.0	1.0
+GATA2	1.0	1.0
+GATA3	1.0	1.0
+GATA4	1.0	1.0
+GATA6	1.0	2.0
+GATD3A		
+GBA		
+GBE1		
+GCDH		
+GCH1		
+GCKR		
+GCLC		
+GCM2		
+GCSH		
+GDAP1		
+GDF1		
+GDF5		
+GDF6		
+GDI1		
+GDNF		
+GEN1		
+GFAP		
+GFER		
+GFM1		
+GGCX		
+GH1		
+GHR		
+GHRHR		
+GHSR		
+GID4		
+GIGYF2		
+GJA1		
+GJA3		
+GJA5		
+GJB1		
+GJB2		
+GJB3		
+GJB4		
+GJB6		
+GJC2		
+GLA		
+GLB1		
+GLDC		
+GLE1		
+GLI1	1.0	2.0
+GLI2		
+GLI3		
+GLIS3		
+GLMN		
+GLRA1		
+GLRB		
+GLUD1		
+GM2A		
+GMPS		
+GNA11	1.0	2.0
+GNA12	1.0	2.0
+GNA13	1.0	1.0
+GNAQ	1.0	2.0
+GNAS	1.0	2.0
+GNAT2		
+GNB1	1.0	2.0
+GNE		
+GNPAT		
+GNPTAB		
+GNPTG		
+GNRHR		
+GNS		
+GOLGA5		
+GOLPH3		
+GOPC		
+GOSR2		
+GOT1		
+GP1BB		
+GP9		
+GPC3	1.0	1.0
+GPC5	1.0	1.0
+GPD1L		
+GPHN		
+GPI		
+GPN1		
+GPR12		
+GPR143		
+GPR176		
+GPR35		
+GPS2	1.0	1.0
+GRB7	1.0	2.0
+GREM1	1.0	2.0
+GRHPR		
+GRIA3		
+GRIK2		
+GRIN1		
+GRIN2A	1.0	1.0
+GRIN2B		
+GRM3	1.0	2.0
+GRN		
+GSDMB		
+GSK3B	1.0	2.0
+GSN		
+GSTP1	1.0	1.0
+GTF2H5		
+GTF2I	1.0	2.0
+GTSE1		
+GUCA1A		
+GUCA1B		
+GUCY2D		
+GUSB		
+GYS1		
+GYS2		
+H1-2		
+H1-3	1.0	1.0
+H1-4	1.0	2.0
+H1-5	1.0	1.0
+H2AC11		
+H2AC16		
+H2AC17	1.0	2.0
+H2AC6		
+H2BC11		
+H2BC12		
+H2BC17		
+H2BC4		
+H2BC5		
+H2BC8		
+H3-3A	1.0	2.0
+H3-3B	1.0	2.0
+H3-4		
+H3-5		
+H3C1		
+H3C10		
+H3C11		
+H3C12		
+H3C13		
+H3C14		
+H3C15		
+H3C2	1.0	2.0
+H3C3		
+H3C4		
+H3C6		
+H3C7		
+H3C8		
+H3F3A	1.0	2.0
+H3F3B	1.0	2.0
+H3P6		
+H4C6		
+H4C9		
+HACE1		
+HADHA		
+HADHAP1		
+HAMP		
+HBA1		
+HBA2		
+HBB		
+HBG2		
+HCG22		
+HCG26		
+HCG27		
+HCG9		
+HCN4		
+HCP5		
+HCRT		
+HDAC1	1.0	2.0
+HDAC2	1.0	2.0
+HDAC4	1.0	1.0
+HDAC7	1.0	2.0
+HERPUD1		
+HESX1		
+HEXA		
+HEXB		
+HEY1	1.0	2.0
+HFE	1.0	2.0
+HGD		
+HGF	1.0	2.0
+HGSNAT		
+HIF1A	1.0	2.0
+HIP1	1.0	2.0
+HIRA	1.0	1.0
+HIST1H3B	1.0	2.0
+HJV		
+HK1		
+HLA-A	1.0	1.0
+HLA-B	1.0	1.0
+HLA-C	1.0	1.0
+HLA-DQA1		
+HLA-DQA2		
+HLA-DQB1		
+HLA-DRA		
+HLA-DRB1		
+HLA-DRB5		
+HLA-DRB6		
+HLA-DRB9		
+HLA-G		
+HLA-S		
+HLA-X		
+HLCS		
+HLF	1.0	2.0
+HMBS		
+HMCN1		
+HMGA1	1.0	2.0
+HMGA2	1.0	2.0
+HMGN2P46		
+HNF1A	1.0	1.0
+HNF1B		
+HNF4A		
+HNRNPA2B1	1.0	2.0
+HOGA1		
+HOOK3		
+HOXA1		
+HOXA11	1.0	1.0
+HOXA13	1.0	2.0
+HOXA3		
+HOXA9	1.0	1.0
+HOXB13	1.0	1.0
+HOXC11	1.0	2.0
+HOXC13	1.0	2.0
+HOXD10		
+HOXD11	1.0	2.0
+HOXD13	1.0	2.0
+HPD		
+HPGD		
+HPRT1		
+HPS1		
+HPS3		
+HPS4		
+HPS5		
+HPS6		
+HR		
+HRAS	1.0	2.0
+HRG		
+HSD11B2		
+HSD17B10		
+HSD17B2	1.0	1.0
+HSD17B3		
+HSD17B4		
+HSD3B1	1.0	2.0
+HSD3B2		
+HSF4		
+HSP90AA1	1.0	2.0
+HSP90AB1		
+HSPA5		
+HSPB1		
+HSPB3		
+HSPB8		
+HSPBAP1		
+HSPD1		
+HSPG2		
+HTATIP2	1.0	1.0
+HTRA1		
+HTRA2		
+HTT		
+HUWE1		
+HYAL1		
+ICOS		
+ICOSLG	1.0	2.0
+ID1	1.0	2.0
+ID3	1.0	1.0
+IDH1	1.0	2.0
+IDH2	1.0	2.0
+IDH3B		
+IDS		
+IDUA		
+IER3		
+IFIH1		
+IFITM4P		
+IFNAR1		
+IFNG		
+IFNGR1	1.0	1.0
+IFNGR2		
+IGBP1		
+IGF1	1.0	2.0
+IGF1R	1.0	2.0
+IGF2	1.0	2.0
+IGF2BP2	1.0	1.0
+IGH		
+IGHMBP2		
+IGK		
+IGL		
+IGLL1		
+IKBKB	1.0	2.0
+IKBKE	1.0	2.0
+IKBKG		
+IKZF1	1.0	1.0
+IKZF2		
+IKZF3	1.0	1.0
+IL10		
+IL10RA		
+IL10RB		
+IL12B		
+IL12RB1		
+IL12RB2		
+IL13		
+IL17F		
+IL17RA		
+IL17REL		
+IL1R1		
+IL1R2		
+IL1RAPL1		
+IL1RN		
+IL2		
+IL21R		
+IL23R		
+IL2RA		
+IL2RG		
+IL3	1.0	2.0
+IL4		
+IL6		
+IL6ST	1.0	2.0
+IL7R	1.0	2.0
+IMMP2L		
+IMPDH1		
+IMPG2		
+INAVA		
+INF2		
+ING1	1.0	1.0
+ING3		
+INHA	1.0	1.0
+INHBA	1.0	1.0
+INPP4A		
+INPP4B	1.0	1.0
+INPP5D		
+INPPL1	1.0	1.0
+INS		
+INSL3		
+INSR	1.0	2.0
+INTS6	1.0	1.0
+IQGAP1	1.0	2.0
+IQSEC2		
+IRF1	1.0	1.0
+IRF2	1.0	1.0
+IRF4	1.0	1.0
+IRF5		
+IRF6		
+IRF8	1.0	1.0
+IRGM		
+IRS1	1.0	2.0
+IRS2	1.0	2.0
+IRS4	1.0	1.0
+ISCU		
+ISX		
+ITCH		
+ITGA2B		
+ITGA6		
+ITGA7		
+ITGAM		
+ITGAV		
+ITGB2		
+ITGB3		
+ITGB4		
+ITK		
+ITM2B		
+ITPKB	1.0	2.0
+ITPKC		
+ITPR1		
+IYD		
+JAG1		
+JAK1	1.0	1.0
+JAK2	1.0	2.0
+JAK3	1.0	2.0
+JARID2	1.0	1.0
+JAZF1	1.0	2.0
+JPH2		
+JUN	1.0	2.0
+JUP		
+KALRN		
+KANK1		
+KARS1		
+KAT6A	1.0	2.0
+KAT6B	1.0	1.0
+KAT7	1.0	2.0
+KBTBD13		
+KBTBD4		
+KCNA1		
+KCNA5		
+KCNC3		
+KCND2		
+KCNE1		
+KCNE2		
+KCNE3		
+KCNH2		
+KCNJ1		
+KCNJ13		
+KCNJ2		
+KCNJ5	1.0	2.0
+KCNJ8		
+KCNK18		
+KCNMA1		
+KCNQ1		
+KCNQ2		
+KCNQ3		
+KCNV2		
+KCP		
+KCTD7		
+KDM2B		
+KDM4C		
+KDM5A	1.0	2.0
+KDM5C	1.0	1.0
+KDM5D	1.0	1.0
+KDM6A	1.0	1.0
+KDR	1.0	2.0
+KDSR		
+KEAP1	1.0	1.0
+KEL	1.0	2.0
+KHDC3L		
+KIAA0319		
+KIAA1549	1.0	2.0
+KIF1A		
+KIF1B		
+KIF21A		
+KIF21B		
+KIF5A		
+KIF5B		
+KIF7		
+KIRREL3		
+KISS1R		
+KIT	1.0	2.0
+KITLG		
+KL		
+KLF1		
+KLF11		
+KLF2	1.0	1.0
+KLF3	1.0	1.0
+KLF4	1.0	1.0
+KLF5	1.0	2.0
+KLF6	1.0	1.0
+KLHDC8B		
+KLHL6	1.0	1.0
+KLHL7		
+KLK2		
+KLK4		
+KMT2A	1.0	1.0
+KMT2B	1.0	1.0
+KMT2C	1.0	1.0
+KMT2D	1.0	1.0
+KMT5A		
+KNG1		
+KNL1	1.0	1.0
+KNSTRN	1.0	2.0
+KPNA7		
+KPNB1		
+KRAS	1.0	2.0
+KRIT1		
+KRT1		
+KRT10		
+KRT12		
+KRT13		
+KRT14		
+KRT16		
+KRT17		
+KRT18		
+KRT2		
+KRT3		
+KRT5		
+KRT6A		
+KRT6B		
+KRT74		
+KRT75		
+KRT8		
+KRT81		
+KRT83		
+KRT86		
+KRT9		
+KSR2	1.0	2.0
+KTN1		
+L1CAM		
+LACC1		
+LAMA3		
+LAMB2		
+LAMB3		
+LAMC2		
+LAMP2		
+LAMTOR2		
+LARGE1		
+LARP4B	1.0	1.0
+LASP1		
+LATS1	1.0	1.0
+LATS2	1.0	1.0
+LBR		
+LCA5		
+LCAT		
+LCK	1.0	2.0
+LCP1		
+LDB3		
+LDHA		
+LDLR		
+LDLRAP1		
+LEF1	1.0	1.0
+LEMD3		
+LEP		
+LEPROTL1	1.0	1.0
+LGI1		
+LGR5	1.0	2.0
+LHCGR		
+LHFPL6		
+LHX3		
+LHX4		
+LIFR		
+LIG4		
+LINC01235		
+LINC01548		
+LIPA		
+LIPC		
+LIPH		
+LIPI		
+LIPN		
+LITAF		
+LMAN1		
+LMBR1		
+LMNA	1.0	2.0
+LMNB2		
+LMO1	1.0	2.0
+LMO2	1.0	2.0
+LMX1B		
+LNP1		
+LOC353007		
+LOC353010		
+LOC400867		
+LOR		
+LOX		
+LOXL1		
+LPAR6		
+LPIN1		
+LPL		
+LPP	1.0	2.0
+LRAT		
+LRATD2		
+LRIG3	1.0	1.0
+LRP1B	1.0	1.0
+LRP5	1.0	1.0
+LRP6	1.0	2.0
+LRP8		
+LRPPRC		
+LRRC32		
+LRRC8A		
+LRRK2		
+LSM14A		
+LSP1		
+LTA		
+LTA4H		
+LTB	1.0	1.0
+LTBR		
+LTK	1.0	2.0
+LYL1	1.0	2.0
+LYN	1.0	2.0
+LYST		
+LYZ		
+LZTR1	1.0	1.0
+LZTS1		
+MACC1	1.0	2.0
+MACROD1		
+MACROH2A1		
+MAD1L1		
+MAD2L2	1.0	1.0
+MAF	1.0	2.0
+MAFB	1.0	2.0
+MAGEC2		
+MAGED1		
+MAGI2	1.0	1.0
+MAGT1		
+MAK		
+MAL2	1.0	1.0
+MALAT1		
+MALRD1		
+MALT1	1.0	2.0
+MAML2	1.0	2.0
+MAN1B1		
+MAN2B1		
+MANBA		
+MAP2K1	1.0	2.0
+MAP2K2	1.0	2.0
+MAP2K3		
+MAP2K4	1.0	1.0
+MAP3K1	1.0	1.0
+MAP3K13	1.0	1.0
+MAP3K14	1.0	2.0
+MAP3K21	1.0	2.0
+MAP3K6		
+MAP3K7	1.0	2.0
+MAP3K9		
+MAP4K4	1.0	2.0
+MAPK1	1.0	2.0
+MAPK3	1.0	2.0
+MAPK8IP1		
+MAPKAP1		
+MAPT		
+MASTL		
+MATN3		
+MATR3		
+MAX	1.0	1.0
+MB21D2		
+MBD4	1.0	1.0
+MBD5		
+MBD6	1.0	1.0
+MBNL1		
+MC1R		
+MC4R		
+MCF2L2		
+MCFD2		
+MCL1	1.0	2.0
+MCOLN1		
+MDC1		
+MDM2	1.0	2.0
+MDM4	1.0	2.0
+MDS2		
+MECOM	1.0	2.0
+MECP2		
+MED12	1.0	1.0
+MED13L		
+MED23		
+MED25		
+MEF2A		
+MEF2B	1.0	2.0
+MEF2C	1.0	1.0
+MEF2D	1.0	2.0
+MEFV		
+MEIS1		
+MELK		
+MEN1	1.0	1.0
+MERTK	1.0	2.0
+MET	1.0	2.0
+MEX3C		
+MFAP4		
+MFHAS1		
+MFN2		
+MFRP		
+MFSD8		
+MGA	1.0	1.0
+MGAM	1.0	2.0
+MGAT2		
+MGMT	1.0	1.0
+MIA2		
+MIB1		
+MICA		
+MICB		
+MICE		
+MICU3		
+MID1		
+MIDEAS	1.0	1.0
+MIF		
+MIP		
+MITF	1.0	1.0
+MKI67	1.0	2.0
+MKKS		
+MKNK1		
+MKS1		
+MLC1		
+MLF1	1.0	1.0
+MLH1	1.0	1.0
+MLH3	1.0	1.0
+MLLT1		
+MLLT10	1.0	2.0
+MLLT11		
+MLLT3	1.0	2.0
+MLLT6		
+MMP2		
+MMP20		
+MMP9		
+MN1	1.0	2.0
+MNX1		
+MOB3B	1.0	1.0
+MOG		
+MOGS		
+MPDU1		
+MPDZ		
+MPEG1		
+MPI		
+MPL	1.0	2.0
+MPLKIP		
+MPZ		
+MRE11	1.0	1.0
+MREG		
+MRPL49P2		
+MRPS16		
+MRPS22		
+MRTFA	1.0	1.0
+MS4A1		
+MSH2	1.0	1.0
+MSH3	1.0	1.0
+MSH6	1.0	1.0
+MSI1	1.0	2.0
+MSI2	1.0	2.0
+MSLN		
+MSMB		
+MSN		
+MSR1		
+MST1	1.0	1.0
+MST1R	1.0	2.0
+MSTN		
+MSX1		
+MSX2		
+MTAP	1.0	1.0
+MTCP1	1.0	2.0
+MTHFD1		
+MTHFD2	1.0	2.0
+MTHFR		
+MTM1		
+MTMR14		
+MTMR2		
+MTNR1B		
+MTOR	1.0	2.0
+MTR		
+MTRR		
+MTTP		
+MTUS1		
+MUC1		
+MUC16		
+MUC4		
+MUC6		
+MUC7		
+MUSK		
+MUTYH	1.0	1.0
+MVK		
+MXI1		
+MYB	1.0	2.0
+MYBL1	1.0	2.0
+MYBPC3		
+MYC	1.0	2.0
+MYCL	1.0	2.0
+MYCN	1.0	2.0
+MYD88	1.0	2.0
+MYF6		
+MYH11	1.0	1.0
+MYH2		
+MYH6		
+MYH7		
+MYH8		
+MYH9	1.0	1.0
+MYL2		
+MYL3		
+MYLK		
+MYLK2		
+MYO18A		
+MYO1E		
+MYO5A	1.0	2.0
+MYO6		
+MYO7A		
+MYO9B		
+MYOC		
+MYOD1	1.0	1.0
+MYOT		
+MYOZ2		
+N4BP2	1.0	1.0
+NAB2	1.0	1.0
+NACA		
+NADK	1.0	2.0
+NAGA		
+NAGLU		
+NAV3		
+NBEA		
+NBEAL2		
+NBEAP1		
+NBN	1.0	1.0
+NCF1		
+NCF2		
+NCF4		
+NCKIPSD		
+NCOA1		
+NCOA2	1.0	2.0
+NCOA3	1.0	2.0
+NCOA4	1.0	1.0
+NCOR1	1.0	1.0
+NCOR2	1.0	1.0
+NCSTN	1.0	2.0
+ND1		
+ND2		
+ND3		
+ND4		
+ND4L		
+ND5		
+ND6		
+NDE1		
+NDRG1	1.0	1.0
+NDUFA13		
+NDUFS7		
+NDUFS8		
+NDUFV1		
+NEB		
+NECTIN1		
+NEFH		
+NEFL		
+NEGR1		
+NEK1		
+NETO1		
+NEU1		
+NEUROD1		
+NEUROG3		
+NEXN		
+NF1	1.0	1.0
+NF2	1.0	1.0
+NFATC2	1.0	1.0
+NFE2	1.0	2.0
+NFE2L2	1.0	1.0
+NFIB		
+NFKB2	1.0	1.0
+NFKBIA	1.0	1.0
+NFKBIE	1.0	1.0
+NFKBIL1		
+NGF		
+NHEJ1		
+NHERF1	1.0	1.0
+NHLRC1		
+NHP2		
+NIN		
+NIPA1		
+NIPBL		
+NKAIN2		
+NKX2-1	1.0	1.0
+NKX2-3		
+NKX2-5		
+NKX2-6		
+NKX3-1	1.0	1.0
+NLGN4X		
+NLRP1		
+NLRP12		
+NLRP3		
+NLRP7		
+NME8		
+NOBOX		
+NOD1		
+NOD2		
+NODAL		
+NOG		
+NONO		
+NOP10		
+NOP56		
+NOTCH1	1.0	1.0
+NOTCH2	1.0	1.0
+NOTCH3	1.0	1.0
+NOTCH4	1.0	1.0
+NPC1		
+NPC2		
+NPHP1		
+NPHS1		
+NPHS2		
+NPM1	1.0	1.0
+NPPA		
+NQO1	1.0	2.0
+NR0B1		
+NR0B2		
+NR2E3		
+NR2F2		
+NR3C2		
+NR4A3	1.0	2.0
+NR5A1		
+NRAD1		
+NRAS	1.0	2.0
+NRG1	1.0	1.0
+NRIP1		
+NRL		
+NSD1	1.0	1.0
+NSD2	1.0	2.0
+NSD3	1.0	2.0
+NSMF		
+NT5C2	1.0	2.0
+NT5C3A		
+NTF4		
+NTHL1	1.0	1.0
+NTRK1	1.0	1.0
+NTRK2	1.0	2.0
+NTRK3	1.0	2.0
+NUF2	1.0	2.0
+NUMA1		
+NUP214	1.0	2.0
+NUP62		
+NUP93		
+NUP98	1.0	2.0
+NUTM1	1.0	2.0
+NUTM2A		
+NUTM2B		
+NUTM2D		
+NXF5		
+NXPE1		
+NYX		
+OAT		
+OCA2		
+OCRL		
+OFD1		
+OGG1		
+OLIG1		
+OLIG2	1.0	2.0
+OLIG3		
+OLR1		
+OMD		
+ONECUT2	1.0	2.0
+OPA1		
+OPA3		
+OPCML		
+OPHN1		
+OPN1LW		
+OPN1MW		
+OPN1MW2		
+OPN1SW		
+OPTN		
+OR7H2P		
+ORMDL3		
+OSBPL3		
+OSGIN2		
+OSMR		
+OSTM1		
+OTC		
+OTUD3		
+P2RY8	1.0	1.0
+P3H1		
+PABPC1		
+PABPC1P9		
+PABPN1		
+PADI4		
+PAFAH1B1		
+PAFAH1B2		
+PAG1		
+PAH		
+PAK1	1.0	2.0
+PAK3		
+PAK5	1.0	2.0
+PALB2	1.0	1.0
+PALLD		
+PANK2		
+PARD3B		
+PARK7		
+PARP1	1.0	1.0
+PARP2		
+PARP3		
+PASK		
+PATZ1	1.0	1.0
+PAX2		
+PAX3	1.0	2.0
+PAX4		
+PAX5	1.0	1.0
+PAX6		
+PAX7	1.0	2.0
+PAX8	1.0	2.0
+PBRM1	1.0	1.0
+PBX1	1.0	2.0
+PC		
+PCARE		
+PCBD1		
+PCBP1		
+PCCA		
+PCCB		
+PCDH15		
+PCLO		
+PCM1		
+PCSK7		
+PCSK9		
+PDCD1	1.0	2.0
+PDCD10		
+PDCD11		
+PDCD1LG2	1.0	2.0
+PDE4D		
+PDE4DIP		
+PDE6A		
+PDE6B		
+PDE6C		
+PDE6G		
+PDE6H		
+PDE8B		
+PDGFB	1.0	2.0
+PDGFRA	1.0	2.0
+PDGFRB	1.0	2.0
+PDGFRL		
+PDHA1		
+PDHB		
+PDK1	1.0	2.0
+PDPK1		
+PDS5B	1.0	1.0
+PDX1		
+PDYN		
+PDZD7		
+PEPD		
+PER1	1.0	1.0
+PER2		
+PEX1		
+PEX10		
+PEX12		
+PEX13		
+PEX14		
+PEX16		
+PEX19		
+PEX2		
+PEX26		
+PEX3		
+PEX5		
+PEX6		
+PEX7		
+PFKM		
+PGAM2		
+PGBD5	1.0	2.0
+PGM1		
+PGR	1.0	2.0
+PHEX		
+PHF1		
+PHF19	1.0	2.0
+PHF23		
+PHF6	1.0	1.0
+PHF8		
+PHKA1		
+PHKA2		
+PHKB		
+PHKG2		
+PHLPP1	1.0	1.0
+PHLPP2	1.0	1.0
+PHOX2B	1.0	1.0
+PHYH		
+PICALM		
+PIGA	1.0	1.0
+PIGV		
+PIK3C2B	1.0	2.0
+PIK3C2G		
+PIK3C3		
+PIK3CA	1.0	2.0
+PIK3CB	1.0	2.0
+PIK3CD	1.0	2.0
+PIK3CG	1.0	2.0
+PIK3R1	1.0	1.0
+PIK3R2	1.0	1.0
+PIK3R3	1.0	1.0
+PIKFYVE		
+PIM1	1.0	2.0
+PINK1		
+PITPNM3		
+PITX1		
+PITX3		
+PKD1		
+PKD1L1		
+PKD2		
+PKDCC		
+PKHD1		
+PKP1		
+PKP2		
+PLA2G6		
+PLA2G7		
+PLAG1	1.0	2.0
+PLCE1		
+PLCG1	1.0	2.0
+PLCG2	1.0	2.0
+PLEC		
+PLEKHG5		
+PLEKHM1		
+PLG		
+PLIN1		
+PLK2		
+PLN		
+PLOD1		
+PLOD2		
+PLP1		
+PMAIP1	1.0	1.0
+PML	1.0	1.0
+PMM2		
+PMP22		
+PMS1	1.0	1.0
+PMS2	1.0	1.0
+PNKD		
+PNPLA2		
+PNPLA6		
+PNRC1		
+POF1B		
+POLD1	1.0	1.0
+POLE	1.0	1.0
+POLG	1.0	1.0
+POLG2		
+POLH	1.0	1.0
+POLQ	1.0	1.0
+POLR1C		
+POLR1D		
+POLR2A		
+POMC		
+POMGNT1		
+POMT1		
+POMT2		
+PON1		
+POR		
+PORCN		
+POT1	1.0	1.0
+POU2AF1	1.0	2.0
+POU2F2	1.0	2.0
+POU3F2	1.0	2.0
+POU3F4	1.0	2.0
+POU5F1	1.0	2.0
+POU6F2		
+PPARG	1.0	1.0
+PPFIBP1		
+PPIB		
+PPM1D	1.0	2.0
+PPOX		
+PPP1CB		
+PPP1R3A		
+PPP1R3B		
+PPP2R1A	1.0	1.0
+PPP2R2A	1.0	1.0
+PPP2R2B		
+PPP4R2		
+PPP6C	1.0	1.0
+PPT1		
+PQBP1		
+PRCC	1.0	2.0
+PRCD		
+PRDM1	1.0	1.0
+PRDM14		
+PRDM16	1.0	2.0
+PRDM2	1.0	1.0
+PREX2	1.0	2.0
+PRF1	1.0	1.0
+PRICKLE1		
+PRICKLE2		
+PRKACA	1.0	2.0
+PRKAG2		
+PRKAR1A	1.0	1.0
+PRKCB	1.0	1.0
+PRKCG		
+PRKCH		
+PRKCI	1.0	2.0
+PRKD1		
+PRKDC	1.0	1.0
+PRKG2		
+PRKN	1.0	1.0
+PRKRA		
+PRNP		
+PROC		
+PROK2		
+PROKR2		
+PROM1		
+PROP1		
+PROS1		
+PROX1		
+PRPF3		
+PRPF31		
+PRPF40B		
+PRPF6		
+PRPF8	1.0	1.0
+PRPH2		
+PRPS1		
+PRRT2		
+PRRX1		
+PRSS1		
+PRSS12		
+PRSS8		
+PRX		
+PRXL2B		
+PSAP		
+PSEN1		
+PSEN2		
+PSENEN		
+PSIP1	1.0	2.0
+PSMB2	1.0	2.0
+PSORS1C1		
+PSORS1C2		
+PSORS1C3		
+PTCH1	1.0	1.0
+PTCH2		
+PTEN	1.0	1.0
+PTF1A		
+PTGER4		
+PTH		
+PTH1R		
+PTK6	1.0	1.0
+PTK7		
+PTP4A1		
+PTPN1	1.0	1.0
+PTPN11	1.0	2.0
+PTPN13	1.0	1.0
+PTPN14	1.0	1.0
+PTPN2	1.0	1.0
+PTPN22		
+PTPN6	1.0	1.0
+PTPRB	1.0	1.0
+PTPRC	1.0	1.0
+PTPRD	1.0	1.0
+PTPRK	1.0	1.0
+PTPRO		
+PTPRS	1.0	1.0
+PTPRT	1.0	1.0
+PUM1		
+PUS1		
+PUS10		
+PWWP2A		
+PYCR1		
+PYGL		
+PYGM		
+QDPR		
+QKI	1.0	1.0
+RAB27A		
+RAB35	1.0	2.0
+RAB39B		
+RAB7A		
+RABEP1		
+RAC1	1.0	2.0
+RAC2	1.0	2.0
+RAD17	1.0	1.0
+RAD21	1.0	1.0
+RAD50	1.0	1.0
+RAD51	1.0	1.0
+RAD51B	1.0	1.0
+RAD51C	1.0	1.0
+RAD51D	1.0	1.0
+RAD52		
+RAD54L		
+RAF1	1.0	2.0
+RAG1		
+RAG2		
+RAI1		
+RALGDS		
+RALGPS2		
+RANBP2	1.0	1.0
+RAP1B		
+RAP1GDS1	1.0	2.0
+RAPSN		
+RARA	1.0	2.0
+RASA1	1.0	1.0
+RASGEF1A		
+RASGEF1B		
+RASGRP1		
+RAX2		
+RB1	1.0	1.0
+RBM10	1.0	1.0
+RBM15	1.0	1.0
+RBM20		
+RCL1		
+RD3		
+RDH12		
+RECQL	1.0	1.0
+RECQL4	1.0	1.0
+REEP1		
+REL	1.0	2.0
+RELN		
+REN		
+RERE		
+REST	1.0	1.0
+RET	1.0	2.0
+REV3L	1.0	2.0
+RFT1		
+RFWD3	1.0	1.0
+RFX5		
+RFXANK		
+RFXAP		
+RGPD3		
+RGR		
+RGS7		
+RHEB	1.0	2.0
+RHO		
+RHOA	1.0	1.0
+RHOH	1.0	1.0
+RICTOR	1.0	2.0
+RIMS1		
+RIOK2	1.0	2.0
+RIPK2		
+RIT1	1.0	2.0
+RLBP1		
+RMI2	1.0	1.0
+RNASEH2A	1.0	2.0
+RNASEH2B	1.0	1.0
+RNASEL		
+RNF139		
+RNF146		
+RNF186		
+RNF213		
+RNF217-AS1		
+RNF43	1.0	1.0
+RNF6		
+RNU7-2P		
+RNU7-31P		
+RNU7-34P		
+ROBO1	1.0	1.0
+ROBO2	1.0	1.0
+ROBO3		
+ROCK1		
+ROM1		
+ROR2		
+ROS1	1.0	2.0
+RP1		
+RP2		
+RP9		
+RPE65		
+RPGR		
+RPGRIP1		
+RPL10	1.0	1.0
+RPL11		
+RPL13AP14		
+RPL22	1.0	1.0
+RPL23AP1		
+RPL23AP12		
+RPL23P4		
+RPL28P4		
+RPL30P9		
+RPL31P10		
+RPL31P13		
+RPL35A		
+RPL35AP15		
+RPL35P3		
+RPL37AP1		
+RPL39P28		
+RPL3P11		
+RPL3P2		
+RPL5	1.0	1.0
+RPL6P5		
+RPN1		
+RPS10		
+RPS14P1		
+RPS15	1.0	2.0
+RPS17		
+RPS19		
+RPS20P32		
+RPS23P3		
+RPS24		
+RPS26		
+RPS3AP42		
+RPS3AP46		
+RPS6KA3		
+RPS6KA4	1.0	2.0
+RPS6KB1	1.0	2.0
+RPS6KB2	1.0	2.0
+RPS7		
+RPTOR	1.0	2.0
+RRAGC	1.0	2.0
+RRAS	1.0	2.0
+RRAS2	1.0	2.0
+RRM2B		
+RS1		
+RSPH4A		
+RSPH9		
+RSPO1		
+RSPO2	1.0	1.0
+RSPO3	1.0	2.0
+RTEL1	1.0	1.0
+RUNX1	1.0	1.0
+RUNX1T1	1.0	1.0
+RUNX2		
+RUNX3		
+RXFP2		
+RXRA	1.0	1.0
+RYBP	1.0	1.0
+RYR1		
+RYR2		
+S100A7		
+S1PR2		
+SAA1		
+SAA2		
+SAG		
+SALL1		
+SALL4	1.0	2.0
+SAMD9		
+SAMD9L		
+SAMHD1	1.0	1.0
+SAR1B		
+SART3		
+SATB2		
+SBDS	1.0	1.0
+SBF2		
+SCAPER		
+SCARB2		
+SCG5	1.0	2.0
+SCN1A		
+SCN1B		
+SCN2A		
+SCN3B		
+SCN4A		
+SCN4B		
+SCN5A		
+SCN9A		
+SCNN1A		
+SCNN1B		
+SCNN1G		
+SCO1		
+SCO2		
+SDC4		
+SDHA	1.0	1.0
+SDHAF2	1.0	1.0
+SDHB	1.0	1.0
+SDHC	1.0	1.0
+SDHD	1.0	1.0
+SEC23B		
+SEC31A		
+SEC63		
+SELENON		
+SELP		
+SEMA3C		
+SEMA4A		
+SEPT5		
+SEPT6		
+SEPT9		
+SEPTIN11		
+SEPTIN5		
+SEPTIN6		
+SEPTIN9		
+SERP2		
+SERPINA1		
+SERPINB3	1.0	1.0
+SERPINB4		
+SERPINC1		
+SERPINE1		
+SERPINF1		
+SERPING1		
+SERPINH1		
+SESN1	1.0	1.0
+SESN2	1.0	1.0
+SESN3	1.0	1.0
+SET	1.0	2.0
+SETBP1	1.0	2.0
+SETD1A	1.0	2.0
+SETD1B	1.0	1.0
+SETD2	1.0	1.0
+SETD3		
+SETD4		
+SETD5		
+SETD6		
+SETD7		
+SETDB1	1.0	1.0
+SETDB2	1.0	1.0
+SETX		
+SF3B1	1.0	2.0
+SF3B2	1.0	2.0
+SFPQ	1.0	1.0
+SFRP1	1.0	1.0
+SFRP2	1.0	1.0
+SFRP4	1.0	1.0
+SFTPA1		
+SFTPA2		
+SFTPB		
+SFTPC		
+SGCA		
+SGCB		
+SGCD		
+SGCE		
+SGCG		
+SGK1	1.0	2.0
+SGSH		
+SH2B3	1.0	1.0
+SH2D1A	1.0	1.0
+SH3BP2		
+SH3GL1	1.0	2.0
+SH3TC2		
+SHH		
+SHOC2	1.0	2.0
+SHQ1	1.0	1.0
+SHROOM4		
+SHTN1		
+SIAE		
+SIK1		
+SIL1		
+SIRPA	1.0	1.0
+SIX1	1.0	2.0
+SIX2	1.0	2.0
+SIX3		
+SIX5		
+SIX6		
+SKI	1.0	2.0
+SLC11A2		
+SLC12A1		
+SLC12A3		
+SLC12A6		
+SLC16A2		
+SLC17A5		
+SLC19A2		
+SLC19A3		
+SLC1A2		
+SLC1A3		
+SLC22A18		
+SLC22A4		
+SLC25A13		
+SLC25A4		
+SLC26A2		
+SLC26A3		
+SLC26A4		
+SLC29A3		
+SLC2A1		
+SLC2A2		
+SLC2A4		
+SLC2A9		
+SLC33A1		
+SLC34A1		
+SLC34A2	1.0	1.0
+SLC34A3		
+SLC35A1		
+SLC35C1		
+SLC37A4		
+SLC3A1		
+SLC40A1		
+SLC44A3		
+SLC45A2		
+SLC45A3		
+SLC49A4		
+SLC4A1		
+SLC4A11		
+SLC4A4		
+SLC52A1		
+SLC52A3		
+SLC5A2		
+SLC5A5		
+SLC6A19		
+SLC6A2		
+SLC6A8		
+SLC7A9		
+SLC9A3		
+SLC9A6		
+SLFN11	1.0	1.0
+SLIT2		
+SLIT3	1.0	1.0
+SLITRK1		
+SLURP1		
+SLX4	1.0	1.0
+SMAD1		
+SMAD2	1.0	1.0
+SMAD3	1.0	1.0
+SMAD4	1.0	1.0
+SMAD7		
+SMAD9		
+SMARCA1	1.0	1.0
+SMARCA2	1.0	1.0
+SMARCA4	1.0	1.0
+SMARCB1	1.0	1.0
+SMARCD1	1.0	1.0
+SMARCE1	1.0	1.0
+SMC1A	1.0	1.0
+SMC3	1.0	1.0
+SMG1	1.0	1.0
+SMN1		
+SMN2		
+SMO	1.0	2.0
+SMOC1		
+SMPD1		
+SMS		
+SMURF1		
+SMYD3	1.0	2.0
+SNAI2		
+SNCA		
+SNCAIP		
+SND1	1.0	2.0
+SNORA47		
+SNRNP200		
+SNTA1		
+SNX20		
+SNX29		
+SOCS1	1.0	1.0
+SOCS2		
+SOCS3	1.0	1.0
+SOD1		
+SOD2		
+SOS1	1.0	2.0
+SOST		
+SOX10	1.0	2.0
+SOX17	1.0	1.0
+SOX2	1.0	2.0
+SOX21	1.0	1.0
+SOX3		
+SOX9	1.0	1.0
+SP110		
+SP140	1.0	1.0
+SP7		
+SPANXN4		
+SPART		
+SPAST		
+SPATA7		
+SPECC1		
+SPEN	1.0	1.0
+SPG11		
+SPG21		
+SPG7		
+SPINK1		
+SPINK5		
+SPINT2		
+SPOP	1.0	1.0
+SPRED1	1.0	1.0
+SPRTN	1.0	1.0
+SPTA1		
+SPTB		
+SPTBN2		
+SPTLC1		
+SPTLC2		
+SQSTM1	1.0	2.0
+SRC	1.0	2.0
+SRD5A2		
+SRGAP3		
+SRP72	1.0	2.0
+SRPX2		
+SRSF2	1.0	2.0
+SRSF3	1.0	2.0
+SRY		
+SS18	1.0	2.0
+SS18L1		
+SSBP2		
+SSX1	1.0	2.0
+SSX2	1.0	2.0
+SSX2B		
+SSX4	1.0	2.0
+ST13P1		
+ST13P12		
+ST3GAL3		
+ST8SIA4		
+STAG1	1.0	1.0
+STAG2	1.0	1.0
+STAR		
+STAT1		
+STAT2		
+STAT3	1.0	2.0
+STAT4	1.0	2.0
+STAT5A	1.0	2.0
+STAT5B	1.0	1.0
+STAT6	1.0	2.0
+STIL	1.0	2.0
+STK10		
+STK11	1.0	1.0
+STK19	1.0	2.0
+STK40		
+STOX1		
+STRC		
+STRN		
+STS		
+STX11		
+STX16		
+STXBP2		
+SUB1		
+SUFU	1.0	1.0
+SUGCT		
+SUMF1		
+SUMO2P1		
+SURF1		
+SUZ12	1.0	1.0
+SYF2		
+SYK	1.0	2.0
+SYNE1		
+SYNE2		
+SYNGAP1		
+SYP		
+SYT14		
+SZT2		
+TACO1		
+TACSTD2	1.0	2.0
+TAF1	1.0	2.0
+TAF15	1.0	2.0
+TAL1	1.0	2.0
+TAL2	1.0	2.0
+TAP1		
+TAP2		
+TARDBP		
+TAT		
+TAZ		
+TBC1D24		
+TBKBP1		
+TBL1XR1	1.0	1.0
+TBP		
+TBX1		
+TBX20		
+TBX21		
+TBX22		
+TBX3	1.0	1.0
+TBX4		
+TBXT		
+TCAP		
+TCEA1		
+TCF12		
+TCF3	1.0	1.0
+TCF7L2	1.0	1.0
+TCIRG1		
+TCL1A	1.0	2.0
+TCL1B	1.0	2.0
+TCOF1		
+TCTA		
+TDP1		
+TEC	1.0	2.0
+TECR		
+TEK		
+TENT5C	1.0	1.0
+TERC		
+TERT	1.0	1.0
+TET1	1.0	1.0
+TET2	1.0	1.0
+TET3	1.0	1.0
+TFAP2A		
+TFAP2B		
+TFE3	1.0	2.0
+TFEB	1.0	2.0
+TFG		
+TFPT		
+TFR2		
+TFRC		
+TG		
+TGFB1		
+TGFBI		
+TGFBR1	1.0	1.0
+TGFBR2	1.0	1.0
+TGIF1		
+TGM1		
+TGM6		
+TH		
+THAP1		
+THBD		
+THBS2		
+THPO		
+THRAP3		
+THRB		
+TIGAR	1.0	2.0
+TIMP3		
+TINF2		
+TIPARP		
+TLE1		
+TLE2		
+TLE3		
+TLE4		
+TLL1		
+TLL2		
+TLR3		
+TLR4		
+TLR5		
+TLX1	1.0	2.0
+TLX3	1.0	2.0
+TMC6		
+TMC8		
+TMEM106B		
+TMEM126A		
+TMEM127	1.0	1.0
+TMEM167A		
+TMEM17		
+TMEM30A		
+TMEM43		
+TMEM67		
+TMPO		
+TMPRSS2		
+TMPRSS5		
+TMPRSS6		
+TMSB4X		
+TMSB4XP8		
+TNC	1.0	2.0
+TNF		
+TNFAIP3	1.0	1.0
+TNFRSF10B		
+TNFRSF11A		
+TNFRSF11B		
+TNFRSF13B		
+TNFRSF13C		
+TNFRSF14	1.0	1.0
+TNFRSF17	1.0	2.0
+TNFRSF1A		
+TNFRSF6B		
+TNFSF11		
+TNFSF13	1.0	2.0
+TNFSF15		
+TNFSF4		
+TNKS		
+TNNC1		
+TNNI3		
+TNNT1		
+TNNT2		
+TNRC18		
+TONSL		
+TOP1	1.0	2.0
+TOP2A	1.0	2.0
+TOPORS		
+TOR1A		
+TP53	1.0	1.0
+TP53BP1	1.0	1.0
+TP63	1.0	1.0
+TPM1		
+TPM2		
+TPM3	1.0	1.0
+TPM4		
+TPMT		
+TPP1		
+TPR		
+TRA	1.0	2.0
+TRAF2		
+TRAF3	1.0	1.0
+TRAF3IP2		
+TRAF5	1.0	1.0
+TRAF7	1.0	1.0
+TRAPPC2		
+TRAPPC9		
+TRB	1.0	2.0
+TRD	1.0	2.0
+TREM2		
+TREX1		
+TRG	1.0	2.0
+TRIB1		
+TRIB2		
+TRIB3	1.0	2.0
+TRIM24	1.0	1.0
+TRIM27	1.0	2.0
+TRIM32		
+TRIM33	1.0	1.0
+TRIM37		
+TRIP11		
+TRIP13	1.0	1.0
+TRPC6		
+TRPM6		
+TRPM7		
+TRPS1		
+TRPV4		
+TRRAP	1.0	2.0
+TSC1	1.0	1.0
+TSC2	1.0	1.0
+TSHR	1.0	2.0
+TSN		
+TSPAN7		
+TSPYL1		
+TTBK2		
+TTC21B		
+TTC8		
+TTL		
+TTN		
+TTPA		
+TTR		
+TUBA1A		
+TUBB2B		
+TULP1		
+TUSC3		
+TWIST1		
+TWIST2		
+TWNK		
+TYK2	1.0	2.0
+TYMP		
+TYMS	1.0	2.0
+TYR		
+TYRO3		
+TYROBP		
+TYRP1		
+U2AF1	1.0	2.0
+U2AF2		
+UBA1	1.0	2.0
+UBE2A	1.0	2.0
+UBE3A		
+UBIAD1		
+UBQLN2		
+UBR5	1.0	2.0
+UBTF	1.0	2.0
+UCHL1	1.0	2.0
+UCP3		
+UGT1A1		
+UGT1A4		
+UMOD		
+UNC119		
+UNC13D		
+UNC93B1		
+UNG		
+UPF1		
+UPF3B		
+UROD		
+UROS		
+USB1		
+USF1		
+USH1C		
+USH1G		
+USH2A		
+USP1	1.0	2.0
+USP16		
+USP25		
+USP44	1.0	1.0
+USP6	1.0	2.0
+USP8	1.0	2.0
+USP9X		
+USP9Y		
+UVRAG		
+VANGL1		
+VAPB		
+VAV1	1.0	2.0
+VAV2	1.0	2.0
+VCL		
+VCP		
+VDR		
+VEGFA	1.0	2.0
+VHL	1.0	1.0
+VPS13A		
+VPS35		
+VRK1		
+VSX1		
+VSX2		
+VTCN1		
+VTI1A		
+VWF		
+WAS	1.0	2.0
+WASF5P		
+WASHC5		
+WDCP		
+WDPCP		
+WDR11		
+WDR35		
+WDR36		
+WDR90		
+WEE1	1.0	1.0
+WFS1		
+WHRN		
+WIF1	1.0	1.0
+WNK1		
+WNK2	1.0	1.0
+WNK4		
+WNT10A		
+WNT4		
+WNT5A		
+WNT7A		
+WRAP53		
+WRN	1.0	1.0
+WSCD1		
+WT1	1.0	1.0
+WWOX		
+WWP1	1.0	2.0
+WWTR1	1.0	2.0
+XBP1	1.0	2.0
+XIAP	1.0	2.0
+XK		
+XPA	1.0	1.0
+XPC	1.0	1.0
+XPO1	1.0	2.0
+XRCC1	1.0	1.0
+XRCC2	1.0	1.0
+XRCC3		
+YAP1	1.0	2.0
+YARS1		
+YES1	1.0	2.0
+YPEL5		
+YWHAE	1.0	1.0
+YY1	1.0	2.0
+YY1AP1		
+ZBTB16	1.0	1.0
+ZBTB20	1.0	1.0
+ZBTB40		
+ZBTB7A	1.0	1.0
+ZCCHC8		
+ZDHHC15		
+ZDHHC2		
+ZDHHC9		
+ZEB1	1.0	2.0
+ZFHX3	1.0	1.0
+ZFP36L1	1.0	1.0
+ZFP36L2	1.0	1.0
+ZFP57		
+ZFP90		
+ZFPM2		
+ZFYVE19		
+ZFYVE26		
+ZFYVE27		
+ZIC2		
+ZIC3		
+ZMYM2		
+ZMYM3	1.0	1.0
+ZNF217	1.0	2.0
+ZNF24		
+ZNF292	1.0	1.0
+ZNF320		
+ZNF331	1.0	1.0
+ZNF384		
+ZNF41		
+ZNF429		
+ZNF479		
+ZNF512		
+ZNF513		
+ZNF521	1.0	2.0
+ZNF592		
+ZNF644		
+ZNF674		
+ZNF703		
+ZNF711		
+ZNF750	1.0	1.0
+ZNF81		
+ZNRD1ASP		
+ZNRF3	1.0	1.0
+ZPBP2		
+ZPR1		
+ZRSR2	1.0	1.0
