@@ -88,15 +88,13 @@ def load_union_labels(labels_path, classification_type='binary'):
         # Verifica valores únicos nos labels
         print(f"Valores únicos em {label_column}:", labels_clean['label'].value_counts(dropna=False))
         
-        # Remove genes sem label (valores NaN/vazios) apenas se estivermos fazendo classificação supervisionada
+        # Treat NaN values as class 0 (passenger genes) instead of removing them
         initial_count = len(labels_clean)
-        labels_clean = labels_clean.dropna(subset=['label'])
-        removed_count = initial_count - len(labels_clean)
+        labels_clean['label'] = labels_clean['label'].fillna(0.0)  # Fill NaN with 0
         
-        if removed_count > 0:
-            print(f"Removidos {removed_count} genes sem label (candidatos com NaN)")
+        print(f"Genes with NaN converted to class 0 (passenger): {initial_count - labels_clean['label'].sum()}")
         
-        # Converte labels para inteiros (já devem estar no formato correto)
+        # Convert labels to integers
         labels_clean = labels_clean.copy()
         labels_clean.loc[:, 'label'] = labels_clean['label'].astype(int)
         

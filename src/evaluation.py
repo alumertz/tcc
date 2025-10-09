@@ -21,7 +21,9 @@ def detailed_cross_val_score(pipeline, X, y, cv, scoring='average_precision'):
     """
     # Métricas a serem calculadas
     scoring_metrics = ['accuracy', 'precision_weighted', 'recall_weighted', 'f1_weighted', 'roc_auc', 'average_precision']
-    
+    #scoring_metrics = ['accuracy', 'precision_macro', 'recall_macro', 'f1_macro', 'roc_auc', 'average_precision']
+
+
     # Executar CV com múltiplas métricas
     cv_results = cross_validate(
         pipeline, X, y, cv=cv, 
@@ -68,6 +70,10 @@ def evaluate_classification_on_test(model, X_test, y_test, return_dict=False):
     precision = precision_score(y_test, y_pred, average='weighted')
     recall = recall_score(y_test, y_pred, average='weighted')
     f1 = f1_score(y_test, y_pred, average='weighted')
+    # precision = precision_score(y_test, y_pred, average='macro')
+    # recall = recall_score(y_test, y_pred, average='macro')
+    # f1 = f1_score(y_test, y_pred, average='macro')
+
     roc_auc = roc_auc_score(y_test, y_pred_proba)
     pr_auc = average_precision_score(y_test, y_pred_proba)
     

@@ -10,7 +10,7 @@ sys.path.append('/Users/i583975/git/tcc')
 
 import numpy as np
 import pandas as pd
-from processing import prepare_dataset, get_dataset_info, split_dataset
+from src.processing import prepare_dataset, get_dataset_info, split_dataset
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, HistGradientBoostingClassifier
 from sklearn.neighbors import KNeighborsClassifier
@@ -54,15 +54,15 @@ def evaluate_model_default(model, model_name, X, y, save_results=True):
     print(f"  Teste: {X_test.shape[0]} amostras")
     
     # Configurar pipeline com escalonamento se necessário
-    if model_name.lower() in ['mlp', 'knn']:
-        pipeline = Pipeline([
-            ("scaler", StandardScaler()),
-            ("classifier", model)
-        ])
-    else:
-        pipeline = Pipeline([
-            ("classifier", model)
-        ])
+    # if model_name.lower() in ['mlp', 'knn']:
+    #     pipeline = Pipeline([
+    #         ("scaler", StandardScaler()),
+    #         ("classifier", model)
+    #     ])
+    # else:
+    pipeline = Pipeline([
+        ("classifier", model)
+    ])
     
     # Validação cruzada 5-fold no conjunto treino+validação
     print("\nExecutando validação cruzada 5-fold...")
@@ -137,7 +137,7 @@ def save_default_results(model_name, cv_results, test_metrics, class_report, par
     Salva os resultados em arquivos organizados por modelo
     """
     # Criar diretório base
-    base_dir = "/Users/i583975/git/tcc/artigo/results"
+    base_dir = "../results"
     os.makedirs(base_dir, exist_ok=True)
     
     # Criar diretório específico do modelo
@@ -307,8 +307,8 @@ def main():
     print("="*80)
     
     # Caminhos para os arquivos de dados (mesmos do main.py)
-    features_path = "/Users/i583975/git/tcc/renan/data_files/omics_features/UNION_features.tsv"
-    labels_path = "/Users/i583975/git/tcc/renan/data_files/labels/UNION_labels.tsv"
+    features_path = "../data/UNION_features.tsv"
+    labels_path = "../data/processed/UNION_labels.tsv"
     
     # Verifica se os arquivos existem
     if not os.path.exists(features_path):
