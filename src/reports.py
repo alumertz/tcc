@@ -273,3 +273,137 @@ def save_results_to_file(model_name, results, results_dir="../results"):
     
     print(f"Resultados salvos em: {model_dir}")
     return trials_file, test_results_file
+
+
+def summarize_default_results(results):
+    """
+    Cria um resumo dos resultados dos modelos padrão e salva em arquivo
+    
+    Args:
+        results (list): Lista com resultados de todos os modelos
+    """
+    # Criar conteúdo do resumo
+    content_lines = []
+    content_lines.append("="*80)
+    content_lines.append("RESUMO DOS RESULTADOS (PARÂMETROS PADRÃO)")
+    content_lines.append("="*80)
+    
+    successful_models = [r for r in results if r['status'] == 'success']
+    failed_models = [r for r in results if r['status'] == 'error']
+    
+    content_lines.append(f"Modelos executados com sucesso: {len(successful_models)}")
+    content_lines.append(f"Modelos com erro: {len(failed_models)}")
+    content_lines.append("")
+    
+    if successful_models:
+        content_lines.append("COMPARAÇÃO DE PERFORMANCE (CONJUNTO DE TESTE):")
+        content_lines.append("-" * 80)
+        content_lines.append(f"{'Modelo':<25} {'Accuracy':<10} {'Precision':<11} {'Recall':<8} {'F1':<8} {'ROC AUC':<9} {'PR AUC':<8}")
+        content_lines.append("-" * 80)
+        
+        for result in successful_models:
+            metrics = result['test_metrics']
+            content_lines.append(f"{result['model_name']:<25} "
+                  f"{metrics['accuracy']:<10.4f} "
+                  f"{metrics['precision']:<11.4f} "
+                  f"{metrics['recall']:<8.4f} "
+                  f"{metrics['f1_score']:<8.4f} "
+                  f"{metrics['roc_auc']:<9.4f} "
+                  f"{metrics['pr_auc']:<8.4f}")
+    
+    if failed_models:
+        content_lines.append("")
+        content_lines.append("MODELOS COM ERRO:")
+        for result in failed_models:
+            content_lines.append(f"  • {result['model_name']}: {result['error']}")
+    
+    content_lines.append("="*80)
+    
+    # Imprimir no terminal
+    print("\n" + "\n".join(content_lines))
+    
+    # Salvar em arquivo
+    results_dir = "../results"
+    os.makedirs(results_dir, exist_ok=True)
+    
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"summary_default_models_{timestamp}.txt"
+    filepath = os.path.join(results_dir, filename)
+    
+    with open(filepath, 'w') as f:
+        f.write(f"Data/Hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+        f.write("\n".join(content_lines))
+        f.write("\n")
+    
+    print(f"\nResumo salvo em: {filepath}")
+
+
+def summarize_optimized_results(results):
+    """
+    Cria um resumo dos resultados dos modelos otimizados e salva em arquivo
+    
+    Args:
+        results (list or dict): Lista com resultados dos modelos ou resultado único
+    """
+    # Criar conteúdo do resumo
+    content_lines = []
+    content_lines.append("="*80)
+    content_lines.append("RESUMO DOS RESULTADOS (MODELOS OTIMIZADOS)")
+    content_lines.append("="*80)
+    
+    # Se results for um único resultado (dict), converte para lista
+    if isinstance(results, dict):
+        results = [results]
+    
+    successful_models = [r for r in results if r['status'] == 'success']
+    failed_models = [r for r in results if r['status'] == 'error']
+    
+    content_lines.append(f"Modelos executados com sucesso: {len(successful_models)}")
+    content_lines.append(f"Modelos com erro: {len(failed_models)}")
+    content_lines.append("")
+    
+    # Tabela de performance para modelos bem-sucedidos
+    if successful_models:
+        content_lines.append("COMPARAÇÃO DE PERFORMANCE (CONJUNTO DE TESTE):")
+        content_lines.append("-" * 80)
+        content_lines.append(f"{'Modelo':<25} {'Accuracy':<10} {'Precision':<11} {'Recall':<8} {'F1':<8} {'ROC AUC':<9} {'PR AUC':<8}")
+        content_lines.append("-" * 80)
+        
+        for result in successful_models:
+            # Verificar se o resultado tem test_metrics (modelos otimizados)
+            if 'test_metrics' in result:
+                metrics = result['test_metrics']
+                content_lines.append(f"{result['model_name']:<25} "
+                      f"{metrics['accuracy']:<10.4f} "
+                      f"{metrics['precision']:<11.4f} "
+                      f"{metrics['recall']:<8.4f} "
+                      f"{metrics['f1']:<8.4f} "
+                      f"{metrics['roc_auc']:<9.4f} "
+                      f"{metrics['pr_auc']:<8.4f}")
+    
+    if failed_models:
+        content_lines.append("")
+        content_lines.append("MODELOS COM ERRO:")
+        for result in failed_models:
+            content_lines.append(f"  • {result['model_name']}: {result['error']}")
+    
+    content_lines.append("="*80)
+    
+    # Imprimir no terminal
+    for line in content_lines:
+        print(line)
+    
+    # Salvar em arquivo
+    results_dir = "../results"
+    os.makedirs(results_dir, exist_ok=True)
+    
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"summary_tuned_models_{timestamp}.txt"
+    filepath = os.path.join(results_dir, filename)
+    
+    with open(filepath, 'w') as f:
+        f.write(f"Data/Hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+        f.write("\n".join(content_lines))
+        f.write("\n")
+    
+    print(f"\nResumo salvo em: {filepath}")

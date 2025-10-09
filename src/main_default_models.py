@@ -11,6 +11,7 @@ sys.path.append('/Users/i583975/git/tcc')
 import numpy as np
 import pandas as pd
 from src.processing import prepare_dataset, get_dataset_info, split_dataset
+from src.reports import summarize_default_results
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, HistGradientBoostingClassifier
 from sklearn.neighbors import KNeighborsClassifier
@@ -260,45 +261,6 @@ def run_all_default_models(X, y):
     return results
 
 
-def summarize_default_results(results):
-    """
-    Cria um resumo dos resultados dos modelos padrão
-    """
-    print("\n" + "="*80)
-    print("RESUMO DOS RESULTADOS (PARÂMETROS PADRÃO)")
-    print("="*80)
-    
-    successful_models = [r for r in results if r['status'] == 'success']
-    failed_models = [r for r in results if r['status'] == 'error']
-    
-    print(f"✅ Modelos executados com sucesso: {len(successful_models)}")
-    print(f"❌ Modelos com erro: {len(failed_models)}")
-    print()
-    
-    if successful_models:
-        print("COMPARAÇÃO DE PERFORMANCE (CONJUNTO DE TESTE):")
-        print("-" * 80)
-        print(f"{'Modelo':<25} {'Accuracy':<10} {'Precision':<11} {'Recall':<8} {'F1':<8} {'ROC AUC':<9} {'PR AUC':<8}")
-        print("-" * 80)
-        
-        for result in successful_models:
-            metrics = result['test_metrics']
-            print(f"{result['model_name']:<25} "
-                  f"{metrics['accuracy']:<10.4f} "
-                  f"{metrics['precision']:<11.4f} "
-                  f"{metrics['recall']:<8.4f} "
-                  f"{metrics['f1_score']:<8.4f} "
-                  f"{metrics['roc_auc']:<9.4f} "
-                  f"{metrics['pr_auc']:<8.4f}")
-    
-    if failed_models:
-        print("\nMODELOS COM ERRO:")
-        for result in failed_models:
-            print(f"  • {result['model_name']}: {result['error']}")
-    
-    print("="*80)
-
-
 def main():
     """
     Função principal do experimento com parâmetros padrão
@@ -307,8 +269,8 @@ def main():
     print("="*80)
     
     # Caminhos para os arquivos de dados (mesmos do main.py)
-    features_path = "../data/UNION_features.tsv"
-    labels_path = "../data/processed/UNION_labels.tsv"
+    features_path = "./data/UNION_features.tsv"
+    labels_path = "./data/processed/UNION_labels.tsv"
     
     # Verifica se os arquivos existem
     if not os.path.exists(features_path):
@@ -342,7 +304,7 @@ def main():
     print(f"  Parâmetros: PADRÃO (sem otimização)")
     print(f"  Validação: Estratificada 5-fold + Holdout 80/20")
     print(f"  Métricas: Accuracy, Precision, Recall, F1, ROC AUC, PR AUC")
-    print(f"  Resultados salvos em: /Users/i583975/git/tcc/artigo/results/ (com 'default' no nome)")
+    print(f"  Resultados salvos em: results/ (com 'default' no nome)")
     print()
     
     # Executa todos os modelos com parâmetros padrão
