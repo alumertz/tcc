@@ -17,7 +17,7 @@ from sklearn.metrics import (
 
 def generate_enhanced_classification_report(y_true, y_pred, y_pred_proba):
     """
-    Gera relatório de classificação customizado incluindo accuracy, ROC AUC e PR AUC
+    Gera relatório de classificação customizado com métricas completas
     """
     # Calcular métricas por classe
     precision_per_class, recall_per_class, f1_per_class, support_per_class = precision_recall_fscore_support(
@@ -29,37 +29,37 @@ def generate_enhanced_classification_report(y_true, y_pred, y_pred_proba):
     roc_auc = roc_auc_score(y_true, y_pred_proba)
     pr_auc = average_precision_score(y_true, y_pred_proba)
     
-    # Cabeçalho expandido
-    report = "              precision    recall  f1-score   support   accuracy   roc_auc    pr_auc\n\n"
+    # Total support for summary rows
+    total_support = np.sum(support_per_class)
     
-    # Métricas por classe
+    # Cabeçalho da tabela
+    report = "              accuracy   precision    recall    f1-score   roc_auc    pr_auc\n\n"
+    
+    # Métricas por classe (Non-driver = classe 0, Driver = classe 1)
+    class_names = ['Non-driver', 'Driver']
+    
     for i in range(len(precision_per_class)):
-        class_accuracy = accuracy if i == 1 else accuracy  # Accuracy é global
-        class_roc_auc = roc_auc if i == 1 else "-"  # ROC AUC só para classe positiva
-        class_pr_auc = pr_auc if i == 1 else "-"    # PR AUC só para classe positiva
+        class_name = class_names[i] if i < len(class_names) else f'Class {i}'
         
-        if isinstance(class_roc_auc, str):
-            report += f"           {i}       {precision_per_class[i]:.2f}      {recall_per_class[i]:.2f}      {f1_per_class[i]:.2f}      {support_per_class[i]:4d}        -         -         -\n"
-        else:
-            report += f"           {i}       {precision_per_class[i]:.2f}      {recall_per_class[i]:.2f}      {f1_per_class[i]:.2f}      {support_per_class[i]:4d}     {class_accuracy:.2f}      {class_roc_auc:.2f}     {class_pr_auc:.2f}\n"
+        # Para a classe Driver (1), incluir ROC AUC e PR AUC, para Non-driver usar "-"
+        if i == 1:  # Driver class
+            report += f"{class_name:>12}       {accuracy:.4f}      {precision_per_class[i]:.4f}     {recall_per_class[i]:.4f}     {f1_per_class[i]:.4f}     {roc_auc:.4f}     {pr_auc:.4f}\n"
+        else:  # Non-driver class
+            report += f"{class_name:>12}       {accuracy:.4f}      {precision_per_class[i]:.4f}     {recall_per_class[i]:.4f}     {f1_per_class[i]:.4f}         -         -\n"
     
     report += "\n"
     
-    # Accuracy global com todas as métricas
-    total_support = np.sum(support_per_class)
-    report += f"    accuracy                           {accuracy:.2f}      {total_support:4d}     {accuracy:.2f}     {roc_auc:.2f}     {pr_auc:.2f}\n"
-    
-    # Macro average com todas as métricas
+    # Macro average
     macro_precision = np.mean(precision_per_class)
     macro_recall = np.mean(recall_per_class)
     macro_f1 = np.mean(f1_per_class)
-    report += f"   macro avg       {macro_precision:.2f}      {macro_recall:.2f}      {macro_f1:.2f}      {total_support:4d}     {accuracy:.2f}     {roc_auc:.2f}     {pr_auc:.2f}\n"
+    report += f"{'macro avg':>12}       {accuracy:.4f}      {macro_precision:.4f}     {macro_recall:.4f}     {macro_f1:.4f}     {roc_auc:.4f}     {pr_auc:.4f}\n"
     
-    # Weighted average com todas as métricas
+    # Weighted average
     weighted_precision = np.average(precision_per_class, weights=support_per_class)
     weighted_recall = np.average(recall_per_class, weights=support_per_class)
     weighted_f1 = np.average(f1_per_class, weights=support_per_class)
-    report += f"weighted avg       {weighted_precision:.2f}      {weighted_recall:.2f}      {weighted_f1:.2f}      {total_support:4d}     {accuracy:.2f}     {roc_auc:.2f}     {pr_auc:.2f}\n"
+    report += f"{'weighted avg':>12}       {accuracy:.4f}      {weighted_precision:.4f}     {weighted_recall:.4f}     {weighted_f1:.4f}     {roc_auc:.4f}     {pr_auc:.4f}\n"
     
     return report
 
@@ -323,7 +323,7 @@ def summarize_default_results(results):
     print("\n" + "\n".join(content_lines))
     
     # Salvar em arquivo
-    results_dir = "./results"
+    results_dir = "../results"
     os.makedirs(results_dir, exist_ok=True)
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")

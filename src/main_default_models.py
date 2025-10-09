@@ -19,7 +19,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import cross_val_score, StratifiedKFold
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, average_precision_score, classification_report
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, average_precision_score
 from datetime import datetime
 import json
 import warnings
@@ -115,7 +115,8 @@ def evaluate_model_default(model, model_name, X, y, save_results=True):
         print(f"  {metric.upper()}: {value:.4f}")
     
     # Relatório de classificação detalhado
-    class_report = classification_report(y_test, y_pred, target_names=['Non-driver', 'Driver'])
+    from src.reports import generate_enhanced_classification_report
+    class_report = generate_enhanced_classification_report(y_test, y_pred, y_pred_proba)
     print(f"\nRelatório de classificação:\n{class_report}")
     
     # Salvar resultados se solicitado
@@ -269,8 +270,8 @@ def main():
     print("="*80)
     
     # Caminhos para os arquivos de dados (mesmos do main.py)
-    features_path = "./data/UNION_features.tsv"
-    labels_path = "./data/processed/UNION_labels.tsv"
+    features_path = "../data/UNION_features.tsv"
+    labels_path = "../data/processed/UNION_labels.tsv"
     
     # Verifica se os arquivos existem
     if not os.path.exists(features_path):

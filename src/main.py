@@ -12,7 +12,7 @@ sys.path.append('/Users/i583975/git/tcc')
 import numpy as np
 import pandas as pd
 from processing import prepare_dataset, get_dataset_info, split_dataset
-from process_data import process_canonical, process_candidates
+from process_data import get_canonical_genes, get_candidate_genes
 from models import (
     optimize_decision_tree_classifier,
     optimize_random_forest_classifier,
@@ -23,6 +23,7 @@ from models import (
     optimize_svc_classifier,
     optimize_catboost_classifier
 )
+from reports import summarize_optimized_results
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -175,40 +176,6 @@ def run_all_models(X, y, n_trials=10):
     return results
 
 
-def summarize_results(results):
-    """
-    Cria um resumo dos resultados de todos os modelos
-    
-    Args:
-        results (list or dict): Lista com resultados dos modelos ou resultado único
-    """
-    print("="*80)
-    print("RESUMO DOS RESULTADOS")
-    print("="*80)
-    
-    # Se results for um único resultado (dict), converte para lista
-    if isinstance(results, dict):
-        results = [results]
-    
-    successful_models = [r for r in results if r['status'] == 'success']
-    failed_models = [r for r in results if r['status'] == 'error']
-    
-    print(f"Modelos executados com sucesso: {len(successful_models)}")
-    print(f"Modelos com erro: {len(failed_models)}")
-    print()
-    
-    if successful_models:
-        print("MODELOS BEM-SUCEDIDOS:")
-        for result in successful_models:
-            print(f"  • {result['model_name']}")
-    
-    if failed_models:
-        print("\nMODELOS COM ERRO:")
-        for result in failed_models:
-            print(f"  • {result['model_name']}: {result['error']}")
-    
-    print("="*80)
-
 
 def main(use_renan=False, use_multiclass=False):
     """
@@ -268,15 +235,15 @@ def main(use_renan=False, use_multiclass=False):
     
     # Executa todos os modelos
     print("🚀 Iniciando experimentos...")
-    #results = run_all_models(X, y, n_trials=N_TRIALS)
+    results = run_all_models(X, y, n_trials=N_TRIALS)
     #results = run_single_model("Gradient Boosting", optimize_gradient_boosting_classifier, X, y, n_trials=N_TRIALS)
     #results = run_single_model("Decision Tree", optimize_decision_tree_classifier, X, y, n_trials=N_TRIALS)
-    results = run_single_model("Support Vector Classifier", optimize_svc_classifier, X, y, n_trials=N_TRIALS)
+    #results = run_single_model("Support Vector Classifier", optimize_svc_classifier, X, y, n_trials=N_TRIALS)
     #results = run_single_model("Multi-Layer Perceptron", optimize_mlp_classifier, X, y, n_trials=N_TRIALS)
     #results = run_single_model("CatBoost", optimize_catboost_classifier, X, y, n_trials=N_TRIALS)
 
     # Resumo final
-    summarize_results(results)
+    summarize_optimized_results(results)
     
     print("\n🎉 EXPERIMENTO CONCLUÍDO!")
     print("💾 Resultados salvos em arquivos organizados por modelo.")
