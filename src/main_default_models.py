@@ -138,7 +138,7 @@ def save_default_results(model_name, cv_results, test_metrics, class_report, par
     Salva os resultados em arquivos organizados por modelo
     """
     # Criar diretório base
-    base_dir = "../results"
+    base_dir = "./results"
     os.makedirs(base_dir, exist_ok=True)
     
     # Criar diretório específico do modelo

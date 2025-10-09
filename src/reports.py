@@ -323,7 +323,7 @@ def summarize_default_results(results):
     print("\n" + "\n".join(content_lines))
     
     # Salvar em arquivo
-    results_dir = "../results"
+    results_dir = "./results"
     os.makedirs(results_dir, exist_ok=True)
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
