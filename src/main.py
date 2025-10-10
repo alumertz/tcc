@@ -45,7 +45,7 @@ MODELS_CONFIG = [
 # Caminhos dos dados
 FEATURES_PATH = "renan/data_files/omics_features/UNION_features.tsv"
 LABELS_PATH = "renan/data_files/labels/UNION_labels.tsv"
-RESULTS_PATH = "artigo/results/"
+RESULTS_PATH = "results/omics"
 
 
 def select_features(X, selected_groups):
@@ -139,7 +139,7 @@ def main():
         return
 
     # Seleção de features
-    selected_groups = ["CNA"]
+    selected_groups = ["CNA", "Gene_Expression", "DNA_Methylation", "Mutations"]
     X = select_features(X, selected_groups)
 
     # Informações gerais
@@ -167,8 +167,8 @@ def main():
     # results = run_single_model("Gradient Boosting", optimize_gradient_boosting_classifier, X, y, N_TRIALS)
     # results = run_single_model("Support Vector Classifier", optimize_svc_classifier, X, y, N_TRIALS)
     # results = run_single_model("Multi-Layer Perceptron", optimize_mlp_classifier, X, y, N_TRIALS)
-    results = run_all_models(X, y, N_TRIALS)
     #results = run_single_model("K-Nearest Neighbors", optimize_knn_classifier, X, y, N_TRIALS)
+    results = run_all_models(X, y, N_TRIALS)
     summarize_results(results, selected_groups)
     print("\nEXPERIMENTO CONCLUÍDO!")
     print(f"Resultados salvos em: {RESULTS_PATH}")

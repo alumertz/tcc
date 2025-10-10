@@ -268,7 +268,7 @@ def save_results_to_file(model_name, results, results_dir="results/omics"):
         # ALTERADO À MÃO
         f.write("MULTIÔMICAS UTILIZADAS:\n")
         f.write("-"*30 + "\n")
-        f.write("Gene_Expression, DNA_Methylation, Mutations")
+        f.write("Mutations")
         f.write("\n\n")
         
         f.write("HISTÓRICO DE OTIMIZAÇÃO:\n")

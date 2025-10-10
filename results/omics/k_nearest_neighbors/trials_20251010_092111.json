@@ -1,0 +1,222 @@
+[
+  {
+    "trial_number": 0,
+    "params": {
+      "n_neighbors": 14,
+      "weights": "distance",
+      "algorithm": "auto",
+      "p": 1
+    },
+    "score": 0.1587274392222741,
+    "time": 3.7526228427886963
+  },
+  {
+    "trial_number": 1,
+    "params": {
+      "n_neighbors": 6,
+      "weights": "uniform",
+      "algorithm": "brute",
+      "p": 1
+    },
+    "score": 0.12392456898298983,
+    "time": 3.786308765411377
+  },
+  {
+    "trial_number": 2,
+    "params": {
+      "n_neighbors": 2,
+      "weights": "uniform",
+      "algorithm": "ball_tree",
+      "p": 1
+    },
+    "score": 0.09266256025041548,
+    "time": 17.092777729034424
+  },
+  {
+    "trial_number": 3,
+    "params": {
+      "n_neighbors": 18,
+      "weights": "distance",
+      "algorithm": "kd_tree",
+      "p": 2
+    },
+    "score": 0.18964422672840664,
+    "time": 17.320350408554077
+  },
+  {
+    "trial_number": 4,
+    "params": {
+      "n_neighbors": 4,
+      "weights": "uniform",
+      "algorithm": "auto",
+      "p": 1
+    },
+    "score": 0.1108869857614411,
+    "time": 3.769291400909424
+  },
+  {
+    "trial_number": 5,
+    "params": {
+      "n_neighbors": 6,
+      "weights": "uniform",
+      "algorithm": "ball_tree",
+      "p": 2
+    },
+    "score": 0.14368061937017362,
+    "time": 15.50812578201294
+  },
+  {
+    "trial_number": 6,
+    "params": {
+      "n_neighbors": 17,
+      "weights": "uniform",
+      "algorithm": "brute",
+      "p": 2
+    },
+    "score": 0.18746227086531533,
+    "time": 1.378354787826538
+  },
+  {
+    "trial_number": 7,
+    "params": {
+      "n_neighbors": 20,
+      "weights": "uniform",
+      "algorithm": "brute",
+      "p": 1
+    },
+    "score": 0.17080928466994344,
+    "time": 3.91827392578125
+  },
+  {
+    "trial_number": 8,
+    "params": {
+      "n_neighbors": 10,
+      "weights": "uniform",
+      "algorithm": "kd_tree",
+      "p": 1
+    },
+    "score": 0.14087931696056957,
+    "time": 20.319854259490967
+  },
+  {
+    "trial_number": 9,
+    "params": {
+      "n_neighbors": 8,
+      "weights": "distance",
+      "algorithm": "brute",
+      "p": 1
+    },
+    "score": 0.1425032768360828,
+    "time": 3.696575880050659
+  },
+  {
+    "trial_number": 10,
+    "params": {
+      "n_neighbors": 14,
+      "weights": "distance",
+      "algorithm": "kd_tree",
+      "p": 2
+    },
+    "score": 0.181909193179788,
+    "time": 16.79403781890869
+  },
+  {
+    "trial_number": 11,
+    "params": {
+      "n_neighbors": 20,
+      "weights": "distance",
+      "algorithm": "kd_tree",
+      "p": 2
+    },
+    "score": 0.19157062065878855,
+    "time": 17.555160999298096
+  },
+  {
+    "trial_number": 12,
+    "params": {
+      "n_neighbors": 20,
+      "weights": "distance",
+      "algorithm": "kd_tree",
+      "p": 2
+    },
+    "score": 0.19157062065878855,
+    "time": 17.50370717048645
+  },
+  {
+    "trial_number": 13,
+    "params": {
+      "n_neighbors": 20,
+      "weights": "distance",
+      "algorithm": "kd_tree",
+      "p": 2
+    },
+    "score": 0.19157062065878855,
+    "time": 17.512693405151367
+  },
+  {
+    "trial_number": 14,
+    "params": {
+      "n_neighbors": 14,
+      "weights": "distance",
+      "algorithm": "kd_tree",
+      "p": 2
+    },
+    "score": 0.181909193179788,
+    "time": 16.750520706176758
+  },
+  {
+    "trial_number": 15,
+    "params": {
+      "n_neighbors": 17,
+      "weights": "distance",
+      "algorithm": "kd_tree",
+      "p": 2
+    },
+    "score": 0.18610022429519535,
+    "time": 17.11823558807373
+  },
+  {
+    "trial_number": 16,
+    "params": {
+      "n_neighbors": 12,
+      "weights": "distance",
+      "algorithm": "kd_tree",
+      "p": 2
+    },
+    "score": 0.17938142628977174,
+    "time": 16.544225692749023
+  },
+  {
+    "trial_number": 17,
+    "params": {
+      "n_neighbors": 18,
+      "weights": "distance",
+      "algorithm": "kd_tree",
+      "p": 2
+    },
+    "score": 0.18964422672840664,
+    "time": 17.26741600036621
+  },
+  {
+    "trial_number": 18,
+    "params": {
+      "n_neighbors": 16,
+      "weights": "distance",
+      "algorithm": "auto",
+      "p": 2
+    },
+    "score": 0.18754226614970446,
+    "time": 1.4106860160827637
+  },
+  {
+    "trial_number": 19,
+    "params": {
+      "n_neighbors": 20,
+      "weights": "distance",
+      "algorithm": "ball_tree",
+      "p": 2
+    },
+    "score": 0.19157062065878855,
+    "time": 15.980618000030518
+  }
+]

@@ -1,0 +1,305 @@
+[
+  {
+    "trial_number": 0,
+    "params": {
+      "hidden_layer_sizes": [
+        51,
+        150
+      ],
+      "activation": "tanh",
+      "alpha": 6.608170385682289e-05,
+      "learning_rate": "constant",
+      "max_iter": 514
+    },
+    "score": 0.08783564048489703,
+    "time": 40.5489022731781
+  },
+  {
+    "trial_number": 1,
+    "params": {
+      "hidden_layer_sizes": [
+        180
+      ],
+      "activation": "tanh",
+      "alpha": 0.0277981141003835,
+      "learning_rate": "invscaling",
+      "max_iter": 519
+    },
+    "score": 0.08864165495141148,
+    "time": 32.83729815483093
+  },
+  {
+    "trial_number": 2,
+    "params": {
+      "hidden_layer_sizes": [
+        146
+      ],
+      "activation": "logistic",
+      "alpha": 1.5980515529399185e-05,
+      "learning_rate": "adaptive",
+      "max_iter": 758
+    },
+    "score": 0.08924219136137972,
+    "time": 3.136831283569336
+  },
+  {
+    "trial_number": 3,
+    "params": {
+      "hidden_layer_sizes": [
+        118,
+        196,
+        46
+      ],
+      "activation": "logistic",
+      "alpha": 0.0131625715857443,
+      "learning_rate": "constant",
+      "max_iter": 568
+    },
+    "score": 0.08556140899213868,
+    "time": 34.63411092758179
+  },
+  {
+    "trial_number": 4,
+    "params": {
+      "hidden_layer_sizes": [
+        47,
+        85,
+        84
+      ],
+      "activation": "tanh",
+      "alpha": 1.560528401302765e-05,
+      "learning_rate": "adaptive",
+      "max_iter": 603
+    },
+    "score": 0.09199203333485975,
+    "time": 52.16289401054382
+  },
+  {
+    "trial_number": 5,
+    "params": {
+      "hidden_layer_sizes": [
+        103,
+        58,
+        66
+      ],
+      "activation": "relu",
+      "alpha": 0.0002287295046596177,
+      "learning_rate": "invscaling",
+      "max_iter": 236
+    },
+    "score": 0.09676960654968816,
+    "time": 26.782870054244995
+  },
+  {
+    "trial_number": 6,
+    "params": {
+      "hidden_layer_sizes": [
+        177
+      ],
+      "activation": "logistic",
+      "alpha": 0.048943249588028585,
+      "learning_rate": "constant",
+      "max_iter": 537
+    },
+    "score": 0.08797188248818791,
+    "time": 4.23999810218811
+  },
+  {
+    "trial_number": 7,
+    "params": {
+      "hidden_layer_sizes": [
+        23,
+        193,
+        120
+      ],
+      "activation": "logistic",
+      "alpha": 7.960613683242027e-05,
+      "learning_rate": "constant",
+      "max_iter": 580
+    },
+    "score": 0.08900008242907284,
+    "time": 23.21661901473999
+  },
+  {
+    "trial_number": 8,
+    "params": {
+      "hidden_layer_sizes": [
+        20,
+        35
+      ],
+      "activation": "logistic",
+      "alpha": 0.016288145182266206,
+      "learning_rate": "invscaling",
+      "max_iter": 759
+    },
+    "score": 0.08875595711217439,
+    "time": 2.595909357070923
+  },
+  {
+    "trial_number": 9,
+    "params": {
+      "hidden_layer_sizes": [
+        97,
+        68
+      ],
+      "activation": "logistic",
+      "alpha": 0.007101222397827722,
+      "learning_rate": "adaptive",
+      "max_iter": 300
+    },
+    "score": 0.08821079813597953,
+    "time": 6.153456687927246
+  },
+  {
+    "trial_number": 10,
+    "params": {
+      "hidden_layer_sizes": [
+        94,
+        11,
+        184
+      ],
+      "activation": "relu",
+      "alpha": 0.0009960352352428182,
+      "learning_rate": "invscaling",
+      "max_iter": 245
+    },
+    "score": 0.09393869013647949,
+    "time": 26.240171194076538
+  },
+  {
+    "trial_number": 11,
+    "params": {
+      "hidden_layer_sizes": [
+        91,
+        20,
+        198
+      ],
+      "activation": "relu",
+      "alpha": 0.0010050562470956662,
+      "learning_rate": "invscaling",
+      "max_iter": 216
+    },
+    "score": 0.09548043123362907,
+    "time": 27.625966548919678
+  },
+  {
+    "trial_number": 12,
+    "params": {
+      "hidden_layer_sizes": [
+        80,
+        49,
+        194
+      ],
+      "activation": "relu",
+      "alpha": 0.001668895649731832,
+      "learning_rate": "invscaling",
+      "max_iter": 366
+    },
+    "score": 0.09408746920936792,
+    "time": 35.120495080947876
+  },
+  {
+    "trial_number": 13,
+    "params": {
+      "hidden_layer_sizes": [
+        143,
+        122,
+        29
+      ],
+      "activation": "relu",
+      "alpha": 0.0004794453139833979,
+      "learning_rate": "invscaling",
+      "max_iter": 209
+    },
+    "score": 0.09092757763756447,
+    "time": 36.99481725692749
+  },
+  {
+    "trial_number": 14,
+    "params": {
+      "hidden_layer_sizes": [
+        64,
+        18
+      ],
+      "activation": "relu",
+      "alpha": 0.0001932529698853749,
+      "learning_rate": "invscaling",
+      "max_iter": 947
+    },
+    "score": 0.09702855130336954,
+    "time": 20.062933683395386
+  },
+  {
+    "trial_number": 15,
+    "params": {
+      "hidden_layer_sizes": [
+        60,
+        57
+      ],
+      "activation": "relu",
+      "alpha": 0.00014447996687111324,
+      "learning_rate": "invscaling",
+      "max_iter": 943
+    },
+    "score": 0.09476580067038289,
+    "time": 21.11717438697815
+  },
+  {
+    "trial_number": 16,
+    "params": {
+      "hidden_layer_sizes": [
+        120,
+        95
+      ],
+      "activation": "relu",
+      "alpha": 0.0001737454352483496,
+      "learning_rate": "invscaling",
+      "max_iter": 955
+    },
+    "score": 0.09226374144623475,
+    "time": 32.30595397949219
+  },
+  {
+    "trial_number": 17,
+    "params": {
+      "hidden_layer_sizes": [
+        67,
+        38
+      ],
+      "activation": "relu",
+      "alpha": 0.0034452175915178906,
+      "learning_rate": "invscaling",
+      "max_iter": 827
+    },
+    "score": 0.09246057276788605,
+    "time": 18.39909076690674
+  },
+  {
+    "trial_number": 18,
+    "params": {
+      "hidden_layer_sizes": [
+        138
+      ],
+      "activation": "relu",
+      "alpha": 0.00027671457052863666,
+      "learning_rate": "invscaling",
+      "max_iter": 398
+    },
+    "score": 0.09794085022432815,
+    "time": 21.63065814971924
+  },
+  {
+    "trial_number": 19,
+    "params": {
+      "hidden_layer_sizes": [
+        197
+      ],
+      "activation": "relu",
+      "alpha": 3.7407969979466156e-05,
+      "learning_rate": "adaptive",
+      "max_iter": 465
+    },
+    "score": 0.09488083550205509,
+    "time": 25.455689668655396
+  }
+]
