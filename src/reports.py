@@ -220,7 +220,7 @@ def generate_single_trial_cv_table(file_handle, cv_metrics):
     file_handle.write(f"Validação cruzada com {len(cv_metrics)} folds\n")
 
 
-def save_results_to_file(model_name, results, results_dir="../results"):
+def save_results_to_file(model_name, results, results_dir="./results"):
     """Salva os resultados em arquivos organizados por modelo"""
     model_dir = os.path.join(results_dir, model_name)
     os.makedirs(model_dir, exist_ok=True)
@@ -323,7 +323,7 @@ def summarize_default_results(results):
     print("\n" + "\n".join(content_lines))
     
     # Salvar em arquivo
-    results_dir = "../results"
+    results_dir = "./results"
     os.makedirs(results_dir, exist_ok=True)
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -362,24 +362,37 @@ def summarize_optimized_results(results):
     content_lines.append(f"Modelos com erro: {len(failed_models)}")
     content_lines.append("")
     
-    # Tabela de performance para modelos bem-sucedidos
-    if successful_models:
+    # Tabela de performance para todos os modelos (incluindo falhas)
+    if successful_models or failed_models:
         content_lines.append("COMPARAÇÃO DE PERFORMANCE (CONJUNTO DE TESTE):")
         content_lines.append("-" * 80)
         content_lines.append(f"{'Modelo':<25} {'Accuracy':<10} {'Precision':<11} {'Recall':<8} {'F1':<8} {'ROC AUC':<9} {'PR AUC':<8}")
         content_lines.append("-" * 80)
         
+        # Adicionar modelos bem-sucedidos
         for result in successful_models:
             # Verificar se o resultado tem test_metrics (modelos otimizados)
             if 'test_metrics' in result:
                 metrics = result['test_metrics']
+                # Para modelos otimizados, as métricas podem ter nomes ligeiramente diferentes
+                f1_key = 'f1' if 'f1' in metrics else 'f1_score'
                 content_lines.append(f"{result['model_name']:<25} "
                       f"{metrics['accuracy']:<10.4f} "
                       f"{metrics['precision']:<11.4f} "
                       f"{metrics['recall']:<8.4f} "
-                      f"{metrics['f1']:<8.4f} "
+                      f"{metrics[f1_key]:<8.4f} "
                       f"{metrics['roc_auc']:<9.4f} "
                       f"{metrics['pr_auc']:<8.4f}")
+        
+        # Adicionar modelos com falha
+        for result in failed_models:
+            content_lines.append(f"{result['model_name']:<25} "
+                  f"{'FAILED':<10} "
+                  f"{'FAILED':<11} "
+                  f"{'FAILED':<8} "
+                  f"{'FAILED':<8} "
+                  f"{'FAILED':<9} "
+                  f"{'FAILED':<8}")
     
     if failed_models:
         content_lines.append("")
@@ -394,7 +407,7 @@ def summarize_optimized_results(results):
         print(line)
     
     # Salvar em arquivo
-    results_dir = "../results"
+    results_dir = "./results"
     os.makedirs(results_dir, exist_ok=True)
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")

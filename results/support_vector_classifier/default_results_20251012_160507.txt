@@ -1,0 +1,74 @@
+RESULTADOS DO MODELO: SUPPORT VECTOR CLASSIFIER (PARÂMETROS PADRÃO)
+================================================================================
+
+Data/Hora: 2025-10-12 16:05:07
+
+PARÂMETROS UTILIZADOS (PADRÃO):
+--------------------------------------------------
+  C: 1.0
+  break_ties: False
+  cache_size: 200
+  class_weight: None
+  coef0: 0.0
+  decision_function_shape: ovr
+  degree: 3
+  gamma: scale
+  kernel: rbf
+  max_iter: -1
+  probability: True
+  random_state: 30
+  shrinking: True
+  tol: 0.001
+  verbose: False
+
+RESULTADOS DA VALIDAÇÃO CRUZADA (5-FOLD):
+--------------------------------------------------
+ACCURACY:
+  Média: 0.6754
+  Desvio Padrão: 0.0048
+  Scores por fold: [0.683083511777302, 0.6723768736616702, 0.6702355460385439, 0.6788008565310493, 0.6723768736616702]
+
+PRECISION:
+  Média: 0.6519
+  Desvio Padrão: 0.1388
+  Scores por fold: [0.8, 0.6, 0.5, 0.8333333333333334, 0.5263157894736842]
+
+RECALL:
+  Média: 0.0377
+  Desvio Padrão: 0.0181
+  Scores por fold: [0.05194805194805195, 0.01948051948051948, 0.01948051948051948, 0.032467532467532464, 0.06493506493506493]
+
+F1:
+  Média: 0.0702
+  Desvio Padrão: 0.0316
+  Scores por fold: [0.0975609756097561, 0.03773584905660377, 0.0375, 0.0625, 0.11560693641618497]
+
+ROC_AUC:
+  Média: 0.5731
+  Desvio Padrão: 0.0306
+  Scores por fold: [0.5876312186216339, 0.6100991660097091, 0.5381934359570143, 0.5942492012779553, 0.5352267540765943]
+
+PR_AUC:
+  Média: 0.4163
+  Desvio Padrão: 0.0303
+  Scores por fold: [0.4342328165384255, 0.46190590574367196, 0.3890644605521627, 0.4180763166052522, 0.3782627517300816]
+
+AVALIAÇÃO NO CONJUNTO DE TESTE FINAL:
+--------------------------------------------------
+Acurácia: 0.6678
+Precisão: 0.4444
+Recall: 0.0207
+F1-Score: 0.0396
+ROC AUC: 0.6034
+PR AUC: 0.4194
+
+RELATÓRIO DETALHADO:
+------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+  Non-driver       0.6678      0.6713     0.9872     0.7992         -         -
+      Driver       0.6678      0.4444     0.0207     0.0396     0.6034     0.4194
+
+   macro avg       0.6678      0.5579     0.5040     0.4194     0.6034     0.4194
+weighted avg       0.6678      0.5963     0.6678     0.5482     0.6034     0.4194
+

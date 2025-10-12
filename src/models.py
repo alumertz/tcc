@@ -31,7 +31,8 @@ def _optimize_classifier_generic(
     X, y, 
     n_trials=30, 
     save_results=True,
-    custom_params_processor=None
+    custom_params_processor=None,
+    return_test_metrics=False
 ):
     """
     Função genérica para otimização de hiperparâmetros de classificadores.
@@ -52,11 +53,13 @@ def _optimize_classifier_generic(
         Se deve salvar os resultados
     custom_params_processor : function, optional
         Função para processar parâmetros antes de criar o modelo final
+    return_test_metrics : bool
+        Se deve retornar também as métricas de teste
         
     Returns:
     --------
-    sklearn.pipeline.Pipeline
-        Pipeline otimizado
+    sklearn.pipeline.Pipeline ou tuple
+        Pipeline otimizado, ou tuple (pipeline, test_metrics) se return_test_metrics=True
     """
     # Holdout para teste (20%)
     X_trainval, X_test, y_trainval, y_test = train_test_split(
@@ -73,9 +76,14 @@ def _optimize_classifier_generic(
     def objective(trial):
         params = param_suggestions_func(trial)
 
+        # Only pass random_state to classifiers that support it
+        classifier_kwargs = params.copy()
+        if classifier_class not in [KNeighborsClassifier]:
+            classifier_kwargs['random_state'] = 30
+            
         pipeline = Pipeline([
             ("scaler", StandardScaler()),
-            ("classifier", classifier_class(random_state=30, **params))
+            ("classifier", classifier_class(**classifier_kwargs))
         ])
 
         start = time.time()
@@ -134,9 +142,14 @@ def _optimize_classifier_generic(
         final_params["probability"] = True
 
     # Treina modelo final com best_params
+    # Only pass random_state to classifiers that support it
+    final_classifier_kwargs = final_params.copy()
+    if classifier_class not in [KNeighborsClassifier]:
+        final_classifier_kwargs['random_state'] = 30
+        
     final_pipeline = Pipeline([
         ("scaler", StandardScaler()),
-        ("classifier", classifier_class(random_state=30, **final_params))
+        ("classifier", classifier_class(**final_classifier_kwargs))
     ])
     final_pipeline.fit(X_trainval, y_trainval)
 
@@ -165,7 +178,8 @@ def _optimize_classifier_generic(
     if model_name == 'decision_tree':
         print(f"{model_name.replace('_', ' ').title()} - CV folds utilizados: {n_splits}")
 
-    return final_pipeline
+    # Sempre retorna tupla para compatibilidade com main.py
+    return final_pipeline, test_metrics
 
 
 # Funções de sugestão de parâmetros para cada modelo

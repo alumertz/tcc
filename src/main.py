@@ -38,16 +38,16 @@ def get_data_paths(use_renan=False):
         tuple: (features_path, labels_path, data_source)
     """
     if use_renan:
-        features_path = "/Users/i583975/git/tcc/renan/data_files/omics_features/UNION_features.tsv"
-        labels_path = "/Users/i583975/git/tcc/renan/data_files/labels/UNION_labels.tsv"
+        features_path = "../renan/data_files/omics_features/UNION_features.tsv"
+        labels_path = "../renan/data_files/labels/UNION_labels.tsv"
         data_source = "RENAN"
         print(f"📁 Usando dados do RENAN:")
         print(f"   Features: renan/data_files/omics_features/UNION_features.tsv")
         print(f"   Labels: renan/data_files/labels/UNION_labels.tsv")
         print(f"   Formato labels: gene, label (True/False/NaN)")
     else:
-        features_path = "/Users/i583975/git/tcc/data/UNION_features.tsv"
-        labels_path = "/Users/i583975/git/tcc/data/processed/UNION_labels.tsv"
+        features_path = "../data/UNION_features.tsv"
+        labels_path = "../data/processed/UNION_labels.tsv"
         data_source = "ANA"
         print(f"📁 Usando dados da ANA:")
         print(f"   Features: data/UNION_features.tsv")
@@ -111,12 +111,13 @@ def run_single_model(model_name, optimizer_func, X, y, n_trials=10):
     
     try:
         # Executa otimização (com salvamento automático)
-        best_model = optimizer_func(X, y, n_trials=n_trials, save_results=True)
+        best_model, test_metrics = optimizer_func(X, y, n_trials=n_trials, save_results=True)
         
         results = {
             'model_name': model_name,
             'status': 'success',
-            'model': best_model
+            'model': best_model,
+            'test_metrics': test_metrics
         }
         
         print(f"✓ {model_name} executado com sucesso!")

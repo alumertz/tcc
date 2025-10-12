@@ -16,6 +16,8 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, HistGradientBoostingClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
+from sklearn.svm import SVC
+from catboost import CatBoostClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import cross_val_score, StratifiedKFold
@@ -138,8 +140,8 @@ def save_default_results(model_name, cv_results, test_metrics, class_report, par
     """
     Salva os resultados em arquivos organizados por modelo
     """
-    # Criar diretório base
-    base_dir = "./results"
+    # Criar diretório base (mesmo local do main.py)
+    base_dir = "results"
     os.makedirs(base_dir, exist_ok=True)
     
     # Criar diretório específico do modelo
@@ -228,7 +230,8 @@ def run_all_default_models(X, y):
         ("Histogram Gradient Boosting", HistGradientBoostingClassifier(random_state=30)),
         ("K-Nearest Neighbors", KNeighborsClassifier()),
         ("Multi-Layer Perceptron", MLPClassifier(random_state=30, max_iter=1000)),
-        # SVC não incluído conforme solicitado
+        ("Support Vector Classifier", SVC(random_state=30, probability=True)),
+        ("CatBoost", CatBoostClassifier(random_state=30, verbose=False, allow_writing_files=False)),
     ]
     
     results = []
@@ -270,8 +273,8 @@ def main():
     print("="*80)
     
     # Caminhos para os arquivos de dados (mesmos do main.py)
-    features_path = "../data/UNION_features.tsv"
-    labels_path = "../data/processed/UNION_labels.tsv"
+    features_path = "./data/UNION_features.tsv"
+    labels_path = "./data/processed/UNION_labels.tsv"
     
     # Verifica se os arquivos existem
     if not os.path.exists(features_path):
