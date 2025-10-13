@@ -1,0 +1,332 @@
+[
+  {
+    "trial_number": 0,
+    "params": {
+      "max_depth": 10,
+      "min_samples_split": 2,
+      "min_samples_leaf": 9,
+      "criterion": "entropy"
+    },
+    "score": 0.36922090557131565,
+    "time": 0.3551158905029297
+  },
+  {
+    "trial_number": 1,
+    "params": {
+      "max_depth": 16,
+      "min_samples_split": 4,
+      "min_samples_leaf": 8,
+      "criterion": "entropy"
+    },
+    "score": 0.37146675483384134,
+    "time": 0.4168410301208496
+  },
+  {
+    "trial_number": 2,
+    "params": {
+      "max_depth": 23,
+      "min_samples_split": 15,
+      "min_samples_leaf": 19,
+      "criterion": "entropy"
+    },
+    "score": 0.35344062445620233,
+    "time": 0.3377547264099121
+  },
+  {
+    "trial_number": 3,
+    "params": {
+      "max_depth": 19,
+      "min_samples_split": 10,
+      "min_samples_leaf": 11,
+      "criterion": "gini"
+    },
+    "score": 0.36172671113388116,
+    "time": 0.3041720390319824
+  },
+  {
+    "trial_number": 4,
+    "params": {
+      "max_depth": 17,
+      "min_samples_split": 19,
+      "min_samples_leaf": 3,
+      "criterion": "gini"
+    },
+    "score": 0.3631035705513702,
+    "time": 0.3429696559906006
+  },
+  {
+    "trial_number": 5,
+    "params": {
+      "max_depth": 18,
+      "min_samples_split": 5,
+      "min_samples_leaf": 10,
+      "criterion": "entropy"
+    },
+    "score": 0.37099250613789725,
+    "time": 0.39912867546081543
+  },
+  {
+    "trial_number": 6,
+    "params": {
+      "max_depth": 19,
+      "min_samples_split": 4,
+      "min_samples_leaf": 19,
+      "criterion": "entropy"
+    },
+    "score": 0.35344062445620233,
+    "time": 0.33768796920776367
+  },
+  {
+    "trial_number": 7,
+    "params": {
+      "max_depth": 6,
+      "min_samples_split": 19,
+      "min_samples_leaf": 8,
+      "criterion": "gini"
+    },
+    "score": 0.3553284271417996,
+    "time": 0.2280130386352539
+  },
+  {
+    "trial_number": 8,
+    "params": {
+      "max_depth": 20,
+      "min_samples_split": 2,
+      "min_samples_leaf": 20,
+      "criterion": "gini"
+    },
+    "score": 0.3715101856428159,
+    "time": 0.2711489200592041
+  },
+  {
+    "trial_number": 9,
+    "params": {
+      "max_depth": 14,
+      "min_samples_split": 3,
+      "min_samples_leaf": 2,
+      "criterion": "gini"
+    },
+    "score": 0.35181695345074226,
+    "time": 0.3619198799133301
+  },
+  {
+    "trial_number": 10,
+    "params": {
+      "max_depth": 30,
+      "min_samples_split": 9,
+      "min_samples_leaf": 15,
+      "criterion": "gini"
+    },
+    "score": 0.36415411931111946,
+    "time": 0.28952717781066895
+  },
+  {
+    "trial_number": 11,
+    "params": {
+      "max_depth": 25,
+      "min_samples_split": 7,
+      "min_samples_leaf": 14,
+      "criterion": "entropy"
+    },
+    "score": 0.34534731162732246,
+    "time": 0.36842799186706543
+  },
+  {
+    "trial_number": 12,
+    "params": {
+      "max_depth": 11,
+      "min_samples_split": 14,
+      "min_samples_leaf": 6,
+      "criterion": "gini"
+    },
+    "score": 0.3612683973983065,
+    "time": 0.3032379150390625
+  },
+  {
+    "trial_number": 13,
+    "params": {
+      "max_depth": 25,
+      "min_samples_split": 7,
+      "min_samples_leaf": 14,
+      "criterion": "entropy"
+    },
+    "score": 0.34534731162732246,
+    "time": 0.367171049118042
+  },
+  {
+    "trial_number": 14,
+    "params": {
+      "max_depth": 4,
+      "min_samples_split": 2,
+      "min_samples_leaf": 6,
+      "criterion": "entropy"
+    },
+    "score": 0.3749600152658978,
+    "time": 0.20929503440856934
+  },
+  {
+    "trial_number": 15,
+    "params": {
+      "max_depth": 5,
+      "min_samples_split": 13,
+      "min_samples_leaf": 5,
+      "criterion": "gini"
+    },
+    "score": 0.3748321998540243,
+    "time": 0.20678210258483887
+  },
+  {
+    "trial_number": 16,
+    "params": {
+      "max_depth": 2,
+      "min_samples_split": 13,
+      "min_samples_leaf": 5,
+      "criterion": "entropy"
+    },
+    "score": 0.37245766844761674,
+    "time": 0.1253361701965332
+  },
+  {
+    "trial_number": 17,
+    "params": {
+      "max_depth": 3,
+      "min_samples_split": 16,
+      "min_samples_leaf": 1,
+      "criterion": "gini"
+    },
+    "score": 0.39029494259018466,
+    "time": 0.14394283294677734
+  },
+  {
+    "trial_number": 18,
+    "params": {
+      "max_depth": 2,
+      "min_samples_split": 18,
+      "min_samples_leaf": 1,
+      "criterion": "entropy"
+    },
+    "score": 0.37245766844761674,
+    "time": 0.12523889541625977
+  },
+  {
+    "trial_number": 19,
+    "params": {
+      "max_depth": 8,
+      "min_samples_split": 16,
+      "min_samples_leaf": 3,
+      "criterion": "gini"
+    },
+    "score": 0.3545514638178783,
+    "time": 0.2691309452056885
+  },
+  {
+    "trial_number": 20,
+    "params": {
+      "max_depth": 13,
+      "min_samples_split": 17,
+      "min_samples_leaf": 6,
+      "criterion": "entropy"
+    },
+    "score": 0.36745549603869865,
+    "time": 0.4007701873779297
+  },
+  {
+    "trial_number": 21,
+    "params": {
+      "max_depth": 5,
+      "min_samples_split": 12,
+      "min_samples_leaf": 4,
+      "criterion": "gini"
+    },
+    "score": 0.371506494481424,
+    "time": 0.19730782508850098
+  },
+  {
+    "trial_number": 22,
+    "params": {
+      "max_depth": 5,
+      "min_samples_split": 11,
+      "min_samples_leaf": 1,
+      "criterion": "gini"
+    },
+    "score": 0.3754545301657178,
+    "time": 0.20258283615112305
+  },
+  {
+    "trial_number": 23,
+    "params": {
+      "max_depth": 8,
+      "min_samples_split": 8,
+      "min_samples_leaf": 1,
+      "criterion": "gini"
+    },
+    "score": 0.350400824037789,
+    "time": 0.275789737701416
+  },
+  {
+    "trial_number": 24,
+    "params": {
+      "max_depth": 3,
+      "min_samples_split": 20,
+      "min_samples_leaf": 1,
+      "criterion": "gini"
+    },
+    "score": 0.39029494259018466,
+    "time": 0.14310979843139648
+  },
+  {
+    "trial_number": 25,
+    "params": {
+      "max_depth": 8,
+      "min_samples_split": 20,
+      "min_samples_leaf": 2,
+      "criterion": "gini"
+    },
+    "score": 0.3575832726472766,
+    "time": 0.2731461524963379
+  },
+  {
+    "trial_number": 26,
+    "params": {
+      "max_depth": 2,
+      "min_samples_split": 11,
+      "min_samples_leaf": 1,
+      "criterion": "gini"
+    },
+    "score": 0.38058758258204045,
+    "time": 0.11047101020812988
+  },
+  {
+    "trial_number": 27,
+    "params": {
+      "max_depth": 3,
+      "min_samples_split": 16,
+      "min_samples_leaf": 3,
+      "criterion": "gini"
+    },
+    "score": 0.38885137633571354,
+    "time": 0.14533710479736328
+  },
+  {
+    "trial_number": 28,
+    "params": {
+      "max_depth": 10,
+      "min_samples_split": 16,
+      "min_samples_leaf": 3,
+      "criterion": "gini"
+    },
+    "score": 0.35402972852412556,
+    "time": 0.30675315856933594
+  },
+  {
+    "trial_number": 29,
+    "params": {
+      "max_depth": 10,
+      "min_samples_split": 20,
+      "min_samples_leaf": 4,
+      "criterion": "gini"
+    },
+    "score": 0.35295008187892835,
+    "time": 0.3022923469543457
+  }
+]
