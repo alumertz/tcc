@@ -282,21 +282,26 @@ def save_results_to_file(model_name, results, results_dir="results/omics"):
 
 
 def save_simple_results_to_file(model_name, results, results_dir="results/omics"):
-    print(results)
-
-
     model_dir = os.path.join(results_dir, model_name)
     os.makedirs(model_dir, exist_ok=True)
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     
+    # Criar uma cópia filtrada do results para salvar no JSON (sem cv_metrics e test_metrics)
+    results_for_json = {k: v for k, v in results.items() if k not in ['cv_metrics', 'test_metrics']}
+    
+    # Salvar JSON com os dados filtrados
+    json_file = os.path.join(model_dir, f"results_{timestamp}.json")
+    with open(json_file, 'w') as jf:
+        json.dump(results_for_json, jf, indent=2, default=str)
+    
+    # Salvar arquivo de texto com resumo completo (incluindo métricas)
     test_results_file = os.path.join(model_dir, f"test_results_{timestamp}.txt")
     with open(test_results_file, 'w') as f:
         f.write(f"RESULTADOS DO MODELO: {model_name.upper()}\n")
         f.write("="*80 + "\n\n")
         f.write(f"Data/Hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
         
-        # Se quiser deixar a parte de CV, mantém; se não, pode tirar essa parte
         if 'all_cv_metrics' in results:
             generate_all_trials_cv_tables(f, results['all_cv_metrics'])
         elif 'cv_detailed_metrics' in results:
@@ -322,6 +327,6 @@ def save_simple_results_to_file(model_name, results, results_dir="results/omics"
             f.write(f"{omic}\n")
         f.write("\n")
 
-    
-    print(f"Resultados salvos em: {model_dir}")
-    return test_results_file
+    print(f"Resultados JSON salvos em: {json_file}")
+    print(f"Resumo de resultados salvos em: {test_results_file}")
+    return json_file, test_results_file

@@ -7,20 +7,89 @@ para predição de genes-alvo usando dados ômicos.
 import os
 import time
 import warnings
+import numpy as np
 
 # Suppress warnings
 warnings.filterwarnings('ignore')
 
 from processing import prepare_dataset, get_dataset_info
 from models import (
-    optimize_decision_tree_classifier,
-    optimize_random_forest_classifier,
-    optimize_gradient_boosting_classifier,
-    optimize_hist_gradient_boosting_classifier,
-    optimize_knn_classifier,
-    optimize_mlp_classifier,
-    optimize_svc_classifier
+    train_decision_tree_classifier,
+    train_random_forest_classifier,
+    train_gradient_boosting_classifier,
+    train_hist_gradient_boosting_classifier,
+    train_knn_classifier,
+    train_mlp_classifier,    
+    train_svc_classifier,
+    train_catboost_classifier
 )
+
+# Grupos de melhores hiperparâmetros
+HYPERPARAMS = {
+    "Decision Tree": {
+        "max_depth": 3,
+        "min_samples_split": 16,
+        "min_samples_leaf": 1,
+        "criterion": "gini"
+    },
+    "Random Forest": {
+        "n_estimators": 200,
+        "max_depth": 7,
+        "min_samples_split": 11,
+        "min_samples_leaf": 3,
+        "max_features": "sqrt",
+        "criterion": "gini"
+    },
+    "Gradient Boosting": {
+        "n_estimators": 150,
+        "learning_rate": 0.041901086122355526,
+        "max_depth": 4,
+        "min_samples_split": 6,
+        "min_samples_leaf": 8,
+        "subsample": 0.8750118011622728,
+    },
+    "Histogram Gradient Boosting": {
+        "max_iter": 68,
+        "learning_rate": 0.07520558542833868,
+        "max_depth": 4,
+        "min_samples_leaf": 20,
+        "l2_regularization": 0.24633014373667755,
+    },
+    "K-Nearest Neighbors": {
+        "n_neighbors": 20,
+        "weights": "distance",
+        "algorithm": "auto",
+        "p": 2,
+    },
+    "Multi-Layer Perceptron": {
+        "hidden_layer_sizes": (131, 115, 30),
+        "activation": "logistic",
+        "alpha": 0.07698392854033051,
+        "learning_rate": "constant",
+        "max_iter": 742,
+    },
+    "Support Vector Classifier": {
+        "kernel": "rbf",
+        "C": 0.3378198845315039,
+        "probability": True,
+        "max_iter": 1000,
+        "tol": 0.001,
+        "cache_size": 200,
+        "gamma": "scale",
+    },
+    "CatBoost": {
+        "iterations": 256,
+        "learning_rate": 0.019261294694430553,
+        "depth": 7,
+        "l2_leaf_reg": 2.9603859610055303,
+        "border_count": 239,
+        "bagging_temperature": 0.30218907193827815,
+        "random_strength": 0.8356422919240496,
+        "verbose": False,
+        "allow_writing_files": False,
+    }
+}
+
 
 # Grupos de features por posição
 FEATURE_GROUPS = {
@@ -33,13 +102,14 @@ FEATURE_GROUPS = {
 
 # Configuração dos modelos e otimizadores
 MODELS_CONFIG = [
-    ("Decision Tree", optimize_decision_tree_classifier),
-    ("Random Forest", optimize_random_forest_classifier),
-    ("Gradient Boosting", optimize_gradient_boosting_classifier),
-    ("Histogram Gradient Boosting", optimize_hist_gradient_boosting_classifier),
-    ("K-Nearest Neighbors", optimize_knn_classifier),
-    ("Multi-Layer Perceptron", optimize_mlp_classifier),
-    #("Support Vector Classifier", optimize_svc_classifier),
+    ("Decision Tree", train_decision_tree_classifier),
+    ("Random Forest", train_random_forest_classifier),
+    ("Gradient Boosting", train_gradient_boosting_classifier),
+    ("Histogram Gradient Boosting", train_hist_gradient_boosting_classifier),
+    ("K-Nearest Neighbors", train_knn_classifier),
+    ("Multi-Layer Perceptron", train_mlp_classifier),
+    ("Support Vector Classifier", train_svc_classifier),
+    ("CatBoost", train_catboost_classifier)
 ]
 
 # Caminhos dos dados
@@ -59,13 +129,18 @@ def select_features(X, selected_groups):
     return X[:, sorted(set(indices))]
 
 
-def run_single_model(model_name, optimizer_func, X, y, n_trials, omics_used=None):
+def run_single_model(model_name, optimizer_func, X, y, omics_used=None):
     print("=" * 80)
     print(f"EXECUTANDO MODELO: {model_name}")
     print("=" * 80)
 
     try:
-        best_model = optimizer_func(X, y, n_trials=n_trials, save_results=True, omics_used=omics_used)
+        # Pega os hiperparâmetros para este modelo
+        params = HYPERPARAMS.get(model_name, {})
+
+        # Passa os hiperparâmetros dinamicamente via **kwargs
+        best_model = optimizer_func(X, y, save_results=True, omics_used=omics_used, **params)
+
         print(f"✓ {model_name} executado com sucesso!")
         return {
             'model_name': model_name,
@@ -76,21 +151,25 @@ def run_single_model(model_name, optimizer_func, X, y, n_trials, omics_used=None
 
     except Exception as e:
         print(f"✗ Erro ao executar {model_name}: {e}")
-        return {'model_name': model_name, 'status': 'error', 'error': str(e), 'model': None, 'omics_used': omics_used or []}
+        return {
+            'model_name': model_name,
+            'status': 'error',
+            'error': str(e),
+            'model': None,
+            'omics_used': omics_used or []
+        }
 
 
-def run_all_models(X, y, n_trials, omics_used=None):
+def run_all_models(X, y, omics_used=None):
     print("\nINICIANDO EXPERIMENTAÇÃO COM TODOS OS MODELOS")
-    print(f"Dataset: {X.shape[0]} amostras x {X.shape[1]} features")
-    print(f"Trials por modelo: {n_trials}\n")
+    print(f"Dataset: {X.shape[0]} amostras x {X.shape[1]} features\n")
 
     results = []
     for i, (model_name, optimizer_func) in enumerate(MODELS_CONFIG, 1):
         print(f"Progresso: {i}/{len(MODELS_CONFIG)} modelos")
-        results.append(run_single_model(model_name, optimizer_func, X, y, n_trials, omics_used=omics_used))
+        results.append(run_single_model(model_name, optimizer_func, X, y, omics_used=omics_used))
         time.sleep(2)
     return results
-
 
 
 def summarize_results(results, omics_used=None):
@@ -159,22 +238,13 @@ def main():
     print(f"    - Valores zero: {info['feature_stats']['zeros_percentage']:.2f}%")
 
     # Configurações
-    N_TRIALS = 20
     print("\nCONFIGURAÇÃO DO EXPERIMENTO:")
-    print(f"  Trials por modelo: {N_TRIALS}")
     print("  Validação: 5-fold estratificada + Holdout 80/20")
     print("  Métrica: PR AUC (Average Precision)")
     print(f"  Resultados: {RESULTS_PATH}\n")
 
-    # === Escolha entre rodar um ou todos os modelos ===
-    # Uncomment a linha desejada abaixo:
-
-    #results = run_single_model("Decision Tree", optimize_decision_tree_classifier, X, y, N_TRIALS, omics_used)
-    #results = run_single_model("Gradient Boosting", optimize_gradient_boosting_classifier, X, y, N_TRIALS)
-    #results = run_single_model("Support Vector Classifier", optimize_svc_classifier, X, y, N_TRIALS)
-    #results = run_single_model("Multi-Layer Perceptron", optimize_mlp_classifier, X, y, N_TRIALS)
-    #results = run_single_model("K-Nearest Neighbors", optimize_knn_classifier, X, y, N_TRIALS)
-    #results = run_all_models(X, y, N_TRIALS, omics_used)
+    results = run_single_model("Decision Tree", train_decision_tree_classifier, X, y, omics_used)
+    #results = run_all_models(X, y, omics_used)
     summarize_results(results, omics_used)
     print("\nEXPERIMENTO CONCLUÍDO!")
     print(f"Resultados salvos em: {RESULTS_PATH}")
