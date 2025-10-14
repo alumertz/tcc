@@ -59,24 +59,27 @@ def select_features(X, selected_groups):
     return X[:, sorted(set(indices))]
 
 
-def run_single_model(model_name, optimizer_func, X, y, n_trials):
-    """Executa um único modelo de classificação"""
+def run_single_model(model_name, optimizer_func, X, y, n_trials, omics_used=None):
     print("=" * 80)
     print(f"EXECUTANDO MODELO: {model_name}")
     print("=" * 80)
 
     try:
-        best_model = optimizer_func(X, y, n_trials=n_trials, save_results=True)
+        best_model = optimizer_func(X, y, n_trials=n_trials, save_results=True, omics_used=omics_used)
         print(f"✓ {model_name} executado com sucesso!")
-        return {'model_name': model_name, 'status': 'success', 'model': best_model}
+        return {
+            'model_name': model_name,
+            'status': 'success',
+            'model': best_model,
+            'omics_used': omics_used if omics_used else []
+        }
 
     except Exception as e:
         print(f"✗ Erro ao executar {model_name}: {e}")
-        return {'model_name': model_name, 'status': 'error', 'error': str(e), 'model': None}
+        return {'model_name': model_name, 'status': 'error', 'error': str(e), 'model': None, 'omics_used': omics_used or []}
 
 
-def run_all_models(X, y, n_trials):
-    """Executa todos os modelos definidos"""
+def run_all_models(X, y, n_trials, omics_used=None):
     print("\nINICIANDO EXPERIMENTAÇÃO COM TODOS OS MODELOS")
     print(f"Dataset: {X.shape[0]} amostras x {X.shape[1]} features")
     print(f"Trials por modelo: {n_trials}\n")
@@ -84,18 +87,19 @@ def run_all_models(X, y, n_trials):
     results = []
     for i, (model_name, optimizer_func) in enumerate(MODELS_CONFIG, 1):
         print(f"Progresso: {i}/{len(MODELS_CONFIG)} modelos")
-        results.append(run_single_model(model_name, optimizer_func, X, y, n_trials))
-        time.sleep(2)  # pausa breve entre execuções
+        results.append(run_single_model(model_name, optimizer_func, X, y, n_trials, omics_used=omics_used))
+        time.sleep(2)
     return results
 
 
-def summarize_results(results, selected_groups=None):
+
+def summarize_results(results, omics_used=None):
     """Cria um resumo textual dos resultados dos modelos"""
     if isinstance(results, dict):
         results = [results]
 
-    if selected_groups:
-        print(f"\nÔMICAS UTILIZADAS NO EXPERIMENTO: {', '.join(selected_groups)}\n")
+    if omics_used:
+        print(f"\nÔMICAS UTILIZADAS NO EXPERIMENTO: {', '.join(omics_used)}\n")
 
     print("=" * 80)
     print("RESUMO DOS RESULTADOS")
@@ -139,8 +143,9 @@ def main():
         return
 
     # Seleção de features
-    selected_groups = ["CNA", "Gene_Expression", "DNA_Methylation", "Mutations"]
-    X = select_features(X, selected_groups)
+    # "CNA", "Gene_Expression", "DNA_Methylation", "Mutations"
+    omics_used = ["CNA"]
+    X = select_features(X, omics_used)
 
     # Informações gerais
     info = get_dataset_info(X, y, gene_names, feature_names)
@@ -164,12 +169,13 @@ def main():
     # === Escolha entre rodar um ou todos os modelos ===
     # Uncomment a linha desejada abaixo:
 
-    # results = run_single_model("Gradient Boosting", optimize_gradient_boosting_classifier, X, y, N_TRIALS)
-    # results = run_single_model("Support Vector Classifier", optimize_svc_classifier, X, y, N_TRIALS)
-    # results = run_single_model("Multi-Layer Perceptron", optimize_mlp_classifier, X, y, N_TRIALS)
+    #results = run_single_model("Decision Tree", optimize_decision_tree_classifier, X, y, N_TRIALS, omics_used)
+    #results = run_single_model("Gradient Boosting", optimize_gradient_boosting_classifier, X, y, N_TRIALS)
+    #results = run_single_model("Support Vector Classifier", optimize_svc_classifier, X, y, N_TRIALS)
+    #results = run_single_model("Multi-Layer Perceptron", optimize_mlp_classifier, X, y, N_TRIALS)
     #results = run_single_model("K-Nearest Neighbors", optimize_knn_classifier, X, y, N_TRIALS)
-    results = run_all_models(X, y, N_TRIALS)
-    summarize_results(results, selected_groups)
+    #results = run_all_models(X, y, N_TRIALS, omics_used)
+    summarize_results(results, omics_used)
     print("\nEXPERIMENTO CONCLUÍDO!")
     print(f"Resultados salvos em: {RESULTS_PATH}")
 

@@ -91,9 +91,9 @@ def evaluate_classification_on_test(model, X_test, y_test, return_dict=False):
 
     metrics = {
         'accuracy': accuracy_score(y_test, y_pred),
-        'precision': precision_score(y_test, y_pred, average='weighted'),
-        'recall': recall_score(y_test, y_pred, average='weighted'),
-        'f1': f1_score(y_test, y_pred, average='weighted'),
+        'precision': precision_score(y_test, y_pred, average='binary'),
+        'recall': recall_score(y_test, y_pred, average='binary'),
+        'f1': f1_score(y_test, y_pred, average='binary'),
         'roc_auc': roc_auc_score(y_test, y_score),
         'pr_auc': average_precision_score(y_test, y_score),
     }

@@ -281,3 +281,47 @@ def save_results_to_file(model_name, results, results_dir="results/omics"):
     return trials_file, test_results_file
 
 
+def save_simple_results_to_file(model_name, results, results_dir="results/omics"):
+    print(results)
+
+
+    model_dir = os.path.join(results_dir, model_name)
+    os.makedirs(model_dir, exist_ok=True)
+    
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    
+    test_results_file = os.path.join(model_dir, f"test_results_{timestamp}.txt")
+    with open(test_results_file, 'w') as f:
+        f.write(f"RESULTADOS DO MODELO: {model_name.upper()}\n")
+        f.write("="*80 + "\n\n")
+        f.write(f"Data/Hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+        
+        # Se quiser deixar a parte de CV, mantém; se não, pode tirar essa parte
+        if 'all_cv_metrics' in results:
+            generate_all_trials_cv_tables(f, results['all_cv_metrics'])
+        elif 'cv_detailed_metrics' in results:
+            generate_cv_metrics_table(f, results['cv_detailed_metrics'])
+
+        f.write("AVALIAÇÃO NO CONJUNTO DE TESTE FINAL:\n")
+        f.write("-"*50 + "\n")
+        f.write(f"Acurácia: {results['test_metrics']['accuracy']:.4f}\n")
+        f.write(f"Precisão: {results['test_metrics']['precision']:.4f}\n")
+        f.write(f"Recall: {results['test_metrics']['recall']:.4f}\n")
+        f.write(f"F1-Score: {results['test_metrics']['f1']:.4f}\n")
+        f.write(f"ROC AUC: {results['test_metrics']['roc_auc']:.4f}\n")
+        f.write(f"PR AUC: {results['test_metrics']['pr_auc']:.4f}\n\n")
+        
+        f.write("RELATÓRIO DETALHADO:\n")
+        f.write("-"*30 + "\n")
+        f.write(results['test_metrics']['classification_report'])
+        f.write("\n\n")
+        
+        f.write("MULTIÔMICAS UTILIZADAS:\n")
+        f.write("-"*30 + "\n")
+        for omic in results.get('omics_used', []):
+            f.write(f"{omic}\n")
+        f.write("\n")
+
+    
+    print(f"Resultados salvos em: {model_dir}")
+    return test_results_file

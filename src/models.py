@@ -24,7 +24,7 @@ from sklearn.svm import SVC
 
 # Avaliação e relatórios
 from evaluation import detailed_cross_val_score, evaluate_classification_on_test
-from reports import save_results_to_file
+from reports import save_simple_results_to_file
 
 
 # =========================
@@ -58,7 +58,8 @@ def _optimize_classifier_generic(
     X, y,
     n_trials=30,
     save_results=True,
-    custom_params_processor=None
+    custom_params_processor=None,
+    omics_used=None
 ):
     """Função genérica para otimização de classificadores com validação cruzada."""
     X_trainval, X_test, y_trainval, y_test = train_test_split(
@@ -129,10 +130,12 @@ def _optimize_classifier_generic(
             'optimization_time': total_end - total_start,
             'all_cv_metrics': all_cv_metrics
         }
+        if omics_used:
+            results['omics_used'] = omics_used
         if model_name == 'decision_tree':
             results['cv_folds_used'] = inner_cv.get_n_splits()
 
-        save_results_to_file(model_name, results)
+        save_simple_results_to_file(model_name, results)
 
     # Exibição de resultados
     print(f"\n{model_name.replace('_', ' ').title()}")
@@ -146,7 +149,6 @@ def _optimize_classifier_generic(
 # =========================
 # Sugestão de Parâmetros
 # =========================
-
 def _suggest_decision_tree_params(trial):
     return {
         "max_depth": trial.suggest_int("max_depth", 2, 32),
@@ -236,38 +238,39 @@ def _suggest_svc_params(trial):
 # Interfaces Públicas (por modelo)
 # =========================
 
-def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True):
+def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True, omics_used=None):
     return _optimize_classifier_generic(
-        DecisionTreeClassifier, _suggest_decision_tree_params, 'decision_tree', X, y, n_trials, save_results
+        DecisionTreeClassifier, _suggest_decision_tree_params, 'decision_tree', X, y, n_trials, save_results, omics_used=omics_used
     )
 
-def optimize_random_forest_classifier(X, y, n_trials=30, save_results=True):
+
+def optimize_random_forest_classifier(X, y, n_trials=30, save_results=True, omics_used=None):
     return _optimize_classifier_generic(
-        RandomForestClassifier, _suggest_random_forest_params, 'random_forest', X, y, n_trials, save_results
+        RandomForestClassifier, _suggest_random_forest_params, 'random_forest', X, y, n_trials, save_results, omics_used=omics_used
     )
 
-def optimize_gradient_boosting_classifier(X, y, n_trials=30, save_results=True):
+def optimize_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, omics_used=None):
     return _optimize_classifier_generic(
-        GradientBoostingClassifier, _suggest_gradient_boosting_params, 'gradient_boosting', X, y, n_trials, save_results
+        GradientBoostingClassifier, _suggest_gradient_boosting_params, 'gradient_boosting', X, y, n_trials, save_results, omics_used=omics_used
     )
 
-def optimize_hist_gradient_boosting_classifier(X, y, n_trials=30, save_results=True):
+def optimize_hist_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, omics_used=None):
     return _optimize_classifier_generic(
-        HistGradientBoostingClassifier, _suggest_hist_gradient_boosting_params, 'histogram_gradient_boosting', X, y, n_trials, save_results
+        HistGradientBoostingClassifier, _suggest_hist_gradient_boosting_params, 'histogram_gradient_boosting', X, y, n_trials, save_results, omics_used=omics_used
     )
 
-def optimize_knn_classifier(X, y, n_trials=30, save_results=True):
+def optimize_knn_classifier(X, y, n_trials=30, save_results=True, omics_used=None):
     return _optimize_classifier_generic(
-        KNeighborsClassifier, _suggest_knn_params, 'k_nearest_neighbors', X, y, n_trials, save_results
+        KNeighborsClassifier, _suggest_knn_params, 'k_nearest_neighbors', X, y, n_trials, save_results, omics_used=omics_used
     )
 
-def optimize_mlp_classifier(X, y, n_trials=30, save_results=True):
+def optimize_mlp_classifier(X, y, n_trials=30, save_results=True, omics_used=None):
     return _optimize_classifier_generic(
         MLPClassifier, _suggest_mlp_params, 'multi_layer_perceptron', X, y, n_trials, save_results,
-        custom_params_processor=_process_mlp_params
+        custom_params_processor=_process_mlp_params, omics_used=omics_used
     )
 
-def optimize_svc_classifier(X, y, n_trials=30, save_results=True):
+def optimize_svc_classifier(X, y, n_trials=30, save_results=True, omics_used=None):
     return _optimize_classifier_generic(
-        SVC, _suggest_svc_params, 'svc', X, y, n_trials, save_results
+        SVC, _suggest_svc_params, 'svc', X, y, n_trials, save_results, omics_used=omics_used
     )
