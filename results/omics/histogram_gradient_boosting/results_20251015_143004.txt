@@ -1,0 +1,98 @@
+RESULTADOS DO MODELO: HISTOGRAM_GRADIENT_BOOSTING
+================================================================================
+
+Data/Hora: 2025-10-15 14:30:04
+
+MÉTRICAS DE VALIDAÇÃO CRUZADA:
+--------------------------------------------------
+Fold 1:
+  train_accuracy: 0.7853
+  train_precision_weighted: 0.8266
+  train_recall_weighted: 0.7853
+  train_f1_weighted: 0.7512
+  train_roc_auc: 0.8984
+  train_average_precision: 0.8341
+  val_accuracy: 0.6831
+  val_precision_weighted: 0.6542
+  val_recall_weighted: 0.6831
+  val_f1_weighted: 0.6144
+  val_roc_auc: 0.6369
+  val_average_precision: 0.4597
+
+Fold 2:
+  train_accuracy: 0.7896
+  train_precision_weighted: 0.8264
+  train_recall_weighted: 0.7896
+  train_f1_weighted: 0.7581
+  train_roc_auc: 0.8926
+  train_average_precision: 0.8281
+  val_accuracy: 0.6681
+  val_precision_weighted: 0.6248
+  val_recall_weighted: 0.6681
+  val_f1_weighted: 0.6102
+  val_roc_auc: 0.6098
+  val_average_precision: 0.4313
+
+Fold 3:
+  train_accuracy: 0.7896
+  train_precision_weighted: 0.8274
+  train_recall_weighted: 0.7896
+  train_f1_weighted: 0.7579
+  train_roc_auc: 0.9122
+  train_average_precision: 0.8526
+  val_accuracy: 0.6809
+  val_precision_weighted: 0.6495
+  val_recall_weighted: 0.6809
+  val_f1_weighted: 0.6106
+  val_roc_auc: 0.6176
+  val_average_precision: 0.4597
+
+Fold 4:
+  train_accuracy: 0.7768
+  train_precision_weighted: 0.8161
+  train_recall_weighted: 0.7768
+  train_f1_weighted: 0.7399
+  train_roc_auc: 0.8802
+  train_average_precision: 0.8144
+  val_accuracy: 0.7045
+  val_precision_weighted: 0.7130
+  val_recall_weighted: 0.7045
+  val_f1_weighted: 0.6340
+  val_roc_auc: 0.6060
+  val_average_precision: 0.4770
+
+Fold 5:
+  train_accuracy: 0.7752
+  train_precision_weighted: 0.8161
+  train_recall_weighted: 0.7752
+  train_f1_weighted: 0.7373
+  train_roc_auc: 0.8945
+  train_average_precision: 0.8283
+  val_accuracy: 0.6788
+  val_precision_weighted: 0.6447
+  val_recall_weighted: 0.6788
+  val_f1_weighted: 0.6069
+  val_roc_auc: 0.6232
+  val_average_precision: 0.4610
+
+AVALIAÇÃO NO CONJUNTO DE TESTE FINAL:
+--------------------------------------------------
+Acurácia Global: 0.6935
+ROC AUC: 0.6310
+PR AUC: 0.4876
+
+MÉTRICAS POR CLASSE:
+--------------------------------------------------------------------------------
+Classe        Precision     Recall   F1-Score    Support    ROC AUC     PR AUC
+------------------------------------------------------------------------------
+non-driver       0.7008     0.9463     0.8052        391        nan        nan
+driver           0.6250     0.1813     0.2811        193     0.6310     0.4876
+macro avg        0.6629     0.5638     0.5432        584     0.6310     0.4876
+weighted avg     0.6757     0.6935     0.6320        584     0.6310     0.4876
+
+MULTIÔMICAS UTILIZADAS:
+------------------------------
+CNA
+DNA_Methylation
+Mutations
+

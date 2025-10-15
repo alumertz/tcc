@@ -1,0 +1,19 @@
+{
+  "params": {
+    "kernel": "rbf",
+    "C": 0.3378198845315039,
+    "probability": true,
+    "max_iter": 1000,
+    "tol": 0.001,
+    "cache_size": 200,
+    "gamma": "scale"
+  },
+  "cv_score": 0.426707489769921,
+  "training_time": 4.346590280532837,
+  "omics_used": [
+    "Gene_Expression",
+    "DNA_Methylation",
+    "Mutations"
+  ],
+  "accuracy_global": 0.6695205479452054
+}

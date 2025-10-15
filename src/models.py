@@ -42,22 +42,6 @@ def _create_classifier(classifier_class, params, seed=30):
         return classifier_class(random_state=seed, **params)
     return classifier_class(**params)
 
-def _process_mlp_params(best_trial):
-    """Processa parâmetros do MLP para o modelo final"""
-    n_layers = best_trial.params["n_layers"]
-    hidden_layer_sizes = []
-    for i in range(n_layers):
-        layer_size = best_trial.params[f"layer_{i}_size"]
-        hidden_layer_sizes.append(layer_size)
-    
-    return {
-        "hidden_layer_sizes": tuple(hidden_layer_sizes),
-        "activation": best_trial.params["activation"],
-        "alpha": best_trial.params["alpha"],
-        "learning_rate": best_trial.params["learning_rate"],
-        "max_iter": best_trial.params["max_iter"]
-    }
-
 # =========================
 # Função Genérica
 # =========================
@@ -121,7 +105,7 @@ def run_classifier_with_params(
 # Interfaces Públicas (por modelo)
 # =========================
 
-def train_decision_tree_classifier(X, y, save_results=True, omics_used=None, **params):
+def train_decision_tree_classifier(X, y, params, save_results=True, omics_used=None):
     return run_classifier_with_params(
         DecisionTreeClassifier, 'decision_tree', X, y, params, save_results=save_results, omics_used=omics_used
     )
@@ -148,8 +132,7 @@ def train_knn_classifier(X, y, params, save_results=True, omics_used=None):
 
 def train_mlp_classifier(X, y, params, save_results=True, omics_used=None):
     return run_classifier_with_params(
-        MLPClassifier, 'multi_layer_perceptron', X, y, params, save_results,
-        custom_params_processor=_process_mlp_params, omics_used=omics_used
+        MLPClassifier, 'multi_layer_perceptron', X, y, params, save_results, omics_used=omics_used
     )
 
 def train_svc_classifier(X, y, params, save_results=True, omics_used=None):

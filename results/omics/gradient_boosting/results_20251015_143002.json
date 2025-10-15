@@ -1,0 +1,18 @@
+{
+  "params": {
+    "n_estimators": 150,
+    "learning_rate": 0.041901086122355526,
+    "max_depth": 4,
+    "min_samples_split": 6,
+    "min_samples_leaf": 8,
+    "subsample": 0.8750118011622728
+  },
+  "cv_score": 0.45483827029505114,
+  "training_time": 14.672561407089233,
+  "omics_used": [
+    "CNA",
+    "DNA_Methylation",
+    "Mutations"
+  ],
+  "accuracy_global": 0.6883561643835616
+}

@@ -1,0 +1,17 @@
+{
+  "params": {
+    "max_iter": 68,
+    "learning_rate": 0.07520558542833868,
+    "max_depth": 4,
+    "min_samples_leaf": 20,
+    "l2_regularization": 0.24633014373667755
+  },
+  "cv_score": 0.45090291529064963,
+  "training_time": 0.5643959045410156,
+  "omics_used": [
+    "CNA",
+    "Gene_Expression",
+    "Mutations"
+  ],
+  "accuracy_global": 0.7003424657534246
+}

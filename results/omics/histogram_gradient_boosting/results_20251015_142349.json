@@ -1,0 +1,15 @@
+{
+  "params": {
+    "max_iter": 68,
+    "learning_rate": 0.07520558542833868,
+    "max_depth": 4,
+    "min_samples_leaf": 20,
+    "l2_regularization": 0.24633014373667755
+  },
+  "cv_score": 0.3672237849536435,
+  "training_time": 0.5044546127319336,
+  "omics_used": [
+    "CNA"
+  ],
+  "accuracy_global": 0.660958904109589
+}

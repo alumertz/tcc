@@ -1,0 +1,16 @@
+{
+  "params": {
+    "n_neighbors": 20,
+    "weights": "distance",
+    "algorithm": "auto",
+    "p": 2
+  },
+  "cv_score": 0.4418709663084148,
+  "training_time": 0.23845911026000977,
+  "omics_used": [
+    "Gene_Expression",
+    "DNA_Methylation",
+    "Mutations"
+  ],
+  "accuracy_global": 0.6712328767123288
+}

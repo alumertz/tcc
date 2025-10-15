@@ -1,0 +1,14 @@
+{
+  "params": {
+    "n_neighbors": 20,
+    "weights": "distance",
+    "algorithm": "auto",
+    "p": 2
+  },
+  "cv_score": 0.40083166124838165,
+  "training_time": 0.2198657989501953,
+  "omics_used": [
+    "Mutations"
+  ],
+  "accuracy_global": 0.6592465753424658
+}

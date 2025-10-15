@@ -1,0 +1,16 @@
+{
+  "params": {
+    "n_neighbors": 20,
+    "weights": "distance",
+    "algorithm": "auto",
+    "p": 2
+  },
+  "cv_score": 0.381764083437447,
+  "training_time": 0.2857856750488281,
+  "omics_used": [
+    "CNA",
+    "Gene_Expression",
+    "DNA_Methylation"
+  ],
+  "accuracy_global": 0.6506849315068494
+}

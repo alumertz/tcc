@@ -1,0 +1,16 @@
+{
+  "params": {
+    "n_neighbors": 20,
+    "weights": "distance",
+    "algorithm": "auto",
+    "p": 2
+  },
+  "cv_score": 0.41242482727646107,
+  "training_time": 0.27051830291748047,
+  "omics_used": [
+    "CNA",
+    "Gene_Expression",
+    "Mutations"
+  ],
+  "accuracy_global": 0.6643835616438356
+}

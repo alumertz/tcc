@@ -1,0 +1,16 @@
+{
+  "params": {
+    "n_estimators": 150,
+    "learning_rate": 0.041901086122355526,
+    "max_depth": 4,
+    "min_samples_split": 6,
+    "min_samples_leaf": 8,
+    "subsample": 0.8750118011622728
+  },
+  "cv_score": 0.46019056464163643,
+  "training_time": 6.130223274230957,
+  "omics_used": [
+    "Mutations"
+  ],
+  "accuracy_global": 0.6917808219178082
+}

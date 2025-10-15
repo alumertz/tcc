@@ -63,33 +63,77 @@ def _convert_labels(label_series):
         raise
 
 
-def load_union_labels(path):
+def load_union_labels(labels_path, classification_type='binary'):
     """
-    Carrega e processa o arquivo de labels UNION_labels.tsv
+    Carrega o arquivo UNION_labels.tsv e processa os labels
+    
+    Args:
+        labels_path (str): Caminho para o arquivo UNION_labels.tsv
+        classification_type (str): Tipo de classificação - 'binary' (2class) ou 'multiclass' (3class)
+        
+    Returns:
+        pd.DataFrame: DataFrame com os labels processados
     """
-    print("Carregando UNION_labels.tsv...")
-
+    print(f"Carregando UNION_labels.tsv (classificação: {classification_type})...")
+    
     try:
-        df = pd.read_csv(path, sep='\t')
-        print(f"Labels carregados: {df.shape[0]} genes")
-
-        df_clean = df.dropna(subset=['label'])
-        removed = df.shape[0] - df_clean.shape[0]
-
-        if removed:
-            print(f"Removidos {removed} genes sem label")
-
-        df_clean['label'] = _convert_labels(df_clean['label'])
-
-        dist = df_clean['label'].value_counts()
+        # Carrega o arquivo TSV
+        labels_df = pd.read_csv(labels_path, sep='\t')
+        print(f"Labels carregados: {labels_df.shape[0]} genes")
+        
+        # Verifica se as colunas esperadas existem
+        expected_columns = ['genes', '2class', '3class']
+        if not all(col in labels_df.columns for col in expected_columns):
+            print(f"ERRO: Colunas esperadas {expected_columns} não encontradas!")
+            print(f"Colunas encontradas: {list(labels_df.columns)}")
+            return None
+        
+        # Seleciona a coluna de classificação apropriada
+        if classification_type == 'binary':
+            label_column = '2class'
+        elif classification_type == 'multiclass':
+            label_column = '3class'
+        else:
+            print(f"ERRO: Tipo de classificação '{classification_type}' não reconhecido!")
+            return None
+        
+        # Cria DataFrame com formato padrão (gene, label)
+        labels_clean = pd.DataFrame({
+            'gene': labels_df['genes'],
+            'label': labels_df[label_column]
+        })
+        
+        # Verifica valores únicos nos labels
+        print(f"Valores únicos em {label_column}:", labels_clean['label'].value_counts(dropna=False))
+        
+        # Treat NaN values as class 0 (passenger genes) instead of removing them
+        initial_count = len(labels_clean)
+        labels_clean['label'] = labels_clean['label'].fillna(0.0)  # Fill NaN with 0
+        
+        print(f"Genes with NaN converted to class 0 (passenger): {initial_count - labels_clean['label'].sum()}")
+        
+        # Convert labels to integers
+        labels_clean = labels_clean.copy()
+        labels_clean.loc[:, 'label'] = labels_clean['label'].astype(int)
+        
+        # Verifica distribuição das classes
+        class_distribution = labels_clean['label'].value_counts().sort_index()
         print("Distribuição das classes:")
-        print(f"  Classe 0: {dist.get(0, 0)}")
-        print(f"  Classe 1: {dist.get(1, 0)}")
-        if 0 in dist and 1 in dist:
-            print(f"  Razão 1/0: {dist[1] / dist[0]:.4f}")
-
-        return df_clean
-
+        
+        if classification_type == 'binary':
+            print(f"  Classe 0 (passenger): {class_distribution.get(0, 0)} genes")
+            print(f"  Classe 1 (cancer): {class_distribution.get(1, 0)} genes")
+            
+            if len(class_distribution) == 2:
+                ratio = class_distribution[1] / class_distribution[0] if class_distribution.get(0, 0) > 0 else float('inf')
+                print(f"  Razão cancer/passenger: {ratio:.4f}")
+        else:  # multiclass
+            print(f"  Classe 0 (passenger): {class_distribution.get(0, 0)} genes")
+            print(f"  Classe 1 (TSG): {class_distribution.get(1, 0)} genes") 
+            print(f"  Classe 2 (Oncogene): {class_distribution.get(2, 0)} genes")
+        
+        return labels_clean
+        
     except Exception as e:
         print(f"Erro ao carregar labels: {e}")
         return None
@@ -131,38 +175,51 @@ def align_features_and_labels(features_df, labels_df):
     return X, y, gene_names
 
 
-def prepare_dataset(features_path, labels_path):
+def prepare_dataset(features_path, labels_path, classification_type='binary'):
     """
-    Prepara todo o dataset para modelagem
+    Função principal para preparar o dataset completo
+    
+    Args:
+        features_path (str): Caminho para UNION_features.tsv
+        labels_path (str): Caminho para UNION_labels.tsv
+        classification_type (str): Tipo de classificação - 'binary' ou 'multiclass'
+        
+    Returns:
+        tuple: (X, y, gene_names, feature_names) - dataset completo preparado
     """
-    print("=" * 60)
-    print("PREPARANDO DATASET PARA CLASSIFICAÇÃO")
-    print("=" * 60)
-
+    print("="*60)
+    print(f"PREPARANDO DATASET PARA CLASSIFICAÇÃO ({classification_type.upper()})")
+    print("="*60)
+    
+    # Carrega features
     features_df, gene_names_feat, features_only = load_union_features(features_path)
     if features_df is None:
         return None, None, None, None
 
-    print("-" * 40)
-
-    labels_df = load_union_labels(labels_path)
+    print("-"*40)
+    
+    # Carrega labels
+    labels_df = load_union_labels(labels_path, classification_type)
     if labels_df is None:
         return None, None, None, None
-
-    print("-" * 40)
-
+    
+    print("-"*40)
+    
+    # Alinha features e labels
     X, y, gene_names = align_features_and_labels(features_df, labels_df)
     if X is None:
         return None, None, None, None
-
-    feature_names = features_df.drop(columns='gene').columns.tolist()
-
-    print("-" * 40)
+    
+    # Nomes das features
+    feature_names = features_df.drop('gene', axis=1).columns.tolist()
+    
+    print("-"*40)
     print("DATASET PREPARADO COM SUCESSO!")
-    print(f"Shape: X={X.shape}, y={y.shape}")
-    print(f"Genes: {len(gene_names)}, Features: {len(feature_names)}")
-    print("=" * 60)
-
+    print(f"Shape final: X={X.shape}, y={y.shape}")
+    print(f"Genes: {len(gene_names)}")
+    print(f"Features: {len(feature_names)}")
+    print("="*60)
+    
     return X, y, gene_names, feature_names
 
 

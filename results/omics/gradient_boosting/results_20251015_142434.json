@@ -1,0 +1,16 @@
+{
+  "params": {
+    "n_estimators": 150,
+    "learning_rate": 0.041901086122355526,
+    "max_depth": 4,
+    "min_samples_split": 6,
+    "min_samples_leaf": 8,
+    "subsample": 0.8750118011622728
+  },
+  "cv_score": 0.3686778863271835,
+  "training_time": 9.591660737991333,
+  "omics_used": [
+    "Gene_Expression"
+  ],
+  "accuracy_global": 0.660958904109589
+}

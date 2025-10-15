@@ -1,0 +1,14 @@
+{
+  "params": {
+    "n_neighbors": 20,
+    "weights": "distance",
+    "algorithm": "auto",
+    "p": 2
+  },
+  "cv_score": 0.358648456549888,
+  "training_time": 0.30440449714660645,
+  "omics_used": [
+    "CNA"
+  ],
+  "accuracy_global": 0.648972602739726
+}

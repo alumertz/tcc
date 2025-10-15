@@ -1,0 +1,15 @@
+{
+  "params": {
+    "max_depth": 7,
+    "min_samples_split": 11,
+    "min_samples_leaf": 3,
+    "max_features": "sqrt",
+    "criterion": "gini"
+  },
+  "cv_score": 0.4408567568073002,
+  "training_time": 1.808518409729004,
+  "omics_used": [
+    "Mutations"
+  ],
+  "accuracy_global": 0.6815068493150684
+}

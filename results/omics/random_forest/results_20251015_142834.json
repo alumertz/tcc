@@ -1,0 +1,17 @@
+{
+  "params": {
+    "max_depth": 7,
+    "min_samples_split": 11,
+    "min_samples_leaf": 3,
+    "max_features": "sqrt",
+    "criterion": "gini"
+  },
+  "cv_score": 0.46052991297388085,
+  "training_time": 2.409130573272705,
+  "omics_used": [
+    "CNA",
+    "Gene_Expression",
+    "Mutations"
+  ],
+  "accuracy_global": 0.690068493150685
+}

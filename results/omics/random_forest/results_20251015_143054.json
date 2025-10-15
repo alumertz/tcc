@@ -1,0 +1,17 @@
+{
+  "params": {
+    "max_depth": 7,
+    "min_samples_split": 11,
+    "min_samples_leaf": 3,
+    "max_features": "sqrt",
+    "criterion": "gini"
+  },
+  "cv_score": 0.4648369519802843,
+  "training_time": 3.415109872817993,
+  "omics_used": [
+    "Gene_Expression",
+    "DNA_Methylation",
+    "Mutations"
+  ],
+  "accuracy_global": 0.6883561643835616
+}

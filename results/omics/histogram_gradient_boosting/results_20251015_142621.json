@@ -1,0 +1,15 @@
+{
+  "params": {
+    "max_iter": 68,
+    "learning_rate": 0.07520558542833868,
+    "max_depth": 4,
+    "min_samples_leaf": 20,
+    "l2_regularization": 0.24633014373667755
+  },
+  "cv_score": 0.4506940433532559,
+  "training_time": 0.4368441104888916,
+  "omics_used": [
+    "Mutations"
+  ],
+  "accuracy_global": 0.6866438356164384
+}

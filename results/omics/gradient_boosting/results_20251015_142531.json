@@ -1,0 +1,16 @@
+{
+  "params": {
+    "n_estimators": 150,
+    "learning_rate": 0.041901086122355526,
+    "max_depth": 4,
+    "min_samples_split": 6,
+    "min_samples_leaf": 8,
+    "subsample": 0.8750118011622728
+  },
+  "cv_score": 0.3773491616108955,
+  "training_time": 9.520112037658691,
+  "omics_used": [
+    "DNA_Methylation"
+  ],
+  "accuracy_global": 0.6626712328767124
+}

@@ -1,0 +1,15 @@
+{
+  "params": {
+    "max_depth": 7,
+    "min_samples_split": 11,
+    "min_samples_leaf": 3,
+    "max_features": "sqrt",
+    "criterion": "gini"
+  },
+  "cv_score": 0.3617118545696261,
+  "training_time": 1.0813910961151123,
+  "omics_used": [
+    "CNA"
+  ],
+  "accuracy_global": 0.666095890410959
+}

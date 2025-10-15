@@ -1,0 +1,19 @@
+{
+  "params": {
+    "iterations": 256,
+    "learning_rate": 0.019261294694430553,
+    "depth": 7,
+    "l2_leaf_reg": 2.9603859610055303,
+    "border_count": 239,
+    "bagging_temperature": 0.30218907193827815,
+    "random_strength": 0.8356422919240496,
+    "verbose": false,
+    "allow_writing_files": false
+  },
+  "cv_score": 0.3665001273330003,
+  "training_time": 2.018446207046509,
+  "omics_used": [
+    "CNA"
+  ],
+  "accuracy_global": 0.6592465753424658
+}
