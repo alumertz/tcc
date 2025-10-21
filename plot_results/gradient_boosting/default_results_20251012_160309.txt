@@ -1,0 +1,79 @@
+RESULTADOS DO MODELO: GRADIENT BOOSTING (PARÂMETROS PADRÃO)
+================================================================================
+
+Data/Hora: 2025-10-12 16:03:09
+
+PARÂMETROS UTILIZADOS (PADRÃO):
+--------------------------------------------------
+  ccp_alpha: 0.0
+  criterion: friedman_mse
+  init: None
+  learning_rate: 0.1
+  loss: log_loss
+  max_depth: 3
+  max_features: None
+  max_leaf_nodes: None
+  min_impurity_decrease: 0.0
+  min_samples_leaf: 1
+  min_samples_split: 2
+  min_weight_fraction_leaf: 0.0
+  n_estimators: 100
+  n_iter_no_change: None
+  random_state: 30
+  subsample: 1.0
+  tol: 0.0001
+  validation_fraction: 0.1
+  verbose: 0
+  warm_start: False
+
+RESULTADOS DA VALIDAÇÃO CRUZADA (5-FOLD):
+--------------------------------------------------
+ACCURACY:
+  Média: 0.6741
+  Desvio Padrão: 0.0150
+  Scores por fold: [0.6788008565310493, 0.6552462526766595, 0.6680942184154176, 0.7002141327623126, 0.6680942184154176]
+
+PRECISION:
+  Média: 0.5233
+  Desvio Padrão: 0.0715
+  Scores por fold: [0.5526315789473685, 0.43636363636363634, 0.4909090909090909, 0.6458333333333334, 0.49056603773584906]
+
+RECALL:
+  Média: 0.1675
+  Desvio Padrão: 0.0215
+  Scores por fold: [0.13636363636363635, 0.15584415584415584, 0.17532467532467533, 0.2012987012987013, 0.16883116883116883]
+
+F1:
+  Média: 0.2530
+  Desvio Padrão: 0.0305
+  Scores por fold: [0.21875, 0.22966507177033493, 0.2583732057416268, 0.3069306930693069, 0.25120772946859904]
+
+ROC_AUC:
+  Média: 0.6037
+  Desvio Padrão: 0.0206
+  Scores por fold: [0.6063648811252644, 0.5868013775362018, 0.5763453798597569, 0.6349943985726734, 0.6141446413011908]
+
+PR_AUC:
+  Média: 0.4462
+  Desvio Padrão: 0.0211
+  Scores por fold: [0.4588013135557587, 0.4265588534564879, 0.42036400451649547, 0.4780161398752178, 0.44748256453266455]
+
+AVALIAÇÃO NO CONJUNTO DE TESTE FINAL:
+--------------------------------------------------
+Acurácia: 0.6969
+Precisão: 0.6600
+Recall: 0.1710
+F1-Score: 0.2716
+ROC AUC: 0.6629
+PR AUC: 0.5118
+
+RELATÓRIO DETALHADO:
+------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+  Non-driver       0.6969      0.7004     0.9565     0.8086         -         -
+      Driver       0.6969      0.6600     0.1710     0.2716     0.6629     0.5118
+
+   macro avg       0.6969      0.6802     0.5638     0.5401     0.6629     0.5118
+weighted avg       0.6969      0.6870     0.6969     0.6312     0.6629     0.5118
+

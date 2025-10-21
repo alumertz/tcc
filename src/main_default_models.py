@@ -105,9 +105,9 @@ def evaluate_model_default(model, model_name, X, y, save_results=True):
     # Métricas no conjunto de teste
     test_metrics = {
         'accuracy': accuracy_score(y_test, y_pred),
-        'precision': precision_score(y_test, y_pred),
-        'recall': recall_score(y_test, y_pred),
-        'f1_score': f1_score(y_test, y_pred),
+        'precision': precision_score(y_test, y_pred, average='binary'),
+        'recall': recall_score(y_test, y_pred, average='binary'),
+        'f1_score': f1_score(y_test, y_pred, average='binary'),
         'roc_auc': roc_auc_score(y_test, y_pred_proba),
         'pr_auc': average_precision_score(y_test, y_pred_proba)
     }
@@ -229,9 +229,9 @@ def run_all_default_models(X, y):
         ("Gradient Boosting", GradientBoostingClassifier(random_state=30)),
         ("Histogram Gradient Boosting", HistGradientBoostingClassifier(random_state=30)),
         ("K-Nearest Neighbors", KNeighborsClassifier()),
-        ("Multi-Layer Perceptron", MLPClassifier(random_state=30, max_iter=1000)),
-        ("Support Vector Classifier", SVC(random_state=30, probability=True)),
-        ("CatBoost", CatBoostClassifier(random_state=30, verbose=False, allow_writing_files=False)),
+        ("Multi-Layer Perceptron", MLPClassifier(random_state=30, max_iter=1000))#,
+        #("Support Vector Classifier", SVC(random_state=30, probability=True)),
+        #("CatBoost", CatBoostClassifier(random_state=30, verbose=False, allow_writing_files=False)),
     ]
     
     results = []

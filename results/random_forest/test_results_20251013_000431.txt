@@ -1,0 +1,43 @@
+RESULTADOS DO MODELO: RANDOM_FOREST
+================================================================================
+
+Data/Hora: 2025-10-13 00:04:31
+
+MÉTRICAS DETALHADAS DE VALIDAÇÃO CRUZADA - TODOS OS TRIALS:
+================================================================================
+
+AVALIAÇÃO NO CONJUNTO DE TESTE FINAL:
+--------------------------------------------------
+Acurácia: 0.6807
+Precisão: 0.6513
+Recall: 0.6807
+F1-Score: 0.6038
+ROC AUC: 0.6372
+PR AUC: 0.4705
+
+RELATÓRIO DETALHADO:
+------------------------------
+Nested CV Results (Mean ± Std):
+Accuracy: 0.6807 ± 0.0066
+Precision: 0.6513 ± 0.0179
+Recall: 0.6807 ± 0.0066
+F1: 0.6038 ± 0.0087
+ROC AUC: 0.6372 ± 0.0200
+PR AUC: 0.4705 ± 0.0117
+
+MELHORES HIPERPARÂMETROS:
+------------------------------
+{
+  "n_estimators": 250,
+  "max_depth": 9,
+  "min_samples_split": 7,
+  "min_samples_leaf": 2,
+  "max_features": "sqrt",
+  "criterion": "gini"
+}
+
+HISTÓRICO DE OTIMIZAÇÃO:
+------------------------------
+Número de trials: 150
+Melhor score (CV): 0.4744
+Tempo total de otimização: 2015.08 segundos

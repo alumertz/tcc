@@ -32,7 +32,8 @@ def _optimize_classifier_generic(
     n_trials=30, 
     save_results=True,
     custom_params_processor=None,
-    return_test_metrics=False
+    return_test_metrics=False,
+    fixed_params=None
 ):
     """
     Função genérica para otimização de hiperparâmetros de classificadores.
@@ -74,7 +75,11 @@ def _optimize_classifier_generic(
     inner_cv = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=42)
 
     def objective(trial):
-        params = param_suggestions_func(trial)
+        # Use fixed params if provided, otherwise suggest params
+        if fixed_params:
+            params = fixed_params.copy()
+        else:
+            params = param_suggestions_func(trial)
 
         # Only pass random_state to classifiers that support it
         classifier_kwargs = params.copy()
@@ -126,16 +131,27 @@ def _optimize_classifier_generic(
 
         return score
 
-    # Otimização com Optuna
-    study = optuna.create_study(direction="maximize")
-    total_start = time.time()
-    study.optimize(objective, n_trials=n_trials)
-    total_end = time.time()
-
-    # Processar parâmetros se necessário (para casos especiais como MLP)
-    final_params = study.best_params.copy()
-    if custom_params_processor:
-        final_params = custom_params_processor(study.best_trial)
+    # Otimização com Optuna ou execução única com parâmetros fixos
+    if fixed_params:
+        # Execução única com parâmetros fixos
+        study = optuna.create_study(direction="maximize")
+        total_start = time.time()
+        study.optimize(objective, n_trials=1)
+        total_end = time.time()
+        final_params = fixed_params.copy()
+        best_score = study.best_value
+    else:
+        # Otimização normal
+        study = optuna.create_study(direction="maximize")
+        total_start = time.time()
+        study.optimize(objective, n_trials=n_trials)
+        total_end = time.time()
+        
+        # Processar parâmetros se necessário (para casos especiais como MLP)
+        final_params = study.best_params.copy()
+        if custom_params_processor:
+            final_params = custom_params_processor(study.best_trial)
+        best_score = study.best_value
     
     # Para SVC, garantir que probability=True esteja sempre presente
     if classifier_class == SVC:
@@ -309,82 +325,83 @@ def _process_mlp_params(best_trial):
     }
 
 
-def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True):
+def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True, fixed_params=None):
     """Otimização de hiperparâmetros para Decision Tree Classifier usando Optuna"""
     return _optimize_classifier_generic(
         DecisionTreeClassifier,
         _suggest_decision_tree_params,
         'decision_tree',
-        X, y, n_trials, save_results
+        X, y, n_trials, save_results, fixed_params=fixed_params
     )
 
 
-def optimize_random_forest_classifier(X, y, n_trials=30, save_results=True):
+def optimize_random_forest_classifier(X, y, n_trials=30, save_results=True, fixed_params=None):
     """Otimização de hiperparâmetros para Random Forest Classifier usando Optuna"""
     return _optimize_classifier_generic(
         RandomForestClassifier,
         _suggest_random_forest_params,
         'random_forest',
-        X, y, n_trials, save_results
+        X, y, n_trials, save_results, fixed_params=fixed_params
     )
 
 
-def optimize_gradient_boosting_classifier(X, y, n_trials=30, save_results=True):
+def optimize_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, fixed_params=None):
     """Otimização de hiperparâmetros para Gradient Boosting Classifier usando Optuna"""
     return _optimize_classifier_generic(
         GradientBoostingClassifier,
         _suggest_gradient_boosting_params,
         'gradient_boosting',
-        X, y, n_trials, save_results
+        X, y, n_trials, save_results, fixed_params=fixed_params
     )
 
 
-def optimize_hist_gradient_boosting_classifier(X, y, n_trials=30, save_results=True):
+def optimize_hist_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, fixed_params=None):
     """Otimização de hiperparâmetros para Histogram Gradient Boosting Classifier usando Optuna"""
     return _optimize_classifier_generic(
         HistGradientBoostingClassifier,
         _suggest_hist_gradient_boosting_params,
         'histogram_gradient_boosting',
-        X, y, n_trials, save_results
+        X, y, n_trials, save_results, fixed_params=fixed_params
     )
 
 
-def optimize_knn_classifier(X, y, n_trials=30, save_results=True):
+def optimize_knn_classifier(X, y, n_trials=30, save_results=True, fixed_params=None):
     """Otimização de hiperparâmetros para KNN Classifier usando Optuna"""
     return _optimize_classifier_generic(
         KNeighborsClassifier,
         _suggest_knn_params,
         'k_nearest_neighbors',
-        X, y, n_trials, save_results
+        X, y, n_trials, save_results, fixed_params=fixed_params
     )
 
 
-def optimize_mlp_classifier(X, y, n_trials=30, save_results=True):
+def optimize_mlp_classifier(X, y, n_trials=30, save_results=True, fixed_params=None):
     """Otimização de hiperparâmetros para MLP Classifier usando Optuna"""
     return _optimize_classifier_generic(
         MLPClassifier,
         _suggest_mlp_params,
         'multi_layer_perceptron',
         X, y, n_trials, save_results,
-        custom_params_processor=_process_mlp_params
+        custom_params_processor=_process_mlp_params,
+        fixed_params=fixed_params
     )
 
 
-def optimize_svc_classifier(X, y, n_trials=30, save_results=True):
+def optimize_svc_classifier(X, y, n_trials=30, save_results=True, fixed_params=None):
     """Otimização de hiperparâmetros para SVC usando Optuna"""
     return _optimize_classifier_generic(
         SVC,
         _suggest_svc_params,
         'svc',
-        X, y, n_trials, save_results
+        X, y, n_trials, save_results, fixed_params=fixed_params
     )
 
 
-def optimize_catboost_classifier(X, y, n_trials=30, save_results=True):
+def optimize_catboost_classifier(X, y, n_trials=30, save_results=True, fixed_params=None):
     """Otimização de hiperparâmetros para CatBoost Classifier usando Optuna"""
     return _optimize_classifier_generic(
         CatBoostClassifier,
         _suggest_catboost_params,
         'catboost',
-        X, y, n_trials, save_results
+        X, y, n_trials, save_results, fixed_params=fixed_params
     )

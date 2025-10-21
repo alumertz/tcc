@@ -1,0 +1,13 @@
+[
+  {
+    "trial_number": 0,
+    "params": {
+      "n_neighbors": 20,
+      "weights": "distance",
+      "algorithm": "auto",
+      "p": 2
+    },
+    "score": 0.4152741944570285,
+    "time": 0.1963491439819336
+  }
+]

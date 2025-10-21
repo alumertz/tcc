@@ -1,0 +1,44 @@
+RESULTADOS DO MODELO: CATBOOST
+================================================================================
+
+Data/Hora: 2025-10-13 02:34:09
+
+MÉTRICAS DETALHADAS DE VALIDAÇÃO CRUZADA - TODOS OS TRIALS:
+================================================================================
+
+AVALIAÇÃO NO CONJUNTO DE TESTE FINAL:
+--------------------------------------------------
+Acurácia: 0.6835
+Precisão: 0.6561
+Recall: 0.6835
+F1-Score: 0.6151
+ROC AUC: 0.6264
+PR AUC: 0.4632
+
+RELATÓRIO DETALHADO:
+------------------------------
+Nested CV Results (Mean ± Std):
+Accuracy: 0.6835 ± 0.0065
+Precision: 0.6561 ± 0.0149
+Recall: 0.6835 ± 0.0065
+F1: 0.6151 ± 0.0088
+ROC AUC: 0.6264 ± 0.0205
+PR AUC: 0.4632 ± 0.0179
+
+MELHORES HIPERPARÂMETROS:
+------------------------------
+{
+  "iterations": 682,
+  "learning_rate": 0.012012616607997732,
+  "depth": 4,
+  "l2_leaf_reg": 3.195364149921116,
+  "border_count": 246,
+  "bagging_temperature": 0.6924952775000339,
+  "random_strength": 0.03617119175898745
+}
+
+HISTÓRICO DE OTIMIZAÇÃO:
+------------------------------
+Número de trials: 150
+Melhor score (CV): 0.4898
+Tempo total de otimização: 1963.31 segundos

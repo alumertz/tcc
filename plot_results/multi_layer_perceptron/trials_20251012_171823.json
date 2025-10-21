@@ -1,0 +1,467 @@
+[
+  {
+    "trial_number": 0,
+    "params": {
+      "hidden_layer_sizes": [
+        151,
+        174
+      ],
+      "activation": "relu",
+      "alpha": 0.005828145966142616,
+      "learning_rate": "constant",
+      "max_iter": 646
+    },
+    "score": 0.41610623521775525,
+    "time": 4.359062910079956
+  },
+  {
+    "trial_number": 1,
+    "params": {
+      "hidden_layer_sizes": [
+        17
+      ],
+      "activation": "tanh",
+      "alpha": 2.459705001428672e-05,
+      "learning_rate": "constant",
+      "max_iter": 864
+    },
+    "score": 0.3907046326002556,
+    "time": 5.50035834312439
+  },
+  {
+    "trial_number": 2,
+    "params": {
+      "hidden_layer_sizes": [
+        42
+      ],
+      "activation": "tanh",
+      "alpha": 0.022454487941706004,
+      "learning_rate": "constant",
+      "max_iter": 896
+    },
+    "score": 0.3846489722547542,
+    "time": 5.82449197769165
+  },
+  {
+    "trial_number": 3,
+    "params": {
+      "hidden_layer_sizes": [
+        154,
+        40
+      ],
+      "activation": "tanh",
+      "alpha": 6.006662261508874e-05,
+      "learning_rate": "adaptive",
+      "max_iter": 971
+    },
+    "score": 0.4092010107741637,
+    "time": 6.074185132980347
+  },
+  {
+    "trial_number": 4,
+    "params": {
+      "hidden_layer_sizes": [
+        166,
+        173,
+        135
+      ],
+      "activation": "relu",
+      "alpha": 0.0002771637333299247,
+      "learning_rate": "constant",
+      "max_iter": 477
+    },
+    "score": 0.4310258652314882,
+    "time": 4.225442886352539
+  },
+  {
+    "trial_number": 5,
+    "params": {
+      "hidden_layer_sizes": [
+        133,
+        81
+      ],
+      "activation": "tanh",
+      "alpha": 0.00017491317283996617,
+      "learning_rate": "adaptive",
+      "max_iter": 587
+    },
+    "score": 0.39275785581147815,
+    "time": 6.005964040756226
+  },
+  {
+    "trial_number": 6,
+    "params": {
+      "hidden_layer_sizes": [
+        101,
+        196,
+        189
+      ],
+      "activation": "logistic",
+      "alpha": 0.0005642188460765819,
+      "learning_rate": "invscaling",
+      "max_iter": 510
+    },
+    "score": 0.3921291129946572,
+    "time": 24.66230607032776
+  },
+  {
+    "trial_number": 7,
+    "params": {
+      "hidden_layer_sizes": [
+        125,
+        100,
+        183
+      ],
+      "activation": "relu",
+      "alpha": 1.2177640779142929e-05,
+      "learning_rate": "constant",
+      "max_iter": 851
+    },
+    "score": 0.4169660139890074,
+    "time": 4.143067836761475
+  },
+  {
+    "trial_number": 8,
+    "params": {
+      "hidden_layer_sizes": [
+        26,
+        170
+      ],
+      "activation": "logistic",
+      "alpha": 6.210640822673877e-05,
+      "learning_rate": "invscaling",
+      "max_iter": 621
+    },
+    "score": 0.3952428507389917,
+    "time": 14.942019939422607
+  },
+  {
+    "trial_number": 9,
+    "params": {
+      "hidden_layer_sizes": [
+        87
+      ],
+      "activation": "tanh",
+      "alpha": 0.0001708526619317406,
+      "learning_rate": "adaptive",
+      "max_iter": 533
+    },
+    "score": 0.406289061058248,
+    "time": 6.644230842590332
+  },
+  {
+    "trial_number": 10,
+    "params": {
+      "hidden_layer_sizes": [
+        186,
+        137,
+        71
+      ],
+      "activation": "relu",
+      "alpha": 0.0016652468274843907,
+      "learning_rate": "constant",
+      "max_iter": 209
+    },
+    "score": 0.4101835241746433,
+    "time": 4.068065881729126
+  },
+  {
+    "trial_number": 11,
+    "params": {
+      "hidden_layer_sizes": [
+        190,
+        107,
+        173
+      ],
+      "activation": "relu",
+      "alpha": 1.253456469180649e-05,
+      "learning_rate": "constant",
+      "max_iter": 355
+    },
+    "score": 0.42009008514438656,
+    "time": 3.8120319843292236
+  },
+  {
+    "trial_number": 12,
+    "params": {
+      "hidden_layer_sizes": [
+        199,
+        136,
+        133
+      ],
+      "activation": "relu",
+      "alpha": 0.0008604534682279364,
+      "learning_rate": "constant",
+      "max_iter": 308
+    },
+    "score": 0.43739250374565664,
+    "time": 3.689723014831543
+  },
+  {
+    "trial_number": 13,
+    "params": {
+      "hidden_layer_sizes": [
+        171,
+        143,
+        117
+      ],
+      "activation": "relu",
+      "alpha": 0.0015151049778652586,
+      "learning_rate": "constant",
+      "max_iter": 372
+    },
+    "score": 0.423531263684721,
+    "time": 4.1095240116119385
+  },
+  {
+    "trial_number": 14,
+    "params": {
+      "hidden_layer_sizes": [
+        200,
+        139,
+        119
+      ],
+      "activation": "relu",
+      "alpha": 0.006110592821598505,
+      "learning_rate": "constant",
+      "max_iter": 202
+    },
+    "score": 0.4277030963845652,
+    "time": 3.69110107421875
+  },
+  {
+    "trial_number": 15,
+    "params": {
+      "hidden_layer_sizes": [
+        69,
+        163,
+        138
+      ],
+      "activation": "relu",
+      "alpha": 0.00045662215918729595,
+      "learning_rate": "invscaling",
+      "max_iter": 384
+    },
+    "score": 0.41678509810895115,
+    "time": 4.676302909851074
+  },
+  {
+    "trial_number": 16,
+    "params": {
+      "hidden_layer_sizes": [
+        167,
+        194
+      ],
+      "activation": "relu",
+      "alpha": 0.0033808422462651344,
+      "learning_rate": "constant",
+      "max_iter": 448
+    },
+    "score": 0.40138125929780044,
+    "time": 4.838598012924194
+  },
+  {
+    "trial_number": 17,
+    "params": {
+      "hidden_layer_sizes": [
+        131,
+        115,
+        30
+      ],
+      "activation": "logistic",
+      "alpha": 0.07698392854033051,
+      "learning_rate": "constant",
+      "max_iter": 742
+    },
+    "score": 0.44552542680204754,
+    "time": 6.746783971786499
+  },
+  {
+    "trial_number": 18,
+    "params": {
+      "hidden_layer_sizes": [
+        125,
+        63,
+        11
+      ],
+      "activation": "logistic",
+      "alpha": 0.06699286307785289,
+      "learning_rate": "invscaling",
+      "max_iter": 736
+    },
+    "score": 0.4131472082217956,
+    "time": 16.020820379257202
+  },
+  {
+    "trial_number": 19,
+    "params": {
+      "hidden_layer_sizes": [
+        68,
+        114
+      ],
+      "activation": "logistic",
+      "alpha": 0.08508874818819036,
+      "learning_rate": "adaptive",
+      "max_iter": 714
+    },
+    "score": 0.3862413181547898,
+    "time": 18.154770851135254
+  },
+  {
+    "trial_number": 20,
+    "params": {
+      "hidden_layer_sizes": [
+        139,
+        26,
+        65
+      ],
+      "activation": "logistic",
+      "alpha": 0.019929153357949026,
+      "learning_rate": "constant",
+      "max_iter": 747
+    },
+    "score": 0.3812240723727026,
+    "time": 18.885413885116577
+  },
+  {
+    "trial_number": 21,
+    "params": {
+      "hidden_layer_sizes": [
+        177,
+        126,
+        148
+      ],
+      "activation": "logistic",
+      "alpha": 0.0002782764801265463,
+      "learning_rate": "constant",
+      "max_iter": 278
+    },
+    "score": 0.3976056177243145,
+    "time": 17.478913068771362
+  },
+  {
+    "trial_number": 22,
+    "params": {
+      "hidden_layer_sizes": [
+        158,
+        155,
+        85
+      ],
+      "activation": "relu",
+      "alpha": 0.0008669770576831035,
+      "learning_rate": "constant",
+      "max_iter": 447
+    },
+    "score": 0.4152974099032251,
+    "time": 3.5868308544158936
+  },
+  {
+    "trial_number": 23,
+    "params": {
+      "hidden_layer_sizes": [
+        113,
+        94,
+        23
+      ],
+      "activation": "relu",
+      "alpha": 0.00012205516118978976,
+      "learning_rate": "constant",
+      "max_iter": 305
+    },
+    "score": 0.40323352805132506,
+    "time": 3.038151979446411
+  },
+  {
+    "trial_number": 24,
+    "params": {
+      "hidden_layer_sizes": [
+        198,
+        121
+      ],
+      "activation": "logistic",
+      "alpha": 0.003061784112593007,
+      "learning_rate": "constant",
+      "max_iter": 482
+    },
+    "score": 0.3986623118638855,
+    "time": 23.586364030838013
+  },
+  {
+    "trial_number": 25,
+    "params": {
+      "hidden_layer_sizes": [
+        148,
+        181,
+        149
+      ],
+      "activation": "relu",
+      "alpha": 0.023311287640676658,
+      "learning_rate": "constant",
+      "max_iter": 805
+    },
+    "score": 0.4256445710428425,
+    "time": 5.25233006477356
+  },
+  {
+    "trial_number": 26,
+    "params": {
+      "hidden_layer_sizes": [
+        171,
+        155,
+        95
+      ],
+      "activation": "logistic",
+      "alpha": 0.0003760946626833932,
+      "learning_rate": "constant",
+      "max_iter": 567
+    },
+    "score": 0.3838147540802127,
+    "time": 20.1339111328125
+  },
+  {
+    "trial_number": 27,
+    "params": {
+      "hidden_layer_sizes": [
+        183,
+        75
+      ],
+      "activation": "relu",
+      "alpha": 0.0009002077906312798,
+      "learning_rate": "constant",
+      "max_iter": 688
+    },
+    "score": 0.4285603929958025,
+    "time": 4.307124137878418
+  },
+  {
+    "trial_number": 28,
+    "params": {
+      "hidden_layer_sizes": [
+        110,
+        149,
+        51
+      ],
+      "activation": "logistic",
+      "alpha": 0.011771871901640175,
+      "learning_rate": "adaptive",
+      "max_iter": 289
+    },
+    "score": 0.38321738043168396,
+    "time": 12.614776849746704
+  },
+  {
+    "trial_number": 29,
+    "params": {
+      "hidden_layer_sizes": [
+        147,
+        130
+      ],
+      "activation": "relu",
+      "alpha": 8.576902609405156e-05,
+      "learning_rate": "invscaling",
+      "max_iter": 419
+    },
+    "score": 0.429202124492628,
+    "time": 4.719597816467285
+  }
+]

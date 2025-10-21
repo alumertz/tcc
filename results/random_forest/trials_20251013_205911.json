@@ -1,0 +1,15 @@
+[
+  {
+    "trial_number": 0,
+    "params": {
+      "n_estimators": 200,
+      "max_depth": 7,
+      "min_samples_split": 11,
+      "min_samples_leaf": 3,
+      "max_features": "sqrt",
+      "criterion": "gini"
+    },
+    "score": 0.4685698908181812,
+    "time": 3.0326688289642334
+  }
+]

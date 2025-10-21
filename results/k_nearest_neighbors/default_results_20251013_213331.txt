@@ -1,0 +1,67 @@
+RESULTADOS DO MODELO: K-NEAREST NEIGHBORS (PARÂMETROS PADRÃO)
+================================================================================
+
+Data/Hora: 2025-10-13 21:33:31
+
+PARÂMETROS UTILIZADOS (PADRÃO):
+--------------------------------------------------
+  algorithm: auto
+  leaf_size: 30
+  metric: minkowski
+  metric_params: None
+  n_jobs: None
+  n_neighbors: 5
+  p: 2
+  weights: uniform
+
+RESULTADOS DA VALIDAÇÃO CRUZADA (5-FOLD):
+--------------------------------------------------
+ACCURACY:
+  Média: 0.6257
+  Desvio Padrão: 0.0184
+  Scores por fold: [0.6466809421841542, 0.6423982869379015, 0.5952890792291221, 0.6252676659528907, 0.6188436830835118]
+
+PRECISION:
+  Média: 0.3790
+  Desvio Padrão: 0.0433
+  Scores por fold: [0.43037974683544306, 0.42528735632183906, 0.3157894736842105, 0.36, 0.36363636363636365]
+
+RECALL:
+  Média: 0.2078
+  Desvio Padrão: 0.0221
+  Scores por fold: [0.22077922077922077, 0.24025974025974026, 0.19480519480519481, 0.17532467532467533, 0.2077922077922078]
+
+F1:
+  Média: 0.2680
+  Desvio Padrão: 0.0278
+  Scores por fold: [0.2918454935622318, 0.3070539419087137, 0.24096385542168675, 0.23580786026200873, 0.2644628099173554]
+
+ROC_AUC:
+  Média: 0.5248
+  Desvio Padrão: 0.0251
+  Scores por fold: [0.5522281233143853, 0.5557549479274718, 0.49817434961204926, 0.5195842496161985, 0.49850628604622216]
+
+PR_AUC:
+  Média: 0.3547
+  Desvio Padrão: 0.0181
+  Scores por fold: [0.37121625364437955, 0.37852591492001547, 0.3292849509399412, 0.3511034965857553, 0.34330911562300903]
+
+AVALIAÇÃO NO CONJUNTO DE TESTE FINAL:
+--------------------------------------------------
+Acurácia: 0.6284
+Precisão: 0.3929
+Recall: 0.2280
+F1-Score: 0.2885
+ROC AUC: 0.5559
+PR AUC: 0.3592
+
+RELATÓRIO DETALHADO:
+------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+  Non-driver       0.6284      0.6843     0.8261     0.7486         -         -
+      Driver       0.6284      0.3929     0.2280     0.2885     0.5559     0.3592
+
+   macro avg       0.6284      0.5386     0.5270     0.5185     0.5559     0.3592
+weighted avg       0.6284      0.5880     0.6284     0.5965     0.5559     0.3592
+

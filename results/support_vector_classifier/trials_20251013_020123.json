@@ -1,0 +1,2217 @@
+[
+  {
+    "trial_number": 0,
+    "params": {
+      "kernel": "linear",
+      "C": 0.338168034073488,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.35506145748241486,
+    "time": 1.010038137435913,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 1,
+    "params": {
+      "kernel": "linear",
+      "C": 80.03889980424154,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.36481124155551,
+    "time": 0.8435578346252441,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 2,
+    "params": {
+      "kernel": "rbf",
+      "C": 28.227654893656183,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4021912336910711,
+    "time": 2.7934839725494385,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 3,
+    "params": {
+      "kernel": "rbf",
+      "C": 5.160352099756056,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4185922933096965,
+    "time": 3.1980600357055664,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 4,
+    "params": {
+      "kernel": "rbf",
+      "C": 5.895910760468946,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.410162518294723,
+    "time": 3.1735172271728516,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 5,
+    "params": {
+      "kernel": "rbf",
+      "C": 46.77010485708048,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.384872948482929,
+    "time": 2.6632139682769775,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 6,
+    "params": {
+      "kernel": "linear",
+      "C": 0.4236874339200759,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.3781562054946218,
+    "time": 0.9843142032623291,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 7,
+    "params": {
+      "kernel": "rbf",
+      "C": 1.857791174004078,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4278503685660568,
+    "time": 3.394731044769287,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 8,
+    "params": {
+      "kernel": "linear",
+      "C": 0.7941555618679186,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.36169858276967926,
+    "time": 0.9202849864959717,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 9,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.35870239998424375,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4383844216369446,
+    "time": 3.4525628089904785,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 10,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.10309029836282528,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.43805226651815304,
+    "time": 3.462862014770508,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 11,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.11143816335381017,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.43725159296178795,
+    "time": 3.449274778366089,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 12,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.1036614336097193,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.43805198462859385,
+    "time": 3.4937171936035156,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 13,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.25205901717190515,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.436123478251623,
+    "time": 3.45097017288208,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 14,
+    "params": {
+      "kernel": "rbf",
+      "C": 1.1989853665550732,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.43334861945941705,
+    "time": 3.443420886993408,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 15,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.2113362364291879,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4373812141860163,
+    "time": 3.464794874191284,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 16,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.4618262114415894,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.435888395592367,
+    "time": 3.475706100463867,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 17,
+    "params": {
+      "kernel": "rbf",
+      "C": 16.449633086228047,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.3969634556269828,
+    "time": 2.941153049468994,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 18,
+    "params": {
+      "kernel": "linear",
+      "C": 0.1611092259513993,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.3601783853995726,
+    "time": 1.197390079498291,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 19,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.7863587429920385,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4351643011567292,
+    "time": 3.4623780250549316,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 20,
+    "params": {
+      "kernel": "rbf",
+      "C": 2.0085706867692545,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.428225965743235,
+    "time": 3.4162559509277344,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 21,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.10773472727470111,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4392610116004666,
+    "time": 3.4506208896636963,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 22,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.10276231177810155,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.43805226651815304,
+    "time": 3.5104050636291504,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 23,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.22073684637246388,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.43706292340372566,
+    "time": 3.553534984588623,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 24,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.6916193468048136,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.43700439242363825,
+    "time": 3.450627088546753,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 25,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.16606110344743033,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.43786821561379713,
+    "time": 3.4384379386901855,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 26,
+    "params": {
+      "kernel": "linear",
+      "C": 0.35345263550577816,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.3529736421735034,
+    "time": 0.9761271476745605,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 27,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.1600051183130675,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4386649001860879,
+    "time": 3.4534099102020264,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 28,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.5477272597685161,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4369142876663131,
+    "time": 3.4493513107299805,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 29,
+    "params": {
+      "kernel": "linear",
+      "C": 0.33466409004544284,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.3640591841902669,
+    "time": 0.985123872756958,
+    "outer_fold": 1
+  },
+  {
+    "trial_number": 0,
+    "params": {
+      "kernel": "linear",
+      "C": 5.2335206922992885,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.37607063185539025,
+    "time": 0.8551108837127686,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 1,
+    "params": {
+      "kernel": "rbf",
+      "C": 2.719733454210359,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4076862876745568,
+    "time": 3.3857452869415283,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 2,
+    "params": {
+      "kernel": "linear",
+      "C": 4.359921063918402,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.3575848033340223,
+    "time": 0.8437340259552002,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 3,
+    "params": {
+      "kernel": "linear",
+      "C": 0.5364392835532413,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.3562752106240449,
+    "time": 0.9147698879241943,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 4,
+    "params": {
+      "kernel": "rbf",
+      "C": 2.799797409881345,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.40753407857148705,
+    "time": 3.391148090362549,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 5,
+    "params": {
+      "kernel": "linear",
+      "C": 0.4247052580064228,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.36305980441832475,
+    "time": 0.9536099433898926,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 6,
+    "params": {
+      "kernel": "linear",
+      "C": 0.5658897316296342,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.36333899421333066,
+    "time": 0.9175808429718018,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 7,
+    "params": {
+      "kernel": "linear",
+      "C": 50.149752434370896,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.3550042579069432,
+    "time": 0.8431792259216309,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 8,
+    "params": {
+      "kernel": "linear",
+      "C": 16.266732085772006,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.36168236021707073,
+    "time": 0.8486490249633789,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 9,
+    "params": {
+      "kernel": "linear",
+      "C": 5.790621493146112,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.3721986528880799,
+    "time": 0.8544509410858154,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 10,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.10728287895112583,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4184046385074224,
+    "time": 3.4532620906829834,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 11,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.13918672152984443,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.42106458660106866,
+    "time": 3.4632420539855957,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 12,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.10418787122839171,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.41900304973756075,
+    "time": 3.518263816833496,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 13,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.1023107531573349,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.41923044036774976,
+    "time": 3.5305190086364746,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 14,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.26789183416674955,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.421334821207736,
+    "time": 3.4545278549194336,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 15,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.260550488691322,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4188839041106599,
+    "time": 3.5015528202056885,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 16,
+    "params": {
+      "kernel": "rbf",
+      "C": 1.2819354421029807,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.41434202190854535,
+    "time": 3.4880759716033936,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 17,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.2717607185233024,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.42056391838879453,
+    "time": 3.4415290355682373,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 18,
+    "params": {
+      "kernel": "rbf",
+      "C": 1.35636613707604,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4149803379639657,
+    "time": 3.4283041954040527,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 19,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.22432194200271977,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4190599677778417,
+    "time": 3.463279962539673,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 20,
+    "params": {
+      "kernel": "rbf",
+      "C": 1.1731949680626,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.41790079501784383,
+    "time": 3.478864908218384,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 21,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.24737964485863806,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.42142295405865904,
+    "time": 3.6505658626556396,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 22,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.17872362869396954,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4198550114925287,
+    "time": 3.473695993423462,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 23,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.8089399435899078,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.41884994272831333,
+    "time": 3.461440086364746,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 24,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.36467236781473517,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4202593619412897,
+    "time": 3.5966219902038574,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 25,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.19636314474815716,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.41929300114441137,
+    "time": 3.504804849624634,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 26,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.1605459111002662,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.41931756483503435,
+    "time": 3.4990997314453125,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 27,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.7784690571216273,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4187189629499571,
+    "time": 3.4799840450286865,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 28,
+    "params": {
+      "kernel": "rbf",
+      "C": 95.25515937647542,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.3734052975890452,
+    "time": 2.5092580318450928,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 29,
+    "params": {
+      "kernel": "rbf",
+      "C": 15.254627784852579,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.3860198783265269,
+    "time": 2.909719705581665,
+    "outer_fold": 2
+  },
+  {
+    "trial_number": 0,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.31905708254435644,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.44848007675741036,
+    "time": 3.463068962097168,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 1,
+    "params": {
+      "kernel": "rbf",
+      "C": 60.609023441310015,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.39675804640816575,
+    "time": 2.578352212905884,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 2,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.16912989138066917,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.44945574622224954,
+    "time": 3.470824956893921,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 3,
+    "params": {
+      "kernel": "linear",
+      "C": 3.4174217469425594,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.3561087678233382,
+    "time": 0.8647491931915283,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 4,
+    "params": {
+      "kernel": "linear",
+      "C": 8.276602294388207,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.37623419149407555,
+    "time": 0.8537230491638184,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 5,
+    "params": {
+      "kernel": "rbf",
+      "C": 79.49138300767211,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.3872640545445046,
+    "time": 2.5800247192382812,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 6,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.3706175562446583,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4485151976665252,
+    "time": 3.5764169692993164,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 7,
+    "params": {
+      "kernel": "linear",
+      "C": 0.22727409204247428,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.35360751386288136,
+    "time": 1.096545934677124,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 8,
+    "params": {
+      "kernel": "linear",
+      "C": 39.0861656123312,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.34103695173355486,
+    "time": 0.8540489673614502,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 9,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.15167518817461545,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.45039883660397984,
+    "time": 3.4601638317108154,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 10,
+    "params": {
+      "kernel": "rbf",
+      "C": 1.0554217215114026,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4479001800514622,
+    "time": 3.4727389812469482,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 11,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.10054049454966103,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.45005845329686983,
+    "time": 3.5322649478912354,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 12,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.10381569693140916,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4502588581680985,
+    "time": 3.4894208908081055,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 13,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.7477986873346952,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4504442119190172,
+    "time": 3.521660327911377,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 14,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.8373183818859804,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4464558283034248,
+    "time": 3.479116678237915,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 15,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.824819551665812,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.44836242425693307,
+    "time": 3.526885986328125,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 16,
+    "params": {
+      "kernel": "rbf",
+      "C": 2.498388202512833,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4478134856362083,
+    "time": 3.391956090927124,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 17,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.5368776180399443,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4507614114454017,
+    "time": 3.5366477966308594,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 18,
+    "params": {
+      "kernel": "linear",
+      "C": 8.520878423170986,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.3639192673417002,
+    "time": 0.8529520034790039,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 19,
+    "params": {
+      "kernel": "rbf",
+      "C": 1.9594674153596996,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4487013980269826,
+    "time": 3.3943591117858887,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 20,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.5335107615998828,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.44905520149055056,
+    "time": 3.477203369140625,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 21,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.49107680245387886,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4503974666884699,
+    "time": 3.4745891094207764,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 22,
+    "params": {
+      "kernel": "rbf",
+      "C": 1.4776972568331408,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4499999877097582,
+    "time": 3.4372308254241943,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 23,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.19844488762920814,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.44865152524433044,
+    "time": 3.4706947803497314,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 24,
+    "params": {
+      "kernel": "rbf",
+      "C": 5.512248140988773,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4398416379375319,
+    "time": 3.2968530654907227,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 25,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.6535817444202747,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4503427844000984,
+    "time": 3.550962209701538,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 26,
+    "params": {
+      "kernel": "linear",
+      "C": 0.28016516740734376,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.37673880044145863,
+    "time": 1.0416719913482666,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 27,
+    "params": {
+      "kernel": "rbf",
+      "C": 1.261946653025829,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.45019455260370406,
+    "time": 3.4691741466522217,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 28,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.15373316775349932,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4507959756612875,
+    "time": 3.472632884979248,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 29,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.32918695113223967,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4495285816479576,
+    "time": 3.597353219985962,
+    "outer_fold": 3
+  },
+  {
+    "trial_number": 0,
+    "params": {
+      "kernel": "linear",
+      "C": 0.3064417405310009,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.34478795658359845,
+    "time": 1.0227413177490234,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 1,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.16821824013716755,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.45079975053358695,
+    "time": 3.4996657371520996,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 2,
+    "params": {
+      "kernel": "rbf",
+      "C": 8.847002513530974,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.41031798553897847,
+    "time": 3.1370298862457275,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 3,
+    "params": {
+      "kernel": "rbf",
+      "C": 2.132252493021649,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4381461544718224,
+    "time": 3.452921152114868,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 4,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.19317799927455775,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.45132702517956796,
+    "time": 3.511152982711792,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 5,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.9133160166800997,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.45010639992632584,
+    "time": 3.4834508895874023,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 6,
+    "params": {
+      "kernel": "linear",
+      "C": 0.15669443204471692,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.36920184041322135,
+    "time": 1.1853082180023193,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 7,
+    "params": {
+      "kernel": "linear",
+      "C": 5.306408955506017,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.3422305908121725,
+    "time": 0.8715589046478271,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 8,
+    "params": {
+      "kernel": "linear",
+      "C": 2.424766507212464,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.36150461978432613,
+    "time": 0.8939418792724609,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 9,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.13837985695453192,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4508662869037363,
+    "time": 3.523339033126831,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 10,
+    "params": {
+      "kernel": "rbf",
+      "C": 27.298644701251018,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.38952336495331746,
+    "time": 2.8659908771514893,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 11,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.5376862723940101,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.45147331322922346,
+    "time": 3.552461624145508,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 12,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.8909560119871729,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4511767438557749,
+    "time": 3.4881129264831543,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 13,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.452118906941205,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4499412866633644,
+    "time": 3.5641071796417236,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 14,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.6428216293751614,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.45238893140255837,
+    "time": 3.485158920288086,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 15,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.8165862981179347,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.45142773575028733,
+    "time": 3.556264877319336,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 16,
+    "params": {
+      "kernel": "rbf",
+      "C": 84.53752990272963,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.3872794998450147,
+    "time": 2.7816197872161865,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 17,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.47590031347263273,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4502603043524395,
+    "time": 3.599484920501709,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 18,
+    "params": {
+      "kernel": "linear",
+      "C": 1.4331527819770065,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.35513705519681077,
+    "time": 0.9060029983520508,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 19,
+    "params": {
+      "kernel": "rbf",
+      "C": 5.960323191566928,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.42617858610096626,
+    "time": 3.2169101238250732,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 20,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.37947642991928887,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.45088466304577246,
+    "time": 3.4802942276000977,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 21,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.9030111209939301,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.45108118028680844,
+    "time": 3.4751789569854736,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 22,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.6317031581167627,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.45055865669247297,
+    "time": 3.4684360027313232,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 23,
+    "params": {
+      "kernel": "rbf",
+      "C": 1.7068874691303517,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.43863862059624903,
+    "time": 3.5718939304351807,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 24,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.2656900781327628,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.45087122865544627,
+    "time": 3.621029853820801,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 25,
+    "params": {
+      "kernel": "rbf",
+      "C": 3.388190584947944,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.42820438797861027,
+    "time": 3.4392788410186768,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 26,
+    "params": {
+      "kernel": "linear",
+      "C": 1.2607391887725856,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.34960507504059574,
+    "time": 0.9230780601501465,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 27,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.7319962138305195,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4531346905950612,
+    "time": 3.5509562492370605,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 28,
+    "params": {
+      "kernel": "rbf",
+      "C": 18.496450450762513,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4056543410449926,
+    "time": 2.9171340465545654,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 29,
+    "params": {
+      "kernel": "linear",
+      "C": 0.1024765300793613,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.3590077736379756,
+    "time": 1.2768359184265137,
+    "outer_fold": 4
+  },
+  {
+    "trial_number": 0,
+    "params": {
+      "kernel": "linear",
+      "C": 0.2864730045323517,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.35795344481488245,
+    "time": 1.0173649787902832,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 1,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.3295215517719747,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4318564609441421,
+    "time": 3.4903149604797363,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 2,
+    "params": {
+      "kernel": "rbf",
+      "C": 18.898252184861033,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.3729914112064507,
+    "time": 2.907240152359009,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 3,
+    "params": {
+      "kernel": "rbf",
+      "C": 2.051963876629965,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.41683503644678765,
+    "time": 3.398549795150757,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 4,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.29409955247514546,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4344314320455928,
+    "time": 3.4908673763275146,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 5,
+    "params": {
+      "kernel": "linear",
+      "C": 9.369743914004125,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.37365700472535524,
+    "time": 0.869257926940918,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 6,
+    "params": {
+      "kernel": "linear",
+      "C": 32.491413550252446,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.37033399817554924,
+    "time": 0.8547699451446533,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 7,
+    "params": {
+      "kernel": "linear",
+      "C": 0.4567364265859638,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.358781074312208,
+    "time": 0.9516880512237549,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 8,
+    "params": {
+      "kernel": "linear",
+      "C": 0.7345857434935277,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.3624421013476521,
+    "time": 0.9074110984802246,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 9,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.550736595299986,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.43300116518015236,
+    "time": 3.465318202972412,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 10,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.10473435305881765,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.43182965147692903,
+    "time": 3.4855568408966064,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 11,
+    "params": {
+      "kernel": "rbf",
+      "C": 1.843123944481609,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4202016555519057,
+    "time": 3.414799928665161,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 12,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.12338267607013874,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4319143346515998,
+    "time": 3.473682165145874,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 13,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.994500898209267,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4303980133410187,
+    "time": 3.530553102493286,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 14,
+    "params": {
+      "kernel": "rbf",
+      "C": 5.281391577685463,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.39805428510584073,
+    "time": 3.4329521656036377,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 15,
+    "params": {
+      "kernel": "rbf",
+      "C": 92.63770426760732,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.38085615899872644,
+    "time": 2.5475380420684814,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 16,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.2203032384259683,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.43213455605299245,
+    "time": 3.558077335357666,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 17,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.9938472139934337,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.4317942631583908,
+    "time": 3.4739279747009277,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 18,
+    "params": {
+      "kernel": "rbf",
+      "C": 2.772050574367485,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4133529567254385,
+    "time": 3.356205940246582,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 19,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.6395015683805634,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "scale"
+    },
+    "score": 0.43225768758410954,
+    "time": 3.476196050643921,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 20,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.1649766467958031,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4327019627926899,
+    "time": 3.4749062061309814,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 21,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.19048688915064893,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4326632409303845,
+    "time": 3.5319838523864746,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 22,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.1539705352306265,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.43329071857172535,
+    "time": 3.5921359062194824,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 23,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.40390911836517246,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.43440647496387663,
+    "time": 3.618086814880371,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 24,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.2941291616014257,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4344314320455928,
+    "time": 3.5482017993927,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 25,
+    "params": {
+      "kernel": "rbf",
+      "C": 1.4157525923760663,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.4256910620620807,
+    "time": 3.468966007232666,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 26,
+    "params": {
+      "kernel": "linear",
+      "C": 0.3252195758478646,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.3626905953571465,
+    "time": 1.0309538841247559,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 27,
+    "params": {
+      "kernel": "rbf",
+      "C": 0.3798095274117583,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.43272844026855334,
+    "time": 3.4843838214874268,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 28,
+    "params": {
+      "kernel": "rbf",
+      "C": 4.9738380569363265,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200,
+      "gamma": "auto"
+    },
+    "score": 0.3946767307147402,
+    "time": 3.2534072399139404,
+    "outer_fold": 5
+  },
+  {
+    "trial_number": 29,
+    "params": {
+      "kernel": "linear",
+      "C": 0.2640830173518059,
+      "probability": true,
+      "max_iter": 1000,
+      "tol": 0.001,
+      "cache_size": 200
+    },
+    "score": 0.3560646006257643,
+    "time": 1.054854154586792,
+    "outer_fold": 5
+  }
+]

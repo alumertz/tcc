@@ -1,0 +1,41 @@
+RESULTADOS DO MODELO: K_NEAREST_NEIGHBORS
+================================================================================
+
+Data/Hora: 2025-10-13 01:39:35
+
+MÉTRICAS DETALHADAS DE VALIDAÇÃO CRUZADA - TODOS OS TRIALS:
+================================================================================
+
+AVALIAÇÃO NO CONJUNTO DE TESTE FINAL:
+--------------------------------------------------
+Acurácia: 0.6619
+Precisão: 0.5997
+Recall: 0.6619
+F1-Score: 0.5803
+ROC AUC: 0.5594
+PR AUC: 0.3949
+
+RELATÓRIO DETALHADO:
+------------------------------
+Nested CV Results (Mean ± Std):
+Accuracy: 0.6619 ± 0.0084
+Precision: 0.5997 ± 0.0257
+Recall: 0.6619 ± 0.0084
+F1: 0.5803 ± 0.0143
+ROC AUC: 0.5594 ± 0.0189
+PR AUC: 0.3949 ± 0.0219
+
+MELHORES HIPERPARÂMETROS:
+------------------------------
+{
+  "n_neighbors": 20,
+  "weights": "distance",
+  "algorithm": "auto",
+  "p": 2
+}
+
+HISTÓRICO DE OTIMIZAÇÃO:
+------------------------------
+Número de trials: 150
+Melhor score (CV): 0.3967
+Tempo total de otimização: 86.18 segundos

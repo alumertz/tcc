@@ -1,0 +1,362 @@
+[
+  {
+    "trial_number": 0,
+    "params": {
+      "max_iter": 54,
+      "learning_rate": 0.07207057216996723,
+      "max_depth": 11,
+      "min_samples_leaf": 31,
+      "l2_regularization": 0.5504649546888722
+    },
+    "score": 0.4450139491882621,
+    "time": 2.30936598777771
+  },
+  {
+    "trial_number": 1,
+    "params": {
+      "max_iter": 85,
+      "learning_rate": 0.10105085501087765,
+      "max_depth": 7,
+      "min_samples_leaf": 8,
+      "l2_regularization": 0.6063477048987292
+    },
+    "score": 0.44435284710440176,
+    "time": 1.9827492237091064
+  },
+  {
+    "trial_number": 2,
+    "params": {
+      "max_iter": 138,
+      "learning_rate": 0.14101193715375976,
+      "max_depth": 8,
+      "min_samples_leaf": 17,
+      "l2_regularization": 0.15971842780234324
+    },
+    "score": 0.43735855006932256,
+    "time": 2.9186389446258545
+  },
+  {
+    "trial_number": 3,
+    "params": {
+      "max_iter": 154,
+      "learning_rate": 0.0710541438318412,
+      "max_depth": 11,
+      "min_samples_leaf": 5,
+      "l2_regularization": 0.018555349100127794
+    },
+    "score": 0.4479355252129723,
+    "time": 3.713228225708008
+  },
+  {
+    "trial_number": 4,
+    "params": {
+      "max_iter": 181,
+      "learning_rate": 0.04933256636836671,
+      "max_depth": 12,
+      "min_samples_leaf": 30,
+      "l2_regularization": 0.5662567704496396
+    },
+    "score": 0.4385577791151066,
+    "time": 3.6869912147521973
+  },
+  {
+    "trial_number": 5,
+    "params": {
+      "max_iter": 143,
+      "learning_rate": 0.11515980351476585,
+      "max_depth": 8,
+      "min_samples_leaf": 12,
+      "l2_regularization": 0.1910218557646044
+    },
+    "score": 0.44648056263952096,
+    "time": 2.9493658542633057
+  },
+  {
+    "trial_number": 6,
+    "params": {
+      "max_iter": 171,
+      "learning_rate": 0.25159983734010416,
+      "max_depth": 8,
+      "min_samples_leaf": 16,
+      "l2_regularization": 0.9492730549720013
+    },
+    "score": 0.4220579267673834,
+    "time": 4.0099029541015625
+  },
+  {
+    "trial_number": 7,
+    "params": {
+      "max_iter": 134,
+      "learning_rate": 0.09096539336530184,
+      "max_depth": 5,
+      "min_samples_leaf": 13,
+      "l2_regularization": 0.8247275883812264
+    },
+    "score": 0.4456226777558799,
+    "time": 1.7070491313934326
+  },
+  {
+    "trial_number": 8,
+    "params": {
+      "max_iter": 114,
+      "learning_rate": 0.2805431478431454,
+      "max_depth": 14,
+      "min_samples_leaf": 38,
+      "l2_regularization": 0.573776550378523
+    },
+    "score": 0.42379693325895607,
+    "time": 2.519181728363037
+  },
+  {
+    "trial_number": 9,
+    "params": {
+      "max_iter": 181,
+      "learning_rate": 0.20415836753550168,
+      "max_depth": 13,
+      "min_samples_leaf": 13,
+      "l2_regularization": 0.2182832422934896
+    },
+    "score": 0.4334765880286179,
+    "time": 4.364650011062622
+  },
+  {
+    "trial_number": 10,
+    "params": {
+      "max_iter": 99,
+      "learning_rate": 0.013977493434995159,
+      "max_depth": 3,
+      "min_samples_leaf": 1,
+      "l2_regularization": 0.004027200316030322
+    },
+    "score": 0.4456004238356436,
+    "time": 1.0467283725738525
+  },
+  {
+    "trial_number": 11,
+    "params": {
+      "max_iter": 154,
+      "learning_rate": 0.15361282190159972,
+      "max_depth": 10,
+      "min_samples_leaf": 49,
+      "l2_regularization": 0.310547573164381
+    },
+    "score": 0.4164507686326611,
+    "time": 2.531684160232544
+  },
+  {
+    "trial_number": 12,
+    "params": {
+      "max_iter": 156,
+      "learning_rate": 0.11688284602195496,
+      "max_depth": 15,
+      "min_samples_leaf": 1,
+      "l2_regularization": 0.007088261601212814
+    },
+    "score": 0.44035893984149876,
+    "time": 4.5046226978302
+  },
+  {
+    "trial_number": 13,
+    "params": {
+      "max_iter": 200,
+      "learning_rate": 0.20642765790895481,
+      "max_depth": 10,
+      "min_samples_leaf": 23,
+      "l2_regularization": 0.3833048038687949
+    },
+    "score": 0.4292448792969994,
+    "time": 4.450642108917236
+  },
+  {
+    "trial_number": 14,
+    "params": {
+      "max_iter": 117,
+      "learning_rate": 0.027515588461654777,
+      "max_depth": 5,
+      "min_samples_leaf": 7,
+      "l2_regularization": 0.14433763294370672
+    },
+    "score": 0.4611053688756196,
+    "time": 1.6309161186218262
+  },
+  {
+    "trial_number": 15,
+    "params": {
+      "max_iter": 114,
+      "learning_rate": 0.016059365475838156,
+      "max_depth": 5,
+      "min_samples_leaf": 5,
+      "l2_regularization": 0.0907371094559537
+    },
+    "score": 0.4482814748052942,
+    "time": 1.732640027999878
+  },
+  {
+    "trial_number": 16,
+    "params": {
+      "max_iter": 112,
+      "learning_rate": 0.015522314890900057,
+      "max_depth": 5,
+      "min_samples_leaf": 21,
+      "l2_regularization": 0.40030362658662555
+    },
+    "score": 0.4466648068348908,
+    "time": 1.4393370151519775
+  },
+  {
+    "trial_number": 17,
+    "params": {
+      "max_iter": 81,
+      "learning_rate": 0.03309393211709758,
+      "max_depth": 3,
+      "min_samples_leaf": 7,
+      "l2_regularization": 0.1242850138864805
+    },
+    "score": 0.4570056778000183,
+    "time": 0.6052021980285645
+  },
+  {
+    "trial_number": 18,
+    "params": {
+      "max_iter": 69,
+      "learning_rate": 0.04913453626393869,
+      "max_depth": 3,
+      "min_samples_leaf": 8,
+      "l2_regularization": 0.2702577810493552
+    },
+    "score": 0.46105938668821755,
+    "time": 0.5099539756774902
+  },
+  {
+    "trial_number": 19,
+    "params": {
+      "max_iter": 51,
+      "learning_rate": 0.04828976155324774,
+      "max_depth": 6,
+      "min_samples_leaf": 28,
+      "l2_regularization": 0.30171830121032805
+    },
+    "score": 0.44396044653114697,
+    "time": 0.8070240020751953
+  },
+  {
+    "trial_number": 20,
+    "params": {
+      "max_iter": 67,
+      "learning_rate": 0.18536245440159693,
+      "max_depth": 3,
+      "min_samples_leaf": 36,
+      "l2_regularization": 0.4361504117119116
+    },
+    "score": 0.4575958251813542,
+    "time": 0.4928910732269287
+  },
+  {
+    "trial_number": 21,
+    "params": {
+      "max_iter": 70,
+      "learning_rate": 0.19250540106120842,
+      "max_depth": 3,
+      "min_samples_leaf": 36,
+      "l2_regularization": 0.7133642756260615
+    },
+    "score": 0.4454309961799895,
+    "time": 0.5099101066589355
+  },
+  {
+    "trial_number": 22,
+    "params": {
+      "max_iter": 66,
+      "learning_rate": 0.1787321737470453,
+      "max_depth": 4,
+      "min_samples_leaf": 44,
+      "l2_regularization": 0.4456042062922126
+    },
+    "score": 0.4433392538259654,
+    "time": 0.5689022541046143
+  },
+  {
+    "trial_number": 23,
+    "params": {
+      "max_iter": 87,
+      "learning_rate": 0.23726021231497346,
+      "max_depth": 4,
+      "min_samples_leaf": 35,
+      "l2_regularization": 0.4723829326052941
+    },
+    "score": 0.4278679217133208,
+    "time": 0.7349121570587158
+  },
+  {
+    "trial_number": 24,
+    "params": {
+      "max_iter": 98,
+      "learning_rate": 0.130700168896967,
+      "max_depth": 6,
+      "min_samples_leaf": 42,
+      "l2_regularization": 0.2876135269928538
+    },
+    "score": 0.43942699000042695,
+    "time": 1.2599070072174072
+  },
+  {
+    "trial_number": 25,
+    "params": {
+      "max_iter": 68,
+      "learning_rate": 0.07520558542833868,
+      "max_depth": 4,
+      "min_samples_leaf": 20,
+      "l2_regularization": 0.24633014373667755
+    },
+    "score": 0.4681335932167084,
+    "time": 0.5744099617004395
+  },
+  {
+    "trial_number": 26,
+    "params": {
+      "max_iter": 102,
+      "learning_rate": 0.07057676763318735,
+      "max_depth": 4,
+      "min_samples_leaf": 20,
+      "l2_regularization": 0.2419807378048489
+    },
+    "score": 0.45564347735897187,
+    "time": 0.8891000747680664
+  },
+  {
+    "trial_number": 27,
+    "params": {
+      "max_iter": 78,
+      "learning_rate": 0.04749191193184009,
+      "max_depth": 6,
+      "min_samples_leaf": 10,
+      "l2_regularization": 0.3483508848081079
+    },
+    "score": 0.45091447625070663,
+    "time": 1.430042028427124
+  },
+  {
+    "trial_number": 28,
+    "params": {
+      "max_iter": 61,
+      "learning_rate": 0.0869491634474836,
+      "max_depth": 7,
+      "min_samples_leaf": 17,
+      "l2_regularization": 0.09516000962882959
+    },
+    "score": 0.437539995700733,
+    "time": 1.0567712783813477
+  },
+  {
+    "trial_number": 29,
+    "params": {
+      "max_iter": 124,
+      "learning_rate": 0.06090899095320444,
+      "max_depth": 4,
+      "min_samples_leaf": 25,
+      "l2_regularization": 0.25525323191278226
+    },
+    "score": 0.4563534340512649,
+    "time": 0.9835770130157471
+  }
+]

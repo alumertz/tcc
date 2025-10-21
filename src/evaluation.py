@@ -19,10 +19,8 @@ def detailed_cross_val_score(pipeline, X, y, cv, scoring='average_precision'):
     """
     Executa validação cruzada coletando métricas detalhadas de cada fold
     """
-    # Métricas a serem calculadas
-    scoring_metrics = ['accuracy', 'precision_weighted', 'recall_weighted', 'f1_weighted', 'roc_auc', 'average_precision']
-    #scoring_metrics = ['accuracy', 'precision_macro', 'recall_macro', 'f1_macro', 'roc_auc', 'average_precision']
-
+    # Métricas a serem calculadas - usando 'binary' para consistência
+    scoring_metrics = ['accuracy', 'precision', 'recall', 'f1', 'roc_auc', 'average_precision']
 
     # Executar CV com múltiplas métricas
     cv_results = cross_validate(
@@ -40,12 +38,12 @@ def detailed_cross_val_score(pipeline, X, y, cv, scoring='average_precision'):
             'fold': fold_idx + 1,
             'train_accuracy': cv_results['train_accuracy'][fold_idx],
             'val_accuracy': cv_results['test_accuracy'][fold_idx],
-            'train_precision': cv_results['train_precision_weighted'][fold_idx],
-            'val_precision': cv_results['test_precision_weighted'][fold_idx],
-            'train_recall': cv_results['train_recall_weighted'][fold_idx],
-            'val_recall': cv_results['test_recall_weighted'][fold_idx],
-            'train_f1': cv_results['train_f1_weighted'][fold_idx],
-            'val_f1': cv_results['test_f1_weighted'][fold_idx],
+            'train_precision': cv_results['train_precision'][fold_idx],
+            'val_precision': cv_results['test_precision'][fold_idx],
+            'train_recall': cv_results['train_recall'][fold_idx],
+            'val_recall': cv_results['test_recall'][fold_idx],
+            'train_f1': cv_results['train_f1'][fold_idx],
+            'val_f1': cv_results['test_f1'][fold_idx],
             'train_roc_auc': cv_results['train_roc_auc'][fold_idx],
             'val_roc_auc': cv_results['test_roc_auc'][fold_idx],
             'train_pr_auc': cv_results['train_average_precision'][fold_idx],
@@ -67,12 +65,12 @@ def evaluate_classification_on_test(model, X_test, y_test, return_dict=False):
     y_pred_proba = model.predict_proba(X_test)[:, 1]  # Probabilidades para classe positiva
     
     accuracy = accuracy_score(y_test, y_pred)
-    precision = precision_score(y_test, y_pred, average='weighted')
-    recall = recall_score(y_test, y_pred, average='weighted')
-    f1 = f1_score(y_test, y_pred, average='weighted')
-    # precision = precision_score(y_test, y_pred, average='macro')
-    # recall = recall_score(y_test, y_pred, average='macro')
-    # f1 = f1_score(y_test, y_pred, average='macro')
+    # precision = precision_score(y_test, y_pred, average='weighted')
+    # recall = recall_score(y_test, y_pred, average='weighted')
+    # f1 = f1_score(y_test, y_pred, average='weighted')
+    precision = precision_score(y_test, y_pred, average='binary')
+    recall = recall_score(y_test, y_pred, average='binary')
+    f1 = f1_score(y_test, y_pred, average='binary')
 
     roc_auc = roc_auc_score(y_test, y_pred_proba)
     pr_auc = average_precision_score(y_test, y_pred_proba)
