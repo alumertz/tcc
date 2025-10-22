@@ -568,14 +568,15 @@ def save_nested_cv_results(model_name, aggregated_metrics, best_params_per_fold,
         }
     }
     
-    # Criar diretório do modelo se não existir
-    model_dir = os.path.join("./results", model_name)
-    os.makedirs(model_dir, exist_ok=True)
+    # Criar diretório do experimento
+    experiment_folder = generate_experiment_folder_name(data_source, "optimized", classification_type)
+    experiment_dir = os.path.join("./results", experiment_folder)
+    os.makedirs(experiment_dir, exist_ok=True)
     
     # Nome do arquivo com timestamp
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"nested_cv_{data_source}_{classification_type}_{timestamp}.json"
-    filepath = os.path.join(model_dir, filename)
+    filename = f"nested_cv_{model_name}_{data_source}_{classification_type}_{timestamp}.json"
+    filepath = os.path.join(experiment_dir, filename)
     
     # Converter numpy arrays para listas para serialização JSON
     def convert_numpy_types(obj):
