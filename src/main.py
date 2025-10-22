@@ -30,6 +30,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
+from catboost import CatBoostClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import cross_val_score, StratifiedKFold, train_test_split
@@ -335,7 +336,8 @@ def run_all_default_models(X, y, data_source="ana", classification_type="binary"
         ("Histogram Gradient Boosting", HistGradientBoostingClassifier(random_state=42)),
         ("K-Nearest Neighbors", KNeighborsClassifier()),
         ("Multi-Layer Perceptron", MLPClassifier(random_state=42, max_iter=1000)),
-        ("Support Vector Classifier", SVC(probability=True, random_state=42))
+        ("Support Vector Classifier", SVC(probability=True, random_state=42)),
+        ("CatBoost", CatBoostClassifier(random_state=42, verbose=False))
     ]
     
     results = []
