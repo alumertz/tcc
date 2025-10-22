@@ -10,6 +10,7 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from catboost import CatBoostClassifier
 from sklearn.metrics import roc_curve, precision_recall_curve, auc
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -36,7 +37,7 @@ sns.set_palette("husl")
 
 def create_plots_directory():
     """Cria diretório para salvar os gráficos"""
-    plots_dir = "/Users/i583975/git/tcc/artigo/plots"
+    plots_dir = "../plots"
     os.makedirs(plots_dir, exist_ok=True)
     
     # Criar subdiretórios para diferentes tipos de gráficos
@@ -47,9 +48,9 @@ def create_plots_directory():
     return plots_dir
 
 
-def load_model_results(results_dir="/Users/i583975/git/tcc/artigo/results"):
+def load_model_results(results_dir="../plot_results"):
     """
-    Carrega os resultados de todos os modelos testados
+    Carrega os resultados de todos os modelos testados (incluindo nested CV)
     
     Returns:
         dict: Dicionário com resultados de cada modelo
@@ -59,17 +60,28 @@ def load_model_results(results_dir="/Users/i583975/git/tcc/artigo/results"):
     # Lista de modelos disponíveis
     model_names = [
         'decision_tree', 'random_forest', 'gradient_boosting', 
-        'hist_gradient_boosting', 'knn', 'mlp', #'svc'
+        'histogram_gradient_boosting', 'k_nearest_neighbors', 'multi_layer_perceptron', 
+        #'support_vector_classifier', 'catboost'
     ]
     
     for model_name in model_names:
         model_dir = os.path.join(results_dir, model_name)
+        print(f"Verificando {model_name} em {model_dir}...")
         if os.path.exists(model_dir):
             # Encontrar o arquivo de teste mais recente
             test_files = [f for f in os.listdir(model_dir) if f.startswith('test_results_')]
-            if test_files:
-                latest_file = sorted(test_files)[-1]
-                test_file_path = os.path.join(model_dir, latest_file)
+            json_files = [f for f in os.listdir(model_dir) if f.startswith('trials_')]
+            
+            if test_files and json_files:
+                latest_test_file = sorted(test_files)[-1]
+                latest_json_file = sorted(json_files)[-1]
+                
+                test_file_path = os.path.join(model_dir, latest_test_file)
+                json_file_path = os.path.join(model_dir, latest_json_file)
+                
+                print(f"   Carregando resultados de {model_name}")
+                print(f"   Test file: {latest_test_file}")
+                print(f"   Trials file: {latest_json_file}")
                 
                 # Carregar dados do modelo
                 models_data[model_name] = {
@@ -77,16 +89,22 @@ def load_model_results(results_dir="/Users/i583975/git/tcc/artigo/results"):
                     'model_dir': model_dir
                 }
                 
-                # Tentar carregar arquivo JSON com trials
-                json_files = [f for f in os.listdir(model_dir) if f.startswith('trials_')]
-                if json_files:
-                    latest_json = sorted(json_files)[-1]
-                    json_file_path = os.path.join(model_dir, latest_json)
-                    try:
-                        with open(json_file_path, 'r') as f:
-                            models_data[model_name]['trials'] = json.load(f)
-                    except:
-                        pass
+                # Carregar arquivo JSON com trials
+                try:
+                    with open(json_file_path, 'r') as f:
+                        trials_data = json.load(f)
+                        models_data[model_name]['trials'] = trials_data
+                        
+                        # Para nested CV, extract nested_cv_results se disponível
+                        if isinstance(trials_data, list) and len(trials_data) > 0:
+                            # Formato antigo (lista de trials)
+                            models_data[model_name]['is_nested_cv'] = False
+                        else:
+                            # Pode ser nested CV results
+                            models_data[model_name]['is_nested_cv'] = True
+                            
+                except Exception as e:
+                    print(f"   Erro ao carregar trials: {e}")
     
     return models_data
 
@@ -115,11 +133,18 @@ def get_model_predictions(model_name, best_params, X, y):
         'decision_tree': DecisionTreeClassifier,
         'random_forest': RandomForestClassifier,
         'gradient_boosting': GradientBoostingClassifier,
+        'histogram_gradient_boosting': HistGradientBoostingClassifier,
+        'k_nearest_neighbors': KNeighborsClassifier,
+        'multi_layer_perceptron': MLPClassifier,
+        #'support_vector_classifier': SVC,
+        # Legacy names
         'hist_gradient_boosting': HistGradientBoostingClassifier,
         'knn': KNeighborsClassifier,
         'mlp': MLPClassifier,
-        'svc': SVC
+        #'svc': SVC,
+        #'catboost': CatBoostClassifier
     }
+    
     
     if model_name not in model_classes:
         return None, None
@@ -186,6 +211,12 @@ def plot_roc_curve(model_results, X, y, save_path=None):
         'decision_tree': '#1f77b4',      # Azul
         'random_forest': '#ff7f0e',      # Laranja
         'gradient_boosting': '#2ca02c',  # Verde
+        'histogram_gradient_boosting': '#d62728',  # Vermelho
+        'k_nearest_neighbors': '#9467bd',                # Roxo
+        'multi_layer_perceptron': '#8c564b',                # Marrom
+        'support_vector_classifier': '#e377c2',                 # Rosa
+        'catboost': '#17becf',           # Ciano
+        # Legacy names for backward compatibility
         'hist_gradient_boosting': '#d62728',  # Vermelho
         'knn': '#9467bd',                # Roxo
         'mlp': '#8c564b',                # Marrom
@@ -203,28 +234,50 @@ def plot_roc_curve(model_results, X, y, save_path=None):
         
         # Extrair melhores parâmetros dos trials
         if 'trials' in data and data['trials']:
-            # Encontrar o melhor trial
-            best_trial = max(data['trials'], key=lambda x: x.get('score', 0))
-            best_params = best_trial.get('params', {})
+            trials_data = data['trials']
+            best_params = None
             
-            # Obter predições
-            y_test, y_pred_proba = get_model_predictions(model_name, best_params, X, y)
+            # Check if it's nested CV format or old format
+            if isinstance(trials_data, list) and len(trials_data) > 0:
+                # Old format - list of trials
+                best_trial = max(trials_data, key=lambda x: x.get('score', 0))
+                best_params = best_trial.get('params', {})
+                print(f"  {model_name}: Usando formato antigo de trials")
+            elif isinstance(trials_data, dict):
+                # New nested CV format - extract best_params from the dict
+                if 'best_params' in trials_data:
+                    best_params = trials_data['best_params']
+                    print(f"  {model_name}: Usando formato nested CV")
+                elif 'nested_cv_results' in trials_data:
+                    # Extract from nested CV results - use best fold's params
+                    nested_results = trials_data['nested_cv_results']
+                    if nested_results and len(nested_results) > 0:
+                        best_fold = max(nested_results, key=lambda x: x.get('best_cv_score', 0))
+                        best_params = best_fold.get('best_params', {})
+                        print(f"  {model_name}: Extraindo parâmetros do melhor fold nested CV")
             
-            if y_test is not None and y_pred_proba is not None:
-                # Calcular ROC
-                fpr, tpr, _ = roc_curve(y_test, y_pred_proba)
-                roc_auc = auc(fpr, tpr)
+            if best_params:
+                # Obter predições
+                y_test, y_pred_proba = get_model_predictions(model_name, best_params, X, y)
                 
-                # Plotar curva
-                model_display_name = model_name.replace('_', ' ').title()
-                color = model_colors.get(model_name, f'C{models_plotted}')
-                plt.plot(fpr, tpr, color=color, lw=3, 
-                        label=f'{model_display_name} (AUC = {roc_auc:.3f})')
-                models_plotted += 1
-                print(f"  {model_name}: AUC = {roc_auc:.3f}")
+                if y_test is not None and y_pred_proba is not None:
+                    # Calcular ROC
+                    fpr, tpr, _ = roc_curve(y_test, y_pred_proba)
+                    roc_auc = auc(fpr, tpr)
+                    
+                    # Plotar curva
+                    model_display_name = model_name.replace('_', ' ').title()
+                    color = model_colors.get(model_name, f'C{models_plotted}')
+                    plt.plot(fpr, tpr, color=color, lw=3, 
+                            label=f'{model_display_name} (AUC = {roc_auc:.3f})')
+                    models_plotted += 1
+                    print(f"  {model_name}: AUC = {roc_auc:.3f}")
+                else:
+                    models_with_errors.append(model_name)
+                    print(f"  {model_name}: Erro ao obter predições")
             else:
                 models_with_errors.append(model_name)
-                print(f"  {model_name}: Erro ao obter predições")
+                print(f"  {model_name}: Não foi possível extrair parâmetros")
         else:
             models_with_errors.append(model_name)
             print(f"  {model_name}: Dados de trials não encontrados")
@@ -284,6 +337,12 @@ def plot_precision_recall_curve(model_results, X, y, save_path=None):
         'decision_tree': '#1f77b4',      # Azul
         'random_forest': '#ff7f0e',      # Laranja
         'gradient_boosting': '#2ca02c',  # Verde
+        'histogram_gradient_boosting': '#d62728',  # Vermelho
+        'k_nearest_neighbors': '#9467bd',                # Roxo
+        'multi_layer_perceptron': '#8c564b',                # Marrom
+        'support_vector_classifier': '#e377c2',                 # Rosa
+        'catboost': '#17becf',           # Ciano
+        # Legacy names for backward compatibility
         'hist_gradient_boosting': '#d62728',  # Vermelho
         'knn': '#9467bd',                # Roxo
         'mlp': '#8c564b',                # Marrom
@@ -304,28 +363,50 @@ def plot_precision_recall_curve(model_results, X, y, save_path=None):
         
         # Extrair melhores parâmetros dos trials
         if 'trials' in data and data['trials']:
-            # Encontrar o melhor trial
-            best_trial = max(data['trials'], key=lambda x: x.get('score', 0))
-            best_params = best_trial.get('params', {})
+            trials_data = data['trials']
+            best_params = None
             
-            # Obter predições
-            y_test, y_pred_proba = get_model_predictions(model_name, best_params, X, y)
+            # Check if it's nested CV format or old format
+            if isinstance(trials_data, list) and len(trials_data) > 0:
+                # Old format - list of trials
+                best_trial = max(trials_data, key=lambda x: x.get('score', 0))
+                best_params = best_trial.get('params', {})
+                print(f"  {model_name}: Usando formato antigo de trials")
+            elif isinstance(trials_data, dict):
+                # New nested CV format - extract best_params from the dict
+                if 'best_params' in trials_data:
+                    best_params = trials_data['best_params']
+                    print(f"  {model_name}: Usando formato nested CV")
+                elif 'nested_cv_results' in trials_data:
+                    # Extract from nested CV results - use best fold's params
+                    nested_results = trials_data['nested_cv_results']
+                    if nested_results and len(nested_results) > 0:
+                        best_fold = max(nested_results, key=lambda x: x.get('best_cv_score', 0))
+                        best_params = best_fold.get('best_params', {})
+                        print(f"  {model_name}: Extraindo parâmetros do melhor fold nested CV")
             
-            if y_test is not None and y_pred_proba is not None:
-                # Calcular Precision-Recall
-                precision, recall, _ = precision_recall_curve(y_test, y_pred_proba)
-                pr_auc = auc(recall, precision)
+            if best_params:
+                # Obter predições
+                y_test, y_pred_proba = get_model_predictions(model_name, best_params, X, y)
                 
-                # Plotar curva
-                model_display_name = model_name.replace('_', ' ').title()
-                color = model_colors.get(model_name, f'C{models_plotted}')
-                plt.plot(recall, precision, color=color, lw=3, 
-                        label=f'{model_display_name} (AUC = {pr_auc:.3f})')
-                models_plotted += 1
-                print(f"  {model_name}: PR AUC = {pr_auc:.3f}")
+                if y_test is not None and y_pred_proba is not None:
+                    # Calcular Precision-Recall
+                    precision, recall, _ = precision_recall_curve(y_test, y_pred_proba)
+                    pr_auc = auc(recall, precision)
+                    
+                    # Plotar curva
+                    model_display_name = model_name.replace('_', ' ').title()
+                    color = model_colors.get(model_name, f'C{models_plotted}')
+                    plt.plot(recall, precision, color=color, lw=3, 
+                            label=f'{model_display_name} (AUC = {pr_auc:.3f})')
+                    models_plotted += 1
+                    print(f"  {model_name}: PR AUC = {pr_auc:.3f}")
+                else:
+                    models_with_errors.append(model_name)
+                    print(f"  {model_name}: Erro ao obter predições")
             else:
                 models_with_errors.append(model_name)
-                print(f"  {model_name}: Erro ao obter predições")
+                print(f"  {model_name}: Não foi possível extrair parâmetros")
         else:
             models_with_errors.append(model_name)
             print(f"  {model_name}: Dados de trials não encontrados")
@@ -510,9 +591,9 @@ def generate_all_plots(X=None, y=None):
     # Carregar dados se não fornecidos
     if X is None or y is None:
         try:
-            # Usar os mesmos caminhos e função de carregamento do main.py
-            features_path = "/Users/i583975/git/tcc/renan/data_files/omics_features/UNION_features.tsv"
-            labels_path = "/Users/i583975/git/tcc/renan/data_files/labels/UNION_labels.tsv"
+
+            features_path = "../data/UNION_features.tsv"
+            labels_path = "../data/processed/UNION_labels.tsv"
             
             # Verificar se os arquivos existem
             if not os.path.exists(features_path):
@@ -577,6 +658,3 @@ if __name__ == "__main__":
     # Exemplo de uso
     print("Executando geração de gráficos...")
     generate_all_plots()
-
-
-    
