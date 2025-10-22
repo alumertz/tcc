@@ -328,57 +328,62 @@ def _process_mlp_params(best_trial):
     }
 
 
-def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True, fixed_params=None):
+def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, data_source="ana"):
     """Otimização de hiperparâmetros para Decision Tree Classifier usando Optuna"""
     return _optimize_classifier_generic(
         DecisionTreeClassifier,
         _suggest_decision_tree_params,
         'decision_tree',
-        X, y, n_trials, save_results, fixed_params=fixed_params
+        X, y, n_trials, save_results, fixed_params=fixed_params,
+        data_source=data_source, classification_type="binary"
     )
 
 
-def optimize_random_forest_classifier(X, y, n_trials=30, save_results=True, fixed_params=None):
+def optimize_random_forest_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, data_source="ana"):
     """Otimização de hiperparâmetros para Random Forest Classifier usando Optuna"""
     return _optimize_classifier_generic(
         RandomForestClassifier,
         _suggest_random_forest_params,
         'random_forest',
-        X, y, n_trials, save_results, fixed_params=fixed_params
+        X, y, n_trials, save_results, fixed_params=fixed_params,
+        data_source=data_source, classification_type="binary"
     )
 
 
-def optimize_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, fixed_params=None):
+def optimize_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, data_source="ana"):
     """Otimização de hiperparâmetros para Gradient Boosting Classifier usando Optuna"""
     return _optimize_classifier_generic(
         GradientBoostingClassifier,
         _suggest_gradient_boosting_params,
         'gradient_boosting',
-        X, y, n_trials, save_results, fixed_params=fixed_params
+        X, y, n_trials, save_results, fixed_params=fixed_params,
+        data_source=data_source, classification_type="binary"
     )
 
 
-def optimize_hist_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, fixed_params=None):
+def optimize_hist_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, data_source="ana"):
     """Otimização de hiperparâmetros para Histogram Gradient Boosting Classifier usando Optuna"""
     return _optimize_classifier_generic(
         HistGradientBoostingClassifier,
         _suggest_hist_gradient_boosting_params,
         'histogram_gradient_boosting',
-        X, y, n_trials, save_results, fixed_params=fixed_params
+        X, y, n_trials, save_results, fixed_params=fixed_params,
+        data_source=data_source, classification_type="binary"
     )
 
 
-def optimize_knn_classifier(X, y, n_trials=30, save_results=True, fixed_params=None):
+def optimize_knn_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, data_source="ana"):
     """Otimização de hiperparâmetros para KNN Classifier usando Optuna"""
     return _optimize_classifier_generic(
         KNeighborsClassifier,
         _suggest_knn_params,
         'k_nearest_neighbors',
-        X, y, n_trials, save_results, fixed_params=fixed_params
+        X, y, n_trials, save_results, fixed_params=fixed_params,
+        data_source=data_source, classification_type="binary"
     )
 
 
-def optimize_mlp_classifier(X, y, n_trials=30, save_results=True, fixed_params=None):
+def optimize_mlp_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, data_source="ana"):
     """Otimização de hiperparâmetros para MLP Classifier usando Optuna"""
     return _optimize_classifier_generic(
         MLPClassifier,
@@ -386,25 +391,28 @@ def optimize_mlp_classifier(X, y, n_trials=30, save_results=True, fixed_params=N
         'multi_layer_perceptron',
         X, y, n_trials, save_results,
         custom_params_processor=_process_mlp_params,
-        fixed_params=fixed_params
+        fixed_params=fixed_params,
+        data_source=data_source, classification_type="binary"
     )
 
 
-def optimize_svc_classifier(X, y, n_trials=30, save_results=True, fixed_params=None):
+def optimize_svc_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, data_source="ana"):
     """Otimização de hiperparâmetros para SVC usando Optuna"""
     return _optimize_classifier_generic(
         SVC,
         _suggest_svc_params,
         'svc',
-        X, y, n_trials, save_results, fixed_params=fixed_params
+        X, y, n_trials, save_results, fixed_params=fixed_params,
+        data_source=data_source, classification_type="binary"
     )
 
 
-def optimize_catboost_classifier(X, y, n_trials=30, save_results=True, fixed_params=None):
+def optimize_catboost_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, data_source="ana"):
     """Otimização de hiperparâmetros para CatBoost Classifier usando Optuna"""
     return _optimize_classifier_generic(
         CatBoostClassifier,
         _suggest_catboost_params,
         'catboost',
-        X, y, n_trials, save_results, fixed_params=fixed_params
+        X, y, n_trials, save_results, fixed_params=fixed_params,
+        data_source=data_source, classification_type="binary"
     )

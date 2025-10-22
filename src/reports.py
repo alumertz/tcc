@@ -174,7 +174,7 @@ def generate_all_trials_cv_tables(file_handle, all_cv_metrics):
         # Hiperparâmetros
         file_handle.write("Hiperparâmetros:\n")
         for param, value in params.items():
-            file_handle.write(f"  {param}: {str(value)}\n")
+            file_handle.write(f"  {param}: {value}\n")
         file_handle.write("\n")
         
         # Tabela de métricas se disponível

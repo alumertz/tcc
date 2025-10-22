@@ -259,7 +259,7 @@ def evaluate_model_default(model, model_name, X, y, data_source="ana", classific
     
     print("Resultados da validação cruzada:")
     for metric, result in cv_results.items():
-        print(f"  {metric.upper()}: {result['mean']:.4f} ± {result['std']:.4f}")
+        print("  " + str(metric).upper() + ": " + "{:.4f}".format(float(result['mean'])) + " ± " + "{:.4f}".format(float(result['std'])))
     
     # Treinar no conjunto treino+validação completo e avaliar no teste
     print("\nTreinando no conjunto completo e avaliando no teste...")
@@ -270,7 +270,10 @@ def evaluate_model_default(model, model_name, X, y, data_source="ana", classific
     
     print("Resultados no conjunto de teste:")
     for metric, value in test_metrics.items():
-        print(f"  {metric.upper()}: {value:.4f}")
+        if metric == 'classification_report':
+            continue
+        else:
+            print("  " + str(metric).upper() + ": " + str(value))
     
     # Obter predições para o relatório de classificação
     y_pred = pipeline.predict(X_test)
@@ -279,14 +282,19 @@ def evaluate_model_default(model, model_name, X, y, data_source="ana", classific
     # Relatório de classificação detalhado
     from src.reports import generate_enhanced_classification_report
     class_report = generate_enhanced_classification_report(y_test, y_pred, y_pred_proba)
-    print(f"\nRelatório de classificação:\n{class_report}")
+    print("\nRelatório de classificação:\n" + str(class_report))
     
     # Salvar resultados usando função unificada
+    # Convert parameters to JSON-serializable format
+    clean_params = {}
+    for key, value in pipeline.get_params().items():
+        clean_params[key] = str(value)
+    
     results_data = {
         'cv_results': cv_results,
         'test_metrics': test_metrics,
         'classification_report': class_report,
-        'parameters': pipeline.get_params()
+        'parameters': clean_params
     }
     
     save_model_results_unified(model_name, results_data, mode="default", 
