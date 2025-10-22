@@ -1,6 +1,7 @@
 """
 Módulo para otimização de hiperparâmetros de modelos de machine learning.
 Contém funções de otimização usando Optuna para diferentes algoritmos de classificação.
+Implementa validação cruzada aninhada (nested cross-validation) para avaliação não-enviesada.
 """
 
 import time
@@ -24,45 +25,175 @@ from src.evaluation import detailed_cross_val_score, evaluate_classification_on_
 from src.reports import save_model_results_unified
 
 
-def _optimize_classifier_generic(
-    classifier_class, 
-    param_suggestions_func, 
-    model_name, 
-    X, y, 
-    n_trials=30, 
-    save_results=True,
-    custom_params_processor=None,
-    return_test_metrics=False,
-    fixed_params=None,
-    data_source="ana",
-    classification_type="binary"
-):
+def _nested_cross_validation_optimization(classifier_class, param_suggestions_func, model_name, X, y, 
+                                       n_trials=100, save_results=True, custom_params_processor=None, 
+                                       return_test_metrics=False, fixed_params=None, data_source="ana",
+                                       classification_type="binary", outer_cv_folds=5):
     """
-    Função genérica para otimização de hiperparâmetros de classificadores.
+    Implementa nested cross-validation para avaliação imparcial do modelo.
     
-    Parameters:
-    -----------
-    classifier_class : sklearn classifier class
-        Classe do classificador a ser otimizado
-    param_suggestions_func : function
-        Função que recebe um trial do Optuna e retorna os parâmetros sugeridos
-    model_name : str
-        Nome do modelo para salvamento e logs
-    X, y : array-like
-        Features e target
-    n_trials : int
-        Número de trials para otimização
-    save_results : bool
-        Se deve salvar os resultados
-    custom_params_processor : function, optional
-        Função para processar parâmetros antes de criar o modelo final
-    return_test_metrics : bool
-        Se deve retornar também as métricas de teste
+    O loop externo divide os dados em treino/teste para avaliação final.
+    O loop interno otimiza hiperparâmetros usando cross-validation no conjunto de treino.
+    """
+    from sklearn.model_selection import StratifiedKFold, cross_val_score
+    
+    # Configurar cross-validation estratificado
+    outer_cv = StratifiedKFold(n_splits=outer_cv_folds, shuffle=True, random_state=42)
+    
+    nested_scores = {
+        'accuracy': [],
+        'precision': [],
+        'recall': [],
+        'f1': [],
+        'roc_auc': [],
+        'best_params_per_fold': []
+    }
+    
+    print(f"\nIniciando Nested Cross-Validation para {model_name}...")
+    print(f"Configuração: {outer_cv_folds} folds externos, {n_trials} trials por fold")
+    
+    fold_number = 1
+    for train_idx, test_idx in outer_cv.split(X, y):
+        print(f"\nFold {fold_number}/{outer_cv_folds}")
         
-    Returns:
-    --------
-    sklearn.pipeline.Pipeline ou tuple
-        Pipeline otimizado, ou tuple (pipeline, test_metrics) se return_test_metrics=True
+        # Dividir dados para este fold
+        X_train_fold, X_test_fold = X.iloc[train_idx], X.iloc[test_idx]
+        y_train_fold, y_test_fold = y.iloc[train_idx], y.iloc[test_idx]
+        
+        # Otimização no conjunto de treino (loop interno)
+        def objective(trial):
+            # Obter parâmetros sugeridos
+            params = param_suggestions_func(trial)
+            
+            # Aplicar processamento customizado se fornecido
+            if custom_params_processor:
+                params = custom_params_processor(params)
+                
+            # Combinar com parâmetros fixos
+            if fixed_params:
+                params.update(fixed_params)
+            
+            # Criar pipeline
+            pipeline = Pipeline([
+                ('scaler', StandardScaler()),
+                ('classifier', classifier_class(**params))
+            ])
+            
+            # Cross-validation interno (5-fold)
+            inner_cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+            scores = cross_val_score(pipeline, X_train_fold, y_train_fold, 
+                                   cv=inner_cv, scoring='f1_macro' if classification_type == "multiclass" else 'f1')
+            
+            return scores.mean()
+        
+        # Criar estudo Optuna para este fold
+        study_name = f"{model_name}_fold_{fold_number}"
+        study = optuna.create_study(
+            direction='maximize',
+            study_name=study_name,
+            storage=None,  # Em memória
+            load_if_exists=False
+        )
+        
+        # Otimizar
+        study.optimize(objective, n_trials=n_trials, show_progress_bar=False)
+        
+        # Treinar modelo final com melhores parâmetros neste fold
+        best_params = study.best_params.copy()
+        if custom_params_processor:
+            best_params = custom_params_processor(best_params)
+        if fixed_params:
+            best_params.update(fixed_params)
+            
+        final_pipeline = Pipeline([
+            ('scaler', StandardScaler()),
+            ('classifier', classifier_class(**best_params))
+        ])
+        
+        # Treinar no conjunto de treino do fold
+        final_pipeline.fit(X_train_fold, y_train_fold)
+        
+        # Avaliar no conjunto de teste do fold
+        y_pred_fold = final_pipeline.predict(X_test_fold)
+        y_pred_proba_fold = final_pipeline.predict_proba(X_test_fold)
+        
+        # Calcular métricas para este fold
+        from sklearn.metrics import accuracy_score, precision_recall_fscore_support, roc_auc_score
+        
+        accuracy_fold = accuracy_score(y_test_fold, y_pred_fold)
+        precision_fold, recall_fold, f1_fold, _ = precision_recall_fscore_support(
+            y_test_fold, y_pred_fold, average='macro' if classification_type == "multiclass" else 'binary'
+        )
+        
+        if classification_type == "multiclass":
+            roc_auc_fold = roc_auc_score(y_test_fold, y_pred_proba_fold, multi_class='ovr', average='macro')
+        else:
+            roc_auc_fold = roc_auc_score(y_test_fold, y_pred_proba_fold[:, 1])
+        
+        # Armazenar resultados deste fold
+        nested_scores['accuracy'].append(accuracy_fold)
+        nested_scores['precision'].append(precision_fold)
+        nested_scores['recall'].append(recall_fold)
+        nested_scores['f1'].append(f1_fold)
+        nested_scores['roc_auc'].append(roc_auc_fold)
+        nested_scores['best_params_per_fold'].append(best_params)
+        
+        print(f"Fold {fold_number} - F1: {f1_fold:.4f}, Accuracy: {accuracy_fold:.4f}, ROC-AUC: {roc_auc_fold:.4f}")
+        fold_number += 1
+    
+    # Calcular estatísticas agregadas
+    aggregated_metrics = {}
+    for metric in ['accuracy', 'precision', 'recall', 'f1', 'roc_auc']:
+        scores = nested_scores[metric]
+        aggregated_metrics[metric] = {
+            'mean': np.mean(scores),
+            'std': np.std(scores),
+            'scores': scores
+        }
+    
+    print(f"\n=== Resultados Nested Cross-Validation - {model_name} ===")
+    for metric in ['accuracy', 'precision', 'recall', 'f1', 'roc_auc']:
+        mean_score = aggregated_metrics[metric]['mean']
+        std_score = aggregated_metrics[metric]['std']
+        print(f"{metric.upper()}: {mean_score:.4f} (±{std_score:.4f})")
+    
+    # Treinar modelo final em todos os dados para retorno
+    # Usar os melhores parâmetros do melhor fold (baseado em F1)
+    best_fold_idx = np.argmax(nested_scores['f1'])
+    final_best_params = nested_scores['best_params_per_fold'][best_fold_idx]
+    
+    final_pipeline = Pipeline([
+        ('scaler', StandardScaler()),
+        ('classifier', classifier_class(**final_best_params))
+    ])
+    final_pipeline.fit(X, y)
+    
+    # Salvar resultados se solicitado
+    if save_results:
+        from .reports import save_nested_cv_results
+        save_nested_cv_results(
+            model_name=model_name,
+            aggregated_metrics=aggregated_metrics,
+            best_params_per_fold=nested_scores['best_params_per_fold'],
+            data_source=data_source,
+            classification_type=classification_type,
+            n_trials=n_trials,
+            outer_cv_folds=outer_cv_folds
+        )
+    
+    if return_test_metrics:
+        return final_pipeline, aggregated_metrics
+    else:
+        return final_pipeline
+
+
+def _simple_holdout_optimization(classifier_class, param_suggestions_func, model_name, X, y, 
+                               n_trials=100, save_results=True, custom_params_processor=None, 
+                               return_test_metrics=False, fixed_params=None, data_source="ana",
+                               classification_type="binary"):
+    """
+    Implementa otimização simples com holdout (train/test split).
+    Mantém a funcionalidade original para compatibilidade.
     """
     # Holdout para teste (20%)
     X_trainval, X_test, y_trainval, y_test = train_test_split(
@@ -197,8 +328,66 @@ def _optimize_classifier_generic(
     if model_name == 'decision_tree':
         print(f"{model_name.replace('_', ' ').title()} - CV folds utilizados: {n_splits}")
 
-    # Sempre retorna tupla para compatibilidade com main.py
-    return final_pipeline, test_metrics
+    if return_test_metrics:
+        return final_pipeline, test_metrics
+    else:
+        return final_pipeline
+
+
+def _optimize_classifier_generic(classifier_class, param_suggestions_func, model_name, X, y, 
+                               n_trials=100, save_results=True, custom_params_processor=None, 
+                               return_test_metrics=False, fixed_params=None, data_source="ana",
+                               classification_type="binary", use_nested_cv=True, outer_cv_folds=5):
+    """
+    Função genérica para otimização de hiperparâmetros de classificadores com nested cross-validation.
+    
+    Parameters:
+    -----------
+    classifier_class : sklearn classifier class
+        Classe do classificador a ser otimizado
+    param_suggestions_func : function
+        Função que recebe um trial do Optuna e retorna os parâmetros sugeridos
+    model_name : str
+        Nome do modelo para salvamento e logs
+    X, y : array-like
+        Features e target
+    n_trials : int
+        Número de trials para otimização
+    save_results : bool
+        Se deve salvar os resultados
+    custom_params_processor : function, optional
+        Função para processar parâmetros antes de criar o modelo final
+    return_test_metrics : bool
+        Se deve retornar também as métricas de teste
+    fixed_params : dict, optional
+        Parâmetros fixos para o modelo
+    data_source : str
+        Fonte dos dados ("ana" ou "renan")
+    classification_type : str
+        Tipo de classificação ("binary" ou "multiclass")
+    use_nested_cv : bool
+        Se deve usar nested cross-validation (True) ou holdout simples (False)
+    outer_cv_folds : int
+        Número de folds para o loop externo do nested CV
+        
+    Returns:
+    --------
+    sklearn.pipeline.Pipeline ou tuple
+        Pipeline otimizado, ou tuple (pipeline, test_metrics) se return_test_metrics=True
+    """
+    
+    if use_nested_cv:
+        return _nested_cross_validation_optimization(
+            classifier_class, param_suggestions_func, model_name, X, y,
+            n_trials, save_results, custom_params_processor, return_test_metrics, 
+            fixed_params, data_source, classification_type, outer_cv_folds
+        )
+    else:
+        return _simple_holdout_optimization(
+            classifier_class, param_suggestions_func, model_name, X, y,
+            n_trials, save_results, custom_params_processor, return_test_metrics,
+            fixed_params, data_source, classification_type
+        )
 
 
 # Funções de sugestão de parâmetros para cada modelo
@@ -328,62 +517,94 @@ def _process_mlp_params(best_trial):
     }
 
 
-def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, data_source="ana"):
+def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, 
+                                    data_source="ana", classification_type="binary", 
+                                    use_nested_cv=True, outer_cv_folds=5):
     """Otimização de hiperparâmetros para Decision Tree Classifier usando Optuna"""
     return _optimize_classifier_generic(
         DecisionTreeClassifier,
         _suggest_decision_tree_params,
         'decision_tree',
-        X, y, n_trials, save_results, fixed_params=fixed_params,
-        data_source=data_source, classification_type="binary"
+        X, y, n_trials, save_results, 
+        custom_params_processor=None,
+        return_test_metrics=True,
+        fixed_params=fixed_params,
+        data_source=data_source, classification_type=classification_type,
+        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
     )
 
 
-def optimize_random_forest_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, data_source="ana"):
+def optimize_random_forest_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
+                                     data_source="ana", classification_type="binary", 
+                                     use_nested_cv=True, outer_cv_folds=5):
     """Otimização de hiperparâmetros para Random Forest Classifier usando Optuna"""
     return _optimize_classifier_generic(
         RandomForestClassifier,
         _suggest_random_forest_params,
         'random_forest',
-        X, y, n_trials, save_results, fixed_params=fixed_params,
-        data_source=data_source, classification_type="binary"
+        X, y, n_trials, save_results, 
+        custom_params_processor=None,
+        return_test_metrics=True,
+        fixed_params=fixed_params,
+        data_source=data_source, classification_type=classification_type,
+        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
     )
 
 
-def optimize_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, data_source="ana"):
+def optimize_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
+                                        data_source="ana", classification_type="binary", 
+                                        use_nested_cv=True, outer_cv_folds=5):
     """Otimização de hiperparâmetros para Gradient Boosting Classifier usando Optuna"""
     return _optimize_classifier_generic(
         GradientBoostingClassifier,
         _suggest_gradient_boosting_params,
         'gradient_boosting',
-        X, y, n_trials, save_results, fixed_params=fixed_params,
-        data_source=data_source, classification_type="binary"
+        X, y, n_trials, save_results, 
+        custom_params_processor=None,
+        return_test_metrics=True,
+        fixed_params=fixed_params,
+        data_source=data_source, classification_type=classification_type,
+        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
     )
 
 
-def optimize_hist_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, data_source="ana"):
+def optimize_hist_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
+                                             data_source="ana", classification_type="binary", 
+                                             use_nested_cv=True, outer_cv_folds=5):
     """Otimização de hiperparâmetros para Histogram Gradient Boosting Classifier usando Optuna"""
     return _optimize_classifier_generic(
         HistGradientBoostingClassifier,
         _suggest_hist_gradient_boosting_params,
         'histogram_gradient_boosting',
-        X, y, n_trials, save_results, fixed_params=fixed_params,
-        data_source=data_source, classification_type="binary"
+        X, y, n_trials, save_results, 
+        custom_params_processor=None,
+        return_test_metrics=True,
+        fixed_params=fixed_params,
+        data_source=data_source, classification_type=classification_type,
+        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
     )
 
 
-def optimize_knn_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, data_source="ana"):
+def optimize_knn_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
+                           data_source="ana", classification_type="binary", 
+                           use_nested_cv=True, outer_cv_folds=5):
     """Otimização de hiperparâmetros para KNN Classifier usando Optuna"""
     return _optimize_classifier_generic(
         KNeighborsClassifier,
         _suggest_knn_params,
         'k_nearest_neighbors',
-        X, y, n_trials, save_results, fixed_params=fixed_params,
-        data_source=data_source, classification_type="binary"
+        X, y, n_trials, save_results, 
+        custom_params_processor=None,
+        return_test_metrics=True,
+        fixed_params=fixed_params,
+        data_source=data_source, classification_type=classification_type,
+        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
     )
 
 
-def optimize_mlp_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, data_source="ana"):
+def optimize_mlp_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
+                          data_source="ana", classification_type="binary", 
+                          use_nested_cv=True, outer_cv_folds=5):
     """Otimização de hiperparâmetros para MLP Classifier usando Optuna"""
     return _optimize_classifier_generic(
         MLPClassifier,
@@ -391,28 +612,42 @@ def optimize_mlp_classifier(X, y, n_trials=30, save_results=True, fixed_params=N
         'multi_layer_perceptron',
         X, y, n_trials, save_results,
         custom_params_processor=_process_mlp_params,
+        return_test_metrics=True,
         fixed_params=fixed_params,
-        data_source=data_source, classification_type="binary"
+        data_source=data_source, classification_type=classification_type,
+        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
     )
 
 
-def optimize_svc_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, data_source="ana"):
+def optimize_svc_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
+                          data_source="ana", classification_type="binary", 
+                          use_nested_cv=True, outer_cv_folds=5):
     """Otimização de hiperparâmetros para SVC usando Optuna"""
     return _optimize_classifier_generic(
         SVC,
         _suggest_svc_params,
         'svc',
-        X, y, n_trials, save_results, fixed_params=fixed_params,
-        data_source=data_source, classification_type="binary"
+        X, y, n_trials, save_results, 
+        custom_params_processor=None,
+        return_test_metrics=True,
+        fixed_params=fixed_params,
+        data_source=data_source, classification_type=classification_type,
+        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
     )
 
 
-def optimize_catboost_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, data_source="ana"):
+def optimize_catboost_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
+                               data_source="ana", classification_type="binary", 
+                               use_nested_cv=True, outer_cv_folds=5):
     """Otimização de hiperparâmetros para CatBoost Classifier usando Optuna"""
     return _optimize_classifier_generic(
         CatBoostClassifier,
         _suggest_catboost_params,
         'catboost',
-        X, y, n_trials, save_results, fixed_params=fixed_params,
-        data_source=data_source, classification_type="binary"
+        X, y, n_trials, save_results, 
+        custom_params_processor=None,
+        return_test_metrics=True,
+        fixed_params=fixed_params,
+        data_source=data_source, classification_type=classification_type,
+        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
     )

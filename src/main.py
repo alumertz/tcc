@@ -131,7 +131,8 @@ def run_single_model(model_name, optimizer_func, X, y, n_trials=10, data_source=
     try:
         # Executa otimização (com salvamento automático)
         best_model, test_metrics = optimizer_func(X, y, n_trials=n_trials, save_results=True, 
-                                                data_source=data_source, classification_type=classification_type)
+                                                data_source=data_source, classification_type=classification_type,
+                                                use_nested_cv=True, outer_cv_folds=5)
         
         results = {
             'model_name': model_name,

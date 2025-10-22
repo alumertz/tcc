@@ -174,7 +174,8 @@ def generate_all_trials_cv_tables(file_handle, all_cv_metrics):
         # Hiperparâmetros
         file_handle.write("Hiperparâmetros:\n")
         for param, value in params.items():
-            file_handle.write(f"  {param}: {value}\n")
+            # Use string concatenation instead of f-string to avoid formatting issues
+            file_handle.write("  " + str(param) + ": " + str(value) + "\n")
         file_handle.write("\n")
         
         # Tabela de métricas se disponível
@@ -241,7 +242,7 @@ def generate_single_trial_cv_table(file_handle, cv_metrics):
         file_handle.write(line + "\n")
     
     file_handle.write("-" * len(header) + "\n")
-    file_handle.write(f"Validação cruzada com {len(cv_metrics)} folds\n")
+    file_handle.write("Validação cruzada com " + str(len(cv_metrics)) + " folds\n")
 
 
 def save_model_results_unified(model_name, results_data, mode="default", data_source="ana", 
@@ -527,4 +528,76 @@ def summarize_results(results, mode="default", data_source="ana", classification
         f.write("\n")
     
     print(f"\nResumo salvo em: {filepath}")
+
+
+def save_nested_cv_results(model_name, aggregated_metrics, best_params_per_fold, 
+                          data_source="ana", classification_type="binary", 
+                          n_trials=100, outer_cv_folds=5):
+    """
+    Salva resultados de nested cross-validation em formato JSON
+    
+    Args:
+        model_name (str): Nome do modelo
+        aggregated_metrics (dict): Métricas agregadas com mean, std e scores
+        best_params_per_fold (list): Lista dos melhores parâmetros por fold
+        data_source (str): Fonte dos dados
+        classification_type (str): Tipo de classificação
+        n_trials (int): Número de trials utilizados
+        outer_cv_folds (int): Número de folds externos
+    """
+    # Criar estrutura de resultados compatível
+    nested_cv_results = {
+        'model_name': model_name,
+        'optimization_type': 'nested_cross_validation',
+        'configuration': {
+            'outer_cv_folds': outer_cv_folds,
+            'n_trials_per_fold': n_trials,
+            'data_source': data_source,
+            'classification_type': classification_type,
+            'timestamp': datetime.now().isoformat()
+        },
+        'aggregated_metrics': aggregated_metrics,
+        'best_params_per_fold': best_params_per_fold,
+        'nested_cv_summary': {
+            'mean_accuracy': aggregated_metrics['accuracy']['mean'],
+            'std_accuracy': aggregated_metrics['accuracy']['std'],
+            'mean_f1': aggregated_metrics['f1']['mean'],
+            'std_f1': aggregated_metrics['f1']['std'],
+            'mean_roc_auc': aggregated_metrics['roc_auc']['mean'],
+            'std_roc_auc': aggregated_metrics['roc_auc']['std']
+        }
+    }
+    
+    # Criar diretório do modelo se não existir
+    model_dir = os.path.join("./results", model_name)
+    os.makedirs(model_dir, exist_ok=True)
+    
+    # Nome do arquivo com timestamp
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"nested_cv_{data_source}_{classification_type}_{timestamp}.json"
+    filepath = os.path.join(model_dir, filename)
+    
+    # Converter numpy arrays para listas para serialização JSON
+    def convert_numpy_types(obj):
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        elif isinstance(obj, np.floating):
+            return float(obj)
+        elif isinstance(obj, np.integer):
+            return int(obj)
+        elif isinstance(obj, dict):
+            return {key: convert_numpy_types(value) for key, value in obj.items()}
+        elif isinstance(obj, list):
+            return [convert_numpy_types(item) for item in obj]
+        else:
+            return obj
+    
+    # Converter dados para formato serializável
+    serializable_results = convert_numpy_types(nested_cv_results)
+    
+    # Salvar arquivo JSON
+    with open(filepath, 'w') as f:
+        json.dump(serializable_results, f, indent=2, ensure_ascii=False)
+    
+    print(f"Resultados de Nested CV salvos em: {filepath}")
 
