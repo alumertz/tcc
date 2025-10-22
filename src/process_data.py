@@ -6,7 +6,99 @@ ONCOKB_FILE = './data/onkoKB.tsv'
 NCG_FILE = './data/NCG_cancerdrivers_annotation_supporting_evidence.tsv'
 COSMIC_FILE = './data/cosmic.tsv'
 OMIM_FILE = './data/All_Diseases_OMIM.txt'
+HGNC_FILE = './data/hgnc-symbol-check.csv'
+UNION_FEATURES_FILE = './data/UNION_features.tsv'
 OUTPUT_DIR = './data/processed'
+
+def load_hgnc_mapping(file_path=HGNC_FILE):
+    """
+    Carrega o arquivo HGNC de verificação de símbolos e cria um dicionário de mapeamento.
+    Retorna um dicionário que mapeia símbolos de entrada para símbolos aprovados.
+    """
+    print("Carregando mapeamento HGNC...")
+    try:
+        df = pd.read_csv(file_path)
+        
+        # Criar dicionário de mapeamento
+        mapping_dict = {}
+        unmatched_genes = []
+        withdrawn_genes = []
+        
+        for _, row in df.iterrows():
+            input_symbol = row['Input']
+            match_type = row['Match type']
+            approved_symbol = row['Approved symbol']
+            
+            if match_type in ['Approved symbol', 'Alias symbol', 'Previous symbol']:
+                mapping_dict[input_symbol] = approved_symbol
+            elif match_type == 'Unmatched':
+                unmatched_genes.append({
+                    'input': input_symbol,
+                    'match_type': match_type,
+                    'approved_symbol': approved_symbol if pd.notna(approved_symbol) else 'N/A'
+                })
+            elif match_type == 'Entry withdrawn':
+                withdrawn_genes.append({
+                    'input': input_symbol,
+                    'match_type': match_type,
+                    'approved_symbol': approved_symbol if pd.notna(approved_symbol) else 'N/A'
+                })
+        
+        print(f"HGNC: Carregados {len(mapping_dict)} mapeamentos de símbolos")
+        print(f"HGNC: {len(unmatched_genes)} genes não encontrados")
+        print(f"HGNC: {len(withdrawn_genes)} genes retirados")
+        
+        # Imprime informações sobre genes não aprovados
+        if unmatched_genes:
+            print("\n=== GENES NÃO ENCONTRADOS (UNMATCHED) ===")
+            for gene in unmatched_genes:
+                print(f"Input: {gene['input']}, Tipo: {gene['match_type']}, Aprovado: {gene['approved_symbol']}")
+        
+        if withdrawn_genes:
+            print("\n=== GENES RETIRADOS (WITHDRAWN) ===")
+            for gene in withdrawn_genes:
+                print(f"Input: {gene['input']}, Tipo: {gene['match_type']}, Aprovado: {gene['approved_symbol']}")
+        
+        return mapping_dict, unmatched_genes, withdrawn_genes
+        
+    except FileNotFoundError:
+        print(f"Erro: O arquivo HGNC '{file_path}' não foi encontrado.")
+        return {}, [], []
+
+def apply_hgnc_mapping(df, hgnc_mapping, column_name='symbol'):
+    """
+    Aplica o mapeamento HGNC aos símbolos de genes em um DataFrame.
+    Remove genes não encontrados ou retirados.
+    
+    Returns:
+    --------
+    tuple: (df_mapped, removed_genes_set)
+    """
+    original_count = len(df)
+    df_mapped = df.copy()
+    
+    # Mapeia os símbolos
+    df_mapped[column_name] = df_mapped[column_name].map(hgnc_mapping).fillna(df_mapped[column_name])
+    
+    # Remove genes que não puderam ser mapeados (não estão no dicionário de mapeamento)
+    # Isso remove genes "Unmatched" e "Entry withdrawn"
+    unmapped_genes = df_mapped[~df_mapped[column_name].isin(hgnc_mapping.values()) & 
+                              ~df_mapped[column_name].isin(hgnc_mapping.keys())][column_name].tolist()
+    
+    if unmapped_genes:
+        print(f"Removendo {len(unmapped_genes)} genes não mapeados: {unmapped_genes}")
+    
+    # Mantém apenas genes que estão mapeados ou já são símbolos aprovados
+    df_mapped = df_mapped[df_mapped[column_name].isin(hgnc_mapping.values()) | 
+                         df_mapped[column_name].isin(hgnc_mapping.keys())]
+    
+    # Remove duplicatas que podem ter surgido do mapeamento
+    df_mapped = df_mapped.drop_duplicates(subset=[column_name]).reset_index(drop=True)
+    
+    final_count = len(df_mapped)
+    print(f"Mapeamento aplicado: {original_count} → {final_count} genes (removidos: {original_count - final_count})")
+    
+    return df_mapped, set(unmapped_genes)
 
 def process_oncokb(gene_type, file_path=ONCOKB_FILE):
     """
@@ -113,13 +205,33 @@ def process_omim(file_path=OMIM_FILE):
 def get_canonical_genes():
     """
     Processa dados para obter genes canônicos (oncogenes e TSGs conhecidos).
+    
+    Returns:
+    --------
+    tuple: (canonical_genes_df, removed_genes_set)
     """
     print("\n=== PROCESSANDO GENES CANÔNICOS ===")
+    
+    # Carrega mapeamento HGNC
+    hgnc_mapping, unmatched_genes, withdrawn_genes = load_hgnc_mapping()
     
     # Processa cada fonte de dados
     oncokb_genes = process_oncokb('canonical')
     ncg_genes = process_ncg('canonical')
     cgc_genes = process_cgc(tier=1)
+
+    # Aplica mapeamento HGNC a cada fonte
+    print("\nAplicando mapeamento HGNC aos genes OncoKB...")
+    oncokb_genes, oncokb_removed = apply_hgnc_mapping(oncokb_genes, hgnc_mapping)
+    
+    print("Aplicando mapeamento HGNC aos genes NCG...")
+    ncg_genes, ncg_removed = apply_hgnc_mapping(ncg_genes, hgnc_mapping)
+    
+    print("Aplicando mapeamento HGNC aos genes CGC...")
+    cgc_genes, cgc_removed = apply_hgnc_mapping(cgc_genes, hgnc_mapping)
+    
+    # Combina genes removidos
+    all_removed = oncokb_removed | ncg_removed | cgc_removed
 
     # Combina as listas
     print("\nCombinando as listas de genes canônicos...")
@@ -141,19 +253,42 @@ def get_canonical_genes():
     final_genes_sorted = final_genes.sort_values(by='symbol').reset_index(drop=True)
     print(f"Total de genes canônicos únicos (após filtrar No/No): {len(final_genes_sorted)}")
     
-    return final_genes_sorted
+    return final_genes_sorted, all_removed
 
 def get_candidate_genes():
     """
     Processa dados para obter genes candidatos.
+    
+    Returns:
+    --------
+    tuple: (candidate_genes_df, removed_genes_set)
     """
     print("\n=== PROCESSANDO GENES CANDIDATOS ===")
+    
+    # Carrega mapeamento HGNC
+    hgnc_mapping, unmatched_genes, withdrawn_genes = load_hgnc_mapping()
     
     # Processa cada fonte de dados
     cgc_genes = process_cgc(tier=2)
     oncokb_genes = process_oncokb('candidate')
     ncg_genes = process_ncg('candidate')
     omim_genes = process_omim()
+
+    # Aplica mapeamento HGNC a cada fonte
+    print("\nAplicando mapeamento HGNC aos genes CGC Tier 2...")
+    cgc_genes, cgc_removed = apply_hgnc_mapping(cgc_genes, hgnc_mapping)
+    
+    print("Aplicando mapeamento HGNC aos genes OncoKB candidatos...")
+    oncokb_genes, oncokb_removed = apply_hgnc_mapping(oncokb_genes, hgnc_mapping)
+    
+    print("Aplicando mapeamento HGNC aos genes NCG candidatos...")
+    ncg_genes, ncg_removed = apply_hgnc_mapping(ncg_genes, hgnc_mapping)
+    
+    print("Aplicando mapeamento HGNC aos genes OMIM...")
+    omim_genes, omim_removed = apply_hgnc_mapping(omim_genes, hgnc_mapping)
+    
+    # Combina genes removidos
+    all_removed = cgc_removed | oncokb_removed | ncg_removed | omim_removed
 
     # Combina as listas
     print("\nCombinando as listas de genes candidatos...")
@@ -172,7 +307,89 @@ def get_candidate_genes():
     final_genes_sorted = final_genes.sort_values(by='symbol').reset_index(drop=True)
     print(f"Total de genes candidatos únicos: {len(final_genes_sorted)}")
     
-    return final_genes_sorted
+    return final_genes_sorted, all_removed
+
+def process_union_features(hgnc_mapping, removed_genes, file_path=UNION_FEATURES_FILE):
+    """
+    Processa UNION_features.tsv para mapear símbolos de genes para símbolos aprovados HGNC.
+    
+    Parameters:
+    -----------
+    hgnc_mapping : dict
+        Dicionário mapeando símbolos de entrada para símbolos aprovados
+    removed_genes : set
+        Conjunto de genes que foram removidos durante o processamento
+    file_path : str
+        Caminho para o arquivo UNION_features.tsv
+        
+    Returns:
+    --------
+    pd.DataFrame or None
+        DataFrame processado com símbolos aprovados HGNC, ou None se arquivo não encontrado
+    """
+    
+    if not os.path.exists(file_path):
+        print(f"Warning: {file_path} não foi encontrado. Pulando processamento de features.")
+        return None
+    
+    print(f"\n=== PROCESSANDO UNION_FEATURES ===")
+    
+    # Carrega o arquivo de features
+    try:
+        df = pd.read_csv(file_path, sep='\t', index_col=0)
+        print(f"Features originais: shape {df.shape}")
+        print(f"Número original de genes (colunas): {len(df.columns)}")
+        
+        # Cria mapeamento para nomes de colunas (símbolos de genes)
+        original_genes = set(df.columns)
+        mapped_columns = {}
+        unmapped_genes = set()
+        
+        for gene in df.columns:
+            if gene in hgnc_mapping:
+                approved_symbol = hgnc_mapping[gene]
+                if approved_symbol not in removed_genes:
+                    mapped_columns[gene] = approved_symbol
+                else:
+                    unmapped_genes.add(gene)
+            else:
+                # Gene não encontrado no mapeamento HGNC
+                unmapped_genes.add(gene)
+        
+        print(f"Genes mapeados com sucesso: {len(mapped_columns)}")
+        print(f"Genes não mapeados ou removidos: {len(unmapped_genes)}")
+        
+        if unmapped_genes:
+            print(f"Exemplos de genes não mapeados/removidos: {sorted(list(unmapped_genes))[:10]}...")
+            if len(unmapped_genes) > 10:
+                print(f"... e mais {len(unmapped_genes) - 10} genes")
+        
+        # Mantém apenas genes mapeados e renomeia colunas
+        genes_to_keep = [gene for gene in df.columns if gene in mapped_columns]
+        df_processed = df[genes_to_keep].copy()
+        
+        # Renomeia colunas para símbolos aprovados
+        df_processed = df_processed.rename(columns=mapped_columns)
+        
+        # Verifica e remove possíveis duplicatas após mapeamento
+        if df_processed.shape[1] != len(df_processed.columns.unique()):
+            print("Warning: Símbolos de genes duplicados encontrados após mapeamento. Removendo duplicatas...")
+            df_processed = df_processed.loc[:, ~df_processed.columns.duplicated()]
+        
+        print(f"Features processadas: shape {df_processed.shape}")
+        print(f"Número final de genes (colunas): {len(df_processed.columns)}")
+        
+        # Salva features processadas
+        os.makedirs(OUTPUT_DIR, exist_ok=True)
+        output_file = os.path.join(OUTPUT_DIR, 'UNION_features_processed.tsv')
+        df_processed.to_csv(output_file, sep='\t')
+        print(f"Features processadas salvas em: {output_file}")
+        
+        return df_processed
+        
+    except Exception as e:
+        print(f"Erro ao processar features: {e}")
+        return None
 
 def create_union_labels(canonical_genes, candidate_genes):
     """
@@ -295,12 +512,21 @@ def main():
     print("INICIANDO PROCESSAMENTO DE DADOS DE GENES")
     print("=" * 50)
     
+    # Carrega mapeamento HGNC uma vez para uso em features
+    hgnc_mapping, unmatched_genes, withdrawn_genes = load_hgnc_mapping()
+    
     # Processa genes canônicos e candidatos
-    canonical_genes = get_canonical_genes()
-    candidate_genes = get_candidate_genes()
+    canonical_genes, canonical_removed = get_canonical_genes()
+    candidate_genes, candidate_removed = get_candidate_genes()
+    
+    # Combina todos os genes removidos
+    all_removed_genes = canonical_removed | candidate_removed
     
     # Cria arquivo UNION_labels
     union_labels = create_union_labels(canonical_genes, candidate_genes)
+    
+    # Processa UNION_features.tsv
+    processed_features = process_union_features(hgnc_mapping, all_removed_genes)
     
     # Salva todos os resultados
     save_results(canonical_genes, candidate_genes, union_labels)
@@ -318,6 +544,15 @@ def main():
     print(union_labels['2class'].value_counts(dropna=False))
     print(f"\nClassificação multiclasse - Distribuição:")
     print(union_labels['3class'].value_counts(dropna=False))
+    
+    # Informações sobre features processadas
+    if processed_features is not None:
+        print(f"\n=== RESUMO DO PROCESSAMENTO DE FEATURES ===")
+        print(f"Features processadas com símbolos HGNC aprovados disponíveis.")
+        print(f"Shape final das features: {processed_features.shape}")
+    else:
+        print(f"\n=== FEATURES NÃO PROCESSADAS ===")
+        print(f"Arquivo UNION_features.tsv não encontrado ou erro no processamento.")
 
 if __name__ == "__main__":
     main()
