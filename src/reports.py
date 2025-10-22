@@ -15,6 +15,30 @@ from sklearn.metrics import (
 )
 
 
+def generate_experiment_folder_name(data_source="ana", mode="default", classification_type="binary"):
+    """
+    Gera nome da pasta do experimento baseado na data e configurações
+    
+    Args:
+        data_source (str): "ana" ou "renan"
+        mode (str): "default" ou "optimized"  
+        classification_type (str): "binary" ou "multiclass"
+        
+    Returns:
+        str: Nome da pasta no formato "YYYYMMDD_HHMMSS_ana_default_binary"
+    """
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    
+    # Normalizar valores para garantir consistência
+    data_source = data_source.lower()
+    mode = mode.lower()
+    classification_type = classification_type.lower()
+    
+    folder_name = f"{timestamp}_{data_source}_{mode}_{classification_type}"
+    
+    return folder_name
+
+
 def generate_enhanced_classification_report(y_true, y_pred, y_pred_proba):
     """
     Gera relatório de classificação customizado com métricas completas
@@ -150,7 +174,7 @@ def generate_all_trials_cv_tables(file_handle, all_cv_metrics):
         # Hiperparâmetros
         file_handle.write("Hiperparâmetros:\n")
         for param, value in params.items():
-            file_handle.write(f"  {param}: {value}\n")
+            file_handle.write(f"  {param}: {str(value)}\n")
         file_handle.write("\n")
         
         # Tabela de métricas se disponível
@@ -220,203 +244,287 @@ def generate_single_trial_cv_table(file_handle, cv_metrics):
     file_handle.write(f"Validação cruzada com {len(cv_metrics)} folds\n")
 
 
-def save_results_to_file(model_name, results, results_dir="./results"):
-    """Salva os resultados em arquivos organizados por modelo"""
-    model_dir = os.path.join(results_dir, model_name)
+def save_model_results_unified(model_name, results_data, mode="default", data_source="ana", 
+                             classification_type="binary", results_dir="./results"):
+    """
+    Função unificada para salvar resultados de modelos (padrão ou otimizados)
+    
+    Args:
+        model_name (str): Nome do modelo
+        results_data (dict): Dados dos resultados
+        mode (str): "default" ou "optimized"
+        data_source (str): "ana" ou "renan"
+        classification_type (str): "binary" ou "multiclass"
+        results_dir (str): Diretório base para salvar
+        
+    Returns:
+        tuple: Caminhos dos arquivos salvos
+    """
+    # Gerar nome da pasta do experimento
+    experiment_folder = generate_experiment_folder_name(data_source, mode, classification_type)
+    
+    # Criar estrutura: results/YYYYMMDD_HHMMSS_ana_default_binary/model_name/
+    experiment_dir = os.path.join(results_dir, experiment_folder)
+    model_dir_name = model_name.lower().replace(' ', '_')
+    model_dir = os.path.join(experiment_dir, model_dir_name)
     os.makedirs(model_dir, exist_ok=True)
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     
-    # Salva as trials do Optuna
+    if mode == "default":
+        return _save_default_mode_results(model_name, results_data, model_dir, timestamp)
+    else:  # optimized
+        return _save_optimized_mode_results(model_name, results_data, model_dir, timestamp)
+
+
+def _save_default_mode_results(model_name, results_data, model_dir, timestamp):
+    """Salva resultados do modo padrão (parâmetros padrão)"""
+    
+    # Estrutura dos dados para modo padrão
+    structured_data = {
+        'model_name': model_name,
+        'mode': 'default_parameters',
+        'cv_results': results_data.get('cv_results', {}),
+        'test_metrics': results_data.get('test_metrics', {}),
+        'parameters': results_data.get('parameters', {}),
+        'timestamp': timestamp
+    }
+    
+    # Salvar métricas em JSON
+    metrics_file = os.path.join(model_dir, f"default_metrics_{timestamp}.json")
+    with open(metrics_file, 'w') as f:
+        json.dump(structured_data, f, indent=2)
+    
+    # Salvar relatório em texto
+    report_file = os.path.join(model_dir, f"default_results_{timestamp}.txt")
+    with open(report_file, 'w') as f:
+        f.write(f"MODELO: {model_name} (Parâmetros Padrão)\n")
+        f.write("="*80 + "\n\n")
+        f.write(f"Data/Hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+        
+        # Validação cruzada
+        f.write("VALIDAÇÃO CRUZADA (5-fold):\n")
+        f.write("-"*50 + "\n")
+        cv_results = results_data.get('cv_results', {})
+        for metric, result in cv_results.items():
+            if isinstance(result, dict) and 'mean' in result and 'std' in result:
+                f.write(f"  {metric.upper()}: {result['mean']:.4f} ± {result['std']:.4f}\n")
+        
+        # Teste final
+        f.write("\nTESTE FINAL:\n")
+        f.write("-"*50 + "\n")
+        test_metrics = results_data.get('test_metrics', {})
+        for metric, value in test_metrics.items():
+            if isinstance(value, (int, float)):
+                f.write(f"  {metric.upper()}: {value:.4f}\n")
+        
+        # Relatório de classificação
+        if 'classification_report' in results_data:
+            f.write(f"\nRELATÓRIO DE CLASSIFICAÇÃO:\n")
+            f.write("-"*50 + "\n")
+            f.write(results_data['classification_report'])
+        
+        # Parâmetros
+        f.write(f"\nPARÂMETROS:\n")
+        f.write("-"*50 + "\n")
+        f.write(json.dumps(results_data.get('parameters', {}), indent=2))
+        f.write("\n")
+    
+    print(f"Resultados padrão salvos em: {model_dir}")
+    return metrics_file, report_file
+
+
+def _save_optimized_mode_results(model_name, results_data, model_dir, timestamp):
+    """Salva resultados do modo otimizado (com trials Optuna)"""
+    
+    # Salvar trials do Optuna em JSON
     trials_file = os.path.join(model_dir, f"trials_{timestamp}.json")
     with open(trials_file, 'w') as f:
-        json.dump(results['trials'], f, indent=2, default=str)
+        json.dump(results_data.get('trials', []), f, indent=2, default=str)
     
-    # Salva os resultados do teste
+    # Salvar relatório de teste em texto
     test_results_file = os.path.join(model_dir, f"test_results_{timestamp}.txt")
     with open(test_results_file, 'w') as f:
         f.write(f"RESULTADOS DO MODELO: {model_name.upper()}\n")
         f.write("="*80 + "\n\n")
         f.write(f"Data/Hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
         
-        # Gerar tabelas de métricas de CV para todos os trials se disponível
-        if 'all_cv_metrics' in results:
-            generate_all_trials_cv_tables(f, results['all_cv_metrics'])
-        elif 'cv_detailed_metrics' in results:
-            # Fallback para compatibilidade com versão anterior
-            generate_cv_metrics_table(f, results['cv_detailed_metrics'])
+        # Métricas de CV detalhadas se disponível
+        if 'all_cv_metrics' in results_data:
+            generate_all_trials_cv_tables(f, results_data['all_cv_metrics'])
+        elif 'cv_detailed_metrics' in results_data:
+            generate_cv_metrics_table(f, results_data['cv_detailed_metrics'])
         
+        # Avaliação final no teste
         f.write("AVALIAÇÃO NO CONJUNTO DE TESTE FINAL:\n")
         f.write("-"*50 + "\n")
-        f.write(f"Acurácia: {results['test_metrics']['accuracy']:.4f}\n")
-        f.write(f"Precisão: {results['test_metrics']['precision']:.4f}\n")
-        f.write(f"Recall: {results['test_metrics']['recall']:.4f}\n")
-        f.write(f"F1-Score: {results['test_metrics']['f1']:.4f}\n")
-        f.write(f"ROC AUC: {results['test_metrics']['roc_auc']:.4f}\n")
-        f.write(f"PR AUC: {results['test_metrics']['pr_auc']:.4f}\n\n")
+        test_metrics = results_data.get('test_metrics', {})
         
-        f.write("RELATÓRIO DETALHADO:\n")
-        f.write("-"*30 + "\n")
-        f.write(results['test_metrics']['classification_report'])
-        f.write("\n\n")
+        # Compatibilidade com diferentes chaves de F1
+        f1_key = 'f1_score' if 'f1_score' in test_metrics else 'f1'
         
+        f.write(f"Acurácia: {test_metrics.get('accuracy', 0):.4f}\n")
+        f.write(f"Precisão: {test_metrics.get('precision', 0):.4f}\n")
+        f.write(f"Recall: {test_metrics.get('recall', 0):.4f}\n")
+        f.write(f"F1-Score: {test_metrics.get(f1_key, 0):.4f}\n")
+        f.write(f"ROC AUC: {test_metrics.get('roc_auc', 0):.4f}\n")
+        f.write(f"PR AUC: {test_metrics.get('pr_auc', 0):.4f}\n\n")
+        
+        # Relatório de classificação se disponível
+        if 'classification_report' in test_metrics:
+            f.write("RELATÓRIO DETALHADO:\n")
+            f.write("-"*30 + "\n")
+            f.write(test_metrics['classification_report'])
+            f.write("\n\n")
+        
+        # Melhores hiperparâmetros
         f.write("MELHORES HIPERPARÂMETROS:\n")
         f.write("-"*30 + "\n")
-        f.write(json.dumps(results['best_params'], indent=2))
+        f.write(json.dumps(results_data.get('best_params', {}), indent=2))
         f.write("\n\n")
         
+        # Histórico de otimização
         f.write("HISTÓRICO DE OTIMIZAÇÃO:\n")
         f.write("-"*30 + "\n")
-        f.write(f"Número de trials: {len(results['trials'])}\n")
-        f.write(f"Melhor score (CV): {results['best_score']:.4f}\n")
-        f.write(f"Tempo total de otimização: {results['optimization_time']:.2f} segundos\n")
+        f.write(f"Número de trials: {len(results_data.get('trials', []))}\n")
+        f.write(f"Melhor score (CV): {results_data.get('best_score', 0):.4f}\n")
+        f.write(f"Tempo total de otimização: {results_data.get('optimization_time', 0):.2f} segundos\n")
     
-    print(f"Resultados salvos em: {model_dir}")
+    print(f"Resultados otimizados salvos em: {model_dir}")
     return trials_file, test_results_file
 
 
-def summarize_default_results(results):
+def summarize_results(results, mode="default", data_source="ana", classification_type="binary"):
     """
-    Cria um resumo dos resultados dos modelos padrão e salva em arquivo
-    
-    Args:
-        results (list): Lista com resultados de todos os modelos
-    """
-    # Criar conteúdo do resumo
-    content_lines = []
-    content_lines.append("="*80)
-    content_lines.append("RESUMO DOS RESULTADOS (PARÂMETROS PADRÃO)")
-    content_lines.append("="*80)
-    
-    successful_models = [r for r in results if r['status'] == 'success']
-    failed_models = [r for r in results if r['status'] == 'error']
-    
-    content_lines.append(f"Modelos executados com sucesso: {len(successful_models)}")
-    content_lines.append(f"Modelos com erro: {len(failed_models)}")
-    content_lines.append("")
-    
-    if successful_models:
-        content_lines.append("COMPARAÇÃO DE PERFORMANCE (CONJUNTO DE TESTE):")
-        content_lines.append("-" * 80)
-        content_lines.append(f"{'Modelo':<25} {'Accuracy':<10} {'Precision':<11} {'Recall':<8} {'F1':<8} {'ROC AUC':<9} {'PR AUC':<8}")
-        content_lines.append("-" * 80)
-        
-        for result in successful_models:
-            metrics = result['test_metrics']
-            content_lines.append(f"{result['model_name']:<25} "
-                  f"{metrics['accuracy']:<10.4f} "
-                  f"{metrics['precision']:<11.4f} "
-                  f"{metrics['recall']:<8.4f} "
-                  f"{metrics['f1_score']:<8.4f} "
-                  f"{metrics['roc_auc']:<9.4f} "
-                  f"{metrics['pr_auc']:<8.4f}")
-    
-    if failed_models:
-        content_lines.append("")
-        content_lines.append("MODELOS COM ERRO:")
-        for result in failed_models:
-            content_lines.append(f"  • {result['model_name']}: {result['error']}")
-    
-    content_lines.append("="*80)
-    
-    # Imprimir no terminal
-    print("\n" + "\n".join(content_lines))
-    
-    # Salvar em arquivo
-    results_dir = "./results"
-    os.makedirs(results_dir, exist_ok=True)
-    
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"summary_default_models_{timestamp}.txt"
-    filepath = os.path.join(results_dir, filename)
-    
-    with open(filepath, 'w') as f:
-        f.write(f"Data/Hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
-        f.write("\n".join(content_lines))
-        f.write("\n")
-    
-    print(f"\nResumo salvo em: {filepath}")
-
-
-def summarize_optimized_results(results):
-    """
-    Cria um resumo dos resultados dos modelos otimizados e salva em arquivo
+    Cria um resumo unificado dos resultados dos modelos e salva em arquivo
     
     Args:
         results (list or dict): Lista com resultados dos modelos ou resultado único
+        mode (str): Modo de execução - "default" ou "optimized"
+        data_source (str): "ana" ou "renan"
+        classification_type (str): "binary" ou "multiclass"
     """
-    # Criar conteúdo do resumo
-    content_lines = []
-    content_lines.append("="*80)
-    content_lines.append("RESUMO DOS RESULTADOS (MODELOS OTIMIZADOS)")
-    content_lines.append("="*80)
+    # Configurações baseadas no modo
+    if mode == "default":
+        title = "RESUMO DOS RESULTADOS (PARÂMETROS PADRÃO)"
+        filename_prefix = "summary_default_models"
+    else:  # optimized
+        title = "RESUMO DOS RESULTADOS (MODELOS OTIMIZADOS)"
+        filename_prefix = "summary_tuned_models"
     
     # Se results for um único resultado (dict), converte para lista
     if isinstance(results, dict):
         results = [results]
     
-    successful_models = [r for r in results if r['status'] == 'success']
-    failed_models = [r for r in results if r['status'] == 'error']
+    # Filtrar modelos por status
+    successful_models = [r for r in results if r.get('status') == 'success']
+    failed_models = [r for r in results if r.get('status') == 'error']
+    
+    # Criar conteúdo do resumo
+    content_lines = []
+    content_lines.append("="*80)
+    content_lines.append(title)
+    content_lines.append("="*80)
     
     content_lines.append(f"Modelos executados com sucesso: {len(successful_models)}")
     content_lines.append(f"Modelos com erro: {len(failed_models)}")
     content_lines.append("")
     
-    # Tabela de performance para todos os modelos (incluindo falhas)
-    if successful_models or failed_models:
-        content_lines.append("COMPARAÇÃO DE PERFORMANCE (CONJUNTO DE TESTE):")
-        content_lines.append("-" * 80)
-        content_lines.append(f"{'Modelo':<25} {'Accuracy':<10} {'Precision':<11} {'Recall':<8} {'F1':<8} {'ROC AUC':<9} {'PR AUC':<8}")
-        content_lines.append("-" * 80)
-        
-        # Adicionar modelos bem-sucedidos
+    # Tabela de performance dos modelos bem-sucedidos
+    if successful_models:
+        # Coletar dados dos modelos para ordenação
+        models_data = []
         for result in successful_models:
-            # Verificar se o resultado tem test_metrics (modelos otimizados)
             if 'test_metrics' in result:
                 metrics = result['test_metrics']
-                # Para modelos otimizados, as métricas podem ter nomes ligeiramente diferentes
-                f1_key = 'f1' if 'f1' in metrics else 'f1_score'
-                content_lines.append(f"{result['model_name']:<25} "
-                      f"{metrics['accuracy']:<10.4f} "
-                      f"{metrics['precision']:<11.4f} "
-                      f"{metrics['recall']:<8.4f} "
-                      f"{metrics[f1_key]:<8.4f} "
-                      f"{metrics['roc_auc']:<9.4f} "
-                      f"{metrics['pr_auc']:<8.4f}")
+                # Compatibilidade com diferentes chaves F1
+                f1_key = 'f1_score' if 'f1_score' in metrics else 'f1'
+                
+                models_data.append({
+                    'name': result['model_name'],
+                    'metrics': metrics,
+                    'f1_key': f1_key
+                })
         
-        # Adicionar modelos com falha
-        for result in failed_models:
-            content_lines.append(f"{result['model_name']:<25} "
-                  f"{'FAILED':<10} "
-                  f"{'FAILED':<11} "
-                  f"{'FAILED':<8} "
-                  f"{'FAILED':<8} "
-                  f"{'FAILED':<9} "
-                  f"{'FAILED':<8}")
+        # Ordenar por PR AUC (métrica principal) em ordem decrescente
+        models_data.sort(key=lambda x: x['metrics']['pr_auc'], reverse=True)
+        
+        # Cabeçalho da tabela
+        content_lines.append("COMPARAÇÃO DE PERFORMANCE (CONJUNTO DE TESTE):")
+        content_lines.append("-" * 90)
+        content_lines.append(f"{'Rank':<5} {'Modelo':<25} {'Accuracy':<10} {'Precision':<11} {'Recall':<8} {'F1':<8} {'ROC AUC':<9} {'PR AUC':<8}")
+        content_lines.append("-" * 90)
+        
+        # Adicionar modelos ordenados por ranking
+        for rank, model_data in enumerate(models_data, 1):
+            metrics = model_data['metrics']
+            f1_key = model_data['f1_key']
+            
+            # Destacar o melhor modelo
+            rank_display = f"🥇{rank}" if rank == 1 else f"  {rank}"
+            
+            content_lines.append(f"{rank_display:<5} {model_data['name']:<25} "
+                  f"{metrics['accuracy']:<10.4f} "
+                  f"{metrics['precision']:<11.4f} "
+                  f"{metrics['recall']:<8.4f} "
+                  f"{metrics[f1_key]:<8.4f} "
+                  f"{metrics['roc_auc']:<9.4f} "
+                  f"{metrics['pr_auc']:<8.4f}")
+        
+        # Estatísticas do melhor modelo
+        if models_data:
+            best_model = models_data[0]
+            best_metrics = best_model['metrics']
+            content_lines.append("")
+            content_lines.append("🏆 MELHOR MODELO:")
+            content_lines.append(f"   Modelo: {best_model['name']}")
+            content_lines.append(f"   PR AUC: {best_metrics['pr_auc']:.4f}")
+            content_lines.append(f"   ROC AUC: {best_metrics['roc_auc']:.4f}")
+            content_lines.append(f"   F1-Score: {best_metrics[best_model['f1_key']]:.4f}")
+            content_lines.append(f"   Accuracy: {best_metrics['accuracy']:.4f}")
     
+    # Adicionar modelos com falha
     if failed_models:
+        if successful_models:
+            # Adicionar falhas na tabela
+            for result in failed_models:
+                content_lines.append(f"{'  X':<5} {result['model_name']:<25} "
+                      f"{'FAILED':<10} "
+                      f"{'FAILED':<11} "
+                      f"{'FAILED':<8} "
+                      f"{'FAILED':<8} "
+                      f"{'FAILED':<9} "
+                      f"{'FAILED':<8}")
+        
         content_lines.append("")
-        content_lines.append("MODELOS COM ERRO:")
+        content_lines.append("❌ MODELOS COM ERRO:")
         for result in failed_models:
-            content_lines.append(f"  • {result['model_name']}: {result['error']}")
+            content_lines.append(f"   • {result['model_name']}: {result.get('error', 'Erro não especificado')}")
     
     content_lines.append("="*80)
     
     # Imprimir no terminal
-    for line in content_lines:
-        print(line)
+    if mode == "default":
+        print("\n" + "\n".join(content_lines))
+    else:
+        for line in content_lines:
+            print(line)
     
-    # Salvar em arquivo
-    results_dir = "./results"
-    os.makedirs(results_dir, exist_ok=True)
+    # Salvar em arquivo na pasta do experimento
+    experiment_folder = generate_experiment_folder_name(data_source, mode, classification_type)
+    experiment_dir = os.path.join("./results", experiment_folder)
+    os.makedirs(experiment_dir, exist_ok=True)
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"summary_tuned_models_{timestamp}.txt"
-    filepath = os.path.join(results_dir, filename)
+    filename = f"{filename_prefix}_{timestamp}.txt"
+    filepath = os.path.join(experiment_dir, filename)
     
     with open(filepath, 'w') as f:
         f.write(f"Data/Hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+        f.write(f"Configuração: {data_source.upper()} + {mode.upper()} + {classification_type.upper()}\n")
+        f.write("="*80 + "\n\n")
         f.write("\n".join(content_lines))
         f.write("\n")
     
     print(f"\nResumo salvo em: {filepath}")
+

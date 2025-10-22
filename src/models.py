@@ -21,7 +21,7 @@ from sklearn.preprocessing import StandardScaler
 from catboost import CatBoostClassifier
 
 from src.evaluation import detailed_cross_val_score, evaluate_classification_on_test
-from src.reports import save_results_to_file
+from src.reports import save_model_results_unified
 
 
 def _optimize_classifier_generic(
@@ -33,7 +33,9 @@ def _optimize_classifier_generic(
     save_results=True,
     custom_params_processor=None,
     return_test_metrics=False,
-    fixed_params=None
+    fixed_params=None,
+    data_source="ana",
+    classification_type="binary"
 ):
     """
     Função genérica para otimização de hiperparâmetros de classificadores.
@@ -186,7 +188,8 @@ def _optimize_classifier_generic(
         if model_name == 'decision_tree':
             results['cv_folds_used'] = n_splits
             
-        save_results_to_file(model_name, results)
+        save_model_results_unified(model_name, results, mode="optimized",
+                                 data_source=data_source, classification_type=classification_type)
     
     print(f"{model_name.replace('_', ' ').title()} - Melhor PR AUC (CV): {study.best_value:.4f}")
     print(f"{model_name.replace('_', ' ').title()} - Acurácia no teste: {test_metrics['accuracy']:.4f}")

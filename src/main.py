@@ -11,9 +11,9 @@ sys.path.append('/Users/i583975/git/tcc')
 
 import numpy as np
 import pandas as pd
-from processing import prepare_dataset, get_dataset_info, split_dataset
-from process_data import get_canonical_genes, get_candidate_genes
-from models import (
+from src.processing import prepare_dataset, get_dataset_info, split_dataset
+from src.process_data import get_canonical_genes, get_candidate_genes
+from src.models import (
     optimize_decision_tree_classifier,
     optimize_random_forest_classifier,
     optimize_gradient_boosting_classifier,
@@ -23,8 +23,8 @@ from models import (
     optimize_svc_classifier,
     optimize_catboost_classifier
 )
-from reports import summarize_optimized_results, summarize_default_results
-from evaluation import evaluate_classification_on_test
+from src.reports import summarize_results, save_model_results_unified
+from src.evaluation import evaluate_classification_on_test
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, HistGradientBoostingClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
@@ -48,16 +48,16 @@ def get_data_paths(use_renan=False):
         tuple: (features_path, labels_path, data_source)
     """
     if use_renan:
-        features_path = "../renan/data_files/omics_features/UNION_features.tsv"
-        labels_path = "../renan/data_files/labels/UNION_labels.tsv"
+        features_path = "./renan/data_files/omics_features/UNION_features.tsv"
+        labels_path = "./renan/data_files/labels/UNION_labels.tsv"
         data_source = "RENAN"
         print(f"📁 Usando dados do RENAN:")
         print(f"   Features: renan/data_files/omics_features/UNION_features.tsv")
         print(f"   Labels: renan/data_files/labels/UNION_labels.tsv")
         print(f"   Formato labels: gene, label (True/False/NaN)")
     else:
-        features_path = "../data/UNION_features.tsv"
-        labels_path = "../data/processed/UNION_labels.tsv"
+        features_path = "./data/UNION_features.tsv"
+        labels_path = "./data/processed/UNION_labels.tsv"
         data_source = "ANA"
         print(f"📁 Usando dados da ANA:")
         print(f"   Features: data/UNION_features.tsv")
@@ -108,7 +108,7 @@ Exemplos de uso:
     
     return parser.parse_args()
 
-def run_single_model(model_name, optimizer_func, X, y, n_trials=10):
+def run_single_model(model_name, optimizer_func, X, y, n_trials=10, data_source="ana", classification_type="binary"):
     """
     Executa um único modelo de classificação
     
@@ -118,6 +118,8 @@ def run_single_model(model_name, optimizer_func, X, y, n_trials=10):
         X (np.array): Features
         y (np.array): Labels
         n_trials (int): Número de trials para otimização
+        data_source (str): "ana" ou "renan"
+        classification_type (str): "binary" ou "multiclass"
         
     Returns:
         dict: Resultados do modelo
@@ -128,7 +130,8 @@ def run_single_model(model_name, optimizer_func, X, y, n_trials=10):
     
     try:
         # Executa otimização (com salvamento automático)
-        best_model, test_metrics = optimizer_func(X, y, n_trials=n_trials, save_results=True)
+        best_model, test_metrics = optimizer_func(X, y, n_trials=n_trials, save_results=True, 
+                                                data_source=data_source, classification_type=classification_type)
         
         results = {
             'model_name': model_name,
@@ -150,7 +153,7 @@ def run_single_model(model_name, optimizer_func, X, y, n_trials=10):
         }
 
 
-def run_all_models(X, y, n_trials=10):
+def run_all_models(X, y, n_trials=10, data_source="ana", classification_type="binary"):
     """
     Executa todos os modelos de classificação
     
@@ -158,6 +161,8 @@ def run_all_models(X, y, n_trials=10):
         X (np.array): Features
         y (np.array): Labels
         n_trials (int): Número de trials para otimização
+        data_source (str): "ana" ou "renan"
+        classification_type (str): "binary" ou "multiclass"
         
     Returns:
         list: Lista com resultados de todos os modelos
@@ -184,7 +189,7 @@ def run_all_models(X, y, n_trials=10):
     for i, (model_name, optimizer_func) in enumerate(models_config, 1):
         print(f"Progresso: {i}/{len(models_config)} modelos")
         
-        result = run_single_model(model_name, optimizer_func, X, y, n_trials)
+        result = run_single_model(model_name, optimizer_func, X, y, n_trials, data_source, classification_type)
         results.append(result)
         
         # Breve pausa entre modelos
@@ -194,7 +199,7 @@ def run_all_models(X, y, n_trials=10):
     return results
 
 
-def evaluate_model_default(model, model_name, X, y):
+def evaluate_model_default(model, model_name, X, y, data_source="ana", classification_type="binary"):
     """
     Avalia um modelo com parâmetros padrão usando holdout e 5-fold CV
     Pipeline unificado: StandardScaler + Classifier, métricas binary
@@ -204,6 +209,8 @@ def evaluate_model_default(model, model_name, X, y):
         model_name (str): Nome do modelo
         X (np.array): Features
         y (np.array): Labels
+        data_source (str): "ana" ou "renan"
+        classification_type (str): "binary" ou "multiclass"
         
     Returns:
         dict: Resultados da avaliação
@@ -234,9 +241,9 @@ def evaluate_model_default(model, model_name, X, y):
     # Métricas para validação cruzada - BINARY (consistente com otimizado)
     cv_scores = {
         'accuracy': cross_val_score(pipeline, X_trainval, y_trainval, cv=cv, scoring='accuracy'),
-        'precision': cross_val_score(pipeline, X_trainval, y_trainval, cv=cv, scoring='precision_binary'),
-        'recall': cross_val_score(pipeline, X_trainval, y_trainval, cv=cv, scoring='recall_binary'),
-        'f1': cross_val_score(pipeline, X_trainval, y_trainval, cv=cv, scoring='f1_binary'),
+        'precision': cross_val_score(pipeline, X_trainval, y_trainval, cv=cv, scoring='precision'),
+        'recall': cross_val_score(pipeline, X_trainval, y_trainval, cv=cv, scoring='recall'),
+        'f1': cross_val_score(pipeline, X_trainval, y_trainval, cv=cv, scoring='f1'),
         'roc_auc': cross_val_score(pipeline, X_trainval, y_trainval, cv=cv, scoring='roc_auc'),
         'pr_auc': cross_val_score(pipeline, X_trainval, y_trainval, cv=cv, scoring='average_precision')
     }
@@ -270,12 +277,20 @@ def evaluate_model_default(model, model_name, X, y):
     y_pred_proba = pipeline.predict_proba(X_test)[:, 1]
     
     # Relatório de classificação detalhado
-    from reports import generate_enhanced_classification_report
+    from src.reports import generate_enhanced_classification_report
     class_report = generate_enhanced_classification_report(y_test, y_pred, y_pred_proba)
     print(f"\nRelatório de classificação:\n{class_report}")
     
-    # Salvar resultados (usando estrutura similar ao otimizado)
-    save_default_results(model_name, cv_results, test_metrics, class_report, pipeline.get_params())
+    # Salvar resultados usando função unificada
+    results_data = {
+        'cv_results': cv_results,
+        'test_metrics': test_metrics,
+        'classification_report': class_report,
+        'parameters': pipeline.get_params()
+    }
+    
+    save_model_results_unified(model_name, results_data, mode="default", 
+                             data_source=data_source, classification_type=classification_type)
     
     results = {
         'model_name': model_name,
@@ -289,51 +304,7 @@ def evaluate_model_default(model, model_name, X, y):
     return results
 
 
-def save_default_results(model_name, cv_results, test_metrics, class_report, params):
-    """
-    Salva resultados dos modelos padrão em estrutura similar aos otimizados
-    """
-    import json
-    from datetime import datetime
-    
-    # Criar diretório do modelo
-    model_dir = f"results/{model_name.lower().replace(' ', '_')}"
-    os.makedirs(model_dir, exist_ok=True)
-    
-    # Timestamp para arquivo único
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    
-    # Estrutura similar aos modelos otimizados
-    results_data = {
-        'model_name': model_name,
-        'mode': 'default_parameters',
-        'cv_results': cv_results,
-        'test_metrics': test_metrics,
-        'parameters': params,
-        'timestamp': timestamp
-    }
-    
-    # Salvar métricas em JSON
-    metrics_file = f"{model_dir}/default_metrics_{timestamp}.json"
-    with open(metrics_file, 'w') as f:
-        json.dump(results_data, f, indent=2)
-    
-    # Salvar relatório em texto
-    report_file = f"{model_dir}/default_results_{timestamp}.txt"
-    with open(report_file, 'w') as f:
-        f.write(f"MODELO: {model_name} (Parâmetros Padrão)\n")
-        f.write("="*80 + "\n\n")
-        f.write("VALIDAÇÃO CRUZADA (5-fold):\n")
-        for metric, result in cv_results.items():
-            f.write(f"  {metric.upper()}: {result['mean']:.4f} ± {result['std']:.4f}\n")
-        f.write("\nTESTE FINAL:\n")
-        for metric, value in test_metrics.items():
-            f.write(f"  {metric.upper()}: {value:.4f}\n")
-        f.write(f"\nRELATÓRIO DE CLASSIFICAÇÃO:\n{class_report}\n")
-        f.write(f"\nPARÂMETROS:\n{json.dumps(params, indent=2)}\n")
-
-
-def run_all_default_models(X, y):
+def run_all_default_models(X, y, data_source="ana", classification_type="binary"):
     """
     Executa todos os modelos com parâmetros padrão
     Pipeline unificado para todos: StandardScaler + Classifier
@@ -341,6 +312,8 @@ def run_all_default_models(X, y):
     Args:
         X (np.array): Features
         y (np.array): Labels
+        data_source (str): "ana" ou "renan"
+        classification_type (str): "binary" ou "multiclass"
         
     Returns:
         list: Lista com resultados de todos os modelos
@@ -368,7 +341,7 @@ def run_all_default_models(X, y):
         print(f"\nProgresso: {i}/{len(default_models)} modelos")
         
         try:
-            result = evaluate_model_default(model, model_name, X, y)
+            result = evaluate_model_default(model, model_name, X, y, data_source, classification_type)
             results.append(result)
             print(f"✓ {model_name} executado com sucesso!")
             
@@ -443,7 +416,9 @@ def main(use_renan=False, use_multiclass=False, use_default=False):
         
         # Executa modelos com parâmetros padrão
         print("🚀 Iniciando experimentos com parâmetros padrão...")
-        results = run_all_default_models(X, y)
+        data_source = "renan" if use_renan else "ana"
+        classification_type = "multiclass" if use_multiclass else "binary"
+        results = run_all_default_models(X, y, data_source, classification_type)
         
     else:
         N_TRIALS = 30  # Número de trials por modelo
@@ -460,7 +435,7 @@ def main(use_renan=False, use_multiclass=False, use_default=False):
         
         # Executa todos os modelos com otimização
         print("🚀 Iniciando experimentos com otimização...")
-        results = run_all_models(X, y, n_trials=N_TRIALS)
+        results = run_all_models(X, y, n_trials=N_TRIALS, data_source=data_source, classification_type=classification_type)
     #results = run_single_model("Gradient Boosting", optimize_gradient_boosting_classifier, X, y, n_trials=N_TRIALS)
     #results = run_single_model("Decision Tree", optimize_decision_tree_classifier, X, y, n_trials=N_TRIALS)
     #results = run_single_model("Support Vector Classifier", optimize_svc_classifier, X, y, n_trials=N_TRIALS)
@@ -468,10 +443,15 @@ def main(use_renan=False, use_multiclass=False, use_default=False):
     #results = run_single_model("CatBoost", optimize_catboost_classifier, X, y, n_trials=N_TRIALS)
 
     # Resumo final
+    data_source = "renan" if use_renan else "ana"
+    classification_type = "multiclass" if use_multiclass else "binary"
+    
     if use_default:
-        summarize_default_results(results)
+        summarize_results(results, mode="default", data_source=data_source, 
+                        classification_type=classification_type)
     else:
-        summarize_optimized_results(results)
+        summarize_results(results, mode="optimized", data_source=data_source,
+                        classification_type=classification_type)
     
     print("\n🎉 EXPERIMENTO CONCLUÍDO!")
     print("💾 Resultados salvos em arquivos organizados por modelo.")
