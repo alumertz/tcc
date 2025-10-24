@@ -47,44 +47,88 @@ def generate_enhanced_classification_report(y_true, y_pred, y_pred_proba):
     precision_per_class, recall_per_class, f1_per_class, support_per_class = precision_recall_fscore_support(
         y_true, y_pred, average=None, zero_division=0
     )
-    
+
     # Métricas globais
     accuracy = accuracy_score(y_true, y_pred)
-    roc_auc = roc_auc_score(y_true, y_pred_proba)
-    pr_auc = average_precision_score(y_true, y_pred_proba)
-    
+
+    # Prepare class names from unique labels
+    classes = np.unique(y_true)
+    class_names = [f'Class {c}' for c in classes]
+
+    # Determine whether we have multiclass probabilities (2D) or binary (1D)
+    is_multiclass_proba = hasattr(y_pred_proba, 'ndim') and getattr(y_pred_proba, 'ndim') == 2
+
+    # Compute ROC AUC and PR AUC appropriately
+    try:
+        if is_multiclass_proba:
+            # multiclass: compute both macro and weighted ROC AUC and per-class PR/ROC
+            roc_auc_weighted = roc_auc_score(y_true, y_pred_proba, multi_class='ovr', average='weighted')
+            roc_auc_macro = roc_auc_score(y_true, y_pred_proba, multi_class='ovr', average='macro')
+
+            pr_list = []
+            roc_list = []
+            support = []
+            for i in range(y_pred_proba.shape[1]):
+                yi = (y_true == classes[i]).astype(int)
+                pr = average_precision_score(yi, y_pred_proba[:, i])
+                # per-class ROC AUC (binarized)
+                try:
+                    roc_i = roc_auc_score(yi, y_pred_proba[:, i])
+                except Exception:
+                    roc_i = float('nan')
+                pr_list.append(pr)
+                roc_list.append(roc_i)
+                support.append(int((y_true == classes[i]).sum()))
+
+            # Weighted and macro PR AUC
+            pr_auc_weighted = float(np.average(pr_list, weights=np.array(support)))
+            pr_auc_macro = float(np.mean(pr_list))
+        else:
+            roc_auc_weighted = roc_auc_score(y_true, y_pred_proba)
+            roc_auc_macro = roc_auc_weighted
+            pr_auc_weighted = average_precision_score(y_true, y_pred_proba)
+            pr_auc_macro = pr_auc_weighted
+    except Exception:
+        roc_auc_weighted = float('nan')
+        roc_auc_macro = float('nan')
+        pr_auc_weighted = float('nan')
+        pr_auc_macro = float('nan')
+
     # Total support for summary rows
     total_support = np.sum(support_per_class)
-    
+
     # Cabeçalho da tabela
     report = "              accuracy   precision    recall    f1-score   roc_auc    pr_auc\n\n"
-    
-    # Métricas por classe (Non-driver = classe 0, Driver = classe 1)
-    class_names = ['Non-driver', 'Driver']
-    
+
+    # Métricas por classe
     for i in range(len(precision_per_class)):
         class_name = class_names[i] if i < len(class_names) else f'Class {i}'
-        
-        # Para a classe Driver (1), incluir ROC AUC e PR AUC, para Non-driver usar "-"
-        if i == 1:  # Driver class
-            report += f"{class_name:>12}       {accuracy:.4f}      {precision_per_class[i]:.4f}     {recall_per_class[i]:.4f}     {f1_per_class[i]:.4f}     {roc_auc:.4f}     {pr_auc:.4f}\n"
-        else:  # Non-driver class
-            report += f"{class_name:>12}       {accuracy:.4f}      {precision_per_class[i]:.4f}     {recall_per_class[i]:.4f}     {f1_per_class[i]:.4f}         -         -\n"
-    
+        # Per-class PR/AUC if available for multiclass
+        if is_multiclass_proba:
+            per_roc = roc_list[i] if i < len(roc_list) else float('nan')
+            per_pr = pr_list[i] if i < len(pr_list) else float('nan')
+            report += f"{class_name:>12}       {accuracy:.4f}      {precision_per_class[i]:.4f}     {recall_per_class[i]:.4f}     {f1_per_class[i]:.4f}     {per_roc:.4f}     {per_pr:.4f}\n"
+        else:
+            # Binary case prints pr/roc only for positive class (maintain similar layout)
+            if i == 1:
+                report += f"{class_name:>12}       {accuracy:.4f}      {precision_per_class[i]:.4f}     {recall_per_class[i]:.4f}     {f1_per_class[i]:.4f}     {roc_auc_weighted:.4f}     {pr_auc_weighted:.4f}\n"
+            else:
+                report += f"{class_name:>12}       {accuracy:.4f}      {precision_per_class[i]:.4f}     {recall_per_class[i]:.4f}     {f1_per_class[i]:.4f}         -         -\n"
+
     report += "\n"
-    
+
     # Macro average
     macro_precision = np.mean(precision_per_class)
     macro_recall = np.mean(recall_per_class)
     macro_f1 = np.mean(f1_per_class)
-    report += f"{'macro avg':>12}       {accuracy:.4f}      {macro_precision:.4f}     {macro_recall:.4f}     {macro_f1:.4f}     {roc_auc:.4f}     {pr_auc:.4f}\n"
-    
+    report += f"{'macro avg':>12}       {accuracy:.4f}      {macro_precision:.4f}     {macro_recall:.4f}     {macro_f1:.4f}     {roc_auc_macro if not np.isnan(roc_auc_macro) else '-'}     {pr_auc_macro if not np.isnan(pr_auc_macro) else '-'}\n"
+
     # Weighted average
     weighted_precision = np.average(precision_per_class, weights=support_per_class)
     weighted_recall = np.average(recall_per_class, weights=support_per_class)
     weighted_f1 = np.average(f1_per_class, weights=support_per_class)
-    report += f"{'weighted avg':>12}       {accuracy:.4f}      {weighted_precision:.4f}     {weighted_recall:.4f}     {weighted_f1:.4f}     {roc_auc:.4f}     {pr_auc:.4f}\n"
-    
+    report += f"{'weighted avg':>12}       {accuracy:.4f}      {weighted_precision:.4f}     {weighted_recall:.4f}     {weighted_f1:.4f}     {roc_auc_weighted if not np.isnan(roc_auc_weighted) else '-'}     {pr_auc_weighted if not np.isnan(pr_auc_weighted) else '-'}\n"
+
     return report
 
 

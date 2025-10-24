@@ -268,7 +268,7 @@ def evaluate_model_default(model, model_name, X, y, data_source="ana", classific
     pipeline.fit(X_trainval, y_trainval)
     
     # Avaliação no conjunto de teste usando função unificada
-    test_metrics = evaluate_classification_on_test(pipeline, X_test, y_test, return_dict=True)
+    test_metrics = evaluate_classification_on_test(pipeline, X_test, y_test, return_dict=True, classification_type=classification_type)
     
     print("Resultados no conjunto de teste:")
     for metric, value in test_metrics.items():

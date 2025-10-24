@@ -57,35 +57,82 @@ def detailed_cross_val_score(pipeline, X, y, cv, scoring='average_precision'):
     return main_score, detailed_metrics
 
 
-def evaluate_classification_on_test(model, X_test, y_test, return_dict=False):
-    """Função para avaliar modelos de classificação no conjunto de teste"""
-    from src.reports import generate_enhanced_classification_report
-    
-    y_pred = model.predict(X_test)
-    y_pred_proba = model.predict_proba(X_test)[:, 1]  # Probabilidades para classe positiva
-    
-    accuracy = accuracy_score(y_test, y_pred)
-    # precision = precision_score(y_test, y_pred, average='weighted')
-    # recall = recall_score(y_test, y_pred, average='weighted')
-    # f1 = f1_score(y_test, y_pred, average='weighted')
-    precision = precision_score(y_test, y_pred, average='binary')
-    recall = recall_score(y_test, y_pred, average='binary')
-    f1 = f1_score(y_test, y_pred, average='binary')
+def evaluate_classification_on_test(model, X_test, y_test, return_dict=False, classification_type='binary'):
+    """Função para avaliar modelos de classificação no conjunto de teste
 
-    roc_auc = roc_auc_score(y_test, y_pred_proba)
-    pr_auc = average_precision_score(y_test, y_pred_proba)
-    
-    # Gerar relatório customizado
-    custom_report = generate_enhanced_classification_report(y_test, y_pred, y_pred_proba)
+    Args:
+        model: estimador treinado (deve implementar predict and predict_proba)
+        X_test, y_test: dados de teste
+        return_dict: se True retorna dicionário com métricas
+        classification_type: 'binary' ou 'multiclass' (afeta como ROC/PR e médias são calculadas)
+    """
+    from reports import generate_enhanced_classification_report
+    from sklearn.preprocessing import label_binarize
+
+    y_pred = model.predict(X_test)
+    y_proba = model.predict_proba(X_test)
+
+    accuracy = accuracy_score(y_test, y_pred)
+
+    if classification_type == 'multiclass':
+        # Use weighted averages for multiclass as requested
+        precision = precision_score(y_test, y_pred, average='weighted')
+        recall = recall_score(y_test, y_pred, average='weighted')
+        f1 = f1_score(y_test, y_pred, average='weighted')
+
+        # ROC AUC (multiclass OVR) and PR AUC per class averaged (macro)
+        try:
+            # y_proba shape is (n_samples, n_classes)
+            roc_auc = roc_auc_score(y_test, y_proba, multi_class='ovr', average='weighted')
+        except Exception:
+            # Fallback: compute per-class ROC AUC by binarizing
+            classes = np.unique(y_test)
+            y_test_b = label_binarize(y_test, classes=classes)
+            roc_auc = roc_auc_score(y_test_b, y_proba, average='weighted')
+
+        # average_precision_score supports multilabel-indicator input
+        try:
+            classes = np.unique(y_test)
+            y_test_b = label_binarize(y_test, classes=classes)
+            pr_per_class = []
+            support = np.array([(y_test == c).sum() for c in classes])
+            for i in range(y_proba.shape[1]):
+                pr = average_precision_score(y_test_b[:, i], y_proba[:, i])
+                pr_per_class.append(pr)
+            # Weighted average by class support
+            pr_auc = float(np.average(pr_per_class, weights=support))
+        except Exception:
+            pr_auc = float(np.nan)
+
+        # Generate a multiclass-friendly text report
+        custom_report = generate_enhanced_classification_report(y_test, y_pred, y_proba)
+
+    else:
+        # Binary classification (default behavior)
+        precision = precision_score(y_test, y_pred, average='binary')
+        recall = recall_score(y_test, y_pred, average='binary')
+        f1 = f1_score(y_test, y_pred, average='binary')
+
+        # Probabilities for positive class
+        if y_proba.ndim == 2 and y_proba.shape[1] > 1:
+            y_pred_proba = y_proba[:, 1]
+        else:
+            # If model returns a single column or already shaped vector
+            y_pred_proba = y_proba.ravel()
+
+        roc_auc = roc_auc_score(y_test, y_pred_proba)
+        pr_auc = average_precision_score(y_test, y_pred_proba)
+
+        custom_report = generate_enhanced_classification_report(y_test, y_pred, y_pred_proba)
 
     if return_dict:
         return {
-            'accuracy': accuracy,
-            'precision': precision,
-            'recall': recall,
-            'f1': f1,
-            'roc_auc': roc_auc,
-            'pr_auc': pr_auc,
+            'accuracy': float(accuracy),
+            'precision': float(precision),
+            'recall': float(recall),
+            'f1': float(f1),
+            'roc_auc': float(roc_auc) if not np.isnan(roc_auc) else float('nan'),
+            'pr_auc': float(pr_auc) if not np.isnan(pr_auc) else float('nan'),
             'classification_report': custom_report
         }
     else:
