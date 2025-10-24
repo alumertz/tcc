@@ -381,7 +381,7 @@ def process_union_features(hgnc_mapping, removed_genes, file_path=UNION_FEATURES
         
         # Salva features processadas
         os.makedirs(OUTPUT_DIR, exist_ok=True)
-        output_file = os.path.join(OUTPUT_DIR, 'UNION_features_processed.tsv')
+        output_file = os.path.join(OUTPUT_DIR, 'UNION_features.tsv')
         df_processed.to_csv(output_file, sep='\t')
         print(f"Features processadas salvas em: {output_file}")
         
