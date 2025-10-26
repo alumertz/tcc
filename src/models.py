@@ -305,6 +305,16 @@ def _simple_holdout_optimization(classifier_class, param_suggestions_func, model
     # Avalia no conjunto de teste
     test_metrics = evaluate_classification_on_test(final_pipeline, X_test, y_test, return_dict=True, classification_type=classification_type)
 
+    # Get predictions and probabilities for plotting
+    y_pred_test = final_pipeline.predict(X_test)
+    y_pred_proba_test = final_pipeline.predict_proba(X_test)
+    
+    # Extract probabilities for positive class (binary) or keep all classes (multiclass)
+    if classification_type == 'binary' and y_pred_proba_test.shape[1] == 2:
+        y_pred_proba_test_positive = y_pred_proba_test[:, 1]
+    else:
+        y_pred_proba_test_positive = y_pred_proba_test
+
     # Salva resultados se solicitado
     if save_results:
         results = {
@@ -313,7 +323,14 @@ def _simple_holdout_optimization(classifier_class, param_suggestions_func, model
             'best_score': study.best_value,
             'test_metrics': test_metrics,
             'optimization_time': total_end - total_start,
-            'all_cv_metrics': all_cv_metrics
+            'all_cv_metrics': all_cv_metrics,
+            # Save predictions for plotting
+            'test_predictions': {
+                'y_true': y_test.tolist(),
+                'y_pred': y_pred_test.tolist(),
+                'y_pred_proba': y_pred_proba_test_positive.tolist() if hasattr(y_pred_proba_test_positive, 'tolist') else y_pred_proba_test_positive,
+                'test_indices': X_test.index.tolist() if hasattr(X_test, 'index') else list(range(len(X_test)))
+            }
         }
         # Adicionar cv_folds_used para Decision Tree (compatibilidade)
         if model_name == 'decision_tree':

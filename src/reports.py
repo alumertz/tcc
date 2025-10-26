@@ -15,9 +15,33 @@ from sklearn.metrics import (
 )
 
 
+# Global variable to store the experiment timestamp for the session
+_experiment_timestamp = None
+
+def set_experiment_timestamp():
+    """
+    Define o timestamp do experimento para toda a sessão
+    Deve ser chamado no início do main.py
+    """
+    global _experiment_timestamp
+    if _experiment_timestamp is None:
+        _experiment_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    return _experiment_timestamp
+
+def get_experiment_timestamp():
+    """
+    Retorna o timestamp do experimento atual
+    Se não foi definido, cria um novo
+    """
+    global _experiment_timestamp
+    if _experiment_timestamp is None:
+        _experiment_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    return _experiment_timestamp
+
 def generate_experiment_folder_name(data_source="ana", mode="default", classification_type="binary"):
     """
     Gera nome da pasta do experimento baseado na data e configurações
+    Usa o timestamp global definido no início da execução
     
     Args:
         data_source (str): "ana" ou "renan"
@@ -27,7 +51,7 @@ def generate_experiment_folder_name(data_source="ana", mode="default", classific
     Returns:
         str: Nome da pasta no formato "YYYYMMDD_HHMMSS_ana_default_binary"
     """
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    timestamp = get_experiment_timestamp()
     
     # Normalizar valores para garantir consistência
     data_source = data_source.lower()
@@ -332,16 +356,18 @@ def _save_default_mode_results(model_name, results_data, model_dir, timestamp):
         'cv_results': results_data.get('cv_results', {}),
         'test_metrics': results_data.get('test_metrics', {}),
         'parameters': results_data.get('parameters', {}),
-        'timestamp': timestamp
+        'timestamp': timestamp,
+        # Include test predictions for plotting
+        'test_predictions': results_data.get('test_predictions', {})
     }
     
-    # Salvar métricas em JSON
-    metrics_file = os.path.join(model_dir, f"default_metrics_{timestamp}.json")
+    # Salvar métricas em JSON (sem timestamp no nome do arquivo)
+    metrics_file = os.path.join(model_dir, "default_metrics.json")
     with open(metrics_file, 'w') as f:
         json.dump(structured_data, f, indent=2)
     
-    # Salvar relatório em texto
-    report_file = os.path.join(model_dir, f"default_results_{timestamp}.txt")
+    # Salvar relatório em texto (sem timestamp no nome do arquivo)
+    report_file = os.path.join(model_dir, "default_results.txt")
     with open(report_file, 'w') as f:
         f.write(f"MODELO: {model_name} (Parâmetros Padrão)\n")
         f.write("="*80 + "\n\n")
@@ -645,4 +671,3 @@ def save_nested_cv_results(model_name, aggregated_metrics, best_params_per_fold,
         json.dump(serializable_results, f, indent=2, ensure_ascii=False)
     
     print(f"Resultados de Nested CV salvos em: {filepath}")
-

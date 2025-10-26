@@ -10,11 +10,7 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from catboost import CatBoostClassifier
 from sklearn.metrics import roc_curve, precision_recall_curve, auc
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import Pipeline
 from datetime import datetime
 import warnings
 warnings.filterwarnings('ignore')
@@ -48,161 +44,145 @@ def create_plots_directory():
     return plots_dir
 
 
-def load_model_results(results_dir="../plot_results"):
+def load_saved_predictions(results_dirs=None):
     """
-    Carrega os resultados de todos os modelos testados (incluindo nested CV)
+    Carrega predições salvas de todos os modelos testados
     
+    Args:
+        results_dirs (list): Lista de diretórios para procurar resultados
+        
     Returns:
-        dict: Dicionário com resultados de cada modelo
+        dict: Dicionário com predições de cada modelo
     """
+    if results_dirs is None:
+        # Procurar primeiro no novo formato (results/) depois no antigo (plot_results/)
+        results_dirs = ["./results", "./plot_results"]
+    
     models_data = {}
     
-    # Lista de modelos disponíveis
+    # Lista de modelos disponíveis (incluindo variações de nomes com hífens e underscores)
     model_names = [
         'decision_tree', 'random_forest', 'gradient_boosting', 
         'histogram_gradient_boosting', 'k_nearest_neighbors', 'multi_layer_perceptron', 
-        #'support_vector_classifier', 'catboost'
+        'support_vector_classifier', 'catboost',
+        # Variações com hífens (formato usado pelos resultados salvos)
+        'k-nearest_neighbors', 'multi-layer_perceptron'
     ]
     
-    for model_name in model_names:
-        model_dir = os.path.join(results_dir, model_name)
-        print(f"Verificando {model_name} em {model_dir}...")
-        if os.path.exists(model_dir):
-            # Encontrar o arquivo de teste mais recente
-            test_files = [f for f in os.listdir(model_dir) if f.startswith('test_results_')]
-            json_files = [f for f in os.listdir(model_dir) if f.startswith('trials_')]
+    print("Procurando resultados em:")
+    for results_dir in results_dirs:
+        print(f"  - {results_dir}")
+    print()
+    
+    # Procurar nas pastas de experimentos mais recentes primeiro
+    for results_dir in results_dirs:
+        if not os.path.exists(results_dir):
+            print(f"Diretório {results_dir} não existe")
+            continue
             
-            if test_files and json_files:
-                latest_test_file = sorted(test_files)[-1]
-                latest_json_file = sorted(json_files)[-1]
+        # Se for o novo formato results/, procurar por experimentos timestamped
+        if results_dir == "./results":
+            # Listar subdiretórios de experimentos (formato: YYYYMMDD_HHMMSS_ana_default_binary)
+            experiment_dirs = []
+            if os.path.exists(results_dir):
+                for item in os.listdir(results_dir):
+                    item_path = os.path.join(results_dir, item)
+                    if os.path.isdir(item_path):
+                        experiment_dirs.append(item)
+            
+            if experiment_dirs:
+                # Usar o experimento mais recente
+                latest_experiment = sorted(experiment_dirs)[-1]
+                current_results_dir = os.path.join(results_dir, latest_experiment)
+                print(f"Usando experimento mais recente: {latest_experiment}")
+            else:
+                print(f"Nenhum experimento encontrado em {results_dir}")
+                continue
+        else:
+            current_results_dir = results_dir
+        
+        # Procurar modelos
+        for model_name in model_names:
+            if model_name in models_data:
+                continue  # Já encontramos este modelo
                 
-                test_file_path = os.path.join(model_dir, latest_test_file)
-                json_file_path = os.path.join(model_dir, latest_json_file)
+            model_dir = os.path.join(current_results_dir, model_name)
+            print(f"Verificando {model_name} em {model_dir}...")
+            
+            if os.path.exists(model_dir):
+                # Procurar por arquivos de resultados (novos formatos sem timestamp e antigos com timestamp)
+                json_files = [f for f in os.listdir(model_dir) if f.startswith('trials_') and f.endswith('.json')]
+                default_files = [f for f in os.listdir(model_dir) 
+                               if (f == 'default_metrics.json' or f.startswith('default_metrics_')) and f.endswith('.json')]
                 
-                print(f"   Carregando resultados de {model_name}")
-                print(f"   Test file: {latest_test_file}")
-                print(f"   Trials file: {latest_json_file}")
+                latest_file = None
+                file_type = None
                 
-                # Carregar dados do modelo
-                models_data[model_name] = {
-                    'test_file': test_file_path,
-                    'model_dir': model_dir
-                }
+                # Preferir arquivos sem timestamp (novos) sobre arquivos com timestamp (antigos)
+                if json_files:
+                    latest_file = sorted(json_files)[-1]
+                    file_type = 'optimized'
+                elif default_files:
+                    # Priorizar default_metrics.json (novo formato) sobre default_metrics_TIMESTAMP.json (antigo)
+                    if 'default_metrics.json' in default_files:
+                        latest_file = 'default_metrics.json'
+                    else:
+                        latest_file = sorted(default_files)[-1]  # Pegar o mais recente com timestamp
+                    file_type = 'default'
                 
-                # Carregar arquivo JSON com trials
-                try:
-                    with open(json_file_path, 'r') as f:
-                        trials_data = json.load(f)
-                        models_data[model_name]['trials'] = trials_data
-                        
-                        # Para nested CV, extract nested_cv_results se disponível
-                        if isinstance(trials_data, list) and len(trials_data) > 0:
-                            # Formato antigo (lista de trials)
-                            models_data[model_name]['is_nested_cv'] = False
-                        else:
-                            # Pode ser nested CV results
-                            models_data[model_name]['is_nested_cv'] = True
+                if latest_file:
+                    file_path = os.path.join(model_dir, latest_file)
+                    
+                    print(f"   Carregando predições de {model_name} ({file_type})")
+                    print(f"   Arquivo: {latest_file}")
+                    
+                    try:
+                        with open(file_path, 'r') as f:
+                            data = json.load(f)
                             
-                except Exception as e:
-                    print(f"   Erro ao carregar trials: {e}")
+                        # Extrair predições baseado no tipo de arquivo
+                        predictions = None
+                        if file_type == 'optimized':
+                            # Para arquivos otimizados, as predições estão em 'test_predictions'
+                            if 'test_predictions' in data:
+                                predictions = data['test_predictions']
+                            # Fallback: pode estar diretamente no data se for formato antigo
+                            elif isinstance(data, list) and len(data) > 0:
+                                # Formato antigo de trials - não temos predições salvas
+                                print(f"   ⚠️  {model_name}: Formato antigo sem predições salvas")
+                                continue
+                        elif file_type == 'default':
+                            # Para arquivos default, as predições estão em 'test_predictions'
+                            if 'test_predictions' in data:
+                                predictions = data['test_predictions']
+                        
+                        if predictions and all(key in predictions for key in ['y_true', 'y_pred_proba']):
+                            models_data[model_name] = {
+                                'predictions': predictions,
+                                'file_type': file_type,
+                                'file_path': file_path
+                            }
+                            print(f"   ✓ Predições carregadas: {len(predictions['y_true'])} amostras")
+                        else:
+                            print(f"   ⚠️  {model_name}: Predições não encontradas no arquivo")
+                            
+                    except Exception as e:
+                        print(f"   ❌ Erro ao carregar {model_name}: {e}")
+                else:
+                    print(f"   ⚠️  Nenhum arquivo de resultados encontrado para {model_name}")
+            else:
+                print(f"   ⚠️  Diretório não existe: {model_dir}")
     
     return models_data
 
 
-def get_model_predictions(model_name, best_params, X, y):
+def plot_roc_curve(model_results, save_path=None):
     """
-    Treina um modelo com os melhores parâmetros e retorna predições para gráficos
+    Cria gráfico de ROC Curve para todos os modelos usando predições salvas
     
     Args:
-        model_name (str): Nome do modelo
-        best_params (dict): Melhores hiperparâmetros
-        X (array): Features
-        y (array): Labels
-        
-    Returns:
-        tuple: (y_test, y_pred_proba)
-    """
-    from sklearn.tree import DecisionTreeClassifier
-    from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, HistGradientBoostingClassifier
-    from sklearn.neighbors import KNeighborsClassifier
-    from sklearn.neural_network import MLPClassifier
-    from sklearn.svm import SVC
-    
-    # Mapeamento de modelos
-    model_classes = {
-        'decision_tree': DecisionTreeClassifier,
-        'random_forest': RandomForestClassifier,
-        'gradient_boosting': GradientBoostingClassifier,
-        'histogram_gradient_boosting': HistGradientBoostingClassifier,
-        'k_nearest_neighbors': KNeighborsClassifier,
-        'multi_layer_perceptron': MLPClassifier,
-        #'support_vector_classifier': SVC,
-        # Legacy names
-        'hist_gradient_boosting': HistGradientBoostingClassifier,
-        'knn': KNeighborsClassifier,
-        'mlp': MLPClassifier,
-        #'svc': SVC,
-        #'catboost': CatBoostClassifier
-    }
-    
-    
-    if model_name not in model_classes:
-        return None, None
-    
-    # Divisão treino/teste
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42, stratify=y
-    )
-    
-    # Configurar parâmetros específicos
-    params = best_params.copy()
-    if model_name == 'svc':
-        params['probability'] = True
-        params['random_state'] = 30
-    elif model_name in ['decision_tree', 'random_forest', 'gradient_boosting', 'mlp']:
-        params['random_state'] = 30
-    
-    # Criar e treinar modelo
-    model_class = model_classes[model_name]
-    
-    try:
-        # Para MLP, reconstruir hidden_layer_sizes se necessário
-        if model_name == 'mlp' and 'n_layers' in params:
-            n_layers = params.pop('n_layers')
-            hidden_layer_sizes = []
-            for i in range(n_layers):
-                if f'layer_{i}_size' in params:
-                    hidden_layer_sizes.append(params.pop(f'layer_{i}_size'))
-            params['hidden_layer_sizes'] = tuple(hidden_layer_sizes)
-        
-        # Criar pipeline
-        pipeline = Pipeline([
-            ("scaler", StandardScaler()),
-            ("classifier", model_class(**params))
-        ])
-        
-        # Treinar
-        pipeline.fit(X_train, y_train)
-        
-        # Predições
-        y_pred_proba = pipeline.predict_proba(X_test)[:, 1]
-        
-        return y_test, y_pred_proba
-        
-    except Exception as e:
-        print(f"Erro ao treinar {model_name}: {e}")
-        return None, None
-
-
-def plot_roc_curve(model_results, X, y, save_path=None):
-    """
-    Cria gráfico de ROC Curve para todos os modelos
-    
-    Args:
-        model_results (dict): Resultados dos modelos
-        X (array): Features
-        y (array): Labels
-        save_path (str): Caminho para salvar o gráfico
+        model_results (dict): Resultados dos modelos com predições
+        save_path (str): Caminho para salver o gráfico
     """
     plt.figure(figsize=(12, 9))
     
@@ -216,11 +196,6 @@ def plot_roc_curve(model_results, X, y, save_path=None):
         'multi_layer_perceptron': '#8c564b',                # Marrom
         'support_vector_classifier': '#e377c2',                 # Rosa
         'catboost': '#17becf',           # Ciano
-        # Legacy names for backward compatibility
-        'hist_gradient_boosting': '#d62728',  # Vermelho
-        'knn': '#9467bd',                # Roxo
-        'mlp': '#8c564b',                # Marrom
-        'svc': '#e377c2'                 # Rosa
     }
     
     models_plotted = 0
@@ -232,55 +207,26 @@ def plot_roc_curve(model_results, X, y, save_path=None):
     for model_name, data in sorted_models:
         print(f"Processando {model_name}...")
         
-        # Extrair melhores parâmetros dos trials
-        if 'trials' in data and data['trials']:
-            trials_data = data['trials']
-            best_params = None
+        try:
+            predictions = data['predictions']
+            y_true = np.array(predictions['y_true'])
+            y_pred_proba = np.array(predictions['y_pred_proba'])
             
-            # Check if it's nested CV format or old format
-            if isinstance(trials_data, list) and len(trials_data) > 0:
-                # Old format - list of trials
-                best_trial = max(trials_data, key=lambda x: x.get('score', 0))
-                best_params = best_trial.get('params', {})
-                print(f"  {model_name}: Usando formato antigo de trials")
-            elif isinstance(trials_data, dict):
-                # New nested CV format - extract best_params from the dict
-                if 'best_params' in trials_data:
-                    best_params = trials_data['best_params']
-                    print(f"  {model_name}: Usando formato nested CV")
-                elif 'nested_cv_results' in trials_data:
-                    # Extract from nested CV results - use best fold's params
-                    nested_results = trials_data['nested_cv_results']
-                    if nested_results and len(nested_results) > 0:
-                        best_fold = max(nested_results, key=lambda x: x.get('best_cv_score', 0))
-                        best_params = best_fold.get('best_params', {})
-                        print(f"  {model_name}: Extraindo parâmetros do melhor fold nested CV")
+            # Calcular ROC
+            fpr, tpr, _ = roc_curve(y_true, y_pred_proba)
+            roc_auc = auc(fpr, tpr)
             
-            if best_params:
-                # Obter predições
-                y_test, y_pred_proba = get_model_predictions(model_name, best_params, X, y)
-                
-                if y_test is not None and y_pred_proba is not None:
-                    # Calcular ROC
-                    fpr, tpr, _ = roc_curve(y_test, y_pred_proba)
-                    roc_auc = auc(fpr, tpr)
-                    
-                    # Plotar curva
-                    model_display_name = model_name.replace('_', ' ').title()
-                    color = model_colors.get(model_name, f'C{models_plotted}')
-                    plt.plot(fpr, tpr, color=color, lw=3, 
-                            label=f'{model_display_name} (AUC = {roc_auc:.3f})')
-                    models_plotted += 1
-                    print(f"  {model_name}: AUC = {roc_auc:.3f}")
-                else:
-                    models_with_errors.append(model_name)
-                    print(f"  {model_name}: Erro ao obter predições")
-            else:
-                models_with_errors.append(model_name)
-                print(f"  {model_name}: Não foi possível extrair parâmetros")
-        else:
+            # Plotar curva
+            model_display_name = model_name.replace('_', ' ').title()
+            color = model_colors.get(model_name, f'C{models_plotted}')
+            plt.plot(fpr, tpr, color=color, lw=3, 
+                    label=f'{model_display_name} (AUC = {roc_auc:.3f})')
+            models_plotted += 1
+            print(f"  {model_name}: AUC = {roc_auc:.3f}")
+            
+        except Exception as e:
             models_with_errors.append(model_name)
-            print(f"  {model_name}: Dados de trials não encontrados")
+            print(f"  ❌ {model_name}: Erro ao processar predições - {e}")
     
     # Linha diagonal (classificador aleatório)
     plt.plot([0, 1], [0, 1], color='gray', lw=2, linestyle='--', alpha=0.8, 
@@ -291,18 +237,8 @@ def plot_roc_curve(model_results, X, y, save_path=None):
     plt.ylim([0.0, 1.05])
     plt.xlabel('False Positive Rate (FPR)', fontsize=22)
     plt.ylabel('True Positive Rate (TPR)', fontsize=22)
-    #plt.title('Curvas ROC - Comparação entre Modelos\nClassificação de Genes-Alvo (Oncogenes)', fontsize=14, pad=20)
     plt.legend(loc="lower right", fontsize=22, framealpha=0.9)
     plt.grid(True, alpha=0.3)
-    
-    # Adicionar informações
-    # info_text = f'Dataset: {X.shape[0]} amostras, {X.shape[1]} features\nModelos plotados: {models_plotted}'
-    # if models_with_errors:
-    #     info_text += f'\nModelos com erro: {len(models_with_errors)}'
-    
-    # plt.text(0.02, 0.98, info_text, transform=plt.gca().transAxes, 
-    #          bbox=dict(boxstyle="round,pad=0.3", facecolor="lightblue", alpha=0.8),
-    #          verticalalignment='top', fontsize=9)
     
     plt.tight_layout()
     
@@ -320,14 +256,12 @@ def plot_roc_curve(model_results, X, y, save_path=None):
         print(f"  Modelos com erro: {', '.join(models_with_errors)}")
 
 
-def plot_precision_recall_curve(model_results, X, y, save_path=None):
+def plot_precision_recall_curve(model_results, save_path=None):
     """
-    Cria gráfico de Precision-Recall Curve para todos os modelos
+    Cria gráfico de Precision-Recall Curve para todos os modelos usando predições salvas
     
     Args:
-        model_results (dict): Resultados dos modelos
-        X (array): Features
-        y (array): Labels
+        model_results (dict): Resultados dos modelos com predições
         save_path (str): Caminho para salvar o gráfico
     """
     plt.figure(figsize=(12, 9))
@@ -342,18 +276,11 @@ def plot_precision_recall_curve(model_results, X, y, save_path=None):
         'multi_layer_perceptron': '#8c564b',                # Marrom
         'support_vector_classifier': '#e377c2',                 # Rosa
         'catboost': '#17becf',           # Ciano
-        # Legacy names for backward compatibility
-        'hist_gradient_boosting': '#d62728',  # Vermelho
-        'knn': '#9467bd',                # Roxo
-        'mlp': '#8c564b',                # Marrom
-        'svc': '#e377c2'                 # Rosa
     }
-    
-    # Linha base (proporção da classe positiva)
-    pos_rate = np.mean(y)
     
     models_plotted = 0
     models_with_errors = []
+    pos_rate = None
     
     # Ordenar modelos para plotagem consistente
     sorted_models = sorted(model_results.items())
@@ -361,77 +288,43 @@ def plot_precision_recall_curve(model_results, X, y, save_path=None):
     for model_name, data in sorted_models:
         print(f"Processando {model_name}...")
         
-        # Extrair melhores parâmetros dos trials
-        if 'trials' in data and data['trials']:
-            trials_data = data['trials']
-            best_params = None
+        try:
+            predictions = data['predictions']
+            y_true = np.array(predictions['y_true'])
+            y_pred_proba = np.array(predictions['y_pred_proba'])
             
-            # Check if it's nested CV format or old format
-            if isinstance(trials_data, list) and len(trials_data) > 0:
-                # Old format - list of trials
-                best_trial = max(trials_data, key=lambda x: x.get('score', 0))
-                best_params = best_trial.get('params', {})
-                print(f"  {model_name}: Usando formato antigo de trials")
-            elif isinstance(trials_data, dict):
-                # New nested CV format - extract best_params from the dict
-                if 'best_params' in trials_data:
-                    best_params = trials_data['best_params']
-                    print(f"  {model_name}: Usando formato nested CV")
-                elif 'nested_cv_results' in trials_data:
-                    # Extract from nested CV results - use best fold's params
-                    nested_results = trials_data['nested_cv_results']
-                    if nested_results and len(nested_results) > 0:
-                        best_fold = max(nested_results, key=lambda x: x.get('best_cv_score', 0))
-                        best_params = best_fold.get('best_params', {})
-                        print(f"  {model_name}: Extraindo parâmetros do melhor fold nested CV")
+            # Calcular proporção da classe positiva (apenas uma vez)
+            if pos_rate is None:
+                pos_rate = np.mean(y_true)
             
-            if best_params:
-                # Obter predições
-                y_test, y_pred_proba = get_model_predictions(model_name, best_params, X, y)
-                
-                if y_test is not None and y_pred_proba is not None:
-                    # Calcular Precision-Recall
-                    precision, recall, _ = precision_recall_curve(y_test, y_pred_proba)
-                    pr_auc = auc(recall, precision)
-                    
-                    # Plotar curva
-                    model_display_name = model_name.replace('_', ' ').title()
-                    color = model_colors.get(model_name, f'C{models_plotted}')
-                    plt.plot(recall, precision, color=color, lw=3, 
-                            label=f'{model_display_name} (AUC = {pr_auc:.3f})')
-                    models_plotted += 1
-                    print(f"  {model_name}: PR AUC = {pr_auc:.3f}")
-                else:
-                    models_with_errors.append(model_name)
-                    print(f"  {model_name}: Erro ao obter predições")
-            else:
-                models_with_errors.append(model_name)
-                print(f"  {model_name}: Não foi possível extrair parâmetros")
-        else:
+            # Calcular Precision-Recall
+            precision, recall, _ = precision_recall_curve(y_true, y_pred_proba)
+            pr_auc = auc(recall, precision)
+            
+            # Plotar curva
+            model_display_name = model_name.replace('_', ' ').title()
+            color = model_colors.get(model_name, f'C{models_plotted}')
+            plt.plot(recall, precision, color=color, lw=3, 
+                    label=f'{model_display_name} (AUC = {pr_auc:.3f})')
+            models_plotted += 1
+            print(f"  {model_name}: PR AUC = {pr_auc:.3f}")
+            
+        except Exception as e:
             models_with_errors.append(model_name)
-            print(f"  {model_name}: Dados de trials não encontrados")
+            print(f"  ❌ {model_name}: Erro ao processar predições - {e}")
     
     # Linha base (classificador aleatório)
-    plt.axhline(y=pos_rate, color='gray', lw=2, linestyle='--', alpha=0.8,
-                label=f'(AUC = {pos_rate:.3f})')
+    if pos_rate is not None:
+        plt.axhline(y=pos_rate, color='gray', lw=2, linestyle='--', alpha=0.8,
+                    label=f'(AUC = {pos_rate:.3f})')
     
     # Configurações do gráfico
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.05])
     plt.xlabel('Recall ', fontsize=22)
     plt.ylabel('Precision', fontsize=22)
-    #plt.title('Curvas Precision-Recall - Comparação entre Modelos\nClassificação de Genes-Alvo (Oncogenes)', fontsize=14, pad=20)
     plt.legend(loc="upper right", fontsize=22, framealpha=0.9)
     plt.grid(True, alpha=0.3)
-    
-    # Adicionar informações
-    # info_text = f'Dataset: {X.shape[0]} amostras, {X.shape[1]} features\nClasse positiva: {pos_rate:.1%}\nModelos plotados: {models_plotted}'
-    # if models_with_errors:
-    #     info_text += f'\nModelos com erro: {len(models_with_errors)}'
-    
-    # plt.text(0.02, 0.98, info_text, transform=plt.gca().transAxes, 
-    #          bbox=dict(boxstyle="round,pad=0.3", facecolor="lightgreen", alpha=0.8),
-    #          verticalalignment='top', fontsize=9)
     
     plt.tight_layout()
     
@@ -449,14 +342,12 @@ def plot_precision_recall_curve(model_results, X, y, save_path=None):
         print(f"  Modelos com erro: {', '.join(models_with_errors)}")
 
 
-def plot_combined_curves(model_results, X, y, save_path=None):
+def plot_combined_curves(model_results, save_path=None):
     """
-    Cria gráfico combinado com ROC e Precision-Recall lado a lado
+    Cria gráfico combinado com ROC e Precision-Recall lado a lado usando predições salvas
     
     Args:
-        model_results (dict): Resultados dos modelos
-        X (array): Features
-        y (array): Labels
+        model_results (dict): Resultados dos modelos com predições
         save_path (str): Caminho para salvar o gráfico
     """
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 8))
@@ -466,17 +357,16 @@ def plot_combined_curves(model_results, X, y, save_path=None):
         'decision_tree': '#1f77b4',      # Azul
         'random_forest': '#ff7f0e',      # Laranja
         'gradient_boosting': '#2ca02c',  # Verde
-        'hist_gradient_boosting': '#d62728',  # Vermelho
-        'knn': '#9467bd',                # Roxo
-        'mlp': '#8c564b',                # Marrom
-        'svc': '#e377c2'                 # Rosa
+        'histogram_gradient_boosting': '#d62728',  # Vermelho
+        'k_nearest_neighbors': '#9467bd',                # Roxo
+        'multi_layer_perceptron': '#8c564b',                # Marrom
+        'support_vector_classifier': '#e377c2',                 # Rosa
+        'catboost': '#17becf',           # Ciano
     }
-    
-    # Linha base para PR
-    pos_rate = np.mean(y)
     
     models_plotted = 0
     models_with_errors = []
+    pos_rate = None
     
     # Ordenar modelos para plotagem consistente
     sorted_models = sorted(model_results.items())
@@ -484,44 +374,41 @@ def plot_combined_curves(model_results, X, y, save_path=None):
     for model_name, data in sorted_models:
         print(f"Processando {model_name} (gráfico combinado)...")
         
-        # Extrair melhores parâmetros dos trials
-        if 'trials' in data and data['trials']:
-            # Encontrar o melhor trial
-            best_trial = max(data['trials'], key=lambda x: x.get('score', 0))
-            best_params = best_trial.get('params', {})
+        try:
+            predictions = data['predictions']
+            y_true = np.array(predictions['y_true'])
+            y_pred_proba = np.array(predictions['y_pred_proba'])
             
-            # Obter predições
-            y_test, y_pred_proba = get_model_predictions(model_name, best_params, X, y)
+            # Calcular proporção da classe positiva (apenas uma vez)
+            if pos_rate is None:
+                pos_rate = np.mean(y_true)
             
-            if y_test is not None and y_pred_proba is not None:
-                # ROC Curve
-                fpr, tpr, _ = roc_curve(y_test, y_pred_proba)
-                roc_auc = auc(fpr, tpr)
-                
-                # Precision-Recall Curve
-                precision, recall, _ = precision_recall_curve(y_test, y_pred_proba)
-                pr_auc = auc(recall, precision)
-                
-                # Model display name
-                model_display_name = model_name.replace('_', ' ').title()
-                color = model_colors.get(model_name, f'C{models_plotted}')
-                
-                # Plot ROC
-                ax1.plot(fpr, tpr, color=color, lw=3, 
-                        label=f'{model_display_name} (AUC = {roc_auc:.3f})')
-                
-                # Plot PR
-                ax2.plot(recall, precision, color=color, lw=3, 
-                        label=f'{model_display_name} (AUC = {pr_auc:.3f})')
-                
-                models_plotted += 1
-                print(f"  {model_name}: ROC AUC = {roc_auc:.3f}, PR AUC = {pr_auc:.3f}")
-            else:
-                models_with_errors.append(model_name)
-                print(f"  {model_name}: Erro ao obter predições")
-        else:
+            # ROC Curve
+            fpr, tpr, _ = roc_curve(y_true, y_pred_proba)
+            roc_auc = auc(fpr, tpr)
+            
+            # Precision-Recall Curve
+            precision, recall, _ = precision_recall_curve(y_true, y_pred_proba)
+            pr_auc = auc(recall, precision)
+            
+            # Model display name
+            model_display_name = model_name.replace('_', ' ').title()
+            color = model_colors.get(model_name, f'C{models_plotted}')
+            
+            # Plot ROC
+            ax1.plot(fpr, tpr, color=color, lw=3, 
+                    label=f'{model_display_name} (AUC = {roc_auc:.3f})')
+            
+            # Plot PR
+            ax2.plot(recall, precision, color=color, lw=3, 
+                    label=f'{model_display_name} (AUC = {pr_auc:.3f})')
+            
+            models_plotted += 1
+            print(f"  {model_name}: ROC AUC = {roc_auc:.3f}, PR AUC = {pr_auc:.3f}")
+            
+        except Exception as e:
             models_with_errors.append(model_name)
-            print(f"  {model_name}: Dados de trials não encontrados")
+            print(f"  ❌ {model_name}: Erro ao processar predições - {e}")
     
     # ROC subplot
     ax1.plot([0, 1], [0, 1], color='gray', lw=2, linestyle='--', alpha=0.8,
@@ -535,28 +422,15 @@ def plot_combined_curves(model_results, X, y, save_path=None):
     ax1.grid(True, alpha=0.3)
     
     # PR subplot
-    ax2.axhline(y=pos_rate, color='gray', lw=2, linestyle='--', alpha=0.8,
-                label=f'Classificador Aleatório (AUC = {pos_rate:.3f})')
+    if pos_rate is not None:
+        ax2.axhline(y=pos_rate, color='gray', lw=2, linestyle='--', alpha=0.8,
+                    label=f'Classificador Aleatório (AUC = {pos_rate:.3f})')
     ax2.set_xlim([0.0, 1.0])
     ax2.set_ylim([0.0, 1.05])
     ax2.set_xlabel('Recall', fontsize=16)
     ax2.set_ylabel('Precision', fontsize=16)
-    #ax2.set_title('Curvas Precision-Recal', fontsize=14)
     ax2.legend(loc="lower left", fontsize=9)
     ax2.grid(True, alpha=0.3)
-    
-    # Título geral
-    fig.suptitle('Comparação de Performance - Classificação de Genes-Alvo (Oncogenes)', 
-                 fontsize=16, y=1.02)
-    
-    # Adicionar informações
-    info_text = f'Dataset: {X.shape[0]} amostras, {X.shape[1]} features\nModelos plotados: {models_plotted}'
-    if models_with_errors:
-        info_text += f'\nModelos com erro: {len(models_with_errors)}'
-    
-    fig.text(0.02, 0.02, info_text, 
-             bbox=dict(boxstyle="round,pad=0.3", facecolor="lightyellow", alpha=0.8),
-             fontsize=9)
     
     plt.tight_layout()
     
@@ -574,64 +448,26 @@ def plot_combined_curves(model_results, X, y, save_path=None):
         print(f"  Modelos com erro: {', '.join(models_with_errors)}")
 
 
-def generate_all_plots(X=None, y=None):
+def generate_all_plots():
     """
-    Função principal para gerar todos os gráficos
-    
-    Args:
-        X (array, optional): Features. Se None, carrega dados do processamento
-        y (array, optional): Labels. Se None, carrega dados do processamento
+    Função principal para gerar todos os gráficos usando predições salvas
     """
-    print("Gerando gráficos de performance dos modelos...")
-    print("="*60)
+    print("Gerando gráficos de performance dos modelos usando predições salvas...")
+    print("="*70)
     
     # Criar diretório de plots
     plots_dir = create_plots_directory()
     
-    # Carregar dados se não fornecidos
-    if X is None or y is None:
-        try:
-
-            features_path = "../data/UNION_features.tsv"
-            labels_path = "../data/processed/UNION_labels.tsv"
-            
-            # Verificar se os arquivos existem
-            if not os.path.exists(features_path):
-                print(f"Arquivo de features não encontrado: {features_path}")
-                return
-            
-            if not os.path.exists(labels_path):
-                print(f"Arquivo de labels não encontrado: {labels_path}")
-                return
-            
-            from processing import prepare_dataset
-            print("Carregando dados usando a função padrão do processamento...")
-            
-            X, y, gene_names, feature_names = prepare_dataset(features_path, labels_path)
-            
-            if X is None:
-                print("Erro ao preparar dataset usando processamento.py")
-                return
-                
-            print(f"Dados carregados: {X.shape[0]} amostras, {X.shape[1]} features")
-            print(f"Distribuição das classes: {dict(zip(*np.unique(y, return_counts=True)))}")
-            
-        except Exception as e:
-            print(f"Erro ao carregar dados: {e}")
-            print("Verifique se os arquivos de dados estão disponíveis")
-            print("Ou forneça X e y como parâmetros para a função")
-            return
-    
-    # Carregar resultados dos modelos
-    print("Carregando resultados dos modelos...")
-    model_results = load_model_results()
+    # Carregar predições salvas
+    print("Carregando predições salvas dos modelos...")
+    model_results = load_saved_predictions()
     
     if not model_results:
-        print("Nenhum resultado de modelo encontrado!")
-        print("Execute primeiro os modelos usando main.py")
+        print("❌ Nenhuma predição encontrada!")
+        print("Execute primeiro os modelos usando main.py para gerar as predições.")
         return
     
-    print(f"Modelos encontrados: {list(model_results.keys())}")
+    print(f"✅ Predições encontradas para {len(model_results)} modelos: {list(model_results.keys())}")
     
     # Timestamp para arquivos
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -639,20 +475,15 @@ def generate_all_plots(X=None, y=None):
     # Gerar gráficos
     print("\nGerando ROC Curves...")
     roc_save_path = os.path.join(plots_dir, "roc_curves", f"roc_comparison_{timestamp}")
-    plot_roc_curve(model_results, X, y, save_path=roc_save_path)
+    plot_roc_curve(model_results, save_path=roc_save_path)
     
     print("\nGerando Precision-Recall Curves...")
     pr_save_path = os.path.join(plots_dir, "pr_curves", f"pr_comparison_{timestamp}")
-    plot_precision_recall_curve(model_results, X, y, save_path=pr_save_path)
+    plot_precision_recall_curve(model_results, save_path=pr_save_path)
     
-    # print("\nGerando gráfico combinado...")
-    # combined_save_path = os.path.join(plots_dir, "combined", f"combined_curves_{timestamp}")
-    # plot_combined_curves(model_results, X, y, save_path=combined_save_path)
     
-    print(f"\nTodos os gráficos gerados com sucesso!")
-    print(f"Gráficos salvos em: {plots_dir}")
-    print(f"Timestamp: {timestamp}")
-
+    print(f"\n🎉 Todos os gráficos gerados com sucesso!")
+    print(f"📁 Gráficos salvos em: {plots_dir}")
 
 if __name__ == "__main__":
     # Exemplo de uso

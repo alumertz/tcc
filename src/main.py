@@ -279,11 +279,17 @@ def evaluate_model_default(model, model_name, X, y, data_source="ana", classific
     
     # Obter predições para o relatório de classificação
     y_pred = pipeline.predict(X_test)
-    y_pred_proba = pipeline.predict_proba(X_test)[:, 1]
+    y_pred_proba = pipeline.predict_proba(X_test)
+    
+    # Extract probabilities for positive class (binary) or keep all classes (multiclass)
+    if classification_type == 'binary' and y_pred_proba.shape[1] == 2:
+        y_pred_proba_positive = y_pred_proba[:, 1]
+    else:
+        y_pred_proba_positive = y_pred_proba
     
     # Relatório de classificação detalhado
     from src.reports import generate_enhanced_classification_report
-    class_report = generate_enhanced_classification_report(y_test, y_pred, y_pred_proba)
+    class_report = generate_enhanced_classification_report(y_test, y_pred, y_pred_proba_positive)
     print("\nRelatório de classificação:\n" + str(class_report))
     
     # Salvar resultados usando função unificada
@@ -296,7 +302,14 @@ def evaluate_model_default(model, model_name, X, y, data_source="ana", classific
         'cv_results': cv_results,
         'test_metrics': test_metrics,
         'classification_report': class_report,
-        'parameters': clean_params
+        'parameters': clean_params,
+        # Save predictions for plotting
+        'test_predictions': {
+            'y_true': y_test.tolist(),
+            'y_pred': y_pred.tolist(),
+            'y_pred_proba': y_pred_proba_positive.tolist() if hasattr(y_pred_proba_positive, 'tolist') else y_pred_proba_positive,
+            'test_indices': X_test.index.tolist() if hasattr(X_test, 'index') else list(range(len(X_test)))
+        }
     }
     
     save_model_results_unified(model_name, results_data, mode="default", 
@@ -378,6 +391,13 @@ def main(use_renan=False, use_multiclass=False, use_default=False):
     """
     print("CLASSIFICAÇÃO DE GENES-ALVO USANDO DADOS ÔMICOS")
     print("="*80)
+    
+    # Inicializar timestamp do experimento para toda a sessão
+    from src.reports import set_experiment_timestamp
+    experiment_timestamp = set_experiment_timestamp()
+    print(f"🕐 Timestamp do experimento: {experiment_timestamp}")
+    print(f"📁 Todos os modelos serão salvos na mesma pasta do experimento")
+    print()
     
     # Obtém os caminhos dos arquivos baseado na fonte escolhida
     features_path, labels_path, data_source = get_data_paths(use_renan)
