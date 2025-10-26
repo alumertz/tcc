@@ -44,137 +44,113 @@ def create_plots_directory():
     return plots_dir
 
 
-def load_saved_predictions(results_dirs=None):
+def load_saved_predictions(results_dir="../results"):
     """
     Carrega predições salvas de todos os modelos testados
     
     Args:
-        results_dirs (list): Lista de diretórios para procurar resultados
+        results_dir (str): Diretório para procurar resultados
         
     Returns:
         dict: Dicionário com predições de cada modelo
     """
-    if results_dirs is None:
-        # Procurar primeiro no novo formato (results/) depois no antigo (plot_results/)
-        results_dirs = ["./results", "./plot_results"]
-    
     models_data = {}
     
-    # Lista de modelos disponíveis (incluindo variações de nomes com hífens e underscores)
+    # Lista de modelos padronizada (sem variações)
     model_names = [
         'decision_tree', 'random_forest', 'gradient_boosting', 
         'histogram_gradient_boosting', 'k_nearest_neighbors', 'multi_layer_perceptron', 
-        'support_vector_classifier', 'catboost',
-        # Variações com hífens (formato usado pelos resultados salvos)
-        'k-nearest_neighbors', 'multi-layer_perceptron'
+        'support_vector_classifier', 'catboost'
     ]
     
-    print("Procurando resultados em:")
-    for results_dir in results_dirs:
-        print(f"  - {results_dir}")
-    print()
+    print(f"Procurando resultados em: {results_dir}")
     
-    # Procurar nas pastas de experimentos mais recentes primeiro
-    for results_dir in results_dirs:
-        if not os.path.exists(results_dir):
-            print(f"Diretório {results_dir} não existe")
-            continue
-            
-        # Se for o novo formato results/, procurar por experimentos timestamped
-        if results_dir == "./results":
-            # Listar subdiretórios de experimentos (formato: YYYYMMDD_HHMMSS_ana_default_binary)
-            experiment_dirs = []
-            if os.path.exists(results_dir):
-                for item in os.listdir(results_dir):
-                    item_path = os.path.join(results_dir, item)
-                    if os.path.isdir(item_path):
-                        experiment_dirs.append(item)
-            
-            if experiment_dirs:
-                # Usar o experimento mais recente
-                latest_experiment = sorted(experiment_dirs)[-1]
-                current_results_dir = os.path.join(results_dir, latest_experiment)
-                print(f"Usando experimento mais recente: {latest_experiment}")
-            else:
-                print(f"Nenhum experimento encontrado em {results_dir}")
-                continue
-        else:
-            current_results_dir = results_dir
-        
-        # Procurar modelos
-        for model_name in model_names:
-            if model_name in models_data:
-                continue  # Já encontramos este modelo
-                
+    if not os.path.exists(results_dir):
+        print(f"Diretório {results_dir} não existe")
+        return models_data
+    
+    # Listar subdiretórios de experimentos (formato: YYYYMMDD_HHMMSS_ana_default_binary)
+    experiment_dirs = []
+    for item in os.listdir(results_dir):
+        item_path = os.path.join(results_dir, item)
+        if os.path.isdir(item_path):
+            experiment_dirs.append(item)
+    
+    if not experiment_dirs:
+        print(f"Nenhum experimento encontrado em {results_dir}")
+        return models_data
+    
+    # Usar o experimento mais recente
+    latest_experiment = sorted(experiment_dirs)[-1]
+    current_results_dir = os.path.join(results_dir, latest_experiment)
+    print(f"Usando experimento mais recente: {latest_experiment}")
+    
+    # Procurar modelos com nomes padronizados e variações (para compatibilidade)
+    model_variations = {
+        'decision_tree': ['decision_tree'],
+        'random_forest': ['random_forest'],
+        'gradient_boosting': ['gradient_boosting'],
+        'histogram_gradient_boosting': ['histogram_gradient_boosting'],
+        'k_nearest_neighbors': ['k_nearest_neighbors', 'k-nearest_neighbors'],
+        'multi_layer_perceptron': ['multi_layer_perceptron', 'multi-layer_perceptron'],
+        'support_vector_classifier': ['support_vector_classifier'],
+        'catboost': ['catboost']
+    }
+    
+    for standard_name, variations in model_variations.items():
+        for model_name in variations:
             model_dir = os.path.join(current_results_dir, model_name)
             print(f"Verificando {model_name} em {model_dir}...")
             
             if os.path.exists(model_dir):
-                # Procurar por arquivos de resultados (novos formatos sem timestamp e antigos com timestamp)
-                json_files = [f for f in os.listdir(model_dir) if f.startswith('trials_') and f.endswith('.json')]
-                default_files = [f for f in os.listdir(model_dir) 
-                               if (f == 'default_metrics.json' or f.startswith('default_metrics_')) and f.endswith('.json')]
+                # Procurar por arquivo metrics.json padronizado
+                metrics_file = os.path.join(model_dir, 'metrics.json')
                 
-                latest_file = None
-                file_type = None
-                
-                # Preferir arquivos sem timestamp (novos) sobre arquivos com timestamp (antigos)
-                if json_files:
-                    latest_file = sorted(json_files)[-1]
-                    file_type = 'optimized'
-                elif default_files:
-                    # Priorizar default_metrics.json (novo formato) sobre default_metrics_TIMESTAMP.json (antigo)
-                    if 'default_metrics.json' in default_files:
-                        latest_file = 'default_metrics.json'
-                    else:
-                        latest_file = sorted(default_files)[-1]  # Pegar o mais recente com timestamp
-                    file_type = 'default'
-                
-                if latest_file:
-                    file_path = os.path.join(model_dir, latest_file)
-                    
-                    print(f"   Carregando predições de {model_name} ({file_type})")
-                    print(f"   Arquivo: {latest_file}")
+                if os.path.exists(metrics_file):
+                    print(f"   Carregando predições de {standard_name}")
+                    print(f"   Arquivo: metrics.json")
                     
                     try:
-                        with open(file_path, 'r') as f:
+                        with open(metrics_file, 'r') as f:
                             data = json.load(f)
-                            
-                        # Extrair predições baseado no tipo de arquivo
-                        predictions = None
-                        if file_type == 'optimized':
-                            # Para arquivos otimizados, as predições estão em 'test_predictions'
-                            if 'test_predictions' in data:
-                                predictions = data['test_predictions']
-                            # Fallback: pode estar diretamente no data se for formato antigo
-                            elif isinstance(data, list) and len(data) > 0:
-                                # Formato antigo de trials - não temos predições salvas
-                                print(f"   ⚠️  {model_name}: Formato antigo sem predições salvas")
-                                continue
-                        elif file_type == 'default':
-                            # Para arquivos default, as predições estão em 'test_predictions'
-                            if 'test_predictions' in data:
-                                predictions = data['test_predictions']
                         
-                        if predictions and all(key in predictions for key in ['y_true', 'y_pred_proba']):
-                            models_data[model_name] = {
-                                'predictions': predictions,
-                                'file_type': file_type,
-                                'file_path': file_path
-                            }
-                            print(f"   ✓ Predições carregadas: {len(predictions['y_true'])} amostras")
+                        # Extrair predições
+                        if 'test_predictions' in data:
+                            predictions = data['test_predictions']
+                            
+                            if predictions and all(key in predictions for key in ['y_true', 'y_pred_proba']):
+                                models_data[standard_name] = {
+                                    'predictions': predictions,
+                                    'file_path': metrics_file
+                                }
+                                print(f"   ✓ Predições carregadas: {len(predictions['y_true'])} amostras")
+                                break  # Encontrou o modelo, não precisa procurar outras variações
+                            else:
+                                print(f"   ⚠️  {standard_name}: Predições não encontradas no arquivo")
                         else:
-                            print(f"   ⚠️  {model_name}: Predições não encontradas no arquivo")
+                            print(f"   ⚠️  {standard_name}: Campo 'test_predictions' não encontrado")
                             
                     except Exception as e:
-                        print(f"   ❌ Erro ao carregar {model_name}: {e}")
+                        print(f"   ❌ Erro ao carregar {standard_name}: {e}")
                 else:
-                    print(f"   ⚠️  Nenhum arquivo de resultados encontrado para {model_name}")
+                    print(f"   ⚠️  Arquivo metrics.json não encontrado para {model_name}")
             else:
                 print(f"   ⚠️  Diretório não existe: {model_dir}")
     
     return models_data
 
+
+# Paleta de cores padronizada para todos os modelos
+STANDARD_COLORS = {
+    'decision_tree': '#1f77b4',           # Azul
+    'random_forest': '#ff7f0e',           # Laranja
+    'gradient_boosting': '#2ca02c',       # Verde
+    'histogram_gradient_boosting': '#d62728',  # Vermelho
+    'k_nearest_neighbors': '#9467bd',     # Roxo
+    'multi_layer_perceptron': '#8c564b',  # Marrom
+    'support_vector_classifier': '#e377c2',  # Rosa
+    'catboost': '#17becf',                # Ciano
+}
 
 def plot_roc_curve(model_results, save_path=None):
     """
@@ -185,18 +161,6 @@ def plot_roc_curve(model_results, save_path=None):
         save_path (str): Caminho para salver o gráfico
     """
     plt.figure(figsize=(12, 9))
-    
-    # Cores específicas para cada modelo para melhor visualização
-    model_colors = {
-        'decision_tree': '#1f77b4',      # Azul
-        'random_forest': '#ff7f0e',      # Laranja
-        'gradient_boosting': '#2ca02c',  # Verde
-        'histogram_gradient_boosting': '#d62728',  # Vermelho
-        'k_nearest_neighbors': '#9467bd',                # Roxo
-        'multi_layer_perceptron': '#8c564b',                # Marrom
-        'support_vector_classifier': '#e377c2',                 # Rosa
-        'catboost': '#17becf',           # Ciano
-    }
     
     models_plotted = 0
     models_with_errors = []
@@ -218,7 +182,7 @@ def plot_roc_curve(model_results, save_path=None):
             
             # Plotar curva
             model_display_name = model_name.replace('_', ' ').title()
-            color = model_colors.get(model_name, f'C{models_plotted}')
+            color = STANDARD_COLORS.get(model_name, f'C{models_plotted}')
             plt.plot(fpr, tpr, color=color, lw=3, 
                     label=f'{model_display_name} (AUC = {roc_auc:.3f})')
             models_plotted += 1
@@ -266,18 +230,6 @@ def plot_precision_recall_curve(model_results, save_path=None):
     """
     plt.figure(figsize=(12, 9))
     
-    # Cores específicas para cada modelo para melhor visualização
-    model_colors = {
-        'decision_tree': '#1f77b4',      # Azul
-        'random_forest': '#ff7f0e',      # Laranja
-        'gradient_boosting': '#2ca02c',  # Verde
-        'histogram_gradient_boosting': '#d62728',  # Vermelho
-        'k_nearest_neighbors': '#9467bd',                # Roxo
-        'multi_layer_perceptron': '#8c564b',                # Marrom
-        'support_vector_classifier': '#e377c2',                 # Rosa
-        'catboost': '#17becf',           # Ciano
-    }
-    
     models_plotted = 0
     models_with_errors = []
     pos_rate = None
@@ -303,7 +255,7 @@ def plot_precision_recall_curve(model_results, save_path=None):
             
             # Plotar curva
             model_display_name = model_name.replace('_', ' ').title()
-            color = model_colors.get(model_name, f'C{models_plotted}')
+            color = STANDARD_COLORS.get(model_name, f'C{models_plotted}')
             plt.plot(recall, precision, color=color, lw=3, 
                     label=f'{model_display_name} (AUC = {pr_auc:.3f})')
             models_plotted += 1
@@ -352,18 +304,6 @@ def plot_combined_curves(model_results, save_path=None):
     """
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 8))
     
-    # Cores específicas para cada modelo
-    model_colors = {
-        'decision_tree': '#1f77b4',      # Azul
-        'random_forest': '#ff7f0e',      # Laranja
-        'gradient_boosting': '#2ca02c',  # Verde
-        'histogram_gradient_boosting': '#d62728',  # Vermelho
-        'k_nearest_neighbors': '#9467bd',                # Roxo
-        'multi_layer_perceptron': '#8c564b',                # Marrom
-        'support_vector_classifier': '#e377c2',                 # Rosa
-        'catboost': '#17becf',           # Ciano
-    }
-    
     models_plotted = 0
     models_with_errors = []
     pos_rate = None
@@ -393,7 +333,7 @@ def plot_combined_curves(model_results, save_path=None):
             
             # Model display name
             model_display_name = model_name.replace('_', ' ').title()
-            color = model_colors.get(model_name, f'C{models_plotted}')
+            color = STANDARD_COLORS.get(model_name, f'C{models_plotted}')
             
             # Plot ROC
             ax1.plot(fpr, tpr, color=color, lw=3, 
@@ -469,16 +409,13 @@ def generate_all_plots():
     
     print(f"✅ Predições encontradas para {len(model_results)} modelos: {list(model_results.keys())}")
     
-    # Timestamp para arquivos
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    
-    # Gerar gráficos
+    # Gerar gráficos com nomes padronizados (sem timestamps)
     print("\nGerando ROC Curves...")
-    roc_save_path = os.path.join(plots_dir, "roc_curves", f"roc_comparison_{timestamp}")
+    roc_save_path = os.path.join(plots_dir, "roc_curves", "roc_comparison")
     plot_roc_curve(model_results, save_path=roc_save_path)
     
     print("\nGerando Precision-Recall Curves...")
-    pr_save_path = os.path.join(plots_dir, "pr_curves", f"pr_comparison_{timestamp}")
+    pr_save_path = os.path.join(plots_dir, "pr_curves", "pr_comparison")
     plot_precision_recall_curve(model_results, save_path=pr_save_path)
     
     
