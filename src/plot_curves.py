@@ -33,17 +33,12 @@ sns.set_style("whitegrid")
 sns.set_palette("husl")
 
 
-def create_plots_directory():
-    """Cria diretório para salvar os gráficos"""
-    plots_dir = "../plots"
-    os.makedirs(plots_dir, exist_ok=True)
+def create_plots_directory(experiment_dir):
+    """Cria diretório curves dentro do diretório do experimento para salvar os gráficos"""
+    curves_dir = os.path.join(experiment_dir, "curves")
+    os.makedirs(curves_dir, exist_ok=True)
     
-    # Criar subdiretórios para diferentes tipos de gráficos
-    os.makedirs(os.path.join(plots_dir, "roc_curves"), exist_ok=True)
-    os.makedirs(os.path.join(plots_dir, "pr_curves"), exist_ok=True)
-    os.makedirs(os.path.join(plots_dir, "combined"), exist_ok=True)
-    
-    return plots_dir
+    return curves_dir
 
 
 def load_saved_predictions(results_dir="./results"):
@@ -54,9 +49,10 @@ def load_saved_predictions(results_dir="./results"):
         results_dir (str): Diretório para procurar resultados
         
     Returns:
-        dict: Dicionário com predições de cada modelo
+        tuple: (models_data, experiment_dir) - Dicionário com predições e caminho do experimento
     """
     models_data = {}
+    experiment_dir = None
     
     # Lista de modelos padronizada (sem variações)
     model_names = [
@@ -69,7 +65,7 @@ def load_saved_predictions(results_dir="./results"):
     
     if not os.path.exists(results_dir):
         print(f"Diretório {results_dir} não existe")
-        return models_data
+        return models_data, experiment_dir
     
     # Listar subdiretórios de experimentos (formato: YYYYMMDD_HHMMSS_ana_default_*)
     experiment_dirs = []
@@ -83,11 +79,12 @@ def load_saved_predictions(results_dir="./results"):
     if not experiment_dirs:
         print(f"Nenhum experimento encontrado em {results_dir}")
         print(f"Diretórios disponíveis: {os.listdir(results_dir)}")
-        return models_data
+        return models_data, experiment_dir
     
     # Usar o experimento mais recente (ordenado por timestamp)
     latest_experiment = sorted(experiment_dirs)[-1]
     current_results_dir = os.path.join(results_dir, latest_experiment)
+    experiment_dir = current_results_dir  # Armazenar o caminho do experimento
     print(f"Usando experimento mais recente: {latest_experiment}")
     
     # Procurar modelos com nomes padronizados e variações (para compatibilidade)
@@ -152,7 +149,7 @@ def load_saved_predictions(results_dir="./results"):
             else:
                 print(f"   ⚠️  Diretório não existe: {model_dir}")
     
-    return models_data
+    return models_data, experiment_dir
 
 
 def detect_classification_type(y_true, y_pred_proba):
@@ -296,7 +293,7 @@ def plot_roc_curve(model_results, save_path=None):
     else:
         plt.title('ROC Curves (Binary Classification)', fontsize=24)
     
-    plt.legend(loc="lower right", fontsize=22, framealpha=0.9)
+    plt.legend(loc="lower right", fontsize=18, framealpha=0.9)
     plt.grid(True, alpha=0.3)
     
     plt.tight_layout()
@@ -426,7 +423,7 @@ def plot_precision_recall_curve(model_results, save_path=None):
     else:
         plt.title('Precision-Recall Curves (Binary Classification)', fontsize=24)
     
-    plt.legend(loc="upper right", fontsize=22, framealpha=0.9)
+    plt.legend(loc="lower left", fontsize=18, framealpha=0.9)
     plt.grid(True, alpha=0.3)
     
     plt.tight_layout()
@@ -446,101 +443,6 @@ def plot_precision_recall_curve(model_results, save_path=None):
     if models_with_errors:
         print(f"  Modelos com erro: {', '.join(models_with_errors)}")
 
-
-def plot_combined_curves(model_results, save_path=None):
-    """
-    Cria gráfico combinado com ROC e Precision-Recall lado a lado usando predições salvas
-    
-    Args:
-        model_results (dict): Resultados dos modelos com predições
-        save_path (str): Caminho para salvar o gráfico
-    """
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 8))
-    
-    models_plotted = 0
-    models_with_errors = []
-    pos_rate = None
-    
-    # Ordenar modelos para plotagem consistente
-    sorted_models = sorted(model_results.items())
-    
-    for model_name, data in sorted_models:
-        print(f"Processando {model_name} (gráfico combinado)...")
-        
-        try:
-            predictions = data['predictions']
-            y_true = np.array(predictions['y_true'])
-            y_pred_proba = np.array(predictions['y_pred_proba'])
-            
-            # Calcular proporção da classe positiva (apenas uma vez)
-            if pos_rate is None:
-                pos_rate = np.mean(y_true)
-            
-            # ROC Curve
-            fpr, tpr, _ = roc_curve(y_true, y_pred_proba)
-            roc_auc = auc(fpr, tpr)
-            
-            # Precision-Recall Curve
-            precision, recall, _ = precision_recall_curve(y_true, y_pred_proba)
-            pr_auc = auc(recall, precision)
-            
-            # Model display name
-            model_display_name = model_name.replace('_', ' ').title()
-            color = STANDARD_COLORS.get(model_name, f'C{models_plotted}')
-            
-            # Plot ROC
-            ax1.plot(fpr, tpr, color=color, lw=3, 
-                    label=f'{model_display_name} (AUC = {roc_auc:.3f})')
-            
-            # Plot PR
-            ax2.plot(recall, precision, color=color, lw=3, 
-                    label=f'{model_display_name} (AUC = {pr_auc:.3f})')
-            
-            models_plotted += 1
-            print(f"  {model_name}: ROC AUC = {roc_auc:.3f}, PR AUC = {pr_auc:.3f}")
-            
-        except Exception as e:
-            models_with_errors.append(model_name)
-            print(f"  ❌ {model_name}: Erro ao processar predições - {e}")
-    
-    # ROC subplot
-    ax1.plot([0, 1], [0, 1], color='gray', lw=2, linestyle='--', alpha=0.8,
-             label='Classificador Aleatório (AUC = 0.500)')
-    ax1.set_xlim([0.0, 1.0])
-    ax1.set_ylim([0.0, 1.05])
-    ax1.set_xlabel('Taxa de Falsos Positivos', fontsize=12)
-    ax1.set_ylabel('Taxa de Verdadeiros Positivos', fontsize=12)
-    ax1.set_title('Curvas ROC', fontsize=14)
-    ax1.legend(loc="lower right", fontsize=9)
-    ax1.grid(True, alpha=0.3)
-    
-    # PR subplot
-    if pos_rate is not None:
-        ax2.axhline(y=pos_rate, color='gray', lw=2, linestyle='--', alpha=0.8,
-                    label=f'Classificador Aleatório (AUC = {pos_rate:.3f})')
-    ax2.set_xlim([0.0, 1.0])
-    ax2.set_ylim([0.0, 1.05])
-    ax2.set_xlabel('Recall', fontsize=16)
-    ax2.set_ylabel('Precision', fontsize=16)
-    ax2.legend(loc="lower left", fontsize=9)
-    ax2.grid(True, alpha=0.3)
-    
-    plt.tight_layout()
-    
-    if save_path:
-        plt.savefig(save_path+'.png', dpi=300, bbox_inches='tight')
-        plt.savefig(save_path+'.pdf', bbox_inches='tight')
-        print(f"Gráfico combinado salvo em: {save_path}")
-    
-    plt.show()
-    
-    # Relatório final
-    print(f"\nRelatório Gráfico Combinado:")
-    print(f"  Modelos plotados: {models_plotted}")
-    if models_with_errors:
-        print(f"  Modelos com erro: {', '.join(models_with_errors)}")
-
-
 def generate_all_plots():
     """
     Função principal para gerar todos os gráficos usando predições salvas
@@ -548,32 +450,36 @@ def generate_all_plots():
     print("Gerando gráficos de performance dos modelos usando predições salvas...")
     print("="*70)
     
-    # Criar diretório de plots
-    plots_dir = create_plots_directory()
-    
     # Carregar predições salvas
     print("Carregando predições salvas dos modelos...")
-    model_results = load_saved_predictions()
+    model_results, experiment_dir = load_saved_predictions()
     
     if not model_results:
         print("❌ Nenhuma predição encontrada!")
         print("Execute primeiro os modelos usando main.py para gerar as predições.")
         return
     
+    if not experiment_dir:
+        print("❌ Nenhum diretório de experimento encontrado!")
+        return
+    
+    # Criar diretório curves dentro do experimento
+    curves_dir = create_plots_directory(experiment_dir)
+    
     print(f"✅ Predições encontradas para {len(model_results)} modelos: {list(model_results.keys())}")
+    print(f"📁 Gráficos serão salvos em: {curves_dir}")
     
     # Gerar gráficos com nomes padronizados (sem timestamps)
     print("\nGerando ROC Curves...")
-    roc_save_path = os.path.join(plots_dir, "roc_curves", "roc_comparison")
+    roc_save_path = os.path.join(curves_dir, "roc_comparison")
     plot_roc_curve(model_results, save_path=roc_save_path)
     
     print("\nGerando Precision-Recall Curves...")
-    pr_save_path = os.path.join(plots_dir, "pr_curves", "pr_comparison")
+    pr_save_path = os.path.join(curves_dir, "pr_comparison")
     plot_precision_recall_curve(model_results, save_path=pr_save_path)
     
-    
     print(f"\n🎉 Todos os gráficos gerados com sucesso!")
-    print(f"📁 Gráficos salvos em: {plots_dir}")
+    print(f"📁 Gráficos salvos em: {curves_dir}")
 
 if __name__ == "__main__":
     # Exemplo de uso
