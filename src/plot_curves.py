@@ -81,11 +81,48 @@ def load_saved_predictions(results_dir="./results"):
         print(f"Diretórios disponíveis: {os.listdir(results_dir)}")
         return models_data, experiment_dir
     
-    # Usar o experimento mais recente (ordenado por timestamp)
-    latest_experiment = sorted(experiment_dirs)[-1]
-    current_results_dir = os.path.join(results_dir, latest_experiment)
+    # Ordenar diretórios por timestamp (mais recente primeiro)
+    experiment_dirs.sort(reverse=True)
+    
+    # Mostrar opções para o usuário
+    print("\nDiretórios de experimentos disponíveis:")
+    for i, dir_name in enumerate(experiment_dirs, 1):
+        # Extrair informações do nome do diretório para melhor visualização
+        parts = dir_name.split('_')
+        if len(parts) >= 4:
+            date_part = parts[0]  # YYYYMMDD
+            time_part = parts[1]  # HHMMSS
+            classification_type = parts[-1]  # binary/multiclass
+            formatted_date = f"{date_part[:4]}-{date_part[4:6]}-{date_part[6:8]}"
+            formatted_time = f"{time_part[:2]}:{time_part[2:4]}:{time_part[4:6]}"
+            print(f"{i}. {dir_name}")
+            print(f"   Data: {formatted_date} {formatted_time} | Tipo: {classification_type}")
+        else:
+            print(f"{i}. {dir_name}")
+    
+    # Solicitar seleção do usuário
+    print(f"\n[Enter] = usar o mais recente ({experiment_dirs[0]})")
+    choice = input("Selecione o número do experimento (ou pressione Enter): ").strip()
+    
+    if choice == "":
+        # Usar o experimento mais recente (primeiro da lista ordenada)
+        selected_experiment = experiment_dirs[0]
+        print(f"Usando experimento mais recente: {selected_experiment}")
+    else:
+        try:
+            choice_num = int(choice)
+            if 1 <= choice_num <= len(experiment_dirs):
+                selected_experiment = experiment_dirs[choice_num - 1]
+                print(f"Usando experimento selecionado: {selected_experiment}")
+            else:
+                print(f"Número inválido. Usando experimento mais recente: {experiment_dirs[0]}")
+                selected_experiment = experiment_dirs[0]
+        except ValueError:
+            print(f"Entrada inválida. Usando experimento mais recente: {experiment_dirs[0]}")
+            selected_experiment = experiment_dirs[0]
+    
+    current_results_dir = os.path.join(results_dir, selected_experiment)
     experiment_dir = current_results_dir  # Armazenar o caminho do experimento
-    print(f"Usando experimento mais recente: {latest_experiment}")
     
     # Procurar modelos com nomes padronizados e variações (para compatibilidade)
     model_variations = {
