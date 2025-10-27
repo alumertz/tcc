@@ -56,9 +56,20 @@ def _nested_cross_validation_optimization(classifier_class, param_suggestions_fu
     for train_idx, test_idx in outer_cv.split(X, y):
         print(f"\nFold {fold_number}/{outer_cv_folds}")
         
-        # Dividir dados para este fold
-        X_train_fold, X_test_fold = X.iloc[train_idx], X.iloc[test_idx]
-        y_train_fold, y_test_fold = y.iloc[train_idx], y.iloc[test_idx]
+        # Dividir dados para este fold - funciona com numpy arrays e pandas DataFrames
+        if hasattr(X, 'iloc'):
+            # pandas DataFrame
+            X_train_fold, X_test_fold = X.iloc[train_idx], X.iloc[test_idx]
+        else:
+            # numpy array
+            X_train_fold, X_test_fold = X[train_idx], X[test_idx]
+            
+        if hasattr(y, 'iloc'):
+            # pandas Series
+            y_train_fold, y_test_fold = y.iloc[train_idx], y.iloc[test_idx]
+        else:
+            # numpy array
+            y_train_fold, y_test_fold = y[train_idx], y[test_idx]
         
         # Otimização no conjunto de treino (loop interno)
         def objective(trial):
@@ -170,7 +181,7 @@ def _nested_cross_validation_optimization(classifier_class, param_suggestions_fu
     
     # Salvar resultados se solicitado
     if save_results:
-        from .reports import save_nested_cv_results
+        from src.reports import save_nested_cv_results
         save_nested_cv_results(
             model_name=model_name,
             aggregated_metrics=aggregated_metrics,
