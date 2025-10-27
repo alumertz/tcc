@@ -396,7 +396,6 @@ def main(use_renan=False, use_multiclass=False, use_default=False):
     from src.reports import set_experiment_timestamp
     experiment_timestamp = set_experiment_timestamp()
     print(f"🕐 Timestamp do experimento: {experiment_timestamp}")
-    print(f"📁 Todos os modelos serão salvos na mesma pasta do experimento")
     print()
     
     # Obtém os caminhos dos arquivos baseado na fonte escolhida
