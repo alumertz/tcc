@@ -1,0 +1,22 @@
+{
+  "params": {
+    "iterations": 256,
+    "learning_rate": 0.019261294694430553,
+    "depth": 7,
+    "l2_leaf_reg": 2.9603859610055303,
+    "border_count": 239,
+    "bagging_temperature": 0.30218907193827815,
+    "random_strength": 0.8356422919240496,
+    "verbose": false,
+    "allow_writing_files": false
+  },
+  "cv_score": 0.4689260260098617,
+  "training_time": 10.55165696144104,
+  "omics_used": [
+    "CNA",
+    "Gene_Expression",
+    "DNA_Methylation",
+    "Mutations"
+  ],
+  "accuracy_global": 0.6952054794520548
+}

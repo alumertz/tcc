@@ -356,7 +356,7 @@ if __name__ == "__main__":
     main(args.renan, args.multiclass)'''
 
 
-def run_all_omics_combinations(use_renan=False, use_multiclass=False):
+def run_all_omics_combinations(use_renan=False, use_multiclass=False): # Roda combinações de 1 e 3
     all_omics = ["CNA", "Gene_Expression", "DNA_Methylation", "Mutations"]
 
     print("🧪 Executando com cada omic individualmente...")
@@ -443,4 +443,8 @@ def main(use_renan=False, use_multiclass=False, omics_used=None):
 
 if __name__ == "__main__":
     args = parse_arguments()
-    run_all_omics_combinations(use_renan=args.renan, use_multiclass=args.multiclass)
+    #run_all_omics_combinations(use_renan=args.renan, use_multiclass=args.multiclass)
+
+    # Rodando todos os modelos usando todas as ômicas
+    all_omics = ["CNA", "Gene_Expression", "DNA_Methylation", "Mutations"]
+    main(use_renan=args.renan, use_multiclass=args.multiclass, omics_used=all_omics)
