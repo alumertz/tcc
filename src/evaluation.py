@@ -75,34 +75,18 @@ def evaluate_classification_on_test(model, X_test, y_test, return_dict=False, cl
     accuracy = accuracy_score(y_test, y_pred)
 
     if classification_type == 'multiclass':
-        # Use weighted averages for multiclass as requested
+        # Use weighted averages for multiclass
         precision = precision_score(y_test, y_pred, average='weighted')
         recall = recall_score(y_test, y_pred, average='weighted')
         f1 = f1_score(y_test, y_pred, average='weighted')
 
-        # ROC AUC (multiclass OVR) and PR AUC per class averaged (macro)
-        try:
-            # y_proba shape is (n_samples, n_classes)
-            roc_auc = roc_auc_score(y_test, y_proba, multi_class='ovr', average='weighted')
-        except Exception:
-            # Fallback: compute per-class ROC AUC by binarizing
-            classes = np.unique(y_test)
-            y_test_b = label_binarize(y_test, classes=classes)
-            roc_auc = roc_auc_score(y_test_b, y_proba, average='weighted')
+        # ROC AUC (multiclass OVR) and 
+        roc_auc = roc_auc_score(y_test, y_proba, multi_class='ovr', average='weighted')
 
-        # average_precision_score supports multilabel-indicator input
-        try:
-            classes = np.unique(y_test)
-            y_test_b = label_binarize(y_test, classes=classes)
-            pr_per_class = []
-            support = np.array([(y_test == c).sum() for c in classes])
-            for i in range(y_proba.shape[1]):
-                pr = average_precision_score(y_test_b[:, i], y_proba[:, i])
-                pr_per_class.append(pr)
-            # Weighted average by class support
-            pr_auc = float(np.average(pr_per_class, weights=support))
-        except Exception:
-            pr_auc = float(np.nan)
+        # PR AUC per class averaged (macro)
+        classes = np.unique(y_test)
+        y_test_b = label_binarize(y_test, classes=classes)
+        pr_auc = average_precision_score(y_test_b, y_proba, average='weighted')
 
         # Generate a multiclass-friendly text report
         custom_report = generate_enhanced_classification_report(y_test, y_pred, y_proba)

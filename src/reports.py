@@ -506,7 +506,9 @@ def summarize_results(results, mode="default", data_source="ana", classification
         # Coletar dados dos modelos para ordenação
         models_data = []
         for result in successful_models:
+            # Handle both nested CV results and regular test results
             if 'test_metrics' in result:
+                # Regular optimization with test metrics
                 metrics = result['test_metrics']
                 # Compatibilidade com diferentes chaves F1
                 f1_key = 'f1_score' if 'f1_score' in metrics else 'f1'
@@ -514,11 +516,31 @@ def summarize_results(results, mode="default", data_source="ana", classification
                 models_data.append({
                     'name': result['model_name'],
                     'metrics': metrics,
-                    'f1_key': f1_key
+                    'f1_key': f1_key,
+                    'result_type': 'test_metrics'
+                })
+            elif hasattr(result, 'keys') and any('mean' in str(v) for v in result.values() if isinstance(v, dict)):
+                # Nested CV results (aggregated metrics format)
+                # Extract mean values from nested CV aggregated metrics
+                nested_metrics = {
+                    'accuracy': result.get('accuracy', {}).get('mean', 0.0),
+                    'precision': result.get('precision', {}).get('mean', 0.0),
+                    'recall': result.get('recall', {}).get('mean', 0.0),
+                    'f1': result.get('f1', {}).get('mean', 0.0),
+                    'roc_auc': result.get('roc_auc', {}).get('mean', 0.0),
+                    'pr_auc': result.get('roc_auc', {}).get('mean', 0.0)  # Use ROC AUC as proxy for PR AUC in nested CV
+                }
+                
+                models_data.append({
+                    'name': result['model_name'],
+                    'metrics': nested_metrics,
+                    'f1_key': 'f1',
+                    'result_type': 'nested_cv'
                 })
         
         # Ordenar por PR AUC (métrica principal) em ordem decrescente
-        models_data.sort(key=lambda x: x['metrics']['pr_auc'], reverse=True)
+        # Handle cases where pr_auc might not be available
+        models_data.sort(key=lambda x: x['metrics'].get('pr_auc', x['metrics'].get('roc_auc', 0.0)), reverse=True)
         
         # Cabeçalho da tabela
         content_lines.append("COMPARAÇÃO DE PERFORMANCE (CONJUNTO DE TESTE):")
@@ -534,13 +556,21 @@ def summarize_results(results, mode="default", data_source="ana", classification
             # Destacar o melhor modelo
             rank_display = f"🥇{rank}" if rank == 1 else f"  {rank}"
             
+            # Handle missing metrics gracefully
+            accuracy = metrics.get('accuracy', 0.0)
+            precision = metrics.get('precision', 0.0)
+            recall = metrics.get('recall', 0.0)
+            f1_score = metrics.get(f1_key, 0.0)
+            roc_auc = metrics.get('roc_auc', 0.0)
+            pr_auc = metrics.get('pr_auc', roc_auc)  # Use ROC AUC as fallback for PR AUC
+            
             content_lines.append(f"{rank_display:<5} {model_data['name']:<25} "
-                  f"{metrics['accuracy']:<10.4f} "
-                  f"{metrics['precision']:<11.4f} "
-                  f"{metrics['recall']:<8.4f} "
-                  f"{metrics[f1_key]:<8.4f} "
-                  f"{metrics['roc_auc']:<9.4f} "
-                  f"{metrics['pr_auc']:<8.4f}")
+                  f"{accuracy:<10.4f} "
+                  f"{precision:<11.4f} "
+                  f"{recall:<8.4f} "
+                  f"{f1_score:<8.4f} "
+                  f"{roc_auc:<9.4f} "
+                  f"{pr_auc:<8.4f}")
         
         # Estatísticas do melhor modelo
         if models_data:

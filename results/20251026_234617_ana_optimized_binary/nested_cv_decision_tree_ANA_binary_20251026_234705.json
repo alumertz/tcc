@@ -1,0 +1,108 @@
+{
+  "model_name": "decision_tree",
+  "optimization_type": "nested_cross_validation",
+  "configuration": {
+    "outer_cv_folds": 5,
+    "n_trials_per_fold": 30,
+    "data_source": "ANA",
+    "classification_type": "binary",
+    "timestamp": "2025-10-26T23:47:05.059889"
+  },
+  "aggregated_metrics": {
+    "accuracy": {
+      "mean": 0.6090434782608696,
+      "std": 0.013843303472787756,
+      "scores": [
+        0.6069565217391304,
+        0.6069565217391304,
+        0.6034782608695652,
+        0.5930434782608696,
+        0.6347826086956522
+      ]
+    },
+    "precision": {
+      "mean": 0.39904235653071296,
+      "std": 0.013700195580159233,
+      "scores": [
+        0.38,
+        0.4052631578947368,
+        0.3967391304347826,
+        0.39215686274509803,
+        0.42105263157894735
+      ]
+    },
+    "recall": {
+      "mean": 0.361364522417154,
+      "std": 0.05293614857210673,
+      "scores": [
+        0.3,
+        0.4052631578947368,
+        0.38421052631578945,
+        0.42105263157894735,
+        0.2962962962962963
+      ]
+    },
+    "f1": {
+      "mean": 0.376969812921499,
+      "std": 0.029713565751641427,
+      "scores": [
+        0.3352941176470588,
+        0.4052631578947368,
+        0.39037433155080214,
+        0.40609137055837563,
+        0.34782608695652173
+      ]
+    },
+    "roc_auc": {
+      "mean": 0.5531551252129381,
+      "std": 0.021758485095455207,
+      "scores": [
+        0.5164251537935748,
+        0.5761312371838687,
+        0.5573957621326042,
+        0.5725222146274778,
+        0.543301258327165
+      ]
+    }
+  },
+  "best_params_per_fold": [
+    {
+      "max_depth": 26,
+      "min_samples_split": 12,
+      "min_samples_leaf": 13,
+      "criterion": "entropy"
+    },
+    {
+      "max_depth": 32,
+      "min_samples_split": 20,
+      "min_samples_leaf": 1,
+      "criterion": "gini"
+    },
+    {
+      "max_depth": 28,
+      "min_samples_split": 6,
+      "min_samples_leaf": 1,
+      "criterion": "gini"
+    },
+    {
+      "max_depth": 22,
+      "min_samples_split": 20,
+      "min_samples_leaf": 1,
+      "criterion": "gini"
+    },
+    {
+      "max_depth": 25,
+      "min_samples_split": 4,
+      "min_samples_leaf": 15,
+      "criterion": "entropy"
+    }
+  ],
+  "nested_cv_summary": {
+    "mean_accuracy": 0.6090434782608696,
+    "std_accuracy": 0.013843303472787756,
+    "mean_f1": 0.376969812921499,
+    "std_f1": 0.029713565751641427,
+    "mean_roc_auc": 0.5531551252129381,
+    "std_roc_auc": 0.021758485095455207
+  }
+}
