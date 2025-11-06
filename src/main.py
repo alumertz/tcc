@@ -11,8 +11,7 @@ sys.path.append('/Users/i583975/git/tcc')
 
 import numpy as np
 import pandas as pd
-from src.processing import prepare_dataset, get_dataset_info, split_dataset
-from src.process_data import get_canonical_genes, get_candidate_genes
+from src.processing import prepare_dataset, get_dataset_info
 from src.models import (
     optimize_decision_tree_classifier,
     optimize_random_forest_classifier,
@@ -23,18 +22,14 @@ from src.models import (
     optimize_svc_classifier,
     optimize_catboost_classifier
 )
-from src.reports import summarize_results, save_model_results_unified
-from src.evaluation import evaluate_classification_on_test
+from src.reports import summarize_results
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, HistGradientBoostingClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
 from catboost import CatBoostClassifier
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import cross_val_score, StratifiedKFold, train_test_split
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, average_precision_score
+from evaluation import evaluate_model_default
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -109,7 +104,7 @@ Exemplos de uso:
     
     return parser.parse_args()
 
-def run_single_model(model_name, optimizer_func, X, y, n_trials=10, data_source="ana", classification_type="binary"):
+def run_single_model_optimize(model_name, optimizer_func, X, y, n_trials=10, data_source="ana", classification_type="binary"):
     """
     Executa um único modelo de classificação
     
@@ -154,8 +149,7 @@ def run_single_model(model_name, optimizer_func, X, y, n_trials=10, data_source=
             'model': None
         }
 
-
-def run_all_models(X, y, n_trials=10, data_source="ana", classification_type="binary"):
+def run_all_models_optimize(X, y, n_trials=10, data_source="ana", classification_type="binary"):
     """
     Executa todos os modelos de classificação
     
@@ -191,7 +185,7 @@ def run_all_models(X, y, n_trials=10, data_source="ana", classification_type="bi
     for i, (model_name, optimizer_func) in enumerate(models_config, 1):
         print(f"Progresso: {i}/{len(models_config)} modelos")
         
-        result = run_single_model(model_name, optimizer_func, X, y, n_trials, data_source, classification_type)
+        result = run_single_model_optimize(model_name, optimizer_func, X, y, n_trials, data_source, classification_type)
         results.append(result)
         
         # Breve pausa entre modelos
@@ -199,133 +193,6 @@ def run_all_models(X, y, n_trials=10, data_source="ana", classification_type="bi
         time.sleep(2)
     
     return results
-
-
-def evaluate_model_default(model, model_name, X, y, data_source="ana", classification_type="binary"):
-    """
-    Avalia um modelo com parâmetros padrão usando holdout e 5-fold CV
-    Pipeline unificado: StandardScaler + Classifier, métricas binary
-    
-    Args:
-        model: Modelo do scikit-learn com parâmetros padrão
-        model_name (str): Nome do modelo
-        X (np.array): Features
-        y (np.array): Labels
-        data_source (str): "ana" ou "renan"
-        classification_type (str): "binary" ou "multiclass"
-        
-    Returns:
-        dict: Resultados da avaliação
-    """
-    print(f"\n{'='*80}")
-    print(f"AVALIANDO MODELO: {model_name.upper()}")
-    print(f"{'='*80}")
-    
-    # Divisão treino/teste (mesmo random_state do main.py otimizado)
-    X_trainval, X_test, y_trainval, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42, stratify=y
-    )
-    
-    print(f"Dataset dividido:")
-    print(f"  Treino+Val: {X_trainval.shape[0]} amostras")
-    print(f"  Teste: {X_test.shape[0]} amostras")
-    
-    # Pipeline unificado: SEMPRE com StandardScaler
-    pipeline = Pipeline([
-        ("scaler", StandardScaler()),
-        ("classifier", model)
-    ])
-    
-    # Validação cruzada 5-fold no conjunto treino+validação
-    print("\nExecutando validação cruzada 5-fold...")
-    cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=30)
-    
-    # Métricas para validação cruzada - BINARY
-    cv_scores = {
-        'accuracy': cross_val_score(pipeline, X_trainval, y_trainval, cv=cv, scoring='accuracy'),
-        'precision': cross_val_score(pipeline, X_trainval, y_trainval, cv=cv, scoring='precision'),
-        'recall': cross_val_score(pipeline, X_trainval, y_trainval, cv=cv, scoring='recall'),
-        'f1': cross_val_score(pipeline, X_trainval, y_trainval, cv=cv, scoring='f1'),
-        'roc_auc': cross_val_score(pipeline, X_trainval, y_trainval, cv=cv, scoring='roc_auc'),
-        'pr_auc': cross_val_score(pipeline, X_trainval, y_trainval, cv=cv, scoring='average_precision')
-    }
-    
-    # Calcular médias e desvios padrão
-    cv_results = {}
-    for metric, scores in cv_scores.items():
-        cv_results[metric] = {
-            'mean': np.mean(scores),
-            'std': np.std(scores),
-            'scores': scores.tolist()
-        }
-    
-    print("Resultados da validação cruzada:")
-    for metric, result in cv_results.items():
-        print("  " + str(metric).upper() + ": " + "{:.4f}".format(float(result['mean'])) + " ± " + "{:.4f}".format(float(result['std'])))
-    
-    # Treinar no conjunto treino+validação completo e avaliar no teste
-    print("\nTreinando no conjunto completo e avaliando no teste...")
-    pipeline.fit(X_trainval, y_trainval)
-    
-    # Avaliação no conjunto de teste usando função unificada
-    test_metrics = evaluate_classification_on_test(pipeline, X_test, y_test, return_dict=True, classification_type=classification_type)
-    
-    print("Resultados no conjunto de teste:")
-    for metric, value in test_metrics.items():
-        if metric == 'classification_report':
-            continue
-        else:
-            print("  " + str(metric).upper() + ": " + str(value))
-    
-    # Obter predições para o relatório de classificação
-    y_pred = pipeline.predict(X_test)
-    y_pred_proba = pipeline.predict_proba(X_test)
-    
-    # Extract probabilities for positive class (binary) or keep all classes (multiclass)
-    if classification_type == 'binary' and y_pred_proba.shape[1] == 2:
-        y_pred_proba_positive = y_pred_proba[:, 1]
-    else:
-        y_pred_proba_positive = y_pred_proba
-    
-    # Relatório de classificação detalhado
-    from src.reports import generate_enhanced_classification_report
-    class_report = generate_enhanced_classification_report(y_test, y_pred, y_pred_proba_positive)
-    print("\nRelatório de classificação:\n" + str(class_report))
-    
-    # Salvar resultados usando função unificada
-    # Convert parameters to JSON-serializable format
-    clean_params = {}
-    for key, value in pipeline.get_params().items():
-        clean_params[key] = str(value)
-    
-    results_data = {
-        'cv_results': cv_results,
-        'test_metrics': test_metrics,
-        'classification_report': class_report,
-        'parameters': clean_params,
-        # Save predictions for plotting
-        'test_predictions': {
-            'y_true': y_test.tolist(),
-            'y_pred': y_pred.tolist(),
-            'y_pred_proba': y_pred_proba_positive.tolist() if hasattr(y_pred_proba_positive, 'tolist') else y_pred_proba_positive,
-            'test_indices': X_test.index.tolist() if hasattr(X_test, 'index') else list(range(len(X_test)))
-        }
-    }
-    
-    save_model_results_unified(model_name, results_data, mode="default", 
-                             data_source=data_source, classification_type=classification_type)
-    
-    results = {
-        'model_name': model_name,
-        'cv_results': cv_results,
-        'test_metrics': test_metrics,
-        'classification_report': class_report,
-        'model': pipeline,
-        'status': 'success'
-    }
-    
-    return results
-
 
 def run_all_default_models(X, y, data_source="ana", classification_type="binary"):
     """
@@ -378,7 +245,6 @@ def run_all_default_models(X, y, data_source="ana", classification_type="binary"
             })
     
     return results
-
 
 def main(use_renan=False, use_multiclass=False, use_default=False):
     """
@@ -465,7 +331,7 @@ def main(use_renan=False, use_multiclass=False, use_default=False):
         
         # Executa todos os modelos com otimização
         print("🚀 Iniciando experimentos com otimização...")
-        results = run_all_models(X, y, n_trials=N_TRIALS, data_source=data_source, classification_type=classification_type)
+        results = run_all_models_optimize(X, y, n_trials=N_TRIALS, data_source=data_source, classification_type=classification_type)
     #results = run_single_model("Gradient Boosting", optimize_gradient_boosting_classifier, X, y, n_trials=N_TRIALS)
     #results = run_single_model("Decision Tree", optimize_decision_tree_classifier, X, y, n_trials=N_TRIALS)
     #results = run_single_model("Support Vector Classifier", optimize_svc_classifier, X, y, n_trials=N_TRIALS)
