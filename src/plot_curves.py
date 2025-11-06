@@ -11,9 +11,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import roc_curve, precision_recall_curve, auc
-from sklearn.preprocessing import LabelBinarizer, label_binarize
-from itertools import cycle
-from datetime import datetime
+from plot_curves_multiclass import generate_multiclass_plots
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -31,6 +29,18 @@ plt.rcParams['legend.fontsize'] = 10
 # Configuração do seaborn
 sns.set_style("whitegrid")
 sns.set_palette("husl")
+
+# Paleta de cores padronizada para todos os modelos
+STANDARD_COLORS = {
+    'decision_tree': '#1f77b4',           # Azul
+    'random_forest': '#ff7f0e',           # Laranja
+    'gradient_boosting': '#2ca02c',       # Verde
+    'histogram_gradient_boosting': '#d62728',  # Vermelho
+    'k_nearest_neighbors': '#9467bd',     # Roxo
+    'multi_layer_perceptron': '#8c564b',  # Marrom
+    'support_vector_classifier': '#e377c2',  # Rosa
+    'catboost': '#17becf',                # Ciano
+}
 
 
 def create_plots_directory(experiment_dir):
@@ -220,25 +230,9 @@ def detect_classification_type(y_true, y_pred_proba):
             return 'binary', 2, ['Class 0', 'Class 1']
 
 
-# Paleta de cores padronizada para todos os modelos
-STANDARD_COLORS = {
-    'decision_tree': '#1f77b4',           # Azul
-    'random_forest': '#ff7f0e',           # Laranja
-    'gradient_boosting': '#2ca02c',       # Verde
-    'histogram_gradient_boosting': '#d62728',  # Vermelho
-    'k_nearest_neighbors': '#9467bd',     # Roxo
-    'multi_layer_perceptron': '#8c564b',  # Marrom
-    'support_vector_classifier': '#e377c2',  # Rosa
-    'catboost': '#17becf',                # Ciano
-}
-
-# Cores adicionais para classes em gráficos multiclasse
-MULTICLASS_COLORS = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#17becf']
-
 def plot_roc_curve(model_results, save_path=None):
     """
     Cria gráfico de ROC Curve para todos os modelos usando predições salvas
-    Suporta automaticamente classificação binária e multiclasse
     
     Args:
         model_results (dict): Resultados dos modelos com predições
@@ -284,30 +278,7 @@ def plot_roc_curve(model_results, save_path=None):
                 plt.plot(fpr, tpr, color=color, lw=3, 
                         label=f'{model_display_name} (AUC = {roc_auc:.3f})')
                 print(f"  {model_name}: AUC = {roc_auc:.3f}")
-                
-            else:
-                # Classificação multiclasse - usar One-vs-Rest
-                # Binarizar as labels
-                y_true_bin = label_binarize(y_true, classes=range(n_classes))
-                
-                # Calcular ROC para cada classe
-                fpr = dict()
-                tpr = dict()
-                roc_auc = dict()
-                
-                for i in range(n_classes):
-                    fpr[i], tpr[i], _ = roc_curve(y_true_bin[:, i], y_pred_proba[:, i])
-                    roc_auc[i] = auc(fpr[i], tpr[i])
-                
-                # Calcular micro-average ROC
-                fpr["micro"], tpr["micro"], _ = roc_curve(y_true_bin.ravel(), y_pred_proba.ravel())
-                roc_auc["micro"] = auc(fpr["micro"], tpr["micro"])
-                
-                # Plotar curva micro-average
-                plt.plot(fpr["micro"], tpr["micro"], color=color, lw=3,
-                        label=f'{model_display_name} (Micro-avg AUC = {roc_auc["micro"]:.3f})')
-                print(f"  {model_name}: Micro-avg AUC = {roc_auc['micro']:.3f}")
-            
+
             models_plotted += 1
             
         except Exception as e:
@@ -324,11 +295,7 @@ def plot_roc_curve(model_results, save_path=None):
     plt.xlabel('False Positive Rate (FPR)', fontsize=22)
     plt.ylabel('True Positive Rate (TPR)', fontsize=22)
     
-    # Título baseado no tipo de classificação
-    if classification_type == 'multiclass':
-        plt.title('ROC Curves (Multiclass - Micro-Average)', fontsize=24)
-    else:
-        plt.title('ROC Curves (Binary Classification)', fontsize=24)
+    plt.title('ROC Curves (Binary Classification)', fontsize=24)
     
     plt.legend(loc="lower right", fontsize=18, framealpha=0.9)
     plt.grid(True, alpha=0.3)
@@ -336,12 +303,9 @@ def plot_roc_curve(model_results, save_path=None):
     plt.tight_layout()
     
     if save_path:
-        suffix = '_multiclass' if classification_type == 'multiclass' else '_binary'
-        plt.savefig(save_path + suffix + '.png', dpi=300, bbox_inches='tight')
-        plt.savefig(save_path + suffix + '.pdf', bbox_inches='tight')
-        print(f"ROC Curve salva em: {save_path}{suffix}")
-    
-    plt.show()
+        plt.savefig(save_path + '_binary.png', dpi=300, bbox_inches='tight')
+        plt.savefig(save_path + '_binary.pdf', bbox_inches='tight')
+        print(f"ROC Curve salva em: " + save_path + '_binary')
     
     # Relatório final
     print(f"\nRelatório ROC:")
@@ -354,7 +318,6 @@ def plot_roc_curve(model_results, save_path=None):
 def plot_precision_recall_curve(model_results, save_path=None):
     """
     Cria gráfico de Precision-Recall Curve para todos os modelos usando predições salvas
-    Suporta automaticamente classificação binária e multiclasse
     
     Args:
         model_results (dict): Resultados dos modelos com predições
@@ -404,34 +367,6 @@ def plot_precision_recall_curve(model_results, save_path=None):
                 plt.plot(recall, precision, color=color, lw=3, 
                         label=f'{model_display_name} (AUC = {pr_auc:.3f})')
                 print(f"  {model_name}: PR AUC = {pr_auc:.3f}")
-                
-            else:
-                # Classificação multiclasse - usar One-vs-Rest
-                # Binarizar as labels
-                y_true_bin = label_binarize(y_true, classes=range(n_classes))
-                
-                # Calcular Precision-Recall para cada classe
-                precision = dict()
-                recall = dict()
-                pr_auc = dict()
-                
-                for i in range(n_classes):
-                    precision[i], recall[i], _ = precision_recall_curve(y_true_bin[:, i], y_pred_proba[:, i])
-                    pr_auc[i] = auc(recall[i], precision[i])
-                
-                # Calcular micro-average PR
-                precision["micro"], recall["micro"], _ = precision_recall_curve(
-                    y_true_bin.ravel(), y_pred_proba.ravel())
-                pr_auc["micro"] = auc(recall["micro"], precision["micro"])
-                
-                # Plotar curva micro-average
-                plt.plot(recall["micro"], precision["micro"], color=color, lw=3,
-                        label=f'{model_display_name} (Micro-avg AUC = {pr_auc["micro"]:.3f})')
-                print(f"  {model_name}: Micro-avg PR AUC = {pr_auc['micro']:.3f}")
-                
-                # Calcular baseline para multiclasse (proporção média das classes)
-                if pos_rate is None:
-                    pos_rate = np.mean([np.mean(y_true_bin[:, i]) for i in range(n_classes)])
             
             models_plotted += 1
             
@@ -441,12 +376,8 @@ def plot_precision_recall_curve(model_results, save_path=None):
     
     # Linha base (classificador aleatório)
     if pos_rate is not None:
-        if classification_type == 'multiclass':
-            plt.axhline(y=pos_rate, color='gray', lw=2, linestyle='--', alpha=0.8,
-                        label=f'Random Classifier (Avg AUC = {pos_rate:.3f})')
-        else:
-            plt.axhline(y=pos_rate, color='gray', lw=2, linestyle='--', alpha=0.8,
-                        label=f'Random Classifier (AUC = {pos_rate:.3f})')
+        plt.axhline(y=pos_rate, color='gray', lw=2, linestyle='--', alpha=0.8,
+                    label=f'Random Classifier (AUC = {pos_rate:.3f})')
     
     # Configurações do gráfico
     plt.xlim([0.0, 1.0])
@@ -454,11 +385,7 @@ def plot_precision_recall_curve(model_results, save_path=None):
     plt.xlabel('Recall', fontsize=22)
     plt.ylabel('Precision', fontsize=22)
     
-    # Título baseado no tipo de classificação
-    if classification_type == 'multiclass':
-        plt.title('Precision-Recall Curves (Multiclass - Micro-Average)', fontsize=24)
-    else:
-        plt.title('Precision-Recall Curves (Binary Classification)', fontsize=24)
+    plt.title('Precision-Recall Curves (Binary Classification)', fontsize=24)
     
     plt.legend(loc="lower left", fontsize=18, framealpha=0.9)
     plt.grid(True, alpha=0.3)
@@ -466,19 +393,16 @@ def plot_precision_recall_curve(model_results, save_path=None):
     plt.tight_layout()
     
     if save_path:
-        suffix = '_multiclass' if classification_type == 'multiclass' else '_binary'
-        plt.savefig(save_path + suffix + '.png', dpi=300, bbox_inches='tight')
-        plt.savefig(save_path + suffix + '.pdf', bbox_inches='tight')
+        plt.savefig(save_path + '_binary.png', dpi=300, bbox_inches='tight')
+        plt.savefig(save_path + '_binary.pdf', bbox_inches='tight')
         print(f"Precision-Recall Curve salva em: {save_path}{suffix}")
-    
-    plt.show()
-    
+        
     # Relatório final
     print(f"\nRelatório Precision-Recall:")
-    print(f"  Tipo de classificação: {classification_type}")
     print(f"  Modelos plotados: {models_plotted}")
     if models_with_errors:
         print(f"  Modelos com erro: {', '.join(models_with_errors)}")
+
 
 def generate_all_plots():
     """
@@ -487,7 +411,6 @@ def generate_all_plots():
     print("Gerando gráficos de performance dos modelos usando predições salvas...")
     print("="*70)
     
-    # Carregar predições salvas
     print("Carregando predições salvas dos modelos...")
     model_results, experiment_dir = load_saved_predictions()
     
@@ -500,25 +423,36 @@ def generate_all_plots():
         print("❌ Nenhum diretório de experimento encontrado!")
         return
     
-    # Criar diretório curves dentro do experimento
-    curves_dir = create_plots_directory(experiment_dir)
+    # Detectar tipo de classificação
+    first_model = next(iter(model_results.values()))
+    predictions = first_model['predictions']
+    y_true = np.array(predictions['y_true'])
+    y_pred_proba = np.array(predictions['y_pred_proba'])
+    classification_type, n_classes, class_names = detect_classification_type(y_true, y_pred_proba)
+    
+    # Criar estrutura de diretórios
+    curves_dir = os.path.join(experiment_dir, "curves")
+    os.makedirs(curves_dir, exist_ok=True)
     
     print(f"✅ Predições encontradas para {len(model_results)} modelos: {list(model_results.keys())}")
-    print(f"📁 Gráficos serão salvos em: {curves_dir}")
+    print(f"📊 Tipo de classificação: {classification_type} ({n_classes} classes)")
     
-    # Gerar gráficos com nomes padronizados (sem timestamps)
-    print("\nGerando ROC Curves...")
-    roc_save_path = os.path.join(curves_dir, "roc_comparison")
-    plot_roc_curve(model_results, save_path=roc_save_path)
-    
-    print("\nGerando Precision-Recall Curves...")
-    pr_save_path = os.path.join(curves_dir, "pr_comparison")
-    plot_precision_recall_curve(model_results, save_path=pr_save_path)
+    if classification_type == 'multiclass' and n_classes > 2:
+        print(f"\n📈 Análise multiclasse detectada ({n_classes} classes)")
+        generate_multiclass_plots(model_results, class_names, curves_dir)
+
+    else:
+        print(f"\n📈 Análise binária detectada")
+        print("\nGerando ROC Curves...")
+        roc_save_path = os.path.join(curves_dir, "roc_comparison")
+        plot_roc_curve(model_results, save_path=roc_save_path)
+        
+        print("\nGerando PR Curves...")
+        pr_save_path = os.path.join(curves_dir, "pr_comparison")
+        plot_precision_recall_curve(model_results, save_path=pr_save_path)
     
     print(f"\n🎉 Todos os gráficos gerados com sucesso!")
-    print(f"📁 Gráficos salvos em: {curves_dir}")
 
 if __name__ == "__main__":
-    # Exemplo de uso
     print("Executando geração de gráficos...")
     generate_all_plots()

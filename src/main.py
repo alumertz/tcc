@@ -240,7 +240,7 @@ def evaluate_model_default(model, model_name, X, y, data_source="ana", classific
     print("\nExecutando validação cruzada 5-fold...")
     cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=30)
     
-    # Métricas para validação cruzada - BINARY (consistente com otimizado)
+    # Métricas para validação cruzada - BINARY
     cv_scores = {
         'accuracy': cross_val_score(pipeline, X_trainval, y_trainval, cv=cv, scoring='accuracy'),
         'precision': cross_val_score(pipeline, X_trainval, y_trainval, cv=cv, scoring='precision'),
