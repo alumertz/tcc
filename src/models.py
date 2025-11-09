@@ -24,7 +24,7 @@ from sklearn.model_selection import StratifiedKFold, cross_val_score
 def _optimize_classifier_generic(classifier_class, param_suggestions_func, model_name, X, y, 
                                n_trials=100, save_results=True, custom_params_processor=None, 
                                return_test_metrics=False, fixed_params=None, data_source="ana",
-                               classification_type="binary", outer_cv_folds=5):
+                               classification_type="binary", use_nested_cv=True, outer_cv_folds=5):
     """
     Função genérica para otimização de hiperparâmetros de classificadores com nested cross-validation.
     Implementa nested cross-validation para avaliação imparcial do modelo.
@@ -90,7 +90,7 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
             # Cross-validation interno (5-fold)
             inner_cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
             scores = cross_val_score(pipeline, X_train_fold, y_train_fold, 
-                                   cv=inner_cv, scoring='f1_weighted' if classification_type == "multiclass" else 'f1')
+                                   cv=inner_cv, scoring='average_precision')
             
             return scores.mean()
         
@@ -123,7 +123,18 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
         
         # Avaliar no conjunto de teste do fold
         y_pred_fold = final_pipeline.predict(X_test_fold)
-        y_pred_proba_fold = final_pipeline.predict_proba(X_test_fold)
+        # Try to get probabilities safely
+        try:
+            y_pred_proba_fold = final_pipeline.predict_proba(X_test_fold)
+        except AttributeError:
+            # If pipeline doesn't have predict_proba, try to get from the classifier
+            classifier = final_pipeline.named_steps['classifier']
+            if hasattr(classifier, 'predict_proba'):
+                # Apply scaler transform before prediction if needed
+                X_test_scaled = final_pipeline.named_steps['scaler'].transform(X_test_fold)
+                y_pred_proba_fold = classifier.predict_proba(X_test_scaled)
+            else:
+                raise AttributeError("Neither Pipeline nor classifier implement predict_proba")
         
         # Calcular métricas para este fold
         from sklearn.metrics import accuracy_score, precision_recall_fscore_support, roc_auc_score
@@ -305,20 +316,34 @@ def _suggest_catboost_params(trial):
     }
 
 
-def _process_mlp_params(best_trial):
-    """Processa parâmetros do MLP para o modelo final"""
-    n_layers = best_trial.params["n_layers"]
-    hidden_layer_sizes = []
-    for i in range(n_layers):
-        layer_size = best_trial.params[f"layer_{i}_size"]
-        hidden_layer_sizes.append(layer_size)
-    
+def _process_mlp_params(best_params):
+    """Processa parâmetros do MLP para o modelo final.
+
+    Espera um dicionário de parâmetros (ex.: param_suggestions_func(trial) ou study.best_params).
+    Retorna dicionário pronto para passar ao MLPClassifier.
+    """
+    if not isinstance(best_params, dict):
+        raise ValueError("_process_mlp_params espera um dict com parâmetros do MLP")
+
+    # Prefer explicit hidden_layer_sizes if present, senão montar a partir de n_layers / layer_{i}_size
+    if "hidden_layer_sizes" in best_params and best_params.get("hidden_layer_sizes") is not None:
+        hidden = tuple(best_params["hidden_layer_sizes"])
+    else:
+        n_layers = int(best_params.get("n_layers", 0) or 0)
+        hidden_list = []
+        for i in range(n_layers):
+            key = f"layer_{i}_size"
+            if key in best_params:
+                hidden_list.append(int(best_params[key]))
+        hidden = tuple(hidden_list)
+
     return {
-        "hidden_layer_sizes": tuple(hidden_layer_sizes),
-        "activation": best_trial.params["activation"],
-        "alpha": best_trial.params["alpha"],
-        "learning_rate": best_trial.params["learning_rate"],
-        "max_iter": best_trial.params["max_iter"]
+        "hidden_layer_sizes": hidden,
+        "activation": best_params.get("activation", "relu"),
+        "alpha": float(best_params.get("alpha", 1e-4)),
+        "learning_rate": best_params.get("learning_rate", "constant"),
+        "max_iter": int(best_params.get("max_iter", 200)),
+        "early_stopping": bool(best_params.get("early_stopping", True))
     }
 
 
@@ -428,6 +453,11 @@ def optimize_svc_classifier(X, y, n_trials=30, save_results=True, fixed_params=N
                           data_source="ana", classification_type="binary", 
                           use_nested_cv=True, outer_cv_folds=5):
     """Otimização de hiperparâmetros para SVC usando Optuna"""
+    # Ensure probability=True is always set
+    enforced_params = {"probability": True}
+    if fixed_params:
+        enforced_params.update(fixed_params)
+    
     return _optimize_classifier_generic(
         SVC,
         _suggest_svc_params,
@@ -435,7 +465,7 @@ def optimize_svc_classifier(X, y, n_trials=30, save_results=True, fixed_params=N
         X, y, n_trials, save_results, 
         custom_params_processor=None,
         return_test_metrics=True,
-        fixed_params=fixed_params,
+        fixed_params=enforced_params,
         data_source=data_source, classification_type=classification_type,
         use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
     )

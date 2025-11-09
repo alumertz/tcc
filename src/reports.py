@@ -540,7 +540,28 @@ def summarize_results(results, mode="default", data_source="ana", classification
         
         # Ordenar por PR AUC (métrica principal) em ordem decrescente
         # Handle cases where pr_auc might not be available
-        models_data.sort(key=lambda x: x['metrics'].get('pr_auc', x['metrics'].get('roc_auc', 0.0)), reverse=True)
+        # Ensure we extract numeric values for sorting, handling both dict and scalar metrics
+        def get_sort_key(model_data):
+            metrics = model_data['metrics']
+            # Try to get pr_auc first, then roc_auc as fallback
+            pr_auc = metrics.get('pr_auc', None)
+            roc_auc = metrics.get('roc_auc', None)
+            
+            # Handle cases where metrics might be dicts (nested CV results)
+            if isinstance(pr_auc, dict):
+                pr_auc = pr_auc.get('mean', 0.0)
+            elif pr_auc is None:
+                pr_auc = 0.0
+                
+            if isinstance(roc_auc, dict):
+                roc_auc = roc_auc.get('mean', 0.0)
+            elif roc_auc is None:
+                roc_auc = 0.0
+                
+            # Return pr_auc if available, otherwise roc_auc
+            return pr_auc if pr_auc > 0.0 else roc_auc
+        
+        models_data.sort(key=get_sort_key, reverse=True)
         
         # Cabeçalho da tabela
         content_lines.append("COMPARAÇÃO DE PERFORMANCE (CONJUNTO DE TESTE):")
@@ -556,13 +577,22 @@ def summarize_results(results, mode="default", data_source="ana", classification
             # Destacar o melhor modelo
             rank_display = f"🥇{rank}" if rank == 1 else f"  {rank}"
             
-            # Handle missing metrics gracefully
-            accuracy = metrics.get('accuracy', 0.0)
-            precision = metrics.get('precision', 0.0)
-            recall = metrics.get('recall', 0.0)
-            f1_score = metrics.get(f1_key, 0.0)
-            roc_auc = metrics.get('roc_auc', 0.0)
-            pr_auc = metrics.get('pr_auc', roc_auc)  # Use ROC AUC as fallback for PR AUC
+            # Handle missing metrics gracefully, ensuring numeric values
+            def extract_numeric_value(value):
+                """Extract numeric value from either dict (nested CV) or scalar"""
+                if isinstance(value, dict):
+                    return value.get('mean', 0.0)
+                elif value is None:
+                    return 0.0
+                else:
+                    return float(value)
+            
+            accuracy = extract_numeric_value(metrics.get('accuracy', 0.0))
+            precision = extract_numeric_value(metrics.get('precision', 0.0))
+            recall = extract_numeric_value(metrics.get('recall', 0.0))
+            f1_score = extract_numeric_value(metrics.get(f1_key, 0.0))
+            roc_auc = extract_numeric_value(metrics.get('roc_auc', 0.0))
+            pr_auc = extract_numeric_value(metrics.get('pr_auc', roc_auc))  # Use ROC AUC as fallback for PR AUC
             
             content_lines.append(f"{rank_display:<5} {model_data['name']:<25} "
                   f"{accuracy:<10.4f} "
@@ -579,10 +609,26 @@ def summarize_results(results, mode="default", data_source="ana", classification
             content_lines.append("")
             content_lines.append("🏆 MELHOR MODELO:")
             content_lines.append(f"   Modelo: {best_model['name']}")
-            content_lines.append(f"   PR AUC: {best_metrics['pr_auc']:.4f}")
-            content_lines.append(f"   ROC AUC: {best_metrics['roc_auc']:.4f}")
-            content_lines.append(f"   F1-Score: {best_metrics[best_model['f1_key']]:.4f}")
-            content_lines.append(f"   Accuracy: {best_metrics['accuracy']:.4f}")
+            
+            # Extract numeric values for display
+            def extract_numeric_value(value):
+                """Extract numeric value from either dict (nested CV) or scalar"""
+                if isinstance(value, dict):
+                    return value.get('mean', 0.0)
+                elif value is None:
+                    return 0.0
+                else:
+                    return float(value)
+            
+            pr_auc_val = extract_numeric_value(best_metrics.get('pr_auc', 0.0))
+            roc_auc_val = extract_numeric_value(best_metrics.get('roc_auc', 0.0))
+            f1_val = extract_numeric_value(best_metrics.get(best_model['f1_key'], 0.0))
+            accuracy_val = extract_numeric_value(best_metrics.get('accuracy', 0.0))
+            
+            content_lines.append(f"   PR AUC: {pr_auc_val:.4f}")
+            content_lines.append(f"   ROC AUC: {roc_auc_val:.4f}")
+            content_lines.append(f"   F1-Score: {f1_val:.4f}")
+            content_lines.append(f"   Accuracy: {accuracy_val:.4f}")
     
     # Adicionar modelos com falha
     if failed_models:

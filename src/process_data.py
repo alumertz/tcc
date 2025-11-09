@@ -4,7 +4,7 @@ import os
 
 ONCOKB_FILE = './data/onkoKB.tsv'
 NCG_FILE = './data/NCG_cancerdrivers_annotation_supporting_evidence.tsv'
-COSMIC_FILE = './data/cosmic.tsv'
+COSMIC_FILE = './data/Cosmic_11_2025.tsv'
 OMIM_FILE = './data/All_Diseases_OMIM.txt'
 HGNC_FILE = './data/hgnc-symbol-check.csv'
 UNION_FEATURES_FILE = './data/UNION_features.tsv'

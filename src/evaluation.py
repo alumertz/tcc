@@ -14,7 +14,6 @@ from sklearn.metrics import (
 )
 
 from src.reports import save_model_results_unified
-from src.evaluation import evaluate_classification_on_test
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import cross_val_score, StratifiedKFold, train_test_split
