@@ -1,0 +1,118 @@
+{
+  "model_name": "random_forest",
+  "optimization_type": "nested_cross_validation",
+  "configuration": {
+    "outer_cv_folds": 5,
+    "n_trials_per_fold": 30,
+    "data_source": "ANA",
+    "classification_type": "binary",
+    "timestamp": "2025-11-09T11:23:15.252224"
+  },
+  "aggregated_metrics": {
+    "accuracy": {
+      "mean": 0.679304347826087,
+      "std": 0.007746454765676557,
+      "scores": [
+        0.671304347826087,
+        0.6747826086956522,
+        0.688695652173913,
+        0.688695652173913,
+        0.6730434782608695
+      ]
+    },
+    "precision": {
+      "mean": 0.5716850068257069,
+      "std": 0.05179780233112538,
+      "scores": [
+        0.5128205128205128,
+        0.5714285714285714,
+        0.6410256410256411,
+        0.6170212765957447,
+        0.5161290322580645
+      ]
+    },
+    "recall": {
+      "mean": 0.10745753272069061,
+      "std": 0.031967847401154506,
+      "scores": [
+        0.10526315789473684,
+        0.06315789473684211,
+        0.13157894736842105,
+        0.15263157894736842,
+        0.08465608465608465
+      ]
+    },
+    "f1": {
+      "mean": 0.179387492023447,
+      "std": 0.047474553499498064,
+      "scores": [
+        0.17467248908296942,
+        0.11374407582938388,
+        0.2183406113537118,
+        0.24472573839662448,
+        0.14545454545454545
+      ]
+    },
+    "roc_auc": {
+      "mean": 0.6321472921325662,
+      "std": 0.014959066132529352,
+      "scores": [
+        0.6349350649350649,
+        0.6560355434039645,
+        0.6300546821599454,
+        0.63066985645933,
+        0.6090413137045261
+      ]
+    }
+  },
+  "best_params_per_fold": [
+    {
+      "n_estimators": 150,
+      "max_depth": 8,
+      "min_samples_split": 5,
+      "min_samples_leaf": 4,
+      "max_features": "log2",
+      "criterion": "gini"
+    },
+    {
+      "n_estimators": 150,
+      "max_depth": 5,
+      "min_samples_split": 11,
+      "min_samples_leaf": 4,
+      "max_features": "sqrt",
+      "criterion": "entropy"
+    },
+    {
+      "n_estimators": 250,
+      "max_depth": 22,
+      "min_samples_split": 19,
+      "min_samples_leaf": 9,
+      "max_features": "sqrt",
+      "criterion": "gini"
+    },
+    {
+      "n_estimators": 150,
+      "max_depth": 20,
+      "min_samples_split": 20,
+      "min_samples_leaf": 8,
+      "max_features": "log2",
+      "criterion": "entropy"
+    },
+    {
+      "n_estimators": 150,
+      "max_depth": 5,
+      "min_samples_split": 12,
+      "min_samples_leaf": 8,
+      "max_features": null,
+      "criterion": "entropy"
+    }
+  ],
+  "nested_cv_summary": {
+    "mean_accuracy": 0.679304347826087,
+    "std_accuracy": 0.007746454765676557,
+    "mean_f1": 0.179387492023447,
+    "std_f1": 0.047474553499498064,
+    "mean_roc_auc": 0.6321472921325662,
+    "std_roc_auc": 0.014959066132529352
+  }
+}

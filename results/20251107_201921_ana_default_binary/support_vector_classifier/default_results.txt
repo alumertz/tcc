@@ -1,0 +1,61 @@
+MODELO: Support Vector Classifier (Parâmetros Padrão)
+================================================================================
+
+Data/Hora: 2025-11-07 20:21:53
+
+VALIDAÇÃO CRUZADA (5-fold):
+--------------------------------------------------
+  ACCURACY: 0.6748 ± 0.0085
+  PRECISION: 0.5756 ± 0.1139
+  RECALL: 0.0580 ± 0.0153
+  F1: 0.1050 ± 0.0268
+  ROC_AUC: 0.5749 ± 0.0183
+  PR_AUC: 0.4127 ± 0.0194
+
+TESTE FINAL:
+--------------------------------------------------
+  ACCURACY: 0.6730
+  PRECISION: 0.5714
+  RECALL: 0.0421
+  F1: 0.0784
+  ROC_AUC: 0.5971
+  PR_AUC: 0.4204
+
+RELATÓRIO DE CLASSIFICAÇÃO:
+--------------------------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+     Class 0       0.6730      0.6756     0.9844     0.8013         -         -
+     Class 1       0.6730      0.5714     0.0421     0.0784     0.5971     0.4204
+
+   macro avg       0.6730      0.6235     0.5133     0.4398     0.5971291866028708     0.42044341410087926
+weighted avg       0.6730      0.6412     0.6730     0.5624     0.5971291866028708     0.42044341410087926
+
+PARÂMETROS:
+--------------------------------------------------
+{
+  "memory": "None",
+  "steps": "[('scaler', StandardScaler()), ('classifier', SVC(probability=True, random_state=42))]",
+  "transform_input": "None",
+  "verbose": "False",
+  "scaler": "StandardScaler()",
+  "classifier": "SVC(probability=True, random_state=42)",
+  "scaler__copy": "True",
+  "scaler__with_mean": "True",
+  "scaler__with_std": "True",
+  "classifier__C": "1.0",
+  "classifier__break_ties": "False",
+  "classifier__cache_size": "200",
+  "classifier__class_weight": "None",
+  "classifier__coef0": "0.0",
+  "classifier__decision_function_shape": "ovr",
+  "classifier__degree": "3",
+  "classifier__gamma": "scale",
+  "classifier__kernel": "rbf",
+  "classifier__max_iter": "-1",
+  "classifier__probability": "True",
+  "classifier__random_state": "42",
+  "classifier__shrinking": "True",
+  "classifier__tol": "0.001",
+  "classifier__verbose": "False"
+}

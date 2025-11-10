@@ -1,0 +1,59 @@
+MODELO: Decision Tree (Parâmetros Padrão)
+================================================================================
+
+Data/Hora: 2025-11-07 20:19:23
+
+VALIDAÇÃO CRUZADA (5-fold):
+--------------------------------------------------
+  ACCURACY: 0.5713 ± 0.0132
+  PRECISION: 0.3484 ± 0.0190
+  RECALL: 0.3438 ± 0.0323
+  F1: 0.3457 ± 0.0229
+  ROC_AUC: 0.5175 ± 0.0220
+  PR_AUC: 0.3382 ± 0.0091
+
+TESTE FINAL:
+--------------------------------------------------
+  ACCURACY: 0.5913
+  PRECISION: 0.3653
+  RECALL: 0.3211
+  F1: 0.3417
+  ROC_AUC: 0.5340
+  PR_AUC: 0.3443
+
+RELATÓRIO DE CLASSIFICAÇÃO:
+--------------------------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+     Class 0       0.5913      0.6838     0.7247     0.7037         -         -
+     Class 1       0.5913      0.3653     0.3211     0.3417     0.5340     0.3443
+
+   macro avg       0.5913      0.5245     0.5229     0.5227     0.5339986329460014     0.3443177924066239
+weighted avg       0.5913      0.5786     0.5913     0.5841     0.5339986329460014     0.3443177924066239
+
+PARÂMETROS:
+--------------------------------------------------
+{
+  "memory": "None",
+  "steps": "[('scaler', StandardScaler()), ('classifier', DecisionTreeClassifier(random_state=42))]",
+  "transform_input": "None",
+  "verbose": "False",
+  "scaler": "StandardScaler()",
+  "classifier": "DecisionTreeClassifier(random_state=42)",
+  "scaler__copy": "True",
+  "scaler__with_mean": "True",
+  "scaler__with_std": "True",
+  "classifier__ccp_alpha": "0.0",
+  "classifier__class_weight": "None",
+  "classifier__criterion": "gini",
+  "classifier__max_depth": "None",
+  "classifier__max_features": "None",
+  "classifier__max_leaf_nodes": "None",
+  "classifier__min_impurity_decrease": "0.0",
+  "classifier__min_samples_leaf": "1",
+  "classifier__min_samples_split": "2",
+  "classifier__min_weight_fraction_leaf": "0.0",
+  "classifier__monotonic_cst": "None",
+  "classifier__random_state": "42",
+  "classifier__splitter": "best"
+}

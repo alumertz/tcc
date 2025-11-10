@@ -1,0 +1,62 @@
+MODELO: Support Vector Classifier (Parâmetros Padrão)
+================================================================================
+
+Data/Hora: 2025-11-07 22:17:04
+
+VALIDAÇÃO CRUZADA (5-fold):
+--------------------------------------------------
+  ACCURACY: 0.6709 ± 0.0017
+  PRECISION: nan ± nan
+  RECALL: nan ± nan
+  F1: nan ± nan
+  ROC_AUC: nan ± nan
+  PR_AUC: 0.3748 ± 0.0190
+
+TESTE FINAL:
+--------------------------------------------------
+  ACCURACY: 0.6696
+  PRECISION: 0.4483
+  RECALL: 0.6696
+  F1: 0.5370
+  ROC_AUC: 0.5715
+  PR_AUC: 0.5597
+
+RELATÓRIO DE CLASSIFICAÇÃO:
+--------------------------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+     Class 0       0.6696      0.6696     1.0000     0.8021     0.5735     0.7068
+     Class 1       0.6696      0.0000     0.0000     0.0000     0.5953     0.3395
+     Class 2       0.6696      0.0000     0.0000     0.0000     0.5344     0.1694
+
+   macro avg       0.6696      0.2232     0.3333     0.2674     0.567742106108179     0.4052234439607727
+weighted avg       0.6696      0.4483     0.6696     0.5370     0.5714892459957412     0.5596733661361404
+
+PARÂMETROS:
+--------------------------------------------------
+{
+  "memory": "None",
+  "steps": "[('scaler', StandardScaler()), ('classifier', SVC(probability=True, random_state=42))]",
+  "transform_input": "None",
+  "verbose": "False",
+  "scaler": "StandardScaler()",
+  "classifier": "SVC(probability=True, random_state=42)",
+  "scaler__copy": "True",
+  "scaler__with_mean": "True",
+  "scaler__with_std": "True",
+  "classifier__C": "1.0",
+  "classifier__break_ties": "False",
+  "classifier__cache_size": "200",
+  "classifier__class_weight": "None",
+  "classifier__coef0": "0.0",
+  "classifier__decision_function_shape": "ovr",
+  "classifier__degree": "3",
+  "classifier__gamma": "scale",
+  "classifier__kernel": "rbf",
+  "classifier__max_iter": "-1",
+  "classifier__probability": "True",
+  "classifier__random_state": "42",
+  "classifier__shrinking": "True",
+  "classifier__tol": "0.001",
+  "classifier__verbose": "False"
+}
