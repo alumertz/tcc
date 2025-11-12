@@ -1,0 +1,118 @@
+{
+  "model_name": "gradient_boosting",
+  "optimization_type": "nested_cross_validation",
+  "configuration": {
+    "outer_cv_folds": 5,
+    "n_trials_per_fold": 30,
+    "data_source": "ANA",
+    "classification_type": "multiclass",
+    "timestamp": "2025-11-10T03:22:09.266553"
+  },
+  "aggregated_metrics": {
+    "accuracy": {
+      "mean": 0.6622608695652173,
+      "std": 0.014060092474022769,
+      "scores": [
+        0.6730434782608695,
+        0.6347826086956522,
+        0.6678260869565218,
+        0.671304347826087,
+        0.6643478260869565
+      ]
+    },
+    "precision": {
+      "mean": 0.530266202055395,
+      "std": 0.029084282302817652,
+      "scores": [
+        0.5369742558230877,
+        0.4915509056986987,
+        0.5112222649737078,
+        0.5332105805020988,
+        0.5783730032793821
+      ]
+    },
+    "recall": {
+      "mean": 0.6622608695652173,
+      "std": 0.014060092474022769,
+      "scores": [
+        0.6730434782608695,
+        0.6347826086956522,
+        0.6678260869565218,
+        0.671304347826087,
+        0.6643478260869565
+      ]
+    },
+    "f1": {
+      "mean": 0.556334336578602,
+      "std": 0.008869447435800622,
+      "scores": [
+        0.558103132253356,
+        0.5455414202887579,
+        0.5466580581889507,
+        0.5673027115908063,
+        0.5640663605711386
+      ]
+    },
+    "roc_auc": {
+      "mean": 0.6023809529167001,
+      "std": 0.023844296013503654,
+      "scores": [
+        0.6273271330522404,
+        0.5653465865486409,
+        0.6278572270583679,
+        0.6031110275356172,
+        0.5882627903886346
+      ]
+    }
+  },
+  "best_params_per_fold": [
+    {
+      "n_estimators": 200,
+      "learning_rate": 0.010734722002011844,
+      "max_depth": 11,
+      "min_samples_split": 11,
+      "min_samples_leaf": 1,
+      "subsample": 0.8678736484822456
+    },
+    {
+      "n_estimators": 300,
+      "learning_rate": 0.07498075257415852,
+      "max_depth": 7,
+      "min_samples_split": 8,
+      "min_samples_leaf": 6,
+      "subsample": 0.9577443201460265
+    },
+    {
+      "n_estimators": 200,
+      "learning_rate": 0.010413525792227818,
+      "max_depth": 11,
+      "min_samples_split": 3,
+      "min_samples_leaf": 8,
+      "subsample": 0.8973085586483225
+    },
+    {
+      "n_estimators": 100,
+      "learning_rate": 0.046818164259857596,
+      "max_depth": 11,
+      "min_samples_split": 13,
+      "min_samples_leaf": 14,
+      "subsample": 0.8696538038862164
+    },
+    {
+      "n_estimators": 150,
+      "learning_rate": 0.16620860266823403,
+      "max_depth": 14,
+      "min_samples_split": 7,
+      "min_samples_leaf": 3,
+      "subsample": 0.9659772774520414
+    }
+  ],
+  "nested_cv_summary": {
+    "mean_accuracy": 0.6622608695652173,
+    "std_accuracy": 0.014060092474022769,
+    "mean_f1": 0.556334336578602,
+    "std_f1": 0.008869447435800622,
+    "mean_roc_auc": 0.6023809529167001,
+    "std_roc_auc": 0.023844296013503654
+  }
+}
