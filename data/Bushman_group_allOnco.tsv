@@ -1,4 +1,4 @@
-"symbol"	"prevSymbols"	"synonyms"	"name"	"refSeqName"
+"symbol"	"prevSymbols"	"synonyms"	"name"	"refSeqName"	"symbol2"
 "1"	"NKX2-2"	"NKX2B"	"NKX2.2"	"NK2 homeobox 2"	"NKX2-2"
 "2"	"MEN1"	""	""	"menin 1"	"MEN1"
 "3"	"FYN"	""	"SYN,SLK,MGC45350"	"FYN proto-oncogene, Src family tyrosine kinase"	"FYN"

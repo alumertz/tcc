@@ -1,0 +1,183 @@
+INICIANDO PROCESSAMENTO DE DADOS DE GENES
+==================================================
+Carregando mapeamento HGNC...
+HGNC: Carregados 2997 mapeamentos de símbolos
+HGNC: 7 genes não encontrados
+HGNC: 1 genes retirados
+
+=== GENES NÃO ENCONTRADOS (UNMATCHED) ===
+Input: ARL, Tipo: Unmatched, Aprovado: N/A
+Input: DKK, Tipo: Unmatched, Aprovado: N/A
+Input: LOC353007, Tipo: Unmatched, Aprovado: N/A
+Input: LOC353010, Tipo: Unmatched, Aprovado: N/A
+Input: LOC400867, Tipo: Unmatched, Aprovado: N/A
+Input: MLF, Tipo: Unmatched, Aprovado: N/A
+Input: SOS, Tipo: Unmatched, Aprovado: N/A
+
+=== GENES RETIRADOS (WITHDRAWN) ===
+Input: COP, Tipo: Entry withdrawn, Aprovado: COP
+
+=== PROCESSANDO GENES CANÔNICOS ===
+Carregando mapeamento HGNC...
+HGNC: Carregados 2997 mapeamentos de símbolos
+HGNC: 7 genes não encontrados
+HGNC: 1 genes retirados
+
+=== GENES NÃO ENCONTRADOS (UNMATCHED) ===
+Input: ARL, Tipo: Unmatched, Aprovado: N/A
+Input: DKK, Tipo: Unmatched, Aprovado: N/A
+Input: LOC353007, Tipo: Unmatched, Aprovado: N/A
+Input: LOC353010, Tipo: Unmatched, Aprovado: N/A
+Input: LOC400867, Tipo: Unmatched, Aprovado: N/A
+Input: MLF, Tipo: Unmatched, Aprovado: N/A
+Input: SOS, Tipo: Unmatched, Aprovado: N/A
+
+=== GENES RETIRADOS (WITHDRAWN) ===
+Input: COP, Tipo: Entry withdrawn, Aprovado: COP
+Processando OncoKB...
+Processando NCG...
+NCG: Encontrados 510 genes canonical.
+Processando COSMIC Cancer Gene Census (Tier 1)...
+CGC (Tier 1): Encontrados 587 genes.
+
+Aplicando mapeamento HGNC aos genes OncoKB...
+Removendo 2 genes não mapeados: ['TOP1', 'COP1']
+Mapeamento aplicado: 791 → 784 genes (removidos: 7)
+Aplicando mapeamento HGNC aos genes NCG...
+Removendo 1 genes não mapeados: ['MLF1']
+Mapeamento aplicado: 510 → 509 genes (removidos: 1)
+Aplicando mapeamento HGNC aos genes CGC...
+Removendo 3 genes não mapeados: ['HIST1H4I', 'MLF1', 'TOP1']
+Mapeamento aplicado: 587 → 582 genes (removidos: 5)
+
+Combinando as listas de genes canônicos...
+Total de entradas antes da deduplicação: 1875
+Total de genes canônicos únicos (após filtrar No/No): 956
+
+=== PROCESSANDO GENES CANDIDATOS ===
+Carregando mapeamento HGNC...
+HGNC: Carregados 2997 mapeamentos de símbolos
+HGNC: 7 genes não encontrados
+HGNC: 1 genes retirados
+
+=== GENES NÃO ENCONTRADOS (UNMATCHED) ===
+Input: ARL, Tipo: Unmatched, Aprovado: N/A
+Input: DKK, Tipo: Unmatched, Aprovado: N/A
+Input: LOC353007, Tipo: Unmatched, Aprovado: N/A
+Input: LOC353010, Tipo: Unmatched, Aprovado: N/A
+Input: LOC400867, Tipo: Unmatched, Aprovado: N/A
+Input: MLF, Tipo: Unmatched, Aprovado: N/A
+Input: SOS, Tipo: Unmatched, Aprovado: N/A
+
+=== GENES RETIRADOS (WITHDRAWN) ===
+Input: COP, Tipo: Entry withdrawn, Aprovado: COP
+Processando COSMIC Cancer Gene Census (Tier 2)...
+CGC (Tier 2): Encontrados 171 genes.
+Processando OncoKB...
+Processando NCG...
+NCG: Encontrados 81 genes candidate.
+Processando OMIM...
+OMIM: Encontrados 2143 genes.
+Processando Bushman_group_allOnco.tsv...
+Bushman: Encontrados 1384 genes candidatos.
+Removendo 248 genes não mapeados: ['prevSymbols', 'PTPRE', 'HNRNPD', 'CIRBP', 'THRSP', 'CALCR', 'ESRRA', 'VGF', 'MDK', 'HHEX', 'KIZ', 'OTOF', 'PTHLH', 'HLTF', 'BID', 'PCNA', 'PTMA', 'CRK', 'CFLAR', 'HPSE', 'XDH', 'GHRL', 'GSDMA', 'PGGHG', 'MVP', 'ACCS', 'LRGUK', 'PKIG', 'SSPN', 'DLST', 'RARG', 'RHBG', 'GMFB', 'PMEL', 'MAL', 'BSPRY', 'ABO', 'GIP', 'NNMT', 'PTGIS', 'LACTB', 'SNCG', 'CTSL', 'PGF', 'MME', 'RHOG', 'ASNS', 'NELFCD', 'GAK', 'GRP', 'PDGFA', 'AMFR', 'FOS', 'JUND', 'GHRH', 'CHKA', 'PDXK', 'PTPRJ', 'RHCG', 'TGFA', 'AATF', 'CDA', 'MAFK', 'CTSH', 'HPR', 'HDLBP', 'PATJ', 'FSCB', 'CHFR', 'PTPA', 'AGER', 'DST', 'TNN', 'NFIC', 'FOSB', 'BAD', 'OBSCN', 'HCK', 'IQCE', 'AMOT', 'MATK', 'SHBG', 'NAPA', 'MAFG', 'PKM', 'PTCRA', 'MOS', 'ENAH', 'RARB', 'CLU', 'RELA', 'THRA', 'EGF', 'FGR', 'CALCA', 'HNRNPK', 'PRLR', 'NFIX', 'PRKCD', 'GML', 'CHGA', 'IGFALS', 'BATF', 'PKDREJ', 'RORC', 'PIGR', 'CFP', 'DPT', 'ERAS', 'PTN', 'BTRC', 'ABR', 'AUH', 'SARNP', 'FMOD', 'DYM', 'RMRP', 'SKIL', 'VCAN', 'RLF', 'RHOC', 'RALB', 'GGH', 'SELE', 'CAPG', 'ESRRG', 'TRIO', 'INHBE', 'CEBPB', 'HMGCR', 'PYY', 'PAWR', 'MCC', 'TNR', 'PARVB', 'JUNB', 'MANF', 'LRBA', 'CCNH', 'FAIM', 'LFNG', 'TRHR', 'RHOB', 'BGN', 'PHB', 'CRYAB', 'CSTA', 'CTSB', 'TXN', 'NOV', 'SRI', 'BLCAP', 'CTGF', 'TECTA', 'CENPF', 'ITGAX', 'NPY', 'RABGGTB', 'DGKE', 'FST', 'NGFR', 'GRPR', 'THADA', 'MAFA', 'PXN', 'DENR', 'CTTN', 'PLAUR', 'ANLN', 'BOK', 'RALA', 'LRMP', 'RAN', 'LNPEP', 'CTIF', 'MYEOV', 'RELB', 'PSCA', 'IDNK', 'AREG', 'RHOF', 'NRCAM', 'PAEP', 'CCNF', 'EVL', 'SRARP', 'GPNMB', 'PPARD', 'MARS', 'PTPRG', 'TAGLN', 'PTPRH', 'NAMPT', 'TPBG', 'MARCKS', 'DDC', 'AAMP', 'ACHE', 'ACLY', 'AFP', 'ALCAM', 'SLPI', 'AMBN', 'LIPE', 'PYCARD', 'AVEN', 'SPARC', 'HRK', 'BYSL', 'GSKIP', 'CTDSPL', 'CENPW', 'CARTPT', 'PIMREG', 'CEBPE', 'MCAM', 'CEMIP', 'CLSPN', 'CPM', 'PRAME', 'GZMA', 'KLLN', 'DGKA', 'DIABLO', 'PRND', 'PTPRR', 'EHF', 'SCD', 'UBD', 'FAU', 'VEGFD', 'PCLAF', 'RPRM', 'GAST', 'HELLS', 'ILK', 'PTPRA', 'INGX', 'PERP', 'TRO', 'MAZ', 'SDCBP', 'NANOG', 'NUMB', 'VIP', 'SELENOF', 'ZFX', 'LRMDA']
+Mapeamento aplicado: 1384 → 1130 genes (removidos: 254)
+
+Aplicando mapeamento HGNC aos genes CGC Tier 2...
+Removendo 1 genes não mapeados: ['CLP1']
+Mapeamento aplicado: 171 → 170 genes (removidos: 1)
+Aplicando mapeamento HGNC aos genes OncoKB candidatos...
+Removendo 7 genes não mapeados: ['MDC1', 'MLF1', 'CLP1', 'DKK1', 'DKK2', 'DKK3', 'DKK4']
+Mapeamento aplicado: 404 → 396 genes (removidos: 8)
+Aplicando mapeamento HGNC aos genes NCG candidatos...
+Mapeamento aplicado: 81 → 81 genes (removidos: 0)
+Aplicando mapeamento HGNC aos genes OMIM...
+Removendo 7 genes não mapeados: ['ARL6', 'LOC400867', 'LOC353007', 'LOC353010', 'TOP1', 'MLF1', 'ARL11']
+Mapeamento aplicado: 2143 → 2115 genes (removidos: 28)
+
+Combinando as listas de genes candidatos...
+Total de entradas antes da deduplicação: 3892
+Total de genes candidatos únicos: 2783
+
+=== CRIANDO UNION_LABELS ===
+Total de genes no UNION_labels: 19680
+
+Classificação Binária:
+  Cancer (1): 956
+  Candidatos (NaN): 1997
+  Passengers (0): 16727
+
+Classificação 3classe:
+  TSG (1): 515
+  Oncogenes (2): 441
+  Candidatos (NaN): 1997
+  Passengers (0): 16727
+
+=== SALVANDO RESULTADOS EM ./data/processed ===
+Genes canônicos salvos em: ./data/processed/canonical_genes.tsv
+Genes candidatos salvos em: ./data/processed/candidate_genes.tsv
+UNION_labels salvos em: ./data/processed/UNION_labels.tsv
+
+Processo concluído com sucesso!
+
+=== AMOSTRAS DOS RESULTADOS ===
+
+Genes canônicos (primeiras 10 linhas):
+     symbol Oncogene  TSG
+0      A1CF      Yes   No
+1     ABCB1      Yes   No
+2      ABI1       No  Yes
+3      ABL1      Yes   No
+4      ABL2      Yes   No
+5  ABRAXAS1       No  Yes
+6     ACKR3      Yes  Yes
+7     ACTG1       No  Yes
+8     ACVR1      Yes   No
+9    ACVR1B       No  Yes
+
+Genes candidatos (primeiras 10 linhas):
+   symbol Oncogene TSG
+0    A1CF      Yes  No
+1    AAAS       No  No
+2   AANAT       No  No
+3   AARS1       No  No
+4   AARS2       No  No
+5    AASS       No  No
+6   ABCA1       No  No
+7  ABCA12       No  No
+8   ABCA3       No  No
+9   ABCA4       No  No
+
+UNION_labels (primeiras 15 linhas):
+      genes  2class  3class
+0      A1BG     0.0     0.0
+1      A1CF     1.0     2.0
+2       A2M     0.0     0.0
+3     A2ML1     0.0     0.0
+4   A3GALT2     0.0     0.0
+5    A4GALT     0.0     0.0
+6     A4GNT     0.0     0.0
+7      AAAS     NaN     NaN
+8      AACS     0.0     0.0
+9     AADAC     0.0     0.0
+10  AADACL2     0.0     0.0
+11  AADACL3     0.0     0.0
+12  AADACL4     0.0     0.0
+13    AADAT     0.0     0.0
+14    AAGAB     0.0     0.0
+
+Resumo das classificações:
+Classificação binária - Distribuição:
+2class
+0.0    16727
+NaN     1997
+1.0      956
+Name: count, dtype: int64
+
+Classificação multiclasse - Distribuição:
+3class
+0.0    16727
+NaN     1997
+1.0      515
+2.0      441
+Name: count, dtype: int64

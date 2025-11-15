@@ -4,9 +4,12 @@ import os
 
 ONCOKB_FILE = './data/onkoKB.tsv'
 NCG_FILE = './data/NCG_cancerdrivers_annotation_supporting_evidence.tsv'
+NCG_CANDIDATE_HEALTHY_FILE = './data/NCG_candidate_and_remaining_healthy_drivers.txt'
+NCG_CANONICAL_HEALTHY_FILE = './data/NCG_cancer_and_healthy_drivers.txt'
 COSMIC_FILE = './data/Cosmic_11_2025.tsv'
 OMIM_FILE = './data/All_Diseases_OMIM.txt'
 HGNC_FILE = './data/hgnc-symbol-check.csv'
+BUSHMAN_FILE = './data/Bushman_group_allOnco.tsv'
 UNION_FEATURES_FILE = './data/UNION_features.tsv'
 OUTPUT_DIR = './data/processed'
 
@@ -121,7 +124,7 @@ def process_oncokb(gene_type, file_path=ONCOKB_FILE):
         else:
             df_filtered = df.copy()
 
-        print(f"OncoKB: Encontrados {len(df_filtered)} genes {gene_type}.")
+                # features_genes já é passado como argumento, não precisa ler do arquivo
         return df_filtered
 
     except FileNotFoundError:
@@ -154,6 +157,34 @@ def process_ncg(gene_type, file_path=NCG_FILE):
     except FileNotFoundError:
         print(f"Erro: O arquivo NCG '{file_path}' não foi encontrado.")
         return pd.DataFrame(columns=['symbol', 'Oncogene', 'TSG'])
+
+def process_NCG_healthy(mode, hgnc_mapping):
+    """
+    Processa genes healthy drivers para modo 'canonical' ou 'candidate'.
+    Para 'canonical', lê NCG_cancer_and_healthy_drivers.txt e marca todos como TSG.
+    Para 'candidate', lê NCG_candidate_and_remaining_healthy_drivers.txt e marca todos como TSG.
+    Retorna DataFrame com colunas: symbol, Oncogene, TSG
+    """
+    if mode == 'canonical':
+        file_path = NCG_CANONICAL_HEALTHY_FILE
+    elif mode == 'candidate':
+        file_path = NCG_CANDIDATE_HEALTHY_FILE
+    else:
+        raise ValueError("Modo inválido para process_NCG_healthy: use 'canonical' ou 'candidate'.")
+
+    try:
+        df = pd.read_csv(file_path, sep='\t', header=None)
+        # Assume primeira coluna como símbolo do gene
+        df.columns = ['symbol']
+        df['Oncogene'] = 'No'
+        df['TSG'] = 'Yes'
+        df = df[['symbol', 'Oncogene', 'TSG']]
+        print(f"NCG Healthy ({mode}): Encontrados {len(df)} genes TSG.")
+        df_mapped, removed = apply_hgnc_mapping(df, hgnc_mapping)
+        return df_mapped, removed
+    except Exception as e:
+        print(f"Erro ao processar {file_path}: {e}")
+        return pd.DataFrame(columns=['symbol', 'Oncogene', 'TSG']), set()
 
 def process_cgc(tier, file_path=COSMIC_FILE):
     """
@@ -201,6 +232,45 @@ def process_omim(file_path=OMIM_FILE):
     except FileNotFoundError:
         print(f"Erro: O arquivo OMIM '{file_path}' não foi encontrado.")
         return pd.DataFrame(columns=['symbol', 'Oncogene', 'TSG'])
+
+def process_bushman_candidates(hgnc_mapping, file_path=BUSHMAN_FILE):
+    """
+    Carrega e processa a lista de genes candidatos do arquivo Bushman_group_allOnco.tsv.
+    Aplica mapeamento HGNC.
+    Returns:
+    --------
+    tuple: (bushman_genes_df, removed_genes_set)
+    """
+    print("Processando Bushman_group_allOnco.tsv...")
+    try:
+        df_raw = pd.read_csv(file_path, sep='\t', header=None)
+        # Remove header if present (first row contains non-gene text)
+        candidate_symbols = []
+        for i, row in df_raw.iterrows():
+            # Skip header or malformed rows
+            if i == 0 and not str(row[1]).isalpha():
+                continue
+            symbol = str(row[1]).strip()
+            synonyms = str(row[2]).strip() if len(row) > 2 else ''
+            mapped = False
+            # Try mapping symbol
+            if symbol in hgnc_mapping:
+                candidate_symbols.append(hgnc_mapping[symbol])
+                mapped = True
+            
+            # If still not mapped, keep original symbol for reporting
+            if not mapped and symbol and symbol.isalpha():
+                candidate_symbols.append(symbol)
+        df = pd.DataFrame({'symbol': candidate_symbols})
+        df['Oncogene'] = 'No'
+        df['TSG'] = 'No'
+        df = df[['symbol', 'Oncogene', 'TSG']]
+        print(f"Bushman: Encontrados {len(df)} genes candidatos.")
+        df_mapped, removed = apply_hgnc_mapping(df, hgnc_mapping)
+        return df_mapped, removed
+    except Exception as e:
+        print(f"Erro ao processar Bushman_group_allOnco.tsv: {e}")
+        return pd.DataFrame(columns=['symbol', 'Oncogene', 'TSG']), set()
 
 def get_canonical_genes():
     """
@@ -268,31 +338,35 @@ def get_candidate_genes():
     # Carrega mapeamento HGNC
     hgnc_mapping, unmatched_genes, withdrawn_genes = load_hgnc_mapping()
     
+
     # Processa cada fonte de dados
     cgc_genes = process_cgc(tier=2)
     oncokb_genes = process_oncokb('candidate')
     ncg_genes = process_ncg('candidate')
     omim_genes = process_omim()
 
+
+    bushman_genes, bushman_removed = process_bushman_candidates(hgnc_mapping)
+
     # Aplica mapeamento HGNC a cada fonte
     print("\nAplicando mapeamento HGNC aos genes CGC Tier 2...")
     cgc_genes, cgc_removed = apply_hgnc_mapping(cgc_genes, hgnc_mapping)
-    
+
     print("Aplicando mapeamento HGNC aos genes OncoKB candidatos...")
     oncokb_genes, oncokb_removed = apply_hgnc_mapping(oncokb_genes, hgnc_mapping)
-    
+
     print("Aplicando mapeamento HGNC aos genes NCG candidatos...")
     ncg_genes, ncg_removed = apply_hgnc_mapping(ncg_genes, hgnc_mapping)
-    
+
     print("Aplicando mapeamento HGNC aos genes OMIM...")
     omim_genes, omim_removed = apply_hgnc_mapping(omim_genes, hgnc_mapping)
-    
+
     # Combina genes removidos
-    all_removed = cgc_removed | oncokb_removed | ncg_removed | omim_removed
+    all_removed = cgc_removed | oncokb_removed | ncg_removed | omim_removed | bushman_removed
 
     # Combina as listas
     print("\nCombinando as listas de genes candidatos...")
-    combined_df = pd.concat([cgc_genes, oncokb_genes, ncg_genes, omim_genes], ignore_index=True)
+    combined_df = pd.concat([cgc_genes, oncokb_genes, ncg_genes, omim_genes, bushman_genes], ignore_index=True)
     print(f"Total de entradas antes da deduplicação: {len(combined_df)}")
 
     # Remove linhas com símbolos nulos
@@ -309,89 +383,7 @@ def get_candidate_genes():
     
     return final_genes_sorted, all_removed
 
-def process_union_features(hgnc_mapping, removed_genes, file_path=UNION_FEATURES_FILE):
-    """
-    Processa UNION_features.tsv para mapear símbolos de genes para símbolos aprovados HGNC.
-    
-    Parameters:
-    -----------
-    hgnc_mapping : dict
-        Dicionário mapeando símbolos de entrada para símbolos aprovados
-    removed_genes : set
-        Conjunto de genes que foram removidos durante o processamento
-    file_path : str
-        Caminho para o arquivo UNION_features.tsv
-        
-    Returns:
-    --------
-    pd.DataFrame or None
-        DataFrame processado com símbolos aprovados HGNC, ou None se arquivo não encontrado
-    """
-    
-    if not os.path.exists(file_path):
-        print(f"Warning: {file_path} não foi encontrado. Pulando processamento de features.")
-        return None
-    
-    print(f"\n=== PROCESSANDO UNION_FEATURES ===")
-    
-    # Carrega o arquivo de features
-    try:
-        df = pd.read_csv(file_path, sep='\t', index_col=0)
-        print(f"Features originais: shape {df.shape}")
-        print(f"Número original de genes (colunas): {len(df.columns)}")
-        
-        # Cria mapeamento para nomes de colunas (símbolos de genes)
-        original_genes = set(df.columns)
-        mapped_columns = {}
-        unmapped_genes = set()
-        
-        for gene in df.columns:
-            if gene in hgnc_mapping:
-                approved_symbol = hgnc_mapping[gene]
-                if approved_symbol not in removed_genes:
-                    mapped_columns[gene] = approved_symbol
-                else:
-                    unmapped_genes.add(gene)
-            else:
-                # Gene não encontrado no mapeamento HGNC
-                unmapped_genes.add(gene)
-        
-        print(f"Genes mapeados com sucesso: {len(mapped_columns)}")
-        print(f"Genes não mapeados ou removidos: {len(unmapped_genes)}")
-        
-        if unmapped_genes:
-            print(f"Exemplos de genes não mapeados/removidos: {sorted(list(unmapped_genes))[:10]}...")
-            if len(unmapped_genes) > 10:
-                print(f"... e mais {len(unmapped_genes) - 10} genes")
-        
-        # Mantém apenas genes mapeados e renomeia colunas
-        genes_to_keep = [gene for gene in df.columns if gene in mapped_columns]
-        df_processed = df[genes_to_keep].copy()
-        
-        # Renomeia colunas para símbolos aprovados
-        df_processed = df_processed.rename(columns=mapped_columns)
-        
-        # Verifica e remove possíveis duplicatas após mapeamento
-        if df_processed.shape[1] != len(df_processed.columns.unique()):
-            print("Warning: Símbolos de genes duplicados encontrados após mapeamento. Removendo duplicatas...")
-            df_processed = df_processed.loc[:, ~df_processed.columns.duplicated()]
-        
-        print(f"Features processadas: shape {df_processed.shape}")
-        print(f"Número final de genes (colunas): {len(df_processed.columns)}")
-        
-        # Salva features processadas
-        os.makedirs(OUTPUT_DIR, exist_ok=True)
-        output_file = os.path.join(OUTPUT_DIR, 'UNION_features.tsv')
-        df_processed.to_csv(output_file, sep='\t')
-        print(f"Features processadas salvas em: {output_file}")
-        
-        return df_processed
-        
-    except Exception as e:
-        print(f"Erro ao processar features: {e}")
-        return None
-
-def create_union_labels(canonical_genes, candidate_genes):
+def create_union_labels(canonical_genes, candidate_genes, features):
     """
     Cria arquivo UNION_labels.tsv com 3 colunas:
     - genes: símbolo do gene
@@ -400,68 +392,64 @@ def create_union_labels(canonical_genes, candidate_genes):
     """
     print("\n=== CRIANDO UNION_LABELS ===")
     
-    # Combina todos os genes mantendo informações de Oncogene/TSG
-    all_genes = pd.concat([canonical_genes, candidate_genes], ignore_index=True)
-    all_genes = all_genes.drop_duplicates(subset=['symbol']).sort_values(by='symbol').reset_index(drop=True)
-    
     # Identifica categorias dos genes
     canonical_symbols = set(canonical_genes['symbol'])
     candidate_symbols = set(candidate_genes['symbol'])
-    
-    # Listas para armazenar as classificações
+    features_genes = set(features.index.tolist())
+
+    # Cria dicionário para lookup rápido de Oncogene/TSG
+    canonical_info = canonical_genes.set_index('symbol').to_dict('index')
+    candidate_info = candidate_genes.set_index('symbol').to_dict('index')
+
+    # Lista de todos genes a considerar: união de features, canônicos e candidatos
+    all_genes_set = features_genes | canonical_symbols | candidate_symbols
+    all_genes_sorted = sorted(all_genes_set)
+
     genes = []
     binary_class = []
     multiclass_labels = []
-    
-    for _, row in all_genes.iterrows():
-        symbol = row['symbol']
-        oncogene = row['Oncogene']
-        tsg = row['TSG']
-        
+
+    for symbol in all_genes_sorted:
         genes.append(symbol)
-        
+        # Binária: cancer = 1 (canônico), candidato = NaN, passenger = 0
         if symbol in canonical_symbols:
-            # Gene canônico (cancer) = 1 na classificação binária
             binary_class.append(1)
-            
-            # Classificação 3classe baseada no tipo
-            if tsg == 'Yes' and oncogene == 'Yes':
-                # Se é tanto TSG quanto oncogene, prioriza TSG
-                multiclass_labels.append(1)  # TSG = 1
-            elif tsg == 'Yes':
-                multiclass_labels.append(1)  # TSG = 1
-            elif oncogene == 'Yes':
-                multiclass_labels.append(2)  # Oncogene = 2
-            else:
-                # Gene canônico mas sem classificação clara (não deveria acontecer)
-                multiclass_labels.append(1)  # Default para TSG
-                
         elif symbol in candidate_symbols:
-            # Gene candidato = NaN em ambas classificações
             binary_class.append(np.nan)
+        else:
+            binary_class.append(0)
+        # Multiclasse: TSG=1, OC=2, candidato=NaN, passenger=0
+        if symbol in canonical_symbols:
+            info = canonical_info.get(symbol, {})
+            tsg = info.get('TSG', 'No')
+            oncogene = info.get('Oncogene', 'No')
+            if tsg == 'Yes':
+                multiclass_labels.append(1)
+            elif oncogene == 'Yes':
+                multiclass_labels.append(2)
+            else:
+                multiclass_labels.append(0)
+        elif symbol in candidate_symbols:
             multiclass_labels.append(np.nan)
         else:
-            # Gene passenger = 0 em ambas classificações
-            binary_class.append(0)
             multiclass_labels.append(0)
-    
-    # Cria o DataFrame final com as 3 colunas especificadas
+
+    # Cria DataFrame final
     union_labels = pd.DataFrame({
         'genes': genes,
         '2class': binary_class,
         '3class': multiclass_labels
     })
-    
     # Estatísticas para relatório
     n_cancer = sum(1 for x in binary_class if x == 1)
     n_passenger = sum(1 for x in binary_class if x == 0)
     n_candidate = sum(1 for x in binary_class if pd.isna(x))
-    
+
     n_tsg = sum(1 for x in multiclass_labels if x == 1)
     n_oncogene = sum(1 for x in multiclass_labels if x == 2)
     n_candidate_multi = sum(1 for x in multiclass_labels if pd.isna(x))
     n_passenger_multi = sum(1 for x in multiclass_labels if x == 0)
-    
+
     print(f"Total de genes no UNION_labels: {len(union_labels)}")
     print(f"\nClassificação Binária:")
     print(f"  Cancer (1): {n_cancer}")
@@ -472,7 +460,7 @@ def create_union_labels(canonical_genes, candidate_genes):
     print(f"  Oncogenes (2): {n_oncogene}")
     print(f"  Candidatos (NaN): {n_candidate_multi}")
     print(f"  Passengers (0): {n_passenger_multi}")
-    
+
     return union_labels
 
 def save_results(canonical_genes, candidate_genes, union_labels):
@@ -521,12 +509,13 @@ def main():
     
     # Combina todos os genes removidos
     all_removed_genes = canonical_removed | candidate_removed
-    
-    # Cria arquivo UNION_labels
-    union_labels = create_union_labels(canonical_genes, candidate_genes)
-    
+
     # Processa UNION_features.tsv
-    processed_features = process_union_features(hgnc_mapping, all_removed_genes)
+    #processed_features = process_union_features(hgnc_mapping, all_removed_genes)
+    features = pd.read_csv(UNION_FEATURES_FILE, sep='\t', index_col=0)
+
+    # Cria arquivo UNION_labels
+    union_labels = create_union_labels(canonical_genes, candidate_genes, features)
     
     # Salva todos os resultados
     save_results(canonical_genes, candidate_genes, union_labels)
@@ -544,15 +533,7 @@ def main():
     print(union_labels['2class'].value_counts(dropna=False))
     print(f"\nClassificação multiclasse - Distribuição:")
     print(union_labels['3class'].value_counts(dropna=False))
-    
-    # Informações sobre features processadas
-    if processed_features is not None:
-        print(f"\n=== RESUMO DO PROCESSAMENTO DE FEATURES ===")
-        print(f"Features processadas com símbolos HGNC aprovados disponíveis.")
-        print(f"Shape final das features: {processed_features.shape}")
-    else:
-        print(f"\n=== FEATURES NÃO PROCESSADAS ===")
-        print(f"Arquivo UNION_features.tsv não encontrado ou erro no processamento.")
+
 
 if __name__ == "__main__":
     main()
