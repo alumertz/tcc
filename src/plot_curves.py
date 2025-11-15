@@ -53,43 +53,44 @@ def create_plots_directory(experiment_dir):
 
 def load_saved_predictions(results_dir="./results"):
     """
-    Carrega predições salvas de todos os modelos testados
+    Carrega predições salvas de todos os modelos testados (modo default ou optimized)
     
     Args:
         results_dir (str): Diretório para procurar resultados
         
     Returns:
-        tuple: (models_data, experiment_dir) - Dicionário com predições e caminho do experimento
+        tuple: (models_data, experiment_dir, mode) - Dicionário com predições, caminho do experimento e modo (default/optimized)
     """
     models_data = {}
     experiment_dir = None
+    detected_mode = None
     
     # Lista de modelos padronizada (sem variações)
     model_names = [
         'decision_tree', 'random_forest', 'gradient_boosting', 
         'histogram_gradient_boosting', 'k_nearest_neighbors', 'multi_layer_perceptron', 
-        'support_vector_classifier', 'catboost'
+        'support_vector_classifier', 'catboost', 'svc'
     ]
     
     print(f"Procurando resultados em: {results_dir}")
     
     if not os.path.exists(results_dir):
         print(f"Diretório {results_dir} não existe")
-        return models_data, experiment_dir
+        return models_data, experiment_dir, detected_mode
     
-    # Listar subdiretórios de experimentos (formato: YYYYMMDD_HHMMSS_ana_default_*)
+    # Listar subdiretórios de experimentos (formato: YYYYMMDD_HHMMSS_ana_default_* ou _optimized_*)
     experiment_dirs = []
     for item in os.listdir(results_dir):
         item_path = os.path.join(results_dir, item)
         if os.path.isdir(item_path):
             # Verificar se segue o padrão de timestamp de experimento
-            if len(item) > 15 and item[8] == '_' and item[15] == '_' and 'ana_default' in item:
+            if len(item) > 15 and item[8] == '_' and item[15] == '_' and ('binary' in item or 'multiclass' in item):
                 experiment_dirs.append(item)
     
     if not experiment_dirs:
         print(f"Nenhum experimento encontrado em {results_dir}")
         print(f"Diretórios disponíveis: {os.listdir(results_dir)}")
-        return models_data, experiment_dir
+        return models_data, experiment_dir, detected_mode
     
     # Ordenar diretórios por timestamp (mais recente primeiro)
     experiment_dirs.sort(reverse=True)
@@ -99,14 +100,15 @@ def load_saved_predictions(results_dir="./results"):
     for i, dir_name in enumerate(experiment_dirs, 1):
         # Extrair informações do nome do diretório para melhor visualização
         parts = dir_name.split('_')
-        if len(parts) >= 4:
+        if len(parts) >= 10:
             date_part = parts[0]  # YYYYMMDD
             time_part = parts[1]  # HHMMSS
+            mode_part = parts[3]  # default or optimized
             classification_type = parts[-1]  # binary/multiclass
             formatted_date = f"{date_part[:4]}-{date_part[4:6]}-{date_part[6:8]}"
             formatted_time = f"{time_part[:2]}:{time_part[2:4]}:{time_part[4:6]}"
             print(f"{i}. {dir_name}")
-            print(f"   Data: {formatted_date} {formatted_time} | Tipo: {classification_type}")
+            print(f"   Data: {formatted_date} {formatted_time} | Modo: {mode_part.upper()} | Tipo: {classification_type}")
         else:
             print(f"{i}. {dir_name}")
     
@@ -115,7 +117,6 @@ def load_saved_predictions(results_dir="./results"):
     choice = input("Selecione o número do experimento (ou pressione Enter): ").strip()
     
     if choice == "":
-        # Usar o experimento mais recente (primeiro da lista ordenada)
         selected_experiment = experiment_dirs[0]
         print(f"Usando experimento mais recente: {selected_experiment}")
     else:
@@ -132,9 +133,19 @@ def load_saved_predictions(results_dir="./results"):
             selected_experiment = experiment_dirs[0]
     
     current_results_dir = os.path.join(results_dir, selected_experiment)
-    experiment_dir = current_results_dir  # Armazenar o caminho do experimento
+    experiment_dir = current_results_dir
     
-    # Procurar modelos com nomes padronizados e variações (para compatibilidade)
+    # Detectar modo (default ou optimized)
+    if 'default' in selected_experiment:
+        detected_mode = 'default'
+    elif 'optimized' in selected_experiment:
+        detected_mode = 'optimized'
+    else:
+        detected_mode = 'unknown'
+    
+    print(f"\nModo detectado: {detected_mode.upper()}")
+    
+    # Procurar modelos com nomes padronizados e variações
     model_variations = {
         'decision_tree': ['decision_tree'],
         'random_forest': ['random_forest'],
@@ -142,61 +153,139 @@ def load_saved_predictions(results_dir="./results"):
         'histogram_gradient_boosting': ['histogram_gradient_boosting'],
         'k_nearest_neighbors': ['k_nearest_neighbors', 'k-nearest_neighbors'],
         'multi_layer_perceptron': ['multi_layer_perceptron', 'multi-layer_perceptron'],
-        'support_vector_classifier': ['support_vector_classifier'],
+        'support_vector_classifier': ['support_vector_classifier', 'svc'],
         'catboost': ['catboost']
     }
     
-    for standard_name, variations in model_variations.items():
-        for model_name in variations:
-            model_dir = os.path.join(current_results_dir, model_name)
-            print(f"Verificando {model_name} em {model_dir}...")
-            
-            if os.path.exists(model_dir):
-                # Procurar por arquivos metrics.json (com diferentes prefixos)
-                metrics_files = [
-                    os.path.join(model_dir, 'metrics.json'),          # Padrão sem prefixo
-                    os.path.join(model_dir, 'default_metrics.json'),  # Com prefixo default_
-                ]
+    if detected_mode == 'default':
+        # Modo default: procurar em pastas de modelos por default_metrics.json
+        for standard_name, variations in model_variations.items():
+            for model_name in variations:
+                model_dir = os.path.join(current_results_dir, model_name)
                 
-                metrics_file = None
-                for mf in metrics_files:
-                    if os.path.exists(mf):
-                        metrics_file = mf
-                        break
-                
-                if metrics_file:
-                    print(f"   Carregando predições de {standard_name}")
-                    print(f"   Arquivo: {os.path.basename(metrics_file)}")
+                if os.path.exists(model_dir):
+                    metrics_files = [
+                        os.path.join(model_dir, 'default_metrics.json'),
+                        os.path.join(model_dir, 'metrics.json'),
+                    ]
                     
-                    try:
-                        with open(metrics_file, 'r') as f:
-                            data = json.load(f)
-                        
-                        # Extrair predições
-                        if 'test_predictions' in data:
-                            predictions = data['test_predictions']
+                    for metrics_file in metrics_files:
+                        if os.path.exists(metrics_file):
+                            print(f"Carregando {standard_name} de {os.path.basename(metrics_file)}...")
+                            try:
+                                with open(metrics_file, 'r') as f:
+                                    data = json.load(f)
+                                
+                                if 'test_predictions' in data:
+                                    predictions = data['test_predictions']
+                                    if predictions and 'y_true' in predictions and 'y_pred_proba' in predictions:
+                                        models_data[standard_name] = {
+                                            'predictions': predictions,
+                                            'file_path': metrics_file
+                                        }
+                                        print(f"  ✓ {standard_name}: {len(predictions['y_true'])} amostras")
+                                        break
+                                    else:
+                                        print(f"  ⚠️  {standard_name}: test_predictions incompleto")
+                                else:
+                                    print(f"  ⚠️  {standard_name}: sem test_predictions")
+                            except Exception as e:
+                                print(f"  ❌ {standard_name}: {e}")
                             
-                            if predictions and all(key in predictions for key in ['y_true', 'y_pred_proba']):
-                                models_data[standard_name] = {
-                                    'predictions': predictions,
-                                    'file_path': metrics_file
-                                }
-                                print(f"   ✓ Predições carregadas: {len(predictions['y_true'])} amostras")
-                                break  # Encontrou o modelo, não precisa procurar outras variações
-                            else:
-                                print(f"   ⚠️  {standard_name}: Predições não encontradas no arquivo")
-                        else:
-                            print(f"   ⚠️  {standard_name}: Campo 'test_predictions' não encontrado")
-                            
-                    except Exception as e:
-                        print(f"   ❌ Erro ao carregar {standard_name}: {e}")
-                else:
-                    print(f"   ⚠️  Nenhum arquivo de métricas encontrado para {model_name}")
-                    print(f"       Procurou por: metrics.json, default_metrics.json")
-            else:
-                print(f"   ⚠️  Diretório não existe: {model_dir}")
+                            if standard_name in models_data:
+                                break
     
-    return models_data, experiment_dir
+    elif detected_mode == 'optimized':
+        # Modo optimized: procurar nested_cv_*.json em modelo folders (novo) ou no root (antigo)
+        # Estratégia:
+        # 1. Procurar em pastas de modelos por nested_cv_*.json (novo formato com modelo folder)
+        # 2. Se não encontrado, procurar nested_cv_*.json no root do experimento (formato antigo)
+        
+        for standard_name, variations in model_variations.items():
+            found = False
+            
+            # Tenta procurar em pasta de modelo (novo formato)
+            for model_name in variations:
+                model_dir = os.path.join(current_results_dir, model_name)
+                if os.path.exists(model_dir):
+                    # Procurar por metrics.json nesta pasta (novo formato otimizado)
+                    metrics_file = os.path.join(model_dir, 'metrics.json')
+                    if os.path.exists(metrics_file):
+                        print(f"Carregando {standard_name} de metrics.json...")
+                        try:
+                            with open(metrics_file, 'r') as f:
+                                data = json.load(f)
+                            
+                            # Tentar carregar test_predictions do novo formato
+                            if 'test_predictions' in data and data['test_predictions']:
+                                predictions = data['test_predictions']
+                                if 'y_true' in predictions and 'y_pred_proba' in predictions:
+                                    models_data[standard_name] = {
+                                        'predictions': predictions,
+                                        'file_path': metrics_file,
+                                        'aggregated_metrics': data.get('aggregated_metrics', {})
+                                    }
+                                    print(f"  ✓ {standard_name}: {len(predictions['y_true'])} amostras (test_predictions)")
+                                    found = True
+                                    break
+                            # Se não tem test_predictions, usar agregadas (fallback - sem curve real)
+                            elif 'aggregated_metrics' in data:
+                                agg = data['aggregated_metrics']
+                                print(f"  ⚠️  {standard_name}: usando métricas agregadas (sem test_predictions)")
+                                models_data[standard_name] = {
+                                    'predictions': None,
+                                    'file_path': metrics_file,
+                                    'aggregated_metrics': agg
+                                }
+                                found = True
+                                break
+                        except Exception as e:
+                            print(f"  ❌ Erro lendo metrics.json: {e}")
+                
+                if found:
+                    break
+            
+            # Se não encontrou em pasta de modelo, procurar no root (formato antigo)
+            if not found:
+                try:
+                    for file in os.listdir(current_results_dir):
+                        if file.startswith('nested_cv_') and standard_name in file.lower() and file.endswith('.json'):
+                            nested_cv_file = os.path.join(current_results_dir, file)
+                            print(f"Carregando {standard_name} de {file} (root)...")
+                            try:
+                                with open(nested_cv_file, 'r') as f:
+                                    data = json.load(f)
+                                
+                                if 'test_predictions' in data and data['test_predictions']:
+                                    predictions = data['test_predictions']
+                                    if 'y_true' in predictions and 'y_pred_proba' in predictions:
+                                        models_data[standard_name] = {
+                                            'predictions': predictions,
+                                            'file_path': nested_cv_file,
+                                            'aggregated_metrics': data.get('aggregated_metrics', {})
+                                        }
+                                        print(f"  ✓ {standard_name}: {len(predictions['y_true'])} amostras")
+                                        found = True
+                                        break
+                                elif 'aggregated_metrics' in data:
+                                    agg = data['aggregated_metrics']
+                                    print(f"  ⚠️  {standard_name}: usando métricas agregadas (sem test_predictions)")
+                                    models_data[standard_name] = {
+                                        'predictions': None,
+                                        'file_path': nested_cv_file,
+                                        'aggregated_metrics': agg
+                                    }
+                                    found = True
+                                    break
+                            except Exception as e:
+                                print(f"  ❌ Erro lendo {file}: {e}")
+                            
+                            if found:
+                                break
+                except Exception:
+                    pass
+    
+    return models_data, experiment_dir, detected_mode
 
 
 def detect_classification_type(y_true, y_pred_proba):
@@ -395,7 +484,7 @@ def plot_precision_recall_curve(model_results, save_path=None):
     if save_path:
         plt.savefig(save_path + '_binary.png', dpi=300, bbox_inches='tight')
         plt.savefig(save_path + '_binary.pdf', bbox_inches='tight')
-        print(f"Precision-Recall Curve salva em: {save_path}{suffix}")
+        print(f"Precision-Recall Curve salva em: {save_path}")
         
     # Relatório final
     print(f"\nRelatório Precision-Recall:")
@@ -407,12 +496,13 @@ def plot_precision_recall_curve(model_results, save_path=None):
 def generate_all_plots():
     """
     Função principal para gerar todos os gráficos usando predições salvas
+    Suporta tanto modo default quanto optimized (com ou sem test_predictions)
     """
     print("Gerando gráficos de performance dos modelos usando predições salvas...")
     print("="*70)
     
     print("Carregando predições salvas dos modelos...")
-    model_results, experiment_dir = load_saved_predictions()
+    model_results, experiment_dir, detected_mode = load_saved_predictions()
     
     if not model_results:
         print("❌ Nenhuma predição encontrada!")
@@ -423,8 +513,18 @@ def generate_all_plots():
         print("❌ Nenhum diretório de experimento encontrado!")
         return
     
+    # Filtrar modelos que têm test_predictions (caso haja alguns sem)
+    models_with_predictions = {k: v for k, v in model_results.items() if v.get('predictions') is not None}
+    
+    if not models_with_predictions:
+        print("❌ Nenhum modelo com test_predictions encontrado!")
+        if detected_mode == 'optimized':
+            print("⚠️  Modelos otimizados sem test_predictions não podem gerar curvas ROC/PR")
+            print("    Você pode re-executar com a versão atualizada do código que salva test_predictions")
+        return
+    
     # Detectar tipo de classificação
-    first_model = next(iter(model_results.values()))
+    first_model = next(iter(models_with_predictions.values()))
     predictions = first_model['predictions']
     y_true = np.array(predictions['y_true'])
     y_pred_proba = np.array(predictions['y_pred_proba'])
@@ -434,22 +534,27 @@ def generate_all_plots():
     curves_dir = os.path.join(experiment_dir, "curves")
     os.makedirs(curves_dir, exist_ok=True)
     
-    print(f"✅ Predições encontradas para {len(model_results)} modelos: {list(model_results.keys())}")
+    models_loaded = len(models_with_predictions)
+    models_skipped = len(model_results) - models_loaded
+    print(f"✅ Predições encontradas para {models_loaded} modelos: {list(models_with_predictions.keys())}")
+    if models_skipped > 0:
+        print(f"⚠️  {models_skipped} modelos sem test_predictions foram ignorados")
     print(f"📊 Tipo de classificação: {classification_type} ({n_classes} classes)")
+    print(f"🔄 Modo detectado: {detected_mode.upper()}")
     
     if classification_type == 'multiclass' and n_classes > 2:
         print(f"\n📈 Análise multiclasse detectada ({n_classes} classes)")
-        generate_multiclass_plots(model_results, class_names, curves_dir)
+        generate_multiclass_plots(models_with_predictions, class_names, curves_dir)
 
     else:
         print(f"\n📈 Análise binária detectada")
         print("\nGerando ROC Curves...")
         roc_save_path = os.path.join(curves_dir, "roc_comparison")
-        plot_roc_curve(model_results, save_path=roc_save_path)
+        plot_roc_curve(models_with_predictions, save_path=roc_save_path)
         
         print("\nGerando PR Curves...")
         pr_save_path = os.path.join(curves_dir, "pr_comparison")
-        plot_precision_recall_curve(model_results, save_path=pr_save_path)
+        plot_precision_recall_curve(models_with_predictions, save_path=pr_save_path)
     
     print(f"\n🎉 Todos os gráficos gerados com sucesso!")
 

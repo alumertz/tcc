@@ -1,0 +1,134 @@
+{
+  "model_name": "multi_layer_perceptron",
+  "optimization_type": "nested_cross_validation",
+  "configuration": {
+    "outer_cv_folds": 5,
+    "n_trials_per_fold": 30,
+    "data_source": "ana",
+    "classification_type": "binary",
+    "timestamp": "2025-11-14T16:14:04.274207"
+  },
+  "aggregated_metrics": {
+    "accuracy": {
+      "mean": 0.6664347826086956,
+      "std": 0.017578126982251488,
+      "scores": [
+        0.6330434782608696,
+        0.6695652173913044,
+        0.6852173913043478,
+        0.6730434782608695,
+        0.671304347826087
+      ]
+    },
+    "precision": {
+      "mean": 0.45644747393744983,
+      "std": 0.25267034280774964,
+      "scores": [
+        0.42758620689655175,
+        0.5,
+        0.6046511627906976,
+        0.75,
+        0.0
+      ]
+    },
+    "recall": {
+      "mean": 0.12210526315789474,
+      "std": 0.11680890946173537,
+      "scores": [
+        0.3263157894736842,
+        0.13157894736842105,
+        0.1368421052631579,
+        0.015789473684210527,
+        0.0
+      ]
+    },
+    "f1": {
+      "mean": 0.1665172775562918,
+      "std": 0.1360421051170841,
+      "scores": [
+        0.3701492537313433,
+        0.20833333333333334,
+        0.22317596566523606,
+        0.030927835051546393,
+        0.0
+      ]
+    },
+    "roc_auc": {
+      "mean": 0.5962846224264278,
+      "std": 0.00860957576276988,
+      "scores": [
+        0.5967259056732741,
+        0.6087218045112781,
+        0.601989063568011,
+        0.5892891319207109,
+        0.5846972064588645
+      ]
+    }
+  },
+  "best_params_per_fold": [
+    {
+      "hidden_layer_sizes": [
+        190
+      ],
+      "activation": "tanh",
+      "alpha": 0.0065563227624648186,
+      "learning_rate": "invscaling",
+      "max_iter": 788,
+      "early_stopping": true
+    },
+    {
+      "hidden_layer_sizes": [
+        172,
+        23,
+        103
+      ],
+      "activation": "relu",
+      "alpha": 0.0007846444542589628,
+      "learning_rate": "adaptive",
+      "max_iter": 300,
+      "early_stopping": true
+    },
+    {
+      "hidden_layer_sizes": [
+        165,
+        93
+      ],
+      "activation": "logistic",
+      "alpha": 0.000677527419485577,
+      "learning_rate": "invscaling",
+      "max_iter": 858,
+      "early_stopping": true
+    },
+    {
+      "hidden_layer_sizes": [
+        193
+      ],
+      "activation": "logistic",
+      "alpha": 0.00019001495234217248,
+      "learning_rate": "invscaling",
+      "max_iter": 779,
+      "early_stopping": true
+    },
+    {
+      "hidden_layer_sizes": [
+        184,
+        34
+      ],
+      "activation": "logistic",
+      "alpha": 0.014295565397824402,
+      "learning_rate": "adaptive",
+      "max_iter": 854,
+      "early_stopping": true
+    }
+  ],
+  "trials": [],
+  "test_predictions": {},
+  "nested_cv_summary": {
+    "mean_accuracy": 0.6664347826086956,
+    "std_accuracy": 0.017578126982251488,
+    "mean_f1": 0.1665172775562918,
+    "std_f1": 0.1360421051170841,
+    "mean_roc_auc": 0.5962846224264278,
+    "std_roc_auc": 0.00860957576276988
+  }
+}

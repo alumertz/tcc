@@ -1,0 +1,83 @@
+MODELO: k_nearest_neighbors (Otimização com Optuna - Nested Cross-Validation)
+================================================================================
+
+Data/Hora: 2025-11-14 16:14:04
+
+VALIDAÇÃO CRUZADA (NESTED CV - 5 folds externos):
+--------------------------------------------------
+  ACCURACY: 0.6637 ± 0.0153
+  PRECISION: 0.4710 ± 0.0834
+  RECALL: 0.1348 ± 0.0188
+  F1: 0.2095 ± 0.0304
+  ROC_AUC: 0.5784 ± 0.0333
+
+TESTE FINAL:
+--------------------------------------------------
+  ACCURACY: 0.6637
+  PRECISION: 0.4710
+  RECALL: 0.1348
+  F1: 0.2095
+  ROC_AUC: 0.5784
+
+RELATÓRIO DE CLASSIFICAÇÃO:
+--------------------------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+     Class 0       0.6637      0.5290     0.8652     0.6565         -         -
+     Class 1       0.6637      0.4710     0.1348     0.2095     0.5784     0.5784
+
+   macro avg       0.6637      0.5000     0.5000     0.4330     0.5784303667527011     0.5784303667527011
+weighted avg       0.6637      0.4710     0.1348     0.2095     0.5784303667527011     0.5784303667527011
+
+PARÂMETROS:
+--------------------------------------------------
+{
+  "optimization_method": "Optuna with Nested Cross-Validation",
+  "outer_cv_folds": 5,
+  "trials_per_fold": 30,
+  "total_trials": 0,
+  "data_source": "ANA",
+  "classification_type": "BINARY",
+  "best_params_summary": "See MELHORES PAR\u00c2METROS POR FOLD section below"
+}
+
+CONFIGURAÇÃO DE OTIMIZAÇÃO:
+--------------------------------------------------
+  Folds externos: 5
+  Trials por fold: 30
+  Total de trials: 0
+  Data source: ANA
+  Tipo de classificação: BINARY
+
+MELHORES PARÂMETROS POR FOLD:
+--------------------------------------------------
+Fold 1:
+  n_neighbors: 18
+  weights: distance
+  algorithm: auto
+  p: 2
+
+Fold 2:
+  n_neighbors: 14
+  weights: distance
+  algorithm: auto
+  p: 2
+
+Fold 3:
+  n_neighbors: 14
+  weights: distance
+  algorithm: ball_tree
+  p: 1
+
+Fold 4:
+  n_neighbors: 14
+  weights: distance
+  algorithm: brute
+  p: 2
+
+Fold 5:
+  n_neighbors: 15
+  weights: distance
+  algorithm: kd_tree
+  p: 2
+

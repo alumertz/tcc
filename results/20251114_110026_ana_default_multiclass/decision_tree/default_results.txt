@@ -1,0 +1,60 @@
+MODELO: Decision Tree (Parâmetros Padrão)
+================================================================================
+
+Data/Hora: 2025-11-14 11:00:29
+
+VALIDAÇÃO CRUZADA (5-fold):
+--------------------------------------------------
+  ACCURACY: 0.5104 ± 0.0160
+  PRECISION: nan ± nan
+  RECALL: nan ± nan
+  F1: nan ± nan
+  ROC_AUC: nan ± nan
+  PR_AUC: 0.3461 ± 0.0072
+
+TESTE FINAL:
+--------------------------------------------------
+  ACCURACY: 0.5443
+  PRECISION: 0.5384
+  RECALL: 0.5443
+  F1: 0.5413
+  ROC_AUC: 0.5444
+  PR_AUC: 0.5240
+
+RELATÓRIO DE CLASSIFICAÇÃO:
+--------------------------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+     Class 0       0.5443      0.6964     0.7091     0.7027     0.5482     0.6932
+     Class 1       0.5443      0.2600     0.2524     0.2562     0.5580     0.2036
+     Class 2       0.5443      0.1687     0.1609     0.1647     0.5117     0.1547
+
+   macro avg       0.5443      0.3750     0.3741     0.3745     0.5392826782392895     0.35051099201374125
+weighted avg       0.5443      0.5384     0.5443     0.5413     0.54441545356802     0.5240488549250111
+
+PARÂMETROS:
+--------------------------------------------------
+{
+  "memory": "None",
+  "steps": "[('scaler', StandardScaler()), ('classifier', DecisionTreeClassifier(random_state=42))]",
+  "transform_input": "None",
+  "verbose": "False",
+  "scaler": "StandardScaler()",
+  "classifier": "DecisionTreeClassifier(random_state=42)",
+  "scaler__copy": "True",
+  "scaler__with_mean": "True",
+  "scaler__with_std": "True",
+  "classifier__ccp_alpha": "0.0",
+  "classifier__class_weight": "None",
+  "classifier__criterion": "gini",
+  "classifier__max_depth": "None",
+  "classifier__max_features": "None",
+  "classifier__max_leaf_nodes": "None",
+  "classifier__min_impurity_decrease": "0.0",
+  "classifier__min_samples_leaf": "1",
+  "classifier__min_samples_split": "2",
+  "classifier__min_weight_fraction_leaf": "0.0",
+  "classifier__monotonic_cst": "None",
+  "classifier__random_state": "42",
+  "classifier__splitter": "best"
+}

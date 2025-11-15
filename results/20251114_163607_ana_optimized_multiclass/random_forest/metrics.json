@@ -1,0 +1,120 @@
+{
+  "model_name": "random_forest",
+  "optimization_type": "nested_cross_validation",
+  "configuration": {
+    "outer_cv_folds": 5,
+    "n_trials_per_fold": 30,
+    "data_source": "ANA",
+    "classification_type": "multiclass",
+    "timestamp": "2025-11-14T17:01:48.716475"
+  },
+  "aggregated_metrics": {
+    "accuracy": {
+      "mean": 0.6688695652173913,
+      "std": 0.004614434490929247,
+      "scores": [
+        0.671304347826087,
+        0.662608695652174,
+        0.6747826086956522,
+        0.671304347826087,
+        0.6643478260869565
+      ]
+    },
+    "precision": {
+      "mean": 0.5228941949631551,
+      "std": 0.040842896433217216,
+      "scores": [
+        0.5282060390763765,
+        0.48250749866846077,
+        0.5943798627002288,
+        0.526,
+        0.4833775743707094
+      ]
+    },
+    "recall": {
+      "mean": 0.6688695652173913,
+      "std": 0.004614434490929247,
+      "scores": [
+        0.671304347826087,
+        0.662608695652174,
+        0.6747826086956522,
+        0.671304347826087,
+        0.6643478260869565
+      ]
+    },
+    "f1": {
+      "mean": 0.5483342552917073,
+      "std": 0.007602672655747271,
+      "scores": [
+        0.5545847851405671,
+        0.5410907945173328,
+        0.5517255566515753,
+        0.556702966784028,
+        0.5375671733650336
+      ]
+    },
+    "roc_auc": {
+      "mean": 0.6208244576239553,
+      "std": 0.02415654409005271,
+      "scores": [
+        0.6477513062871679,
+        0.5852439423485928,
+        0.6480867803985724,
+        0.609251916531607,
+        0.6137883425538369
+      ]
+    }
+  },
+  "best_params_per_fold": [
+    {
+      "n_estimators": 300,
+      "max_depth": 21,
+      "min_samples_split": 4,
+      "min_samples_leaf": 1,
+      "max_features": "sqrt",
+      "criterion": "entropy"
+    },
+    {
+      "n_estimators": 200,
+      "max_depth": 23,
+      "min_samples_split": 18,
+      "min_samples_leaf": 4,
+      "max_features": "sqrt",
+      "criterion": "gini"
+    },
+    {
+      "n_estimators": 200,
+      "max_depth": 10,
+      "min_samples_split": 14,
+      "min_samples_leaf": 4,
+      "max_features": "sqrt",
+      "criterion": "entropy"
+    },
+    {
+      "n_estimators": 100,
+      "max_depth": 24,
+      "min_samples_split": 7,
+      "min_samples_leaf": 3,
+      "max_features": "log2",
+      "criterion": "gini"
+    },
+    {
+      "n_estimators": 200,
+      "max_depth": 8,
+      "min_samples_split": 7,
+      "min_samples_leaf": 1,
+      "max_features": "sqrt",
+      "criterion": "entropy"
+    }
+  ],
+  "trials": [],
+  "test_predictions": {},
+  "nested_cv_summary": {
+    "mean_accuracy": 0.6688695652173913,
+    "std_accuracy": 0.004614434490929247,
+    "mean_f1": 0.5483342552917073,
+    "std_f1": 0.007602672655747271,
+    "mean_roc_auc": 0.6208244576239553,
+    "std_roc_auc": 0.02415654409005271
+  }
+}

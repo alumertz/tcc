@@ -20,7 +20,8 @@ from src.models import (
     optimize_knn_classifier,
     optimize_mlp_classifier,
     optimize_svc_classifier,
-    optimize_catboost_classifier
+    optimize_catboost_classifier,
+    optimize_xgboost_classifier
 )
 from src.reports import summarize_results
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, HistGradientBoostingClassifier
@@ -29,6 +30,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
 from catboost import CatBoostClassifier
+from xgboost import XGBClassifier
 from evaluation import evaluate_model_default
 import warnings
 warnings.filterwarnings('ignore')
@@ -172,7 +174,8 @@ def run_all_models_optimize(X, y, n_trials=10, data_source="ana", classification
         ("K-Nearest Neighbors", optimize_knn_classifier),
         ("Multi-Layer Perceptron", optimize_mlp_classifier),
         ("Support Vector Classifier", optimize_svc_classifier),
-        ("CatBoost", optimize_catboost_classifier)
+        ("CatBoost", optimize_catboost_classifier),
+        ("XGBoost", optimize_xgboost_classifier)
     ]
     
     results = []
@@ -217,7 +220,8 @@ def run_all_default_models(X, y, data_source="ana", classification_type="binary"
         ("K-Nearest Neighbors", KNeighborsClassifier()),
         ("Multi-Layer Perceptron", MLPClassifier(random_state=42, max_iter=1000)),
         ("Support Vector Classifier", SVC(probability=True, random_state=42)),
-        ("CatBoost", CatBoostClassifier(random_state=42, verbose=False))
+        ("CatBoost", CatBoostClassifier(random_state=42, verbose=False)),
+        ("XGBoost", XGBClassifier(random_state=42, verbosity=0, eval_metric='logloss'))
     ]
     
     results = []

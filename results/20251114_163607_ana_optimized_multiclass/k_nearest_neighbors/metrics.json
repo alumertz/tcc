@@ -1,0 +1,110 @@
+{
+  "model_name": "k_nearest_neighbors",
+  "optimization_type": "nested_cross_validation",
+  "configuration": {
+    "outer_cv_folds": 5,
+    "n_trials_per_fold": 30,
+    "data_source": "ANA",
+    "classification_type": "multiclass",
+    "timestamp": "2025-11-15T14:01:38.571366"
+  },
+  "aggregated_metrics": {
+    "accuracy": {
+      "mean": 0.6660869565217391,
+      "std": 0.005608527129251172,
+      "scores": [
+        0.6678260869565218,
+        0.6573913043478261,
+        0.6660869565217391,
+        0.6747826086956522,
+        0.6643478260869565
+      ]
+    },
+    "precision": {
+      "mean": 0.5352447942438596,
+      "std": 0.04333023381062437,
+      "scores": [
+        0.565136211068613,
+        0.4707502509846321,
+        0.5080481903160897,
+        0.5951726140444715,
+        0.5371167048054919
+      ]
+    },
+    "recall": {
+      "mean": 0.6660869565217391,
+      "std": 0.005608527129251172,
+      "scores": [
+        0.6678260869565218,
+        0.6573913043478261,
+        0.6660869565217391,
+        0.6747826086956522,
+        0.6643478260869565
+      ]
+    },
+    "f1": {
+      "mean": 0.5448492506740373,
+      "std": 0.008395940154615122,
+      "scores": [
+        0.5571387152900225,
+        0.5357720626515342,
+        0.5413835474507857,
+        0.5522899766049889,
+        0.537661951372855
+      ]
+    },
+    "roc_auc": {
+      "mean": 0.5613696463696356,
+      "std": 0.03362654110680351,
+      "scores": [
+        0.5367839065175338,
+        0.5567202801693579,
+        0.5872287515665107,
+        0.609711982669989,
+        0.5164033109247864
+      ]
+    }
+  },
+  "best_params_per_fold": [
+    {
+      "n_neighbors": 19,
+      "weights": "distance",
+      "algorithm": "ball_tree",
+      "p": 2
+    },
+    {
+      "n_neighbors": 20,
+      "weights": "distance",
+      "algorithm": "ball_tree",
+      "p": 1
+    },
+    {
+      "n_neighbors": 19,
+      "weights": "distance",
+      "algorithm": "brute",
+      "p": 1
+    },
+    {
+      "n_neighbors": 20,
+      "weights": "distance",
+      "algorithm": "auto",
+      "p": 2
+    },
+    {
+      "n_neighbors": 20,
+      "weights": "distance",
+      "algorithm": "kd_tree",
+      "p": 1
+    }
+  ],
+  "trials": [],
+  "test_predictions": {},
+  "nested_cv_summary": {
+    "mean_accuracy": 0.6660869565217391,
+    "std_accuracy": 0.005608527129251172,
+    "mean_f1": 0.5448492506740373,
+    "std_f1": 0.008395940154615122,
+    "mean_roc_auc": 0.5613696463696356,
+    "std_roc_auc": 0.03362654110680351
+  }
+}

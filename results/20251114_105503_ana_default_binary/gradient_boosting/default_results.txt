@@ -1,0 +1,66 @@
+MODELO: Gradient Boosting (Parâmetros Padrão)
+================================================================================
+
+Data/Hora: 2025-11-14 10:56:20
+
+VALIDAÇÃO CRUZADA (5-fold):
+--------------------------------------------------
+  ACCURACY: 0.6657 ± 0.0104
+  PRECISION: 0.4799 ± 0.0488
+  RECALL: 0.1752 ± 0.0369
+  F1: 0.2553 ± 0.0450
+  ROC_AUC: 0.5954 ± 0.0204
+  PR_AUC: 0.4328 ± 0.0256
+
+TESTE FINAL:
+--------------------------------------------------
+  ACCURACY: 0.6696
+  PRECISION: 0.5000
+  RECALL: 0.1684
+  F1: 0.2520
+  ROC_AUC: 0.6260
+  PR_AUC: 0.4374
+
+RELATÓRIO DE CLASSIFICAÇÃO:
+--------------------------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+     Class 0       0.6696      0.6908     0.9169     0.7879         -         -
+     Class 1       0.6696      0.5000     0.1684     0.2520     0.6260     0.4374
+
+   macro avg       0.6696      0.5954     0.5427     0.5200     0.6260082023239917     0.4374073740182318
+weighted avg       0.6696      0.6278     0.6696     0.6108     0.6260082023239917     0.4374073740182318
+
+PARÂMETROS:
+--------------------------------------------------
+{
+  "memory": "None",
+  "steps": "[('scaler', StandardScaler()), ('classifier', GradientBoostingClassifier(random_state=42))]",
+  "transform_input": "None",
+  "verbose": "False",
+  "scaler": "StandardScaler()",
+  "classifier": "GradientBoostingClassifier(random_state=42)",
+  "scaler__copy": "True",
+  "scaler__with_mean": "True",
+  "scaler__with_std": "True",
+  "classifier__ccp_alpha": "0.0",
+  "classifier__criterion": "friedman_mse",
+  "classifier__init": "None",
+  "classifier__learning_rate": "0.1",
+  "classifier__loss": "log_loss",
+  "classifier__max_depth": "3",
+  "classifier__max_features": "None",
+  "classifier__max_leaf_nodes": "None",
+  "classifier__min_impurity_decrease": "0.0",
+  "classifier__min_samples_leaf": "1",
+  "classifier__min_samples_split": "2",
+  "classifier__min_weight_fraction_leaf": "0.0",
+  "classifier__n_estimators": "100",
+  "classifier__n_iter_no_change": "None",
+  "classifier__random_state": "42",
+  "classifier__subsample": "1.0",
+  "classifier__tol": "0.0001",
+  "classifier__validation_fraction": "0.1",
+  "classifier__verbose": "0",
+  "classifier__warm_start": "False"
+}

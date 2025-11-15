@@ -19,6 +19,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from catboost import CatBoostClassifier
+from xgboost import XGBClassifier
 from sklearn.model_selection import StratifiedKFold, cross_val_score
     
 def _optimize_classifier_generic(classifier_class, param_suggestions_func, model_name, X, y, 
@@ -479,6 +480,42 @@ def optimize_catboost_classifier(X, y, n_trials=30, save_results=True, fixed_par
         CatBoostClassifier,
         _suggest_catboost_params,
         'catboost',
+        X, y, n_trials, save_results, 
+        custom_params_processor=None,
+        return_test_metrics=True,
+        fixed_params=fixed_params,
+        data_source=data_source, classification_type=classification_type,
+        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
+    )
+
+
+def _suggest_xgboost_params(trial):
+    """Sugestões de parâmetros para XGBoost"""
+    return {
+        "n_estimators": trial.suggest_int("n_estimators", 100, 1000),
+        "learning_rate": trial.suggest_float("learning_rate", 0.01, 0.3),
+        "max_depth": trial.suggest_int("max_depth", 3, 15),
+        "min_child_weight": trial.suggest_int("min_child_weight", 1, 10),
+        "subsample": trial.suggest_float("subsample", 0.6, 1.0),
+        "colsample_bytree": trial.suggest_float("colsample_bytree", 0.6, 1.0),
+        "reg_alpha": trial.suggest_float("reg_alpha", 0.0, 1.0),
+        "reg_lambda": trial.suggest_float("reg_lambda", 1.0, 10.0),
+        "gamma": trial.suggest_float("gamma", 0.0, 5.0),
+        "random_state": 42,
+        "n_jobs": -1,  # Use all available cores
+        "verbosity": 0,  # Silenciar logs durante otimização
+        "eval_metric": "logloss"  # Métrica padrão para classificação
+    }
+
+
+def optimize_xgboost_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
+                              data_source="ana", classification_type="binary", 
+                              use_nested_cv=True, outer_cv_folds=5):
+    """Otimização de hiperparâmetros para XGBoost Classifier usando Optuna"""
+    return _optimize_classifier_generic(
+        XGBClassifier,
+        _suggest_xgboost_params,
+        'xgboost',
         X, y, n_trials, save_results, 
         custom_params_processor=None,
         return_test_metrics=True,

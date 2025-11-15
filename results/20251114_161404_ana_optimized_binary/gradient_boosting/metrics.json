@@ -1,0 +1,120 @@
+{
+  "model_name": "gradient_boosting",
+  "optimization_type": "nested_cross_validation",
+  "configuration": {
+    "outer_cv_folds": 5,
+    "n_trials_per_fold": 30,
+    "data_source": "ana",
+    "classification_type": "binary",
+    "timestamp": "2025-11-14T16:14:04.297090"
+  },
+  "aggregated_metrics": {
+    "accuracy": {
+      "mean": 0.6782608695652175,
+      "std": 0.008304234007870127,
+      "scores": [
+        0.6643478260869565,
+        0.6782608695652174,
+        0.68,
+        0.6904347826086956,
+        0.6782608695652174
+      ]
+    },
+    "precision": {
+      "mean": 0.552232603649934,
+      "std": 0.044567021681038925,
+      "scores": [
+        0.4794520547945205,
+        0.5581395348837209,
+        0.5535714285714286,
+        0.62,
+        0.55
+      ]
+    },
+    "recall": {
+      "mean": 0.15064884433305487,
+      "std": 0.02531511451399758,
+      "scores": [
+        0.18421052631578946,
+        0.12631578947368421,
+        0.1631578947368421,
+        0.1631578947368421,
+        0.1164021164021164
+      ]
+    },
+    "f1": {
+      "mean": 0.2349347742316561,
+      "std": 0.02994314894451468,
+      "scores": [
+        0.2661596958174905,
+        0.20600858369098712,
+        0.25203252032520324,
+        0.25833333333333336,
+        0.19213973799126638
+      ]
+    },
+    "roc_auc": {
+      "mean": 0.6111221175878934,
+      "std": 0.01642540803023356,
+      "scores": [
+        0.5821804511278196,
+        0.6251127819548872,
+        0.6278537252221463,
+        0.6061038961038961,
+        0.6143597335307179
+      ]
+    }
+  },
+  "best_params_per_fold": [
+    {
+      "n_estimators": 150,
+      "learning_rate": 0.1040205504641266,
+      "max_depth": 5,
+      "min_samples_split": 5,
+      "min_samples_leaf": 3,
+      "subsample": 0.9081253073825167
+    },
+    {
+      "n_estimators": 100,
+      "learning_rate": 0.017067681214094292,
+      "max_depth": 13,
+      "min_samples_split": 18,
+      "min_samples_leaf": 12,
+      "subsample": 0.925365471913642
+    },
+    {
+      "n_estimators": 200,
+      "learning_rate": 0.012904291872757157,
+      "max_depth": 11,
+      "min_samples_split": 14,
+      "min_samples_leaf": 17,
+      "subsample": 0.9127510750058637
+    },
+    {
+      "n_estimators": 150,
+      "learning_rate": 0.011998888795697975,
+      "max_depth": 8,
+      "min_samples_split": 8,
+      "min_samples_leaf": 10,
+      "subsample": 0.9114234625784265
+    },
+    {
+      "n_estimators": 200,
+      "learning_rate": 0.013612661959085915,
+      "max_depth": 5,
+      "min_samples_split": 4,
+      "min_samples_leaf": 9,
+      "subsample": 0.8187666469670429
+    }
+  ],
+  "trials": [],
+  "test_predictions": {},
+  "nested_cv_summary": {
+    "mean_accuracy": 0.6782608695652175,
+    "std_accuracy": 0.008304234007870127,
+    "mean_f1": 0.2349347742316561,
+    "std_f1": 0.02994314894451468,
+    "mean_roc_auc": 0.6111221175878934,
+    "std_roc_auc": 0.01642540803023356
+  }
+}

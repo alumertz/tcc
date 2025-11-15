@@ -1,0 +1,110 @@
+{
+  "model_name": "decision_tree",
+  "optimization_type": "nested_cross_validation",
+  "configuration": {
+    "outer_cv_folds": 5,
+    "n_trials_per_fold": 30,
+    "data_source": "ANA",
+    "classification_type": "multiclass",
+    "timestamp": "2025-11-14T16:36:51.660091"
+  },
+  "aggregated_metrics": {
+    "accuracy": {
+      "mean": 0.6097391304347826,
+      "std": 0.0408691951879641,
+      "scores": [
+        0.6173913043478261,
+        0.5495652173913044,
+        0.648695652173913,
+        0.6556521739130434,
+        0.577391304347826
+      ]
+    },
+    "precision": {
+      "mean": 0.5312503763893704,
+      "std": 0.00742751249325977,
+      "scores": [
+        0.5439686409623778,
+        0.522280282360485,
+        0.5258451551982835,
+        0.5308473287341569,
+        0.5333104746915489
+      ]
+    },
+    "recall": {
+      "mean": 0.6097391304347826,
+      "std": 0.0408691951879641,
+      "scores": [
+        0.6173913043478261,
+        0.5495652173913044,
+        0.648695652173913,
+        0.6556521739130434,
+        0.577391304347826
+      ]
+    },
+    "f1": {
+      "mean": 0.5535517357754458,
+      "std": 0.011220856595817697,
+      "scores": [
+        0.5683500632708554,
+        0.5342851195125732,
+        0.5575615705219286,
+        0.5571839945297322,
+        0.55037793104214
+      ]
+    },
+    "roc_auc": {
+      "mean": 0.5581929338564291,
+      "std": 0.03175580078641578,
+      "scores": [
+        0.5297772751865312,
+        0.5325081353643238,
+        0.613751977570683,
+        0.5730701265861419,
+        0.5418571545744655
+      ]
+    }
+  },
+  "best_params_per_fold": [
+    {
+      "max_depth": 13,
+      "min_samples_split": 9,
+      "min_samples_leaf": 17,
+      "criterion": "entropy"
+    },
+    {
+      "max_depth": 30,
+      "min_samples_split": 20,
+      "min_samples_leaf": 5,
+      "criterion": "gini"
+    },
+    {
+      "max_depth": 7,
+      "min_samples_split": 6,
+      "min_samples_leaf": 10,
+      "criterion": "entropy"
+    },
+    {
+      "max_depth": 6,
+      "min_samples_split": 12,
+      "min_samples_leaf": 17,
+      "criterion": "entropy"
+    },
+    {
+      "max_depth": 26,
+      "min_samples_split": 15,
+      "min_samples_leaf": 10,
+      "criterion": "entropy"
+    }
+  ],
+  "trials": [],
+  "test_predictions": {},
+  "nested_cv_summary": {
+    "mean_accuracy": 0.6097391304347826,
+    "std_accuracy": 0.0408691951879641,
+    "mean_f1": 0.5535517357754458,
+    "std_f1": 0.011220856595817697,
+    "mean_roc_auc": 0.5581929338564291,
+    "std_roc_auc": 0.03175580078641578
+  }
+}
