@@ -1,3 +1,31 @@
+CPDB_PATHWAYS_FILE = './data/CPDB_pathways_genes.tsv'
+
+def process_cpdb_cancer_pathways(file_path=CPDB_PATHWAYS_FILE):
+    """
+    Processa CPDB_pathways_genes.tsv, filtrando apenas pathways que incluem 'cancer'.
+    Extrai genes da coluna 'hgnc_symbol_ids' e retorna DataFrame padrão (symbol, Oncogene, TSG).
+    """
+    print("Processando CPDB_pathways_genes.tsv para pathways de câncer...")
+    try:
+        df = pd.read_csv(file_path, sep='\t')
+        # Filtra pathways que incluem 'cancer' (case-insensitive)
+        df_cancer = df[df['pathway'].str.contains('cancer', case=False, na=False)]
+        # Extrai todos os genes da coluna hgnc_symbol_ids (assume separados por vírgula ou espaço)
+        gene_set = set()
+        for genes_str in df_cancer['hgnc_symbol_ids']:
+            # Suporta separação por vírgula ou espaço
+            genes = [g.strip() for g in str(genes_str).replace(',', ' ').split() if g.strip()]
+            gene_set.update(genes)
+        print(f"CPDB: Encontrados {len(gene_set)} genes relacionados a pathways de câncer.")
+        # Cria DataFrame padrão
+        df_genes = pd.DataFrame({'symbol': list(gene_set)})
+        df_genes['Oncogene'] = 'No'
+        df_genes['TSG'] = 'No'
+        df_genes = df_genes[['symbol', 'Oncogene', 'TSG']]
+        return df_genes
+    except Exception as e:
+        print(f"Erro ao processar CPDB_pathways_genes.tsv: {e}")
+        return pd.DataFrame(columns=['symbol', 'Oncogene', 'TSG']), set()
 import pandas as pd
 import numpy as np
 import os
@@ -344,9 +372,8 @@ def get_candidate_genes():
     oncokb_genes = process_oncokb('candidate')
     ncg_genes = process_ncg('candidate')
     omim_genes = process_omim()
-
-
     bushman_genes, bushman_removed = process_bushman_candidates(hgnc_mapping)
+    cpdb_genes = process_cpdb_cancer_pathways()
 
     # Aplica mapeamento HGNC a cada fonte
     print("\nAplicando mapeamento HGNC aos genes CGC Tier 2...")
@@ -366,7 +393,9 @@ def get_candidate_genes():
 
     # Combina as listas
     print("\nCombinando as listas de genes candidatos...")
-    combined_df = pd.concat([cgc_genes, oncokb_genes, ncg_genes, omim_genes, bushman_genes], ignore_index=True)
+    combined_df = pd.concat([
+        cgc_genes, oncokb_genes, ncg_genes, omim_genes, bushman_genes, cpdb_genes
+    ], ignore_index=True)
     print(f"Total de entradas antes da deduplicação: {len(combined_df)}")
 
     # Remove linhas com símbolos nulos

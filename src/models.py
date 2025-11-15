@@ -106,7 +106,14 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
         
         # Otimizar
         study.optimize(objective, n_trials=n_trials, show_progress_bar=False)
-        
+
+        # Calcular importâncias dos parâmetros após otimização
+        try:
+            param_importances = optuna.importance.get_param_importances(study)
+        except Exception as e:
+            print(f"Não foi possível calcular importâncias dos parâmetros: {e}")
+            param_importances = {}
+
         # Treinar modelo final com melhores parâmetros neste fold
         best_params = study.best_params.copy()
         if custom_params_processor:
@@ -191,6 +198,8 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
     # Salvar resultados se solicitado
     if save_results:
         from src.reports import save_nested_cv_results
+        # Adiciona importâncias dos parâmetros às métricas agregadas
+        aggregated_metrics['param_importances'] = param_importances
         save_nested_cv_results(
             model_name=model_name,
             aggregated_metrics=aggregated_metrics,
