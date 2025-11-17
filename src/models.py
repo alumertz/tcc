@@ -7,6 +7,8 @@ Implementa validação cruzada aninhada (nested cross-validation) para avaliaç�
 import time
 import numpy as np
 import optuna
+import os
+from src.reports import generate_experiment_folder_name
 from sklearn.ensemble import (
     GradientBoostingClassifier,
     HistGradientBoostingClassifier,
@@ -21,6 +23,9 @@ from sklearn.preprocessing import StandardScaler
 from catboost import CatBoostClassifier
 from xgboost import XGBClassifier
 from sklearn.model_selection import StratifiedKFold, cross_val_score
+
+IMBALANCE_RATIO = 93.0/7.0
+THREADS = 12-1
     
 def _optimize_classifier_generic(classifier_class, param_suggestions_func, model_name, X, y, 
                                n_trials=100, save_results=True, custom_params_processor=None, 
@@ -46,6 +51,9 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
         'roc_auc': [],
         'best_params_per_fold': []
     }
+    
+    # Store detailed data for save_detailed_results_txt_by_fold
+    all_folds_trials = []
     
     print(f"\nIniciando Nested Cross-Validation para {model_name}...")
     print(f"Configuração: {outer_cv_folds} folds externos, {n_trials} trials por fold")
@@ -104,8 +112,19 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
             load_if_exists=False
         )
         
+        # Store trials data for this fold
+        fold_trials = []
+        
         # Otimizar
         study.optimize(objective, n_trials=n_trials, show_progress_bar=False)
+
+        # Collect trial data for this fold
+        for trial in study.trials:
+            fold_trials.append({
+                'trial_number': trial.number,
+                'params': trial.params,
+                'score': trial.value if trial.value is not None else 0.0
+            })
 
         # Calcular importâncias dos parâmetros após otimização
         try:
@@ -145,7 +164,7 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
                 raise AttributeError("Neither Pipeline nor classifier implement predict_proba")
         
         # Calcular métricas para este fold
-        from sklearn.metrics import accuracy_score, precision_recall_fscore_support, roc_auc_score
+        from sklearn.metrics import accuracy_score, precision_recall_fscore_support, roc_auc_score, average_precision_score
         
         accuracy_fold = accuracy_score(y_test_fold, y_pred_fold)
         precision_fold, recall_fold, f1_fold, _ = precision_recall_fscore_support(
@@ -154,8 +173,58 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
         
         if classification_type == "multiclass":
             roc_auc_fold = roc_auc_score(y_test_fold, y_pred_proba_fold, multi_class='ovr', average='weighted')
+            pr_auc_fold = average_precision_score(y_test_fold, y_pred_proba_fold, average='weighted')
         else:
             roc_auc_fold = roc_auc_score(y_test_fold, y_pred_proba_fold[:, 1])
+            pr_auc_fold = average_precision_score(y_test_fold, y_pred_proba_fold[:, 1])
+        
+        # Train metrics (evaluate on training set for comparison)
+        y_pred_train = final_pipeline.predict(X_train_fold)
+        try:
+            y_pred_proba_train = final_pipeline.predict_proba(X_train_fold)
+        except AttributeError:
+            classifier = final_pipeline.named_steps['classifier']
+            if hasattr(classifier, 'predict_proba'):
+                X_train_scaled = final_pipeline.named_steps['scaler'].transform(X_train_fold)
+                y_pred_proba_train = classifier.predict_proba(X_train_scaled)
+            else:
+                raise AttributeError("Neither Pipeline nor classifier implement predict_proba")
+        
+        accuracy_train = accuracy_score(y_train_fold, y_pred_train)
+        precision_train, recall_train, f1_train, _ = precision_recall_fscore_support(
+            y_train_fold, y_pred_train, average='weighted' if classification_type == "multiclass" else 'binary'
+        )
+        
+        if classification_type == "multiclass":
+            roc_auc_train = roc_auc_score(y_train_fold, y_pred_proba_train, multi_class='ovr', average='weighted')
+            pr_auc_train = average_precision_score(y_train_fold, y_pred_proba_train, average='weighted')
+        else:
+            roc_auc_train = roc_auc_score(y_train_fold, y_pred_proba_train[:, 1])
+            pr_auc_train = average_precision_score(y_train_fold, y_pred_proba_train[:, 1])
+        
+        # Store fold data for detailed results
+        fold_data = {
+            'fold': fold_number,
+            'trials': fold_trials,
+            'best_params': best_params,
+            'train_metrics': {
+                'accuracy': accuracy_train,
+                'precision': precision_train,
+                'recall': recall_train,
+                'f1': f1_train,
+                'roc_auc': roc_auc_train,
+                'pr_auc': pr_auc_train
+            },
+            'test_metrics': {
+                'accuracy': accuracy_fold,
+                'precision': precision_fold,
+                'recall': recall_fold,
+                'f1': f1_fold,
+                'roc_auc': roc_auc_fold,
+                'pr_auc': pr_auc_fold
+            }
+        }
+        all_folds_trials.append(fold_data)
         
         # Armazenar resultados deste fold
         nested_scores['accuracy'].append(accuracy_fold)
@@ -197,7 +266,8 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
     
     # Salvar resultados se solicitado
     if save_results:
-        from src.reports import save_nested_cv_results
+        from src.reports import save_nested_cv_results, save_detailed_results_txt_by_fold
+        
         # Adiciona importâncias dos parâmetros às métricas agregadas
         aggregated_metrics['param_importances'] = param_importances
         save_nested_cv_results(
@@ -209,12 +279,28 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
             n_trials=n_trials,
             outer_cv_folds=outer_cv_folds
         )
+        
+        # Generate detailed results by fold
+        experiment_folder = generate_experiment_folder_name(data_source, "optimized", classification_type)
+        experiment_dir = os.path.join("./results", experiment_folder)
+        model_dir_name = model_name.lower().replace(' ', '_')
+        model_dir = os.path.join(experiment_dir, model_dir_name)
+        os.makedirs(model_dir, exist_ok=True)
+        
+        detailed_results_path = os.path.join(model_dir, "detailed_results_by_fold.txt")
+        save_detailed_results_txt_by_fold(
+            model_name=model_name,
+            all_folds_trials=all_folds_trials,
+            output_path=detailed_results_path,
+            final_best_params=final_best_params,
+            final_best_score=aggregated_metrics['f1']['mean']
+        )
+        print(f"Detailed results by fold saved to: {detailed_results_path}")
     
     if return_test_metrics:
         return final_pipeline, aggregated_metrics
     else:
         return final_pipeline
-
 
 # Funções de sugestão de parâmetros para cada modelo
 def _suggest_decision_tree_params(trial):
@@ -223,7 +309,9 @@ def _suggest_decision_tree_params(trial):
         "max_depth": trial.suggest_int("max_depth", 2, 32),
         "min_samples_split": trial.suggest_int("min_samples_split", 2, 20),
         "min_samples_leaf": trial.suggest_int("min_samples_leaf", 1, 20),
-        "criterion": trial.suggest_categorical("criterion", ["gini", "entropy"]),
+        "criterion": trial.suggest_categorical("criterion", ["gini", "entropy", "log_loss"]),
+        "max_features": trial.suggest_categorical("max_features", [None, "sqrt", "log2"]),
+        "splitter": trial.suggest_categorical("splitter", ["best", "random"])
     }
 
 
@@ -235,7 +323,9 @@ def _suggest_random_forest_params(trial):
         "min_samples_split": trial.suggest_int("min_samples_split", 2, 20),
         "min_samples_leaf": trial.suggest_int("min_samples_leaf", 1, 20),
         "max_features": trial.suggest_categorical("max_features", ["sqrt", "log2", None]),
-        "criterion": trial.suggest_categorical("criterion", ["gini", "entropy"])
+        "criterion": trial.suggest_categorical("criterion", ["gini", "entropy", "log_loss"]),
+        "bootstrap": trial.suggest_categorical("bootstrap", [True, False]),
+        "n_jobs": -1
     }
 
 
@@ -247,7 +337,8 @@ def _suggest_gradient_boosting_params(trial):
         "max_depth": trial.suggest_int("max_depth", 3, 15),
         "min_samples_split": trial.suggest_int("min_samples_split", 2, 20),
         "min_samples_leaf": trial.suggest_int("min_samples_leaf", 1, 20),
-        "subsample": trial.suggest_float("subsample", 0.8, 1.0)
+        "subsample": trial.suggest_float("subsample", 0.8, 1.0),
+        "max_features": trial.suggest_categorical("max_features", [None, "sqrt", "log2"])
     }
 
 
@@ -268,7 +359,8 @@ def _suggest_knn_params(trial):
         "n_neighbors": trial.suggest_int("n_neighbors", 1, 20),
         "weights": trial.suggest_categorical("weights", ["uniform", "distance"]),
         "algorithm": trial.suggest_categorical("algorithm", ["auto", "ball_tree", "kd_tree", "brute"]),
-        "p": trial.suggest_int("p", 1, 2)  # 1 for manhattan, 2 for euclidean
+        "p": trial.suggest_int("p", 1, 2),  # 1 for manhattan, 2 for euclidean
+        "leaf_size": trial.suggest_int("leaf_size", 20, 40)
     }
 
 
@@ -286,6 +378,8 @@ def _suggest_mlp_params(trial):
         "activation": trial.suggest_categorical("activation", ["tanh", "relu", "logistic"]),
         "alpha": trial.suggest_float("alpha", 1e-5, 1e-1, log=True),
         "learning_rate": trial.suggest_categorical("learning_rate", ["constant", "invscaling", "adaptive"]),
+        "solver": trial.suggest_categorical("solver", ["adam", "sgd", "lbfgs"]),
+        "learning_rate_init": trial.suggest_float("learning_rate_init", 1e-4, 1e-1, log=True),
         "max_iter": trial.suggest_int("max_iter", 200, 1000)
     }
 
@@ -293,7 +387,7 @@ def _suggest_mlp_params(trial):
 def _suggest_svc_params(trial):
     """Sugestões de parâmetros para SVC otimizadas para evitar execução infinita"""
     # Priorizar kernels mais eficientes e limitar opções problemáticas
-    kernel = trial.suggest_categorical("kernel", ["linear", "rbf"])
+    kernel = trial.suggest_categorical("kernel", ["linear", "poly", "rbf", "sigmoid"])
     
     params = {
         "kernel": kernel,
@@ -302,6 +396,8 @@ def _suggest_svc_params(trial):
         "max_iter": 1000,  # Limitar iterações para evitar execução infinita
         "tol": 1e-3,  # Tolerância menos rigorosa para convergência mais rápida
         "cache_size": 200,  # Aumentar cache para melhor performance
+        "degree": trial.suggest_int("degree", 2, 6),
+        "shrinking": trial.suggest_categorical("shrinking", [True, False])
     }
     
     # Adicionar parâmetros específicos do kernel com restrições
@@ -322,9 +418,31 @@ def _suggest_catboost_params(trial):
         "bagging_temperature": trial.suggest_float("bagging_temperature", 0.0, 1.0),
         "random_strength": trial.suggest_float("random_strength", 0.0, 1.0),
         "verbose": False,  # Silenciar logs durante otimização
-        "allow_writing_files": False  # Não escrever arquivos de log
+        "allow_writing_files": False,  # Não escrever arquivos de log
+        "loss_function": "Logloss",
+        "thread_count": THREADS,
+        "scale_pos_weight": trial.suggest_float("scale_pos_weight", IMBALANCE_RATIO * 0.4, IMBALANCE_RATIO * 4)
     }
 
+
+def _suggest_xgboost_params(trial):
+    """Sugestões de parâmetros para XGBoost"""
+    return {
+        "n_estimators": trial.suggest_int("n_estimators", 100, 1000),
+        "learning_rate": trial.suggest_float("learning_rate", 0.01, 0.3),
+        "max_depth": trial.suggest_int("max_depth", 3, 15),
+        "min_child_weight": trial.suggest_int("min_child_weight", 1, 10),
+        "subsample": trial.suggest_float("subsample", 0.6, 1.0),
+        "colsample_bytree": trial.suggest_float("colsample_bytree", 0.6, 1.0),
+        "reg_alpha": trial.suggest_float("reg_alpha", 0.0, 1.0),
+        "reg_lambda": trial.suggest_float("reg_lambda", 1.0, 10.0),
+        "gamma": trial.suggest_float("gamma", 0.0, 5.0),
+        "random_state": 42,
+        "n_jobs": -1,  # Use all available cores
+        "verbosity": 0,  # Silenciar logs durante otimização
+        "eval_metric": "logloss",  # Métrica padrão para classificação
+        "scale_pos_weight": trial.suggest_float("scale_pos_weight", IMBALANCE_RATIO * 0.4, IMBALANCE_RATIO * 4)
+    }
 
 def _process_mlp_params(best_params):
     """Processa parâmetros do MLP para o modelo final.
@@ -361,6 +479,9 @@ def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True, fixe
                                     data_source="ana", classification_type="binary", 
                                     use_nested_cv=True, outer_cv_folds=5):
     """Otimização de hiperparâmetros para Decision Tree Classifier usando Optuna"""
+    if fixed_params is None:
+        fixed_params = {}
+    fixed_params["class_weight"] = "balanced"
     return _optimize_classifier_generic(
         DecisionTreeClassifier,
         _suggest_decision_tree_params,
@@ -378,6 +499,9 @@ def optimize_random_forest_classifier(X, y, n_trials=30, save_results=True, fixe
                                      data_source="ana", classification_type="binary", 
                                      use_nested_cv=True, outer_cv_folds=5):
     """Otimização de hiperparâmetros para Random Forest Classifier usando Optuna"""
+    if fixed_params is None:
+        fixed_params = {}
+    fixed_params["class_weight"] = "balanced"
     return _optimize_classifier_generic(
         RandomForestClassifier,
         _suggest_random_forest_params,
@@ -463,11 +587,9 @@ def optimize_svc_classifier(X, y, n_trials=30, save_results=True, fixed_params=N
                           data_source="ana", classification_type="binary", 
                           use_nested_cv=True, outer_cv_folds=5):
     """Otimização de hiperparâmetros para SVC usando Optuna"""
-    # Ensure probability=True is always set
-    enforced_params = {"probability": True}
+    enforced_params = {"probability": True, "class_weight": "balanced"}
     if fixed_params:
         enforced_params.update(fixed_params)
-    
     return _optimize_classifier_generic(
         SVC,
         _suggest_svc_params,
@@ -494,27 +616,8 @@ def optimize_catboost_classifier(X, y, n_trials=30, save_results=True, fixed_par
         return_test_metrics=True,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
-        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
+        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds,
     )
-
-
-def _suggest_xgboost_params(trial):
-    """Sugestões de parâmetros para XGBoost"""
-    return {
-        "n_estimators": trial.suggest_int("n_estimators", 100, 1000),
-        "learning_rate": trial.suggest_float("learning_rate", 0.01, 0.3),
-        "max_depth": trial.suggest_int("max_depth", 3, 15),
-        "min_child_weight": trial.suggest_int("min_child_weight", 1, 10),
-        "subsample": trial.suggest_float("subsample", 0.6, 1.0),
-        "colsample_bytree": trial.suggest_float("colsample_bytree", 0.6, 1.0),
-        "reg_alpha": trial.suggest_float("reg_alpha", 0.0, 1.0),
-        "reg_lambda": trial.suggest_float("reg_lambda", 1.0, 10.0),
-        "gamma": trial.suggest_float("gamma", 0.0, 5.0),
-        "random_state": 42,
-        "n_jobs": -1,  # Use all available cores
-        "verbosity": 0,  # Silenciar logs durante otimização
-        "eval_metric": "logloss"  # Métrica padrão para classificação
-    }
 
 
 def optimize_xgboost_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,

@@ -903,3 +903,168 @@ def save_nested_cv_results(model_name, aggregated_metrics, best_params_per_fold,
     
     print(f"Relatório TXT salvo em: {txt_filepath}")
     print(f"Resultados de Nested CV salvos em: {model_dir}")
+
+
+def save_trials_results(model_name, trials, data_source="ana"):
+    """
+    Salva os resultados dos trials em trials.json na pasta do modelo
+    Args:
+        model_name (str): Nome do modelo
+        trials (list): Lista de dicts com dados dos trials
+        data_source (str): Fonte dos dados
+    """
+    experiment_folder = generate_experiment_folder_name(data_source, "optimized")
+    experiment_dir = os.path.join("./results", experiment_folder)
+    model_dir_name = model_name.lower().replace(' ', '_')
+    model_dir = os.path.join(experiment_dir, model_dir_name)
+    os.makedirs(model_dir, exist_ok=True)
+    trials_filename = "trials.json"
+    trials_filepath = os.path.join(model_dir, trials_filename)
+    # Write only trial_number, params, score, time for each trial
+    simple_trials = []
+    for t in trials:
+        simple_trials.append({
+            'trial_number': t.get('trial_number'),
+            'params': t.get('params'),
+            'score': t.get('score'),
+            'time': t.get('time')
+        })
+    with open(trials_filepath, 'w') as f:
+        json.dump(simple_trials, f, indent=2, ensure_ascii=False)
+    print(f"Trials salvo em: {trials_filepath}")
+
+
+def save_detailed_results_txt(model_name, trials, test_metrics, best_params, optimization_info, output_path, param_importances_per_fold=None, aggregated_importances=None):
+    """
+    Salva um arquivo results.txt detalhado com todas as métricas de CV por trial, ordenado por PR AUC, para qualquer modelo.
+    Também imprime importâncias dos hiperparâmetros por fold e agregadas.
+    Args:
+        model_name (str): Nome do modelo
+        trials (list): Lista de dicts com dados dos trials (must include per-fold train/val metrics)
+        test_metrics (dict): Métricas finais de teste
+        best_params (dict): Melhores hiperparâmetros
+        optimization_info (dict): Info sobre otimização (n_trials, tempo, etc)
+        output_path (str): Caminho do arquivo para salvar
+        param_importances_per_fold (list): Lista de dicts de importâncias por fold
+        aggregated_importances (dict): Importâncias agregadas (média por parâmetro)
+    """
+    # Sort trials by PR AUC (descending)
+    sorted_trials = sorted(trials, key=lambda t: t.get('score', 0), reverse=True)
+    with open(output_path, 'w') as f:
+        f.write(f"RESULTADOS DO MODELO: {model_name.upper()}\n")
+        f.write("="*80 + "\n\n")
+        f.write(f"Data/Hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+        f.write("MÉTRICAS DETALHADAS DE VALIDAÇÃO CRUZADA - TODOS OS TRIALS:\n" + "="*80 + "\n\n")
+        # Print hyperparameter importances per fold
+        if param_importances_per_fold:
+            f.write("IMPORTÂNCIA DOS HIPERPARÂMETROS POR FOLD:\n" + "-"*50 + "\n")
+            for i, imp in enumerate(param_importances_per_fold, 1):
+                f.write(f"Fold {i}:\n")
+                for k, v in imp.items():
+                    f.write(f"  {k}: {v:.4f}\n")
+                f.write("\n")
+        # Print aggregated importances
+        if aggregated_importances:
+            f.write("IMPORTÂNCIA AGREGADA DOS HIPERPARÂMETROS (média dos folds):\n" + "-"*50 + "\n")
+            for k, v in aggregated_importances.items():
+                f.write(f"  {k}: {v:.4f}\n")
+            f.write("\n")
+        for rank, trial in enumerate(sorted_trials, 1):
+            pr_auc = trial.get('score', 0)
+            f.write(f"TRIAL {trial.get('trial_number', rank)} (Rank #{rank}) - PR AUC: {pr_auc:.4f}\n")
+            f.write("-"*60 + "\n")
+            f.write("Hiperparâmetros:\n")
+            for k, v in trial.get('params', {}).items():
+                f.write(f"  {k}: {v}\n")
+            f.write("\nMétricas por fold:\n")
+            metrics = ['accuracy', 'precision', 'recall', 'f1', 'roc_auc', 'pr_auc']
+            for metric in metrics:
+                train_scores = trial.get(f'train_{metric}', [None]*5)
+                test_scores = trial.get(f'test_{metric}', [None]*5)
+                f.write(f"{metric.capitalize():<12} | ")
+                for i in range(len(train_scores)):
+                    f.write(f"Train: {train_scores[i]:.4f}  Test: {test_scores[i]:.4f} | ")
+                f.write("\n")
+            f.write("\n")
+        f.write("AVALIAÇÃO NO CONJUNTO DE TESTE FINAL:\n" + "-"*50 + "\n")
+        for k, v in test_metrics.items():
+            f.write(f"{k}: {v}\n")
+        f.write("\nMELHORES HIPERPARÂMETROS:\n" + "-"*30 + "\n")
+        f.write(json.dumps(best_params, indent=2, ensure_ascii=False) + "\n\n")
+        # Destacar o melhor conjunto global
+        final_best_params = optimization_info.get('final_best_params')
+        final_best_score = optimization_info.get('final_best_score')
+        if final_best_params:
+            f.write("MELHOR CONJUNTO DE HIPERPARÂMETROS GLOBAL (selecionado pelo maior score de interesse):\n" + "-"*60 + "\n")
+            f.write(json.dumps(final_best_params, indent=2, ensure_ascii=False) + "\n")
+            if final_best_score is not None:
+                f.write(f"Score de interesse: {final_best_score:.4f}\n")
+            f.write("\n")
+        f.write("HISTÓRICO DE OTIMIZAÇÃO:\n" + "-"*30 + "\n")
+        f.write(f"Número de trials: {optimization_info.get('n_trials', len(trials))}\n")
+        f.write(f"Melhor score (CV): {optimization_info.get('best_score', sorted_trials[0].get('score', 0))}\n")
+        f.write(f"Tempo total de otimização: {optimization_info.get('total_time', 0):.2f} segundos\n")
+
+
+def save_detailed_results_txt_by_fold(model_name, all_folds_trials, output_path, final_best_params=None, final_best_score=None):
+    with open(output_path, 'w') as f:
+        f.write(f"RESULTADOS DO MODELO: {model_name.upper()}\n")
+        f.write("="*80 + "\n\n")
+        f.write(f"Data/Hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+        for fold_data in all_folds_trials:
+            fold = fold_data['fold']
+            f.write(f"FOLD {fold} (loop externo):\n")
+            f.write("-"*60 + "\n")
+            f.write("Loop interno - Trials de hiperparâmetros testados:\n")
+            for trial in fold_data['trials']:
+                score = trial.get('score', 0)
+                f.write(f"  Trial {trial['trial_number']}: Score={score:.4f} | Hiperparâmetros: {json.dumps(trial['params'])}\n")
+            f.write("\nConjunto de hiperparâmetros escolhido:\n")
+            for k, v in fold_data['best_params'].items():
+                f.write(f"  {k}: {v}\n")
+            f.write("\nResultado do treino:\n")
+            for k, v in fold_data['train_metrics'].items():
+                f.write(f"  {k}: {v:.4f}\n")
+            f.write("\nResultado do teste:\n")
+            for k, v in fold_data['test_metrics'].items():
+                f.write(f"  {k}: {v:.4f}\n")
+            f.write("\n" + "="*60 + "\n\n")
+        # Tabela agregada de métricas
+        f.write("TABELA DE MÉTRICAS DE TREINO E TESTE POR FOLD:\n")
+        metrics = ['accuracy', 'precision', 'recall', 'f1', 'roc_auc', 'pr_auc']
+        header = "Fold".ljust(6) + "| " + " | ".join([m.ljust(10) for m in metrics])
+        f.write(header + "\n" + "-"*len(header) + "\n")
+        train_vals = {m: [] for m in metrics}
+        test_vals = {m: [] for m in metrics}
+        for fold_data in all_folds_trials:
+            fold = str(fold_data['fold']).ljust(6)
+            train_line = fold + "| " + " | ".join([f"{fold_data['train_metrics'][m]:.4f}".ljust(10) for m in metrics])
+            test_line = fold + "| " + " | ".join([f"{fold_data['test_metrics'][m]:.4f}".ljust(10) for m in metrics])
+            f.write("Treino: " + train_line + "\n")
+            f.write("Teste:  " + test_line + "\n")
+            for m in metrics:
+                train_vals[m].append(fold_data['train_metrics'][m])
+                test_vals[m].append(fold_data['test_metrics'][m])
+        f.write("\n")
+        # Tabela agregada de médias e desvios padrão
+        f.write("MÉDIAS E DESVIOS PADRÃO DAS MÉTRICAS POR FOLD:\n")
+        f.write(header + "\n" + "-"*len(header) + "\n")
+        train_agg = "Treinos: ".ljust(9)
+        test_agg = "Testes:  ".ljust(9)
+        for m in metrics:
+            mean_train = np.mean(train_vals[m])
+            std_train = np.std(train_vals[m])
+            mean_test = np.mean(test_vals[m])
+            std_test = np.std(test_vals[m])
+            train_agg += f"{mean_train:.4f}+-{std_train:.2f}".ljust(13)
+            test_agg += f"{mean_test:.4f}+-{std_test:.2f}".ljust(13)
+        f.write(train_agg + "\n")
+        f.write(test_agg + "\n\n")
+        # Melhor conjunto global
+        if final_best_params:
+            f.write("MELHOR CONJUNTO DE HIPERPARÂMETROS GLOBAL (selecionado pelo maior score de interesse):\n" + "-"*60 + "\n")
+            f.write(json.dumps(final_best_params, indent=2, ensure_ascii=False) + "\n")
+            if final_best_score is not None:
+                f.write(f"Score de interesse: {final_best_score:.4f}\n")
+            f.write("\n")
+        f.write("Relatório gerado por fold externo, conforme solicitado.\n")

@@ -168,14 +168,14 @@ def run_all_models_optimize(X, y, n_trials=10, data_source="ana", classification
     # Definição dos modelos e suas funções de otimização
     models_config = [
         ("Decision Tree", optimize_decision_tree_classifier),
+        ("K-Nearest Neighbors", optimize_knn_classifier),
+        ("Support Vector Classifier", optimize_svc_classifier),
         ("Random Forest", optimize_random_forest_classifier),
         ("Gradient Boosting", optimize_gradient_boosting_classifier),
         ("Histogram Gradient Boosting", optimize_hist_gradient_boosting_classifier),
-        ("K-Nearest Neighbors", optimize_knn_classifier),
         ("Multi-Layer Perceptron", optimize_mlp_classifier),
-        ("Support Vector Classifier", optimize_svc_classifier),
-        ("CatBoost", optimize_catboost_classifier),
-        ("XGBoost", optimize_xgboost_classifier)
+        ("XGBoost", optimize_xgboost_classifier),
+        ("CatBoost", optimize_catboost_classifier)
     ]
     
     results = []
