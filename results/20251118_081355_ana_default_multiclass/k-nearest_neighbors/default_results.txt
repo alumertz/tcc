@@ -1,0 +1,55 @@
+MODELO: K-Nearest Neighbors (Parâmetros Padrão)
+================================================================================
+
+Data/Hora: 2025-11-18 08:32:55
+
+VALIDAÇÃO CRUZADA (5-fold):
+--------------------------------------------------
+  ACCURACY: 0.9517 ± 0.0003
+  PRECISION: nan ± nan
+  RECALL: nan ± nan
+  F1: nan ± nan
+  ROC_AUC: nan ± nan
+  PR_AUC: 0.3442 ± 0.0027
+
+TESTE FINAL:
+--------------------------------------------------
+  ACCURACY: 0.9521
+  PRECISION: 0.9230
+  RECALL: 0.9521
+  F1: 0.9305
+  ROC_AUC: 0.5519
+  PR_AUC: 0.9125
+
+RELATÓRIO DE CLASSIFICAÇÃO:
+--------------------------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+     Class 0       0.9521      0.9527     0.9992     0.9754     0.5516     0.9564
+     Class 1       0.9521      0.6250     0.0485     0.0901     0.5912     0.0740
+     Class 2       0.9521      0.0000     0.0000     0.0000     0.5142     0.0230
+
+   macro avg       0.9521      0.5259     0.3492     0.3552     0.5523477499280188     0.3511485260455998
+weighted avg       0.9521      0.9230     0.9521     0.9305     0.5518576040428046     0.9125001116883381
+
+PARÂMETROS:
+--------------------------------------------------
+{
+  "memory": "None",
+  "steps": "[('scaler', StandardScaler()), ('classifier', KNeighborsClassifier())]",
+  "transform_input": "None",
+  "verbose": "False",
+  "scaler": "StandardScaler()",
+  "classifier": "KNeighborsClassifier()",
+  "scaler__copy": "True",
+  "scaler__with_mean": "True",
+  "scaler__with_std": "True",
+  "classifier__algorithm": "auto",
+  "classifier__leaf_size": "30",
+  "classifier__metric": "minkowski",
+  "classifier__metric_params": "None",
+  "classifier__n_jobs": "None",
+  "classifier__n_neighbors": "5",
+  "classifier__p": "2",
+  "classifier__weights": "uniform"
+}

@@ -1,0 +1,98 @@
+MODELO: decision_tree (Otimização com Optuna - Nested Cross-Validation)
+================================================================================
+
+Data/Hora: 2025-11-17 19:50:00
+
+VALIDAÇÃO CRUZADA (NESTED CV - 5 folds externos):
+--------------------------------------------------
+  ACCURACY: 0.6227 ± 0.1077
+  PRECISION: 0.9219 ± 0.0013
+  RECALL: 0.6227 ± 0.1077
+  F1: 0.7302 ± 0.0836
+  ROC_AUC: 0.6267 ± 0.0206
+
+TESTE FINAL:
+--------------------------------------------------
+  ACCURACY: 0.6227
+  PRECISION: 0.9219
+  RECALL: 0.6227
+  F1: 0.7302
+  ROC_AUC: 0.6267
+
+RELATÓRIO DE CLASSIFICAÇÃO:
+--------------------------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+     Class 0       0.6227      0.0781     0.3773     0.1295         -         -
+     Class 1       0.6227      0.9219     0.6227     0.7302     0.6267     0.6267
+
+   macro avg       0.6227      0.5000     0.5000     0.4298     0.6267139046245264     0.6267139046245264
+weighted avg       0.6227      0.9219     0.6227     0.7302     0.6267139046245264     0.6267139046245264
+
+PARÂMETROS:
+--------------------------------------------------
+{
+  "optimization_method": "Optuna with Nested Cross-Validation",
+  "outer_cv_folds": 5,
+  "trials_per_fold": 30,
+  "total_trials": 0,
+  "data_source": "ANA",
+  "classification_type": "MULTICLASS",
+  "best_params_summary": "See MELHORES PAR\u00c2METROS POR FOLD section below"
+}
+
+CONFIGURAÇÃO DE OTIMIZAÇÃO:
+--------------------------------------------------
+  Folds externos: 5
+  Trials por fold: 30
+  Total de trials: 0
+  Data source: ANA
+  Tipo de classificação: MULTICLASS
+
+MELHORES PARÂMETROS POR FOLD:
+--------------------------------------------------
+Fold 1:
+  max_depth: 6
+  min_samples_split: 3
+  min_samples_leaf: 4
+  criterion: entropy
+  max_features: None
+  splitter: best
+  class_weight: balanced
+
+Fold 2:
+  max_depth: 5
+  min_samples_split: 15
+  min_samples_leaf: 3
+  criterion: gini
+  max_features: None
+  splitter: best
+  class_weight: balanced
+
+Fold 3:
+  max_depth: 5
+  min_samples_split: 14
+  min_samples_leaf: 14
+  criterion: entropy
+  max_features: None
+  splitter: best
+  class_weight: balanced
+
+Fold 4:
+  max_depth: 5
+  min_samples_split: 4
+  min_samples_leaf: 7
+  criterion: entropy
+  max_features: None
+  splitter: best
+  class_weight: balanced
+
+Fold 5:
+  max_depth: 7
+  min_samples_split: 2
+  min_samples_leaf: 1
+  criterion: entropy
+  max_features: log2
+  splitter: best
+  class_weight: balanced
+

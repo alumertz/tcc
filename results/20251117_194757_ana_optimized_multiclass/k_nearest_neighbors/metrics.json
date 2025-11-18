@@ -1,0 +1,122 @@
+{
+  "model_name": "k_nearest_neighbors",
+  "optimization_type": "nested_cross_validation",
+  "configuration": {
+    "outer_cv_folds": 5,
+    "n_trials_per_fold": 30,
+    "data_source": "ANA",
+    "classification_type": "multiclass",
+    "timestamp": "2025-11-17T20:01:23.529670"
+  },
+  "aggregated_metrics": {
+    "accuracy": {
+      "mean": 0.9517396254599774,
+      "std": 0.00018900126034867144,
+      "scores": [
+        0.951542973731191,
+        0.9517980107115531,
+        0.9520408163265306,
+        0.9517857142857142,
+        0.951530612244898
+      ]
+    },
+    "precision": {
+      "mean": 0.9213686022054649,
+      "std": 0.01302038294292503,
+      "scores": [
+        0.9054340308571981,
+        0.931933817903596,
+        0.9321476089798001,
+        0.9319170472475798,
+        0.9054105060391504
+      ]
+    },
+    "recall": {
+      "mean": 0.9517396254599774,
+      "std": 0.00018900126034867144,
+      "scores": [
+        0.951542973731191,
+        0.9517980107115531,
+        0.9520408163265306,
+        0.9517857142857142,
+        0.951530612244898
+      ]
+    },
+    "f1": {
+      "mean": 0.9283562998560392,
+      "std": 0.00039071702252145644,
+      "scores": [
+        0.9279160572376042,
+        0.928542507004004,
+        0.9289006754805482,
+        0.9285244337610543,
+        0.9278978257969854
+      ]
+    },
+    "roc_auc": {
+      "mean": 0.5970794452100249,
+      "std": 0.014643051262787195,
+      "scores": [
+        0.5830567793445313,
+        0.5780678483600352,
+        0.6119835838212373,
+        0.5981590601581811,
+        0.6141299543661392
+      ]
+    },
+    "param_importances": {
+      "p": 0.6816373605829853,
+      "n_neighbors": 0.27190360049733,
+      "leaf_size": 0.021171922870950922,
+      "weights": 0.014134790247618855,
+      "algorithm": 0.011152325801115
+    }
+  },
+  "best_params_per_fold": [
+    {
+      "n_neighbors": 20,
+      "weights": "distance",
+      "algorithm": "ball_tree",
+      "p": 2,
+      "leaf_size": 28
+    },
+    {
+      "n_neighbors": 17,
+      "weights": "distance",
+      "algorithm": "ball_tree",
+      "p": 2,
+      "leaf_size": 28
+    },
+    {
+      "n_neighbors": 19,
+      "weights": "distance",
+      "algorithm": "auto",
+      "p": 2,
+      "leaf_size": 22
+    },
+    {
+      "n_neighbors": 20,
+      "weights": "distance",
+      "algorithm": "kd_tree",
+      "p": 2,
+      "leaf_size": 28
+    },
+    {
+      "n_neighbors": 20,
+      "weights": "distance",
+      "algorithm": "kd_tree",
+      "p": 2,
+      "leaf_size": 31
+    }
+  ],
+  "trials": [],
+  "test_predictions": {},
+  "nested_cv_summary": {
+    "mean_accuracy": 0.9517396254599774,
+    "std_accuracy": 0.00018900126034867144,
+    "mean_f1": 0.9283562998560392,
+    "std_f1": 0.00039071702252145644,
+    "mean_roc_auc": 0.5970794452100249,
+    "std_roc_auc": 0.014643051262787195
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "model_name": "svc",
+  "optimization_type": "nested_cross_validation",
+  "configuration": {
+    "outer_cv_folds": 5,
+    "n_trials_per_fold": 30,
+    "data_source": "ANA",
+    "classification_type": "binary",
+    "timestamp": "2025-11-17T20:09:54.423615"
+  },
+  "aggregated_metrics": {
+    "accuracy": {
+      "mean": 0.588716487360055,
+      "std": 0.012762319190048553,
+      "scores": [
+        0.5712828360112217,
+        0.5855649069115022,
+        0.6056122448979592,
+        0.6007653061224489,
+        0.5803571428571429
+      ]
+    },
+    "precision": {
+      "mean": 0.06723980971010377,
+      "std": 0.0051921698249660815,
+      "scores": [
+        0.07179781734635267,
+        0.06958608278344332,
+        0.06755895474824729,
+        0.07004377736085053,
+        0.057212416311625075
+      ]
+    },
+    "recall": {
+      "mean": 0.5826956279587859,
+      "std": 0.05420244450396434,
+      "scores": [
+        0.6578947368421053,
+        0.6105263157894737,
+        0.5608465608465608,
+        0.5894736842105263,
+        0.49473684210526314
+      ]
+    },
+    "f1": {
+      "mean": 0.12055291659276024,
+      "std": 0.009422524694799444,
+      "scores": [
+        0.1294665976178146,
+        0.12493268712977922,
+        0.12059158134243458,
+        0.1252096143096702,
+        0.10256410256410256
+      ]
+    },
+    "roc_auc": {
+      "mean": 0.4362361422825097,
+      "std": 0.08205558688853755,
+      "scores": [
+        0.3574334522986641,
+        0.3826235382076203,
+        0.5883595047358112,
+        0.40142514463101453,
+        0.45133907153943836
+      ]
+    },
+    "param_importances": {
+      "kernel": 0.9946810141371085,
+      "degree": 0.0045803056870397435,
+      "shrinking": 0.0004846533258318807,
+      "C": 0.00025402685001989775
+    }
+  },
+  "best_params_per_fold": [
+    {
+      "kernel": "sigmoid",
+      "C": 91.42652140522371,
+      "degree": 5,
+      "shrinking": true,
+      "probability": true,
+      "class_weight": "balanced"
+    },
+    {
+      "kernel": "sigmoid",
+      "C": 4.265195996590532,
+      "degree": 3,
+      "shrinking": false,
+      "probability": true,
+      "class_weight": "balanced"
+    },
+    {
+      "kernel": "sigmoid",
+      "C": 0.10045394253958419,
+      "degree": 3,
+      "shrinking": false,
+      "probability": true,
+      "class_weight": "balanced"
+    },
+    {
+      "kernel": "sigmoid",
+      "C": 0.11158716546110102,
+      "degree": 6,
+      "shrinking": true,
+      "probability": true,
+      "class_weight": "balanced"
+    },
+    {
+      "kernel": "sigmoid",
+      "C": 2.4179031128851904,
+      "degree": 4,
+      "shrinking": true,
+      "probability": true,
+      "class_weight": "balanced"
+    }
+  ],
+  "trials": [],
+  "test_predictions": {},
+  "nested_cv_summary": {
+    "mean_accuracy": 0.588716487360055,
+    "std_accuracy": 0.012762319190048553,
+    "mean_f1": 0.12055291659276024,
+    "std_f1": 0.009422524694799444,
+    "mean_roc_auc": 0.4362361422825097,
+    "std_roc_auc": 0.08205558688853755
+  }
+}

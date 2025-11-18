@@ -1,0 +1,134 @@
+{
+  "model_name": "gradient_boosting",
+  "optimization_type": "nested_cross_validation",
+  "configuration": {
+    "outer_cv_folds": 5,
+    "n_trials_per_fold": 30,
+    "data_source": "ANA",
+    "classification_type": "binary",
+    "timestamp": "2025-11-18T00:04:25.220830"
+  },
+  "aggregated_metrics": {
+    "accuracy": {
+      "mean": 0.9523008109135007,
+      "std": 0.00048146008865442735,
+      "scores": [
+        0.9517980107115531,
+        0.9523080846722775,
+        0.9525510204081633,
+        0.9517857142857142,
+        0.9530612244897959
+      ]
+    },
+    "precision": {
+      "mean": 0.7559523809523809,
+      "std": 0.1573051110396089,
+      "scores": [
+        0.5714285714285714,
+        0.6666666666666666,
+        1.0,
+        0.6666666666666666,
+        0.875
+      ]
+    },
+    "recall": {
+      "mean": 0.023174603174603174,
+      "std": 0.009749140772612781,
+      "scores": [
+        0.021052631578947368,
+        0.031578947368421054,
+        0.015873015873015872,
+        0.010526315789473684,
+        0.03684210526315789
+      ]
+    },
+    "f1": {
+      "mean": 0.04471862078032659,
+      "std": 0.018396699062076693,
+      "scores": [
+        0.04060913705583756,
+        0.06030150753768844,
+        0.03125,
+        0.02072538860103627,
+        0.0707070707070707
+      ]
+    },
+    "roc_auc": {
+      "mean": 0.7058973799270234,
+      "std": 0.017294391476162005,
+      "scores": [
+        0.731352537064989,
+        0.6990746096009253,
+        0.6785221489054242,
+        0.7076859037674615,
+        0.7128517002963171
+      ]
+    },
+    "param_importances": {
+      "max_depth": 0.6862539745122779,
+      "learning_rate": 0.2462944411495089,
+      "n_estimators": 0.03611956497152319,
+      "min_samples_split": 0.010994010291175376,
+      "subsample": 0.009788662491169782,
+      "max_features": 0.006574505765764087,
+      "min_samples_leaf": 0.0039748408185806255
+    }
+  },
+  "best_params_per_fold": [
+    {
+      "n_estimators": 200,
+      "learning_rate": 0.05735883512823135,
+      "max_depth": 4,
+      "min_samples_split": 19,
+      "min_samples_leaf": 12,
+      "subsample": 0.9460177294834946,
+      "max_features": "log2"
+    },
+    {
+      "n_estimators": 150,
+      "learning_rate": 0.025301626838911545,
+      "max_depth": 5,
+      "min_samples_split": 16,
+      "min_samples_leaf": 2,
+      "subsample": 0.9179949510435444,
+      "max_features": "sqrt"
+    },
+    {
+      "n_estimators": 200,
+      "learning_rate": 0.02354681591277849,
+      "max_depth": 6,
+      "min_samples_split": 20,
+      "min_samples_leaf": 7,
+      "subsample": 0.8308408974395938,
+      "max_features": "log2"
+    },
+    {
+      "n_estimators": 100,
+      "learning_rate": 0.014084987894675419,
+      "max_depth": 6,
+      "min_samples_split": 2,
+      "min_samples_leaf": 1,
+      "subsample": 0.9265170184353272,
+      "max_features": "sqrt"
+    },
+    {
+      "n_estimators": 150,
+      "learning_rate": 0.03463752734200562,
+      "max_depth": 5,
+      "min_samples_split": 13,
+      "min_samples_leaf": 7,
+      "subsample": 0.8416844685870065,
+      "max_features": "log2"
+    }
+  ],
+  "trials": [],
+  "test_predictions": {},
+  "nested_cv_summary": {
+    "mean_accuracy": 0.9523008109135007,
+    "std_accuracy": 0.00048146008865442735,
+    "mean_f1": 0.04471862078032659,
+    "std_f1": 0.018396699062076693,
+    "mean_roc_auc": 0.7058973799270234,
+    "std_roc_auc": 0.017294391476162005
+  }
+}

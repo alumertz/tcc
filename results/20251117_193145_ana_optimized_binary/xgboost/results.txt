@@ -1,0 +1,113 @@
+MODELO: xgboost (Otimização com Optuna - Nested Cross-Validation)
+================================================================================
+
+Data/Hora: 2025-11-18 00:34:19
+
+VALIDAÇÃO CRUZADA (NESTED CV - 5 folds externos):
+--------------------------------------------------
+  ACCURACY: 0.7953 ± 0.1403
+  PRECISION: 0.2517 ± 0.2148
+  RECALL: 0.3590 ± 0.2719
+  F1: 0.1238 ± 0.0411
+  ROC_AUC: 0.6791 ± 0.0182
+
+TESTE FINAL:
+--------------------------------------------------
+  ACCURACY: 0.7953
+  PRECISION: 0.2517
+  RECALL: 0.3590
+  F1: 0.1238
+  ROC_AUC: 0.6791
+
+RELATÓRIO DE CLASSIFICAÇÃO:
+--------------------------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+     Class 0       0.7953      0.7483     0.6410     0.6905         -         -
+     Class 1       0.7953      0.2517     0.3590     0.1238     0.6791     0.6791
+
+   macro avg       0.7953      0.5000     0.5000     0.4071     0.679060389038493     0.679060389038493
+weighted avg       0.7953      0.2517     0.3590     0.1238     0.679060389038493     0.679060389038493
+
+PARÂMETROS:
+--------------------------------------------------
+{
+  "optimization_method": "Optuna with Nested Cross-Validation",
+  "outer_cv_folds": 5,
+  "trials_per_fold": 30,
+  "total_trials": 0,
+  "data_source": "ANA",
+  "classification_type": "BINARY",
+  "best_params_summary": "See MELHORES PAR\u00c2METROS POR FOLD section below"
+}
+
+CONFIGURAÇÃO DE OTIMIZAÇÃO:
+--------------------------------------------------
+  Folds externos: 5
+  Trials por fold: 30
+  Total de trials: 0
+  Data source: ANA
+  Tipo de classificação: BINARY
+
+MELHORES PARÂMETROS POR FOLD:
+--------------------------------------------------
+Fold 1:
+  n_estimators: 536
+  learning_rate: 0.023074527588125945
+  max_depth: 5
+  min_child_weight: 10
+  subsample: 0.6615018019624629
+  colsample_bytree: 0.7197001619401341
+  reg_alpha: 0.5106100215690443
+  reg_lambda: 5.321405478217941
+  gamma: 2.9086627655994066
+  scale_pos_weight: 39.84937648337597
+
+Fold 2:
+  n_estimators: 706
+  learning_rate: 0.010874473652421114
+  max_depth: 3
+  min_child_weight: 5
+  subsample: 0.998700259404656
+  colsample_bytree: 0.6147916295536382
+  reg_alpha: 0.6438285235114303
+  reg_lambda: 6.8575503179891175
+  gamma: 2.09095859347588
+  scale_pos_weight: 25.280065814200764
+
+Fold 3:
+  n_estimators: 759
+  learning_rate: 0.01683757092666798
+  max_depth: 9
+  min_child_weight: 6
+  subsample: 0.9861379001831115
+  colsample_bytree: 0.9881765426610752
+  reg_alpha: 0.6829476778774074
+  reg_lambda: 7.22656931593753
+  gamma: 4.883862083233912
+  scale_pos_weight: 5.854868580994427
+
+Fold 4:
+  n_estimators: 100
+  learning_rate: 0.023519686431488537
+  max_depth: 11
+  min_child_weight: 1
+  subsample: 0.7461443336728217
+  colsample_bytree: 0.6018120264655812
+  reg_alpha: 0.9870577782914602
+  reg_lambda: 1.029505397689068
+  gamma: 4.957760674344119
+  scale_pos_weight: 5.757615127995715
+
+Fold 5:
+  n_estimators: 420
+  learning_rate: 0.02954830825499822
+  max_depth: 3
+  min_child_weight: 2
+  subsample: 0.9529295201824268
+  colsample_bytree: 0.828913665464844
+  reg_alpha: 0.760569377898938
+  reg_lambda: 6.895378457522536
+  gamma: 0.7995112967877152
+  scale_pos_weight: 29.760058139811072
+

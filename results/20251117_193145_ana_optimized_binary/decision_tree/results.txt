@@ -1,0 +1,98 @@
+MODELO: decision_tree (Otimização com Optuna - Nested Cross-Validation)
+================================================================================
+
+Data/Hora: 2025-11-17 19:32:57
+
+VALIDAÇÃO CRUZADA (NESTED CV - 5 folds externos):
+--------------------------------------------------
+  ACCURACY: 0.6466 ± 0.0845
+  PRECISION: 0.0761 ± 0.0054
+  RECALL: 0.5563 ± 0.1254
+  F1: 0.1327 ± 0.0076
+  ROC_AUC: 0.6345 ± 0.0217
+
+TESTE FINAL:
+--------------------------------------------------
+  ACCURACY: 0.6466
+  PRECISION: 0.0761
+  RECALL: 0.5563
+  F1: 0.1327
+  ROC_AUC: 0.6345
+
+RELATÓRIO DE CLASSIFICAÇÃO:
+--------------------------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+     Class 0       0.6466      0.9239     0.4437     0.5995         -         -
+     Class 1       0.6466      0.0761     0.5563     0.1327     0.6345     0.6345
+
+   macro avg       0.6466      0.5000     0.5000     0.3661     0.6344522621429693     0.6344522621429693
+weighted avg       0.6466      0.0761     0.5563     0.1327     0.6344522621429693     0.6344522621429693
+
+PARÂMETROS:
+--------------------------------------------------
+{
+  "optimization_method": "Optuna with Nested Cross-Validation",
+  "outer_cv_folds": 5,
+  "trials_per_fold": 30,
+  "total_trials": 0,
+  "data_source": "ANA",
+  "classification_type": "BINARY",
+  "best_params_summary": "See MELHORES PAR\u00c2METROS POR FOLD section below"
+}
+
+CONFIGURAÇÃO DE OTIMIZAÇÃO:
+--------------------------------------------------
+  Folds externos: 5
+  Trials por fold: 30
+  Total de trials: 0
+  Data source: ANA
+  Tipo de classificação: BINARY
+
+MELHORES PARÂMETROS POR FOLD:
+--------------------------------------------------
+Fold 1:
+  max_depth: 6
+  min_samples_split: 15
+  min_samples_leaf: 20
+  criterion: log_loss
+  max_features: sqrt
+  splitter: best
+  class_weight: balanced
+
+Fold 2:
+  max_depth: 6
+  min_samples_split: 17
+  min_samples_leaf: 18
+  criterion: entropy
+  max_features: None
+  splitter: best
+  class_weight: balanced
+
+Fold 3:
+  max_depth: 15
+  min_samples_split: 7
+  min_samples_leaf: 18
+  criterion: gini
+  max_features: sqrt
+  splitter: random
+  class_weight: balanced
+
+Fold 4:
+  max_depth: 7
+  min_samples_split: 7
+  min_samples_leaf: 11
+  criterion: log_loss
+  max_features: None
+  splitter: best
+  class_weight: balanced
+
+Fold 5:
+  max_depth: 8
+  min_samples_split: 14
+  min_samples_leaf: 13
+  criterion: entropy
+  max_features: sqrt
+  splitter: best
+  class_weight: balanced
+

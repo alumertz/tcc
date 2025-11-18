@@ -1,0 +1,49 @@
+MODELO: CatBoost (Parâmetros Padrão)
+================================================================================
+
+Data/Hora: 2025-11-18 08:43:10
+
+VALIDAÇÃO CRUZADA (5-fold):
+--------------------------------------------------
+  ACCURACY: 0.9517 ± 0.0005
+  PRECISION: nan ± nan
+  RECALL: nan ± nan
+  F1: nan ± nan
+  ROC_AUC: nan ± nan
+  PR_AUC: 0.3781 ± 0.0046
+
+TESTE FINAL:
+--------------------------------------------------
+  ACCURACY: 0.9513
+  PRECISION: 0.9164
+  RECALL: 0.9513
+  F1: 0.9287
+  ROC_AUC: 0.6896
+  PR_AUC: 0.9319
+
+RELATÓRIO DE CLASSIFICAÇÃO:
+--------------------------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+     Class 0       0.9513      0.9520     0.9992     0.9750     0.6902     0.9752
+     Class 1       0.9513      0.4000     0.0194     0.0370     0.7039     0.1189
+     Class 2       0.9513      0.0000     0.0000     0.0000     0.6471     0.0392
+
+   macro avg       0.9513      0.4507     0.3395     0.3374     0.6804001745043305     0.37776912210610253
+weighted avg       0.9513      0.9164     0.9513     0.9287     0.6895906529265086     0.9319260403429072
+
+PARÂMETROS:
+--------------------------------------------------
+{
+  "memory": "None",
+  "steps": "[('scaler', StandardScaler()), ('classifier', <catboost.core.CatBoostClassifier object at 0x1246481a0>)]",
+  "transform_input": "None",
+  "verbose": "False",
+  "scaler": "StandardScaler()",
+  "classifier": "<catboost.core.CatBoostClassifier object at 0x1246481a0>",
+  "scaler__copy": "True",
+  "scaler__with_mean": "True",
+  "scaler__with_std": "True",
+  "classifier__verbose": "False",
+  "classifier__random_state": "42"
+}

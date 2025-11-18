@@ -1,0 +1,93 @@
+MODELO: svc (Otimização com Optuna - Nested Cross-Validation)
+================================================================================
+
+Data/Hora: 2025-11-17 20:09:54
+
+VALIDAÇÃO CRUZADA (NESTED CV - 5 folds externos):
+--------------------------------------------------
+  ACCURACY: 0.5887 ± 0.0128
+  PRECISION: 0.0672 ± 0.0052
+  RECALL: 0.5827 ± 0.0542
+  F1: 0.1206 ± 0.0094
+  ROC_AUC: 0.4362 ± 0.0821
+
+TESTE FINAL:
+--------------------------------------------------
+  ACCURACY: 0.5887
+  PRECISION: 0.0672
+  RECALL: 0.5827
+  F1: 0.1206
+  ROC_AUC: 0.4362
+
+RELATÓRIO DE CLASSIFICAÇÃO:
+--------------------------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+     Class 0       0.5887      0.9328     0.4173     0.5766         -         -
+     Class 1       0.5887      0.0672     0.5827     0.1206     0.4362     0.4362
+
+   macro avg       0.5887      0.5000     0.5000     0.3486     0.4362361422825097     0.4362361422825097
+weighted avg       0.5887      0.0672     0.5827     0.1206     0.4362361422825097     0.4362361422825097
+
+PARÂMETROS:
+--------------------------------------------------
+{
+  "optimization_method": "Optuna with Nested Cross-Validation",
+  "outer_cv_folds": 5,
+  "trials_per_fold": 30,
+  "total_trials": 0,
+  "data_source": "ANA",
+  "classification_type": "BINARY",
+  "best_params_summary": "See MELHORES PAR\u00c2METROS POR FOLD section below"
+}
+
+CONFIGURAÇÃO DE OTIMIZAÇÃO:
+--------------------------------------------------
+  Folds externos: 5
+  Trials por fold: 30
+  Total de trials: 0
+  Data source: ANA
+  Tipo de classificação: BINARY
+
+MELHORES PARÂMETROS POR FOLD:
+--------------------------------------------------
+Fold 1:
+  kernel: sigmoid
+  C: 91.42652140522371
+  degree: 5
+  shrinking: True
+  probability: True
+  class_weight: balanced
+
+Fold 2:
+  kernel: sigmoid
+  C: 4.265195996590532
+  degree: 3
+  shrinking: False
+  probability: True
+  class_weight: balanced
+
+Fold 3:
+  kernel: sigmoid
+  C: 0.10045394253958419
+  degree: 3
+  shrinking: False
+  probability: True
+  class_weight: balanced
+
+Fold 4:
+  kernel: sigmoid
+  C: 0.11158716546110102
+  degree: 6
+  shrinking: True
+  probability: True
+  class_weight: balanced
+
+Fold 5:
+  kernel: sigmoid
+  C: 2.4179031128851904
+  degree: 4
+  shrinking: True
+  probability: True
+  class_weight: balanced
+

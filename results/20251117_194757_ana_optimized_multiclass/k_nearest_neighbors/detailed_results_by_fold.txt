@@ -1,0 +1,332 @@
+RESULTADOS DO MODELO: K_NEAREST_NEIGHBORS
+================================================================================
+
+Data/Hora: 2025-11-17 20:01:23
+
+FOLD 1 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3515 | Hiperparâmetros: {"n_neighbors": 5, "weights": "distance", "algorithm": "auto", "p": 2, "leaf_size": 35}
+  Trial 1: Score=0.3577 | Hiperparâmetros: {"n_neighbors": 14, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 28}
+  Trial 2: Score=0.3447 | Hiperparâmetros: {"n_neighbors": 20, "weights": "uniform", "algorithm": "kd_tree", "p": 1, "leaf_size": 40}
+  Trial 3: Score=0.3424 | Hiperparâmetros: {"n_neighbors": 6, "weights": "distance", "algorithm": "kd_tree", "p": 1, "leaf_size": 25}
+  Trial 4: Score=0.3466 | Hiperparâmetros: {"n_neighbors": 6, "weights": "uniform", "algorithm": "kd_tree", "p": 2, "leaf_size": 30}
+  Trial 5: Score=0.3563 | Hiperparâmetros: {"n_neighbors": 12, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 34}
+  Trial 6: Score=0.3419 | Hiperparâmetros: {"n_neighbors": 3, "weights": "uniform", "algorithm": "ball_tree", "p": 2, "leaf_size": 31}
+  Trial 7: Score=0.3415 | Hiperparâmetros: {"n_neighbors": 10, "weights": "uniform", "algorithm": "auto", "p": 1, "leaf_size": 27}
+  Trial 8: Score=0.3472 | Hiperparâmetros: {"n_neighbors": 7, "weights": "uniform", "algorithm": "auto", "p": 2, "leaf_size": 30}
+  Trial 9: Score=0.3407 | Hiperparâmetros: {"n_neighbors": 8, "weights": "uniform", "algorithm": "kd_tree", "p": 1, "leaf_size": 40}
+  Trial 10: Score=0.3591 | Hiperparâmetros: {"n_neighbors": 16, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 23}
+  Trial 11: Score=0.3591 | Hiperparâmetros: {"n_neighbors": 16, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 21}
+  Trial 12: Score=0.3610 | Hiperparâmetros: {"n_neighbors": 17, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 22}
+  Trial 13: Score=0.3609 | Hiperparâmetros: {"n_neighbors": 19, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 20}
+  Trial 14: Score=0.3609 | Hiperparâmetros: {"n_neighbors": 19, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 20}
+  Trial 15: Score=0.3610 | Hiperparâmetros: {"n_neighbors": 17, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 23}
+  Trial 16: Score=0.3587 | Hiperparâmetros: {"n_neighbors": 16, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 23}
+  Trial 17: Score=0.3464 | Hiperparâmetros: {"n_neighbors": 13, "weights": "distance", "algorithm": "ball_tree", "p": 1, "leaf_size": 25}
+  Trial 18: Score=0.3610 | Hiperparâmetros: {"n_neighbors": 17, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 23}
+  Trial 19: Score=0.3549 | Hiperparâmetros: {"n_neighbors": 11, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 26}
+  Trial 20: Score=0.3476 | Hiperparâmetros: {"n_neighbors": 14, "weights": "distance", "algorithm": "brute", "p": 1, "leaf_size": 22}
+  Trial 21: Score=0.3612 | Hiperparâmetros: {"n_neighbors": 18, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 24}
+  Trial 22: Score=0.3614 | Hiperparâmetros: {"n_neighbors": 17, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 25}
+  Trial 23: Score=0.3616 | Hiperparâmetros: {"n_neighbors": 18, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 25}
+  Trial 24: Score=0.3619 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 28}
+  Trial 25: Score=0.3619 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 28}
+  Trial 26: Score=0.3619 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 32}
+  Trial 27: Score=0.3619 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 32}
+  Trial 28: Score=0.3356 | Hiperparâmetros: {"n_neighbors": 1, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 28}
+  Trial 29: Score=0.3611 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "auto", "p": 2, "leaf_size": 34}
+
+Conjunto de hiperparâmetros escolhido:
+  n_neighbors: 20
+  weights: distance
+  algorithm: ball_tree
+  p: 2
+  leaf_size: 28
+
+Resultado do treino:
+  accuracy: 0.9979
+  precision: 0.9979
+  recall: 0.9979
+  f1: 0.9979
+  roc_auc: 0.9980
+  pr_auc: 0.9981
+
+Resultado do teste:
+  accuracy: 0.9515
+  precision: 0.9054
+  recall: 0.9515
+  f1: 0.9279
+  roc_auc: 0.5831
+  pr_auc: 0.9170
+
+============================================================
+
+FOLD 2 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3552 | Hiperparâmetros: {"n_neighbors": 11, "weights": "distance", "algorithm": "auto", "p": 2, "leaf_size": 38}
+  Trial 1: Score=0.3347 | Hiperparâmetros: {"n_neighbors": 1, "weights": "uniform", "algorithm": "brute", "p": 1, "leaf_size": 26}
+  Trial 2: Score=0.3355 | Hiperparâmetros: {"n_neighbors": 2, "weights": "uniform", "algorithm": "brute", "p": 1, "leaf_size": 26}
+  Trial 3: Score=0.3543 | Hiperparâmetros: {"n_neighbors": 10, "weights": "distance", "algorithm": "auto", "p": 2, "leaf_size": 38}
+  Trial 4: Score=0.3559 | Hiperparâmetros: {"n_neighbors": 14, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 35}
+  Trial 5: Score=0.3538 | Hiperparâmetros: {"n_neighbors": 9, "weights": "distance", "algorithm": "auto", "p": 2, "leaf_size": 28}
+  Trial 6: Score=0.3431 | Hiperparâmetros: {"n_neighbors": 12, "weights": "distance", "algorithm": "brute", "p": 1, "leaf_size": 38}
+  Trial 7: Score=0.3503 | Hiperparâmetros: {"n_neighbors": 17, "weights": "uniform", "algorithm": "ball_tree", "p": 2, "leaf_size": 38}
+  Trial 8: Score=0.3431 | Hiperparâmetros: {"n_neighbors": 12, "weights": "distance", "algorithm": "auto", "p": 1, "leaf_size": 40}
+  Trial 9: Score=0.3422 | Hiperparâmetros: {"n_neighbors": 10, "weights": "distance", "algorithm": "brute", "p": 1, "leaf_size": 26}
+  Trial 10: Score=0.3508 | Hiperparâmetros: {"n_neighbors": 20, "weights": "uniform", "algorithm": "kd_tree", "p": 2, "leaf_size": 20}
+  Trial 11: Score=0.3565 | Hiperparâmetros: {"n_neighbors": 15, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 33}
+  Trial 12: Score=0.3572 | Hiperparâmetros: {"n_neighbors": 16, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 33}
+  Trial 13: Score=0.3572 | Hiperparâmetros: {"n_neighbors": 16, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 31}
+  Trial 14: Score=0.3579 | Hiperparâmetros: {"n_neighbors": 19, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 31}
+  Trial 15: Score=0.3571 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 33}
+  Trial 16: Score=0.3582 | Hiperparâmetros: {"n_neighbors": 18, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 30}
+  Trial 17: Score=0.3539 | Hiperparâmetros: {"n_neighbors": 7, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 22}
+  Trial 18: Score=0.3519 | Hiperparâmetros: {"n_neighbors": 18, "weights": "uniform", "algorithm": "ball_tree", "p": 2, "leaf_size": 29}
+  Trial 19: Score=0.3578 | Hiperparâmetros: {"n_neighbors": 19, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 31}
+  Trial 20: Score=0.3406 | Hiperparâmetros: {"n_neighbors": 4, "weights": "distance", "algorithm": "ball_tree", "p": 1, "leaf_size": 23}
+  Trial 21: Score=0.3578 | Hiperparâmetros: {"n_neighbors": 19, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 30}
+  Trial 22: Score=0.3582 | Hiperparâmetros: {"n_neighbors": 18, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 31}
+  Trial 23: Score=0.3559 | Hiperparâmetros: {"n_neighbors": 14, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 35}
+  Trial 24: Score=0.3582 | Hiperparâmetros: {"n_neighbors": 18, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 29}
+  Trial 25: Score=0.3583 | Hiperparâmetros: {"n_neighbors": 17, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 28}
+  Trial 26: Score=0.3480 | Hiperparâmetros: {"n_neighbors": 14, "weights": "uniform", "algorithm": "ball_tree", "p": 2, "leaf_size": 27}
+  Trial 27: Score=0.3583 | Hiperparâmetros: {"n_neighbors": 17, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 25}
+  Trial 28: Score=0.3568 | Hiperparâmetros: {"n_neighbors": 16, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 23}
+  Trial 29: Score=0.3552 | Hiperparâmetros: {"n_neighbors": 12, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 24}
+
+Conjunto de hiperparâmetros escolhido:
+  n_neighbors: 17
+  weights: distance
+  algorithm: ball_tree
+  p: 2
+  leaf_size: 28
+
+Resultado do treino:
+  accuracy: 0.9979
+  precision: 0.9979
+  recall: 0.9979
+  f1: 0.9979
+  roc_auc: 0.9984
+  pr_auc: 0.9983
+
+Resultado do teste:
+  accuracy: 0.9518
+  precision: 0.9319
+  recall: 0.9518
+  f1: 0.9285
+  roc_auc: 0.5781
+  pr_auc: 0.9180
+
+============================================================
+
+FOLD 3 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3375 | Hiperparâmetros: {"n_neighbors": 3, "weights": "distance", "algorithm": "ball_tree", "p": 1, "leaf_size": 31}
+  Trial 1: Score=0.3438 | Hiperparâmetros: {"n_neighbors": 16, "weights": "uniform", "algorithm": "kd_tree", "p": 1, "leaf_size": 22}
+  Trial 2: Score=0.3432 | Hiperparâmetros: {"n_neighbors": 3, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 27}
+  Trial 3: Score=0.3431 | Hiperparâmetros: {"n_neighbors": 12, "weights": "distance", "algorithm": "kd_tree", "p": 1, "leaf_size": 25}
+  Trial 4: Score=0.3500 | Hiperparâmetros: {"n_neighbors": 17, "weights": "uniform", "algorithm": "kd_tree", "p": 2, "leaf_size": 25}
+  Trial 5: Score=0.3549 | Hiperparâmetros: {"n_neighbors": 16, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 23}
+  Trial 6: Score=0.3450 | Hiperparâmetros: {"n_neighbors": 7, "weights": "uniform", "algorithm": "ball_tree", "p": 2, "leaf_size": 38}
+  Trial 7: Score=0.3496 | Hiperparâmetros: {"n_neighbors": 14, "weights": "uniform", "algorithm": "auto", "p": 2, "leaf_size": 26}
+  Trial 8: Score=0.3404 | Hiperparâmetros: {"n_neighbors": 12, "weights": "uniform", "algorithm": "auto", "p": 1, "leaf_size": 30}
+  Trial 9: Score=0.3431 | Hiperparâmetros: {"n_neighbors": 12, "weights": "distance", "algorithm": "kd_tree", "p": 1, "leaf_size": 36}
+  Trial 10: Score=0.3578 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 20}
+  Trial 11: Score=0.3578 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 20}
+  Trial 12: Score=0.3578 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 21}
+  Trial 13: Score=0.3578 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 20}
+  Trial 14: Score=0.3524 | Hiperparâmetros: {"n_neighbors": 8, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 30}
+  Trial 15: Score=0.3574 | Hiperparâmetros: {"n_neighbors": 18, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 20}
+  Trial 16: Score=0.3578 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 33}
+  Trial 17: Score=0.3524 | Hiperparâmetros: {"n_neighbors": 8, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 23}
+  Trial 18: Score=0.3545 | Hiperparâmetros: {"n_neighbors": 14, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 28}
+  Trial 19: Score=0.3574 | Hiperparâmetros: {"n_neighbors": 18, "weights": "distance", "algorithm": "auto", "p": 2, "leaf_size": 24}
+  Trial 20: Score=0.3460 | Hiperparâmetros: {"n_neighbors": 14, "weights": "distance", "algorithm": "brute", "p": 1, "leaf_size": 33}
+  Trial 21: Score=0.3578 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 21}
+  Trial 22: Score=0.3574 | Hiperparâmetros: {"n_neighbors": 18, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 20}
+  Trial 23: Score=0.3578 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 23}
+  Trial 24: Score=0.3354 | Hiperparâmetros: {"n_neighbors": 1, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 22}
+  Trial 25: Score=0.3549 | Hiperparâmetros: {"n_neighbors": 16, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 21}
+  Trial 26: Score=0.3511 | Hiperparâmetros: {"n_neighbors": 18, "weights": "uniform", "algorithm": "brute", "p": 2, "leaf_size": 28}
+  Trial 27: Score=0.3580 | Hiperparâmetros: {"n_neighbors": 19, "weights": "distance", "algorithm": "auto", "p": 2, "leaf_size": 22}
+  Trial 28: Score=0.3580 | Hiperparâmetros: {"n_neighbors": 19, "weights": "distance", "algorithm": "auto", "p": 2, "leaf_size": 25}
+  Trial 29: Score=0.3490 | Hiperparâmetros: {"n_neighbors": 17, "weights": "distance", "algorithm": "auto", "p": 1, "leaf_size": 24}
+
+Conjunto de hiperparâmetros escolhido:
+  n_neighbors: 19
+  weights: distance
+  algorithm: auto
+  p: 2
+  leaf_size: 22
+
+Resultado do treino:
+  accuracy: 0.9982
+  precision: 0.9982
+  recall: 0.9982
+  f1: 0.9982
+  roc_auc: 0.9981
+  pr_auc: 0.9983
+
+Resultado do teste:
+  accuracy: 0.9520
+  precision: 0.9321
+  recall: 0.9520
+  f1: 0.9289
+  roc_auc: 0.6120
+  pr_auc: 0.9203
+
+============================================================
+
+FOLD 4 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3448 | Hiperparâmetros: {"n_neighbors": 12, "weights": "distance", "algorithm": "auto", "p": 1, "leaf_size": 21}
+  Trial 1: Score=0.3353 | Hiperparâmetros: {"n_neighbors": 1, "weights": "uniform", "algorithm": "auto", "p": 1, "leaf_size": 30}
+  Trial 2: Score=0.3528 | Hiperparâmetros: {"n_neighbors": 13, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 34}
+  Trial 3: Score=0.3474 | Hiperparâmetros: {"n_neighbors": 17, "weights": "distance", "algorithm": "ball_tree", "p": 1, "leaf_size": 27}
+  Trial 4: Score=0.3501 | Hiperparâmetros: {"n_neighbors": 9, "weights": "distance", "algorithm": "auto", "p": 2, "leaf_size": 25}
+  Trial 5: Score=0.3399 | Hiperparâmetros: {"n_neighbors": 3, "weights": "distance", "algorithm": "brute", "p": 1, "leaf_size": 30}
+  Trial 6: Score=0.3373 | Hiperparâmetros: {"n_neighbors": 2, "weights": "uniform", "algorithm": "kd_tree", "p": 1, "leaf_size": 21}
+  Trial 7: Score=0.3512 | Hiperparâmetros: {"n_neighbors": 10, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 26}
+  Trial 8: Score=0.3477 | Hiperparâmetros: {"n_neighbors": 16, "weights": "distance", "algorithm": "brute", "p": 1, "leaf_size": 38}
+  Trial 9: Score=0.3452 | Hiperparâmetros: {"n_neighbors": 9, "weights": "uniform", "algorithm": "auto", "p": 2, "leaf_size": 39}
+  Trial 10: Score=0.3509 | Hiperparâmetros: {"n_neighbors": 20, "weights": "uniform", "algorithm": "kd_tree", "p": 2, "leaf_size": 35}
+  Trial 11: Score=0.3522 | Hiperparâmetros: {"n_neighbors": 12, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 33}
+  Trial 12: Score=0.3528 | Hiperparâmetros: {"n_neighbors": 13, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 34}
+  Trial 13: Score=0.3548 | Hiperparâmetros: {"n_neighbors": 15, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 34}
+  Trial 14: Score=0.3476 | Hiperparâmetros: {"n_neighbors": 6, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 37}
+  Trial 15: Score=0.3548 | Hiperparâmetros: {"n_neighbors": 15, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 32}
+  Trial 16: Score=0.3549 | Hiperparâmetros: {"n_neighbors": 16, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 31}
+  Trial 17: Score=0.3569 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 28}
+  Trial 18: Score=0.3508 | Hiperparâmetros: {"n_neighbors": 20, "weights": "uniform", "algorithm": "ball_tree", "p": 2, "leaf_size": 28}
+  Trial 19: Score=0.3547 | Hiperparâmetros: {"n_neighbors": 18, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 24}
+  Trial 20: Score=0.3554 | Hiperparâmetros: {"n_neighbors": 18, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 23}
+  Trial 21: Score=0.3554 | Hiperparâmetros: {"n_neighbors": 18, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 23}
+  Trial 22: Score=0.3561 | Hiperparâmetros: {"n_neighbors": 19, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 23}
+  Trial 23: Score=0.3565 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 20}
+  Trial 24: Score=0.3565 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 20}
+  Trial 25: Score=0.3565 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 20}
+  Trial 26: Score=0.3505 | Hiperparâmetros: {"n_neighbors": 20, "weights": "uniform", "algorithm": "kd_tree", "p": 2, "leaf_size": 20}
+  Trial 27: Score=0.3470 | Hiperparâmetros: {"n_neighbors": 6, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 28}
+  Trial 28: Score=0.3549 | Hiperparâmetros: {"n_neighbors": 17, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 22}
+  Trial 29: Score=0.3466 | Hiperparâmetros: {"n_neighbors": 15, "weights": "distance", "algorithm": "auto", "p": 1, "leaf_size": 21}
+
+Conjunto de hiperparâmetros escolhido:
+  n_neighbors: 20
+  weights: distance
+  algorithm: kd_tree
+  p: 2
+  leaf_size: 28
+
+Resultado do treino:
+  accuracy: 0.9978
+  precision: 0.9978
+  recall: 0.9978
+  f1: 0.9977
+  roc_auc: 0.9983
+  pr_auc: 0.9982
+
+Resultado do teste:
+  accuracy: 0.9518
+  precision: 0.9319
+  recall: 0.9518
+  f1: 0.9285
+  roc_auc: 0.5982
+  pr_auc: 0.9211
+
+============================================================
+
+FOLD 5 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3559 | Hiperparâmetros: {"n_neighbors": 9, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 23}
+  Trial 1: Score=0.3444 | Hiperparâmetros: {"n_neighbors": 16, "weights": "uniform", "algorithm": "kd_tree", "p": 1, "leaf_size": 21}
+  Trial 2: Score=0.3537 | Hiperparâmetros: {"n_neighbors": 12, "weights": "uniform", "algorithm": "auto", "p": 2, "leaf_size": 35}
+  Trial 3: Score=0.3593 | Hiperparâmetros: {"n_neighbors": 13, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 26}
+  Trial 4: Score=0.3491 | Hiperparâmetros: {"n_neighbors": 18, "weights": "distance", "algorithm": "ball_tree", "p": 1, "leaf_size": 30}
+  Trial 5: Score=0.3552 | Hiperparâmetros: {"n_neighbors": 20, "weights": "uniform", "algorithm": "brute", "p": 2, "leaf_size": 33}
+  Trial 6: Score=0.3372 | Hiperparâmetros: {"n_neighbors": 1, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 32}
+  Trial 7: Score=0.3528 | Hiperparâmetros: {"n_neighbors": 14, "weights": "uniform", "algorithm": "auto", "p": 2, "leaf_size": 36}
+  Trial 8: Score=0.3554 | Hiperparâmetros: {"n_neighbors": 16, "weights": "uniform", "algorithm": "auto", "p": 2, "leaf_size": 24}
+  Trial 9: Score=0.3554 | Hiperparâmetros: {"n_neighbors": 16, "weights": "uniform", "algorithm": "brute", "p": 2, "leaf_size": 25}
+  Trial 10: Score=0.3424 | Hiperparâmetros: {"n_neighbors": 8, "weights": "distance", "algorithm": "kd_tree", "p": 1, "leaf_size": 28}
+  Trial 11: Score=0.3563 | Hiperparâmetros: {"n_neighbors": 8, "weights": "distance", "algorithm": "brute", "p": 2, "leaf_size": 40}
+  Trial 12: Score=0.3552 | Hiperparâmetros: {"n_neighbors": 5, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 39}
+  Trial 13: Score=0.3590 | Hiperparâmetros: {"n_neighbors": 11, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 40}
+  Trial 14: Score=0.3457 | Hiperparâmetros: {"n_neighbors": 12, "weights": "distance", "algorithm": "kd_tree", "p": 1, "leaf_size": 27}
+  Trial 15: Score=0.3590 | Hiperparâmetros: {"n_neighbors": 11, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 29}
+  Trial 16: Score=0.3553 | Hiperparâmetros: {"n_neighbors": 5, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 20}
+  Trial 17: Score=0.3463 | Hiperparâmetros: {"n_neighbors": 13, "weights": "distance", "algorithm": "kd_tree", "p": 1, "leaf_size": 37}
+  Trial 18: Score=0.3563 | Hiperparâmetros: {"n_neighbors": 6, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 32}
+  Trial 19: Score=0.3567 | Hiperparâmetros: {"n_neighbors": 10, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 27}
+  Trial 20: Score=0.3469 | Hiperparâmetros: {"n_neighbors": 14, "weights": "distance", "algorithm": "kd_tree", "p": 1, "leaf_size": 34}
+  Trial 21: Score=0.3590 | Hiperparâmetros: {"n_neighbors": 11, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 29}
+  Trial 22: Score=0.3568 | Hiperparâmetros: {"n_neighbors": 10, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 26}
+  Trial 23: Score=0.3605 | Hiperparâmetros: {"n_neighbors": 14, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 30}
+  Trial 24: Score=0.3605 | Hiperparâmetros: {"n_neighbors": 14, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 31}
+  Trial 25: Score=0.3629 | Hiperparâmetros: {"n_neighbors": 18, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 31}
+  Trial 26: Score=0.3632 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "kd_tree", "p": 2, "leaf_size": 31}
+  Trial 27: Score=0.3631 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 30}
+  Trial 28: Score=0.3631 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 33}
+  Trial 29: Score=0.3631 | Hiperparâmetros: {"n_neighbors": 20, "weights": "distance", "algorithm": "ball_tree", "p": 2, "leaf_size": 34}
+
+Conjunto de hiperparâmetros escolhido:
+  n_neighbors: 20
+  weights: distance
+  algorithm: kd_tree
+  p: 2
+  leaf_size: 31
+
+Resultado do treino:
+  accuracy: 0.9983
+  precision: 0.9983
+  recall: 0.9983
+  f1: 0.9983
+  roc_auc: 0.9986
+  pr_auc: 0.9986
+
+Resultado do teste:
+  accuracy: 0.9515
+  precision: 0.9054
+  recall: 0.9515
+  f1: 0.9279
+  roc_auc: 0.6141
+  pr_auc: 0.9215
+
+============================================================
+
+TABELA DE MÉTRICAS DE TREINO E TESTE POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treino: 1     | 0.9979     | 0.9979     | 0.9979     | 0.9979     | 0.9980     | 0.9981    
+Teste:  1     | 0.9515     | 0.9054     | 0.9515     | 0.9279     | 0.5831     | 0.9170    
+Treino: 2     | 0.9979     | 0.9979     | 0.9979     | 0.9979     | 0.9984     | 0.9983    
+Teste:  2     | 0.9518     | 0.9319     | 0.9518     | 0.9285     | 0.5781     | 0.9180    
+Treino: 3     | 0.9982     | 0.9982     | 0.9982     | 0.9982     | 0.9981     | 0.9983    
+Teste:  3     | 0.9520     | 0.9321     | 0.9520     | 0.9289     | 0.6120     | 0.9203    
+Treino: 4     | 0.9978     | 0.9978     | 0.9978     | 0.9977     | 0.9983     | 0.9982    
+Teste:  4     | 0.9518     | 0.9319     | 0.9518     | 0.9285     | 0.5982     | 0.9211    
+Treino: 5     | 0.9983     | 0.9983     | 0.9983     | 0.9983     | 0.9986     | 0.9986    
+Teste:  5     | 0.9515     | 0.9054     | 0.9515     | 0.9279     | 0.6141     | 0.9215    
+
+MÉDIAS E DESVIOS PADRÃO DAS MÉTRICAS POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treinos: 0.9980+-0.00 0.9980+-0.00 0.9980+-0.00 0.9980+-0.00 0.9983+-0.00 0.9983+-0.00 
+Testes:  0.9517+-0.00 0.9214+-0.01 0.9517+-0.00 0.9284+-0.00 0.5971+-0.01 0.9196+-0.00 
+
+MELHOR CONJUNTO DE HIPERPARÂMETROS GLOBAL (selecionado pelo maior score de interesse):
+------------------------------------------------------------
+{
+  "n_neighbors": 19,
+  "weights": "distance",
+  "algorithm": "auto",
+  "p": 2,
+  "leaf_size": 22
+}
+Score de interesse: 0.9284
+
+Relatório gerado por fold externo, conforme solicitado.

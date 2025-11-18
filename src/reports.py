@@ -38,7 +38,7 @@ def get_experiment_timestamp():
         _experiment_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     return _experiment_timestamp
 
-def generate_experiment_folder_name(data_source="ana", mode="default", classification_type="binary"):
+def generate_experiment_folder_name(data_source="ana", mode="default", classification_type="binary", balance_strategy="none"):
     """
     Gera nome da pasta do experimento baseado na data e configurações
     Usa o timestamp global definido no início da execução
@@ -47,9 +47,10 @@ def generate_experiment_folder_name(data_source="ana", mode="default", classific
         data_source (str): "ana" ou "renan"
         mode (str): "default" ou "optimized"  
         classification_type (str): "binary" ou "multiclass"
+        balance_strategy (str): Estratégia de balanceamento utilizada
         
     Returns:
-        str: Nome da pasta no formato "YYYYMMDD_HHMMSS_ana_default_binary"
+        str: Nome da pasta no formato "YYYYMMDD_HHMMSS_ana_default_binary_smoten"
     """
     timestamp = get_experiment_timestamp()
     
@@ -57,8 +58,13 @@ def generate_experiment_folder_name(data_source="ana", mode="default", classific
     data_source = data_source.lower()
     mode = mode.lower()
     classification_type = classification_type.lower()
+    balance_strategy = balance_strategy.lower()
     
-    folder_name = f"{timestamp}_{data_source}_{mode}_{classification_type}"
+    # Incluir estratégia de balanceamento apenas se não for "none"
+    if balance_strategy == "none":
+        folder_name = f"{timestamp}_{data_source}_{mode}_{classification_type}"
+    else:
+        folder_name = f"{timestamp}_{data_source}_{mode}_{classification_type}_{balance_strategy}"
     
     return folder_name
 
@@ -314,7 +320,7 @@ def generate_single_trial_cv_table(file_handle, cv_metrics):
 
 
 def save_model_results_unified(model_name, results_data, mode="default", data_source="ana", 
-                             classification_type="binary", results_dir="./results"):
+                             classification_type="binary", balance_strategy="none", results_dir="./results"):
     """
     Função unificada para salvar resultados de modelos (padrão ou otimizados)
     
@@ -330,7 +336,7 @@ def save_model_results_unified(model_name, results_data, mode="default", data_so
         tuple: Caminhos dos arquivos salvos
     """
     # Gerar nome da pasta do experimento
-    experiment_folder = generate_experiment_folder_name(data_source, mode, classification_type)
+    experiment_folder = generate_experiment_folder_name(data_source, mode, classification_type, balance_strategy)
     
     # Criar estrutura: results/YYYYMMDD_HHMMSS_ana_default_binary/model_name/
     experiment_dir = os.path.join(results_dir, experiment_folder)
@@ -360,11 +366,6 @@ def _save_default_mode_results(model_name, results_data, model_dir, timestamp):
         # Include test predictions for plotting
         'test_predictions': results_data.get('test_predictions', {})
     }
-    
-    # Salvar métricas em JSON (sem timestamp no nome do arquivo)
-    metrics_file = os.path.join(model_dir, "default_metrics.json")
-    with open(metrics_file, 'w') as f:
-        json.dump(structured_data, f, indent=2)
     
     # Salvar relatório em texto (sem timestamp no nome do arquivo)
     report_file = os.path.join(model_dir, "default_results.txt")
@@ -483,457 +484,6 @@ def _save_optimized_mode_results(model_name, results_data, model_dir, timestamp)
     return trials_file, test_results_file
 
 
-def summarize_results(results, mode="default", data_source="ana", classification_type="binary"):
-    """
-    Cria um resumo unificado dos resultados dos modelos e salva em arquivo
-    
-    Args:
-        results (list or dict): Lista com resultados dos modelos ou resultado único
-        mode (str): Modo de execução - "default" ou "optimized"
-        data_source (str): "ana" ou "renan"
-        classification_type (str): "binary" ou "multiclass"
-    """
-    # Configurações baseadas no modo
-    if mode == "default":
-        title = "RESUMO DOS RESULTADOS (PARÂMETROS PADRÃO)"
-        filename_prefix = "summary_default_models"
-    else:  # optimized
-        title = "RESUMO DOS RESULTADOS (MODELOS OTIMIZADOS)"
-        filename_prefix = "summary_tuned_models"
-    
-    # Se results for um único resultado (dict), converte para lista
-    if isinstance(results, dict):
-        results = [results]
-    
-    # Filtrar modelos por status
-    successful_models = [r for r in results if r.get('status') == 'success']
-    failed_models = [r for r in results if r.get('status') == 'error']
-    
-    # Criar conteúdo do resumo
-    content_lines = []
-    content_lines.append("="*80)
-    content_lines.append(title)
-    content_lines.append("="*80)
-    
-    content_lines.append(f"Modelos executados com sucesso: {len(successful_models)}")
-    content_lines.append(f"Modelos com erro: {len(failed_models)}")
-    content_lines.append("")
-    
-    # Tabela de performance dos modelos bem-sucedidos
-    if successful_models:
-        # Coletar dados dos modelos para ordenação
-        models_data = []
-        for result in successful_models:
-            # Handle both nested CV results and regular test results
-            if 'test_metrics' in result:
-                # Regular optimization with test metrics
-                metrics = result['test_metrics']
-                # Compatibilidade com diferentes chaves F1
-                f1_key = 'f1_score' if 'f1_score' in metrics else 'f1'
-                
-                models_data.append({
-                    'name': result['model_name'],
-                    'metrics': metrics,
-                    'f1_key': f1_key,
-                    'result_type': 'test_metrics'
-                })
-            elif hasattr(result, 'keys') and any('mean' in str(v) for v in result.values() if isinstance(v, dict)):
-                # Nested CV results (aggregated metrics format)
-                # Extract mean values from nested CV aggregated metrics
-                nested_metrics = {
-                    'accuracy': result.get('accuracy', {}).get('mean', 0.0),
-                    'precision': result.get('precision', {}).get('mean', 0.0),
-                    'recall': result.get('recall', {}).get('mean', 0.0),
-                    'f1': result.get('f1', {}).get('mean', 0.0),
-                    'roc_auc': result.get('roc_auc', {}).get('mean', 0.0),
-                    'pr_auc': result.get('roc_auc', {}).get('mean', 0.0)  # Use ROC AUC as proxy for PR AUC in nested CV
-                }
-                
-                models_data.append({
-                    'name': result['model_name'],
-                    'metrics': nested_metrics,
-                    'f1_key': 'f1',
-                    'result_type': 'nested_cv'
-                })
-        
-        # Ordenar por PR AUC (métrica principal) em ordem decrescente
-        # Handle cases where pr_auc might not be available
-        # Ensure we extract numeric values for sorting, handling both dict and scalar metrics
-        def get_sort_key(model_data):
-            metrics = model_data['metrics']
-            # Try to get pr_auc first, then roc_auc as fallback
-            pr_auc = metrics.get('pr_auc', None)
-            roc_auc = metrics.get('roc_auc', None)
-            
-            # Handle cases where metrics might be dicts (nested CV results)
-            if isinstance(pr_auc, dict):
-                pr_auc = pr_auc.get('mean', 0.0)
-            elif pr_auc is None:
-                pr_auc = 0.0
-                
-            if isinstance(roc_auc, dict):
-                roc_auc = roc_auc.get('mean', 0.0)
-            elif roc_auc is None:
-                roc_auc = 0.0
-                
-            # Return pr_auc if available, otherwise roc_auc
-            return pr_auc if pr_auc > 0.0 else roc_auc
-        
-        models_data.sort(key=get_sort_key, reverse=True)
-        
-        # Cabeçalho da tabela
-        content_lines.append("COMPARAÇÃO DE PERFORMANCE (CONJUNTO DE TESTE):")
-        content_lines.append("-" * 90)
-        content_lines.append(f"{'Rank':<5} {'Modelo':<25} {'Accuracy':<10} {'Precision':<11} {'Recall':<8} {'F1':<8} {'ROC AUC':<9} {'PR AUC':<8}")
-        content_lines.append("-" * 90)
-        
-        # Adicionar modelos ordenados por ranking
-        for rank, model_data in enumerate(models_data, 1):
-            metrics = model_data['metrics']
-            f1_key = model_data['f1_key']
-            
-            # Destacar o melhor modelo
-            rank_display = f"🥇{rank}" if rank == 1 else f"  {rank}"
-            
-            # Handle missing metrics gracefully, ensuring numeric values
-            def extract_numeric_value(value):
-                """Extract numeric value from either dict (nested CV) or scalar"""
-                if isinstance(value, dict):
-                    return value.get('mean', 0.0)
-                elif value is None:
-                    return 0.0
-                else:
-                    return float(value)
-            
-            accuracy = extract_numeric_value(metrics.get('accuracy', 0.0))
-            precision = extract_numeric_value(metrics.get('precision', 0.0))
-            recall = extract_numeric_value(metrics.get('recall', 0.0))
-            f1_score = extract_numeric_value(metrics.get(f1_key, 0.0))
-            roc_auc = extract_numeric_value(metrics.get('roc_auc', 0.0))
-            pr_auc = extract_numeric_value(metrics.get('pr_auc', roc_auc))  # Use ROC AUC as fallback for PR AUC
-            
-            content_lines.append(f"{rank_display:<5} {model_data['name']:<25} "
-                  f"{accuracy:<10.4f} "
-                  f"{precision:<11.4f} "
-                  f"{recall:<8.4f} "
-                  f"{f1_score:<8.4f} "
-                  f"{roc_auc:<9.4f} "
-                  f"{pr_auc:<8.4f}")
-        
-        # Estatísticas do melhor modelo
-        if models_data:
-            best_model = models_data[0]
-            best_metrics = best_model['metrics']
-            content_lines.append("")
-            content_lines.append("🏆 MELHOR MODELO:")
-            content_lines.append(f"   Modelo: {best_model['name']}")
-            
-            # Extract numeric values for display
-            def extract_numeric_value(value):
-                """Extract numeric value from either dict (nested CV) or scalar"""
-                if isinstance(value, dict):
-                    return value.get('mean', 0.0)
-                elif value is None:
-                    return 0.0
-                else:
-                    return float(value)
-            
-            pr_auc_val = extract_numeric_value(best_metrics.get('pr_auc', 0.0))
-            roc_auc_val = extract_numeric_value(best_metrics.get('roc_auc', 0.0))
-            f1_val = extract_numeric_value(best_metrics.get(best_model['f1_key'], 0.0))
-            accuracy_val = extract_numeric_value(best_metrics.get('accuracy', 0.0))
-            
-            content_lines.append(f"   PR AUC: {pr_auc_val:.4f}")
-            content_lines.append(f"   ROC AUC: {roc_auc_val:.4f}")
-            content_lines.append(f"   F1-Score: {f1_val:.4f}")
-            content_lines.append(f"   Accuracy: {accuracy_val:.4f}")
-    
-    # Adicionar modelos com falha
-    if failed_models:
-        if successful_models:
-            # Adicionar falhas na tabela
-            for result in failed_models:
-                content_lines.append(f"{'  X':<5} {result['model_name']:<25} "
-                      f"{'FAILED':<10} "
-                      f"{'FAILED':<11} "
-                      f"{'FAILED':<8} "
-                      f"{'FAILED':<8} "
-                      f"{'FAILED':<9} "
-                      f"{'FAILED':<8}")
-        
-        content_lines.append("")
-        content_lines.append("❌ MODELOS COM ERRO:")
-        for result in failed_models:
-            content_lines.append(f"   • {result['model_name']}: {result.get('error', 'Erro não especificado')}")
-    
-    content_lines.append("="*80)
-    
-    # Imprimir no terminal
-    if mode == "default":
-        print("\n" + "\n".join(content_lines))
-    else:
-        for line in content_lines:
-            print(line)
-    
-    # Salvar em arquivo na pasta do experimento
-    experiment_folder = generate_experiment_folder_name(data_source, mode, classification_type)
-    experiment_dir = os.path.join("./results", experiment_folder)
-    os.makedirs(experiment_dir, exist_ok=True)
-    
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"{filename_prefix}_{timestamp}.txt"
-    filepath = os.path.join(experiment_dir, filename)
-    
-    with open(filepath, 'w') as f:
-        f.write(f"Data/Hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
-        f.write(f"Configuração: {data_source.upper()} + {mode.upper()} + {classification_type.upper()}\n")
-        f.write("="*80 + "\n\n")
-        f.write("\n".join(content_lines))
-        f.write("\n")
-    
-    print(f"\nResumo salvo em: {filepath}")
-
-
-def save_nested_cv_results(model_name, aggregated_metrics, best_params_per_fold, 
-                          data_source="ana", classification_type="binary", 
-                          n_trials=100, outer_cv_folds=5):
-    """
-    Salva resultados de nested cross-validation em formato JSON e TXT
-    Cria uma pasta por modelo, similar ao modo default
-    
-    Args:
-        model_name (str): Nome do modelo
-        aggregated_metrics (dict): Métricas agregadas com mean, std e scores
-        best_params_per_fold (list): Lista dos melhores parâmetros por fold
-        data_source (str): Fonte dos dados
-        classification_type (str): Tipo de classificação
-        n_trials (int): Número de trials utilizados
-        outer_cv_folds (int): Número de folds externos
-    """
-    # Converter numpy arrays para listas para serialização JSON
-    def convert_numpy_types(obj):
-        if isinstance(obj, np.ndarray):
-            return obj.tolist()
-        elif isinstance(obj, np.floating):
-            return float(obj)
-        elif isinstance(obj, np.integer):
-            return int(obj)
-        elif isinstance(obj, dict):
-            return {key: convert_numpy_types(value) for key, value in obj.items()}
-        elif isinstance(obj, list):
-            return [convert_numpy_types(item) for item in obj]
-        else:
-            return obj
-    
-    # Criar estrutura de resultados compatível
-    nested_cv_results = {
-        'model_name': model_name,
-        'optimization_type': 'nested_cross_validation',
-        'configuration': {
-            'outer_cv_folds': outer_cv_folds,
-            'n_trials_per_fold': n_trials,
-            'data_source': data_source,
-            'classification_type': classification_type,
-            'timestamp': datetime.now().isoformat()
-        },
-        'aggregated_metrics': aggregated_metrics,
-        'best_params_per_fold': best_params_per_fold,
-        # Include per-trial data if provided by the optimizer
-        'trials': aggregated_metrics.get('trials', []) if isinstance(aggregated_metrics, dict) else [],
-        # Include test predictions if available (for plotting)
-        'test_predictions': aggregated_metrics.get('test_predictions', {}) if isinstance(aggregated_metrics, dict) else {},
-        'nested_cv_summary': {
-            'mean_accuracy': aggregated_metrics['accuracy']['mean'],
-            'std_accuracy': aggregated_metrics['accuracy']['std'],
-            'mean_f1': aggregated_metrics['f1']['mean'],
-            'std_f1': aggregated_metrics['f1']['std'],
-            'mean_roc_auc': aggregated_metrics['roc_auc']['mean'],
-            'std_roc_auc': aggregated_metrics['roc_auc']['std']
-        }
-    }
-    
-    # Criar diretório da experiment
-    experiment_folder = generate_experiment_folder_name(data_source, "optimized", classification_type)
-    experiment_dir = os.path.join("./results", experiment_folder)
-    
-    # Criar pasta do modelo dentro do experimento (like default mode does)
-    model_dir_name = model_name.lower().replace(' ', '_')
-    model_dir = os.path.join(experiment_dir, model_dir_name)
-    os.makedirs(model_dir, exist_ok=True)
-    
-    # Converter dados para formato serializável
-    serializable_results = convert_numpy_types(nested_cv_results)
-    
-    # Salvar arquivo JSON dentro da pasta do modelo - usar nome simples como no modo default
-    json_filename = f"metrics.json"
-    json_filepath = os.path.join(model_dir, json_filename)
-    with open(json_filepath, 'w') as f:
-        json.dump(serializable_results, f, indent=2, ensure_ascii=False)
-    print(f"JSON salvo em: {json_filepath}")
-    
-    # Salvar arquivo de trials em JSON dentro da pasta do modelo
-    trials_list = aggregated_metrics.get('trials', []) if isinstance(aggregated_metrics, dict) else []
-    if trials_list:
-        cleaned_trials = []
-        for t in trials_list:
-            try:
-                cleaned = {
-                    'trial_number': int(t.get('trial_number', t.get('number', -1))),
-                    'fold': int(t.get('fold', -1)),
-                    'params': t.get('params', {}),
-                    'score': float(t.get('score')) if t.get('score') is not None else None,
-                    'time': float(t.get('time')) if t.get('time') is not None else None
-                }
-                # Include per-fold CV metrics if present
-                if 'cv_metrics' in t and t['cv_metrics'] is not None:
-                    cleaned['cv_metrics'] = t['cv_metrics']
-                cleaned_trials.append(cleaned)
-            except Exception:
-                # Fallback: include raw trial entry
-                cleaned_trials.append(t)
-
-        trials_filename = f"trials.json"
-        trials_filepath = os.path.join(model_dir, trials_filename)
-        with open(trials_filepath, 'w') as f:
-            json.dump(cleaned_trials, f, indent=2, ensure_ascii=False)
-        print(f"Trials salvo em: {trials_filepath}")
-    
-    # Salvar relatório em TXT dentro da pasta do modelo - usar nome 'results.txt' como no modo default
-    txt_filename = "results.txt"
-    txt_filepath = os.path.join(model_dir, txt_filename)
-    with open(txt_filepath, 'w') as f:
-        f.write(f"MODELO: {model_name} (Otimização com Optuna - Nested Cross-Validation)\n")
-        f.write("="*80 + "\n\n")
-        f.write(f"Data/Hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
-        
-        f.write("VALIDAÇÃO CRUZADA (NESTED CV - 5 folds externos):\n")
-        f.write("-"*50 + "\n")
-        
-        # Limpar aggregated_metrics para remover 'trials' e 'test_predictions'
-        clean_agg_metrics = {k: v for k, v in aggregated_metrics.items() 
-                           if k not in ['trials', 'test_predictions']}
-        
-        for metric_name in ['accuracy', 'precision', 'recall', 'f1', 'roc_auc', 'pr_auc']:
-            if metric_name in clean_agg_metrics:
-                metric_data = clean_agg_metrics[metric_name]
-                if isinstance(metric_data, dict) and 'mean' in metric_data:
-                    mean = metric_data['mean']
-                    std = metric_data['std']
-                    f.write(f"  {metric_name.upper()}: {mean:.4f} ± {std:.4f}\n")
-        
-        # Add TESTE FINAL section to match default format
-        f.write("\nTESTE FINAL:\n")
-        f.write("-"*50 + "\n")
-        # Use the mean values from nested CV as the "final test" results for consistency
-        if 'accuracy' in clean_agg_metrics:
-            f.write(f"  ACCURACY: {clean_agg_metrics['accuracy']['mean']:.4f}\n")
-        if 'precision' in clean_agg_metrics:
-            f.write(f"  PRECISION: {clean_agg_metrics['precision']['mean']:.4f}\n")
-        if 'recall' in clean_agg_metrics:
-            f.write(f"  RECALL: {clean_agg_metrics['recall']['mean']:.4f}\n")
-        if 'f1' in clean_agg_metrics:
-            f.write(f"  F1: {clean_agg_metrics['f1']['mean']:.4f}\n")
-        if 'roc_auc' in clean_agg_metrics:
-            f.write(f"  ROC_AUC: {clean_agg_metrics['roc_auc']['mean']:.4f}\n")
-        if 'pr_auc' in clean_agg_metrics:
-            f.write(f"  PR_AUC: {clean_agg_metrics['pr_auc']['mean']:.4f}\n")
-        
-        # Add RELATÓRIO DE CLASSIFICAÇÃO section to match default format
-        f.write(f"\nRELATÓRIO DE CLASSIFICAÇÃO:\n")
-        f.write("-"*50 + "\n")
-        f.write("              accuracy   precision    recall    f1-score   roc_auc    pr_auc\n\n")
-        
-        # Generate a classification report based on nested CV results
-        # For nested CV, we use the mean values across all folds
-        accuracy = clean_agg_metrics.get('accuracy', {}).get('mean', 0.0)
-        precision = clean_agg_metrics.get('precision', {}).get('mean', 0.0)
-        recall = clean_agg_metrics.get('recall', {}).get('mean', 0.0)
-        f1_score = clean_agg_metrics.get('f1', {}).get('mean', 0.0)
-        roc_auc = clean_agg_metrics.get('roc_auc', {}).get('mean', 0.0)
-        pr_auc = clean_agg_metrics.get('pr_auc', {}).get('mean', roc_auc)  # Use roc_auc as fallback
-        
-        # Estimate Class 0 metrics (assuming binary classification)
-        # For class 0 (negative class), we estimate precision and recall
-        class0_precision = 1.0 - precision if precision > 0 else 0.5
-        class0_recall = 1.0 - recall if recall > 0 else 0.8
-        class0_f1 = 2 * (class0_precision * class0_recall) / (class0_precision + class0_recall) if (class0_precision + class0_recall) > 0 else 0.0
-        
-        f.write(f"     Class 0       {accuracy:.4f}      {class0_precision:.4f}     {class0_recall:.4f}     {class0_f1:.4f}         -         -\n")
-        f.write(f"     Class 1       {accuracy:.4f}      {precision:.4f}     {recall:.4f}     {f1_score:.4f}     {roc_auc:.4f}     {pr_auc:.4f}\n\n")
-        
-        # Macro and weighted averages
-        macro_precision = (class0_precision + precision) / 2
-        macro_recall = (class0_recall + recall) / 2
-        macro_f1 = (class0_f1 + f1_score) / 2
-        
-        f.write(f"   macro avg       {accuracy:.4f}      {macro_precision:.4f}     {macro_recall:.4f}     {macro_f1:.4f}     {roc_auc}     {pr_auc}\n")
-        f.write(f"weighted avg       {accuracy:.4f}      {precision:.4f}     {recall:.4f}     {f1_score:.4f}     {roc_auc}     {pr_auc}\n")
-        
-        # Add PARÂMETROS section to match default format
-        f.write(f"\nPARÂMETROS:\n")
-        f.write("-"*50 + "\n")
-        # Create a summary of the optimization parameters
-        optimization_params = {
-            "optimization_method": "Optuna with Nested Cross-Validation",
-            "outer_cv_folds": outer_cv_folds,
-            "trials_per_fold": n_trials,
-            "total_trials": len(trials_list),
-            "data_source": data_source.upper(),
-            "classification_type": classification_type.upper(),
-            "best_params_summary": "See MELHORES PARÂMETROS POR FOLD section below"
-        }
-        f.write(json.dumps(optimization_params, indent=2))
-        f.write("\n\n")
-        
-        f.write("CONFIGURAÇÃO DE OTIMIZAÇÃO:\n")
-        f.write("-"*50 + "\n")
-        f.write(f"  Folds externos: {outer_cv_folds}\n")
-        f.write(f"  Trials por fold: {n_trials}\n")
-        f.write(f"  Total de trials: {len(trials_list)}\n")
-        f.write(f"  Data source: {data_source.upper()}\n")
-        f.write(f"  Tipo de classificação: {classification_type.upper()}\n\n")
-        
-        f.write("MELHORES PARÂMETROS POR FOLD:\n")
-        f.write("-"*50 + "\n")
-        for fold_idx, params in enumerate(best_params_per_fold, 1):
-            f.write(f"Fold {fold_idx}:\n")
-            for param_name, param_value in params.items():
-                f.write(f"  {param_name}: {param_value}\n")
-            f.write("\n")
-    
-    print(f"Relatório TXT salvo em: {txt_filepath}")
-    print(f"Resultados de Nested CV salvos em: {model_dir}")
-
-
-def save_trials_results(model_name, trials, data_source="ana"):
-    """
-    Salva os resultados dos trials em trials.json na pasta do modelo
-    Args:
-        model_name (str): Nome do modelo
-        trials (list): Lista de dicts com dados dos trials
-        data_source (str): Fonte dos dados
-    """
-    experiment_folder = generate_experiment_folder_name(data_source, "optimized")
-    experiment_dir = os.path.join("./results", experiment_folder)
-    model_dir_name = model_name.lower().replace(' ', '_')
-    model_dir = os.path.join(experiment_dir, model_dir_name)
-    os.makedirs(model_dir, exist_ok=True)
-    trials_filename = "trials.json"
-    trials_filepath = os.path.join(model_dir, trials_filename)
-    # Write only trial_number, params, score, time for each trial
-    simple_trials = []
-    for t in trials:
-        simple_trials.append({
-            'trial_number': t.get('trial_number'),
-            'params': t.get('params'),
-            'score': t.get('score'),
-            'time': t.get('time')
-        })
-    with open(trials_filepath, 'w') as f:
-        json.dump(simple_trials, f, indent=2, ensure_ascii=False)
-    print(f"Trials salvo em: {trials_filepath}")
-
-
 def save_detailed_results_txt(model_name, trials, test_metrics, best_params, optimization_info, output_path, param_importances_per_fold=None, aggregated_importances=None):
     """
     Salva um arquivo results.txt detalhado com todas as métricas de CV por trial, ordenado por PR AUC, para qualquer modelo.
@@ -995,7 +545,7 @@ def save_detailed_results_txt(model_name, trials, test_metrics, best_params, opt
         final_best_params = optimization_info.get('final_best_params')
         final_best_score = optimization_info.get('final_best_score')
         if final_best_params:
-            f.write("MELHOR CONJUNTO DE HIPERPARÂMETROS GLOBAL (selecionado pelo maior score de interesse):\n" + "-"*60 + "\n")
+            f.write("MELHOR CONJUNTO DE HIPERPARÂMETROS GLOBAL:\n" + "-"*60 + "\n")
             f.write(json.dumps(final_best_params, indent=2, ensure_ascii=False) + "\n")
             if final_best_score is not None:
                 f.write(f"Score de interesse: {final_best_score:.4f}\n")
@@ -1006,7 +556,8 @@ def save_detailed_results_txt(model_name, trials, test_metrics, best_params, opt
         f.write(f"Tempo total de otimização: {optimization_info.get('total_time', 0):.2f} segundos\n")
 
 
-def save_detailed_results_txt_by_fold(model_name, all_folds_trials, output_path, final_best_params=None, final_best_score=None):
+def save_detailed_results_txt_by_fold(model_name, all_folds_trials, output_path=None, final_best_params=None):
+    
     with open(output_path, 'w') as f:
         f.write(f"RESULTADOS DO MODELO: {model_name.upper()}\n")
         f.write("="*80 + "\n\n")
@@ -1062,9 +613,7 @@ def save_detailed_results_txt_by_fold(model_name, all_folds_trials, output_path,
         f.write(test_agg + "\n\n")
         # Melhor conjunto global
         if final_best_params:
-            f.write("MELHOR CONJUNTO DE HIPERPARÂMETROS GLOBAL (selecionado pelo maior score de interesse):\n" + "-"*60 + "\n")
+            f.write("MELHOR CONJUNTO DE HIPERPARÂMETROS GLOBAL (selecionado pelo maior PR AUC  ):\n" + "-"*60 + "\n")
             f.write(json.dumps(final_best_params, indent=2, ensure_ascii=False) + "\n")
-            if final_best_score is not None:
-                f.write(f"Score de interesse: {final_best_score:.4f}\n")
             f.write("\n")
-        f.write("Relatório gerado por fold externo, conforme solicitado.\n")
+        

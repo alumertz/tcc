@@ -1,0 +1,122 @@
+{
+  "model_name": "histogram_gradient_boosting",
+  "optimization_type": "nested_cross_validation",
+  "configuration": {
+    "outer_cv_folds": 5,
+    "n_trials_per_fold": 30,
+    "data_source": "ANA",
+    "classification_type": "binary",
+    "timestamp": "2025-11-18T00:09:55.662207"
+  },
+  "aggregated_metrics": {
+    "accuracy": {
+      "mean": 0.9516375976557416,
+      "std": 0.00020168511444045918,
+      "scores": [
+        0.951542973731191,
+        0.951542973731191,
+        0.9520408163265306,
+        0.951530612244898,
+        0.951530612244898
+      ]
+    },
+    "precision": {
+      "mean": 0.2,
+      "std": 0.4000000000000001,
+      "scores": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    "recall": {
+      "mean": 0.001058201058201058,
+      "std": 0.002116402116402116,
+      "scores": [
+        0.0,
+        0.0,
+        0.005291005291005291,
+        0.0,
+        0.0
+      ]
+    },
+    "f1": {
+      "mean": 0.002105263157894737,
+      "std": 0.004210526315789474,
+      "scores": [
+        0.0,
+        0.0,
+        0.010526315789473684,
+        0.0,
+        0.0
+      ]
+    },
+    "roc_auc": {
+      "mean": 0.6994810171181551,
+      "std": 0.018600242756974063,
+      "scores": [
+        0.7283443129399483,
+        0.6819513605778049,
+        0.6787462118472571,
+        0.6965874135741498,
+        0.7117757866516156
+      ]
+    },
+    "param_importances": {
+      "learning_rate": 0.7900085279887419,
+      "max_depth": 0.12465998004124404,
+      "min_samples_leaf": 0.044265037119254384,
+      "max_iter": 0.029228514293841063,
+      "l2_regularization": 0.011837940556918617
+    }
+  },
+  "best_params_per_fold": [
+    {
+      "max_iter": 82,
+      "learning_rate": 0.01982456501516065,
+      "max_depth": 3,
+      "min_samples_leaf": 7,
+      "l2_regularization": 0.2973341683341296
+    },
+    {
+      "max_iter": 161,
+      "learning_rate": 0.04910807963781224,
+      "max_depth": 4,
+      "min_samples_leaf": 47,
+      "l2_regularization": 0.5851406344274842
+    },
+    {
+      "max_iter": 104,
+      "learning_rate": 0.0830641617792692,
+      "max_depth": 3,
+      "min_samples_leaf": 2,
+      "l2_regularization": 0.5549720119051491
+    },
+    {
+      "max_iter": 56,
+      "learning_rate": 0.01473982046351388,
+      "max_depth": 4,
+      "min_samples_leaf": 3,
+      "l2_regularization": 0.19490556806167997
+    },
+    {
+      "max_iter": 102,
+      "learning_rate": 0.04349613182179905,
+      "max_depth": 3,
+      "min_samples_leaf": 16,
+      "l2_regularization": 0.09220636010088232
+    }
+  ],
+  "trials": [],
+  "test_predictions": {},
+  "nested_cv_summary": {
+    "mean_accuracy": 0.9516375976557416,
+    "std_accuracy": 0.00020168511444045918,
+    "mean_f1": 0.002105263157894737,
+    "std_f1": 0.004210526315789474,
+    "mean_roc_auc": 0.6994810171181551,
+    "std_roc_auc": 0.018600242756974063
+  }
+}

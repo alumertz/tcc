@@ -1,0 +1,68 @@
+MODELO: Histogram Gradient Boosting (Parâmetros Padrão)
+================================================================================
+
+Data/Hora: 2025-11-18 08:32:53
+
+VALIDAÇÃO CRUZADA (5-fold):
+--------------------------------------------------
+  ACCURACY: 0.9511 ± 0.0002
+  PRECISION: nan ± nan
+  RECALL: nan ± nan
+  F1: nan ± nan
+  ROC_AUC: nan ± nan
+  PR_AUC: 0.3605 ± 0.0016
+
+TESTE FINAL:
+--------------------------------------------------
+  ACCURACY: 0.9513
+  PRECISION: 0.9173
+  RECALL: 0.9513
+  F1: 0.9292
+  ROC_AUC: 0.6983
+  PR_AUC: 0.9341
+
+RELATÓRIO DE CLASSIFICAÇÃO:
+--------------------------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+     Class 0       0.9513      0.9522     0.9989     0.9750     0.6988     0.9778
+     Class 1       0.9513      0.4286     0.0291     0.0545     0.7453     0.1144
+     Class 2       0.9513      0.0000     0.0000     0.0000     0.6208     0.0317
+
+   macro avg       0.9513      0.4603     0.3427     0.3432     0.6882798208273831     0.374656425311235
+weighted avg       0.9513      0.9173     0.9513     0.9292     0.6982942094219533     0.9341262558187868
+
+PARÂMETROS:
+--------------------------------------------------
+{
+  "memory": "None",
+  "steps": "[('scaler', StandardScaler()), ('classifier', HistGradientBoostingClassifier(random_state=42))]",
+  "transform_input": "None",
+  "verbose": "False",
+  "scaler": "StandardScaler()",
+  "classifier": "HistGradientBoostingClassifier(random_state=42)",
+  "scaler__copy": "True",
+  "scaler__with_mean": "True",
+  "scaler__with_std": "True",
+  "classifier__categorical_features": "from_dtype",
+  "classifier__class_weight": "None",
+  "classifier__early_stopping": "auto",
+  "classifier__interaction_cst": "None",
+  "classifier__l2_regularization": "0.0",
+  "classifier__learning_rate": "0.1",
+  "classifier__loss": "log_loss",
+  "classifier__max_bins": "255",
+  "classifier__max_depth": "None",
+  "classifier__max_features": "1.0",
+  "classifier__max_iter": "100",
+  "classifier__max_leaf_nodes": "31",
+  "classifier__min_samples_leaf": "20",
+  "classifier__monotonic_cst": "None",
+  "classifier__n_iter_no_change": "10",
+  "classifier__random_state": "42",
+  "classifier__scoring": "loss",
+  "classifier__tol": "1e-07",
+  "classifier__validation_fraction": "0.1",
+  "classifier__verbose": "0",
+  "classifier__warm_start": "False"
+}

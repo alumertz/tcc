@@ -1,0 +1,86 @@
+MODELO: XGBoost (Parâmetros Padrão)
+================================================================================
+
+Data/Hora: 2025-11-18 02:29:27
+
+VALIDAÇÃO CRUZADA (5-fold):
+--------------------------------------------------
+  ACCURACY: 0.9505 ± 0.0009
+  PRECISION: 0.2317 ± 0.1723
+  RECALL: 0.0106 ± 0.0090
+  F1: 0.0201 ± 0.0170
+  ROC_AUC: 0.6223 ± 0.0184
+  PR_AUC: 0.0915 ± 0.0118
+
+TESTE FINAL:
+--------------------------------------------------
+  ACCURACY: 0.9515
+  PRECISION: 0.5000
+  RECALL: 0.0263
+  F1: 0.0500
+  ROC_AUC: 0.6433
+  PR_AUC: 0.1212
+
+RELATÓRIO DE CLASSIFICAÇÃO:
+--------------------------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+     Class 0       0.9515      0.9527     0.9987     0.9751         -         -
+     Class 1       0.9515      0.5000     0.0263     0.0500     0.6433     0.1212
+
+   macro avg       0.9515      0.7263     0.5125     0.5126     0.6432732864055072     0.12119348335144141
+weighted avg       0.9515      0.9308     0.9515     0.9303     0.6432732864055072     0.12119348335144141
+
+PARÂMETROS:
+--------------------------------------------------
+{
+  "memory": "None",
+  "steps": "[('scaler', StandardScaler()), ('classifier', XGBClassifier(base_score=None, booster=None, callbacks=None,\n              colsample_bylevel=None, colsample_bynode=None,\n              colsample_bytree=None, device=None, early_stopping_rounds=None,\n              enable_categorical=False, eval_metric='logloss',\n              feature_types=None, feature_weights=None, gamma=None,\n              grow_policy=None, importance_type=None,\n              interaction_constraints=None, learning_rate=None, max_bin=None,\n              max_cat_threshold=None, max_cat_to_onehot=None,\n              max_delta_step=None, max_depth=None, max_leaves=None,\n              min_child_weight=None, missing=nan, monotone_constraints=None,\n              multi_strategy=None, n_estimators=None, n_jobs=None,\n              num_parallel_tree=None, ...))]",
+  "transform_input": "None",
+  "verbose": "False",
+  "scaler": "StandardScaler()",
+  "classifier": "XGBClassifier(base_score=None, booster=None, callbacks=None,\n              colsample_bylevel=None, colsample_bynode=None,\n              colsample_bytree=None, device=None, early_stopping_rounds=None,\n              enable_categorical=False, eval_metric='logloss',\n              feature_types=None, feature_weights=None, gamma=None,\n              grow_policy=None, importance_type=None,\n              interaction_constraints=None, learning_rate=None, max_bin=None,\n              max_cat_threshold=None, max_cat_to_onehot=None,\n              max_delta_step=None, max_depth=None, max_leaves=None,\n              min_child_weight=None, missing=nan, monotone_constraints=None,\n              multi_strategy=None, n_estimators=None, n_jobs=None,\n              num_parallel_tree=None, ...)",
+  "scaler__copy": "True",
+  "scaler__with_mean": "True",
+  "scaler__with_std": "True",
+  "classifier__objective": "binary:logistic",
+  "classifier__base_score": "None",
+  "classifier__booster": "None",
+  "classifier__callbacks": "None",
+  "classifier__colsample_bylevel": "None",
+  "classifier__colsample_bynode": "None",
+  "classifier__colsample_bytree": "None",
+  "classifier__device": "None",
+  "classifier__early_stopping_rounds": "None",
+  "classifier__enable_categorical": "False",
+  "classifier__eval_metric": "logloss",
+  "classifier__feature_types": "None",
+  "classifier__feature_weights": "None",
+  "classifier__gamma": "None",
+  "classifier__grow_policy": "None",
+  "classifier__importance_type": "None",
+  "classifier__interaction_constraints": "None",
+  "classifier__learning_rate": "None",
+  "classifier__max_bin": "None",
+  "classifier__max_cat_threshold": "None",
+  "classifier__max_cat_to_onehot": "None",
+  "classifier__max_delta_step": "None",
+  "classifier__max_depth": "None",
+  "classifier__max_leaves": "None",
+  "classifier__min_child_weight": "None",
+  "classifier__missing": "nan",
+  "classifier__monotone_constraints": "None",
+  "classifier__multi_strategy": "None",
+  "classifier__n_estimators": "None",
+  "classifier__n_jobs": "None",
+  "classifier__num_parallel_tree": "None",
+  "classifier__random_state": "42",
+  "classifier__reg_alpha": "None",
+  "classifier__reg_lambda": "None",
+  "classifier__sampling_method": "None",
+  "classifier__scale_pos_weight": "None",
+  "classifier__subsample": "None",
+  "classifier__tree_method": "None",
+  "classifier__validate_parameters": "None",
+  "classifier__verbosity": "0"
+}

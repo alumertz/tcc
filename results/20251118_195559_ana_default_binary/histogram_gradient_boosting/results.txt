@@ -1,0 +1,180 @@
+RESULTADOS DO MODELO: HISTOGRAM GRADIENT BOOSTING
+================================================================================
+
+Data/Hora: 2025-11-18 19:57:38
+
+FOLD 1 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+
+Conjunto de hiperparâmetros escolhido:
+
+Resultado do treino:
+  accuracy: 0.9577
+  precision: 0.9872
+  recall: 0.1269
+  f1: 0.2248
+  roc_auc: 0.9207
+  pr_auc: 0.7626
+
+Resultado do teste:
+  accuracy: 0.9515
+  precision: 0.0000
+  recall: 0.0000
+  f1: 0.0000
+  roc_auc: 0.6863
+  pr_auc: 0.1050
+
+============================================================
+
+FOLD 2 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+
+Conjunto de hiperparâmetros escolhido:
+
+Resultado do treino:
+  accuracy: 0.9685
+  precision: 0.9953
+  recall: 0.3520
+  f1: 0.5200
+  roc_auc: 0.9537
+  pr_auc: 0.8779
+
+Resultado do teste:
+  accuracy: 0.9512
+  precision: 0.0000
+  recall: 0.0000
+  f1: 0.0000
+  roc_auc: 0.7231
+  pr_auc: 0.1345
+
+============================================================
+
+FOLD 3 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+
+Conjunto de hiperparâmetros escolhido:
+
+Resultado do treino:
+  accuracy: 0.9582
+  precision: 0.9560
+  recall: 0.1433
+  f1: 0.2493
+  roc_auc: 0.9264
+  pr_auc: 0.7673
+
+Resultado do teste:
+  accuracy: 0.9503
+  precision: 0.0000
+  recall: 0.0000
+  f1: 0.0000
+  roc_auc: 0.6729
+  pr_auc: 0.1125
+
+============================================================
+
+FOLD 4 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+
+Conjunto de hiperparâmetros escolhido:
+
+Resultado do treino:
+  accuracy: 0.9763
+  precision: 0.9968
+  recall: 0.5124
+  f1: 0.6768
+  roc_auc: 0.9591
+  pr_auc: 0.9117
+
+Resultado do teste:
+  accuracy: 0.9509
+  precision: 0.0000
+  recall: 0.0000
+  f1: 0.0000
+  roc_auc: 0.6857
+  pr_auc: 0.1160
+
+============================================================
+
+FOLD 5 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+
+Conjunto de hiperparâmetros escolhido:
+
+Resultado do treino:
+  accuracy: 0.9551
+  precision: 0.9783
+  recall: 0.0741
+  f1: 0.1378
+  roc_auc: 0.8959
+  pr_auc: 0.6490
+
+Resultado do teste:
+  accuracy: 0.9518
+  precision: 1.0000
+  recall: 0.0066
+  f1: 0.0131
+  roc_auc: 0.7072
+  pr_auc: 0.1066
+
+============================================================
+
+TABELA DE MÉTRICAS DE TREINO E TESTE POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treino: 1     | 0.9577     | 0.9872     | 0.1269     | 0.2248     | 0.9207     | 0.7626    
+Teste:  1     | 0.9515     | 0.0000     | 0.0000     | 0.0000     | 0.6863     | 0.1050    
+Treino: 2     | 0.9685     | 0.9953     | 0.3520     | 0.5200     | 0.9537     | 0.8779    
+Teste:  2     | 0.9512     | 0.0000     | 0.0000     | 0.0000     | 0.7231     | 0.1345    
+Treino: 3     | 0.9582     | 0.9560     | 0.1433     | 0.2493     | 0.9264     | 0.7673    
+Teste:  3     | 0.9503     | 0.0000     | 0.0000     | 0.0000     | 0.6729     | 0.1125    
+Treino: 4     | 0.9763     | 0.9968     | 0.5124     | 0.6768     | 0.9591     | 0.9117    
+Teste:  4     | 0.9509     | 0.0000     | 0.0000     | 0.0000     | 0.6857     | 0.1160    
+Treino: 5     | 0.9551     | 0.9783     | 0.0741     | 0.1378     | 0.8959     | 0.6490    
+Teste:  5     | 0.9518     | 1.0000     | 0.0066     | 0.0131     | 0.7072     | 0.1066    
+
+MÉDIAS E DESVIOS PADRÃO DAS MÉTRICAS POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treinos: 0.9632+-0.01 0.9827+-0.01 0.2417+-0.17 0.3618+-0.20 0.9312+-0.02 0.7937+-0.09 
+Testes:  0.9512+-0.00 0.2000+-0.40 0.0013+-0.00 0.0026+-0.01 0.6950+-0.02 0.1149+-0.01 
+
+MELHOR CONJUNTO DE HIPERPARÂMETROS GLOBAL (selecionado pelo maior PR AUC  ):
+------------------------------------------------------------
+{
+  "memory": "None",
+  "steps": "[('scaler', StandardScaler()), ('classifier', HistGradientBoostingClassifier(random_state=42))]",
+  "transform_input": "None",
+  "verbose": "False",
+  "scaler": "StandardScaler()",
+  "classifier": "HistGradientBoostingClassifier(random_state=42)",
+  "scaler__copy": "True",
+  "scaler__with_mean": "True",
+  "scaler__with_std": "True",
+  "classifier__categorical_features": "from_dtype",
+  "classifier__class_weight": "None",
+  "classifier__early_stopping": "auto",
+  "classifier__interaction_cst": "None",
+  "classifier__l2_regularization": "0.0",
+  "classifier__learning_rate": "0.1",
+  "classifier__loss": "log_loss",
+  "classifier__max_bins": "255",
+  "classifier__max_depth": "None",
+  "classifier__max_features": "1.0",
+  "classifier__max_iter": "100",
+  "classifier__max_leaf_nodes": "31",
+  "classifier__min_samples_leaf": "20",
+  "classifier__monotonic_cst": "None",
+  "classifier__n_iter_no_change": "10",
+  "classifier__random_state": "42",
+  "classifier__scoring": "loss",
+  "classifier__tol": "1e-07",
+  "classifier__validation_fraction": "0.1",
+  "classifier__verbose": "0",
+  "classifier__warm_start": "False"
+}
+

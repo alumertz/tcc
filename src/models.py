@@ -1,8 +1,12 @@
+
 """
 Módulo para otimização de hiperparâmetros de modelos de machine learning.
 Contém funções de otimização usando Optuna para diferentes algoritmos de classificação.
 Implementa validação cruzada aninhada (nested cross-validation) para avaliação não-enviesada.
 """
+
+from dataclasses import dataclass
+from typing import Dict, List, Any
 
 import time
 import numpy as np
@@ -27,280 +31,284 @@ from sklearn.model_selection import StratifiedKFold, cross_val_score
 IMBALANCE_RATIO = 93.0/7.0
 THREADS = 12-1
     
-def _optimize_classifier_generic(classifier_class, param_suggestions_func, model_name, X, y, 
-                               n_trials=100, save_results=True, custom_params_processor=None, 
-                               return_test_metrics=False, fixed_params=None, data_source="ana",
-                               classification_type="binary", use_nested_cv=True, outer_cv_folds=5):
-    """
-    Função genérica para otimização de hiperparâmetros de classificadores com nested cross-validation.
-    Implementa nested cross-validation para avaliação imparcial do modelo.
+@dataclass
+class FoldMetrics:
+    """Data class to store metrics for a single fold"""
+    accuracy: float
+    precision: float
+    recall: float
+    f1: float
+    roc_auc: float
+    pr_auc: float
+
+@dataclass
+class FoldResults:
+    """Data class to store complete results for a single fold"""
+    fold: int
+    best_params: Dict[str, Any]
+    train_metrics: FoldMetrics
+    test_metrics: FoldMetrics
+    trials: List[Dict[str, Any]]
+
+def create_objective_function(classifier_class, param_suggestions_func, custom_params_processor, 
+                            fixed_params, classification_type, X_train, y_train):
+    """Create the objective function for Optuna optimization"""
     
-    O loop externo divide os dados em treino/teste para avaliação final.
-    O loop interno otimiza hiperparâmetros usando cross-validation no conjunto de treino.
-    """
-    
-    
-    # Configurar cross-validation estratificado
-    outer_cv = StratifiedKFold(n_splits=outer_cv_folds, shuffle=True, random_state=42)
-    
-    nested_scores = {
-        'accuracy': [],
-        'precision': [],
-        'recall': [],
-        'f1': [],
-        'roc_auc': [],
-        'best_params_per_fold': []
-    }
-    
-    # Store detailed data for save_detailed_results_txt_by_fold
-    all_folds_trials = []
-    
-    print(f"\nIniciando Nested Cross-Validation para {model_name}...")
-    print(f"Configuração: {outer_cv_folds} folds externos, {n_trials} trials por fold")
-    
-    fold_number = 1
-    for train_idx, test_idx in outer_cv.split(X, y):
-        print(f"\nFold {fold_number}/{outer_cv_folds}")
-        
-        # Dividir dados para este fold - funciona com numpy arrays e pandas DataFrames
-        if hasattr(X, 'iloc'):
-            # pandas DataFrame
-            X_train_fold, X_test_fold = X.iloc[train_idx], X.iloc[test_idx]
+    def objective(trial):
+        # Get parameter suggestions
+        if param_suggestions_func.__name__ in ['_suggest_catboost_params', '_suggest_xgboost_params']:
+            params = param_suggestions_func(trial, classification_type)
         else:
-            # numpy array
-            X_train_fold, X_test_fold = X[train_idx], X[test_idx]
-            
-        if hasattr(y, 'iloc'):
-            # pandas Series
-            y_train_fold, y_test_fold = y.iloc[train_idx], y.iloc[test_idx]
-        else:
-            # numpy array
-            y_train_fold, y_test_fold = y[train_idx], y[test_idx]
-        
-        # Otimização no conjunto de treino (loop interno)
-        def objective(trial):
-            # Obter parâmetros sugeridos
             params = param_suggestions_func(trial)
-            
-            # Aplicar processamento customizado se fornecido
-            if custom_params_processor:
-                params = custom_params_processor(params)
-                
-            # Combinar com parâmetros fixos
-            if fixed_params:
-                params.update(fixed_params)
-            
-            # Criar pipeline
-            pipeline = Pipeline([
-                ('scaler', StandardScaler()),
-                ('classifier', classifier_class(**params))
-            ])
-            
-            # Cross-validation interno (5-fold)
-            inner_cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
-            scores = cross_val_score(pipeline, X_train_fold, y_train_fold, 
-                                   cv=inner_cv, scoring='average_precision')
-            
-            return scores.mean()
         
-        # Criar estudo Optuna para este fold
-        study_name = f"{model_name}_fold_{fold_number}"
-        study = optuna.create_study(
-            direction='maximize',
-            study_name=study_name,
-            storage=None,  # Em memória
-            load_if_exists=False
-        )
-        
-        # Store trials data for this fold
-        fold_trials = []
-        
-        # Otimizar
-        study.optimize(objective, n_trials=n_trials, show_progress_bar=False)
-
-        # Collect trial data for this fold
-        for trial in study.trials:
-            fold_trials.append({
-                'trial_number': trial.number,
-                'params': trial.params,
-                'score': trial.value if trial.value is not None else 0.0
-            })
-
-        # Calcular importâncias dos parâmetros após otimização
-        try:
-            param_importances = optuna.importance.get_param_importances(study)
-        except Exception as e:
-            print(f"Não foi possível calcular importâncias dos parâmetros: {e}")
-            param_importances = {}
-
-        # Treinar modelo final com melhores parâmetros neste fold
-        best_params = study.best_params.copy()
+        # Apply custom processing if provided
         if custom_params_processor:
-            best_params = custom_params_processor(best_params)
-        if fixed_params:
-            best_params.update(fixed_params)
+            params = custom_params_processor(params)
             
-        final_pipeline = Pipeline([
+        # Add fixed parameters
+        if fixed_params:
+            params.update(fixed_params)
+        
+        # Create and evaluate pipeline
+        pipeline = Pipeline([
             ('scaler', StandardScaler()),
-            ('classifier', classifier_class(**best_params))
+            ('classifier', classifier_class(**params))
         ])
         
-        # Treinar no conjunto de treino do fold
-        final_pipeline.fit(X_train_fold, y_train_fold)
+        # Internal cross-validation
+        inner_cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+        scores = cross_val_score(pipeline, X_train, y_train, 
+                               cv=inner_cv, scoring='average_precision')
         
-        # Avaliar no conjunto de teste do fold
-        y_pred_fold = final_pipeline.predict(X_test_fold)
-        # Try to get probabilities safely
-        try:
-            y_pred_proba_fold = final_pipeline.predict_proba(X_test_fold)
-        except AttributeError:
-            # If pipeline doesn't have predict_proba, try to get from the classifier
-            classifier = final_pipeline.named_steps['classifier']
-            if hasattr(classifier, 'predict_proba'):
-                # Apply scaler transform before prediction if needed
-                X_test_scaled = final_pipeline.named_steps['scaler'].transform(X_test_fold)
-                y_pred_proba_fold = classifier.predict_proba(X_test_scaled)
-            else:
-                raise AttributeError("Neither Pipeline nor classifier implement predict_proba")
-        
-        # Calcular métricas para este fold
-        from sklearn.metrics import accuracy_score, precision_recall_fscore_support, roc_auc_score, average_precision_score
-        
-        accuracy_fold = accuracy_score(y_test_fold, y_pred_fold)
-        precision_fold, recall_fold, f1_fold, _ = precision_recall_fscore_support(
-            y_test_fold, y_pred_fold, average='weighted' if classification_type == "multiclass" else 'binary'
-        )
-        
-        if classification_type == "multiclass":
-            roc_auc_fold = roc_auc_score(y_test_fold, y_pred_proba_fold, multi_class='ovr', average='weighted')
-            pr_auc_fold = average_precision_score(y_test_fold, y_pred_proba_fold, average='weighted')
-        else:
-            roc_auc_fold = roc_auc_score(y_test_fold, y_pred_proba_fold[:, 1])
-            pr_auc_fold = average_precision_score(y_test_fold, y_pred_proba_fold[:, 1])
-        
-        # Train metrics (evaluate on training set for comparison)
-        y_pred_train = final_pipeline.predict(X_train_fold)
-        try:
-            y_pred_proba_train = final_pipeline.predict_proba(X_train_fold)
-        except AttributeError:
-            classifier = final_pipeline.named_steps['classifier']
-            if hasattr(classifier, 'predict_proba'):
-                X_train_scaled = final_pipeline.named_steps['scaler'].transform(X_train_fold)
-                y_pred_proba_train = classifier.predict_proba(X_train_scaled)
-            else:
-                raise AttributeError("Neither Pipeline nor classifier implement predict_proba")
-        
-        accuracy_train = accuracy_score(y_train_fold, y_pred_train)
-        precision_train, recall_train, f1_train, _ = precision_recall_fscore_support(
-            y_train_fold, y_pred_train, average='weighted' if classification_type == "multiclass" else 'binary'
-        )
-        
-        if classification_type == "multiclass":
-            roc_auc_train = roc_auc_score(y_train_fold, y_pred_proba_train, multi_class='ovr', average='weighted')
-            pr_auc_train = average_precision_score(y_train_fold, y_pred_proba_train, average='weighted')
-        else:
-            roc_auc_train = roc_auc_score(y_train_fold, y_pred_proba_train[:, 1])
-            pr_auc_train = average_precision_score(y_train_fold, y_pred_proba_train[:, 1])
-        
-        # Store fold data for detailed results
-        fold_data = {
-            'fold': fold_number,
-            'trials': fold_trials,
-            'best_params': best_params,
-            'train_metrics': {
-                'accuracy': accuracy_train,
-                'precision': precision_train,
-                'recall': recall_train,
-                'f1': f1_train,
-                'roc_auc': roc_auc_train,
-                'pr_auc': pr_auc_train
-            },
-            'test_metrics': {
-                'accuracy': accuracy_fold,
-                'precision': precision_fold,
-                'recall': recall_fold,
-                'f1': f1_fold,
-                'roc_auc': roc_auc_fold,
-                'pr_auc': pr_auc_fold
-            }
-        }
-        all_folds_trials.append(fold_data)
-        
-        # Armazenar resultados deste fold
-        nested_scores['accuracy'].append(accuracy_fold)
-        nested_scores['precision'].append(precision_fold)
-        nested_scores['recall'].append(recall_fold)
-        nested_scores['f1'].append(f1_fold)
-        nested_scores['roc_auc'].append(roc_auc_fold)
-        nested_scores['best_params_per_fold'].append(best_params)
-        
-        print(f"Fold {fold_number} - F1: {f1_fold:.4f}, Accuracy: {accuracy_fold:.4f}, ROC-AUC: {roc_auc_fold:.4f}")
-        fold_number += 1
+        return scores.mean()
     
-    # Calcular estatísticas agregadas
-    aggregated_metrics = {}
-    for metric in ['accuracy', 'precision', 'recall', 'f1', 'roc_auc']:
-        scores = nested_scores[metric]
-        aggregated_metrics[metric] = {
+    return objective
+
+def split_data_for_fold(X, y, train_idx, test_idx):
+    """Split data for a specific fold, handling both pandas and numpy arrays"""
+    
+    # Handle X (features)
+    if hasattr(X, 'iloc'):
+        X_train, X_test = X.iloc[train_idx], X.iloc[test_idx]
+    else:
+        X_train, X_test = X[train_idx], X[test_idx]
+    
+    # Handle y (target)
+    if hasattr(y, 'iloc'):
+        y_train, y_test = y.iloc[train_idx], y.iloc[test_idx]
+    else:
+        y_train, y_test = y[train_idx], y[test_idx]
+    
+    return X_train, X_test, y_train, y_test
+
+def get_model_predictions(pipeline, X_data):
+    """Get predictions and probabilities from a trained pipeline"""
+    
+    predictions = pipeline.predict(X_data)
+    
+    # Get probabilities safely
+    try:
+        probabilities = pipeline.predict_proba(X_data)
+    except AttributeError:
+        # Fallback to classifier if pipeline doesn't have predict_proba
+        classifier = pipeline.named_steps['classifier']
+        if hasattr(classifier, 'predict_proba'):
+            X_scaled = pipeline.named_steps['scaler'].transform(X_data)
+            probabilities = classifier.predict_proba(X_scaled)
+        else:
+            raise AttributeError("Model doesn't support probability predictions")
+    
+    return predictions, probabilities
+
+def calculate_metrics(y_true, y_pred, y_pred_proba, classification_type):
+    """Calculate evaluation metrics for predictions"""
+    
+    accuracy = accuracy_score(y_true, y_pred)
+    
+    average_type = 'weighted' if classification_type == "multiclass" else 'binary'
+    precision, recall, f1, _ = precision_recall_fscore_support(
+        y_true, y_pred, average=average_type
+    )
+    
+    if classification_type == "multiclass":
+        roc_auc = roc_auc_score(y_true, y_pred_proba, multi_class='ovr', average='weighted')
+        pr_auc = average_precision_score(y_true, y_pred_proba, average='weighted')
+    else:
+        roc_auc = roc_auc_score(y_true, y_pred_proba[:, 1])
+        pr_auc = average_precision_score(y_true, y_pred_proba[:, 1])
+    
+    return FoldMetrics(accuracy, precision, recall, f1, roc_auc, pr_auc)
+
+def optimize_single_outer_fold(fold_number, X_train, X_test, y_train, y_test, 
+                        classifier_class, param_suggestions_func, custom_params_processor,
+                        fixed_params, classification_type, model_name, n_trials):
+    """Optimize hyperparameters for a single fold"""
+    
+    print(f"Fold {fold_number}")
+    
+    # Create objective function
+    objective = create_objective_function(
+        classifier_class, param_suggestions_func, custom_params_processor,
+        fixed_params, classification_type, X_train, y_train
+    )
+    
+    # Create and run Optuna study
+    study_name = f"{model_name}_fold_{fold_number}"
+    study = optuna.create_study(direction='maximize', study_name=study_name)
+    study.optimize(objective, n_trials=n_trials, show_progress_bar=False)
+    
+    # Get best parameters
+    best_params = study.best_params.copy()
+    if custom_params_processor:
+        best_params = custom_params_processor(best_params)
+    if fixed_params:
+        best_params.update(fixed_params)
+    
+    # Train final model for this fold training set
+    final_pipeline = Pipeline([
+        ('scaler', StandardScaler()),
+        ('classifier', classifier_class(**best_params))
+    ])
+    final_pipeline.fit(X_train, y_train)
+    
+    # Evaluate on both training and test sets of one outer fold
+    # Train has all traing data from the outer set
+    y_pred_train, y_pred_proba_train = get_model_predictions(final_pipeline, X_train)
+    y_pred_test, y_pred_proba_test = get_model_predictions(final_pipeline, X_test)
+    
+    train_metrics = calculate_metrics(y_train, y_pred_train, y_pred_proba_train, classification_type)
+    test_metrics = calculate_metrics(y_test, y_pred_test, y_pred_proba_test, classification_type)
+    
+    # Collect trial data
+    trials = []
+    for trial in study.trials:
+        trials.append({
+            'trial_number': trial.number,
+            'params': trial.params,
+            'score': trial.value if trial.value is not None else 0.0
+        })
+    
+    print(f"Outer Fold {fold_number} - F1: {test_metrics.f1:.4f}, "
+          f"Accuracy: {test_metrics.accuracy:.4f}, "
+          f"ROC-AUC: {test_metrics.roc_auc:.4f}")
+    
+    return FoldResults(fold_number, best_params, train_metrics, test_metrics, trials)
+
+def aggregate_results(fold_results: List[FoldResults]) -> Dict[str, Dict[str, float]]:
+    """Aggregate results across all folds"""
+    
+    metrics_dict = {
+        'accuracy': [fr.test_metrics.accuracy for fr in fold_results],
+        'precision': [fr.test_metrics.precision for fr in fold_results],
+        'recall': [fr.test_metrics.recall for fr in fold_results],
+        'f1': [fr.test_metrics.f1 for fr in fold_results],
+        'roc_auc': [fr.test_metrics.roc_auc for fr in fold_results]
+    }
+    
+    aggregated = {}
+    for metric, scores in metrics_dict.items():
+        aggregated[metric] = {
             'mean': np.mean(scores),
             'std': np.std(scores),
             'scores': scores
         }
     
-    print(f"\n=== Resultados Nested Cross-Validation - {model_name} ===")
-    for metric in ['accuracy', 'precision', 'recall', 'f1', 'roc_auc']:
-        mean_score = aggregated_metrics[metric]['mean']
-        std_score = aggregated_metrics[metric]['std']
-        print(f"{metric.upper()}: {mean_score:.4f} (±{std_score:.4f})")
+    return aggregated
+
+def save_optimization_results(model_name, fold_results, 
+                            data_source, classification_type):
+    """Save optimization results to files"""
     
-    # Treinar modelo final em todos os dados para retorno
-    # Usar os melhores parâmetros do melhor fold (baseado em F1)
-    best_fold_idx = np.argmax(nested_scores['f1'])
-    final_best_params = nested_scores['best_params_per_fold'][best_fold_idx]
+    from src.reports import save_detailed_results_txt_by_fold, generate_experiment_folder_name
     
-    final_pipeline = Pipeline([
-        ('scaler', StandardScaler()),
-        ('classifier', classifier_class(**final_best_params))
-    ])
-    final_pipeline.fit(X, y)
+    # Save main results
+    best_params_per_fold = [fr.best_params for fr in fold_results]
+
     
-    # Salvar resultados se solicitado
-    if save_results:
-        from src.reports import save_nested_cv_results, save_detailed_results_txt_by_fold
+    # Save detailed results by fold
+    experiment_folder = generate_experiment_folder_name(data_source, "optimized", classification_type)
+    experiment_dir = os.path.join("./results", experiment_folder)
+    model_dir_name = model_name.lower().replace(' ', '_')
+    model_dir = os.path.join(experiment_dir, model_dir_name)
+    os.makedirs(model_dir, exist_ok=True)
+    
+    # Convert fold_results to the format expected by save_detailed_results_txt_by_fold
+    all_folds_trials = []
+    for fr in fold_results:
+        fold_data = {
+            'fold': fr.fold,
+            'trials': fr.trials,
+            'best_params': fr.best_params,
+            'train_metrics': {
+                'accuracy': fr.train_metrics.accuracy,
+                'precision': fr.train_metrics.precision,
+                'recall': fr.train_metrics.recall,
+                'f1': fr.train_metrics.f1,
+                'roc_auc': fr.train_metrics.roc_auc,
+                'pr_auc': fr.train_metrics.pr_auc
+            },
+            'test_metrics': {
+                'accuracy': fr.test_metrics.accuracy,
+                'precision': fr.test_metrics.precision,
+                'recall': fr.test_metrics.recall,
+                'f1': fr.test_metrics.f1,
+                'roc_auc': fr.test_metrics.roc_auc,
+                'pr_auc': fr.test_metrics.pr_auc
+            }
+        }
+        all_folds_trials.append(fold_data)
+    
+    # Get best fold based on AUCPR score
+    best_fold_idx = np.argmax([fr.test_metrics.pr_auc for fr in fold_results])
+    final_best_params = fold_results[best_fold_idx].best_params
+    
+    detailed_results_path = os.path.join(model_dir, "detailed_results_by_fold.txt")
+    save_detailed_results_txt_by_fold(
+        model_name=model_name,
+        all_folds_trials=all_folds_trials,
+        output_path=detailed_results_path,
+        final_best_params=final_best_params
+    )
+    
+    print(f"Detailed results by fold saved to: {detailed_results_path}")
+
+def _optimize_classifier_generic(classifier_class, param_suggestions_func, model_name, X, y,
+                               n_trials=100, custom_params_processor=None, fixed_params=None, data_source="ana",
+                               classification_type="binary", outer_cv_folds=5):
+    """
+    Refactored version of the classifier optimization function.
+    """
+    
+    print(f"\nStarting Nested Cross-Validation for {model_name}...")
+    print(f"Configuration: {outer_cv_folds} outer folds, {n_trials} trials per fold")
+    
+    # Set up cross-validation 80/20, outer folds
+    outer_cv = StratifiedKFold(n_splits=outer_cv_folds, shuffle=True, random_state=42) 
+    
+    # Process all folds
+    fold_results: FoldResults = []
+    fold_number = 1
+    
+    for train_idx, test_idx in outer_cv.split(X, y):
+        # Split data for this fold, train has all outer training data, test has outer test data
+        X_train, X_test, y_train, y_test = split_data_for_fold(X, y, train_idx, test_idx)
         
-        # Adiciona importâncias dos parâmetros às métricas agregadas
-        aggregated_metrics['param_importances'] = param_importances
-        save_nested_cv_results(
-            model_name=model_name,
-            aggregated_metrics=aggregated_metrics,
-            best_params_per_fold=nested_scores['best_params_per_fold'],
-            data_source=data_source,
-            classification_type=classification_type,
-            n_trials=n_trials,
-            outer_cv_folds=outer_cv_folds
+
+        # Optimize this fold
+        fold_result = optimize_single_outer_fold(
+            fold_number, X_train, X_test, y_train, y_test,
+            classifier_class, param_suggestions_func, custom_params_processor,
+            fixed_params, classification_type, model_name, n_trials
         )
         
-        # Generate detailed results by fold
-        experiment_folder = generate_experiment_folder_name(data_source, "optimized", classification_type)
-        experiment_dir = os.path.join("./results", experiment_folder)
-        model_dir_name = model_name.lower().replace(' ', '_')
-        model_dir = os.path.join(experiment_dir, model_dir_name)
-        os.makedirs(model_dir, exist_ok=True)
-        
-        detailed_results_path = os.path.join(model_dir, "detailed_results_by_fold.txt")
-        save_detailed_results_txt_by_fold(
-            model_name=model_name,
-            all_folds_trials=all_folds_trials,
-            output_path=detailed_results_path,
-            final_best_params=final_best_params,
-            final_best_score=aggregated_metrics['f1']['mean']
-        )
-        print(f"Detailed results by fold saved to: {detailed_results_path}")
+        fold_results.append(fold_result)
+        fold_number += 1
     
-    if return_test_metrics:
-        return final_pipeline, aggregated_metrics
-    else:
-        return final_pipeline
+    save_optimization_results(
+        model_name, fold_results,
+        data_source, classification_type, n_trials, outer_cv_folds
+    )
+    
 
 # Funções de sugestão de parâmetros para cada modelo
 def _suggest_decision_tree_params(trial):
@@ -407,9 +415,9 @@ def _suggest_svc_params(trial):
     return params
 
 
-def _suggest_catboost_params(trial):
+def _suggest_catboost_params(trial, classification_type="binary"):
     """Sugestões de parâmetros para CatBoost"""
-    return {
+    params = {
         "iterations": trial.suggest_int("iterations", 100, 1000),
         "learning_rate": trial.suggest_float("learning_rate", 0.01, 0.3),
         "depth": trial.suggest_int("depth", 4, 10),
@@ -419,15 +427,23 @@ def _suggest_catboost_params(trial):
         "random_strength": trial.suggest_float("random_strength", 0.0, 1.0),
         "verbose": False,  # Silenciar logs durante otimização
         "allow_writing_files": False,  # Não escrever arquivos de log
-        "loss_function": "Logloss",
         "thread_count": THREADS,
-        "scale_pos_weight": trial.suggest_float("scale_pos_weight", IMBALANCE_RATIO * 0.4, IMBALANCE_RATIO * 4)
     }
+    
+    # Configure loss function and weights based on classification type
+    if classification_type == "multiclass":
+        params["loss_function"] = "MultiClass"
+        # Don't use scale_pos_weight for multiclass
+    else:
+        params["loss_function"] = "Logloss"
+        params["scale_pos_weight"] = trial.suggest_float("scale_pos_weight", IMBALANCE_RATIO * 0.4, IMBALANCE_RATIO * 4)
+    
+    return params
 
 
-def _suggest_xgboost_params(trial):
+def _suggest_xgboost_params(trial, classification_type="binary"):
     """Sugestões de parâmetros para XGBoost"""
-    return {
+    params = {
         "n_estimators": trial.suggest_int("n_estimators", 100, 1000),
         "learning_rate": trial.suggest_float("learning_rate", 0.01, 0.3),
         "max_depth": trial.suggest_int("max_depth", 3, 15),
@@ -440,9 +456,19 @@ def _suggest_xgboost_params(trial):
         "random_state": 42,
         "n_jobs": -1,  # Use all available cores
         "verbosity": 0,  # Silenciar logs durante otimização
-        "eval_metric": "logloss",  # Métrica padrão para classificação
-        "scale_pos_weight": trial.suggest_float("scale_pos_weight", IMBALANCE_RATIO * 0.4, IMBALANCE_RATIO * 4)
     }
+    
+    # Configure objective and weights based on classification type
+    if classification_type == "multiclass":
+        params["objective"] = "multi:softprob"
+        params["eval_metric"] = "mlogloss"
+        # Don't use scale_pos_weight for multiclass
+    else:
+        params["objective"] = "binary:logistic"
+        params["eval_metric"] = "logloss"
+        params["scale_pos_weight"] = trial.suggest_float("scale_pos_weight", IMBALANCE_RATIO * 0.4, IMBALANCE_RATIO * 4)
+    
+    return params
 
 def _process_mlp_params(best_params):
     """Processa parâmetros do MLP para o modelo final.

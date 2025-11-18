@@ -1,0 +1,65 @@
+MODELO: Random Forest (Parâmetros Padrão)
+================================================================================
+
+Data/Hora: 2025-11-18 02:15:06
+
+VALIDAÇÃO CRUZADA (5-fold):
+--------------------------------------------------
+  ACCURACY: 0.9517 ± 0.0003
+  PRECISION: 0.5000 ± 0.4472
+  RECALL: 0.0053 ± 0.0049
+  F1: 0.0104 ± 0.0097
+  ROC_AUC: 0.6837 ± 0.0221
+  PR_AUC: 0.1417 ± 0.0158
+
+TESTE FINAL:
+--------------------------------------------------
+  ACCURACY: 0.9523
+  PRECISION: 0.8000
+  RECALL: 0.0211
+  F1: 0.0410
+  ROC_AUC: 0.6521
+  PR_AUC: 0.1652
+
+RELATÓRIO DE CLASSIFICAÇÃO:
+--------------------------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+     Class 0       0.9523      0.9525     0.9997     0.9755         -         -
+     Class 1       0.9523      0.8000     0.0211     0.0410     0.6521     0.1652
+
+   macro avg       0.9523      0.8763     0.5104     0.5083     0.6521322066893313     0.16521564096588764
+weighted avg       0.9523      0.9451     0.9523     0.9303     0.6521322066893313     0.16521564096588764
+
+PARÂMETROS:
+--------------------------------------------------
+{
+  "memory": "None",
+  "steps": "[('scaler', StandardScaler()), ('classifier', RandomForestClassifier(random_state=42))]",
+  "transform_input": "None",
+  "verbose": "False",
+  "scaler": "StandardScaler()",
+  "classifier": "RandomForestClassifier(random_state=42)",
+  "scaler__copy": "True",
+  "scaler__with_mean": "True",
+  "scaler__with_std": "True",
+  "classifier__bootstrap": "True",
+  "classifier__ccp_alpha": "0.0",
+  "classifier__class_weight": "None",
+  "classifier__criterion": "gini",
+  "classifier__max_depth": "None",
+  "classifier__max_features": "sqrt",
+  "classifier__max_leaf_nodes": "None",
+  "classifier__max_samples": "None",
+  "classifier__min_impurity_decrease": "0.0",
+  "classifier__min_samples_leaf": "1",
+  "classifier__min_samples_split": "2",
+  "classifier__min_weight_fraction_leaf": "0.0",
+  "classifier__monotonic_cst": "None",
+  "classifier__n_estimators": "100",
+  "classifier__n_jobs": "None",
+  "classifier__oob_score": "False",
+  "classifier__random_state": "42",
+  "classifier__verbose": "0",
+  "classifier__warm_start": "False"
+}

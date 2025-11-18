@@ -1,0 +1,70 @@
+MODELO: Multi-Layer Perceptron (Parâmetros Padrão)
+================================================================================
+
+Data/Hora: 2025-11-18 08:34:45
+
+VALIDAÇÃO CRUZADA (5-fold):
+--------------------------------------------------
+  ACCURACY: 0.9297 ± 0.0008
+  PRECISION: nan ± nan
+  RECALL: nan ± nan
+  F1: nan ± nan
+  ROC_AUC: nan ± nan
+  PR_AUC: 0.3570 ± 0.0064
+
+TESTE FINAL:
+--------------------------------------------------
+  ACCURACY: 0.9255
+  PRECISION: 0.9143
+  RECALL: 0.9255
+  F1: 0.9197
+  ROC_AUC: 0.5806
+  PR_AUC: 0.9162
+
+RELATÓRIO DE CLASSIFICAÇÃO:
+--------------------------------------------------
+              accuracy   precision    recall    f1-score   roc_auc    pr_auc
+
+     Class 0       0.9255      0.9551     0.9684     0.9617     0.5813     0.9596
+     Class 1       0.9255      0.1310     0.1068     0.1176     0.5809     0.0866
+     Class 2       0.9255      0.0926     0.0575     0.0709     0.5517     0.0338
+
+   macro avg       0.9255      0.3929     0.3775     0.3834     0.5712686854118548     0.360008301469764
+weighted avg       0.9255      0.9143     0.9255     0.9197     0.5805896199771345     0.9161574578543563
+
+PARÂMETROS:
+--------------------------------------------------
+{
+  "memory": "None",
+  "steps": "[('scaler', StandardScaler()), ('classifier', MLPClassifier(max_iter=1000, random_state=42))]",
+  "transform_input": "None",
+  "verbose": "False",
+  "scaler": "StandardScaler()",
+  "classifier": "MLPClassifier(max_iter=1000, random_state=42)",
+  "scaler__copy": "True",
+  "scaler__with_mean": "True",
+  "scaler__with_std": "True",
+  "classifier__activation": "relu",
+  "classifier__alpha": "0.0001",
+  "classifier__batch_size": "auto",
+  "classifier__beta_1": "0.9",
+  "classifier__beta_2": "0.999",
+  "classifier__early_stopping": "False",
+  "classifier__epsilon": "1e-08",
+  "classifier__hidden_layer_sizes": "(100,)",
+  "classifier__learning_rate": "constant",
+  "classifier__learning_rate_init": "0.001",
+  "classifier__max_fun": "15000",
+  "classifier__max_iter": "1000",
+  "classifier__momentum": "0.9",
+  "classifier__n_iter_no_change": "10",
+  "classifier__nesterovs_momentum": "True",
+  "classifier__power_t": "0.5",
+  "classifier__random_state": "42",
+  "classifier__shuffle": "True",
+  "classifier__solver": "adam",
+  "classifier__tol": "0.0001",
+  "classifier__validation_fraction": "0.1",
+  "classifier__verbose": "False",
+  "classifier__warm_start": "False"
+}

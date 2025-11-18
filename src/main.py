@@ -23,7 +23,6 @@ from src.models import (
     optimize_catboost_classifier,
     optimize_xgboost_classifier
 )
-from src.reports import summarize_results
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, HistGradientBoostingClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
@@ -32,6 +31,7 @@ from sklearn.svm import SVC
 from catboost import CatBoostClassifier
 from xgboost import XGBClassifier
 from evaluation import evaluate_model_default
+from src.reports import generate_experiment_folder_name
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -82,6 +82,9 @@ Exemplos de uso:
   python main.py -renan             # Usa arquivos do Renan (formato original)
   python main.py -multiclass        # Classificação multiclasse (TSG vs Oncogene vs Passenger)
   python main.py -default -multiclass # Parâmetros padrão + multiclasse
+  python main.py -balancedata smoteenn # Com balanceamento SMOTEENN
+  python main.py -default -balancedata adasyn # Parâmetros padrão + balanceamento ADASYN
+  python main.py -multiclass -balancedata kmeanssmote # Multiclasse + KMeansSMOTE
   python main.py --help             # Mostra esta ajuda
         """
     )
@@ -102,6 +105,14 @@ Exemplos de uso:
         '-default', '--default',
         action='store_true',
         help='Executa modelos com parâmetros padrão (sem otimização Optuna)'
+    )
+    
+    parser.add_argument(
+        '-balancedata', '--balancedata',
+        type=str,
+        choices=['none', 'smoteenn', 'smotetomek', 'randomundersampler', 'tomeklinks', 'smoten', 'adasyn', 'kmeanssmote'],
+        default='none',
+        help='Estratégia de balanceamento de dados: none (sem balanceamento), smoteenn, smotetomek, randomundersampler, tomeklinks, smoten, adasyn, kmeanssmote'
     )
     
     return parser.parse_args()
@@ -197,7 +208,7 @@ def run_all_models_optimize(X, y, n_trials=10, data_source="ana", classification
     
     return results
 
-def run_all_default_models(X, y, data_source="ana", classification_type="binary"):
+def run_all_default_models(X, y, data_source="ana", classification_type="binary", balance_strategy="none"):
     """
     Executa todos os modelos com parâmetros padrão
     Pipeline unificado para todos: StandardScaler + Classifier
@@ -207,6 +218,7 @@ def run_all_default_models(X, y, data_source="ana", classification_type="binary"
         y (np.array): Labels
         data_source (str): "ana" ou "renan"
         classification_type (str): "binary" ou "multiclass"
+        balance_strategy (str): Estratégia de balanceamento de dados
         
     Returns:
         list: Lista com resultados de todos os modelos
@@ -229,14 +241,16 @@ def run_all_default_models(X, y, data_source="ana", classification_type="binary"
     print("INICIANDO AVALIAÇÃO COM PARÂMETROS PADRÃO")
     print(f"Dataset: {X.shape[0]} amostras x {X.shape[1]} features")
     print(f"Pipeline: StandardScaler + Classifier (unificado)")
-    print(f"Métricas: Binary (precision, recall, f1)")
-    print()
+
+    experiment_folder = generate_experiment_folder_name(data_source, "optimized", classification_type)
+    experiment_dir = os.path.join("./results", experiment_folder)
+    os.makedirs(experiment_dir, exist_ok=True)
     
     for i, (model_name, model) in enumerate(default_models, 1):
         print(f"\nProgresso: {i}/{len(default_models)} modelos")
         
         try:
-            result = evaluate_model_default(model, model_name, X, y, data_source, classification_type)
+            result = evaluate_model_default(model, model_name, X, y, experiment_dir, data_source, classification_type)
             results.append(result)
             print(f"✓ {model_name} executado com sucesso!")
             
@@ -250,7 +264,7 @@ def run_all_default_models(X, y, data_source="ana", classification_type="binary"
     
     return results
 
-def main(use_renan=False, use_multiclass=False, use_default=False):
+def main(use_renan=False, use_multiclass=False, use_default=False, balance_strategy='none'):
     """
     Função principal do experimento
     
@@ -258,6 +272,7 @@ def main(use_renan=False, use_multiclass=False, use_default=False):
         use_renan (bool): Se True, usa arquivos do Renan; se False, usa arquivos da Ana
         use_multiclass (bool): Se True, usa classificação multiclasse; se False, usa binária
         use_default (bool): Se True, usa parâmetros padrão; se False, otimiza com Optuna
+        balance_strategy (str): Estratégia de balanceamento de dados
     """
     print("CLASSIFICAÇÃO DE GENES-ALVO USANDO DADOS ÔMICOS")
     print("="*80)
@@ -295,6 +310,7 @@ def main(use_renan=False, use_multiclass=False, use_default=False):
     dataset_info = get_dataset_info(X, y, gene_names, feature_names)
     print("\n📊 INFORMAÇÕES DO DATASET:")
     print(f"  Fonte de dados: {data_source}")
+    print(f"  Estratégia de balanceamento: {balance_strategy}")
     print(f"  Amostras: {dataset_info['n_samples']}")
     print(f"  Features: {dataset_info['n_features']}")
     print(f"  Distribuição das classes: {dataset_info['class_distribution']}")
@@ -318,7 +334,7 @@ def main(use_renan=False, use_multiclass=False, use_default=False):
         print("🚀 Iniciando experimentos com parâmetros padrão...")
         data_source = "renan" if use_renan else "ana"
         classification_type = "multiclass" if use_multiclass else "binary"
-        results = run_all_default_models(X, y, data_source, classification_type)
+        results = run_all_default_models(X, y, data_source, classification_type, balance_strategy)
         
     else:
         N_TRIALS = 30  # Número de trials por modelo
@@ -346,12 +362,12 @@ def main(use_renan=False, use_multiclass=False, use_default=False):
     data_source = "renan" if use_renan else "ana"
     classification_type = "multiclass" if use_multiclass else "binary"
     
-    if use_default:
-        summarize_results(results, mode="default", data_source=data_source, 
-                        classification_type=classification_type)
-    else:
-        summarize_results(results, mode="optimized", data_source=data_source,
-                        classification_type=classification_type)
+    # if use_default:
+    #     summarize_results(results, mode="default", data_source=data_source, 
+    #                     classification_type=classification_type, balance_strategy=balance_strategy)
+    # else:
+    #     summarize_results(results, mode="optimized", data_source=data_source,
+    #                     classification_type=classification_type, balance_strategy=balance_strategy)
     
     print("\n🎉 EXPERIMENTO CONCLUÍDO!")
     print("💾 Resultados salvos em arquivos organizados por modelo.")
@@ -362,4 +378,4 @@ if __name__ == "__main__":
     args = parse_arguments()
     
     # Executa o experimento com as opções escolhidas
-    main(args.renan, args.multiclass, args.default)
+    main(args.renan, args.multiclass, args.default, args.balancedata)
