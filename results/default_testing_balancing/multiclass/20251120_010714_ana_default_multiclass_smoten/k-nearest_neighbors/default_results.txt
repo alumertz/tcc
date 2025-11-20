@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: K-Nearest Neighbors com smoten
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.8853
+Precision: 0.8861
+Recall: 0.8853
+F1: 0.8824
+Roc_auc: 0.9729
+Pr_auc: 0.9401
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.6343
+Precision: 0.9151
+Recall: 0.6343
+F1: 0.7425
+Roc_auc: 0.6378
+Pr_auc: 0.9144

@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: Support Vector Classifier com smoten
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9180
+Precision: 0.9187
+Recall: 0.9180
+F1: 0.9182
+Roc_auc: 0.9760
+Pr_auc: 0.9572
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.8436
+Precision: 0.9067
+Recall: 0.8436
+F1: 0.8731
+Roc_auc: 0.6155
+Pr_auc: 0.9101

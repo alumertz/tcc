@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: Multi-Layer Perceptron com smoteenn
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9985
+Precision: 1.0000
+Recall: 0.9975
+F1: 0.9987
+Roc_auc: 0.9999
+Pr_auc: 1.0000
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.8648
+Precision: 0.1250
+Recall: 0.2526
+F1: 0.1672
+Roc_auc: 0.6062
+Pr_auc: 0.1182

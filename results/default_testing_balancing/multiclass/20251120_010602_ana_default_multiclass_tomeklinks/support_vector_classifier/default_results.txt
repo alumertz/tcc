@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: Support Vector Classifier com tomeklinks
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9543
+Precision: 0.9564
+Recall: 0.9543
+F1: 0.9346
+Roc_auc: 0.9376
+Pr_auc: 0.9796
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9463
+Precision: 0.8954
+Recall: 0.9463
+F1: 0.9201
+Roc_auc: 0.5829
+Pr_auc: 0.9064

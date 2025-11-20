@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: Random Forest com smoten
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9711
+Precision: 0.9734
+Recall: 0.9711
+F1: 0.9713
+Roc_auc: 0.9985
+Pr_auc: 0.9945
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9369
+Precision: 0.9037
+Recall: 0.9369
+F1: 0.9196
+Roc_auc: 0.6973
+Pr_auc: 0.9257

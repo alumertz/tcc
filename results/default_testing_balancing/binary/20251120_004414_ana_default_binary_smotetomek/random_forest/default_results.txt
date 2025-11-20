@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: Random Forest com smotetomek
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9767
+Precision: 1.0000
+Recall: 0.9534
+F1: 0.9762
+Roc_auc: 0.9981
+Pr_auc: 0.9964
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9423
+Precision: 0.3333
+Recall: 0.0737
+F1: 0.1207
+Roc_auc: 0.6793
+Pr_auc: 0.1323

@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: CatBoost com tomeklinks
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9651
+Precision: 1.0000
+Recall: 0.3570
+F1: 0.5262
+Roc_auc: 0.9593
+Pr_auc: 0.8790
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9474
+Precision: 0.8333
+Recall: 0.0263
+F1: 0.0510
+Roc_auc: 0.7222
+Pr_auc: 0.1946

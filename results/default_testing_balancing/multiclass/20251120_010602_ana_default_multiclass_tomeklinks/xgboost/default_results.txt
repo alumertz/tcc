@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: XGBoost com tomeklinks
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9976
+Precision: 0.9976
+Recall: 0.9976
+F1: 0.9975
+Roc_auc: 0.9975
+Pr_auc: 0.9979
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9477
+Precision: 0.9212
+Recall: 0.9477
+F1: 0.9236
+Roc_auc: 0.6275
+Pr_auc: 0.9178

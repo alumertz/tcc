@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: Decision Tree com tomeklinks
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9977
+Precision: 0.9977
+Recall: 0.9977
+F1: 0.9977
+Roc_auc: 0.9980
+Pr_auc: 0.9980
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.8990
+Precision: 0.9029
+Recall: 0.8990
+F1: 0.9009
+Roc_auc: 0.5148
+Pr_auc: 0.8985

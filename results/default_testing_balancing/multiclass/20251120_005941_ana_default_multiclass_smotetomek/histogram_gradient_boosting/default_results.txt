@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: Histogram Gradient Boosting com smotetomek
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9647
+Precision: 0.9679
+Recall: 0.9647
+F1: 0.9651
+Roc_auc: 0.9978
+Pr_auc: 0.9933
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9443
+Precision: 0.9091
+Recall: 0.9443
+F1: 0.9235
+Roc_auc: 0.6505
+Pr_auc: 0.9205

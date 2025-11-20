@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: Multi-Layer Perceptron com adasyn
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9690
+Precision: 0.9716
+Recall: 0.9690
+F1: 0.9693
+Roc_auc: 0.9983
+Pr_auc: 0.9943
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.8982
+Precision: 0.9046
+Recall: 0.8982
+F1: 0.9014
+Roc_auc: 0.5691
+Pr_auc: 0.9058

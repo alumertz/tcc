@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: XGBoost com randomundersampler
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9713
+Precision: 0.9735
+Recall: 0.9713
+F1: 0.9715
+Roc_auc: 0.9984
+Pr_auc: 0.9941
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.5090
+Precision: 0.9173
+Recall: 0.5090
+F1: 0.6427
+Roc_auc: 0.6655
+Pr_auc: 0.9203

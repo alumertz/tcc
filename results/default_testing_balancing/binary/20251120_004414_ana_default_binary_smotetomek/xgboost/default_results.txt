@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: XGBoost com smotetomek
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9741
+Precision: 1.0000
+Recall: 0.9482
+F1: 0.9734
+Roc_auc: 0.9979
+Pr_auc: 0.9963
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9463
+Precision: 0.5000
+Recall: 0.0789
+F1: 0.1364
+Roc_auc: 0.6376
+Pr_auc: 0.1250

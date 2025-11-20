@@ -19,7 +19,7 @@ def evaluate_model_default(model, model_name, X, y, experiment_dir, classificati
 
     # Apply balancing only to training set if requested
     if balance_strategy and balance_strategy != "none":
-        from imblearn.combine import SMOTEENN
+        from imblearn.combine import SMOTEENN, SMOTETomek
         from imblearn.over_sampling import SMOTE, ADASYN, KMeansSMOTE
         from imblearn.under_sampling import RandomUnderSampler, TomekLinks
         # Add more strategies as needed
@@ -31,6 +31,8 @@ def evaluate_model_default(model, model_name, X, y, experiment_dir, classificati
             balancer = ADASYN(random_state=42)
         elif balance_strategy == "kmeanssmote":
             balancer = KMeansSMOTE(random_state=42)
+        elif balance_strategy == "smotetomek":
+            balancer = SMOTETomek(random_state=42)
         elif balance_strategy == "randomundersampler":
             balancer = RandomUnderSampler(random_state=42)
         elif balance_strategy == "tomeklinks":
@@ -65,9 +67,16 @@ def evaluate_model_default(model, model_name, X, y, experiment_dir, classificati
         model_name=model_name,
         folds_metrics={'train_metrics': train_metrics},
         test_metrics=test_metrics,
-        output_path=report_path
+        output_path=report_path,
+        balance_strategy=balance_strategy
     )
-
+    # Return result dict for summary
+    return {
+        'model_name': model_name,
+        'test_metrics': test_metrics,
+        'train_metrics': train_metrics,
+        'balance_strategy': balance_strategy
+    }
 
 def get_metrics(y_true, y_pred, y_proba, classification_type):
 

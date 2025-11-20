@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: CatBoost com none
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9650
+Precision: 1.0000
+Recall: 0.3478
+F1: 0.5161
+Roc_auc: 0.9565
+Pr_auc: 0.8649
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9471
+Precision: 0.7143
+Recall: 0.0263
+F1: 0.0508
+Roc_auc: 0.7186
+Pr_auc: 0.1872

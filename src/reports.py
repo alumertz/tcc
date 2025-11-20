@@ -246,7 +246,7 @@ def save_holdout_results(model_name, holdout_results, data_source, classificatio
     print(f"Holdout evaluation results saved to: {holdout_results_path}")
 
 
-def default_report(model_name, folds_metrics, test_metrics, output_path=None):
+def default_report(model_name, folds_metrics, test_metrics, output_path=None, balance_strategy="none"):
     """
     Gera um relatório simples para avaliação padrão de um modelo.
     Args:
@@ -258,7 +258,7 @@ def default_report(model_name, folds_metrics, test_metrics, output_path=None):
         str: Relatório gerado
     """
     metrics = ['accuracy', 'precision', 'recall', 'f1', 'roc_auc', 'pr_auc']
-    report = f"RELATÓRIO PADRÃO DO MODELO: {model_name}\n" + "="*80 + "\n\n"
+    report = f"RELATÓRIO PADRÃO DO MODELO: {model_name} com {balance_strategy}\n" + "="*80 + "\n\n"
     report += "MÉTRICAS DE TREINO (HOLDOUT):\n"
     if folds_metrics and isinstance(folds_metrics, dict):
         train_metrics = folds_metrics.get('train_metrics', {})
@@ -281,3 +281,35 @@ def default_report(model_name, folds_metrics, test_metrics, output_path=None):
         with open(output_path, 'w') as f:
             f.write(report)
     return report
+
+def save_default_experiment_summary(experiment_dir, results, balance_strategy=""):
+    """
+    Cria um arquivo resumo com uma tabela de métricas para todos os algoritmos executados com a estratégia de balanceamento escolhida.
+    Args:
+        experiment_dir (str): Pasta principal do experimento
+        results (list): Lista de dicts com resultados de cada modelo
+        balance_strategy (str): Estratégia de balanceamento
+    """
+    import os
+    import numpy as np
+    summary_path = os.path.join(experiment_dir, f"summary_{balance_strategy}.txt")
+    metrics = ['accuracy', 'precision', 'recall', 'f1', 'roc_auc', 'pr_auc']
+    with open(summary_path, 'w') as f:
+        f.write(f"RESUMO DOS RESULTADOS - Balanceamento: {balance_strategy}\n")
+        f.write("="*80 + "\n\n")
+        header = "Modelo".ljust(25) + "| " + " | ".join([m.ljust(10) for m in metrics])
+        f.write(header + "\n" + "-"*len(header) + "\n")
+        for result in results:
+            if result is None:
+                continue
+            model_name = result.get('model_name', '-')
+            test_metrics = result.get('test_metrics', {})
+            line = model_name.ljust(25) + "| "
+            for m in metrics:
+                v = test_metrics.get(m, None)
+                if v is not None:
+                    line += f"{v:.4f}".ljust(10) + "| "
+                else:
+                    line += "-".ljust(10) + "| "
+            f.write(line + "\n")
+        f.write("\n")

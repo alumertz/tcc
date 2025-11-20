@@ -1,0 +1,15 @@
+RESUMO DOS RESULTADOS - Balanceamento: kmeanssmote
+================================================================================
+
+Modelo                   | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+------------------------------------------------------------------------------------------------------
+Decision Tree            | -         | -         | -         | -         | -         | -         | 
+Random Forest            | -         | -         | -         | -         | -         | -         | 
+Gradient Boosting        | -         | -         | -         | -         | -         | -         | 
+Histogram Gradient Boosting| -         | -         | -         | -         | -         | -         | 
+K-Nearest Neighbors      | -         | -         | -         | -         | -         | -         | 
+Multi-Layer Perceptron   | -         | -         | -         | -         | -         | -         | 
+Support Vector Classifier| -         | -         | -         | -         | -         | -         | 
+CatBoost                 | -         | -         | -         | -         | -         | -         | 
+XGBoost                  | -         | -         | -         | -         | -         | -         | 
+

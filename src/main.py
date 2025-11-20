@@ -9,8 +9,6 @@ import os
 import argparse
 sys.path.append('/Users/i583975/git/tcc')
 
-import numpy as np
-import pandas as pd
 from src.processing import prepare_dataset
 from src.models import (
     optimize_decision_tree_classifier,
@@ -204,7 +202,7 @@ def run_all_models_optimize(X, y, n_trials=10, data_source="ana", classification
         
     return results
 
-def run_all_default_models(X, y, data_source="ana", classification_type="binary", balance_strategy="none"):
+def run_all_default_models(X, y, data_source="ana", classification_type="binary", balance_strategy=None):
     """
     Executa todos os modelos com parâmetros padrão
     Pipeline unificado para todos: StandardScaler + Classifier
@@ -239,11 +237,12 @@ def run_all_default_models(X, y, data_source="ana", classification_type="binary"
     print(f"Pipeline: StandardScaler + Classifier (unificado)")
 
     experiment_folder = generate_experiment_folder_name(data_source, "default", classification_type)
-    experiment_dir = os.path.join("./results", experiment_folder)
-    os.makedirs(experiment_dir, exist_ok=True)
+    experiment_folder = experiment_folder + "_"+ balance_strategy if balance_strategy else experiment_folder
     
     for i, (model_name, model) in enumerate(default_models, 1):
         print(f"\nProgresso: {i}/{len(default_models)} modelos")
+        experiment_dir = os.path.join("./results", experiment_folder)
+        os.makedirs(experiment_dir, exist_ok=True)
         try:
             result = evaluate_model_default(model, model_name, X, y, experiment_dir, classification_type, balance_strategy)
             results.append(result)
@@ -255,7 +254,11 @@ def run_all_default_models(X, y, data_source="ana", classification_type="binary"
                 'status': 'error',
                 'error': str(e)
             })
+            
     
+    # Save summary file with all metrics for all algorithms
+    from src.reports import save_default_experiment_summary
+    save_default_experiment_summary(experiment_dir, results, balance_strategy)
     return results
 
 def main(use_renan=False, use_multiclass=False, use_default=False, balance_strategy='none'):
@@ -308,8 +311,8 @@ def main(use_renan=False, use_multiclass=False, use_default=False, balance_strat
         print("Iniciando experimentos com parâmetros padrão...")
         classification_type = "multiclass" if use_multiclass else "binary"
         model = DecisionTreeClassifier(random_state=42)
-        evaluate_model_default(model, "Decision Tree", X, y, "./results", classification_type)
-        #run_all_default_models(X, y, data_source, classification_type, balance_strategy)
+        #evaluate_model_default(model, "Decision Tree", X, y, "./results", classification_type)
+        run_all_default_models(X, y, data_source, classification_type, balance_strategy)
         
     else:
         N_TRIALS = 30  # Número de trials por modelo
