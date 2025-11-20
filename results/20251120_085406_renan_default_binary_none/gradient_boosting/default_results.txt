@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: Gradient Boosting com none
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9474
+Precision: 0.9444
+Recall: 0.2107
+F1: 0.3446
+Roc_auc: 0.8546
+Pr_auc: 0.5489
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9363
+Precision: 0.5714
+Recall: 0.1105
+F1: 0.1852
+Roc_auc: 0.7907
+Pr_auc: 0.2833

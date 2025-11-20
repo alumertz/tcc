@@ -1,0 +1,67 @@
+Holdout Evaluation Results for xgboost
+==================================================
+
+Results for each fold's best parameters on holdout set:
+--------------------------------------------------
+
+Fold 1:
+  Best Parameters: {'n_estimators': 964, 'learning_rate': 0.010500280689911712, 'max_depth': 15, 'min_child_weight': 3, 'subsample': 0.9208311306150238, 'colsample_bytree': 0.707548200597411, 'reg_alpha': 0.020000106605732426, 'reg_lambda': 3.9940232254512216, 'gamma': 4.948741037922393, 'scale_pos_weight': 5.353775714707002}
+  Holdout Metrics:
+    Accuracy: 0.9465
+    Precision: 0.5294
+    Recall: 0.0474
+    F1-Score: 0.0870
+    ROC-AUC: 0.7019
+    PR-AUC: 0.1809
+
+Fold 2:
+  Best Parameters: {'n_estimators': 169, 'learning_rate': 0.03448633368132229, 'max_depth': 3, 'min_child_weight': 9, 'subsample': 0.7714650870282533, 'colsample_bytree': 0.9226653423987194, 'reg_alpha': 0.3384905613319892, 'reg_lambda': 1.0416188119047016, 'gamma': 3.110782755695419, 'scale_pos_weight': 16.56531945723657}
+  Holdout Metrics:
+    Accuracy: 0.7777
+    Precision: 0.1218
+    Recall: 0.5053
+    F1-Score: 0.1963
+    ROC-AUC: 0.7230
+    PR-AUC: 0.1838
+
+Fold 3:
+  Best Parameters: {'n_estimators': 976, 'learning_rate': 0.01091324851936336, 'max_depth': 3, 'min_child_weight': 8, 'subsample': 0.7397156379376926, 'colsample_bytree': 0.8981810737920508, 'reg_alpha': 0.01333476907930459, 'reg_lambda': 6.560939200472043, 'gamma': 0.01590436021610353, 'scale_pos_weight': 8.134291252325676}
+  Holdout Metrics:
+    Accuracy: 0.9104
+    Precision: 0.2100
+    Recall: 0.2421
+    F1-Score: 0.2249
+    ROC-AUC: 0.7294
+    PR-AUC: 0.1868
+
+Fold 4:
+  Best Parameters: {'n_estimators': 482, 'learning_rate': 0.016374267593705805, 'max_depth': 3, 'min_child_weight': 3, 'subsample': 0.7191684208735998, 'colsample_bytree': 0.8587703247667983, 'reg_alpha': 0.4990460601019022, 'reg_lambda': 3.9959407330402894, 'gamma': 4.960877402221637, 'scale_pos_weight': 15.106514585475441}
+  Holdout Metrics:
+    Accuracy: 0.8159
+    Precision: 0.1312
+    Recall: 0.4316
+    F1-Score: 0.2012
+    ROC-AUC: 0.7280
+    PR-AUC: 0.1771
+
+Fold 5:
+  Best Parameters: {'n_estimators': 728, 'learning_rate': 0.016476236426642667, 'max_depth': 3, 'min_child_weight': 3, 'subsample': 0.9361106138882802, 'colsample_bytree': 0.761476314103352, 'reg_alpha': 0.6974242854586006, 'reg_lambda': 8.29292883327069, 'gamma': 4.6468477975889915, 'scale_pos_weight': 5.314311957541815}
+  Holdout Metrics:
+    Accuracy: 0.9395
+    Precision: 0.3462
+    Recall: 0.1421
+    F1-Score: 0.2015
+    ROC-AUC: 0.7259
+    PR-AUC: 0.1881
+
+==================================================
+BEST PERFORMING MODEL ON HOLDOUT SET:
+Fold 5 (PR-AUC: 0.1881)
+Parameters: {'n_estimators': 728, 'learning_rate': 0.016476236426642667, 'max_depth': 3, 'min_child_weight': 3, 'subsample': 0.9361106138882802, 'colsample_bytree': 0.761476314103352, 'reg_alpha': 0.6974242854586006, 'reg_lambda': 8.29292883327069, 'gamma': 4.6468477975889915, 'scale_pos_weight': 5.314311957541815}
+Final Holdout Performance:
+  Accuracy: 0.9395
+  Precision: 0.3462
+  Recall: 0.1421
+  F1-Score: 0.2015
+  ROC-AUC: 0.7259
+  PR-AUC: 0.1881

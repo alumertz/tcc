@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: XGBoost com none
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9967
+Precision: 1.0000
+Recall: 0.9490
+F1: 0.9739
+Roc_auc: 0.9953
+Pr_auc: 0.9702
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9356
+Precision: 0.5405
+Recall: 0.1105
+F1: 0.1835
+Roc_auc: 0.7320
+Pr_auc: 0.2455

@@ -554,12 +554,11 @@ def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True, fixe
         DecisionTreeClassifier,
         _suggest_decision_tree_params,
         'decision_tree',
-        X, y, n_trials, save_results, 
+        X, y, n_trials,
         custom_params_processor=None,
-        return_test_metrics=True,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
-        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
+        outer_cv_folds=outer_cv_folds
     )
 
 
@@ -574,12 +573,11 @@ def optimize_random_forest_classifier(X, y, n_trials=30, save_results=True, fixe
         RandomForestClassifier,
         _suggest_random_forest_params,
         'random_forest',
-        X, y, n_trials, save_results, 
+        X, y, n_trials,
         custom_params_processor=None,
-        return_test_metrics=True,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
-        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
+        outer_cv_folds=outer_cv_folds
     )
 
 
@@ -591,12 +589,11 @@ def optimize_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, 
         GradientBoostingClassifier,
         _suggest_gradient_boosting_params,
         'gradient_boosting',
-        X, y, n_trials, save_results, 
+        X, y, n_trials,
         custom_params_processor=None,
-        return_test_metrics=True,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
-        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
+        outer_cv_folds=outer_cv_folds
     )
 
 
@@ -608,12 +605,11 @@ def optimize_hist_gradient_boosting_classifier(X, y, n_trials=30, save_results=T
         HistGradientBoostingClassifier,
         _suggest_hist_gradient_boosting_params,
         'histogram_gradient_boosting',
-        X, y, n_trials, save_results, 
+        X, y, n_trials,
         custom_params_processor=None,
-        return_test_metrics=True,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
-        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
+        outer_cv_folds=outer_cv_folds
     )
 
 
@@ -625,12 +621,11 @@ def optimize_knn_classifier(X, y, n_trials=30, save_results=True, fixed_params=N
         KNeighborsClassifier,
         _suggest_knn_params,
         'k_nearest_neighbors',
-        X, y, n_trials, save_results, 
+        X, y, n_trials,
         custom_params_processor=None,
-        return_test_metrics=True,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
-        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
+        outer_cv_folds=outer_cv_folds
     )
 
 
@@ -642,12 +637,11 @@ def optimize_mlp_classifier(X, y, n_trials=30, save_results=True, fixed_params=N
         MLPClassifier,
         _suggest_mlp_params,
         'multi_layer_perceptron',
-        X, y, n_trials, save_results,
+        X, y, n_trials,
         custom_params_processor=_process_mlp_params,
-        return_test_metrics=True,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
-        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
+        outer_cv_folds=outer_cv_folds
     )
 
 
@@ -662,12 +656,11 @@ def optimize_svc_classifier(X, y, n_trials=30, save_results=True, fixed_params=N
         SVC,
         _suggest_svc_params,
         'svc',
-        X, y, n_trials, save_results, 
+        X, y, n_trials,
         custom_params_processor=None,
-        return_test_metrics=True,
         fixed_params=enforced_params,
         data_source=data_source, classification_type=classification_type,
-        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
+        outer_cv_folds=outer_cv_folds
     )
 
 
@@ -679,12 +672,11 @@ def optimize_catboost_classifier(X, y, n_trials=30, save_results=True, fixed_par
         CatBoostClassifier,
         _suggest_catboost_params,
         'catboost',
-        X, y, n_trials, save_results, 
+        X, y, n_trials,
         custom_params_processor=None,
-        return_test_metrics=True,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
-        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds,
+        outer_cv_folds=outer_cv_folds,
     )
 
 
@@ -696,10 +688,9 @@ def optimize_xgboost_classifier(X, y, n_trials=30, save_results=True, fixed_para
         XGBClassifier,
         _suggest_xgboost_params,
         'xgboost',
-        X, y, n_trials, save_results, 
+        X, y, n_trials,
         custom_params_processor=None,
-        return_test_metrics=True,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
-        use_nested_cv=use_nested_cv, outer_cv_folds=outer_cv_folds
+        outer_cv_folds=outer_cv_folds
     )

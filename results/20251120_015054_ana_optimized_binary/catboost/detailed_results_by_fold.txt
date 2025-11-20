@@ -1,0 +1,348 @@
+RESULTADOS DO MODELO: CATBOOST
+================================================================================
+
+Data/Hora: 2025-11-20 05:39:36
+
+FOLD 1 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.0886 | Hiperparâmetros: {"iterations": 695, "learning_rate": 0.19986808940620024, "depth": 8, "l2_leaf_reg": 2.0608760270028013, "border_count": 230, "bagging_temperature": 0.237074863179781, "random_strength": 0.24525044993456835, "scale_pos_weight": 39.59746643395564}
+  Trial 1: Score=0.0851 | Hiperparâmetros: {"iterations": 771, "learning_rate": 0.03905595425326302, "depth": 9, "l2_leaf_reg": 1.4541039947077938, "border_count": 134, "bagging_temperature": 0.12747394425265368, "random_strength": 0.634545719423188, "scale_pos_weight": 35.318731975068665}
+  Trial 2: Score=0.1575 | Hiperparâmetros: {"iterations": 121, "learning_rate": 0.018991838789163686, "depth": 5, "l2_leaf_reg": 9.489141946200315, "border_count": 198, "bagging_temperature": 0.4725617670650323, "random_strength": 0.4218863948751175, "scale_pos_weight": 20.471017833703872}
+  Trial 3: Score=0.0966 | Hiperparâmetros: {"iterations": 281, "learning_rate": 0.16779989107847224, "depth": 8, "l2_leaf_reg": 7.0301101037991485, "border_count": 137, "bagging_temperature": 0.1930572179167881, "random_strength": 0.09864287490870272, "scale_pos_weight": 22.929814321521622}
+  Trial 4: Score=0.1066 | Hiperparâmetros: {"iterations": 965, "learning_rate": 0.06841967040975051, "depth": 7, "l2_leaf_reg": 5.417138172751175, "border_count": 139, "bagging_temperature": 0.3334251695809489, "random_strength": 0.4931483254334619, "scale_pos_weight": 10.054286722780397}
+  Trial 5: Score=0.1062 | Hiperparâmetros: {"iterations": 996, "learning_rate": 0.08558617077613469, "depth": 8, "l2_leaf_reg": 8.574821448516161, "border_count": 218, "bagging_temperature": 0.020744516020244963, "random_strength": 0.7408024572063173, "scale_pos_weight": 8.277950495470499}
+  Trial 6: Score=0.1040 | Hiperparâmetros: {"iterations": 619, "learning_rate": 0.033010781835423594, "depth": 10, "l2_leaf_reg": 5.817396431880377, "border_count": 63, "bagging_temperature": 0.14289343580179137, "random_strength": 0.06951744247396363, "scale_pos_weight": 49.594411179616564}
+  Trial 7: Score=0.1007 | Hiperparâmetros: {"iterations": 419, "learning_rate": 0.2626948213251386, "depth": 7, "l2_leaf_reg": 1.8682961570041954, "border_count": 172, "bagging_temperature": 0.4068887068838839, "random_strength": 0.5170990334248505, "scale_pos_weight": 5.617338642593818}
+  Trial 8: Score=0.0950 | Hiperparâmetros: {"iterations": 302, "learning_rate": 0.14698893533792204, "depth": 7, "l2_leaf_reg": 1.999851239520078, "border_count": 128, "bagging_temperature": 0.0721716600403306, "random_strength": 0.06466476337435378, "scale_pos_weight": 21.327251381607006}
+  Trial 9: Score=0.1083 | Hiperparâmetros: {"iterations": 187, "learning_rate": 0.29600679728506685, "depth": 4, "l2_leaf_reg": 9.053469270223372, "border_count": 34, "bagging_temperature": 0.1351573961801269, "random_strength": 0.9999223809508992, "scale_pos_weight": 43.14297206603006}
+  Trial 10: Score=0.1482 | Hiperparâmetros: {"iterations": 114, "learning_rate": 0.11811323741072208, "depth": 4, "l2_leaf_reg": 9.865040553311081, "border_count": 254, "bagging_temperature": 0.720109190487707, "random_strength": 0.36557893274070263, "scale_pos_weight": 20.92411221249927}
+  Trial 11: Score=0.1440 | Hiperparâmetros: {"iterations": 108, "learning_rate": 0.11449601808720145, "depth": 4, "l2_leaf_reg": 9.93753918178957, "border_count": 250, "bagging_temperature": 0.684301379501669, "random_strength": 0.3325284262700612, "scale_pos_weight": 21.38107609177167}
+  Trial 12: Score=0.1592 | Hiperparâmetros: {"iterations": 435, "learning_rate": 0.01939302888626296, "depth": 5, "l2_leaf_reg": 7.916198806583402, "border_count": 195, "bagging_temperature": 0.8596094805955883, "random_strength": 0.32343167155814867, "scale_pos_weight": 28.500649792224714}
+  Trial 13: Score=0.1584 | Hiperparâmetros: {"iterations": 477, "learning_rate": 0.014314337058551643, "depth": 5, "l2_leaf_reg": 7.575086820470318, "border_count": 189, "bagging_temperature": 0.9415202974845758, "random_strength": 0.2432805159721749, "scale_pos_weight": 30.553261706043575}
+  Trial 14: Score=0.1141 | Hiperparâmetros: {"iterations": 488, "learning_rate": 0.0684560151805728, "depth": 6, "l2_leaf_reg": 7.478851426780577, "border_count": 175, "bagging_temperature": 0.9781606330816391, "random_strength": 0.21549790725071338, "scale_pos_weight": 30.556029041119917}
+  Trial 15: Score=0.1021 | Hiperparâmetros: {"iterations": 427, "learning_rate": 0.21304864111802457, "depth": 5, "l2_leaf_reg": 4.437011837591138, "border_count": 180, "bagging_temperature": 0.996493846792203, "random_strength": 0.216213380483207, "scale_pos_weight": 31.889135903400973}
+  Trial 16: Score=0.1527 | Hiperparâmetros: {"iterations": 571, "learning_rate": 0.020585027629099906, "depth": 5, "l2_leaf_reg": 7.66233921414111, "border_count": 201, "bagging_temperature": 0.8161367123554145, "random_strength": 0.6174473009218943, "scale_pos_weight": 26.460391605367132}
+  Trial 17: Score=0.1172 | Hiperparâmetros: {"iterations": 363, "learning_rate": 0.08904090881993541, "depth": 6, "l2_leaf_reg": 6.51960289362145, "border_count": 107, "bagging_temperature": 0.8452986799983906, "random_strength": 0.27955856600504364, "scale_pos_weight": 14.349981455780576}
+  Trial 18: Score=0.0997 | Hiperparâmetros: {"iterations": 805, "learning_rate": 0.049205926950459555, "depth": 6, "l2_leaf_reg": 3.854383298927406, "border_count": 102, "bagging_temperature": 0.5907600001378946, "random_strength": 0.16416618616455858, "scale_pos_weight": 37.812909076418386}
+  Trial 19: Score=0.1538 | Hiperparâmetros: {"iterations": 499, "learning_rate": 0.013085218581353635, "depth": 5, "l2_leaf_reg": 7.865873728006079, "border_count": 159, "bagging_temperature": 0.8829385371014795, "random_strength": 0.8331063944512258, "scale_pos_weight": 44.06638721917324}
+  Trial 20: Score=0.1095 | Hiperparâmetros: {"iterations": 633, "learning_rate": 0.10874066929673236, "depth": 6, "l2_leaf_reg": 8.567164272064288, "border_count": 205, "bagging_temperature": 0.7174816938225245, "random_strength": 0.43151898763305174, "scale_pos_weight": 27.668923038634965}
+  Trial 21: Score=0.1628 | Hiperparâmetros: {"iterations": 236, "learning_rate": 0.01100236264317145, "depth": 5, "l2_leaf_reg": 9.047851415709586, "border_count": 195, "bagging_temperature": 0.49396066890612966, "random_strength": 0.3985485441621268, "scale_pos_weight": 16.42392232289241}
+  Trial 22: Score=0.1540 | Hiperparâmetros: {"iterations": 255, "learning_rate": 0.04812445759689135, "depth": 5, "l2_leaf_reg": 8.253865868933259, "border_count": 229, "bagging_temperature": 0.594053654667109, "random_strength": 0.3559009373976515, "scale_pos_weight": 15.142458795697205}
+  Trial 23: Score=0.1412 | Hiperparâmetros: {"iterations": 355, "learning_rate": 0.06124141303075742, "depth": 4, "l2_leaf_reg": 6.73004999460349, "border_count": 188, "bagging_temperature": 0.5667839579098992, "random_strength": 0.5496494867310365, "scale_pos_weight": 15.292812437070237}
+  Trial 24: Score=0.1557 | Hiperparâmetros: {"iterations": 489, "learning_rate": 0.012995984041716507, "depth": 6, "l2_leaf_reg": 8.885109385328725, "border_count": 162, "bagging_temperature": 0.8939177921246331, "random_strength": 0.1459639393467922, "scale_pos_weight": 33.95642948999778}
+  Trial 25: Score=0.1235 | Hiperparâmetros: {"iterations": 207, "learning_rate": 0.09080942295812827, "depth": 5, "l2_leaf_reg": 5.812292122892268, "border_count": 225, "bagging_temperature": 0.7713585017633564, "random_strength": 0.012217695835704895, "scale_pos_weight": 25.433176210956347}
+  Trial 26: Score=0.1522 | Hiperparâmetros: {"iterations": 397, "learning_rate": 0.036315823989945345, "depth": 4, "l2_leaf_reg": 7.937725408187778, "border_count": 160, "bagging_temperature": 0.33521044281602885, "random_strength": 0.2973138873914166, "scale_pos_weight": 16.614553282187885}
+  Trial 27: Score=0.0941 | Hiperparâmetros: {"iterations": 560, "learning_rate": 0.15214449623576706, "depth": 6, "l2_leaf_reg": 9.222105378721157, "border_count": 212, "bagging_temperature": 0.9153887299502335, "random_strength": 0.4229581858871776, "scale_pos_weight": 29.056667686866998}
+  Trial 28: Score=0.1247 | Hiperparâmetros: {"iterations": 341, "learning_rate": 0.06019231044088541, "depth": 5, "l2_leaf_reg": 7.3296738317356676, "border_count": 189, "bagging_temperature": 0.6568452960435428, "random_strength": 0.17836115494049792, "scale_pos_weight": 50.41392876653446}
+  Trial 29: Score=0.0991 | Hiperparâmetros: {"iterations": 717, "learning_rate": 0.23303222731490258, "depth": 4, "l2_leaf_reg": 3.691495499054281, "border_count": 244, "bagging_temperature": 0.4522160324015099, "random_strength": 0.6051202065064563, "scale_pos_weight": 39.8839649297641}
+
+Conjunto de hiperparâmetros escolhido:
+  iterations: 236
+  learning_rate: 0.01100236264317145
+  depth: 5
+  l2_leaf_reg: 9.047851415709586
+  border_count: 195
+  bagging_temperature: 0.49396066890612966
+  random_strength: 0.3985485441621268
+  scale_pos_weight: 16.42392232289241
+
+Resultado do treino:
+  accuracy: 0.7853
+  precision: 0.1526
+  recall: 0.6579
+  f1: 0.2478
+  roc_auc: 0.8082
+  pr_auc: 0.2742
+
+Resultado do teste:
+  accuracy: 0.7588
+  precision: 0.1090
+  recall: 0.4901
+  f1: 0.1783
+  roc_auc: 0.6911
+  pr_auc: 0.1246
+
+============================================================
+
+FOLD 2 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.0756 | Hiperparâmetros: {"iterations": 430, "learning_rate": 0.1638876737273859, "depth": 10, "l2_leaf_reg": 5.115689495949191, "border_count": 68, "bagging_temperature": 0.7679740363907324, "random_strength": 0.20173150145006302, "scale_pos_weight": 43.827833458209355}
+  Trial 1: Score=0.0910 | Hiperparâmetros: {"iterations": 956, "learning_rate": 0.12548827597160078, "depth": 4, "l2_leaf_reg": 3.572490964868016, "border_count": 251, "bagging_temperature": 0.3972052378952353, "random_strength": 0.6184332020503192, "scale_pos_weight": 49.752063855429355}
+  Trial 2: Score=0.0791 | Hiperparâmetros: {"iterations": 390, "learning_rate": 0.2914837824505749, "depth": 6, "l2_leaf_reg": 1.2570080392519152, "border_count": 234, "bagging_temperature": 0.3587965126243555, "random_strength": 0.6859803942339183, "scale_pos_weight": 12.594347681930662}
+  Trial 3: Score=0.1402 | Hiperparâmetros: {"iterations": 157, "learning_rate": 0.0363822366971199, "depth": 5, "l2_leaf_reg": 8.302091428619796, "border_count": 121, "bagging_temperature": 0.049668459572185464, "random_strength": 0.9042241723935991, "scale_pos_weight": 36.857754191440726}
+  Trial 4: Score=0.0823 | Hiperparâmetros: {"iterations": 502, "learning_rate": 0.2761875987734001, "depth": 9, "l2_leaf_reg": 6.384079671153659, "border_count": 224, "bagging_temperature": 0.8937977487191878, "random_strength": 0.7538786358896992, "scale_pos_weight": 15.783055737391635}
+  Trial 5: Score=0.1128 | Hiperparâmetros: {"iterations": 289, "learning_rate": 0.20327620266433447, "depth": 5, "l2_leaf_reg": 6.6807350400448176, "border_count": 148, "bagging_temperature": 0.09835481238736743, "random_strength": 0.9053144014551439, "scale_pos_weight": 5.5925155702341725}
+  Trial 6: Score=0.0946 | Hiperparâmetros: {"iterations": 814, "learning_rate": 0.19487943441217767, "depth": 5, "l2_leaf_reg": 8.979533175672568, "border_count": 150, "bagging_temperature": 0.6352382425711744, "random_strength": 0.27637831743586383, "scale_pos_weight": 30.24787782586492}
+  Trial 7: Score=0.0953 | Hiperparâmetros: {"iterations": 804, "learning_rate": 0.27602806535922997, "depth": 10, "l2_leaf_reg": 6.637560640998966, "border_count": 137, "bagging_temperature": 0.29343062443075973, "random_strength": 0.39211028895938116, "scale_pos_weight": 8.341890902768162}
+  Trial 8: Score=0.0804 | Hiperparâmetros: {"iterations": 413, "learning_rate": 0.28020710359809464, "depth": 8, "l2_leaf_reg": 8.755048816786214, "border_count": 99, "bagging_temperature": 0.9623415735320953, "random_strength": 0.5753244041353646, "scale_pos_weight": 24.775799020959607}
+  Trial 9: Score=0.0860 | Hiperparâmetros: {"iterations": 906, "learning_rate": 0.1162418296368524, "depth": 6, "l2_leaf_reg": 3.8082302119502374, "border_count": 50, "bagging_temperature": 0.11985627810465438, "random_strength": 0.2934618137815339, "scale_pos_weight": 25.80117691505924}
+  Trial 10: Score=0.1407 | Hiperparâmetros: {"iterations": 126, "learning_rate": 0.01740241487944571, "depth": 7, "l2_leaf_reg": 9.549677217038012, "border_count": 189, "bagging_temperature": 0.059413015602088406, "random_strength": 0.9872567729129205, "scale_pos_weight": 38.22143803610611}
+  Trial 11: Score=0.1387 | Hiperparâmetros: {"iterations": 125, "learning_rate": 0.011035694677692089, "depth": 7, "l2_leaf_reg": 9.814971595426941, "border_count": 191, "bagging_temperature": 0.01097116961048862, "random_strength": 0.9922089469594407, "scale_pos_weight": 36.91438716971345}
+  Trial 12: Score=0.1416 | Hiperparâmetros: {"iterations": 125, "learning_rate": 0.011032704343926062, "depth": 7, "l2_leaf_reg": 8.191116115645979, "border_count": 179, "bagging_temperature": 0.1478453049917723, "random_strength": 0.8344945178633877, "scale_pos_weight": 37.93057133113086}
+  Trial 13: Score=0.1042 | Hiperparâmetros: {"iterations": 251, "learning_rate": 0.06617004097580143, "depth": 8, "l2_leaf_reg": 7.696346287202525, "border_count": 191, "bagging_temperature": 0.21512066188189055, "random_strength": 0.04067630166915387, "scale_pos_weight": 41.57243990702922}
+  Trial 14: Score=0.0900 | Hiperparâmetros: {"iterations": 656, "learning_rate": 0.06630542324904704, "depth": 7, "l2_leaf_reg": 9.918087212704057, "border_count": 189, "bagging_temperature": 0.5506702300521851, "random_strength": 0.7961632442420624, "scale_pos_weight": 49.63854936594674}
+  Trial 15: Score=0.1422 | Hiperparâmetros: {"iterations": 261, "learning_rate": 0.011532883604355428, "depth": 8, "l2_leaf_reg": 7.68946270906188, "border_count": 174, "bagging_temperature": 0.18829587989189328, "random_strength": 0.9972333764461075, "scale_pos_weight": 31.758268459963926}
+  Trial 16: Score=0.1167 | Hiperparâmetros: {"iterations": 275, "learning_rate": 0.06151003036172695, "depth": 8, "l2_leaf_reg": 7.550193369472921, "border_count": 171, "bagging_temperature": 0.2296062400726645, "random_strength": 0.8389307781348215, "scale_pos_weight": 21.396809090023996}
+  Trial 17: Score=0.0948 | Hiperparâmetros: {"iterations": 621, "learning_rate": 0.10218568622659568, "depth": 9, "l2_leaf_reg": 5.113225425837028, "border_count": 102, "bagging_temperature": 0.4552777618188885, "random_strength": 0.5288413458053087, "scale_pos_weight": 31.05792488332196}
+  Trial 18: Score=0.0901 | Hiperparâmetros: {"iterations": 264, "learning_rate": 0.08962118690342914, "depth": 9, "l2_leaf_reg": 7.576744044334, "border_count": 216, "bagging_temperature": 0.16819547926695627, "random_strength": 0.7158851435566431, "scale_pos_weight": 32.75393252108329}
+  Trial 19: Score=0.1361 | Hiperparâmetros: {"iterations": 186, "learning_rate": 0.04167146279111321, "depth": 6, "l2_leaf_reg": 5.817455746738053, "border_count": 166, "bagging_temperature": 0.3126687843482665, "random_strength": 0.43518299354345974, "scale_pos_weight": 44.332957856894694}
+  Trial 20: Score=0.0843 | Hiperparâmetros: {"iterations": 358, "learning_rate": 0.14221585227421685, "depth": 8, "l2_leaf_reg": 3.6546558753589258, "border_count": 207, "bagging_temperature": 0.5677294585531785, "random_strength": 0.8771479962000078, "scale_pos_weight": 19.693653394820934}
+  Trial 21: Score=0.1406 | Hiperparâmetros: {"iterations": 109, "learning_rate": 0.01140190069653383, "depth": 7, "l2_leaf_reg": 9.241020981512191, "border_count": 174, "bagging_temperature": 0.004696741858943011, "random_strength": 0.9827195381328597, "scale_pos_weight": 37.35454701546599}
+  Trial 22: Score=0.1321 | Hiperparâmetros: {"iterations": 203, "learning_rate": 0.03252639662105909, "depth": 7, "l2_leaf_reg": 8.26874384968651, "border_count": 201, "bagging_temperature": 0.15390994557612414, "random_strength": 0.9938700946732449, "scale_pos_weight": 40.52846413558777}
+  Trial 23: Score=0.1332 | Hiperparâmetros: {"iterations": 113, "learning_rate": 0.08215298519206037, "depth": 7, "l2_leaf_reg": 9.314206354185774, "border_count": 170, "bagging_temperature": 0.25618372978363185, "random_strength": 0.9092552709786155, "scale_pos_weight": 33.987493809631204}
+  Trial 24: Score=0.1472 | Hiperparâmetros: {"iterations": 316, "learning_rate": 0.011860925619290114, "depth": 6, "l2_leaf_reg": 8.250566728214928, "border_count": 132, "bagging_temperature": 0.1008752906490922, "random_strength": 0.8084908444542783, "scale_pos_weight": 27.027632564145957}
+  Trial 25: Score=0.1192 | Hiperparâmetros: {"iterations": 347, "learning_rate": 0.050592399382647035, "depth": 6, "l2_leaf_reg": 7.190038219898272, "border_count": 124, "bagging_temperature": 0.18222468739046843, "random_strength": 0.8180125580812404, "scale_pos_weight": 27.62252398992489}
+  Trial 26: Score=0.0911 | Hiperparâmetros: {"iterations": 485, "learning_rate": 0.24490725377830597, "depth": 4, "l2_leaf_reg": 8.260220573619852, "border_count": 94, "bagging_temperature": 0.4401134941225262, "random_strength": 0.6285896555193895, "scale_pos_weight": 22.576901538350086}
+  Trial 27: Score=0.1359 | Hiperparâmetros: {"iterations": 224, "learning_rate": 0.03138612921076232, "depth": 6, "l2_leaf_reg": 5.939669258641691, "border_count": 152, "bagging_temperature": 0.3294380109007304, "random_strength": 0.7273055231388287, "scale_pos_weight": 17.589327480519398}
+  Trial 28: Score=0.0981 | Hiperparâmetros: {"iterations": 331, "learning_rate": 0.08974929684781648, "depth": 8, "l2_leaf_reg": 7.095801274711319, "border_count": 116, "bagging_temperature": 0.11311899032842834, "random_strength": 0.7814521459194498, "scale_pos_weight": 28.483866483666706}
+  Trial 29: Score=0.0863 | Hiperparâmetros: {"iterations": 581, "learning_rate": 0.16536477819735343, "depth": 10, "l2_leaf_reg": 5.014632436189259, "border_count": 69, "bagging_temperature": 0.7090949562884573, "random_strength": 0.6545418350018581, "scale_pos_weight": 45.690198224782996}
+
+Conjunto de hiperparâmetros escolhido:
+  iterations: 316
+  learning_rate: 0.011860925619290114
+  depth: 6
+  l2_leaf_reg: 8.250566728214928
+  border_count: 132
+  bagging_temperature: 0.1008752906490922
+  random_strength: 0.8084908444542783
+  scale_pos_weight: 27.027632564145957
+
+Resultado do treino:
+  accuracy: 0.5899
+  precision: 0.1082
+  recall: 0.9176
+  f1: 0.1936
+  roc_auc: 0.8576
+  pr_auc: 0.3442
+
+Resultado do teste:
+  accuracy: 0.5796
+  precision: 0.0835
+  recall: 0.6842
+  f1: 0.1489
+  roc_auc: 0.6871
+  pr_auc: 0.1350
+
+============================================================
+
+FOLD 3 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.0906 | Hiperparâmetros: {"iterations": 519, "learning_rate": 0.15163326752573705, "depth": 6, "l2_leaf_reg": 9.961221459695052, "border_count": 170, "bagging_temperature": 0.1585557427781753, "random_strength": 0.712115415065755, "scale_pos_weight": 41.87835031016714}
+  Trial 1: Score=0.0925 | Hiperparâmetros: {"iterations": 425, "learning_rate": 0.12023198000784674, "depth": 8, "l2_leaf_reg": 9.685368270847963, "border_count": 54, "bagging_temperature": 0.2466484517603179, "random_strength": 0.22301812571635782, "scale_pos_weight": 12.6271188689014}
+  Trial 2: Score=0.0951 | Hiperparâmetros: {"iterations": 632, "learning_rate": 0.1419987526530679, "depth": 5, "l2_leaf_reg": 8.269481716853253, "border_count": 221, "bagging_temperature": 0.8598658538891208, "random_strength": 0.21701554959039826, "scale_pos_weight": 23.62245546363063}
+  Trial 3: Score=0.0990 | Hiperparâmetros: {"iterations": 480, "learning_rate": 0.07349871951518022, "depth": 6, "l2_leaf_reg": 4.1327007316131885, "border_count": 61, "bagging_temperature": 0.6607703242189134, "random_strength": 0.28971957338479304, "scale_pos_weight": 18.65205018216507}
+  Trial 4: Score=0.0745 | Hiperparâmetros: {"iterations": 923, "learning_rate": 0.1803010376554619, "depth": 8, "l2_leaf_reg": 1.690508849860013, "border_count": 59, "bagging_temperature": 0.2182689008366021, "random_strength": 0.7423529522807845, "scale_pos_weight": 22.86257427799318}
+  Trial 5: Score=0.0966 | Hiperparâmetros: {"iterations": 861, "learning_rate": 0.08314514718848433, "depth": 8, "l2_leaf_reg": 4.644265963071392, "border_count": 127, "bagging_temperature": 0.55049213273004, "random_strength": 0.4528473966369131, "scale_pos_weight": 10.344291426189502}
+  Trial 6: Score=0.0983 | Hiperparâmetros: {"iterations": 688, "learning_rate": 0.05935055974611575, "depth": 9, "l2_leaf_reg": 6.422631027979917, "border_count": 87, "bagging_temperature": 0.043064010693983246, "random_strength": 0.027292869496369887, "scale_pos_weight": 21.898758387113084}
+  Trial 7: Score=0.1324 | Hiperparâmetros: {"iterations": 673, "learning_rate": 0.037303308799241326, "depth": 4, "l2_leaf_reg": 5.04127566523672, "border_count": 162, "bagging_temperature": 0.6025457631884475, "random_strength": 0.46268555496773556, "scale_pos_weight": 15.029606560413466}
+  Trial 8: Score=0.0972 | Hiperparâmetros: {"iterations": 218, "learning_rate": 0.10170615468767853, "depth": 7, "l2_leaf_reg": 7.996739495050497, "border_count": 35, "bagging_temperature": 0.5312558700155959, "random_strength": 0.35978681687384695, "scale_pos_weight": 35.35353844469763}
+  Trial 9: Score=0.0924 | Hiperparâmetros: {"iterations": 359, "learning_rate": 0.21147314039114803, "depth": 5, "l2_leaf_reg": 6.080722311076785, "border_count": 136, "bagging_temperature": 0.6324604937520131, "random_strength": 0.2669511358839465, "scale_pos_weight": 34.134045612882026}
+  Trial 10: Score=0.0794 | Hiperparâmetros: {"iterations": 766, "learning_rate": 0.2928426758238227, "depth": 4, "l2_leaf_reg": 2.568806076336063, "border_count": 255, "bagging_temperature": 0.9868180848730318, "random_strength": 0.8783530738959948, "scale_pos_weight": 52.945732831049554}
+  Trial 11: Score=0.1470 | Hiperparâmetros: {"iterations": 115, "learning_rate": 0.02021235791774111, "depth": 4, "l2_leaf_reg": 3.953544918542324, "border_count": 182, "bagging_temperature": 0.739296762175808, "random_strength": 0.568769966084024, "scale_pos_weight": 7.214776410956726}
+  Trial 12: Score=0.1416 | Hiperparâmetros: {"iterations": 106, "learning_rate": 0.01984146786988665, "depth": 4, "l2_leaf_reg": 3.415336572307858, "border_count": 176, "bagging_temperature": 0.8041521249062632, "random_strength": 0.5896160766459144, "scale_pos_weight": 5.42071250197351}
+  Trial 13: Score=0.1365 | Hiperparâmetros: {"iterations": 106, "learning_rate": 0.010136495594910398, "depth": 4, "l2_leaf_reg": 3.247082053922898, "border_count": 199, "bagging_temperature": 0.8237404518836875, "random_strength": 0.6377912012064025, "scale_pos_weight": 7.424592622582275}
+  Trial 14: Score=0.1374 | Hiperparâmetros: {"iterations": 257, "learning_rate": 0.018539570736625155, "depth": 5, "l2_leaf_reg": 1.0078632156564344, "border_count": 196, "bagging_temperature": 0.7748249091135203, "random_strength": 0.9835416896304163, "scale_pos_weight": 7.219543959998135}
+  Trial 15: Score=0.0914 | Hiperparâmetros: {"iterations": 113, "learning_rate": 0.23095984141317846, "depth": 10, "l2_leaf_reg": 3.3632358408929535, "border_count": 118, "bagging_temperature": 0.39684670251229925, "random_strength": 0.5913443230123983, "scale_pos_weight": 5.654966862077156}
+  Trial 16: Score=0.1203 | Hiperparâmetros: {"iterations": 262, "learning_rate": 0.05232380099244496, "depth": 6, "l2_leaf_reg": 2.511146911722463, "border_count": 173, "bagging_temperature": 0.9668697045405058, "random_strength": 0.582729491072524, "scale_pos_weight": 16.34785397604815}
+  Trial 17: Score=0.1135 | Hiperparâmetros: {"iterations": 344, "learning_rate": 0.10711476543317908, "depth": 4, "l2_leaf_reg": 4.069065268025145, "border_count": 245, "bagging_temperature": 0.7400929951570783, "random_strength": 0.7976786965896496, "scale_pos_weight": 28.491968962484595}
+  Trial 18: Score=0.1407 | Hiperparâmetros: {"iterations": 164, "learning_rate": 0.0363884519477894, "depth": 5, "l2_leaf_reg": 5.835035738596026, "border_count": 204, "bagging_temperature": 0.37971281873647156, "random_strength": 0.537380931268401, "scale_pos_weight": 12.801627488539339}
+  Trial 19: Score=0.0810 | Hiperparâmetros: {"iterations": 326, "learning_rate": 0.27678610235558265, "depth": 7, "l2_leaf_reg": 7.130505160347602, "border_count": 104, "bagging_temperature": 0.9039422269377877, "random_strength": 0.0733451588138056, "scale_pos_weight": 47.62889080644727}
+  Trial 20: Score=0.0939 | Hiperparâmetros: {"iterations": 187, "learning_rate": 0.18028517193469945, "depth": 6, "l2_leaf_reg": 3.318052407378527, "border_count": 157, "bagging_temperature": 0.7311846089019394, "random_strength": 0.4025090495285632, "scale_pos_weight": 28.245592655095848}
+  Trial 21: Score=0.1438 | Hiperparâmetros: {"iterations": 161, "learning_rate": 0.03619710283083641, "depth": 5, "l2_leaf_reg": 5.607957097722684, "border_count": 194, "bagging_temperature": 0.3951445451857212, "random_strength": 0.5556472518165195, "scale_pos_weight": 11.486476458705646}
+  Trial 22: Score=0.1407 | Hiperparâmetros: {"iterations": 102, "learning_rate": 0.010055100479222905, "depth": 4, "l2_leaf_reg": 5.07704117045836, "border_count": 217, "bagging_temperature": 0.38486169278461796, "random_strength": 0.7041740493096836, "scale_pos_weight": 9.44458864742035}
+  Trial 23: Score=0.1434 | Hiperparâmetros: {"iterations": 262, "learning_rate": 0.0387379253365623, "depth": 5, "l2_leaf_reg": 4.123545743549633, "border_count": 184, "bagging_temperature": 0.49985280166020024, "random_strength": 0.5029032744670373, "scale_pos_weight": 5.676041042511149}
+  Trial 24: Score=0.1223 | Hiperparâmetros: {"iterations": 296, "learning_rate": 0.08167754723269752, "depth": 5, "l2_leaf_reg": 7.067314121886177, "border_count": 225, "bagging_temperature": 0.43414739797512, "random_strength": 0.5222382621135634, "scale_pos_weight": 18.24028407942634}
+  Trial 25: Score=0.1294 | Hiperparâmetros: {"iterations": 420, "learning_rate": 0.0439818425530739, "depth": 5, "l2_leaf_reg": 4.266442459461153, "border_count": 184, "bagging_temperature": 0.4791389508892252, "random_strength": 0.38397734759236046, "scale_pos_weight": 12.069457731468972}
+  Trial 26: Score=0.1334 | Hiperparâmetros: {"iterations": 203, "learning_rate": 0.058455619835855614, "depth": 6, "l2_leaf_reg": 5.362756825601159, "border_count": 152, "bagging_temperature": 0.2732293401685594, "random_strength": 0.667461771312352, "scale_pos_weight": 10.353737495377167}
+  Trial 27: Score=0.1187 | Hiperparâmetros: {"iterations": 172, "learning_rate": 0.125940711858362, "depth": 5, "l2_leaf_reg": 6.61105987321036, "border_count": 236, "bagging_temperature": 0.3086180360380318, "random_strength": 0.7938349099665342, "scale_pos_weight": 14.456454393180518}
+  Trial 28: Score=0.0932 | Hiperparâmetros: {"iterations": 251, "learning_rate": 0.08523479781765216, "depth": 7, "l2_leaf_reg": 2.3408419484818737, "border_count": 193, "bagging_temperature": 0.693721842514081, "random_strength": 0.48880020075517294, "scale_pos_weight": 20.25378155420949}
+  Trial 29: Score=0.1242 | Hiperparâmetros: {"iterations": 407, "learning_rate": 0.0317600055802496, "depth": 6, "l2_leaf_reg": 4.71954282808756, "border_count": 139, "bagging_temperature": 0.5716819751584548, "random_strength": 0.32365627758794846, "scale_pos_weight": 25.771779173958024}
+
+Conjunto de hiperparâmetros escolhido:
+  iterations: 115
+  learning_rate: 0.02021235791774111
+  depth: 4
+  l2_leaf_reg: 3.953544918542324
+  border_count: 182
+  bagging_temperature: 0.739296762175808
+  random_strength: 0.568769966084024
+  scale_pos_weight: 7.214776410956726
+
+Resultado do treino:
+  accuracy: 0.9293
+  precision: 0.2812
+  recall: 0.2043
+  f1: 0.2366
+  roc_auc: 0.7595
+  pr_auc: 0.2124
+
+Resultado do teste:
+  accuracy: 0.9226
+  precision: 0.2137
+  recall: 0.1645
+  f1: 0.1859
+  roc_auc: 0.7450
+  pr_auc: 0.1649
+
+============================================================
+
+FOLD 4 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.1066 | Hiperparâmetros: {"iterations": 997, "learning_rate": 0.16923516588189022, "depth": 5, "l2_leaf_reg": 7.138830357266323, "border_count": 181, "bagging_temperature": 0.8416034127744256, "random_strength": 0.2827567488621946, "scale_pos_weight": 24.24199178175465}
+  Trial 1: Score=0.1059 | Hiperparâmetros: {"iterations": 547, "learning_rate": 0.07389817676321118, "depth": 9, "l2_leaf_reg": 9.178397279817904, "border_count": 168, "bagging_temperature": 0.8575272084195338, "random_strength": 0.029476417475085004, "scale_pos_weight": 30.82346127169787}
+  Trial 2: Score=0.1011 | Hiperparâmetros: {"iterations": 467, "learning_rate": 0.2918514949750508, "depth": 8, "l2_leaf_reg": 1.9410299346827333, "border_count": 120, "bagging_temperature": 0.47243418012744864, "random_strength": 0.2377077277002776, "scale_pos_weight": 23.05710586118637}
+  Trial 3: Score=0.0972 | Hiperparâmetros: {"iterations": 872, "learning_rate": 0.29101692694714265, "depth": 7, "l2_leaf_reg": 1.8152401678978518, "border_count": 90, "bagging_temperature": 0.11182069211495249, "random_strength": 0.5511165559703152, "scale_pos_weight": 25.96681600227365}
+  Trial 4: Score=0.0977 | Hiperparâmetros: {"iterations": 531, "learning_rate": 0.10416863178834342, "depth": 9, "l2_leaf_reg": 7.075485348585207, "border_count": 121, "bagging_temperature": 0.8329373484869136, "random_strength": 0.6816185114031305, "scale_pos_weight": 36.41635591431276}
+  Trial 5: Score=0.0977 | Hiperparâmetros: {"iterations": 184, "learning_rate": 0.22697971833920544, "depth": 8, "l2_leaf_reg": 2.5485816811187583, "border_count": 164, "bagging_temperature": 0.012264533458572036, "random_strength": 0.8663492316850817, "scale_pos_weight": 48.1655048554934}
+  Trial 6: Score=0.0916 | Hiperparâmetros: {"iterations": 170, "learning_rate": 0.27713608791847827, "depth": 9, "l2_leaf_reg": 1.1329935279580265, "border_count": 107, "bagging_temperature": 0.9285470736450594, "random_strength": 0.0220642780231044, "scale_pos_weight": 27.904640663237373}
+  Trial 7: Score=0.1358 | Hiperparâmetros: {"iterations": 313, "learning_rate": 0.044026254377250294, "depth": 7, "l2_leaf_reg": 3.694204695681531, "border_count": 129, "bagging_temperature": 0.7747034987505831, "random_strength": 0.19401263191566087, "scale_pos_weight": 11.856583063074325}
+  Trial 8: Score=0.1049 | Hiperparâmetros: {"iterations": 846, "learning_rate": 0.10896524201350849, "depth": 4, "l2_leaf_reg": 2.5942155325321767, "border_count": 172, "bagging_temperature": 0.7833664970446583, "random_strength": 0.4888638762209595, "scale_pos_weight": 46.432708884785626}
+  Trial 9: Score=0.1031 | Hiperparâmetros: {"iterations": 605, "learning_rate": 0.024549257225944723, "depth": 9, "l2_leaf_reg": 1.8607071000059774, "border_count": 120, "bagging_temperature": 0.7613364986908587, "random_strength": 0.09540857751560616, "scale_pos_weight": 41.400480829851126}
+  Trial 10: Score=0.1504 | Hiperparâmetros: {"iterations": 357, "learning_rate": 0.0440398680768649, "depth": 6, "l2_leaf_reg": 4.6227404369402505, "border_count": 254, "bagging_temperature": 0.5583629707391555, "random_strength": 0.3280148804661446, "scale_pos_weight": 9.224366544303187}
+  Trial 11: Score=0.1707 | Hiperparâmetros: {"iterations": 367, "learning_rate": 0.015610972404349846, "depth": 6, "l2_leaf_reg": 4.488700529728742, "border_count": 250, "bagging_temperature": 0.5484159160128266, "random_strength": 0.3420899759749406, "scale_pos_weight": 6.321845370839457}
+  Trial 12: Score=0.1668 | Hiperparâmetros: {"iterations": 378, "learning_rate": 0.016654338060065402, "depth": 6, "l2_leaf_reg": 4.862472975845456, "border_count": 229, "bagging_temperature": 0.4865735944616405, "random_strength": 0.4105593105384582, "scale_pos_weight": 8.621385145684215}
+  Trial 13: Score=0.1327 | Hiperparâmetros: {"iterations": 358, "learning_rate": 0.16466946141329553, "depth": 5, "l2_leaf_reg": 5.8592512956054685, "border_count": 247, "bagging_temperature": 0.41073768894539436, "random_strength": 0.3995099400298595, "scale_pos_weight": 5.5591370667601385}
+  Trial 14: Score=0.1588 | Hiperparâmetros: {"iterations": 664, "learning_rate": 0.012677660265635889, "depth": 6, "l2_leaf_reg": 5.292330359452978, "border_count": 217, "bagging_temperature": 0.26541871444721743, "random_strength": 0.62948553042405, "scale_pos_weight": 16.91682179723074}
+  Trial 15: Score=0.1413 | Hiperparâmetros: {"iterations": 101, "learning_rate": 0.08095864886968553, "depth": 6, "l2_leaf_reg": 3.4850791385619218, "border_count": 37, "bagging_temperature": 0.5778867466784963, "random_strength": 0.4440866621808505, "scale_pos_weight": 15.290253754651442}
+  Trial 16: Score=0.1467 | Hiperparâmetros: {"iterations": 430, "learning_rate": 0.14712718535771702, "depth": 4, "l2_leaf_reg": 6.8772868268028144, "border_count": 217, "bagging_temperature": 0.3565740328424105, "random_strength": 0.8373211748725715, "scale_pos_weight": 5.565054781278204}
+  Trial 17: Score=0.1443 | Hiperparâmetros: {"iterations": 260, "learning_rate": 0.054682507441857285, "depth": 6, "l2_leaf_reg": 4.2390806106328025, "border_count": 214, "bagging_temperature": 0.6421921937513931, "random_strength": 0.6843275073054143, "scale_pos_weight": 19.74867862846354}
+  Trial 18: Score=0.1213 | Hiperparâmetros: {"iterations": 700, "learning_rate": 0.11883715132753986, "depth": 5, "l2_leaf_reg": 8.589969232484027, "border_count": 232, "bagging_temperature": 0.31052926693570154, "random_strength": 0.3545013009205713, "scale_pos_weight": 11.687970705180003}
+  Trial 19: Score=0.0904 | Hiperparâmetros: {"iterations": 428, "learning_rate": 0.20784743395084504, "depth": 10, "l2_leaf_reg": 5.8284697118683075, "border_count": 194, "bagging_temperature": 0.660649166195479, "random_strength": 0.18588029227956923, "scale_pos_weight": 34.853116399283415}
+  Trial 20: Score=0.1563 | Hiperparâmetros: {"iterations": 269, "learning_rate": 0.012542044610260534, "depth": 7, "l2_leaf_reg": 4.960687693491685, "border_count": 195, "bagging_temperature": 0.478198456364703, "random_strength": 0.9806316562272968, "scale_pos_weight": 18.046354468995787}
+  Trial 21: Score=0.1622 | Hiperparâmetros: {"iterations": 666, "learning_rate": 0.010815892275956978, "depth": 6, "l2_leaf_reg": 5.551839089281503, "border_count": 227, "bagging_temperature": 0.23739027888567749, "random_strength": 0.5838370438948657, "scale_pos_weight": 15.053397018513714}
+  Trial 22: Score=0.1340 | Hiperparâmetros: {"iterations": 686, "learning_rate": 0.06911370933445085, "depth": 5, "l2_leaf_reg": 6.105000933245627, "border_count": 234, "bagging_temperature": 0.21955185204934297, "random_strength": 0.5538252339185765, "scale_pos_weight": 12.179135710148}
+  Trial 23: Score=0.1418 | Hiperparâmetros: {"iterations": 767, "learning_rate": 0.03569142695988093, "depth": 6, "l2_leaf_reg": 4.012250979471271, "border_count": 235, "bagging_temperature": 0.21050804792829472, "random_strength": 0.42868477830382334, "scale_pos_weight": 8.042962974002158}
+  Trial 24: Score=0.1202 | Hiperparâmetros: {"iterations": 522, "learning_rate": 0.0842883275270623, "depth": 8, "l2_leaf_reg": 7.876898810995041, "border_count": 198, "bagging_temperature": 0.4019347137039849, "random_strength": 0.570028747168418, "scale_pos_weight": 13.868039957887966}
+  Trial 25: Score=0.1515 | Hiperparâmetros: {"iterations": 402, "learning_rate": 0.011855747023729164, "depth": 7, "l2_leaf_reg": 6.393299742167391, "border_count": 149, "bagging_temperature": 0.13396500734455796, "random_strength": 0.7651712626458396, "scale_pos_weight": 20.461373554507084}
+  Trial 26: Score=0.1440 | Hiperparâmetros: {"iterations": 610, "learning_rate": 0.056239793162128404, "depth": 5, "l2_leaf_reg": 5.242100128751593, "border_count": 249, "bagging_temperature": 0.6731131160184279, "random_strength": 0.4775585587611185, "scale_pos_weight": 9.517280129528778}
+  Trial 27: Score=0.1519 | Hiperparâmetros: {"iterations": 492, "learning_rate": 0.03529339983368497, "depth": 6, "l2_leaf_reg": 3.112450298480754, "border_count": 210, "bagging_temperature": 0.5170973689721373, "random_strength": 0.29761103582361764, "scale_pos_weight": 5.708964001513917}
+  Trial 28: Score=0.0939 | Hiperparâmetros: {"iterations": 604, "learning_rate": 0.1397350421176218, "depth": 4, "l2_leaf_reg": 4.5365268927269, "border_count": 74, "bagging_temperature": 0.41336218079239656, "random_strength": 0.35982048055483506, "scale_pos_weight": 52.031972408899236}
+  Trial 29: Score=0.1194 | Hiperparâmetros: {"iterations": 967, "learning_rate": 0.09155049218358009, "depth": 5, "l2_leaf_reg": 7.928822582424456, "border_count": 184, "bagging_temperature": 0.5933576198045446, "random_strength": 0.13252706811405393, "scale_pos_weight": 23.08239922872773}
+
+Conjunto de hiperparâmetros escolhido:
+  iterations: 367
+  learning_rate: 0.015610972404349846
+  depth: 6
+  l2_leaf_reg: 4.488700529728742
+  border_count: 250
+  bagging_temperature: 0.5484159160128266
+  random_strength: 0.3420899759749406
+  scale_pos_weight: 6.321845370839457
+
+Resultado do treino:
+  accuracy: 0.9588
+  precision: 0.6964
+  recall: 0.4119
+  f1: 0.5176
+  roc_auc: 0.9120
+  pr_auc: 0.5975
+
+Resultado do teste:
+  accuracy: 0.9307
+  precision: 0.1562
+  recall: 0.0658
+  f1: 0.0926
+  roc_auc: 0.6839
+  pr_auc: 0.1151
+
+============================================================
+
+FOLD 5 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.0873 | Hiperparâmetros: {"iterations": 297, "learning_rate": 0.18792131363755116, "depth": 4, "l2_leaf_reg": 4.0397521915634345, "border_count": 86, "bagging_temperature": 0.1522829826535591, "random_strength": 0.007325560588619329, "scale_pos_weight": 37.95987002549535}
+  Trial 1: Score=0.0832 | Hiperparâmetros: {"iterations": 120, "learning_rate": 0.10934404064438592, "depth": 10, "l2_leaf_reg": 5.751735579315575, "border_count": 246, "bagging_temperature": 0.42620501287757984, "random_strength": 0.4488370452513759, "scale_pos_weight": 29.131111911718516}
+  Trial 2: Score=0.0999 | Hiperparâmetros: {"iterations": 738, "learning_rate": 0.08448561088779329, "depth": 6, "l2_leaf_reg": 2.9132256523537112, "border_count": 235, "bagging_temperature": 0.5377509982635537, "random_strength": 0.9862311634112793, "scale_pos_weight": 7.654745539509246}
+  Trial 3: Score=0.0822 | Hiperparâmetros: {"iterations": 705, "learning_rate": 0.12872365821547233, "depth": 9, "l2_leaf_reg": 2.5764911798504517, "border_count": 247, "bagging_temperature": 0.7713164529662343, "random_strength": 0.1148728723625766, "scale_pos_weight": 17.498176375585818}
+  Trial 4: Score=0.0779 | Hiperparâmetros: {"iterations": 370, "learning_rate": 0.2838927917254522, "depth": 10, "l2_leaf_reg": 2.4855705990004644, "border_count": 216, "bagging_temperature": 0.8307557108302894, "random_strength": 0.0910912633480705, "scale_pos_weight": 43.55996543869065}
+  Trial 5: Score=0.0742 | Hiperparâmetros: {"iterations": 325, "learning_rate": 0.07670791554879017, "depth": 10, "l2_leaf_reg": 2.256397250663488, "border_count": 223, "bagging_temperature": 0.3652970139969268, "random_strength": 0.9112236601756809, "scale_pos_weight": 28.548912716398284}
+  Trial 6: Score=0.1008 | Hiperparâmetros: {"iterations": 679, "learning_rate": 0.030385985358680975, "depth": 10, "l2_leaf_reg": 4.853923596015935, "border_count": 240, "bagging_temperature": 0.7717556699120534, "random_strength": 0.46103161168389384, "scale_pos_weight": 7.574293389101855}
+  Trial 7: Score=0.0776 | Hiperparâmetros: {"iterations": 965, "learning_rate": 0.16997223404740502, "depth": 9, "l2_leaf_reg": 1.9809997758812474, "border_count": 206, "bagging_temperature": 0.3340063839434759, "random_strength": 0.5655786647912654, "scale_pos_weight": 48.41184153678793}
+  Trial 8: Score=0.1099 | Hiperparâmetros: {"iterations": 358, "learning_rate": 0.12242932653773216, "depth": 4, "l2_leaf_reg": 4.4924772409871245, "border_count": 86, "bagging_temperature": 0.7899029190610776, "random_strength": 0.9606267002532816, "scale_pos_weight": 12.301336516372654}
+  Trial 9: Score=0.0803 | Hiperparâmetros: {"iterations": 576, "learning_rate": 0.17043852857456537, "depth": 9, "l2_leaf_reg": 4.527216817025002, "border_count": 152, "bagging_temperature": 0.00017766302478761098, "random_strength": 0.8779383245006712, "scale_pos_weight": 51.510096727178855}
+  Trial 10: Score=0.1124 | Hiperparâmetros: {"iterations": 111, "learning_rate": 0.23700508979982565, "depth": 4, "l2_leaf_reg": 8.38526057039103, "border_count": 46, "bagging_temperature": 0.9867778940048032, "random_strength": 0.7005523183869045, "scale_pos_weight": 19.431597957833425}
+  Trial 11: Score=0.1149 | Hiperparâmetros: {"iterations": 113, "learning_rate": 0.24298585852878907, "depth": 4, "l2_leaf_reg": 8.543858764087824, "border_count": 37, "bagging_temperature": 0.9869996827820712, "random_strength": 0.6670254491145011, "scale_pos_weight": 18.854222305103562}
+  Trial 12: Score=0.1016 | Hiperparâmetros: {"iterations": 123, "learning_rate": 0.25214066815084907, "depth": 6, "l2_leaf_reg": 8.75947227730973, "border_count": 37, "bagging_temperature": 0.9964706742554986, "random_strength": 0.6846106361718893, "scale_pos_weight": 20.586292680423465}
+  Trial 13: Score=0.0861 | Hiperparâmetros: {"iterations": 218, "learning_rate": 0.22842271563659602, "depth": 5, "l2_leaf_reg": 9.477317740798252, "border_count": 32, "bagging_temperature": 0.9857751943274008, "random_strength": 0.7161914155766651, "scale_pos_weight": 22.755677290859698}
+  Trial 14: Score=0.0902 | Hiperparâmetros: {"iterations": 485, "learning_rate": 0.2984219404374089, "depth": 5, "l2_leaf_reg": 7.4753485615740045, "border_count": 73, "bagging_temperature": 0.5754428449844475, "random_strength": 0.3048642327764425, "scale_pos_weight": 15.695132437258248}
+  Trial 15: Score=0.0909 | Hiperparâmetros: {"iterations": 103, "learning_rate": 0.22355062098754916, "depth": 7, "l2_leaf_reg": 7.228190044926269, "border_count": 131, "bagging_temperature": 0.6376063491161275, "random_strength": 0.7615530997356237, "scale_pos_weight": 34.48177670018391}
+  Trial 16: Score=0.0980 | Hiperparâmetros: {"iterations": 462, "learning_rate": 0.20616508287638224, "depth": 4, "l2_leaf_reg": 7.801402595129552, "border_count": 66, "bagging_temperature": 0.8954000887130694, "random_strength": 0.5832049469318645, "scale_pos_weight": 23.95252476036918}
+  Trial 17: Score=0.0947 | Hiperparâmetros: {"iterations": 221, "learning_rate": 0.26027045752853434, "depth": 5, "l2_leaf_reg": 9.892170521126715, "border_count": 120, "bagging_temperature": 0.6766964921465111, "random_strength": 0.3315443098669132, "scale_pos_weight": 13.526249199818382}
+  Trial 18: Score=0.0820 | Hiperparâmetros: {"iterations": 221, "learning_rate": 0.2586145748263262, "depth": 7, "l2_leaf_reg": 6.332014014525421, "border_count": 167, "bagging_temperature": 0.9261100541158546, "random_strength": 0.8049291683382915, "scale_pos_weight": 34.69118104429979}
+  Trial 19: Score=0.0886 | Hiperparâmetros: {"iterations": 936, "learning_rate": 0.20802395055757195, "depth": 6, "l2_leaf_reg": 8.666413189237595, "border_count": 107, "bagging_temperature": 0.8722797326396248, "random_strength": 0.6160588278435706, "scale_pos_weight": 25.61677103874408}
+  Trial 20: Score=0.0824 | Hiperparâmetros: {"iterations": 807, "learning_rate": 0.24388990340366734, "depth": 5, "l2_leaf_reg": 6.744570661980371, "border_count": 54, "bagging_temperature": 0.6754169313207445, "random_strength": 0.36664324185415575, "scale_pos_weight": 18.174978284188725}
+  Trial 21: Score=0.1075 | Hiperparâmetros: {"iterations": 412, "learning_rate": 0.13958573710717784, "depth": 4, "l2_leaf_reg": 8.265577328617294, "border_count": 94, "bagging_temperature": 0.8033852470884476, "random_strength": 0.8406900843637108, "scale_pos_weight": 11.988161534094111}
+  Trial 22: Score=0.1175 | Hiperparâmetros: {"iterations": 274, "learning_rate": 0.10801147704133973, "depth": 4, "l2_leaf_reg": 3.5589850525760705, "border_count": 49, "bagging_temperature": 0.9900765733911584, "random_strength": 0.9871314307604366, "scale_pos_weight": 11.181782500811824}
+  Trial 23: Score=0.1398 | Hiperparâmetros: {"iterations": 181, "learning_rate": 0.04329885765516338, "depth": 4, "l2_leaf_reg": 3.7166494065829125, "border_count": 51, "bagging_temperature": 0.9420686597060343, "random_strength": 0.6606806578882038, "scale_pos_weight": 5.693469193542958}
+  Trial 24: Score=0.1353 | Hiperparâmetros: {"iterations": 234, "learning_rate": 0.046624202017144074, "depth": 5, "l2_leaf_reg": 3.514470098385353, "border_count": 62, "bagging_temperature": 0.9082380418697569, "random_strength": 0.6505003931647714, "scale_pos_weight": 5.419520630014652}
+  Trial 25: Score=0.1492 | Hiperparâmetros: {"iterations": 250, "learning_rate": 0.022165904485854652, "depth": 5, "l2_leaf_reg": 1.0294495082862878, "border_count": 57, "bagging_temperature": 0.8964479712979343, "random_strength": 0.5171311038943451, "scale_pos_weight": 5.568426469848291}
+  Trial 26: Score=0.1371 | Hiperparâmetros: {"iterations": 198, "learning_rate": 0.01949385018599975, "depth": 6, "l2_leaf_reg": 1.0498113396056015, "border_count": 63, "bagging_temperature": 0.7034830073427623, "random_strength": 0.5071879083491397, "scale_pos_weight": 6.790244793851258}
+  Trial 27: Score=0.1180 | Hiperparâmetros: {"iterations": 589, "learning_rate": 0.02498750902262717, "depth": 6, "l2_leaf_reg": 1.3222412804528245, "border_count": 183, "bagging_temperature": 0.6273510989664248, "random_strength": 0.5011919124087262, "scale_pos_weight": 8.829402853717866}
+  Trial 28: Score=0.0958 | Hiperparâmetros: {"iterations": 181, "learning_rate": 0.05971822796954655, "depth": 8, "l2_leaf_reg": 1.07109193234323, "border_count": 105, "bagging_temperature": 0.697802028495936, "random_strength": 0.24410251230365604, "scale_pos_weight": 5.40063470744618}
+  Trial 29: Score=0.1377 | Hiperparâmetros: {"iterations": 282, "learning_rate": 0.011096909356107897, "depth": 6, "l2_leaf_reg": 1.6030216042452183, "border_count": 76, "bagging_temperature": 0.23536466354047547, "random_strength": 0.5040031329405957, "scale_pos_weight": 14.837715461544299}
+
+Conjunto de hiperparâmetros escolhido:
+  iterations: 250
+  learning_rate: 0.022165904485854652
+  depth: 5
+  l2_leaf_reg: 1.0294495082862878
+  border_count: 57
+  bagging_temperature: 0.8964479712979343
+  random_strength: 0.5171311038943451
+  scale_pos_weight: 5.568426469848291
+
+Resultado do treino:
+  accuracy: 0.9520
+  precision: 0.6468
+  recall: 0.2323
+  f1: 0.3418
+  roc_auc: 0.8553
+  pr_auc: 0.4195
+
+Resultado do teste:
+  accuracy: 0.9409
+  precision: 0.3171
+  recall: 0.0855
+  f1: 0.1347
+  roc_auc: 0.7478
+  pr_auc: 0.2222
+
+============================================================
+
+TABELA DE MÉTRICAS DE TREINO E TESTE POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treino: 1     | 0.7853     | 0.1526     | 0.6579     | 0.2478     | 0.8082     | 0.2742    
+Teste:  1     | 0.7588     | 0.1090     | 0.4901     | 0.1783     | 0.6911     | 0.1246    
+Treino: 2     | 0.5899     | 0.1082     | 0.9176     | 0.1936     | 0.8576     | 0.3442    
+Teste:  2     | 0.5796     | 0.0835     | 0.6842     | 0.1489     | 0.6871     | 0.1350    
+Treino: 3     | 0.9293     | 0.2812     | 0.2043     | 0.2366     | 0.7595     | 0.2124    
+Teste:  3     | 0.9226     | 0.2137     | 0.1645     | 0.1859     | 0.7450     | 0.1649    
+Treino: 4     | 0.9588     | 0.6964     | 0.4119     | 0.5176     | 0.9120     | 0.5975    
+Teste:  4     | 0.9307     | 0.1562     | 0.0658     | 0.0926     | 0.6839     | 0.1151    
+Treino: 5     | 0.9520     | 0.6468     | 0.2323     | 0.3418     | 0.8553     | 0.4195    
+Teste:  5     | 0.9409     | 0.3171     | 0.0855     | 0.1347     | 0.7478     | 0.2222    
+
+MÉDIAS E DESVIOS PADRÃO DAS MÉTRICAS POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treinos: 0.8431+-0.14 0.3770+-0.25 0.4848+-0.27 0.3075+-0.12 0.8385+-0.05 0.3696+-0.13 
+Testes:  0.8265+-0.14 0.1759+-0.08 0.2980+-0.25 0.1481+-0.03 0.7110+-0.03 0.1523+-0.04 
+
+MELHOR CONJUNTO DE HIPERPARÂMETROS GLOBAL (selecionado pelo maior PR AUC  ):
+------------------------------------------------------------
+{
+  "iterations": 250,
+  "learning_rate": 0.022165904485854652,
+  "depth": 5,
+  "l2_leaf_reg": 1.0294495082862878,
+  "border_count": 57,
+  "bagging_temperature": 0.8964479712979343,
+  "random_strength": 0.5171311038943451,
+  "scale_pos_weight": 5.568426469848291
+}
+

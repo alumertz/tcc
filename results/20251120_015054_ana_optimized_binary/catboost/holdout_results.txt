@@ -1,0 +1,67 @@
+Holdout Evaluation Results for catboost
+==================================================
+
+Results for each fold's best parameters on holdout set:
+--------------------------------------------------
+
+Fold 1:
+  Best Parameters: {'iterations': 236, 'learning_rate': 0.01100236264317145, 'depth': 5, 'l2_leaf_reg': 9.047851415709586, 'border_count': 195, 'bagging_temperature': 0.49396066890612966, 'random_strength': 0.3985485441621268, 'scale_pos_weight': 16.42392232289241}
+  Holdout Metrics:
+    Accuracy: 0.7624
+    Precision: 0.1230
+    Recall: 0.5579
+    F1-Score: 0.2015
+    ROC-AUC: 0.7229
+    PR-AUC: 0.1848
+
+Fold 2:
+  Best Parameters: {'iterations': 316, 'learning_rate': 0.011860925619290114, 'depth': 6, 'l2_leaf_reg': 8.250566728214928, 'border_count': 132, 'bagging_temperature': 0.1008752906490922, 'random_strength': 0.8084908444542783, 'scale_pos_weight': 27.027632564145957}
+  Holdout Metrics:
+    Accuracy: 0.5181
+    Precision: 0.0841
+    Recall: 0.8053
+    F1-Score: 0.1522
+    ROC-AUC: 0.7270
+    PR-AUC: 0.1800
+
+Fold 3:
+  Best Parameters: {'iterations': 115, 'learning_rate': 0.02021235791774111, 'depth': 4, 'l2_leaf_reg': 3.953544918542324, 'border_count': 182, 'bagging_temperature': 0.739296762175808, 'random_strength': 0.568769966084024, 'scale_pos_weight': 7.214776410956726}
+  Holdout Metrics:
+    Accuracy: 0.9287
+    Precision: 0.2721
+    Recall: 0.1947
+    F1-Score: 0.2270
+    ROC-AUC: 0.7175
+    PR-AUC: 0.1892
+
+Fold 4:
+  Best Parameters: {'iterations': 367, 'learning_rate': 0.015610972404349846, 'depth': 6, 'l2_leaf_reg': 4.488700529728742, 'border_count': 250, 'bagging_temperature': 0.5484159160128266, 'random_strength': 0.3420899759749406, 'scale_pos_weight': 6.321845370839457}
+  Holdout Metrics:
+    Accuracy: 0.9412
+    Precision: 0.3676
+    Recall: 0.1316
+    F1-Score: 0.1938
+    ROC-AUC: 0.7311
+    PR-AUC: 0.1862
+
+Fold 5:
+  Best Parameters: {'iterations': 250, 'learning_rate': 0.022165904485854652, 'depth': 5, 'l2_leaf_reg': 1.0294495082862878, 'border_count': 57, 'bagging_temperature': 0.8964479712979343, 'random_strength': 0.5171311038943451, 'scale_pos_weight': 5.568426469848291}
+  Holdout Metrics:
+    Accuracy: 0.9426
+    Precision: 0.3898
+    Recall: 0.1211
+    F1-Score: 0.1847
+    ROC-AUC: 0.7309
+    PR-AUC: 0.1902
+
+==================================================
+BEST PERFORMING MODEL ON HOLDOUT SET:
+Fold 5 (PR-AUC: 0.1902)
+Parameters: {'iterations': 250, 'learning_rate': 0.022165904485854652, 'depth': 5, 'l2_leaf_reg': 1.0294495082862878, 'border_count': 57, 'bagging_temperature': 0.8964479712979343, 'random_strength': 0.5171311038943451, 'scale_pos_weight': 5.568426469848291}
+Final Holdout Performance:
+  Accuracy: 0.9426
+  Precision: 0.3898
+  Recall: 0.1211
+  F1-Score: 0.1847
+  ROC-AUC: 0.7309
+  PR-AUC: 0.1902

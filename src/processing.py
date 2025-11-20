@@ -216,3 +216,51 @@ def prepare_dataset(features_path, labels_path, classification_type='binary'):
     print("="*60)
     
     return X, y, gene_names
+
+
+def prepare_renan_data(labels_path = "./renan/data_files/labels/UNION_labels.tsv", features_path = "./renan/data_files/omics_features/UNION_features.tsv"):
+    """
+    Prepara os dados do formato do Renan (labels True/False/NaN) para uso em modelagem.
+    Args:
+        labels_path (str): Caminho para renan/data_files/labels/UNION_labels.tsv
+        features_path (str): Caminho para renan/data_files/omics_features/UNION_features.tsv
+    Returns:
+        tuple: (X, y, gene_names, feature_names) - dataset pronto para modelagem
+    """
+    print("Usando formato de labels do Renan (True/False/NaN)")
+    # Carrega labels
+    print(labels_path)
+    labels_df = pd.read_csv(labels_path, sep='\t')
+    print(f"Labels carregados: {labels_df.shape[0]} genes")
+    print(labels_df.head())
+
+    # Mantém apenas colunas relevantes
+    if not set(['gene', 'label']).issubset(labels_df.columns):
+        print(f"ERRO: Colunas esperadas ['gene', 'label'] não encontradas! Encontradas: {list(labels_df.columns)}")
+        return None, None, None, None
+    # Converte labels para 0/1, ignora NaN
+    labels_df = labels_df.dropna(subset=['label'])
+    labels_df['label'] = labels_df['label'].map({'True': 1, 'False': 0, True: 1, False: 0}).astype(int)
+    print(f"Distribuição dos labels: {labels_df['label'].value_counts().to_dict()}")
+    # Carrega features
+    features_df = pd.read_csv(features_path, sep='\t')
+    print(f"Features carregadas: {features_df.shape[0]} genes x {features_df.shape[1]-1} features")
+    # Alinha genes
+    common_genes = set(labels_df['gene']) & set(features_df['gene'])
+    print(f"Genes comuns: {len(common_genes)}")
+    if len(common_genes) == 0:
+        print("ERRO: Nenhum gene comum encontrado!")
+        return None, None, None, None
+    labels_aligned = labels_df[labels_df['gene'].isin(common_genes)].sort_values('gene').reset_index(drop=True)
+    features_aligned = features_df[features_df['gene'].isin(common_genes)].sort_values('gene').reset_index(drop=True)
+    if not features_aligned['gene'].equals(labels_aligned['gene']):
+        print("ERRO: Genes não estão alinhados corretamente!")
+        return None, None, None, None
+    X = features_aligned.drop('gene', axis=1).values
+    y = labels_aligned['label'].values
+    gene_names = features_aligned['gene'].values
+    feature_names = features_aligned.drop('gene', axis=1).columns.tolist()
+    print(f"Shape final: X={X.shape}, y={y.shape}")
+    print(f"Features: {len(feature_names)}")
+    print(f"Genes: {len(gene_names)}")
+    return X, y, gene_names, feature_names

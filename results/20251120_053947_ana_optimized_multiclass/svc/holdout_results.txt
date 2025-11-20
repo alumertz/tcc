@@ -1,0 +1,67 @@
+Holdout Evaluation Results for svc
+==================================================
+
+Results for each fold's best parameters on holdout set:
+--------------------------------------------------
+
+Fold 1:
+  Best Parameters: {'kernel': 'sigmoid', 'C': 0.11432982085778487, 'degree': 4, 'shrinking': True, 'probability': True, 'class_weight': 'balanced'}
+  Holdout Metrics:
+    Accuracy: 0.5475
+    Precision: 0.9094
+    Recall: 0.5475
+    F1-Score: 0.6726
+    ROC-AUC: 0.6131
+    PR-AUC: 0.9024
+
+Fold 2:
+  Best Parameters: {'kernel': 'sigmoid', 'C': 0.1001386584060456, 'degree': 3, 'shrinking': False, 'probability': True, 'class_weight': 'balanced'}
+  Holdout Metrics:
+    Accuracy: 0.5546
+    Precision: 0.9118
+    Recall: 0.5546
+    F1-Score: 0.6787
+    ROC-AUC: 0.6165
+    PR-AUC: 0.9030
+
+Fold 3:
+  Best Parameters: {'kernel': 'sigmoid', 'C': 6.455061551480167, 'degree': 3, 'shrinking': True, 'probability': True, 'class_weight': 'balanced'}
+  Holdout Metrics:
+    Accuracy: 0.5105
+    Precision: 0.9131
+    Recall: 0.5105
+    F1-Score: 0.6420
+    ROC-AUC: 0.6076
+    PR-AUC: 0.8999
+
+Fold 4:
+  Best Parameters: {'kernel': 'sigmoid', 'C': 81.49561110111348, 'degree': 6, 'shrinking': False, 'probability': True, 'class_weight': 'balanced'}
+  Holdout Metrics:
+    Accuracy: 0.5096
+    Precision: 0.9136
+    Recall: 0.5096
+    F1-Score: 0.6413
+    ROC-AUC: 0.6074
+    PR-AUC: 0.8997
+
+Fold 5:
+  Best Parameters: {'kernel': 'sigmoid', 'C': 0.21646212758583916, 'degree': 2, 'shrinking': True, 'probability': True, 'class_weight': 'balanced'}
+  Holdout Metrics:
+    Accuracy: 0.5068
+    Precision: 0.9103
+    Recall: 0.5068
+    F1-Score: 0.6391
+    ROC-AUC: 0.6024
+    PR-AUC: 0.8995
+
+==================================================
+BEST PERFORMING MODEL ON HOLDOUT SET:
+Fold 2 (PR-AUC: 0.9030)
+Parameters: {'kernel': 'sigmoid', 'C': 0.1001386584060456, 'degree': 3, 'shrinking': False, 'probability': True, 'class_weight': 'balanced'}
+Final Holdout Performance:
+  Accuracy: 0.5546
+  Precision: 0.9118
+  Recall: 0.5546
+  F1-Score: 0.6787
+  ROC-AUC: 0.6165
+  PR-AUC: 0.9030

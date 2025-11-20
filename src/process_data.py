@@ -1,35 +1,4 @@
 CPDB_PATHWAYS_FILE = './data/CPDB_pathways_genes.tsv'
-
-def process_cpdb_cancer_pathways(file_path=CPDB_PATHWAYS_FILE):
-    """
-    Processa CPDB_pathways_genes.tsv, filtrando apenas pathways que incluem 'cancer'.
-    Extrai genes da coluna 'hgnc_symbol_ids' e retorna DataFrame padrão (symbol, Oncogene, TSG).
-    """
-    print("Processando CPDB_pathways_genes.tsv para pathways de câncer...")
-    try:
-        df = pd.read_csv(file_path, sep='\t')
-        # Filtra pathways que incluem 'cancer' (case-insensitive)
-        df_cancer = df[df['pathway'].str.contains('cancer', case=False, na=False)]
-        # Extrai todos os genes da coluna hgnc_symbol_ids (assume separados por vírgula ou espaço)
-        gene_set = set()
-        for genes_str in df_cancer['hgnc_symbol_ids']:
-            # Suporta separação por vírgula ou espaço
-            genes = [g.strip() for g in str(genes_str).replace(',', ' ').split() if g.strip()]
-            gene_set.update(genes)
-        print(f"CPDB: Encontrados {len(gene_set)} genes relacionados a pathways de câncer.")
-        # Cria DataFrame padrão
-        df_genes = pd.DataFrame({'symbol': list(gene_set)})
-        df_genes['Oncogene'] = 'No'
-        df_genes['TSG'] = 'No'
-        df_genes = df_genes[['symbol', 'Oncogene', 'TSG']]
-        return df_genes
-    except Exception as e:
-        print(f"Erro ao processar CPDB_pathways_genes.tsv: {e}")
-        return pd.DataFrame(columns=['symbol', 'Oncogene', 'TSG']), set()
-import pandas as pd
-import numpy as np
-import os
-
 ONCOKB_FILE = './data/onkoKB.tsv'
 NCG_FILE = './data/NCG_cancerdrivers_annotation_supporting_evidence.tsv'
 NCG_CANDIDATE_HEALTHY_FILE = './data/NCG_candidate_and_remaining_healthy_drivers.txt'
@@ -299,6 +268,36 @@ def process_bushman_candidates(hgnc_mapping, file_path=BUSHMAN_FILE):
     except Exception as e:
         print(f"Erro ao processar Bushman_group_allOnco.tsv: {e}")
         return pd.DataFrame(columns=['symbol', 'Oncogene', 'TSG']), set()
+
+def process_cpdb_cancer_pathways(file_path=CPDB_PATHWAYS_FILE):
+    """
+    Processa CPDB_pathways_genes.tsv, filtrando apenas pathways que incluem 'cancer'.
+    Extrai genes da coluna 'hgnc_symbol_ids' e retorna DataFrame padrão (symbol, Oncogene, TSG).
+    """
+    print("Processando CPDB_pathways_genes.tsv para pathways de câncer...")
+    try:
+        df = pd.read_csv(file_path, sep='\t')
+        # Filtra pathways que incluem 'cancer' (case-insensitive)
+        df_cancer = df[df['pathway'].str.contains('cancer', case=False, na=False)]
+        # Extrai todos os genes da coluna hgnc_symbol_ids (assume separados por vírgula ou espaço)
+        gene_set = set()
+        for genes_str in df_cancer['hgnc_symbol_ids']:
+            # Suporta separação por vírgula ou espaço
+            genes = [g.strip() for g in str(genes_str).replace(',', ' ').split() if g.strip()]
+            gene_set.update(genes)
+        print(f"CPDB: Encontrados {len(gene_set)} genes relacionados a pathways de câncer.")
+        # Cria DataFrame padrão
+        df_genes = pd.DataFrame({'symbol': list(gene_set)})
+        df_genes['Oncogene'] = 'No'
+        df_genes['TSG'] = 'No'
+        df_genes = df_genes[['symbol', 'Oncogene', 'TSG']]
+        return df_genes
+    except Exception as e:
+        print(f"Erro ao processar CPDB_pathways_genes.tsv: {e}")
+        return pd.DataFrame(columns=['symbol', 'Oncogene', 'TSG']), set()
+import pandas as pd
+import numpy as np
+import os
 
 def get_canonical_genes():
     """

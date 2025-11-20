@@ -61,14 +61,14 @@ adasyn		    0.9075	0.1376	0.1368	0.1372	0.5849	0.1026
 smotetomek		0.8309	0.0732	0.1842	0.1048	0.5648	0.0952
 
 ----- SVC -----
-Estratégia		Acur.	Prec.	Recall	F1	    AUC-ROC	AUC-PR
-none		    0.9217	0.2119	0.1684	0.1877	0.6047	0.1554
-tomeklinks		0.9239	0.2074	0.1474	0.1723	0.6050	0.1468
-rundersampler	0.6352	0.0944	0.6737	0.1656	0.6758	0.1234
-smoteenn		0.8648	0.1250	0.2526	0.1672	0.6062	0.1182
-smoten		    0.9070	0.1675	0.1842	0.1754	0.5842	0.1052
-adasyn		    0.9075	0.1376	0.1368	0.1372	0.5849	0.1026
-smotetomek		0.8309	0.0732	0.1842	0.1048	0.5648	0.0952
+Estratégia		Acur.	Prec.	Recall	F1	AUC-ROC	AUC-PR
+none		    0.9463	0.0000	0.0000	0.0000	0.5945	0.1526
+tomeklinks	    0.9463	0.0000	0.0000	0.0000	0.5938	0.1508
+rundersampler	0.6768	0.1006	0.6316	0.1735	0.7042	0.1548
+smoteenn	    0.7624	0.0958	0.4053	0.1549	0.6563	0.0982
+smotetomek	    0.8481	0.1153	0.2737	0.1622	0.6325	0.0932
+smoten		    0.8481	0.1153	0.2737	0.1622	0.6325	0.0932
+adasyn		    0.8470	0.1126	0.2684	0.1586	0.6263	0.0915
 
 ----- CatBoost -----
 Estratégia		Acur.	Prec.	Recall	F1	    AUC-ROC	AUC-PR
@@ -89,3 +89,53 @@ smoten		    0.9457	0.4643	0.0684	0.1193	0.6420	0.1156
 adasyn		    0.9412	0.2632	0.0526	0.0877	0.6379	0.1066
 tomeklinks		0.9443	0.2667	0.0211	0.0390	0.6437	0.1257
 smoteenn		0.9341	0.2584	0.1211	0.1649	0.7115	0.1718
+
+=================================================================
+
+MELHORES POR AUCPR
+
+Decision tree:
+Adasyn 		0.0706
+Rundersampler 	0.0665
+Smoteenn		0.0643
+
+Random forest:
+None			0.2167
+Tomeklinks		0.1960
+Rundersampler	0.1601
+
+Gradient boosting:
+Tomeklinks		0.1977
+None			0.1917
+Smoteenn		0.1879
+
+Histogram Gradient Boosting:
+Smoteenn		0.1835
+Rundersampler 	0.1757
+None			0.1760
+
+
+KNN:
+Tomeklinks		0.0929
+Rundersampler	0.0925
+None			0.0918
+
+MLP:
+None			0.1554
+Tomeklinks		0.1468
+Rundersampler	0.1234
+
+SVC:
+Rundersampler	0.1548
+None			0.1526
+Tomeklinks		0.1508
+
+Catboost
+Tomeklinks		0.1946
+Rundersampler	0.1896
+None			0.1872
+
+XGBoost
+Smoteenn		0.1718
+None			0.1546
+rundersampler	0.1287

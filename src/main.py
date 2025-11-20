@@ -9,7 +9,7 @@ import os
 import argparse
 sys.path.append('/Users/i583975/git/tcc')
 
-from src.processing import prepare_dataset
+from src.processing import prepare_dataset, prepare_renan_data
 from src.models import (
     optimize_decision_tree_classifier,
     optimize_random_forest_classifier,
@@ -295,8 +295,13 @@ def main(use_renan=False, use_multiclass=False, use_default=False, balance_strat
     
     # Prepara o dataset
     print("Carregando e preparando dados...")
-    classification_type = 'multiclass' if use_multiclass else 'binary'
-    X, y, gene_names = prepare_dataset(features_path, labels_path, classification_type)
+    if use_renan:
+        print(" Usando formato de labels do Renan (True/False/NaN)")
+        X, y, gene_names, feature_names = prepare_renan_data()
+        
+    else:
+        classification_type = 'multiclass' if use_multiclass else 'binary'
+        X, y, gene_names = prepare_dataset(features_path, labels_path, classification_type)
     
     if X is None:
         print("Erro ao preparar dataset. Abortando.")
