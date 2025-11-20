@@ -7,28 +7,37 @@ from src.reports import default_report
 import numpy as np
 from sklearn.metrics import confusion_matrix
 
-def evaluate_model_default(model, model_name, X, y, experiment_dir, classification_type="binary"):
+def evaluate_model_default(model, model_name, X, y, experiment_dir, classification_type="binary", balance_strategy="none"):
     """
     Avalia modelo usando holdout 80%/20%
     """
-
-    # print("y contains NaNs:", np.isnan(y).any())
-    # print("y unique values:", np.unique(y))
-    # print("X shape:", X.shape, "y shape:", y.shape)
-    # print("First 10 values of y:", y[:10])
-    # print("Random 10 values of y:", y[np.random.choice(len(y), 10, replace=False)])
-    #print("First 10 values of x:", X[:10])
-    #print("Random 10 values of x:", X[np.random.choice(len(X), 10, replace=False)])
 
     # 80/20 split
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42, stratify=y
     )
 
-    # print("Shape de X_train:", X_train.shape)
-    # print("Shape de X_test:", X_test.shape)
-    # print("Shape de y_train:", y_train.shape)
-    # print("Shape de y_test:", y_test.shape)
+    # Apply balancing only to training set if requested
+    if balance_strategy and balance_strategy != "none":
+        from imblearn.combine import SMOTEENN
+        from imblearn.over_sampling import SMOTE, ADASYN, KMeansSMOTE
+        from imblearn.under_sampling import RandomUnderSampler, TomekLinks
+        # Add more strategies as needed
+        if balance_strategy == "smoteenn":
+            balancer = SMOTEENN(random_state=42)
+        elif balance_strategy == "smoten":
+            balancer = SMOTE(random_state=42)
+        elif balance_strategy == "adasyn":
+            balancer = ADASYN(random_state=42)
+        elif balance_strategy == "kmeanssmote":
+            balancer = KMeansSMOTE(random_state=42)
+        elif balance_strategy == "randomundersampler":
+            balancer = RandomUnderSampler(random_state=42)
+        elif balance_strategy == "tomeklinks":
+            balancer = TomekLinks()
+        else:
+            raise ValueError(f"Balance strategy '{balance_strategy}' not supported.")
+        X_train, y_train = balancer.fit_resample(X_train, y_train)
 
     # Build pipeline
     pipeline = Pipeline([

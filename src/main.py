@@ -244,12 +244,10 @@ def run_all_default_models(X, y, data_source="ana", classification_type="binary"
     
     for i, (model_name, model) in enumerate(default_models, 1):
         print(f"\nProgresso: {i}/{len(default_models)} modelos")
-        
         try:
-            result = evaluate_model_default(model, model_name, X, y, experiment_dir, classification_type)
+            result = evaluate_model_default(model, model_name, X, y, experiment_dir, classification_type, balance_strategy)
             results.append(result)
             print(f"✓ {model_name} executado com sucesso!")
-            
         except Exception as e:
             print(f"✗ Erro ao executar {model_name}: {e}")
             results.append({
