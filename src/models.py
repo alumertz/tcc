@@ -12,7 +12,6 @@ import time
 import numpy as np
 import optuna
 import os
-from src.reports import generate_experiment_folder_name
 from sklearn.ensemble import (
     GradientBoostingClassifier,
     HistGradientBoostingClassifier,
@@ -26,7 +25,10 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from catboost import CatBoostClassifier
 from xgboost import XGBClassifier
-from sklearn.model_selection import StratifiedKFold, cross_val_score
+from sklearn.model_selection import StratifiedKFold, cross_val_score, train_test_split
+from sklearn.metrics import accuracy_score, precision_recall_fscore_support, roc_auc_score, average_precision_score
+from src.reports import save_detailed_results_txt_by_fold, generate_experiment_folder_name, save_holdout_results
+
 
 IMBALANCE_RATIO = 93.0/7.0
 THREADS = 12-1
@@ -219,12 +221,6 @@ def save_optimization_results(model_name, fold_results,
                             data_source, classification_type):
     """Save optimization results to files"""
     
-    from src.reports import save_detailed_results_txt_by_fold, generate_experiment_folder_name
-    
-    # Save main results
-    best_params_per_fold = [fr.best_params for fr in fold_results]
-
-    
     # Save detailed results by fold
     experiment_folder = generate_experiment_folder_name(data_source, "optimized", classification_type)
     experiment_dir = os.path.join("./results", experiment_folder)
@@ -282,21 +278,32 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
     print(f"\nStarting Nested Cross-Validation for {model_name}...")
     print(f"Configuration: {outer_cv_folds} outer folds, {n_trials} trials per fold")
     
-    # Set up cross-validation 80/20, outer folds
+    # First perform 80/20 holdout split
+    print("Performing 80/20 holdout split...")
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42, stratify=y
+    )
+    
+    print(f"Holdout split completed:")
+    print(f"  - Training set: {X_train.shape[0]} samples (80%)")
+    print(f"  - Holdout test set: {X_test.shape[0]} samples (20%)")
+    
+    # Set up cross-validation on the 80% training data only
     outer_cv = StratifiedKFold(n_splits=outer_cv_folds, shuffle=True, random_state=42) 
     
-    # Process all folds
+    # Process all folds using only the 80% training data
     fold_results: FoldResults = []
     fold_number = 1
     
-    for train_idx, test_idx in outer_cv.split(X, y):
-        # Split data for this fold, train has all outer training data, test has outer test data
-        X_train, X_test, y_train, y_test = split_data_for_fold(X, y, train_idx, test_idx)
+    for train_idx, test_idx in outer_cv.split(X_train, y_train):
+        # Split data for this fold from the 80% training data
+        X_fold_train, X_fold_test, y_fold_train, y_fold_test = split_data_for_fold(
+            X_train, y_train, train_idx, test_idx
+        )
         
-
         # Optimize this fold
         fold_result = optimize_single_outer_fold(
-            fold_number, X_train, X_test, y_train, y_test,
+            fold_number, X_fold_train, X_fold_test, y_fold_train, y_fold_test,
             classifier_class, param_suggestions_func, custom_params_processor,
             fixed_params, classification_type, model_name, n_trials
         )
@@ -304,13 +311,48 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
         fold_results.append(fold_result)
         fold_number += 1
     
+    print(f"\nNested CV completed. The 20% holdout set ({X_test.shape[0]} samples) remains untouched.")
+    print("This holdout set can be used for final unbiased evaluation.")
+    
+    # Now train and evaluate each of the best parameter sets on the holdout data
+    print(f"\nTraining and evaluating {len(fold_results)} best parameter sets on holdout data...")
+    
+    holdout_results = []
+    for i, fold_result in enumerate(fold_results, 1):
+        print(f"Evaluating fold {i} best params on holdout set...")
+        
+        # Train model with best params from this fold on the full 80% training data
+        final_pipeline = Pipeline([
+            ('scaler', StandardScaler()),
+            ('classifier', classifier_class(**fold_result.best_params))
+        ])
+        final_pipeline.fit(X_train, y_train)
+        
+        # Evaluate on holdout set
+        y_pred_holdout, y_pred_proba_holdout = get_model_predictions(final_pipeline, X_test)
+        holdout_metrics = calculate_metrics(y_test, y_pred_holdout, y_pred_proba_holdout, classification_type)
+        
+        holdout_results.append({
+            'fold': i,
+            'best_params': fold_result.best_params,
+            'holdout_metrics': holdout_metrics
+        })
+        
+    
     save_optimization_results(
         model_name, fold_results,
-        data_source, classification_type, n_trials, outer_cv_folds
+        data_source, classification_type
+    )
+    
+    save_holdout_results(
+        model_name, holdout_results,
+        data_source, classification_type
     )
     
 
-# Funções de sugestão de parâmetros para cada modelo
+# Funções de sugestão de parâmetros para cada modelo #
+
+
 def _suggest_decision_tree_params(trial):
     """Sugestões de parâmetros para Decision Tree"""
     return {
@@ -394,21 +436,20 @@ def _suggest_mlp_params(trial):
 
 def _suggest_svc_params(trial):
     """Sugestões de parâmetros para SVC otimizadas para evitar execução infinita"""
-    # Priorizar kernels mais eficientes e limitar opções problemáticas
+    
     kernel = trial.suggest_categorical("kernel", ["linear", "poly", "rbf", "sigmoid"])
     
     params = {
         "kernel": kernel,
-        "C": trial.suggest_float("C", 0.1, 100.0, log=True),  # Range mais restrito
-        "probability": True,  # Necessário para predict_proba
-        "max_iter": 1000,  # Limitar iterações para evitar execução infinita
-        "tol": 1e-3,  # Tolerância menos rigorosa para convergência mais rápida
-        "cache_size": 200,  # Aumentar cache para melhor performance
+        "C": trial.suggest_float("C", 0.1, 100.0, log=True), 
+        "probability": True, 
+        "max_iter": 1000,  
+        "tol": 1e-3,  
+        "cache_size": 200,  
         "degree": trial.suggest_int("degree", 2, 6),
         "shrinking": trial.suggest_categorical("shrinking", [True, False])
     }
     
-    # Adicionar parâmetros específicos do kernel com restrições
     if kernel == "rbf":
         params["gamma"] = trial.suggest_categorical("gamma", ["scale", "auto"])
     
@@ -469,6 +510,7 @@ def _suggest_xgboost_params(trial, classification_type="binary"):
         params["scale_pos_weight"] = trial.suggest_float("scale_pos_weight", IMBALANCE_RATIO * 0.4, IMBALANCE_RATIO * 4)
     
     return params
+
 
 def _process_mlp_params(best_params):
     """Processa parâmetros do MLP para o modelo final.
