@@ -29,7 +29,7 @@ def evaluate_model_default(model, model_name, X, y, experiment_dir, classificati
             balancer = SMOTE(random_state=42)
         elif balance_strategy == "adasyn":
             balancer = ADASYN(random_state=42)
-        elif balance_strategy == "kmeanssmote":
+        elif balance_strategy == "kmeanssmote": ####NEED FIX
             balancer = KMeansSMOTE(random_state=42)
         elif balance_strategy == "smotetomek":
             balancer = SMOTETomek(random_state=42)

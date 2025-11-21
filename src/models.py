@@ -11,6 +11,7 @@ from typing import Dict, List, Any
 import time
 import numpy as np
 import optuna
+import optunahub
 import os
 from sklearn.ensemble import (
     GradientBoostingClassifier,
@@ -48,9 +49,11 @@ class FoldResults:
     """Data class to store complete results for a single fold"""
     fold: int
     best_params: Dict[str, Any]
+    params_importances: Dict[str, float]
     train_metrics: FoldMetrics
     test_metrics: FoldMetrics
     trials: List[Dict[str, Any]]
+    best_trial_number: int = None
 
 def create_objective_function(classifier_class, param_suggestions_func, custom_params_processor, 
                             fixed_params, classification_type, X_train, y_train):
@@ -153,18 +156,51 @@ def optimize_single_outer_fold(fold_number, X_train, X_test, y_train, y_test,
         classifier_class, param_suggestions_func, custom_params_processor,
         fixed_params, classification_type, X_train, y_train
     )
-    
+
+    optuna.logging.set_verbosity(optuna.logging.DEBUG)
     # Create and run Optuna study
     study_name = f"{model_name}_fold_{fold_number}"
-    study = optuna.create_study(direction='maximize', study_name=study_name)
+    study = optuna.create_study(direction='maximize', study_name=study_name, sampler=optunahub.load_module("samplers/auto_sampler").AutoSampler())
     study.optimize(objective, n_trials=n_trials, show_progress_bar=False)
     
     # Get best parameters
-    best_params = study.best_params.copy()
+
+    best_params = study.best_trial.params.copy()
+    
     if custom_params_processor:
         best_params = custom_params_processor(best_params)
     if fixed_params:
         best_params.update(fixed_params)
+    
+
+    # Calcular importâncias dos parâmetros após otimização
+    try:
+        param_importances = optuna.importance.get_param_importances(study)
+    except Exception as e:
+        print(f"Não foi possível calcular importâncias dos parâmetros: {e}")
+        param_importances = {}
+
+    # Save graphs of study
+    opt_hist_fig = optuna.visualization.plot_optimization_history(study)
+    plot_contour_fig = optuna.visualization.plot_contour(study)
+    param_imp_fig = optuna.visualization.plot_param_importances(study)
+
+    # Save figures immediately after creation
+    experiment_folder = generate_experiment_folder_name('ana', 'optimized', classification_type)
+    experiment_dir = os.path.join("./results", experiment_folder)
+    model_dir_name = model_name.lower().replace(' ', '_')
+    model_dir = os.path.join(experiment_dir, model_dir_name)
+    os.makedirs(model_dir, exist_ok=True)
+    def safe_save(fig, path, desc):
+        if fig is not None:
+            try:
+                fig.write_image(path)
+            except Exception as e:
+                print(f"Erro ao salvar figura {desc} para fold {fold_number}: {e}")
+    safe_save(opt_hist_fig, os.path.join(model_dir, f"{model_name}_fold{fold_number}_opt_history.png"), "opt_history")
+    safe_save(plot_contour_fig, os.path.join(model_dir, f"{model_name}_fold{fold_number}_opt_contour.png"), "opt_contour")
+    safe_save(param_imp_fig, os.path.join(model_dir, f"{model_name}_fold{fold_number}_param_importances.png"), "param_importances")
+
     
     # Train final model for this fold training set
     final_pipeline = Pipeline([
@@ -180,7 +216,7 @@ def optimize_single_outer_fold(fold_number, X_train, X_test, y_train, y_test,
     
     train_metrics = calculate_metrics(y_train, y_pred_train, y_pred_proba_train, classification_type)
     test_metrics = calculate_metrics(y_test, y_pred_test, y_pred_proba_test, classification_type)
-    
+
     # Collect trial data
     trials = []
     for trial in study.trials:
@@ -190,11 +226,9 @@ def optimize_single_outer_fold(fold_number, X_train, X_test, y_train, y_test,
             'score': trial.value if trial.value is not None else 0.0
         })
     
-    print(f"Outer Fold {fold_number} - F1: {test_metrics.f1:.4f}, "
-          f"Accuracy: {test_metrics.accuracy:.4f}, "
-          f"ROC-AUC: {test_metrics.roc_auc:.4f}")
-    
-    return FoldResults(fold_number, best_params, train_metrics, test_metrics, trials)
+
+    return FoldResults(fold = fold_number, best_params = best_params, train_metrics = train_metrics, test_metrics = test_metrics, 
+                       trials = trials, params_importances = param_importances, best_trial_number=study.best_trial.number)
 
 def aggregate_results(fold_results: List[FoldResults]) -> Dict[str, Dict[str, float]]:
     """Aggregate results across all folds"""
@@ -227,32 +261,41 @@ def save_optimization_results(model_name, fold_results,
     model_dir_name = model_name.lower().replace(' ', '_')
     model_dir = os.path.join(experiment_dir, model_dir_name)
     os.makedirs(model_dir, exist_ok=True)
+    # from pprint import pprint
+    # pprint(fold_results)
+
     
     # Convert fold_results to the format expected by save_detailed_results_txt_by_fold
     all_folds_trials = []
-    for fr in fold_results:
-        fold_data = {
-            'fold': fr.fold,
-            'trials': fr.trials,
-            'best_params': fr.best_params,
-            'train_metrics': {
-                'accuracy': fr.train_metrics.accuracy,
-                'precision': fr.train_metrics.precision,
-                'recall': fr.train_metrics.recall,
-                'f1': fr.train_metrics.f1,
-                'roc_auc': fr.train_metrics.roc_auc,
-                'pr_auc': fr.train_metrics.pr_auc
-            },
-            'test_metrics': {
-                'accuracy': fr.test_metrics.accuracy,
-                'precision': fr.test_metrics.precision,
-                'recall': fr.test_metrics.recall,
-                'f1': fr.test_metrics.f1,
-                'roc_auc': fr.test_metrics.roc_auc,
-                'pr_auc': fr.test_metrics.pr_auc
+    
+    try:
+        for fr in fold_results:
+            #pprint(fr)
+            fold_data = {
+                'fold': fr.fold,
+                'trials': fr.trials,
+                'best_params': fr.best_params,
+                'train_metrics': {
+                    'accuracy': fr.train_metrics.accuracy,
+                    'precision': fr.train_metrics.precision,
+                    'recall': fr.train_metrics.recall,
+                    'f1': fr.train_metrics.f1,
+                    'roc_auc': fr.train_metrics.roc_auc,
+                    'pr_auc': fr.train_metrics.pr_auc
+                },
+                'test_metrics': {
+                    'accuracy': fr.test_metrics.accuracy,
+                    'precision': fr.test_metrics.precision,
+                    'recall': fr.test_metrics.recall,
+                    'f1': fr.test_metrics.f1,
+                    'roc_auc': fr.test_metrics.roc_auc,
+                    'pr_auc': fr.test_metrics.pr_auc
+                }
             }
-        }
-        all_folds_trials.append(fold_data)
+            all_folds_trials.append(fold_data)
+    except Exception as e:
+        print(f"Erro ao preparar dados detalhados por fold: {e}")
+        all_folds_trials = []
     
     # Get best fold based on AUCPR score
     best_fold_idx = np.argmax([fr.test_metrics.pr_auc for fr in fold_results])
@@ -265,7 +308,6 @@ def save_optimization_results(model_name, fold_results,
         output_path=detailed_results_path,
         final_best_params=final_best_params
     )
-    
     print(f"Detailed results by fold saved to: {detailed_results_path}")
 
 def _optimize_classifier_generic(classifier_class, param_suggestions_func, model_name, X, y,
@@ -274,7 +316,6 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
     """
     Refactored version of the classifier optimization function.
     """
-    
     print(f"\nStarting Nested Cross-Validation for {model_name}...")
     print(f"Configuration: {outer_cv_folds} outer folds, {n_trials} trials per fold")
     
@@ -292,7 +333,7 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
     outer_cv = StratifiedKFold(n_splits=outer_cv_folds, shuffle=True, random_state=42) 
     
     # Process all folds using only the 80% training data
-    fold_results: FoldResults = []
+    fold_results_list: FoldResults = []
     fold_number = 1
     
     for train_idx, test_idx in outer_cv.split(X_train, y_train):
@@ -308,17 +349,17 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
             fixed_params, classification_type, model_name, n_trials
         )
         
-        fold_results.append(fold_result)
+        fold_results_list.append(fold_result)
         fold_number += 1
     
     print(f"\nNested CV completed. The 20% holdout set ({X_test.shape[0]} samples) remains untouched.")
     print("This holdout set can be used for final unbiased evaluation.")
     
     # Now train and evaluate each of the best parameter sets on the holdout data
-    print(f"\nTraining and evaluating {len(fold_results)} best parameter sets on holdout data...")
+    print(f"\nTraining and evaluating {len(fold_results_list)} best parameter sets on holdout data...")
     
     holdout_results = []
-    for i, fold_result in enumerate(fold_results, 1):
+    for i, fold_result in enumerate(fold_results_list, 1):
         print(f"Evaluating fold {i} best params on holdout set...")
         
         # Train model with best params from this fold on the full 80% training data
@@ -337,17 +378,18 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
             'best_params': fold_result.best_params,
             'holdout_metrics': holdout_metrics
         })
-        
-    
+
+    print("Saving optimization and holdout results...")
     save_optimization_results(
-        model_name, fold_results,
+        model_name, fold_results_list,
         data_source, classification_type
     )
-    
+    print("Saving holdout results...")
     save_holdout_results(
         model_name, holdout_results,
         data_source, classification_type
     )
+    print("Saved!")
     
 
 # Funções de sugestão de parâmetros para cada modelo #

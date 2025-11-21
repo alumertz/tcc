@@ -112,6 +112,12 @@ Exemplos de uso:
         default='none',
         help='Estratégia de balanceamento de dados: none (sem balanceamento), smoteenn, smotetomek, randomundersampler, tomeklinks, smoten, adasyn, kmeanssmote'
     )
+    parser.add_argument(
+        '-model', '--model',
+        type=str,
+        choices=['none', 'catboost', 'decisiontree', 'gradientboosting', 'histgradientboosting', 'knn', 'mlp', 'randomforest', 'svc', 'xgboost'],
+        help='Executa modelos com parâmetros padrão (sem otimização Optuna)'
+    )
     
     return parser.parse_args()
 
@@ -261,7 +267,7 @@ def run_all_default_models(X, y, data_source="ana", classification_type="binary"
     save_default_experiment_summary(experiment_dir, results, balance_strategy)
     return results
 
-def main(use_renan=False, use_multiclass=False, use_default=False, balance_strategy='none'):
+def main(use_renan=False, use_multiclass=False, use_default=False, balance_strategy='none', model_name=None):
     """
     Função principal do experimento
     
@@ -306,33 +312,73 @@ def main(use_renan=False, use_multiclass=False, use_default=False, balance_strat
     if X is None:
         print("Erro ao preparar dataset. Abortando.")
         return
-    
-    
     # Configuração do experimento baseado no modo escolhido
-    if use_default:
-        print(f"\nCONFIGURAÇÃO DO EXPERIMENTO (PARÂMETROS PADRÃO):")
-        
-        # Executa modelos com parâmetros padrão
-        print("Iniciando experimentos com parâmetros padrão...")
-        classification_type = "multiclass" if use_multiclass else "binary"
-        model = DecisionTreeClassifier(random_state=42)
-        #evaluate_model_default(model, "Decision Tree", X, y, "./results", classification_type)
-        run_all_default_models(X, y, data_source, classification_type, balance_strategy)
-        
+    if model_name:
+        # Dicionário de modelos e funções
+        model_map = {
+            'decisiontree': ("Decision Tree", optimize_decision_tree_classifier),
+            'knn': ("K-Nearest Neighbors", optimize_knn_classifier),
+            'svc': ("Support Vector Classifier", optimize_svc_classifier),
+            'randomforest': ("Random Forest", optimize_random_forest_classifier),
+            'gradientboosting': ("Gradient Boosting", optimize_gradient_boosting_classifier),
+            'histgradientboosting': ("Histogram Gradient Boosting", optimize_hist_gradient_boosting_classifier),
+            'mlp': ("Multi-Layer Perceptron", optimize_mlp_classifier),
+            'xgboost': ("XGBoost", optimize_xgboost_classifier),
+            'catboost': ("CatBoost", optimize_catboost_classifier)
+        }
+        if use_default:
+            # Modelos default
+            from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, HistGradientBoostingClassifier
+            from sklearn.tree import DecisionTreeClassifier
+            from sklearn.neighbors import KNeighborsClassifier
+            from sklearn.neural_network import MLPClassifier
+            from sklearn.svm import SVC
+            from catboost import CatBoostClassifier
+            from xgboost import XGBClassifier
+            default_model_map = {
+                'decisiontree': DecisionTreeClassifier(random_state=42),
+                'knn': KNeighborsClassifier(),
+                'svc': SVC(probability=True, random_state=42),
+                'randomforest': RandomForestClassifier(random_state=42),
+                'gradientboosting': GradientBoostingClassifier(random_state=42),
+                'histgradientboosting': HistGradientBoostingClassifier(random_state=42),
+                'mlp': MLPClassifier(random_state=42, max_iter=1000),
+                'xgboost': XGBClassifier(random_state=42, verbosity=0, eval_metric='logloss'),
+                'catboost': CatBoostClassifier(random_state=42, verbose=False)
+            }
+            print(f"\nCONFIGURAÇÃO DO EXPERIMENTO (PARÂMETROS PADRÃO):")
+            print(f"Executando apenas o modelo: {model_map[model_name][0]}")
+            experiment_folder = generate_experiment_folder_name(data_source, "default", classification_type)
+            experiment_folder = experiment_folder + "_"+ balance_strategy if balance_strategy else experiment_folder
+            experiment_dir = os.path.join("./results", experiment_folder)
+            os.makedirs(experiment_dir, exist_ok=True)
+            try:
+                result = evaluate_model_default(default_model_map[model_name], model_map[model_name][0], X, y, experiment_dir, classification_type, balance_strategy)
+                print(f"✓ {model_map[model_name][0]} executado com sucesso!")
+            except Exception as e:
+                print(f"✗ Erro ao executar {model_map[model_name][0]}: {e}")
+            # Save summary file
+            from src.reports import save_default_experiment_summary
+            save_default_experiment_summary(experiment_dir, [result], balance_strategy)
+        else:
+            N_TRIALS = 30
+            print(f"\nCONFIGURAÇÃO DO EXPERIMENTO (OTIMIZAÇÃO):")
+            print(f"Executando apenas o modelo: {model_map[model_name][0]}")
+            run_single_model_optimize(model_map[model_name][0], model_map[model_name][1], X, y, n_trials=N_TRIALS, data_source=data_source, classification_type=classification_type)
     else:
-        N_TRIALS = 30  # Número de trials por modelo
-        print(f"\nCONFIGURAÇÃO DO EXPERIMENTO (OTIMIZAÇÃO):")
-        print(f"  Modo: Otimização com Optuna")
-        print(f"  Trials por modelo: {N_TRIALS}")
-        
-        # Executa todos os modelos com otimização
-        print("Iniciando experimentos com otimização...")
-        results = run_all_models_optimize(X, y, n_trials=N_TRIALS, data_source=data_source, classification_type=classification_type)
-    #results = run_single_model("Gradient Boosting", optimize_gradient_boosting_classifier, X, y, n_trials=N_TRIALS)
-    #results = run_single_model("Decision Tree", optimize_decision_tree_classifier, X, y, n_trials=N_TRIALS)
-    #results = run_single_model("Support Vector Classifier", optimize_svc_classifier, X, y, n_trials=N_TRIALS)
-    #results = run_single_model("Multi-Layer Perceptron", optimize_mlp_classifier, X, y, n_trials=N_TRIALS)
-    #results = run_single_model("CatBoost", optimize_catboost_classifier, X, y, n_trials=N_TRIALS)
+        if use_default:
+            print(f"\nCONFIGURAÇÃO DO EXPERIMENTO (PARÂMETROS PADRÃO):")
+            print("Iniciando experimentos com parâmetros padrão...")
+            classification_type = "multiclass" if use_multiclass else "binary"
+            run_all_default_models(X, y, data_source, classification_type, balance_strategy)
+        else:
+            N_TRIALS = 30  # Número de trials por modelo
+            print(f"\nCONFIGURAÇÃO DO EXPERIMENTO (OTIMIZAÇÃO):")
+            print(f"  Modo: Otimização com Optuna")
+            print(f"  Trials por modelo: {N_TRIALS}")
+            print("Iniciando experimentos com otimização...")
+            results = run_all_models_optimize(X, y, n_trials=N_TRIALS, data_source=data_source, classification_type=classification_type)
+    
     
     
     print("\nEXPERIMENTO CONCLUÍDO!")
@@ -343,4 +389,4 @@ if __name__ == "__main__":
     args = parse_arguments()
     
     # Executa o experimento com as opções escolhidas
-    main(args.renan, args.multiclass, args.default, args.balancedata)
+    main(args.renan, args.multiclass, args.default, args.balancedata, args.model)

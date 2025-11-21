@@ -133,6 +133,28 @@ def save_detailed_results_txt(model_name, trials, test_metrics, best_params, opt
         f.write(f"Melhor score (CV): {optimization_info.get('best_score', sorted_trials[0].get('score', 0))}\n")
         f.write(f"Tempo total de otimização: {optimization_info.get('total_time', 0):.2f} segundos\n")
 
+def save_optimization_figs(fold_results, model_dir):
+    """
+    Save Optuna optimization figures for each fold to the model directory.
+    Each figure is saved as a PNG file with a name indicating the fold and figure type.
+    """
+    import os
+    for fr in fold_results:
+        fold_id = fr.fold
+        # Save optimization history figure
+        if fr.opt_hist_fig is not None:
+            hist_path = os.path.join(model_dir, f"fold_{fold_id}_opt_history.png")
+            try:
+                fr.opt_hist_fig.write_image(hist_path)
+            except Exception as e:
+                print(f"Erro ao salvar opt_history para fold {fold_id}: {e}")
+        # Save contour figure
+        if fr.plot_contour_fig is not None:
+            contour_path = os.path.join(model_dir, f"fold_{fold_id}_opt_contour.png")
+            try:
+                fr.plot_contour_fig.write_image(contour_path)
+            except Exception as e:
+                print(f"Erro ao salvar opt_contour para fold {fold_id}: {e}")
 
 def save_detailed_results_txt_by_fold(model_name, all_folds_trials, output_path=None, final_best_params=None):
     
@@ -148,7 +170,6 @@ def save_detailed_results_txt_by_fold(model_name, all_folds_trials, output_path=
             for trial in fold_data['trials']:
                 score = trial.get('score', 0)
                 f.write(f"  Trial {trial['trial_number']}: Score={score:.4f} | Hiperparâmetros: {json.dumps(trial['params'])}\n")
-            f.write("\nConjunto de hiperparâmetros escolhido:\n")
             for k, v in fold_data['best_params'].items():
                 f.write(f"  {k}: {v}\n")
             f.write("\nResultado do treino:\n")
@@ -157,6 +178,11 @@ def save_detailed_results_txt_by_fold(model_name, all_folds_trials, output_path=
             f.write("\nResultado do teste:\n")
             for k, v in fold_data['test_metrics'].items():
                 f.write(f"  {k}: {v:.4f}\n")
+            # Print parameter importances if available
+            if 'params_importances' in fold_data and fold_data['params_importances']:
+                f.write("\nImportância dos parâmetros (Optuna):\n")
+                for param, importance in fold_data['params_importances'].items():
+                    f.write(f"  {param}: {importance:.4f}\n")
             f.write("\n" + "="*60 + "\n\n")
         # Tabela agregada de métricas
         f.write("TABELA DE MÉTRICAS DE TREINO E TESTE POR FOLD:\n")
@@ -165,16 +191,19 @@ def save_detailed_results_txt_by_fold(model_name, all_folds_trials, output_path=
         f.write(header + "\n" + "-"*len(header) + "\n")
         train_vals = {m: [] for m in metrics}
         test_vals = {m: [] for m in metrics}
-        for fold_data in all_folds_trials:
-            fold = str(fold_data['fold']).ljust(6)
-            train_line = fold + "| " + " | ".join([f"{fold_data['train_metrics'][m]:.4f}".ljust(10) for m in metrics])
-            test_line = fold + "| " + " | ".join([f"{fold_data['test_metrics'][m]:.4f}".ljust(10) for m in metrics])
-            f.write("Treino: " + train_line + "\n")
-            f.write("Teste:  " + test_line + "\n")
-            for m in metrics:
-                train_vals[m].append(fold_data['train_metrics'][m])
-                test_vals[m].append(fold_data['test_metrics'][m])
-        f.write("\n")
+        try: 
+            for fold_data in all_folds_trials:
+                fold = str(fold_data['fold']).ljust(6)
+                train_line = fold + "| " + " | ".join([f"{fold_data['train_metrics'][m]:.4f}".ljust(10) for m in metrics])
+                test_line = fold + "| " + " | ".join([f"{fold_data['test_metrics'][m]:.4f}".ljust(10) for m in metrics])
+                f.write("Treino: " + train_line + "\n")
+                f.write("Teste:  " + test_line + "\n")
+                for m in metrics:
+                    train_vals[m].append(fold_data['train_metrics'][m])
+                    test_vals[m].append(fold_data['test_metrics'][m])
+            f.write("\n")
+        except KeyError as e:
+            f.write(f"Erro ao gerar tabela de métricas: chave ausente {e}\n\n")
         # Tabela agregada de médias e desvios padrão
         f.write("MÉDIAS E DESVIOS PADRÃO DAS MÉTRICAS POR FOLD:\n")
         f.write(header + "\n" + "-"*len(header) + "\n")
