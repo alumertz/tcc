@@ -342,6 +342,49 @@ def default_report(model_name, folds_metrics, test_metrics, output_path=None, ba
     if output_path:
         with open(output_path, 'w') as f:
             f.write(report)
+
+        # Save metrics and test_predictions in metrics.json for plotting compatibility
+        # Only save if test_metrics contains y_true, y_pred, y_pred_proba
+        metrics_json_path = os.path.join(os.path.dirname(output_path), 'metrics.json')
+        test_predictions = None
+        # Try to get y_true, y_pred, y_pred_proba from test_metrics
+        y_true = test_metrics.get('y_true', None)
+        y_pred = test_metrics.get('y_pred', None)
+        y_pred_proba = test_metrics.get('y_pred_proba', None)
+        # Convert to lists if they are numpy arrays
+        import numpy as np
+        if y_true is not None:
+            y_true = y_true.tolist() if hasattr(y_true, 'tolist') else list(y_true)
+        if y_pred is not None:
+            y_pred = y_pred.tolist() if hasattr(y_pred, 'tolist') else list(y_pred)
+        if y_pred_proba is not None:
+            y_pred_proba = y_pred_proba.tolist() if hasattr(y_pred_proba, 'tolist') else list(y_pred_proba)
+        if y_true is not None and y_pred is not None and y_pred_proba is not None:
+            test_predictions = {
+                'y_true': y_true,
+                'y_pred': y_pred,
+                'y_pred_proba': y_pred_proba
+            }
+        # Ensure all metrics are serializable
+        def make_serializable(obj):
+            import numpy as np
+            if isinstance(obj, np.ndarray):
+                return obj.tolist()
+            elif isinstance(obj, dict):
+                return {str(k): make_serializable(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [make_serializable(v) for v in obj]
+            else:
+                return obj
+
+        metrics_data = {
+            'test_metrics': make_serializable(test_metrics),
+            'train_metrics': make_serializable(folds_metrics.get('train_metrics', {}) if isinstance(folds_metrics, dict) else {}),
+            'test_predictions': make_serializable(test_predictions)
+        }
+        import json
+        with open(metrics_json_path, 'w') as mf:
+            json.dump(metrics_data, mf, indent=2, ensure_ascii=False)
     return report
 
 def save_default_experiment_summary(experiment_dir, results, balance_strategy=""):

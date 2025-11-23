@@ -59,6 +59,10 @@ def evaluate_model_default(model, model_name, X, y, experiment_dir, classificati
     y_pred_test = pipeline.predict(X_test)
     y_proba_test = pipeline.predict_proba(X_test)
     test_metrics = get_metrics(y_test, y_pred_test, y_proba_test, classification_type)
+    # Add raw predictions to test_metrics for plotting compatibility
+    test_metrics['y_true'] = y_test.tolist() if hasattr(y_test, 'tolist') else list(y_test)
+    test_metrics['y_pred'] = y_pred_test.tolist() if hasattr(y_pred_test, 'tolist') else list(y_pred_test)
+    test_metrics['y_pred_proba'] = y_proba_test.tolist() if hasattr(y_proba_test, 'tolist') else list(y_proba_test)
 
     model_dir = os.path.join(experiment_dir, model_name.lower().replace(' ', '_'))
     os.makedirs(model_dir, exist_ok=True)
@@ -70,88 +74,12 @@ def evaluate_model_default(model, model_name, X, y, experiment_dir, classificati
         output_path=report_path,
         balance_strategy=balance_strategy
     )
-    # Return result dict for summary
     return {
         'model_name': model_name,
         'test_metrics': test_metrics,
         'train_metrics': train_metrics,
         'balance_strategy': balance_strategy
     }
-
-
-# def get_metrics(y_true, y_pred, y_proba, classification_type):
-    
-#     if classification_type == 'multiclass':
-#         # Use per_class_auc_scores for multiclass ROC-AUC and PR-AUC
-#         # We need model, X_train, y_train, X_test, y_test, but here we only have y_true, y_pred, y_proba
-#         # So we use y_true and y_proba for per-class calculation
-#         # Classes (sorted)
-#         classes = np.unique(y_true)
-#         from sklearn.preprocessing import label_binarize
-#         y_true_bin = label_binarize(y_true, classes=classes)
-#         per_class_roc_auc = {}
-#         per_class_pr_auc = {}
-#         for i, label in enumerate(classes):
-#             roc = roc_auc_score(y_true_bin[:, i], y_proba[:, i])
-#             pr = average_precision_score(y_true_bin[:, i], y_proba[:, i])
-#             per_class_roc_auc[label] = roc
-#             per_class_pr_auc[label] = pr
-#         roc_auc = per_class_roc_auc
-#         pr_auc = per_class_pr_auc
-#         average = 'weighted'
-#     else:
-#         average = 'binary'
-#         roc_auc = roc_auc_score(y_true, y_proba[:,1])
-#         pr_auc = average_precision_score(y_true, y_proba[:,1])
-
-#     metrics = {
-#         'accuracy': accuracy_score(y_true, y_pred),
-#         'precision': precision_score(y_true, y_pred, average=average),
-#         'recall': recall_score(y_true, y_pred, average=average),
-#         'f1': f1_score(y_true, y_pred, average=average),
-#         'roc_auc': roc_auc,
-#         'pr_auc': pr_auc,
-#         'confusion_matrix': confusion_matrix(y_true, y_pred)
-#     }
-
-#     return metrics
-
-# from sklearn.preprocessing import label_binarize
-# from sklearn.metrics import roc_auc_score, average_precision_score
-# import numpy as np
-
-# def per_class_auc_scores(model, X_train, y_train, X_test, y_test):
-#     """
-#     Returns:
-#         per_class_roc_auc: {class_label: roc_auc}
-#         per_class_pr_auc: {class_label: pr_auc}
-#     """
-
-#     # Train once (correct)
-#     model.fit(X_train, y_train)
-
-#     # Get probabilities
-#     y_proba = model.predict_proba(X_test)
-
-#     # Classes (sorted)
-#     classes = model.classes_
-#     n_classes = len(classes)
-
-#     # Convert true labels to one-vs-rest format
-#     y_test_bin = label_binarize(y_test, classes=classes)
-
-#     per_class_roc_auc = {}
-#     per_class_pr_auc = {}
-
-#     for i, label in enumerate(classes):
-#         # One-vs-rest ROC-AUC
-#         roc = roc_auc_score(y_test_bin[:, i], y_proba[:, i])
-#         pr = average_precision_score(y_test_bin[:, i], y_proba[:, i])
-
-#         per_class_roc_auc[label] = roc
-#         per_class_pr_auc[label] = pr
-
-#     return per_class_roc_auc, per_class_pr_auc
 
 
 import numpy as np

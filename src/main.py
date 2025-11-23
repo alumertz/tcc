@@ -354,6 +354,7 @@ def main(use_renan=False, use_multiclass=False, use_default=False, balance_strat
             os.makedirs(experiment_dir, exist_ok=True)
             try:
                 result = evaluate_model_default(default_model_map[model_name], model_map[model_name][0], X, y, experiment_dir, classification_type, balance_strategy)
+                
                 print(f"✓ {model_map[model_name][0]} executado com sucesso!")
             except Exception as e:
                 print(f"✗ Erro ao executar {model_map[model_name][0]}: {e}")
