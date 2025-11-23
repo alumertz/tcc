@@ -160,8 +160,8 @@ def optimize_single_outer_fold(fold_number, X_train, X_test, y_train, y_test,
     optuna.logging.set_verbosity(optuna.logging.DEBUG)
     # Create and run Optuna study
     study_name = f"{model_name}_fold_{fold_number}"
-    study = optuna.create_study(direction='maximize', study_name=study_name, sampler=optunahub.load_module("samplers/auto_sampler").AutoSampler())
-    study.optimize(objective, n_trials=n_trials, show_progress_bar=False)
+    study = optuna.create_study(direction='maximize', study_name=study_name)# sampler=optunahub.load_module("samplers/auto_sampler").AutoSampler())
+    study.optimize(objective, n_trials=n_trials, show_progress_bar=False, gc_after_trial=True)
     
     # Get best parameters
 
@@ -176,30 +176,33 @@ def optimize_single_outer_fold(fold_number, X_train, X_test, y_train, y_test,
     # Calcular importâncias dos parâmetros após otimização
     try:
         param_importances = optuna.importance.get_param_importances(study)
+        print(f"Importâncias dos parâmetros para fold {fold_number}: {param_importances}")
     except Exception as e:
         print(f"Não foi possível calcular importâncias dos parâmetros: {e}")
         param_importances = {}
 
-    # Save graphs of study
-    opt_hist_fig = optuna.visualization.plot_optimization_history(study)
-    plot_contour_fig = optuna.visualization.plot_contour(study)
-    param_imp_fig = optuna.visualization.plot_param_importances(study)
+    # # Save graphs of study
+    # opt_hist_fig = optuna.visualization.plot_optimization_history(study)
+    # plot_contour_fig = optuna.visualization.plot_contour(study)
+    # param_imp_fig = optuna.visualization.plot_param_importances(study)
 
-    # Save figures immediately after creation
-    experiment_folder = generate_experiment_folder_name('ana', 'optimized', classification_type)
-    experiment_dir = os.path.join("./results", experiment_folder)
-    model_dir_name = model_name.lower().replace(' ', '_')
-    model_dir = os.path.join(experiment_dir, model_dir_name)
-    os.makedirs(model_dir, exist_ok=True)
-    def safe_save(fig, path, desc):
-        if fig is not None:
-            try:
-                fig.write_image(path)
-            except Exception as e:
-                print(f"Erro ao salvar figura {desc} para fold {fold_number}: {e}")
-    safe_save(opt_hist_fig, os.path.join(model_dir, f"{model_name}_fold{fold_number}_opt_history.png"), "opt_history")
-    safe_save(plot_contour_fig, os.path.join(model_dir, f"{model_name}_fold{fold_number}_opt_contour.png"), "opt_contour")
-    safe_save(param_imp_fig, os.path.join(model_dir, f"{model_name}_fold{fold_number}_param_importances.png"), "param_importances")
+    # # Save figures immediately after creation
+    # experiment_folder = generate_experiment_folder_name('ana', 'optimized', classification_type)
+    # experiment_dir = os.path.join("./results", experiment_folder)
+    # model_dir_name = model_name.lower().replace(' ', '_')
+    # model_dir = os.path.join(experiment_dir, model_dir_name)
+    # os.makedirs(model_dir, exist_ok=True)
+    # def safe_save(fig, path, desc):
+    #     if fig is not None:
+    #         try:
+    #             fig.write_image(path)
+    #         except Exception as e:
+    #             print(f"Erro ao salvar figura {desc} para fold {fold_number}: {e}")
+    # safe_save(opt_hist_fig, os.path.join(model_dir, f"{model_name}_fold{fold_number}_opt_history.png"), "opt_history")
+    # safe_save(plot_contour_fig, os.path.join(model_dir, f"{model_name}_fold{fold_number}_opt_contour.png"), "opt_contour")
+    # safe_save(param_imp_fig, os.path.join(model_dir, f"{model_name}_fold{fold_number}_param_importances.png"), "param_importances")
+
+    # del opt_hist_fig, plot_contour_fig, param_imp_fig  # Free memory
 
     
     # Train final model for this fold training set
@@ -275,6 +278,8 @@ def save_optimization_results(model_name, fold_results,
                 'fold': fr.fold,
                 'trials': fr.trials,
                 'best_params': fr.best_params,
+                'param_importances': fr.params_importances,
+                'best_trial_number': fr.best_trial_number,
                 'train_metrics': {
                     'accuracy': fr.train_metrics.accuracy,
                     'precision': fr.train_metrics.precision,

@@ -170,19 +170,19 @@ def save_detailed_results_txt_by_fold(model_name, all_folds_trials, output_path=
             for trial in fold_data['trials']:
                 score = trial.get('score', 0)
                 f.write(f"  Trial {trial['trial_number']}: Score={score:.4f} | Hiperparâmetros: {json.dumps(trial['params'])}\n")
+            f.write(f"\nMelhor trial (Optuna): {fold_data['best_trial_number']}\n")
             for k, v in fold_data['best_params'].items():
                 f.write(f"  {k}: {v}\n")
+            # Print parameter importances if available
+            f.write("\nImportância dos parâmetros (Optuna):\n")
+            for param, importance in fold_data['param_importances'].items():
+                f.write(f"  {param}: {importance:.4f}\n")
             f.write("\nResultado do treino:\n")
             for k, v in fold_data['train_metrics'].items():
                 f.write(f"  {k}: {v:.4f}\n")
             f.write("\nResultado do teste:\n")
             for k, v in fold_data['test_metrics'].items():
                 f.write(f"  {k}: {v:.4f}\n")
-            # Print parameter importances if available
-            if 'params_importances' in fold_data and fold_data['params_importances']:
-                f.write("\nImportância dos parâmetros (Optuna):\n")
-                for param, importance in fold_data['params_importances'].items():
-                    f.write(f"  {param}: {importance:.4f}\n")
             f.write("\n" + "="*60 + "\n\n")
         # Tabela agregada de métricas
         f.write("TABELA DE MÉTRICAS DE TREINO E TESTE POR FOLD:\n")
@@ -287,6 +287,11 @@ def default_report(model_name, folds_metrics, test_metrics, output_path=None, ba
         str: Relatório gerado
     """
     metrics = ['accuracy', 'precision', 'recall', 'f1', 'roc_auc', 'pr_auc']
+    extra_metrics = [
+        'per_class_roc_auc', 'per_class_pr_auc',
+        'pr_auc_macro', 'pr_auc_weighted', 'pr_auc_micro',
+        'roc_auc_macro', 'roc_auc_weighted', 'roc_auc_micro'
+    ]
     report = f"RELATÓRIO PADRÃO DO MODELO: {model_name} com {balance_strategy}\n" + "="*80 + "\n\n"
     report += "MÉTRICAS DE TREINO (HOLDOUT):\n"
     if folds_metrics and isinstance(folds_metrics, dict):
@@ -295,17 +300,45 @@ def default_report(model_name, folds_metrics, test_metrics, output_path=None, ba
             v = train_metrics.get(m, None)
             if v is not None:
                 report += f"{m.capitalize()}: {v:.4f}\n"
+        # Print extra metrics for multiclass
+        for m in extra_metrics:
+            v = train_metrics.get(m, None)
+            if v is not None:
+                if m.startswith('per_class_') and isinstance(v, dict):
+                    report += f"{m.replace('_', ' ').capitalize()}:\n"
+                    for cls, score in v.items():
+                        report += f"  Classe {cls}: {score:.4f}\n"
+                else:
+                    report += f"{m.replace('_', ' ').capitalize()}: {v:.4f}\n"
     elif folds_metrics and isinstance(folds_metrics, list) and len(folds_metrics) == 1:
         train_metrics = folds_metrics[0].get('train_metrics', {})
         for m in metrics:
             v = train_metrics.get(m, None)
             if v is not None:
                 report += f"{m.capitalize()}: {v:.4f}\n"
+        for m in extra_metrics:
+            v = train_metrics.get(m, None)
+            if v is not None:
+                if m.startswith('per_class_') and isinstance(v, dict):
+                    report += f"{m.replace('_', ' ').capitalize()}:\n"
+                    for cls, score in v.items():
+                        report += f"  Classe {cls}: {score:.4f}\n"
+                else:
+                    report += f"{m.replace('_', ' ').capitalize()}: {v:.4f}\n"
     report += "\nMÉTRICAS DE TESTE (HOLDOUT):\n" + "-"*30 + "\n"
     for m in metrics:
         v = test_metrics.get(m, None)
         if v is not None:
             report += f"{m.capitalize()}: {v:.4f}\n"
+    for m in extra_metrics:
+        v = test_metrics.get(m, None)
+        if v is not None:
+            if m.startswith('per_class_') and isinstance(v, dict):
+                report += f"{m.replace('_', ' ').capitalize()}:\n"
+                for cls, score in v.items():
+                    report += f"  Classe {cls}: {score:.4f}\n"
+            else:
+                report += f"{m.replace('_', ' ').capitalize()}: {v:.4f}\n"
     if output_path:
         with open(output_path, 'w') as f:
             f.write(report)
