@@ -307,7 +307,7 @@ def default_report(model_name, folds_metrics, test_metrics, output_path=None, ba
                 if m.startswith('per_class_') and isinstance(v, dict):
                     report += f"{m.replace('_', ' ').capitalize()}:\n"
                     for cls, score in v.items():
-                        report += f"  Classe {cls}: {score:.4f}\n"
+                        report += f"  Classe {int(cls)}: {score:.4f}\n"
                 else:
                     report += f"{m.replace('_', ' ').capitalize()}: {v:.4f}\n"
     elif folds_metrics and isinstance(folds_metrics, list) and len(folds_metrics) == 1:
@@ -322,7 +322,7 @@ def default_report(model_name, folds_metrics, test_metrics, output_path=None, ba
                 if m.startswith('per_class_') and isinstance(v, dict):
                     report += f"{m.replace('_', ' ').capitalize()}:\n"
                     for cls, score in v.items():
-                        report += f"  Classe {cls}: {score:.4f}\n"
+                        report += f"  Classe {int(cls)}: {score:.4f}\n"
                 else:
                     report += f"{m.replace('_', ' ').capitalize()}: {v:.4f}\n"
     report += "\nMÉTRICAS DE TESTE (HOLDOUT):\n" + "-"*30 + "\n"
@@ -336,7 +336,7 @@ def default_report(model_name, folds_metrics, test_metrics, output_path=None, ba
             if m.startswith('per_class_') and isinstance(v, dict):
                 report += f"{m.replace('_', ' ').capitalize()}:\n"
                 for cls, score in v.items():
-                    report += f"  Classe {cls}: {score:.4f}\n"
+                    report += f"  Classe {int(cls)}: {score:.4f}\n"
             else:
                 report += f"{m.replace('_', ' ').capitalize()}: {v:.4f}\n"
     if output_path:
@@ -418,3 +418,59 @@ def save_default_experiment_summary(experiment_dir, results, balance_strategy=""
                     line += "-".ljust(10) + "| "
             f.write(line + "\n")
         f.write("\n")
+
+def format_5fold_report(model_name, folds_results, aggregated, classification_type):
+    lines = []
+    lines.append(f"MODEL: {model_name}")
+    lines.append("=" * 70)
+
+    # ---------------------------------------------------------
+    # PER FOLD
+    # ---------------------------------------------------------
+    for fold in folds_results:
+        lines.append(f"\nFold {fold['fold']}")
+        lines.append("-" * 30)
+
+        # TRAIN
+        lines.append(" TRAINING METRICS:")
+        for k, v in fold["train"].items():
+            if isinstance(v, (float, int)):
+                lines.append(f"   {k}: {v}")
+
+        # VALIDATION
+        lines.append("\n VALIDATION METRICS:")
+        for k, v in fold["val"].items():
+            if isinstance(v, (float, int)):
+                lines.append(f"   {k}: {v}")
+
+        # MULTICLASS extras
+        if classification_type == "multiclass":
+            pc_roc = fold["val"].get("per_class_roc_auc", {})
+            pc_pr  = fold["val"].get("per_class_pr_auc", {})
+
+            lines.append("\n   Per class roc auc:")
+            for cls, val in pc_roc.items():
+                lines.append(f"     Classe {cls}: {val}")
+
+            lines.append("   Per class pr auc:")
+            for cls, val in pc_pr.items():
+                lines.append(f"     Classe {cls}: {val}")
+
+            lines.append(f"   Pr auc macro: {fold['val'].get('pr_auc_macro')}")
+            lines.append(f"   Pr auc weighted: {fold['val'].get('pr_auc_weighted')}")
+            lines.append(f"   Pr auc micro: {fold['val'].get('pr_auc_micro')}")
+
+            lines.append(f"   Roc auc macro: {fold['val'].get('roc_auc_macro')}")
+            lines.append(f"   Roc auc weighted: {fold['val'].get('roc_auc_weighted')}")
+            lines.append(f"   Roc auc micro: {fold['val'].get('roc_auc_micro')}")
+
+    # ---------------------------------------------------------
+    # AGGREGATED RESULT
+    # ---------------------------------------------------------
+    lines.append("\nAGGREGATED VALIDATION METRICS (MEAN OF 5 FOLDS)")
+    lines.append("=" * 70)
+
+    for k, v in aggregated.items():
+        lines.append(f"{k}: {v}")
+
+    return "\n".join(lines)
