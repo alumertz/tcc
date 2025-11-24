@@ -54,6 +54,7 @@ class FoldResults:
     test_metrics: FoldMetrics
     trials: List[Dict[str, Any]]
     best_trial_number: int = None
+    test_predictions: dict = None
 
 def create_objective_function(classifier_class, param_suggestions_func, custom_params_processor, 
                             fixed_params, classification_type, X_train, y_train):
@@ -150,7 +151,6 @@ def optimize_single_outer_fold(fold_number, X_train, X_test, y_train, y_test,
     """Optimize hyperparameters for a single fold"""
     
     print(f"Fold {fold_number}")
-    
     # Create objective function
     objective = create_objective_function(
         classifier_class, param_suggestions_func, custom_params_processor,
@@ -160,18 +160,16 @@ def optimize_single_outer_fold(fold_number, X_train, X_test, y_train, y_test,
     optuna.logging.set_verbosity(optuna.logging.DEBUG)
     # Create and run Optuna study
     study_name = f"{model_name}_fold_{fold_number}"
-    study = optuna.create_study(direction='maximize', study_name=study_name)# sampler=optunahub.load_module("samplers/auto_sampler").AutoSampler())
+    study = optuna.create_study(direction='maximize', study_name=study_name)
     study.optimize(objective, n_trials=n_trials, show_progress_bar=False, gc_after_trial=True)
-    
-    # Get best parameters
 
+    # Get best parameters
     best_params = study.best_trial.params.copy()
-    
+
     if custom_params_processor:
         best_params = custom_params_processor(best_params)
     if fixed_params:
         best_params.update(fixed_params)
-    
 
     # Calcular importâncias dos parâmetros após otimização
     try:
@@ -181,44 +179,26 @@ def optimize_single_outer_fold(fold_number, X_train, X_test, y_train, y_test,
         print(f"Não foi possível calcular importâncias dos parâmetros: {e}")
         param_importances = {}
 
-    # # Save graphs of study
-    # opt_hist_fig = optuna.visualization.plot_optimization_history(study)
-    # plot_contour_fig = optuna.visualization.plot_contour(study)
-    # param_imp_fig = optuna.visualization.plot_param_importances(study)
-
-    # # Save figures immediately after creation
-    # experiment_folder = generate_experiment_folder_name('ana', 'optimized', classification_type)
-    # experiment_dir = os.path.join("./results", experiment_folder)
-    # model_dir_name = model_name.lower().replace(' ', '_')
-    # model_dir = os.path.join(experiment_dir, model_dir_name)
-    # os.makedirs(model_dir, exist_ok=True)
-    # def safe_save(fig, path, desc):
-    #     if fig is not None:
-    #         try:
-    #             fig.write_image(path)
-    #         except Exception as e:
-    #             print(f"Erro ao salvar figura {desc} para fold {fold_number}: {e}")
-    # safe_save(opt_hist_fig, os.path.join(model_dir, f"{model_name}_fold{fold_number}_opt_history.png"), "opt_history")
-    # safe_save(plot_contour_fig, os.path.join(model_dir, f"{model_name}_fold{fold_number}_opt_contour.png"), "opt_contour")
-    # safe_save(param_imp_fig, os.path.join(model_dir, f"{model_name}_fold{fold_number}_param_importances.png"), "param_importances")
-
-    # del opt_hist_fig, plot_contour_fig, param_imp_fig  # Free memory
-
-    
     # Train final model for this fold training set
     final_pipeline = Pipeline([
         ('scaler', StandardScaler()),
         ('classifier', classifier_class(**best_params))
     ])
     final_pipeline.fit(X_train, y_train)
-    
+
     # Evaluate on both training and test sets of one outer fold
-    # Train has all traing data from the outer set
     y_pred_train, y_pred_proba_train = get_model_predictions(final_pipeline, X_train)
     y_pred_test, y_pred_proba_test = get_model_predictions(final_pipeline, X_test)
-    
+
     train_metrics = calculate_metrics(y_train, y_pred_train, y_pred_proba_train, classification_type)
     test_metrics = calculate_metrics(y_test, y_pred_test, y_pred_proba_test, classification_type)
+
+    # Save test predictions for plotting
+    test_predictions = {
+        'y_true': y_test.tolist() if hasattr(y_test, 'tolist') else list(y_test),
+        'y_pred': y_pred_test.tolist() if hasattr(y_pred_test, 'tolist') else list(y_pred_test),
+        'y_pred_proba': y_pred_proba_test.tolist() if hasattr(y_pred_proba_test, 'tolist') else list(y_pred_proba_test)
+    }
 
     # Collect trial data
     trials = []
@@ -228,10 +208,9 @@ def optimize_single_outer_fold(fold_number, X_train, X_test, y_train, y_test,
             'params': trial.params,
             'score': trial.value if trial.value is not None else 0.0
         })
-    
 
     return FoldResults(fold = fold_number, best_params = best_params, train_metrics = train_metrics, test_metrics = test_metrics, 
-                       trials = trials, params_importances = param_importances, best_trial_number=study.best_trial.number)
+                       trials = trials, params_importances = param_importances, best_trial_number=study.best_trial.number, test_predictions=test_predictions)
 
 def aggregate_results(fold_results: List[FoldResults]) -> Dict[str, Dict[str, float]]:
     """Aggregate results across all folds"""
@@ -273,12 +252,13 @@ def save_optimization_results(model_name, fold_results,
     
     try:
         for fr in fold_results:
-            #pprint(fr)
+            # Convert np.float64 in param_importances to native float
+            param_importances_clean = {k: float(v) for k, v in fr.params_importances.items()}
             fold_data = {
                 'fold': fr.fold,
                 'trials': fr.trials,
                 'best_params': fr.best_params,
-                'param_importances': fr.params_importances,
+                'param_importances': param_importances_clean,
                 'best_trial_number': fr.best_trial_number,
                 'train_metrics': {
                     'accuracy': fr.train_metrics.accuracy,
@@ -295,7 +275,8 @@ def save_optimization_results(model_name, fold_results,
                     'f1': fr.test_metrics.f1,
                     'roc_auc': fr.test_metrics.roc_auc,
                     'pr_auc': fr.test_metrics.pr_auc
-                }
+                },
+                'test_predictions': fr.test_predictions if hasattr(fr, 'test_predictions') else None
             }
             all_folds_trials.append(fold_data)
     except Exception as e:
@@ -314,6 +295,30 @@ def save_optimization_results(model_name, fold_results,
         final_best_params=final_best_params
     )
     print(f"Detailed results by fold saved to: {detailed_results_path}")
+
+    # Save test predictions for all folds in metrics.json for plotting
+    metrics_json_path = os.path.join(model_dir, "metrics.json")
+    y_true_all, y_pred_all, y_pred_proba_all = [], [], []
+    for fold in all_folds_trials:
+        preds = fold.get('test_predictions')
+        if preds:
+            y_true_all.extend(preds.get('y_true', []))
+            y_pred_all.extend(preds.get('y_pred', []))
+            y_pred_proba_all.extend(preds.get('y_pred_proba', []))
+    metrics_json = {
+        'model_name': model_name,
+        'test_predictions': {
+            'y_true': y_true_all,
+            'y_pred': y_pred_all,
+            'y_pred_proba': y_pred_proba_all
+        },
+        'folds': len(all_folds_trials),
+        'final_best_params': final_best_params
+    }
+    import json
+    with open(metrics_json_path, 'w') as f:
+        json.dump(metrics_json, f, indent=2, ensure_ascii=False)
+    print(f"Test predictions for all folds saved to: {metrics_json_path}")
 
 def _optimize_classifier_generic(classifier_class, param_suggestions_func, model_name, X, y,
                                n_trials=100, custom_params_processor=None, fixed_params=None, data_source="ana",
@@ -346,15 +351,17 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
         X_fold_train, X_fold_test, y_fold_train, y_fold_test = split_data_for_fold(
             X_train, y_train, train_idx, test_idx
         )
-        
         # Optimize this fold
         fold_result = optimize_single_outer_fold(
             fold_number, X_fold_train, X_fold_test, y_fold_train, y_fold_test,
             classifier_class, param_suggestions_func, custom_params_processor,
             fixed_params, classification_type, model_name, n_trials
         )
-        
-        fold_results_list.append(fold_result)
+        # Only append if not None
+        if fold_result is not None:
+            fold_results_list.append(fold_result)
+        else:
+            print(f"Fold {fold_number} returned None and was skipped.")
         fold_number += 1
     
     print(f"\nNested CV completed. The 20% holdout set ({X_test.shape[0]} samples) remains untouched.")
@@ -395,6 +402,24 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
         data_source, classification_type
     )
     print("Saved!")
+
+    # Return best model and test metrics for compatibility
+    # Select best fold by pr_auc
+    if fold_results_list:
+        best_fold_idx = np.argmax([fr.test_metrics.pr_auc for fr in fold_results_list])
+        best_fold = fold_results_list[best_fold_idx]
+        # Train model with best params from best fold on all training data
+        best_model = Pipeline([
+            ('scaler', StandardScaler()),
+            ('classifier', classifier_class(**best_fold.best_params))
+        ])
+        best_model.fit(X_train, y_train)
+        # Evaluate on holdout set
+        y_pred_holdout, y_pred_proba_holdout = get_model_predictions(best_model, X_test)
+        test_metrics = calculate_metrics(y_test, y_pred_holdout, y_pred_proba_holdout, classification_type)
+        return best_model, test_metrics
+    else:
+        return None, None
     
 
 # Funções de sugestão de parâmetros para cada modelo #
