@@ -1,0 +1,67 @@
+Holdout Evaluation Results for multi_layer_perceptron
+==================================================
+
+Results for each fold's best parameters on holdout set:
+--------------------------------------------------
+
+Fold 1:
+  Best Parameters: {'hidden_layer_sizes': (179,), 'activation': 'logistic', 'alpha': 0.00032845669601296983, 'learning_rate': 'constant', 'max_iter': 354, 'early_stopping': True}
+  Holdout Metrics:
+    Accuracy: 0.9463
+    Precision: 0.9105
+    Recall: 0.9463
+    F1-Score: 0.9212
+    ROC-AUC: 0.7177
+    PR-AUC: 0.9266
+
+Fold 2:
+  Best Parameters: {'hidden_layer_sizes': (127,), 'activation': 'logistic', 'alpha': 0.011223901192706758, 'learning_rate': 'constant', 'max_iter': 828, 'early_stopping': True}
+  Holdout Metrics:
+    Accuracy: 0.9463
+    Precision: 0.8954
+    Recall: 0.9463
+    F1-Score: 0.9201
+    ROC-AUC: 0.7119
+    PR-AUC: 0.9264
+
+Fold 3:
+  Best Parameters: {'hidden_layer_sizes': (199, 148, 106), 'activation': 'tanh', 'alpha': 0.00451825493030749, 'learning_rate': 'constant', 'max_iter': 568, 'early_stopping': True}
+  Holdout Metrics:
+    Accuracy: 0.9482
+    Precision: 0.9224
+    Recall: 0.9482
+    F1-Score: 0.9263
+    ROC-AUC: 0.6732
+    PR-AUC: 0.9242
+
+Fold 4:
+  Best Parameters: {'hidden_layer_sizes': (171,), 'activation': 'logistic', 'alpha': 0.0028367528936190656, 'learning_rate': 'adaptive', 'max_iter': 910, 'early_stopping': True}
+  Holdout Metrics:
+    Accuracy: 0.9477
+    Precision: 0.9190
+    Recall: 0.9477
+    F1-Score: 0.9241
+    ROC-AUC: 0.7144
+    PR-AUC: 0.9283
+
+Fold 5:
+  Best Parameters: {'hidden_layer_sizes': (168, 92), 'activation': 'tanh', 'alpha': 0.00013350384055022985, 'learning_rate': 'adaptive', 'max_iter': 727, 'early_stopping': True}
+  Holdout Metrics:
+    Accuracy: 0.9485
+    Precision: 0.9239
+    Recall: 0.9485
+    F1-Score: 0.9258
+    ROC-AUC: 0.6871
+    PR-AUC: 0.9250
+
+==================================================
+BEST PERFORMING MODEL ON HOLDOUT SET:
+Fold 4 (PR-AUC: 0.9283)
+Parameters: {'hidden_layer_sizes': (171,), 'activation': 'logistic', 'alpha': 0.0028367528936190656, 'learning_rate': 'adaptive', 'max_iter': 910, 'early_stopping': True}
+Final Holdout Performance:
+  Accuracy: 0.9477
+  Precision: 0.9190
+  Recall: 0.9477
+  F1-Score: 0.9241
+  ROC-AUC: 0.7144
+  PR-AUC: 0.9283
