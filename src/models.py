@@ -56,37 +56,69 @@ class FoldResults:
     best_trial_number: int = None
     test_predictions: dict = None
 
+def balance_fold(X_train, y_train, balance_strategy):
+    if not balance_strategy or balance_strategy == 'none':
+        return X_train, y_train
+    if balance_strategy == 'smote':
+        from imblearn.over_sampling import SMOTE
+        balancer = SMOTE(random_state=42)
+    elif balance_strategy == 'adasyn':
+        from imblearn.over_sampling import ADASYN
+        balancer = ADASYN(random_state=42)
+    elif balance_strategy == 'randomundersampler':
+        from imblearn.under_sampling import RandomUnderSampler
+        balancer = RandomUnderSampler(random_state=42)
+    elif balance_strategy == 'smoteenn':
+        from imblearn.combine import SMOTEENN
+        balancer = SMOTEENN(random_state=42)
+    elif balance_strategy == 'tomeklinks':
+        from imblearn.under_sampling import TomekLinks
+        balancer = TomekLinks()
+    else:
+        raise ValueError(f"Unknown balance_strategy: {balance_strategy}")
+    return balancer.fit_resample(X_train, y_train)
+
 def create_objective_function(classifier_class, param_suggestions_func, custom_params_processor, 
                             fixed_params, classification_type, X_train, y_train):
     """Create the objective function for Optuna optimization"""
-    
     def objective(trial):
         # Get parameter suggestions
         if param_suggestions_func.__name__ in ['_suggest_catboost_params', '_suggest_xgboost_params']:
             params = param_suggestions_func(trial, classification_type)
         else:
             params = param_suggestions_func(trial)
-        
+
         # Apply custom processing if provided
         if custom_params_processor:
             params = custom_params_processor(params)
-            
+
         # Add fixed parameters
         if fixed_params:
             params.update(fixed_params)
-        
+
         # Create and evaluate pipeline
         pipeline = Pipeline([
             ('scaler', StandardScaler()),
             ('classifier', classifier_class(**params))
         ])
-        
-        # Internal cross-validation
+
+        # Internal cross-validation with balancing inside each fold
         inner_cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
-        scores = cross_val_score(pipeline, X_train, y_train, 
-                               cv=inner_cv, scoring='average_precision')
-        
-        return scores.mean()
+        balance_strategy = fixed_params.get('balance_strategy') if fixed_params and 'balance_strategy' in fixed_params else None
+        scores = []
+        for train_idx, test_idx in inner_cv.split(X_train, y_train):
+            X_tr, X_te = X_train[train_idx], X_train[test_idx]
+            y_tr, y_te = y_train[train_idx], y_train[test_idx]
+            # Apply balancing to training fold only
+            X_tr_bal, y_tr_bal = balance_fold(X_tr, y_tr, balance_strategy)
+            pipeline.fit(X_tr_bal, y_tr_bal)
+            y_pred_proba = pipeline.predict_proba(X_te)
+            if classification_type == "multiclass":
+                score = average_precision_score(y_te, y_pred_proba)
+            else:
+                score = average_precision_score(y_te, y_pred_proba[:, 1])
+            scores.append(score)
+        return np.mean(scores)
     
     return objective
 
