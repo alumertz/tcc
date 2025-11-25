@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Multi-Layer Perceptron com randomundersampler
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9693
+Precision: 0.9719
+Recall: 0.9693
+F1: 0.9697
+Roc_auc: 0.9982
+Pr_auc: 0.9938
+Per class roc auc:
+  Classe 0: 0.9979
+  Classe 1: 0.9983
+  Classe 2: 0.9983
+Per class pr auc:
+  Classe 0: 0.9924
+  Classe 1: 0.9945
+  Classe 2: 0.9945
+Pr auc macro: 0.9938
+Pr auc weighted: 0.9938
+Pr auc micro: 0.9938
+Roc auc macro: 0.9982
+Roc auc weighted: 0.9982
+Roc auc micro: 0.9985
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.4514
+Precision: 0.3412
+Recall: 0.3503
+F1: 0.2435
+Roc_auc: 0.6167
+Pr_auc: 0.3544
+Per class roc auc:
+  Classe 0: 0.6224
+  Classe 1: 0.5689
+  Classe 2: 0.4548
+Per class pr auc:
+  Classe 0: 0.9595
+  Classe 1: 0.0701
+  Classe 2: 0.0338
+Pr auc macro: 0.3544
+Pr auc weighted: 0.9108
+Pr auc micro: 0.3544
+Roc auc macro: 0.5487
+Roc auc weighted: 0.6167
+Roc auc micro: 0.5764

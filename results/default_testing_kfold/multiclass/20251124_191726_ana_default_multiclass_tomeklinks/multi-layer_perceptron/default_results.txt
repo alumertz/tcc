@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Multi-Layer Perceptron com tomeklinks
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9975
+Precision: 0.9991
+Recall: 0.9656
+F1: 0.9819
+Roc_auc: 0.9976
+Pr_auc: 0.9749
+Per class roc auc:
+  Classe 0: 0.9976
+  Classe 1: 0.9973
+  Classe 2: 0.9977
+Per class pr auc:
+  Classe 0: 0.9998
+  Classe 1: 0.9592
+  Classe 2: 0.9657
+Pr auc macro: 0.9749
+Pr auc weighted: 0.9980
+Pr auc micro: 0.9749
+Roc auc macro: 0.9975
+Roc auc weighted: 0.9976
+Roc auc micro: 0.9998
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9270
+Precision: 0.4057
+Recall: 0.3723
+F1: 0.3824
+Roc_auc: 0.5826
+Pr_auc: 0.3732
+Per class roc auc:
+  Classe 0: 0.5838
+  Classe 1: 0.6008
+  Classe 2: 0.5178
+Per class pr auc:
+  Classe 0: 0.9588
+  Classe 1: 0.1178
+  Classe 2: 0.0429
+Pr auc macro: 0.3732
+Pr auc weighted: 0.9118
+Pr auc micro: 0.3732
+Roc auc macro: 0.5675
+Roc auc weighted: 0.5826
+Roc auc micro: 0.9619

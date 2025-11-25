@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: CatBoost com none
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9664
+Precision: 0.9886
+Recall: 0.5801
+F1: 0.6865
+Roc_auc: 0.9686
+Pr_auc: 0.9331
+Per class roc auc:
+  Classe 0: 0.9683
+  Classe 1: 0.9744
+  Classe 2: 0.9716
+Per class pr auc:
+  Classe 0: 0.9974
+  Classe 1: 0.8970
+  Classe 2: 0.9048
+Pr auc macro: 0.9331
+Pr auc weighted: 0.9922
+Pr auc micro: 0.9331
+Roc auc macro: 0.9714
+Roc auc weighted: 0.9686
+Roc auc micro: 0.9968
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9468
+Precision: 0.5380
+Recall: 0.3461
+F1: 0.3487
+Roc_auc: 0.7126
+Pr_auc: 0.3972
+Per class roc auc:
+  Classe 0: 0.7146
+  Classe 1: 0.7263
+  Classe 2: 0.6213
+Per class pr auc:
+  Classe 0: 0.9742
+  Classe 1: 0.1758
+  Classe 2: 0.0416
+Pr auc macro: 0.3972
+Pr auc weighted: 0.9280
+Pr auc micro: 0.3972
+Roc auc macro: 0.6874
+Roc auc weighted: 0.7126
+Roc auc micro: 0.9746

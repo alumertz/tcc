@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Gradient Boosting com smotetomek
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.8766
+Precision: 0.8782
+Recall: 0.8766
+F1: 0.8750
+Roc_auc: 0.9640
+Pr_auc: 0.9399
+Per class roc auc:
+  Classe 0: 0.9871
+  Classe 1: 0.9524
+  Classe 2: 0.9525
+Per class pr auc:
+  Classe 0: 0.9650
+  Classe 1: 0.9291
+  Classe 2: 0.9256
+Pr auc macro: 0.9399
+Pr auc weighted: 0.9399
+Pr auc micro: 0.9399
+Roc auc macro: 0.9640
+Roc auc weighted: 0.9640
+Roc auc micro: 0.9674
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9372
+Precision: 0.4261
+Recall: 0.3747
+F1: 0.3844
+Roc_auc: 0.6364
+Pr_auc: 0.3706
+Per class roc auc:
+  Classe 0: 0.6382
+  Classe 1: 0.6686
+  Classe 2: 0.5295
+Per class pr auc:
+  Classe 0: 0.9647
+  Classe 1: 0.1161
+  Classe 2: 0.0311
+Pr auc macro: 0.3706
+Pr auc weighted: 0.9170
+Pr auc micro: 0.3706
+Roc auc macro: 0.6121
+Roc auc weighted: 0.6364
+Roc auc micro: 0.9682

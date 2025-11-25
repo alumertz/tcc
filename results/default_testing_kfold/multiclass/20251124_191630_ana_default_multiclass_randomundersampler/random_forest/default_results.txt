@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Random Forest com randomundersampler
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9713
+Precision: 0.9735
+Recall: 0.9713
+F1: 0.9715
+Roc_auc: 0.9980
+Pr_auc: 0.9936
+Per class roc auc:
+  Classe 0: 0.9980
+  Classe 1: 0.9975
+  Classe 2: 0.9984
+Per class pr auc:
+  Classe 0: 0.9927
+  Classe 1: 0.9933
+  Classe 2: 0.9947
+Pr auc macro: 0.9936
+Pr auc weighted: 0.9936
+Pr auc micro: 0.9936
+Roc auc macro: 0.9980
+Roc auc weighted: 0.9980
+Roc auc micro: 0.9983
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.4955
+Precision: 0.3569
+Recall: 0.4526
+F1: 0.2770
+Roc_auc: 0.7019
+Pr_auc: 0.3644
+Per class roc auc:
+  Classe 0: 0.7059
+  Classe 1: 0.6835
+  Classe 2: 0.5701
+Per class pr auc:
+  Classe 0: 0.9757
+  Classe 1: 0.0869
+  Classe 2: 0.0306
+Pr auc macro: 0.3644
+Pr auc weighted: 0.9265
+Pr auc micro: 0.3644
+Roc auc macro: 0.6531
+Roc auc weighted: 0.7019
+Roc auc micro: 0.6626

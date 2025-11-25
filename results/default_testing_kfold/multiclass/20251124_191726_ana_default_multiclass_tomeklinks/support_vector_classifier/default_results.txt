@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Support Vector Classifier com tomeklinks
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9543
+Precision: 0.9847
+Recall: 0.3763
+F1: 0.4041
+Roc_auc: 0.9376
+Pr_auc: 0.7786
+Per class roc auc:
+  Classe 0: 0.9367
+  Classe 1: 0.9514
+  Classe 2: 0.9605
+Per class pr auc:
+  Classe 0: 0.9957
+  Classe 1: 0.7854
+  Classe 2: 0.5547
+Pr auc macro: 0.7786
+Pr auc weighted: 0.9796
+Pr auc micro: 0.7786
+Roc auc macro: 0.9495
+Roc auc weighted: 0.9376
+Roc auc micro: 0.9951
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9463
+Precision: 0.3154
+Recall: 0.3333
+F1: 0.3241
+Roc_auc: 0.5829
+Pr_auc: 0.3715
+Per class roc auc:
+  Classe 0: 0.5843
+  Classe 1: 0.5962
+  Classe 2: 0.5148
+Per class pr auc:
+  Classe 0: 0.9531
+  Classe 1: 0.1207
+  Classe 2: 0.0408
+Pr auc macro: 0.3715
+Pr auc weighted: 0.9064
+Pr auc micro: 0.3715
+Roc auc macro: 0.5651
+Roc auc weighted: 0.5829
+Roc auc micro: 0.9649

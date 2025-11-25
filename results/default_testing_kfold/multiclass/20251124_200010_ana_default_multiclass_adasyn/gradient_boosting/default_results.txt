@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Gradient Boosting com adasyn
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.8719
+Precision: 0.8736
+Recall: 0.8721
+F1: 0.8703
+Roc_auc: 0.9626
+Pr_auc: 0.9377
+Per class roc auc:
+  Classe 0: 0.9868
+  Classe 1: 0.9509
+  Classe 2: 0.9502
+Per class pr auc:
+  Classe 0: 0.9644
+  Classe 1: 0.9268
+  Classe 2: 0.9220
+Pr auc macro: 0.9377
+Pr auc weighted: 0.9377
+Pr auc micro: 0.9377
+Roc auc macro: 0.9626
+Roc auc weighted: 0.9626
+Roc auc micro: 0.9662
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9338
+Precision: 0.4031
+Recall: 0.3672
+F1: 0.3744
+Roc_auc: 0.6353
+Pr_auc: 0.3685
+Per class roc auc:
+  Classe 0: 0.6366
+  Classe 1: 0.6618
+  Classe 2: 0.5533
+Per class pr auc:
+  Classe 0: 0.9632
+  Classe 1: 0.1095
+  Classe 2: 0.0327
+Pr auc macro: 0.3685
+Pr auc weighted: 0.9154
+Pr auc micro: 0.3685
+Roc auc macro: 0.6173
+Roc auc weighted: 0.6353
+Roc auc micro: 0.9682

@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: XGBoost com none
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9976
+Precision: 0.9992
+Recall: 0.9701
+F1: 0.9843
+Roc_auc: 0.9975
+Pr_auc: 0.9773
+Per class roc auc:
+  Classe 0: 0.9975
+  Classe 1: 0.9968
+  Classe 2: 0.9971
+Per class pr auc:
+  Classe 0: 0.9998
+  Classe 1: 0.9670
+  Classe 2: 0.9650
+Pr auc macro: 0.9773
+Pr auc weighted: 0.9979
+Pr auc micro: 0.9773
+Roc auc macro: 0.9971
+Roc auc weighted: 0.9975
+Roc auc micro: 0.9997
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9468
+Precision: 0.5381
+Recall: 0.3461
+F1: 0.3487
+Roc_auc: 0.6615
+Pr_auc: 0.3801
+Per class roc auc:
+  Classe 0: 0.6622
+  Classe 1: 0.6965
+  Classe 2: 0.5923
+Per class pr auc:
+  Classe 0: 0.9689
+  Classe 1: 0.1304
+  Classe 2: 0.0409
+Pr auc macro: 0.3801
+Pr auc weighted: 0.9217
+Pr auc micro: 0.3801
+Roc auc macro: 0.6504
+Roc auc weighted: 0.6615
+Roc auc micro: 0.9717

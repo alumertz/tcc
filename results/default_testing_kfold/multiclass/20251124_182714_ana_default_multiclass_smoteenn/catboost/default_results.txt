@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: CatBoost com smoteenn
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9966
+Precision: 0.9957
+Recall: 0.9969
+F1: 0.9963
+Roc_auc: 1.0000
+Pr_auc: 0.9999
+Per class roc auc:
+  Classe 0: 1.0000
+  Classe 1: 1.0000
+  Classe 2: 1.0000
+Per class pr auc:
+  Classe 0: 0.9999
+  Classe 1: 1.0000
+  Classe 2: 1.0000
+Pr auc macro: 0.9999
+Pr auc weighted: 1.0000
+Pr auc micro: 0.9999
+Roc auc macro: 1.0000
+Roc auc weighted: 1.0000
+Roc auc micro: 1.0000
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9279
+Precision: 0.3824
+Recall: 0.3770
+F1: 0.3789
+Roc_auc: 0.6877
+Pr_auc: 0.3706
+Per class roc auc:
+  Classe 0: 0.6900
+  Classe 1: 0.6665
+  Classe 2: 0.6237
+Per class pr auc:
+  Classe 0: 0.9727
+  Classe 1: 0.0986
+  Classe 2: 0.0405
+Pr auc macro: 0.3706
+Pr auc weighted: 0.9243
+Pr auc micro: 0.3706
+Roc auc macro: 0.6601
+Roc auc weighted: 0.6877
+Roc auc micro: 0.9708

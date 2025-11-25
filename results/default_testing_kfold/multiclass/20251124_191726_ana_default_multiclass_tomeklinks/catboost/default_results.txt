@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: CatBoost com tomeklinks
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9712
+Precision: 0.9902
+Recall: 0.6073
+F1: 0.7148
+Roc_auc: 0.9686
+Pr_auc: 0.9356
+Per class roc auc:
+  Classe 0: 0.9684
+  Classe 1: 0.9759
+  Classe 2: 0.9706
+Per class pr auc:
+  Classe 0: 0.9977
+  Classe 1: 0.8994
+  Classe 2: 0.9098
+Pr auc macro: 0.9356
+Pr auc weighted: 0.9931
+Pr auc micro: 0.9356
+Roc auc macro: 0.9716
+Roc auc weighted: 0.9686
+Roc auc micro: 0.9972
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9471
+Precision: 0.5824
+Recall: 0.3462
+F1: 0.3490
+Roc_auc: 0.7080
+Pr_auc: 0.3933
+Per class roc auc:
+  Classe 0: 0.7099
+  Classe 1: 0.7028
+  Classe 2: 0.6429
+Per class pr auc:
+  Classe 0: 0.9746
+  Classe 1: 0.1655
+  Classe 2: 0.0398
+Pr auc macro: 0.3933
+Pr auc weighted: 0.9281
+Pr auc micro: 0.3933
+Roc auc macro: 0.6852
+Roc auc weighted: 0.7080
+Roc auc micro: 0.9741

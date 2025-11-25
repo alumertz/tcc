@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Gradient Boosting com tomeklinks
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9596
+Precision: 0.9864
+Recall: 0.4483
+F1: 0.5192
+Roc_auc: 0.8697
+Pr_auc: 0.6965
+Per class roc auc:
+  Classe 0: 0.8692
+  Classe 1: 0.8880
+  Classe 2: 0.8701
+Per class pr auc:
+  Classe 0: 0.9892
+  Classe 1: 0.5656
+  Classe 2: 0.5348
+Pr auc macro: 0.6965
+Pr auc weighted: 0.9678
+Pr auc micro: 0.6965
+Roc auc macro: 0.8758
+Roc auc weighted: 0.8697
+Roc auc micro: 0.9901
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9471
+Precision: 0.5204
+Recall: 0.3681
+F1: 0.3850
+Roc_auc: 0.6988
+Pr_auc: 0.3961
+Per class roc auc:
+  Classe 0: 0.7000
+  Classe 1: 0.6827
+  Classe 2: 0.6720
+Per class pr auc:
+  Classe 0: 0.9715
+  Classe 1: 0.1692
+  Classe 2: 0.0477
+Pr auc macro: 0.3961
+Pr auc weighted: 0.9254
+Pr auc micro: 0.3961
+Roc auc macro: 0.6849
+Roc auc weighted: 0.6988
+Roc auc micro: 0.9738

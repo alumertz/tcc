@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: XGBoost com adasyn
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9699
+Precision: 0.9723
+Recall: 0.9699
+F1: 0.9702
+Roc_auc: 0.9984
+Pr_auc: 0.9943
+Per class roc auc:
+  Classe 0: 0.9981
+  Classe 1: 0.9986
+  Classe 2: 0.9985
+Per class pr auc:
+  Classe 0: 0.9930
+  Classe 1: 0.9950
+  Classe 2: 0.9949
+Pr auc macro: 0.9943
+Pr auc weighted: 0.9943
+Pr auc micro: 0.9943
+Roc auc macro: 0.9984
+Roc auc weighted: 0.9984
+Roc auc micro: 0.9986
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9434
+Precision: 0.3900
+Recall: 0.3449
+F1: 0.3458
+Roc_auc: 0.6499
+Pr_auc: 0.3670
+Per class roc auc:
+  Classe 0: 0.6516
+  Classe 1: 0.6657
+  Classe 2: 0.5654
+Per class pr auc:
+  Classe 0: 0.9696
+  Classe 1: 0.1008
+  Classe 2: 0.0307
+Pr auc macro: 0.3670
+Pr auc weighted: 0.9212
+Pr auc micro: 0.3670
+Roc auc macro: 0.6276
+Roc auc weighted: 0.6499
+Roc auc micro: 0.9697

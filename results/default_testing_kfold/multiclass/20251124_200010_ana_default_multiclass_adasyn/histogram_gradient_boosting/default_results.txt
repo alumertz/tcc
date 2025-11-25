@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Histogram Gradient Boosting com adasyn
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9650
+Precision: 0.9681
+Recall: 0.9650
+F1: 0.9653
+Roc_auc: 0.9978
+Pr_auc: 0.9933
+Per class roc auc:
+  Classe 0: 0.9972
+  Classe 1: 0.9981
+  Classe 2: 0.9981
+Per class pr auc:
+  Classe 0: 0.9914
+  Classe 1: 0.9943
+  Classe 2: 0.9943
+Pr auc macro: 0.9933
+Pr auc weighted: 0.9933
+Pr auc micro: 0.9933
+Roc auc macro: 0.9978
+Roc auc weighted: 0.9978
+Roc auc micro: 0.9980
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9417
+Precision: 0.3509
+Recall: 0.3380
+F1: 0.3344
+Roc_auc: 0.6413
+Pr_auc: 0.3564
+Per class roc auc:
+  Classe 0: 0.6431
+  Classe 1: 0.6543
+  Classe 2: 0.5576
+Per class pr auc:
+  Classe 0: 0.9684
+  Classe 1: 0.0723
+  Classe 2: 0.0284
+Pr auc macro: 0.3564
+Pr auc weighted: 0.9192
+Pr auc micro: 0.3564
+Roc auc macro: 0.6183
+Roc auc weighted: 0.6413
+Roc auc micro: 0.9687

@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Decision Tree com randomundersampler
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9713
+Precision: 0.9735
+Recall: 0.9713
+F1: 0.9715
+Roc_auc: 0.9984
+Pr_auc: 0.9941
+Per class roc auc:
+  Classe 0: 0.9980
+  Classe 1: 0.9985
+  Classe 2: 0.9985
+Per class pr auc:
+  Classe 0: 0.9927
+  Classe 1: 0.9949
+  Classe 2: 0.9949
+Pr auc macro: 0.9941
+Pr auc weighted: 0.9941
+Pr auc micro: 0.9941
+Roc auc macro: 0.9984
+Roc auc weighted: 0.9984
+Roc auc micro: 0.9987
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.4485
+Precision: 0.3413
+Recall: 0.3760
+F1: 0.2462
+Roc_auc: 0.5382
+Pr_auc: 0.3360
+Per class roc auc:
+  Classe 0: 0.5392
+  Classe 1: 0.5401
+  Classe 2: 0.4955
+Per class pr auc:
+  Classe 0: 0.9495
+  Classe 1: 0.0332
+  Classe 2: 0.0253
+Pr auc macro: 0.3360
+Pr auc weighted: 0.9000
+Pr auc micro: 0.3360
+Roc auc macro: 0.5249
+Roc auc weighted: 0.5382
+Roc auc micro: 0.5547

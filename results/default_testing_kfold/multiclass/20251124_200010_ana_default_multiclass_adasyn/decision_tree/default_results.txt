@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Decision Tree com adasyn
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9707
+Precision: 0.9730
+Recall: 0.9708
+F1: 0.9710
+Roc_auc: 0.9985
+Pr_auc: 0.9945
+Per class roc auc:
+  Classe 0: 0.9982
+  Classe 1: 0.9986
+  Classe 2: 0.9986
+Per class pr auc:
+  Classe 0: 0.9932
+  Classe 1: 0.9951
+  Classe 2: 0.9950
+Pr auc macro: 0.9945
+Pr auc weighted: 0.9945
+Pr auc micro: 0.9945
+Roc auc macro: 0.9985
+Roc auc weighted: 0.9985
+Roc auc micro: 0.9988
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.8283
+Precision: 0.3448
+Recall: 0.3593
+F1: 0.3423
+Roc_auc: 0.5330
+Pr_auc: 0.3355
+Per class roc auc:
+  Classe 0: 0.5347
+  Classe 1: 0.5123
+  Classe 2: 0.4919
+Per class pr auc:
+  Classe 0: 0.9496
+  Classe 1: 0.0313
+  Classe 2: 0.0256
+Pr auc macro: 0.3355
+Pr auc weighted: 0.9001
+Pr auc micro: 0.3355
+Roc auc macro: 0.5130
+Roc auc weighted: 0.5330
+Roc auc micro: 0.8633

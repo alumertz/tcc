@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Gradient Boosting com none
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9544
+Precision: 0.9847
+Recall: 0.4306
+F1: 0.4930
+Roc_auc: 0.8611
+Pr_auc: 0.6846
+Per class roc auc:
+  Classe 0: 0.8605
+  Classe 1: 0.8778
+  Classe 2: 0.8656
+Per class pr auc:
+  Classe 0: 0.9875
+  Classe 1: 0.5438
+  Classe 2: 0.5225
+Pr auc macro: 0.6846
+Pr auc weighted: 0.9631
+Pr auc micro: 0.6846
+Roc auc macro: 0.8680
+Roc auc weighted: 0.8611
+Roc auc micro: 0.9884
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9477
+Precision: 0.6352
+Recall: 0.3752
+F1: 0.3983
+Roc_auc: 0.7096
+Pr_auc: 0.3960
+Per class roc auc:
+  Classe 0: 0.7106
+  Classe 1: 0.7020
+  Classe 2: 0.6809
+Per class pr auc:
+  Classe 0: 0.9726
+  Classe 1: 0.1607
+  Classe 2: 0.0546
+Pr auc macro: 0.3960
+Pr auc weighted: 0.9264
+Pr auc micro: 0.3960
+Roc auc macro: 0.6979
+Roc auc weighted: 0.7096
+Roc auc micro: 0.9750

@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: XGBoost com smotetomek
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9701
+Precision: 0.9726
+Recall: 0.9701
+F1: 0.9704
+Roc_auc: 0.9984
+Pr_auc: 0.9944
+Per class roc auc:
+  Classe 0: 0.9981
+  Classe 1: 0.9986
+  Classe 2: 0.9986
+Per class pr auc:
+  Classe 0: 0.9931
+  Classe 1: 0.9951
+  Classe 2: 0.9950
+Pr auc macro: 0.9944
+Pr auc weighted: 0.9944
+Pr auc micro: 0.9944
+Roc auc macro: 0.9984
+Roc auc weighted: 0.9984
+Roc auc micro: 0.9987
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9437
+Precision: 0.3828
+Recall: 0.3418
+F1: 0.3409
+Roc_auc: 0.6326
+Pr_auc: 0.3621
+Per class roc auc:
+  Classe 0: 0.6344
+  Classe 1: 0.6508
+  Classe 2: 0.5408
+Per class pr auc:
+  Classe 0: 0.9657
+  Classe 1: 0.0862
+  Classe 2: 0.0344
+Pr auc macro: 0.3621
+Pr auc weighted: 0.9172
+Pr auc micro: 0.3621
+Roc auc macro: 0.6087
+Roc auc weighted: 0.6326
+Roc auc micro: 0.9682

@@ -1,0 +1,101 @@
+MODEL: Random Forest
+======================================================================
+
+Fold 1
+------------------------------
+ TRAINING METRICS:
+   accuracy: 1.0
+   precision: 1.0
+   recall: 1.0
+   f1: 1.0
+   roc_auc: 1.0
+   pr_auc: 1.0
+
+ VALIDATION METRICS:
+   accuracy: 0.9154879773691655
+   precision: 0.17543859649122806
+   recall: 0.12121212121212122
+   f1: 0.14336917562724014
+   roc_auc: 0.7033284402416959
+   pr_auc: 0.1251355140006472
+
+Fold 2
+------------------------------
+ TRAINING METRICS:
+   accuracy: 1.0
+   precision: 1.0
+   recall: 1.0
+   f1: 1.0
+   roc_auc: 1.0
+   pr_auc: 1.0
+
+ VALIDATION METRICS:
+   accuracy: 0.9186704384724187
+   precision: 0.19166666666666668
+   recall: 0.14743589743589744
+   f1: 0.16666666666666666
+   roc_auc: 0.7120554563949024
+   pr_auc: 0.12825626292807057
+
+Fold 3
+------------------------------
+ TRAINING METRICS:
+   accuracy: 1.0
+   precision: 1.0
+   recall: 1.0
+   f1: 1.0
+   roc_auc: 1.0
+   pr_auc: 1.0
+
+ VALIDATION METRICS:
+   accuracy: 0.9038189533239038
+   precision: 0.10273972602739725
+   recall: 0.09615384615384616
+   f1: 0.09933774834437085
+   roc_auc: 0.6272143213572854
+   pr_auc: 0.08235101452094339
+
+Fold 4
+------------------------------
+ TRAINING METRICS:
+   accuracy: 1.0
+   precision: 1.0
+   recall: 1.0
+   f1: 1.0
+   roc_auc: 1.0
+   pr_auc: 1.0
+
+ VALIDATION METRICS:
+   accuracy: 0.9253889674681753
+   precision: 0.2
+   recall: 0.1619718309859155
+   f1: 0.17898832684824903
+   roc_auc: 0.692990781621973
+   pr_auc: 0.11894927134743136
+
+Fold 5
+------------------------------
+ TRAINING METRICS:
+   accuracy: 1.0
+   precision: 1.0
+   recall: 1.0
+   f1: 1.0
+   roc_auc: 1.0
+   pr_auc: 1.0
+
+ VALIDATION METRICS:
+   accuracy: 0.9236209335219236
+   precision: 0.21641791044776118
+   recall: 0.20714285714285716
+   f1: 0.2116788321167883
+   roc_auc: 0.7195232780612245
+   pr_auc: 0.15918020659171353
+
+AGGREGATED VALIDATION METRICS (MEAN OF 5 FOLDS)
+======================================================================
+accuracy: 0.9173974540311175
+precision: 0.17725257992661064
+recall: 0.1467833105861275
+f1: 0.16000814992066298
+roc_auc: 0.6910224555354162
+pr_auc: 0.1227744538777612

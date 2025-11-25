@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Histogram Gradient Boosting com randomundersampler
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9713
+Precision: 0.9735
+Recall: 0.9713
+F1: 0.9715
+Roc_auc: 0.9984
+Pr_auc: 0.9941
+Per class roc auc:
+  Classe 0: 0.9980
+  Classe 1: 0.9985
+  Classe 2: 0.9985
+Per class pr auc:
+  Classe 0: 0.9927
+  Classe 1: 0.9949
+  Classe 2: 0.9949
+Pr auc macro: 0.9941
+Pr auc weighted: 0.9941
+Pr auc micro: 0.9941
+Roc auc macro: 0.9984
+Roc auc weighted: 0.9984
+Roc auc micro: 0.9987
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.5105
+Precision: 0.3521
+Recall: 0.4237
+F1: 0.2766
+Roc_auc: 0.6658
+Pr_auc: 0.3603
+Per class roc auc:
+  Classe 0: 0.6700
+  Classe 1: 0.6613
+  Classe 2: 0.5094
+Per class pr auc:
+  Classe 0: 0.9703
+  Classe 1: 0.0854
+  Classe 2: 0.0251
+Pr auc macro: 0.3603
+Pr auc weighted: 0.9212
+Pr auc micro: 0.3603
+Roc auc macro: 0.6136
+Roc auc weighted: 0.6658
+Roc auc micro: 0.6575

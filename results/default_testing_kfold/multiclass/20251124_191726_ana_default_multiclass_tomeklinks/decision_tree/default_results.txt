@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Decision Tree com tomeklinks
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9977
+Precision: 0.9992
+Recall: 0.9685
+F1: 0.9835
+Roc_auc: 0.9980
+Pr_auc: 0.9757
+Per class roc auc:
+  Classe 0: 0.9980
+  Classe 1: 0.9979
+  Classe 2: 0.9982
+Per class pr auc:
+  Classe 0: 0.9998
+  Classe 1: 0.9603
+  Classe 2: 0.9670
+Pr auc macro: 0.9757
+Pr auc weighted: 0.9980
+Pr auc micro: 0.9757
+Roc auc macro: 0.9980
+Roc auc weighted: 0.9980
+Roc auc micro: 0.9999
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.8990
+Precision: 0.3688
+Recall: 0.3667
+F1: 0.3672
+Roc_auc: 0.5148
+Pr_auc: 0.3371
+Per class roc auc:
+  Classe 0: 0.5151
+  Classe 1: 0.5278
+  Classe 2: 0.4889
+Per class pr auc:
+  Classe 0: 0.9477
+  Classe 1: 0.0380
+  Classe 2: 0.0255
+Pr auc macro: 0.3371
+Pr auc weighted: 0.8985
+Pr auc micro: 0.3371
+Roc auc macro: 0.5106
+Roc auc weighted: 0.5148
+Roc auc micro: 0.9203

@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: Decision Tree com none
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9975
+Precision: 1.0000
+Recall: 0.9539
+F1: 0.9764
+Roc_auc: 0.9981
+Pr_auc: 0.9725
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.8948
+Precision: 0.0901
+Recall: 0.1053
+F1: 0.0971
+Roc_auc: 0.4990
+Pr_auc: 0.0575

@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Gradient Boosting com randomundersampler
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9224
+Precision: 0.9271
+Recall: 0.9224
+F1: 0.9228
+Roc_auc: 0.9803
+Pr_auc: 0.9672
+Per class roc auc:
+  Classe 0: 0.9824
+  Classe 1: 0.9758
+  Classe 2: 0.9828
+Per class pr auc:
+  Classe 0: 0.9594
+  Classe 1: 0.9677
+  Classe 2: 0.9744
+Pr auc macro: 0.9672
+Pr auc weighted: 0.9672
+Pr auc micro: 0.9672
+Roc auc macro: 0.9803
+Roc auc weighted: 0.9803
+Roc auc micro: 0.9812
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.5266
+Precision: 0.3524
+Recall: 0.4293
+F1: 0.2830
+Roc_auc: 0.6734
+Pr_auc: 0.3637
+Per class roc auc:
+  Classe 0: 0.6769
+  Classe 1: 0.6815
+  Classe 2: 0.5288
+Per class pr auc:
+  Classe 0: 0.9712
+  Classe 1: 0.0901
+  Classe 2: 0.0298
+Pr auc macro: 0.3637
+Pr auc weighted: 0.9224
+Pr auc micro: 0.3637
+Roc auc macro: 0.6291
+Roc auc weighted: 0.6734
+Roc auc micro: 0.6876
