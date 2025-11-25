@@ -1,0 +1,67 @@
+Holdout Evaluation Results for decision_tree
+==================================================
+
+Results for each fold's best parameters on holdout set:
+--------------------------------------------------
+
+Fold 1:
+  Best Parameters: {'max_depth': 7, 'min_samples_split': 17, 'min_samples_leaf': 19, 'criterion': 'gini', 'max_features': None, 'splitter': 'best', 'class_weight': 'balanced'}
+  Holdout Metrics:
+    Accuracy: 0.6360
+    Precision: 0.0738
+    Recall: 0.5000
+    F1-Score: 0.1286
+    ROC-AUC: 0.6053
+    PR-AUC: 0.1188
+
+Fold 2:
+  Best Parameters: {'max_depth': 5, 'min_samples_split': 12, 'min_samples_leaf': 10, 'criterion': 'entropy', 'max_features': None, 'splitter': 'random', 'class_weight': 'balanced'}
+  Holdout Metrics:
+    Accuracy: 0.4234
+    Precision: 0.0738
+    Recall: 0.8421
+    F1-Score: 0.1357
+    ROC-AUC: 0.6662
+    PR-AUC: 0.1072
+
+Fold 3:
+  Best Parameters: {'max_depth': 7, 'min_samples_split': 19, 'min_samples_leaf': 6, 'criterion': 'log_loss', 'max_features': 'log2', 'splitter': 'best', 'class_weight': 'balanced'}
+  Holdout Metrics:
+    Accuracy: 0.6570
+    Precision: 0.0950
+    Recall: 0.6316
+    F1-Score: 0.1652
+    ROC-AUC: 0.6699
+    PR-AUC: 0.1152
+
+Fold 4:
+  Best Parameters: {'max_depth': 6, 'min_samples_split': 18, 'min_samples_leaf': 18, 'criterion': 'entropy', 'max_features': None, 'splitter': 'random', 'class_weight': 'balanced'}
+  Holdout Metrics:
+    Accuracy: 0.5874
+    Precision: 0.0817
+    Recall: 0.6526
+    F1-Score: 0.1453
+    ROC-AUC: 0.6717
+    PR-AUC: 0.1143
+
+Fold 5:
+  Best Parameters: {'max_depth': 7, 'min_samples_split': 20, 'min_samples_leaf': 19, 'criterion': 'gini', 'max_features': None, 'splitter': 'random', 'class_weight': 'balanced'}
+  Holdout Metrics:
+    Accuracy: 0.7373
+    Precision: 0.0979
+    Recall: 0.4737
+    F1-Score: 0.1623
+    ROC-AUC: 0.6667
+    PR-AUC: 0.1006
+
+==================================================
+BEST PERFORMING MODEL ON HOLDOUT SET:
+Fold 1 (PR-AUC: 0.1188)
+Parameters: {'max_depth': 7, 'min_samples_split': 17, 'min_samples_leaf': 19, 'criterion': 'gini', 'max_features': None, 'splitter': 'best', 'class_weight': 'balanced'}
+Final Holdout Performance:
+  Accuracy: 0.6360
+  Precision: 0.0738
+  Recall: 0.5000
+  F1-Score: 0.1286
+  ROC-AUC: 0.6053
+  PR-AUC: 0.1188

@@ -1,0 +1,67 @@
+Holdout Evaluation Results for k_nearest_neighbors
+==================================================
+
+Results for each fold's best parameters on holdout set:
+--------------------------------------------------
+
+Fold 1:
+  Best Parameters: {'n_neighbors': 20, 'weights': 'distance', 'algorithm': 'kd_tree', 'p': 2, 'leaf_size': 28}
+  Holdout Metrics:
+    Accuracy: 0.9474
+    Precision: 1.0000
+    Recall: 0.0211
+    F1-Score: 0.0412
+    ROC-AUC: 0.6434
+    PR-AUC: 0.1627
+
+Fold 2:
+  Best Parameters: {'n_neighbors': 20, 'weights': 'distance', 'algorithm': 'kd_tree', 'p': 2, 'leaf_size': 27}
+  Holdout Metrics:
+    Accuracy: 0.9474
+    Precision: 1.0000
+    Recall: 0.0211
+    F1-Score: 0.0412
+    ROC-AUC: 0.6594
+    PR-AUC: 0.1644
+
+Fold 3:
+  Best Parameters: {'n_neighbors': 20, 'weights': 'distance', 'algorithm': 'auto', 'p': 2, 'leaf_size': 24}
+  Holdout Metrics:
+    Accuracy: 0.9474
+    Precision: 1.0000
+    Recall: 0.0211
+    F1-Score: 0.0412
+    ROC-AUC: 0.6582
+    PR-AUC: 0.1643
+
+Fold 4:
+  Best Parameters: {'n_neighbors': 20, 'weights': 'distance', 'algorithm': 'kd_tree', 'p': 2, 'leaf_size': 28}
+  Holdout Metrics:
+    Accuracy: 0.9474
+    Precision: 1.0000
+    Recall: 0.0211
+    F1-Score: 0.0412
+    ROC-AUC: 0.6434
+    PR-AUC: 0.1627
+
+Fold 5:
+  Best Parameters: {'n_neighbors': 20, 'weights': 'distance', 'algorithm': 'auto', 'p': 2, 'leaf_size': 30}
+  Holdout Metrics:
+    Accuracy: 0.9474
+    Precision: 1.0000
+    Recall: 0.0211
+    F1-Score: 0.0412
+    ROC-AUC: 0.6582
+    PR-AUC: 0.1643
+
+==================================================
+BEST PERFORMING MODEL ON HOLDOUT SET:
+Fold 2 (PR-AUC: 0.1644)
+Parameters: {'n_neighbors': 20, 'weights': 'distance', 'algorithm': 'kd_tree', 'p': 2, 'leaf_size': 27}
+Final Holdout Performance:
+  Accuracy: 0.9474
+  Precision: 1.0000
+  Recall: 0.0211
+  F1-Score: 0.0412
+  ROC-AUC: 0.6594
+  PR-AUC: 0.1644

@@ -1,0 +1,388 @@
+RESULTADOS DO MODELO: MULTI_LAYER_PERCEPTRON
+================================================================================
+
+Data/Hora: 2025-11-25 08:26:48
+
+FOLD 1 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.1470 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 177, "layer_1_size": 81, "activation": "tanh", "alpha": 1.899922434156752e-05, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.003252643377727951, "max_iter": 643}
+  Trial 1: Score=0.1458 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 170, "layer_1_size": 59, "activation": "logistic", "alpha": 0.00022818518491240808, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.0012626317700883559, "max_iter": 219}
+  Trial 2: Score=0.1671 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 102, "layer_1_size": 138, "activation": "tanh", "alpha": 0.00021913164854737394, "learning_rate": "invscaling", "solver": "lbfgs", "learning_rate_init": 0.00020461846607294768, "max_iter": 538}
+  Trial 3: Score=0.1427 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 52, "layer_1_size": 129, "activation": "tanh", "alpha": 0.02876163433672447, "learning_rate": "invscaling", "solver": "lbfgs", "learning_rate_init": 0.0020863023144077914, "max_iter": 562}
+  Trial 4: Score=0.1569 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 79, "activation": "tanh", "alpha": 0.0018298341021132673, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.0002826303786695748, "max_iter": 299}
+  Trial 5: Score=0.1540 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 85, "layer_1_size": 63, "activation": "tanh", "alpha": 8.017685039987987e-05, "learning_rate": "constant", "solver": "sgd", "learning_rate_init": 0.0011968791151746496, "max_iter": 234}
+  Trial 6: Score=0.1412 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 100, "layer_1_size": 188, "layer_2_size": 187, "activation": "logistic", "alpha": 0.039988978037071965, "learning_rate": "invscaling", "solver": "sgd", "learning_rate_init": 0.010289864449303488, "max_iter": 440}
+  Trial 7: Score=0.1417 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 119, "layer_1_size": 19, "layer_2_size": 145, "activation": "tanh", "alpha": 0.0014497536002711813, "learning_rate": "invscaling", "solver": "sgd", "learning_rate_init": 0.004089259190099468, "max_iter": 762}
+  Trial 8: Score=0.1687 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 148, "activation": "tanh", "alpha": 1.6667293489063786e-05, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.0022655002167198237, "max_iter": 496}
+  Trial 9: Score=0.1265 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 149, "layer_1_size": 143, "activation": "relu", "alpha": 0.03004809579780234, "learning_rate": "constant", "solver": "sgd", "learning_rate_init": 0.001258433212474068, "max_iter": 548}
+  Trial 10: Score=0.1119 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 19, "activation": "relu", "alpha": 1.1457011320662592e-05, "learning_rate": "adaptive", "solver": "lbfgs", "learning_rate_init": 0.06536270452973439, "max_iter": 963}
+  Trial 11: Score=0.1670 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 132, "activation": "tanh", "alpha": 0.00016454614274145945, "learning_rate": "adaptive", "solver": "lbfgs", "learning_rate_init": 0.00011522895736521587, "max_iter": 418}
+  Trial 12: Score=0.1633 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 148, "activation": "tanh", "alpha": 4.8404473240412386e-05, "learning_rate": "invscaling", "solver": "lbfgs", "learning_rate_init": 0.00026805417075169186, "max_iter": 741}
+  Trial 13: Score=0.1546 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 200, "layer_1_size": 189, "layer_2_size": 14, "activation": "tanh", "alpha": 0.0004498029220110921, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.016689461453619395, "max_iter": 428}
+  Trial 14: Score=0.1576 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 59, "activation": "logistic", "alpha": 0.006064269874075005, "learning_rate": "adaptive", "solver": "lbfgs", "learning_rate_init": 0.00029582801370675273, "max_iter": 679}
+  Trial 15: Score=0.1256 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 108, "activation": "relu", "alpha": 3.906621097212283e-05, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.0005672603059439961, "max_iter": 864}
+  Trial 16: Score=0.1486 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 135, "layer_1_size": 149, "layer_2_size": 49, "activation": "tanh", "alpha": 0.0005278766518896477, "learning_rate": "invscaling", "solver": "lbfgs", "learning_rate_init": 0.00010243489730303805, "max_iter": 508}
+  Trial 17: Score=0.1673 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 166, "layer_1_size": 107, "activation": "tanh", "alpha": 0.005362372226436601, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.008797686109964368, "max_iter": 353}
+  Trial 18: Score=0.1571 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 181, "activation": "logistic", "alpha": 0.006798735954193208, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.008442773934861087, "max_iter": 329}
+  Trial 19: Score=0.1442 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 156, "layer_1_size": 103, "activation": "relu", "alpha": 0.0056248986869741014, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.03019238938747539, "max_iter": 349}
+  Trial 20: Score=0.1575 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 187, "layer_1_size": 27, "layer_2_size": 101, "activation": "tanh", "alpha": 0.002424676502520271, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.005914688090575654, "max_iter": 466}
+  Trial 21: Score=0.1717 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 126, "layer_1_size": 105, "activation": "tanh", "alpha": 0.00011904162358710642, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.020882129209312875, "max_iter": 608}
+  Trial 22: Score=0.1596 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 162, "layer_1_size": 92, "activation": "tanh", "alpha": 2.9157907936817186e-05, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.023242573448940682, "max_iter": 609}
+  Trial 23: Score=0.1522 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 134, "layer_1_size": 119, "activation": "tanh", "alpha": 8.662267338926397e-05, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.05304969535220574, "max_iter": 361}
+  Trial 24: Score=0.1523 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 121, "activation": "tanh", "alpha": 0.08088422820176326, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.012667383593156849, "max_iter": 721}
+  Trial 25: Score=0.1593 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 144, "layer_1_size": 161, "activation": "tanh", "alpha": 1.0576891433394601e-05, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.040250999991234174, "max_iter": 498}
+  Trial 26: Score=0.1716 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 166, "layer_1_size": 75, "layer_2_size": 98, "activation": "tanh", "alpha": 0.0005872745315413929, "learning_rate": "adaptive", "solver": "lbfgs", "learning_rate_init": 0.005782100238370308, "max_iter": 396}
+  Trial 27: Score=0.1591 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 196, "layer_1_size": 48, "layer_2_size": 94, "activation": "tanh", "alpha": 0.00011141508701439687, "learning_rate": "adaptive", "solver": "lbfgs", "learning_rate_init": 0.0902246606584021, "max_iter": 814}
+  Trial 28: Score=0.1393 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 119, "layer_1_size": 78, "layer_2_size": 134, "activation": "logistic", "alpha": 0.0005550105567653559, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.0020829004547568025, "max_iter": 611}
+  Trial 29: Score=0.1476 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 176, "layer_1_size": 44, "layer_2_size": 60, "activation": "relu", "alpha": 2.045445316880489e-05, "learning_rate": "adaptive", "solver": "sgd", "learning_rate_init": 0.0034022522484437848, "max_iter": 648}
+
+Melhor trial (Optuna): 21
+  hidden_layer_sizes: (126, 105)
+  activation: tanh
+  alpha: 0.00011904162358710642
+  learning_rate: constant
+  max_iter: 608
+  early_stopping: True
+
+Importância dos parâmetros (Optuna):
+  activation: 0.4231
+  max_iter: 0.2157
+  layer_0_size: 0.1204
+  solver: 0.0930
+  learning_rate: 0.0497
+  n_layers: 0.0400
+  learning_rate_init: 0.0304
+  alpha: 0.0277
+
+Resultado do treino:
+  accuracy: 0.9503
+  precision: 1.0000
+  recall: 0.0757
+  f1: 0.1407
+  roc_auc: 0.7772
+  pr_auc: 0.3485
+
+Resultado do teste:
+  accuracy: 0.9470
+  precision: 0.6000
+  recall: 0.0199
+  f1: 0.0385
+  roc_auc: 0.6445
+  pr_auc: 0.1187
+
+============================================================
+
+FOLD 2 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.1403 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 183, "layer_1_size": 140, "activation": "logistic", "alpha": 0.0713375116523395, "learning_rate": "invscaling", "solver": "lbfgs", "learning_rate_init": 0.001733220911229734, "max_iter": 202}
+  Trial 1: Score=0.1106 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 59, "layer_1_size": 17, "layer_2_size": 20, "activation": "relu", "alpha": 0.0010392638988534375, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.0014329061305587104, "max_iter": 526}
+  Trial 2: Score=0.1367 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 151, "layer_1_size": 159, "layer_2_size": 148, "activation": "logistic", "alpha": 0.015928152933463297, "learning_rate": "invscaling", "solver": "lbfgs", "learning_rate_init": 0.0003859441782619282, "max_iter": 881}
+  Trial 3: Score=0.1501 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 49, "layer_1_size": 79, "layer_2_size": 176, "activation": "tanh", "alpha": 0.00802773739931961, "learning_rate": "invscaling", "solver": "lbfgs", "learning_rate_init": 0.07293681311332648, "max_iter": 782}
+  Trial 4: Score=0.1592 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 110, "layer_1_size": 105, "activation": "tanh", "alpha": 2.2942628341262225e-05, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.01575563656242933, "max_iter": 385}
+  Trial 5: Score=0.1381 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 47, "layer_1_size": 101, "layer_2_size": 52, "activation": "tanh", "alpha": 0.00269490859479655, "learning_rate": "adaptive", "solver": "lbfgs", "learning_rate_init": 0.022499446158576325, "max_iter": 270}
+  Trial 6: Score=0.1430 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 70, "layer_1_size": 74, "layer_2_size": 132, "activation": "tanh", "alpha": 0.014525426430544398, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.047821999595200844, "max_iter": 476}
+  Trial 7: Score=0.1441 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 86, "layer_1_size": 53, "activation": "tanh", "alpha": 0.009056674804731699, "learning_rate": "invscaling", "solver": "lbfgs", "learning_rate_init": 0.011622847177599814, "max_iter": 903}
+  Trial 8: Score=0.1578 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 198, "activation": "tanh", "alpha": 0.0005767559740119201, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.0003393215955226026, "max_iter": 701}
+  Trial 9: Score=0.1050 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 79, "activation": "relu", "alpha": 0.036316613001413554, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.020280923351805712, "max_iter": 999}
+  Trial 10: Score=0.1219 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 124, "layer_1_size": 186, "activation": "relu", "alpha": 1.0277594400303204e-05, "learning_rate": "constant", "solver": "sgd", "learning_rate_init": 0.005895709261286065, "max_iter": 373}
+  Trial 11: Score=0.1352 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 14, "activation": "tanh", "alpha": 5.61934193857699e-05, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.0001071157949727562, "max_iter": 769}
+  Trial 12: Score=0.1584 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 195, "activation": "tanh", "alpha": 0.0001509669120170808, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.0004895525055761679, "max_iter": 674}
+  Trial 13: Score=0.1490 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 126, "activation": "tanh", "alpha": 9.139591808706454e-05, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.0029174111979357055, "max_iter": 601}
+  Trial 14: Score=0.1512 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 168, "layer_1_size": 125, "activation": "tanh", "alpha": 9.145672734447503e-05, "learning_rate": "constant", "solver": "sgd", "learning_rate_init": 0.0006753621231393144, "max_iter": 431}
+  Trial 15: Score=0.1585 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 151, "activation": "logistic", "alpha": 1.2719906208120232e-05, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.007200458751003637, "max_iter": 605}
+  Trial 16: Score=0.1333 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 112, "layer_1_size": 198, "activation": "logistic", "alpha": 1.6538854576767945e-05, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.009090513371435622, "max_iter": 345}
+  Trial 17: Score=0.1557 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 150, "activation": "logistic", "alpha": 2.987131954384396e-05, "learning_rate": "adaptive", "solver": "sgd", "learning_rate_init": 0.004784996815419435, "max_iter": 562}
+  Trial 18: Score=0.1340 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 141, "layer_1_size": 51, "activation": "logistic", "alpha": 2.9866388252832192e-05, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.02607603049978724, "max_iter": 642}
+  Trial 19: Score=0.1656 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 101, "activation": "logistic", "alpha": 0.0002911941193887296, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.042919175890123264, "max_iter": 446}
+  Trial 20: Score=0.1332 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 96, "layer_1_size": 112, "activation": "logistic", "alpha": 0.00035272728258303255, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.09513907765257563, "max_iter": 348}
+  Trial 21: Score=0.1554 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 103, "activation": "logistic", "alpha": 0.0003291957799249705, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.012245128051266006, "max_iter": 498}
+  Trial 22: Score=0.1607 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 124, "activation": "logistic", "alpha": 2.8773353052070635e-05, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.04299218645920022, "max_iter": 414}
+  Trial 23: Score=0.1500 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 117, "activation": "logistic", "alpha": 0.00019181804074371245, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.047072633245987774, "max_iter": 413}
+  Trial 24: Score=0.1551 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 132, "activation": "logistic", "alpha": 0.0016119229393741269, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.03899656434621989, "max_iter": 286}
+  Trial 25: Score=0.1136 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 98, "activation": "relu", "alpha": 3.60800718222496e-05, "learning_rate": "constant", "solver": "sgd", "learning_rate_init": 0.017176142700083524, "max_iter": 420}
+  Trial 26: Score=0.1246 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 89, "layer_1_size": 14, "activation": "logistic", "alpha": 5.362681735305518e-05, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.03509243633172122, "max_iter": 296}
+  Trial 27: Score=0.1523 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 109, "activation": "logistic", "alpha": 2.160095039470472e-05, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.08287005179674581, "max_iter": 465}
+  Trial 28: Score=0.1251 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 169, "layer_1_size": 158, "activation": "relu", "alpha": 0.00012569140725380011, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.05660081527046633, "max_iter": 221}
+  Trial 29: Score=0.1480 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 68, "activation": "logistic", "alpha": 0.00029909242075749036, "learning_rate": "constant", "solver": "sgd", "learning_rate_init": 0.003646116537310282, "max_iter": 213}
+
+Melhor trial (Optuna): 19
+  hidden_layer_sizes: (101,)
+  activation: logistic
+  alpha: 0.0002911941193887296
+  learning_rate: constant
+  max_iter: 446
+  early_stopping: True
+
+Importância dos parâmetros (Optuna):
+  activation: 0.8199
+  max_iter: 0.0524
+  n_layers: 0.0475
+  layer_0_size: 0.0386
+  solver: 0.0248
+  learning_rate_init: 0.0096
+  learning_rate: 0.0059
+  alpha: 0.0013
+
+Resultado do treino:
+  accuracy: 0.9463
+  precision: 0.3333
+  recall: 0.0016
+  f1: 0.0033
+  roc_auc: 0.7043
+  pr_auc: 0.1477
+
+Resultado do teste:
+  accuracy: 0.9466
+  precision: 0.6667
+  recall: 0.0132
+  f1: 0.0258
+  roc_auc: 0.6933
+  pr_auc: 0.1623
+
+============================================================
+
+FOLD 3 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.1493 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 50, "layer_1_size": 45, "activation": "tanh", "alpha": 0.00028381724621849813, "learning_rate": "adaptive", "solver": "lbfgs", "learning_rate_init": 0.02403953553567145, "max_iter": 270}
+  Trial 1: Score=0.1585 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 184, "layer_1_size": 94, "layer_2_size": 158, "activation": "tanh", "alpha": 0.0007487318816968517, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.02351396534217019, "max_iter": 560}
+  Trial 2: Score=0.1494 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 190, "activation": "relu", "alpha": 0.0012859916159678614, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.0028484863685430033, "max_iter": 840}
+  Trial 3: Score=0.1457 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 154, "activation": "relu", "alpha": 0.00023574582835878807, "learning_rate": "constant", "solver": "sgd", "learning_rate_init": 0.030660559038593046, "max_iter": 430}
+  Trial 4: Score=0.1049 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 126, "activation": "relu", "alpha": 6.655962901985123e-05, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.0021509508880369916, "max_iter": 739}
+  Trial 5: Score=0.1371 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 148, "layer_1_size": 14, "layer_2_size": 50, "activation": "logistic", "alpha": 0.0013252355655582763, "learning_rate": "constant", "solver": "sgd", "learning_rate_init": 0.004315436720388547, "max_iter": 863}
+  Trial 6: Score=0.1327 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 99, "layer_1_size": 174, "activation": "relu", "alpha": 0.0030173794605391387, "learning_rate": "invscaling", "solver": "lbfgs", "learning_rate_init": 0.0019237356493399713, "max_iter": 234}
+  Trial 7: Score=0.1211 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 67, "layer_1_size": 199, "layer_2_size": 23, "activation": "logistic", "alpha": 6.957403066352151e-05, "learning_rate": "constant", "solver": "sgd", "learning_rate_init": 0.07334650613392221, "max_iter": 266}
+  Trial 8: Score=0.1244 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 24, "layer_1_size": 28, "layer_2_size": 181, "activation": "tanh", "alpha": 0.0037975387715516234, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.00012493684643827342, "max_iter": 763}
+  Trial 9: Score=0.1218 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 50, "layer_1_size": 17, "activation": "logistic", "alpha": 3.068835561445566e-05, "learning_rate": "invscaling", "solver": "sgd", "learning_rate_init": 0.003034677755536338, "max_iter": 767}
+  Trial 10: Score=0.1564 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 197, "layer_1_size": 102, "layer_2_size": 172, "activation": "tanh", "alpha": 0.04821496443389323, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.011648431231453076, "max_iter": 530}
+  Trial 11: Score=0.1467 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 195, "layer_1_size": 104, "layer_2_size": 176, "activation": "tanh", "alpha": 0.037637966932762786, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.012489595564080157, "max_iter": 541}
+  Trial 12: Score=0.1607 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 169, "layer_1_size": 101, "layer_2_size": 127, "activation": "tanh", "alpha": 0.08842325494179727, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.09072900633671739, "max_iter": 568}
+  Trial 13: Score=0.1552 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 161, "layer_1_size": 72, "layer_2_size": 114, "activation": "tanh", "alpha": 0.0107220331663527, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.07734014835879593, "max_iter": 635}
+  Trial 14: Score=0.1666 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 108, "layer_1_size": 135, "activation": "tanh", "alpha": 0.01645184069497689, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.08948825028147324, "max_iter": 424}
+  Trial 15: Score=0.1508 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 106, "layer_1_size": 144, "activation": "tanh", "alpha": 0.0964297576852516, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.0004170173328458081, "max_iter": 432}
+  Trial 16: Score=0.1494 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 93, "layer_1_size": 140, "activation": "tanh", "alpha": 0.014075690032991021, "learning_rate": "adaptive", "solver": "lbfgs", "learning_rate_init": 0.08637496234632581, "max_iter": 393}
+  Trial 17: Score=0.1609 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 129, "layer_1_size": 138, "activation": "tanh", "alpha": 0.015296123800934713, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.04070644689674268, "max_iter": 650}
+  Trial 18: Score=0.1580 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 130, "layer_1_size": 137, "activation": "tanh", "alpha": 0.01006363153504097, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.008260776773302394, "max_iter": 967}
+  Trial 19: Score=0.1352 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 123, "layer_1_size": 169, "activation": "logistic", "alpha": 0.01907279510963634, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.039458332222522124, "max_iter": 665}
+  Trial 20: Score=0.1554 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 78, "activation": "tanh", "alpha": 0.0037351098661864354, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.0005093468616723656, "max_iter": 339}
+  Trial 21: Score=0.1621 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 175, "layer_1_size": 130, "activation": "tanh", "alpha": 0.09322073889668828, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.047783548836170274, "max_iter": 473}
+  Trial 22: Score=0.1563 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 128, "layer_1_size": 125, "activation": "tanh", "alpha": 0.027975356687664807, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.03778801011316612, "max_iter": 486}
+  Trial 23: Score=0.1570 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 145, "layer_1_size": 165, "activation": "tanh", "alpha": 0.006612334506480177, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.04977671147514191, "max_iter": 343}
+  Trial 24: Score=0.1740 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 175, "layer_1_size": 122, "activation": "tanh", "alpha": 0.05163280847654761, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.014491311288143603, "max_iter": 685}
+  Trial 25: Score=0.1530 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 175, "layer_1_size": 77, "activation": "tanh", "alpha": 0.05652719808068883, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.01435415386146364, "max_iter": 502}
+  Trial 26: Score=0.1579 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 173, "activation": "tanh", "alpha": 0.031232420583914258, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.007540333128290953, "max_iter": 706}
+  Trial 27: Score=0.1529 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 111, "layer_1_size": 118, "activation": "tanh", "alpha": 0.09459693466111983, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.005760177204542172, "max_iter": 609}
+  Trial 28: Score=0.0942 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 11, "layer_1_size": 120, "activation": "logistic", "alpha": 0.0066866173147937654, "learning_rate": "invscaling", "solver": "sgd", "learning_rate_init": 0.019880718615228266, "max_iter": 467}
+  Trial 29: Score=0.1391 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 144, "activation": "relu", "alpha": 0.04355056705785342, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.02049346189751895, "max_iter": 400}
+
+Melhor trial (Optuna): 24
+  hidden_layer_sizes: (175, 122)
+  activation: tanh
+  alpha: 0.05163280847654761
+  learning_rate: adaptive
+  max_iter: 685
+  early_stopping: True
+
+Importância dos parâmetros (Optuna):
+  layer_0_size: 0.2842
+  activation: 0.2797
+  learning_rate: 0.2402
+  solver: 0.1076
+  max_iter: 0.0445
+  learning_rate_init: 0.0270
+  alpha: 0.0135
+  n_layers: 0.0034
+
+Resultado do treino:
+  accuracy: 0.9517
+  precision: 0.9692
+  recall: 0.1038
+  f1: 0.1875
+  roc_auc: 0.8093
+  pr_auc: 0.4087
+
+Resultado do teste:
+  accuracy: 0.9455
+  precision: 0.4167
+  recall: 0.0329
+  f1: 0.0610
+  roc_auc: 0.6739
+  pr_auc: 0.1568
+
+============================================================
+
+FOLD 4 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.1754 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 145, "activation": "logistic", "alpha": 0.010700301425163643, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.01625290454816281, "max_iter": 372}
+  Trial 1: Score=0.1458 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 187, "layer_1_size": 147, "activation": "logistic", "alpha": 0.01448979542275563, "learning_rate": "constant", "solver": "sgd", "learning_rate_init": 0.000853695584283871, "max_iter": 649}
+  Trial 2: Score=0.1354 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 60, "layer_1_size": 73, "activation": "logistic", "alpha": 7.621358146557198e-05, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.00020172063633239624, "max_iter": 379}
+  Trial 3: Score=0.1635 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 66, "activation": "logistic", "alpha": 0.06430006545621841, "learning_rate": "adaptive", "solver": "sgd", "learning_rate_init": 0.0013703584341949405, "max_iter": 337}
+  Trial 4: Score=0.1660 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 193, "layer_1_size": 56, "layer_2_size": 159, "activation": "tanh", "alpha": 9.164506447705139e-05, "learning_rate": "invscaling", "solver": "sgd", "learning_rate_init": 0.0009528844398511553, "max_iter": 869}
+  Trial 5: Score=0.1330 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 53, "layer_1_size": 150, "layer_2_size": 131, "activation": "relu", "alpha": 0.004593817500454408, "learning_rate": "adaptive", "solver": "lbfgs", "learning_rate_init": 0.00014880561963109614, "max_iter": 243}
+  Trial 6: Score=0.1519 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 91, "activation": "logistic", "alpha": 0.00013530960773104777, "learning_rate": "invscaling", "solver": "sgd", "learning_rate_init": 0.0008779176369992166, "max_iter": 230}
+  Trial 7: Score=0.1796 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 125, "activation": "tanh", "alpha": 0.002019159135357369, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.0017111190280712414, "max_iter": 571}
+  Trial 8: Score=0.1523 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 173, "layer_1_size": 111, "activation": "logistic", "alpha": 0.01272546241204614, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.027679499509498058, "max_iter": 378}
+  Trial 9: Score=0.1564 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 45, "layer_1_size": 67, "activation": "tanh", "alpha": 0.009060188935518711, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.0006464394101625313, "max_iter": 596}
+  Trial 10: Score=0.1770 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 131, "activation": "tanh", "alpha": 0.0007163001519893541, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.006853759932518311, "max_iter": 624}
+  Trial 11: Score=0.1700 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 126, "activation": "tanh", "alpha": 0.0007148727753126589, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.006257824683466389, "max_iter": 609}
+  Trial 12: Score=0.1543 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 111, "activation": "tanh", "alpha": 1.0650078394661827e-05, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.005159948731770548, "max_iter": 775}
+  Trial 13: Score=0.1648 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 148, "activation": "tanh", "alpha": 0.0008332867718502422, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.012261035364417095, "max_iter": 560}
+  Trial 14: Score=0.1299 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 11, "activation": "relu", "alpha": 0.0021080478640036066, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.07473062686883077, "max_iter": 737}
+  Trial 15: Score=0.1467 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 94, "layer_1_size": 196, "activation": "tanh", "alpha": 0.0003755433063746027, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.0025473597772628282, "max_iter": 500}
+  Trial 16: Score=0.1739 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 148, "activation": "tanh", "alpha": 0.0029340160182123815, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.0003540449893669585, "max_iter": 931}
+  Trial 17: Score=0.1747 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 124, "layer_1_size": 20, "layer_2_size": 23, "activation": "tanh", "alpha": 0.00026606991603824224, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.003003921265244413, "max_iter": 725}
+  Trial 18: Score=0.1400 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 164, "activation": "relu", "alpha": 2.786025073556951e-05, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.0696452821363771, "max_iter": 478}
+  Trial 19: Score=0.1742 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 122, "layer_1_size": 11, "activation": "tanh", "alpha": 0.044987118361798105, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.007719219545416761, "max_iter": 1000}
+  Trial 20: Score=0.1633 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 81, "activation": "tanh", "alpha": 0.0015582131750929169, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.026061088035357893, "max_iter": 488}
+  Trial 21: Score=0.1700 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 142, "activation": "logistic", "alpha": 0.006063588575657714, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.018576749651564653, "max_iter": 665}
+  Trial 22: Score=0.1660 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 138, "activation": "logistic", "alpha": 0.022292788702483815, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.002101277989675268, "max_iter": 416}
+  Trial 23: Score=0.1393 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 166, "activation": "relu", "alpha": 0.0005013559714036187, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.011127780007232685, "max_iter": 814}
+  Trial 24: Score=0.1549 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 106, "activation": "tanh", "alpha": 0.0013167946060823265, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.004490531004882609, "max_iter": 538}
+  Trial 25: Score=0.1511 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 155, "layer_1_size": 189, "activation": "logistic", "alpha": 0.029965913272588636, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.039131629283889496, "max_iter": 437}
+  Trial 26: Score=0.1668 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 132, "activation": "tanh", "alpha": 0.09751796875889457, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.014367690237795246, "max_iter": 308}
+  Trial 27: Score=0.1705 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 181, "activation": "tanh", "alpha": 0.0038067050895710464, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.0016422899297344781, "max_iter": 678}
+  Trial 28: Score=0.1455 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 113, "layer_1_size": 107, "activation": "relu", "alpha": 0.00018605031456004107, "learning_rate": "adaptive", "solver": "sgd", "learning_rate_init": 0.007515536496402476, "max_iter": 280}
+  Trial 29: Score=0.1469 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 92, "layer_1_size": 162, "activation": "logistic", "alpha": 0.007885080723455704, "learning_rate": "invscaling", "solver": "lbfgs", "learning_rate_init": 0.0037505465742923086, "max_iter": 622}
+
+Melhor trial (Optuna): 7
+  hidden_layer_sizes: (125,)
+  activation: tanh
+  alpha: 0.002019159135357369
+  learning_rate: constant
+  max_iter: 571
+  early_stopping: True
+
+Importância dos parâmetros (Optuna):
+  activation: 0.5737
+  layer_0_size: 0.1923
+  max_iter: 0.0876
+  n_layers: 0.0471
+  alpha: 0.0346
+  learning_rate_init: 0.0291
+  learning_rate: 0.0276
+  solver: 0.0081
+
+Resultado do treino:
+  accuracy: 0.9515
+  precision: 0.9677
+  recall: 0.0988
+  f1: 0.1794
+  roc_auc: 0.7757
+  pr_auc: 0.3155
+
+Resultado do teste:
+  accuracy: 0.9448
+  precision: 0.0000
+  recall: 0.0000
+  f1: 0.0000
+  roc_auc: 0.6455
+  pr_auc: 0.1139
+
+============================================================
+
+FOLD 5 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.1392 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 32, "activation": "tanh", "alpha": 0.0047547828168084914, "learning_rate": "adaptive", "solver": "lbfgs", "learning_rate_init": 0.002987916285591821, "max_iter": 819}
+  Trial 1: Score=0.1422 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 107, "layer_1_size": 99, "activation": "tanh", "alpha": 0.06620522491225962, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.03737731308685793, "max_iter": 808}
+  Trial 2: Score=0.1028 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 71, "activation": "relu", "alpha": 0.010934216551321775, "learning_rate": "invscaling", "solver": "sgd", "learning_rate_init": 0.040581704502483947, "max_iter": 318}
+  Trial 3: Score=0.1005 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 14, "layer_1_size": 83, "activation": "tanh", "alpha": 0.05343979344176704, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.00480067878450328, "max_iter": 771}
+  Trial 4: Score=0.1426 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 96, "activation": "logistic", "alpha": 0.006206891235941486, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.00010728624139270688, "max_iter": 391}
+  Trial 5: Score=0.1237 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 177, "activation": "relu", "alpha": 0.06722792154684776, "learning_rate": "adaptive", "solver": "sgd", "learning_rate_init": 0.0003247815444802815, "max_iter": 777}
+  Trial 6: Score=0.1338 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 142, "layer_1_size": 42, "layer_2_size": 190, "activation": "tanh", "alpha": 0.005883487535657001, "learning_rate": "constant", "solver": "sgd", "learning_rate_init": 0.023978181249834703, "max_iter": 272}
+  Trial 7: Score=0.1260 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 100, "layer_1_size": 118, "activation": "relu", "alpha": 0.0002800591999291164, "learning_rate": "constant", "solver": "adam", "learning_rate_init": 0.003154959156275514, "max_iter": 648}
+  Trial 8: Score=0.1272 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 64, "layer_1_size": 12, "layer_2_size": 33, "activation": "tanh", "alpha": 0.03150174089139129, "learning_rate": "invscaling", "solver": "lbfgs", "learning_rate_init": 0.03824417360287621, "max_iter": 589}
+  Trial 9: Score=0.1358 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 107, "layer_1_size": 73, "activation": "tanh", "alpha": 0.0004072136177436219, "learning_rate": "constant", "solver": "lbfgs", "learning_rate_init": 0.00047387958780338184, "max_iter": 599}
+  Trial 10: Score=0.1442 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 197, "activation": "logistic", "alpha": 1.3593388660659615e-05, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.00010371685347360683, "max_iter": 422}
+  Trial 11: Score=0.1530 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 190, "activation": "logistic", "alpha": 1.4693547767001682e-05, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.00011747768419235283, "max_iter": 407}
+  Trial 12: Score=0.1481 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 199, "activation": "logistic", "alpha": 1.264178771404826e-05, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.00016525767306126588, "max_iter": 425}
+  Trial 13: Score=0.1480 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 159, "activation": "logistic", "alpha": 1.1504965090636134e-05, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.0005149868758845188, "max_iter": 471}
+  Trial 14: Score=0.1472 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 196, "activation": "logistic", "alpha": 6.0718555721344624e-05, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.0010830363474330826, "max_iter": 226}
+  Trial 15: Score=0.1342 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 143, "layer_1_size": 197, "activation": "logistic", "alpha": 5.464518197590753e-05, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.0002070814763460708, "max_iter": 532}
+  Trial 16: Score=0.1515 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 163, "activation": "logistic", "alpha": 4.756805909414092e-05, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.0011676751980447724, "max_iter": 366}
+  Trial 17: Score=0.1328 | Hiperparâmetros: {"n_layers": 3, "layer_0_size": 165, "layer_1_size": 199, "layer_2_size": 150, "activation": "logistic", "alpha": 6.032898977238566e-05, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.0012084787912325747, "max_iter": 965}
+  Trial 18: Score=0.1291 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 133, "layer_1_size": 147, "activation": "logistic", "alpha": 0.00019812757929196708, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.008846815291999523, "max_iter": 344}
+  Trial 19: Score=0.1465 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 177, "activation": "logistic", "alpha": 0.0009854915425816409, "learning_rate": "invscaling", "solver": "sgd", "learning_rate_init": 0.0011143980306551969, "max_iter": 209}
+  Trial 20: Score=0.1442 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 132, "activation": "logistic", "alpha": 3.2016907222387166e-05, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.09288566561291865, "max_iter": 499}
+  Trial 21: Score=0.1451 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 197, "activation": "logistic", "alpha": 2.308185223323707e-05, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.00020148302176776462, "max_iter": 408}
+  Trial 22: Score=0.1444 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 177, "activation": "logistic", "alpha": 0.00012500451404124475, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.00024575004816784605, "max_iter": 354}
+  Trial 23: Score=0.1477 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 160, "activation": "logistic", "alpha": 1.1014321349497778e-05, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.00048452988128329513, "max_iter": 464}
+  Trial 24: Score=0.1428 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 185, "activation": "logistic", "alpha": 3.386949433057126e-05, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.00014269348963588996, "max_iter": 287}
+  Trial 25: Score=0.1326 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 157, "layer_1_size": 156, "activation": "relu", "alpha": 0.00010038281740761312, "learning_rate": "adaptive", "solver": "adam", "learning_rate_init": 0.0014017898974740955, "max_iter": 547}
+  Trial 26: Score=0.1458 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 182, "activation": "logistic", "alpha": 2.419910255970698e-05, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.0006841691593948818, "max_iter": 675}
+  Trial 27: Score=0.1523 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 200, "activation": "logistic", "alpha": 0.0005638538833718578, "learning_rate": "invscaling", "solver": "adam", "learning_rate_init": 0.00031673265027483616, "max_iter": 425}
+  Trial 28: Score=0.1301 | Hiperparâmetros: {"n_layers": 2, "layer_0_size": 147, "layer_1_size": 13, "activation": "logistic", "alpha": 0.0009416469099218761, "learning_rate": "invscaling", "solver": "lbfgs", "learning_rate_init": 0.0018980514360453409, "max_iter": 270}
+  Trial 29: Score=0.1020 | Hiperparâmetros: {"n_layers": 1, "layer_0_size": 122, "activation": "relu", "alpha": 0.0025952147385496166, "learning_rate": "adaptive", "solver": "sgd", "learning_rate_init": 0.0003357537786859879, "max_iter": 990}
+
+Melhor trial (Optuna): 11
+  hidden_layer_sizes: (190,)
+  activation: logistic
+  alpha: 1.4693547767001682e-05
+  learning_rate: invscaling
+  max_iter: 407
+  early_stopping: True
+
+Importância dos parâmetros (Optuna):
+  activation: 0.3173
+  layer_0_size: 0.2070
+  solver: 0.2060
+  max_iter: 0.0985
+  n_layers: 0.0773
+  alpha: 0.0608
+  learning_rate: 0.0241
+  learning_rate_init: 0.0091
+
+Resultado do treino:
+  accuracy: 0.9463
+  precision: 0.4444
+  recall: 0.0066
+  f1: 0.0130
+  roc_auc: 0.7014
+  pr_auc: 0.1457
+
+Resultado do teste:
+  accuracy: 0.9459
+  precision: 0.0000
+  recall: 0.0000
+  f1: 0.0000
+  roc_auc: 0.7399
+  pr_auc: 0.1977
+
+============================================================
+
+TABELA DE MÉTRICAS DE TREINO E TESTE POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treino: 1     | 0.9503     | 1.0000     | 0.0757     | 0.1407     | 0.7772     | 0.3485    
+Teste:  1     | 0.9470     | 0.6000     | 0.0199     | 0.0385     | 0.6445     | 0.1187    
+Treino: 2     | 0.9463     | 0.3333     | 0.0016     | 0.0033     | 0.7043     | 0.1477    
+Teste:  2     | 0.9466     | 0.6667     | 0.0132     | 0.0258     | 0.6933     | 0.1623    
+Treino: 3     | 0.9517     | 0.9692     | 0.1038     | 0.1875     | 0.8093     | 0.4087    
+Teste:  3     | 0.9455     | 0.4167     | 0.0329     | 0.0610     | 0.6739     | 0.1568    
+Treino: 4     | 0.9515     | 0.9677     | 0.0988     | 0.1794     | 0.7757     | 0.3155    
+Teste:  4     | 0.9448     | 0.0000     | 0.0000     | 0.0000     | 0.6455     | 0.1139    
+Treino: 5     | 0.9463     | 0.4444     | 0.0066     | 0.0130     | 0.7014     | 0.1457    
+Teste:  5     | 0.9459     | 0.0000     | 0.0000     | 0.0000     | 0.7399     | 0.1977    
+
+MÉDIAS E DESVIOS PADRÃO DAS MÉTRICAS POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treinos: 0.9492+-0.00 0.7430+-0.29 0.0573+-0.04 0.1048+-0.08 0.7536+-0.04 0.2732+-0.11 
+Testes:  0.9460+-0.00 0.3367+-0.29 0.0132+-0.01 0.0250+-0.02 0.6794+-0.04 0.1499+-0.03 
+
+MELHOR CONJUNTO DE HIPERPARÂMETROS GLOBAL (selecionado pelo maior PR AUC  ):
+------------------------------------------------------------
+{
+  "hidden_layer_sizes": [
+    190
+  ],
+  "activation": "logistic",
+  "alpha": 1.4693547767001682e-05,
+  "learning_rate": "invscaling",
+  "max_iter": 407,
+  "early_stopping": true
+}
+

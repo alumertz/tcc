@@ -1,0 +1,365 @@
+RESULTADOS DO MODELO: HISTOGRAM_GRADIENT_BOOSTING
+================================================================================
+
+Data/Hora: 2025-11-25 01:54:19
+
+FOLD 1 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.1380 | Hiperparâmetros: {"max_iter": 104, "learning_rate": 0.11109765496504773, "max_depth": 11, "min_samples_leaf": 28, "l2_regularization": 0.033181986441123024}
+  Trial 1: Score=0.1160 | Hiperparâmetros: {"max_iter": 72, "learning_rate": 0.27547041235595066, "max_depth": 8, "min_samples_leaf": 46, "l2_regularization": 0.6987543043684687}
+  Trial 2: Score=0.1676 | Hiperparâmetros: {"max_iter": 84, "learning_rate": 0.11667776050632646, "max_depth": 3, "min_samples_leaf": 25, "l2_regularization": 0.7095991017641128}
+  Trial 3: Score=0.1121 | Hiperparâmetros: {"max_iter": 150, "learning_rate": 0.2245469489828778, "max_depth": 12, "min_samples_leaf": 40, "l2_regularization": 0.5244578583180034}
+  Trial 4: Score=0.1600 | Hiperparâmetros: {"max_iter": 105, "learning_rate": 0.010787772420647629, "max_depth": 5, "min_samples_leaf": 23, "l2_regularization": 0.626898149049822}
+  Trial 5: Score=0.1534 | Hiperparâmetros: {"max_iter": 77, "learning_rate": 0.07452260866336655, "max_depth": 13, "min_samples_leaf": 15, "l2_regularization": 0.6192788900178243}
+  Trial 6: Score=0.1118 | Hiperparâmetros: {"max_iter": 76, "learning_rate": 0.22745485819132227, "max_depth": 10, "min_samples_leaf": 17, "l2_regularization": 0.5673220625553317}
+  Trial 7: Score=0.1323 | Hiperparâmetros: {"max_iter": 106, "learning_rate": 0.10958450134900818, "max_depth": 7, "min_samples_leaf": 3, "l2_regularization": 0.8076344641963592}
+  Trial 8: Score=0.1236 | Hiperparâmetros: {"max_iter": 62, "learning_rate": 0.2215263918889371, "max_depth": 14, "min_samples_leaf": 49, "l2_regularization": 0.8218544782485929}
+  Trial 9: Score=0.1076 | Hiperparâmetros: {"max_iter": 195, "learning_rate": 0.28702481509746613, "max_depth": 7, "min_samples_leaf": 10, "l2_regularization": 0.43974318555680314}
+  Trial 10: Score=0.1530 | Hiperparâmetros: {"max_iter": 152, "learning_rate": 0.1629005885304651, "max_depth": 3, "min_samples_leaf": 33, "l2_regularization": 0.9797711723820894}
+  Trial 11: Score=0.1708 | Hiperparâmetros: {"max_iter": 115, "learning_rate": 0.022144426257785742, "max_depth": 3, "min_samples_leaf": 22, "l2_regularization": 0.32049279423905686}
+  Trial 12: Score=0.1683 | Hiperparâmetros: {"max_iter": 137, "learning_rate": 0.012085366354557925, "max_depth": 3, "min_samples_leaf": 24, "l2_regularization": 0.2865889647554062}
+  Trial 13: Score=0.1639 | Hiperparâmetros: {"max_iter": 141, "learning_rate": 0.011307528043744023, "max_depth": 4, "min_samples_leaf": 19, "l2_regularization": 0.2900255178007197}
+  Trial 14: Score=0.1614 | Hiperparâmetros: {"max_iter": 128, "learning_rate": 0.06463358067647418, "max_depth": 5, "min_samples_leaf": 32, "l2_regularization": 0.23581132324138238}
+  Trial 15: Score=0.1494 | Hiperparâmetros: {"max_iter": 182, "learning_rate": 0.04810478739024932, "max_depth": 6, "min_samples_leaf": 9, "l2_regularization": 0.36013382168694436}
+  Trial 16: Score=0.1528 | Hiperparâmetros: {"max_iter": 168, "learning_rate": 0.03153369267971228, "max_depth": 9, "min_samples_leaf": 38, "l2_regularization": 0.10200790923081351}
+  Trial 17: Score=0.1687 | Hiperparâmetros: {"max_iter": 120, "learning_rate": 0.08266564430022671, "max_depth": 3, "min_samples_leaf": 28, "l2_regularization": 0.18241133646515328}
+  Trial 18: Score=0.1497 | Hiperparâmetros: {"max_iter": 118, "learning_rate": 0.14746197954303164, "max_depth": 5, "min_samples_leaf": 32, "l2_regularization": 0.1558630216095056}
+  Trial 19: Score=0.1649 | Hiperparâmetros: {"max_iter": 96, "learning_rate": 0.08261849540654143, "max_depth": 4, "min_samples_leaf": 20, "l2_regularization": 0.3989023797259975}
+  Trial 20: Score=0.1301 | Hiperparâmetros: {"max_iter": 121, "learning_rate": 0.1715177869322321, "max_depth": 6, "min_samples_leaf": 12, "l2_regularization": 0.17306600467714994}
+  Trial 21: Score=0.1754 | Hiperparâmetros: {"max_iter": 134, "learning_rate": 0.04199200942706503, "max_depth": 3, "min_samples_leaf": 27, "l2_regularization": 0.2709995225278639}
+  Trial 22: Score=0.1685 | Hiperparâmetros: {"max_iter": 163, "learning_rate": 0.045253859229980056, "max_depth": 4, "min_samples_leaf": 29, "l2_regularization": 0.3329112242227823}
+  Trial 23: Score=0.1684 | Hiperparâmetros: {"max_iter": 129, "learning_rate": 0.09011675295442789, "max_depth": 3, "min_samples_leaf": 21, "l2_regularization": 0.03422120383070598}
+  Trial 24: Score=0.1569 | Hiperparâmetros: {"max_iter": 115, "learning_rate": 0.04657480682516425, "max_depth": 6, "min_samples_leaf": 37, "l2_regularization": 0.2201959190743598}
+  Trial 25: Score=0.1508 | Hiperparâmetros: {"max_iter": 92, "learning_rate": 0.0622144401980375, "max_depth": 15, "min_samples_leaf": 27, "l2_regularization": 0.46186536237468956}
+  Trial 26: Score=0.1640 | Hiperparâmetros: {"max_iter": 50, "learning_rate": 0.1307859361460065, "max_depth": 4, "min_samples_leaf": 42, "l2_regularization": 0.10252994240984453}
+  Trial 27: Score=0.1441 | Hiperparâmetros: {"max_iter": 140, "learning_rate": 0.09336770828474583, "max_depth": 8, "min_samples_leaf": 35, "l2_regularization": 0.2692027382490453}
+  Trial 28: Score=0.1555 | Hiperparâmetros: {"max_iter": 157, "learning_rate": 0.04070581015558636, "max_depth": 5, "min_samples_leaf": 30, "l2_regularization": 0.3808924390776649}
+  Trial 29: Score=0.1332 | Hiperparâmetros: {"max_iter": 108, "learning_rate": 0.19119380959413285, "max_depth": 11, "min_samples_leaf": 25, "l2_regularization": 0.005867919385784681}
+
+Melhor trial (Optuna): 21
+  max_iter: 134
+  learning_rate: 0.04199200942706503
+  max_depth: 3
+  min_samples_leaf: 27
+  l2_regularization: 0.2709995225278639
+
+Importância dos parâmetros (Optuna):
+  learning_rate: 0.8535
+  max_depth: 0.1094
+  min_samples_leaf: 0.0165
+  max_iter: 0.0108
+  l2_regularization: 0.0098
+
+Resultado do treino:
+  accuracy: 0.9475
+  precision: 0.9375
+  recall: 0.0247
+  f1: 0.0481
+  roc_auc: 0.7910
+  pr_auc: 0.2946
+
+Resultado do teste:
+  accuracy: 0.9466
+  precision: 0.5000
+  recall: 0.0066
+  f1: 0.0131
+  roc_auc: 0.6771
+  pr_auc: 0.1203
+
+============================================================
+
+FOLD 2 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.1116 | Hiperparâmetros: {"max_iter": 133, "learning_rate": 0.21154203803373162, "max_depth": 5, "min_samples_leaf": 7, "l2_regularization": 0.1084317595167259}
+  Trial 1: Score=0.1332 | Hiperparâmetros: {"max_iter": 141, "learning_rate": 0.08200648629893612, "max_depth": 6, "min_samples_leaf": 41, "l2_regularization": 0.6750974281548989}
+  Trial 2: Score=0.1374 | Hiperparâmetros: {"max_iter": 65, "learning_rate": 0.026783398787876698, "max_depth": 7, "min_samples_leaf": 34, "l2_regularization": 0.7068014397577033}
+  Trial 3: Score=0.1056 | Hiperparâmetros: {"max_iter": 171, "learning_rate": 0.1861128888244864, "max_depth": 8, "min_samples_leaf": 50, "l2_regularization": 0.8805547669653112}
+  Trial 4: Score=0.0965 | Hiperparâmetros: {"max_iter": 177, "learning_rate": 0.24963601956504178, "max_depth": 8, "min_samples_leaf": 42, "l2_regularization": 0.031976458451524414}
+  Trial 5: Score=0.1185 | Hiperparâmetros: {"max_iter": 55, "learning_rate": 0.24306666798977455, "max_depth": 9, "min_samples_leaf": 38, "l2_regularization": 0.060942159753175185}
+  Trial 6: Score=0.1022 | Hiperparâmetros: {"max_iter": 160, "learning_rate": 0.24146377509029274, "max_depth": 10, "min_samples_leaf": 6, "l2_regularization": 0.9255359700851644}
+  Trial 7: Score=0.0971 | Hiperparâmetros: {"max_iter": 192, "learning_rate": 0.2238483579231987, "max_depth": 6, "min_samples_leaf": 22, "l2_regularization": 0.5717974821406081}
+  Trial 8: Score=0.1373 | Hiperparâmetros: {"max_iter": 91, "learning_rate": 0.0481160212631886, "max_depth": 11, "min_samples_leaf": 28, "l2_regularization": 0.26457475943848663}
+  Trial 9: Score=0.1064 | Hiperparâmetros: {"max_iter": 145, "learning_rate": 0.23297433081296365, "max_depth": 12, "min_samples_leaf": 21, "l2_regularization": 0.5116864022661827}
+  Trial 10: Score=0.1271 | Hiperparâmetros: {"max_iter": 91, "learning_rate": 0.09707548606297121, "max_depth": 15, "min_samples_leaf": 32, "l2_regularization": 0.7399297660532573}
+  Trial 11: Score=0.1418 | Hiperparâmetros: {"max_iter": 90, "learning_rate": 0.012299350347929963, "max_depth": 3, "min_samples_leaf": 28, "l2_regularization": 0.26125235023506055}
+  Trial 12: Score=0.1376 | Hiperparâmetros: {"max_iter": 53, "learning_rate": 0.01929864360379336, "max_depth": 3, "min_samples_leaf": 15, "l2_regularization": 0.32561171853687976}
+  Trial 13: Score=0.1445 | Hiperparâmetros: {"max_iter": 99, "learning_rate": 0.14482061781767694, "max_depth": 3, "min_samples_leaf": 15, "l2_regularization": 0.31123161870766985}
+  Trial 14: Score=0.1498 | Hiperparâmetros: {"max_iter": 104, "learning_rate": 0.1404167534874562, "max_depth": 3, "min_samples_leaf": 13, "l2_regularization": 0.3344502417361596}
+  Trial 15: Score=0.1389 | Hiperparâmetros: {"max_iter": 112, "learning_rate": 0.12924491226065143, "max_depth": 4, "min_samples_leaf": 14, "l2_regularization": 0.3703661555797317}
+  Trial 16: Score=0.1116 | Hiperparâmetros: {"max_iter": 113, "learning_rate": 0.16014111719682245, "max_depth": 5, "min_samples_leaf": 2, "l2_regularization": 0.41498494302280414}
+  Trial 17: Score=0.1471 | Hiperparâmetros: {"max_iter": 78, "learning_rate": 0.1311110670731792, "max_depth": 3, "min_samples_leaf": 14, "l2_regularization": 0.23023636461675495}
+  Trial 18: Score=0.1014 | Hiperparâmetros: {"max_iter": 71, "learning_rate": 0.2780107121021123, "max_depth": 14, "min_samples_leaf": 8, "l2_regularization": 0.13091650260375387}
+  Trial 19: Score=0.1425 | Hiperparâmetros: {"max_iter": 76, "learning_rate": 0.10715390075159854, "max_depth": 5, "min_samples_leaf": 19, "l2_regularization": 0.19511216584722202}
+  Trial 20: Score=0.1238 | Hiperparâmetros: {"max_iter": 114, "learning_rate": 0.18392847181581617, "max_depth": 4, "min_samples_leaf": 11, "l2_regularization": 0.4369199701250268}
+  Trial 21: Score=0.1511 | Hiperparâmetros: {"max_iter": 101, "learning_rate": 0.1408824958470748, "max_depth": 3, "min_samples_leaf": 16, "l2_regularization": 0.21403567589770797}
+  Trial 22: Score=0.1361 | Hiperparâmetros: {"max_iter": 105, "learning_rate": 0.12434133434967923, "max_depth": 4, "min_samples_leaf": 1, "l2_regularization": 0.18169336530629263}
+  Trial 23: Score=0.1529 | Hiperparâmetros: {"max_iter": 124, "learning_rate": 0.06940604139521178, "max_depth": 3, "min_samples_leaf": 18, "l2_regularization": 0.22329264698747042}
+  Trial 24: Score=0.1375 | Hiperparâmetros: {"max_iter": 124, "learning_rate": 0.06718569191493681, "max_depth": 6, "min_samples_leaf": 24, "l2_regularization": 0.4965194132595384}
+  Trial 25: Score=0.1294 | Hiperparâmetros: {"max_iter": 123, "learning_rate": 0.1626752447182804, "max_depth": 4, "min_samples_leaf": 19, "l2_regularization": 0.008935638610781449}
+  Trial 26: Score=0.1392 | Hiperparâmetros: {"max_iter": 151, "learning_rate": 0.055572830715591784, "max_depth": 7, "min_samples_leaf": 11, "l2_regularization": 0.13544378292107556}
+  Trial 27: Score=0.1289 | Hiperparâmetros: {"max_iter": 136, "learning_rate": 0.10254101638301377, "max_depth": 5, "min_samples_leaf": 18, "l2_regularization": 0.34406294281942323}
+  Trial 28: Score=0.1488 | Hiperparâmetros: {"max_iter": 101, "learning_rate": 0.08111062860086488, "max_depth": 3, "min_samples_leaf": 25, "l2_regularization": 0.4554218748469223}
+  Trial 29: Score=0.1240 | Hiperparâmetros: {"max_iter": 131, "learning_rate": 0.19780186321313895, "max_depth": 4, "min_samples_leaf": 6, "l2_regularization": 0.11008736220435156}
+
+Melhor trial (Optuna): 23
+  max_iter: 124
+  learning_rate: 0.06940604139521178
+  max_depth: 3
+  min_samples_leaf: 18
+  l2_regularization: 0.22329264698747042
+
+Importância dos parâmetros (Optuna):
+  learning_rate: 0.8852
+  max_depth: 0.0456
+  max_iter: 0.0403
+  l2_regularization: 0.0230
+  min_samples_leaf: 0.0059
+
+Resultado do treino:
+  accuracy: 0.9486
+  precision: 0.9310
+  recall: 0.0445
+  f1: 0.0849
+  roc_auc: 0.8419
+  pr_auc: 0.3929
+
+Resultado do teste:
+  accuracy: 0.9466
+  precision: 0.6667
+  recall: 0.0132
+  f1: 0.0258
+  roc_auc: 0.6749
+  pr_auc: 0.1535
+
+============================================================
+
+FOLD 3 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.1531 | Hiperparâmetros: {"max_iter": 62, "learning_rate": 0.12384801469484678, "max_depth": 4, "min_samples_leaf": 8, "l2_regularization": 0.16040857433788713}
+  Trial 1: Score=0.1149 | Hiperparâmetros: {"max_iter": 67, "learning_rate": 0.2757097107786468, "max_depth": 9, "min_samples_leaf": 4, "l2_regularization": 0.7423075144124479}
+  Trial 2: Score=0.1342 | Hiperparâmetros: {"max_iter": 63, "learning_rate": 0.01542411050384237, "max_depth": 15, "min_samples_leaf": 4, "l2_regularization": 0.6011093625846466}
+  Trial 3: Score=0.1386 | Hiperparâmetros: {"max_iter": 70, "learning_rate": 0.12493268655194797, "max_depth": 5, "min_samples_leaf": 48, "l2_regularization": 0.02752356713482773}
+  Trial 4: Score=0.1437 | Hiperparâmetros: {"max_iter": 133, "learning_rate": 0.09031452752484023, "max_depth": 4, "min_samples_leaf": 1, "l2_regularization": 0.744502667075989}
+  Trial 5: Score=0.1140 | Hiperparâmetros: {"max_iter": 112, "learning_rate": 0.18634810136376725, "max_depth": 13, "min_samples_leaf": 41, "l2_regularization": 0.2568358442733668}
+  Trial 6: Score=0.1346 | Hiperparâmetros: {"max_iter": 85, "learning_rate": 0.076445850667617, "max_depth": 13, "min_samples_leaf": 44, "l2_regularization": 0.25906606821725153}
+  Trial 7: Score=0.1261 | Hiperparâmetros: {"max_iter": 106, "learning_rate": 0.12009173709860246, "max_depth": 13, "min_samples_leaf": 34, "l2_regularization": 0.0017009404884591461}
+  Trial 8: Score=0.1103 | Hiperparâmetros: {"max_iter": 196, "learning_rate": 0.28296556916454635, "max_depth": 14, "min_samples_leaf": 46, "l2_regularization": 0.15400427817696527}
+  Trial 9: Score=0.1164 | Hiperparâmetros: {"max_iter": 86, "learning_rate": 0.2968000546121955, "max_depth": 8, "min_samples_leaf": 28, "l2_regularization": 0.5850242739298189}
+  Trial 10: Score=0.1135 | Hiperparâmetros: {"max_iter": 151, "learning_rate": 0.18402113438571377, "max_depth": 6, "min_samples_leaf": 15, "l2_regularization": 0.40941225433637685}
+  Trial 11: Score=0.1502 | Hiperparâmetros: {"max_iter": 152, "learning_rate": 0.07196809222705385, "max_depth": 3, "min_samples_leaf": 16, "l2_regularization": 0.9528762810936382}
+  Trial 12: Score=0.1553 | Hiperparâmetros: {"max_iter": 168, "learning_rate": 0.039068561624213904, "max_depth": 3, "min_samples_leaf": 14, "l2_regularization": 0.9552150362276368}
+  Trial 13: Score=0.1471 | Hiperparâmetros: {"max_iter": 187, "learning_rate": 0.01750811747639, "max_depth": 7, "min_samples_leaf": 15, "l2_regularization": 0.9137678808098754}
+  Trial 14: Score=0.1364 | Hiperparâmetros: {"max_iter": 170, "learning_rate": 0.22155403804425375, "max_depth": 3, "min_samples_leaf": 11, "l2_regularization": 0.4072182853160506}
+  Trial 15: Score=0.1398 | Hiperparâmetros: {"max_iter": 50, "learning_rate": 0.04716134769430631, "max_depth": 11, "min_samples_leaf": 26, "l2_regularization": 0.7902317062405086}
+  Trial 16: Score=0.1348 | Hiperparâmetros: {"max_iter": 136, "learning_rate": 0.13166902794179067, "max_depth": 5, "min_samples_leaf": 21, "l2_regularization": 0.49652221342430825}
+  Trial 17: Score=0.1135 | Hiperparâmetros: {"max_iter": 173, "learning_rate": 0.1745942335477901, "max_depth": 10, "min_samples_leaf": 9, "l2_regularization": 0.16505788936382604}
+  Trial 18: Score=0.1133 | Hiperparâmetros: {"max_iter": 107, "learning_rate": 0.23943306827796018, "max_depth": 6, "min_samples_leaf": 21, "l2_regularization": 0.8744763527462339}
+  Trial 19: Score=0.1555 | Hiperparâmetros: {"max_iter": 153, "learning_rate": 0.054708187993502674, "max_depth": 3, "min_samples_leaf": 21, "l2_regularization": 0.6322201980065141}
+  Trial 20: Score=0.1527 | Hiperparâmetros: {"max_iter": 157, "learning_rate": 0.04284076354694803, "max_depth": 3, "min_samples_leaf": 31, "l2_regularization": 0.6471014672613395}
+  Trial 21: Score=0.1361 | Hiperparâmetros: {"max_iter": 165, "learning_rate": 0.09652222106532686, "max_depth": 4, "min_samples_leaf": 21, "l2_regularization": 0.40975735211353037}
+  Trial 22: Score=0.1451 | Hiperparâmetros: {"max_iter": 140, "learning_rate": 0.050802045197333404, "max_depth": 5, "min_samples_leaf": 9, "l2_regularization": 0.8349832437150286}
+  Trial 23: Score=0.1263 | Hiperparâmetros: {"max_iter": 123, "learning_rate": 0.15170932438775225, "max_depth": 4, "min_samples_leaf": 18, "l2_regularization": 0.9919393692161516}
+  Trial 24: Score=0.1204 | Hiperparâmetros: {"max_iter": 181, "learning_rate": 0.10814415228695008, "max_depth": 7, "min_samples_leaf": 11, "l2_regularization": 0.6715985334004679}
+  Trial 25: Score=0.1641 | Hiperparâmetros: {"max_iter": 120, "learning_rate": 0.06905438397512227, "max_depth": 3, "min_samples_leaf": 7, "l2_regularization": 0.3100803335911792}
+  Trial 26: Score=0.1523 | Hiperparâmetros: {"max_iter": 126, "learning_rate": 0.06527247097672526, "max_depth": 3, "min_samples_leaf": 38, "l2_regularization": 0.4960608776212809}
+  Trial 27: Score=0.1404 | Hiperparâmetros: {"max_iter": 200, "learning_rate": 0.028425796896127203, "max_depth": 6, "min_samples_leaf": 24, "l2_regularization": 0.2830794936011937}
+  Trial 28: Score=0.1466 | Hiperparâmetros: {"max_iter": 144, "learning_rate": 0.03755159511113356, "max_depth": 5, "min_samples_leaf": 13, "l2_regularization": 0.35823054724662684}
+  Trial 29: Score=0.1461 | Hiperparâmetros: {"max_iter": 163, "learning_rate": 0.05970563602556842, "max_depth": 4, "min_samples_leaf": 4, "l2_regularization": 0.5376800986954208}
+
+Melhor trial (Optuna): 25
+  max_iter: 120
+  learning_rate: 0.06905438397512227
+  max_depth: 3
+  min_samples_leaf: 7
+  l2_regularization: 0.3100803335911792
+
+Importância dos parâmetros (Optuna):
+  learning_rate: 0.7449
+  max_depth: 0.2127
+  max_iter: 0.0214
+  min_samples_leaf: 0.0112
+  l2_regularization: 0.0099
+
+Resultado do treino:
+  accuracy: 0.9479
+  precision: 1.0000
+  recall: 0.0297
+  f1: 0.0576
+  roc_auc: 0.8036
+  pr_auc: 0.3324
+
+Resultado do teste:
+  accuracy: 0.9463
+  precision: 0.5000
+  recall: 0.0066
+  f1: 0.0130
+  roc_auc: 0.7334
+  pr_auc: 0.1793
+
+============================================================
+
+FOLD 4 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.1709 | Hiperparâmetros: {"max_iter": 106, "learning_rate": 0.05886154477797735, "max_depth": 5, "min_samples_leaf": 31, "l2_regularization": 0.8826266340069419}
+  Trial 1: Score=0.1419 | Hiperparâmetros: {"max_iter": 50, "learning_rate": 0.14496826750660557, "max_depth": 15, "min_samples_leaf": 11, "l2_regularization": 0.4530856292396981}
+  Trial 2: Score=0.1601 | Hiperparâmetros: {"max_iter": 64, "learning_rate": 0.07151468044164286, "max_depth": 11, "min_samples_leaf": 18, "l2_regularization": 0.42662324375951866}
+  Trial 3: Score=0.1396 | Hiperparâmetros: {"max_iter": 161, "learning_rate": 0.2048669659259917, "max_depth": 4, "min_samples_leaf": 33, "l2_regularization": 0.028863093705175813}
+  Trial 4: Score=0.1365 | Hiperparâmetros: {"max_iter": 87, "learning_rate": 0.22938613953269388, "max_depth": 10, "min_samples_leaf": 44, "l2_regularization": 0.4969459466831164}
+  Trial 5: Score=0.1357 | Hiperparâmetros: {"max_iter": 133, "learning_rate": 0.28863947558981023, "max_depth": 14, "min_samples_leaf": 7, "l2_regularization": 0.36044865919770175}
+  Trial 6: Score=0.1396 | Hiperparâmetros: {"max_iter": 182, "learning_rate": 0.11953260189019033, "max_depth": 9, "min_samples_leaf": 21, "l2_regularization": 0.4331628819558392}
+  Trial 7: Score=0.1646 | Hiperparâmetros: {"max_iter": 155, "learning_rate": 0.024759084573826032, "max_depth": 12, "min_samples_leaf": 40, "l2_regularization": 0.8687142550384258}
+  Trial 8: Score=0.1524 | Hiperparâmetros: {"max_iter": 84, "learning_rate": 0.26797471192442435, "max_depth": 3, "min_samples_leaf": 9, "l2_regularization": 0.69296381744907}
+  Trial 9: Score=0.1312 | Hiperparâmetros: {"max_iter": 139, "learning_rate": 0.1751633044864353, "max_depth": 5, "min_samples_leaf": 26, "l2_regularization": 0.39488676566127145}
+  Trial 10: Score=0.1638 | Hiperparâmetros: {"max_iter": 107, "learning_rate": 0.013216598858844512, "max_depth": 7, "min_samples_leaf": 33, "l2_regularization": 0.9791104848142117}
+  Trial 11: Score=0.1637 | Hiperparâmetros: {"max_iter": 196, "learning_rate": 0.01259019772809157, "max_depth": 12, "min_samples_leaf": 48, "l2_regularization": 0.9282239841624442}
+  Trial 12: Score=0.1590 | Hiperparâmetros: {"max_iter": 158, "learning_rate": 0.0741168476986166, "max_depth": 7, "min_samples_leaf": 38, "l2_regularization": 0.7622703993731692}
+  Trial 13: Score=0.1638 | Hiperparâmetros: {"max_iter": 109, "learning_rate": 0.06595143452150545, "max_depth": 13, "min_samples_leaf": 39, "l2_regularization": 0.7390665566102752}
+  Trial 14: Score=0.1620 | Hiperparâmetros: {"max_iter": 151, "learning_rate": 0.044128700387320974, "max_depth": 8, "min_samples_leaf": 30, "l2_regularization": 0.8439552526332242}
+  Trial 15: Score=0.1561 | Hiperparâmetros: {"max_iter": 118, "learning_rate": 0.0955708565689242, "max_depth": 6, "min_samples_leaf": 50, "l2_regularization": 0.6330608194643259}
+  Trial 16: Score=0.1614 | Hiperparâmetros: {"max_iter": 177, "learning_rate": 0.03898726439896494, "max_depth": 11, "min_samples_leaf": 42, "l2_regularization": 0.23190909244108326}
+  Trial 17: Score=0.1526 | Hiperparâmetros: {"max_iter": 91, "learning_rate": 0.12031095663971449, "max_depth": 9, "min_samples_leaf": 18, "l2_regularization": 0.8502158603313129}
+  Trial 18: Score=0.1671 | Hiperparâmetros: {"max_iter": 128, "learning_rate": 0.10435395226213415, "max_depth": 3, "min_samples_leaf": 28, "l2_regularization": 0.5925101446369765}
+  Trial 19: Score=0.1687 | Hiperparâmetros: {"max_iter": 102, "learning_rate": 0.10454719808787152, "max_depth": 3, "min_samples_leaf": 1, "l2_regularization": 0.613977288642591}
+  Trial 20: Score=0.1512 | Hiperparâmetros: {"max_iter": 74, "learning_rate": 0.15978675453165309, "max_depth": 5, "min_samples_leaf": 3, "l2_regularization": 0.5836150052709469}
+  Trial 21: Score=0.1670 | Hiperparâmetros: {"max_iter": 108, "learning_rate": 0.10471348672431753, "max_depth": 3, "min_samples_leaf": 26, "l2_regularization": 0.5747272302813738}
+  Trial 22: Score=0.1489 | Hiperparâmetros: {"max_iter": 128, "learning_rate": 0.13424483136688894, "max_depth": 4, "min_samples_leaf": 20, "l2_regularization": 0.6542987944524109}
+  Trial 23: Score=0.1656 | Hiperparâmetros: {"max_iter": 97, "learning_rate": 0.09142685685828579, "max_depth": 3, "min_samples_leaf": 14, "l2_regularization": 0.2583405107234698}
+  Trial 24: Score=0.1653 | Hiperparâmetros: {"max_iter": 119, "learning_rate": 0.057388327892737616, "max_depth": 5, "min_samples_leaf": 1, "l2_regularization": 0.7655647028348409}
+  Trial 25: Score=0.1495 | Hiperparâmetros: {"max_iter": 141, "learning_rate": 0.17916238950524835, "max_depth": 4, "min_samples_leaf": 32, "l2_regularization": 0.32177500433652256}
+  Trial 26: Score=0.1606 | Hiperparâmetros: {"max_iter": 100, "learning_rate": 0.0894307209347506, "max_depth": 6, "min_samples_leaf": 23, "l2_regularization": 0.5460192555407086}
+  Trial 27: Score=0.1678 | Hiperparâmetros: {"max_iter": 117, "learning_rate": 0.11762022113590596, "max_depth": 3, "min_samples_leaf": 30, "l2_regularization": 0.995888040568615}
+  Trial 28: Score=0.1438 | Hiperparâmetros: {"max_iter": 76, "learning_rate": 0.16068735337328577, "max_depth": 6, "min_samples_leaf": 37, "l2_regularization": 0.9757013581895888}
+  Trial 29: Score=0.1652 | Hiperparâmetros: {"max_iter": 56, "learning_rate": 0.1383211978709512, "max_depth": 4, "min_samples_leaf": 12, "l2_regularization": 0.8975174518647033}
+
+Melhor trial (Optuna): 0
+  max_iter: 106
+  learning_rate: 0.05886154477797735
+  max_depth: 5
+  min_samples_leaf: 31
+  l2_regularization: 0.8826266340069419
+
+Importância dos parâmetros (Optuna):
+  learning_rate: 0.8106
+  l2_regularization: 0.0970
+  max_depth: 0.0409
+  max_iter: 0.0258
+  min_samples_leaf: 0.0257
+
+Resultado do treino:
+  accuracy: 0.9493
+  precision: 0.9474
+  recall: 0.0593
+  f1: 0.1116
+  roc_auc: 0.8583
+  pr_auc: 0.4785
+
+Resultado do teste:
+  accuracy: 0.9459
+  precision: 0.0000
+  recall: 0.0000
+  f1: 0.0000
+  roc_auc: 0.6821
+  pr_auc: 0.1164
+
+============================================================
+
+FOLD 5 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.1138 | Hiperparâmetros: {"max_iter": 196, "learning_rate": 0.20090011107401595, "max_depth": 9, "min_samples_leaf": 18, "l2_regularization": 0.09422769472761372}
+  Trial 1: Score=0.1301 | Hiperparâmetros: {"max_iter": 138, "learning_rate": 0.06254355510836844, "max_depth": 15, "min_samples_leaf": 39, "l2_regularization": 0.7772505549574465}
+  Trial 2: Score=0.1064 | Hiperparâmetros: {"max_iter": 63, "learning_rate": 0.2102117698031901, "max_depth": 15, "min_samples_leaf": 48, "l2_regularization": 0.35317425356068777}
+  Trial 3: Score=0.1105 | Hiperparâmetros: {"max_iter": 197, "learning_rate": 0.2952654066374462, "max_depth": 14, "min_samples_leaf": 18, "l2_regularization": 0.7192835735432854}
+  Trial 4: Score=0.1268 | Hiperparâmetros: {"max_iter": 89, "learning_rate": 0.12385234224803422, "max_depth": 7, "min_samples_leaf": 13, "l2_regularization": 0.5127517880790035}
+  Trial 5: Score=0.1058 | Hiperparâmetros: {"max_iter": 94, "learning_rate": 0.26656671340963334, "max_depth": 13, "min_samples_leaf": 25, "l2_regularization": 0.09265283258716983}
+  Trial 6: Score=0.0995 | Hiperparâmetros: {"max_iter": 161, "learning_rate": 0.270454079397448, "max_depth": 12, "min_samples_leaf": 49, "l2_regularization": 0.32190742805863015}
+  Trial 7: Score=0.1464 | Hiperparâmetros: {"max_iter": 144, "learning_rate": 0.01439355450870442, "max_depth": 13, "min_samples_leaf": 49, "l2_regularization": 0.16061360940392733}
+  Trial 8: Score=0.1150 | Hiperparâmetros: {"max_iter": 93, "learning_rate": 0.24948693426570293, "max_depth": 15, "min_samples_leaf": 3, "l2_regularization": 0.7038521047406623}
+  Trial 9: Score=0.1162 | Hiperparâmetros: {"max_iter": 174, "learning_rate": 0.11243504448232275, "max_depth": 15, "min_samples_leaf": 7, "l2_regularization": 0.07043476607294152}
+  Trial 10: Score=0.1465 | Hiperparâmetros: {"max_iter": 127, "learning_rate": 0.012561393932648018, "max_depth": 4, "min_samples_leaf": 36, "l2_regularization": 0.9579127559000116}
+  Trial 11: Score=0.1454 | Hiperparâmetros: {"max_iter": 129, "learning_rate": 0.013424648336977329, "max_depth": 3, "min_samples_leaf": 37, "l2_regularization": 0.9735887743517695}
+  Trial 12: Score=0.1493 | Hiperparâmetros: {"max_iter": 150, "learning_rate": 0.013805580371621218, "max_depth": 4, "min_samples_leaf": 38, "l2_regularization": 0.9547499061634852}
+  Trial 13: Score=0.1469 | Hiperparâmetros: {"max_iter": 107, "learning_rate": 0.06241861294983665, "max_depth": 3, "min_samples_leaf": 35, "l2_regularization": 0.9976897675265807}
+  Trial 14: Score=0.1364 | Hiperparâmetros: {"max_iter": 106, "learning_rate": 0.07074346136147867, "max_depth": 5, "min_samples_leaf": 29, "l2_regularization": 0.8392981010743528}
+  Trial 15: Score=0.1411 | Hiperparâmetros: {"max_iter": 52, "learning_rate": 0.0642163345083264, "max_depth": 6, "min_samples_leaf": 30, "l2_regularization": 0.5718975107092756}
+  Trial 16: Score=0.1452 | Hiperparâmetros: {"max_iter": 158, "learning_rate": 0.10070705532653923, "max_depth": 3, "min_samples_leaf": 43, "l2_regularization": 0.8759425630338201}
+  Trial 17: Score=0.1223 | Hiperparâmetros: {"max_iter": 110, "learning_rate": 0.15440838787076377, "max_depth": 8, "min_samples_leaf": 32, "l2_regularization": 0.9934025431236826}
+  Trial 18: Score=0.1506 | Hiperparâmetros: {"max_iter": 79, "learning_rate": 0.050886772363926476, "max_depth": 5, "min_samples_leaf": 24, "l2_regularization": 0.6395289730735549}
+  Trial 19: Score=0.1390 | Hiperparâmetros: {"max_iter": 72, "learning_rate": 0.03846529344464544, "max_depth": 11, "min_samples_leaf": 24, "l2_regularization": 0.5851610380686801}
+  Trial 20: Score=0.1341 | Hiperparâmetros: {"max_iter": 177, "learning_rate": 0.09167225284103354, "max_depth": 5, "min_samples_leaf": 43, "l2_regularization": 0.38126101730583767}
+  Trial 21: Score=0.1479 | Hiperparâmetros: {"max_iter": 111, "learning_rate": 0.043889868431206944, "max_depth": 4, "min_samples_leaf": 22, "l2_regularization": 0.8467468432650285}
+  Trial 22: Score=0.1479 | Hiperparâmetros: {"max_iter": 80, "learning_rate": 0.038332210089637914, "max_depth": 5, "min_samples_leaf": 22, "l2_regularization": 0.6520766315463977}
+  Trial 23: Score=0.1380 | Hiperparâmetros: {"max_iter": 118, "learning_rate": 0.03823443409056639, "max_depth": 7, "min_samples_leaf": 19, "l2_regularization": 0.8563301483050312}
+  Trial 24: Score=0.1308 | Hiperparâmetros: {"max_iter": 143, "learning_rate": 0.13843082449627536, "max_depth": 4, "min_samples_leaf": 14, "l2_regularization": 0.7950197534804536}
+  Trial 25: Score=0.1369 | Hiperparâmetros: {"max_iter": 75, "learning_rate": 0.07975839910552106, "max_depth": 6, "min_samples_leaf": 28, "l2_regularization": 0.8865756684447731}
+  Trial 26: Score=0.1175 | Hiperparâmetros: {"max_iter": 152, "learning_rate": 0.18827031525096605, "max_depth": 4, "min_samples_leaf": 11, "l2_regularization": 0.7345562179134881}
+  Trial 27: Score=0.1454 | Hiperparâmetros: {"max_iter": 53, "learning_rate": 0.04468497337020219, "max_depth": 6, "min_samples_leaf": 33, "l2_regularization": 0.6406498768440526}
+  Trial 28: Score=0.1378 | Hiperparâmetros: {"max_iter": 121, "learning_rate": 0.04931510545233621, "max_depth": 10, "min_samples_leaf": 21, "l2_regularization": 0.42507258085848143}
+  Trial 29: Score=0.1221 | Hiperparâmetros: {"max_iter": 179, "learning_rate": 0.18824180591900946, "max_depth": 9, "min_samples_leaf": 27, "l2_regularization": 0.9125994943040507}
+
+Melhor trial (Optuna): 18
+  max_iter: 79
+  learning_rate: 0.050886772363926476
+  max_depth: 5
+  min_samples_leaf: 24
+  l2_regularization: 0.6395289730735549
+
+Importância dos parâmetros (Optuna):
+  learning_rate: 0.9134
+  max_depth: 0.0347
+  min_samples_leaf: 0.0241
+  l2_regularization: 0.0182
+  max_iter: 0.0096
+
+Resultado do treino:
+  accuracy: 0.9481
+  precision: 1.0000
+  recall: 0.0329
+  f1: 0.0638
+  roc_auc: 0.8635
+  pr_auc: 0.5021
+
+Resultado do teste:
+  accuracy: 0.9463
+  precision: 0.0000
+  recall: 0.0000
+  f1: 0.0000
+  roc_auc: 0.7218
+  pr_auc: 0.1845
+
+============================================================
+
+TABELA DE MÉTRICAS DE TREINO E TESTE POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treino: 1     | 0.9475     | 0.9375     | 0.0247     | 0.0481     | 0.7910     | 0.2946    
+Teste:  1     | 0.9466     | 0.5000     | 0.0066     | 0.0131     | 0.6771     | 0.1203    
+Treino: 2     | 0.9486     | 0.9310     | 0.0445     | 0.0849     | 0.8419     | 0.3929    
+Teste:  2     | 0.9466     | 0.6667     | 0.0132     | 0.0258     | 0.6749     | 0.1535    
+Treino: 3     | 0.9479     | 1.0000     | 0.0297     | 0.0576     | 0.8036     | 0.3324    
+Teste:  3     | 0.9463     | 0.5000     | 0.0066     | 0.0130     | 0.7334     | 0.1793    
+Treino: 4     | 0.9493     | 0.9474     | 0.0593     | 0.1116     | 0.8583     | 0.4785    
+Teste:  4     | 0.9459     | 0.0000     | 0.0000     | 0.0000     | 0.6821     | 0.1164    
+Treino: 5     | 0.9481     | 1.0000     | 0.0329     | 0.0638     | 0.8635     | 0.5021    
+Teste:  5     | 0.9463     | 0.0000     | 0.0000     | 0.0000     | 0.7218     | 0.1845    
+
+MÉDIAS E DESVIOS PADRÃO DAS MÉTRICAS POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treinos: 0.9483+-0.00 0.9632+-0.03 0.0382+-0.01 0.0732+-0.02 0.8317+-0.03 0.4001+-0.08 
+Testes:  0.9463+-0.00 0.3333+-0.28 0.0053+-0.00 0.0104+-0.01 0.6979+-0.02 0.1508+-0.03 
+
+MELHOR CONJUNTO DE HIPERPARÂMETROS GLOBAL (selecionado pelo maior PR AUC  ):
+------------------------------------------------------------
+{
+  "max_iter": 79,
+  "learning_rate": 0.050886772363926476,
+  "max_depth": 5,
+  "min_samples_leaf": 24,
+  "l2_regularization": 0.6395289730735549
+}
+

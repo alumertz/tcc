@@ -1,0 +1,366 @@
+RESULTADOS DO MODELO: SVC
+================================================================================
+
+Data/Hora: 2025-11-24 23:48:55
+
+FOLD 1 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.1042 | Hiperparâmetros: {"kernel": "sigmoid", "C": 4.0986299827485775, "degree": 2, "shrinking": true}
+  Trial 1: Score=0.0495 | Hiperparâmetros: {"kernel": "poly", "C": 0.33917082095088147, "degree": 2, "shrinking": false}
+  Trial 2: Score=0.0715 | Hiperparâmetros: {"kernel": "linear", "C": 0.19026064487787592, "degree": 3, "shrinking": true}
+  Trial 3: Score=0.0482 | Hiperparâmetros: {"kernel": "poly", "C": 20.2435561558295, "degree": 2, "shrinking": true}
+  Trial 4: Score=0.0521 | Hiperparâmetros: {"kernel": "linear", "C": 1.2786973661119412, "degree": 4, "shrinking": false}
+  Trial 5: Score=0.0571 | Hiperparâmetros: {"kernel": "linear", "C": 57.1734374566322, "degree": 2, "shrinking": false}
+  Trial 6: Score=0.0553 | Hiperparâmetros: {"kernel": "linear", "C": 0.16747901828130954, "degree": 6, "shrinking": false}
+  Trial 7: Score=0.1044 | Hiperparâmetros: {"kernel": "sigmoid", "C": 50.32845876374319, "degree": 5, "shrinking": true}
+  Trial 8: Score=0.0605 | Hiperparâmetros: {"kernel": "linear", "C": 2.0405326032951177, "degree": 2, "shrinking": true}
+  Trial 9: Score=0.0518 | Hiperparâmetros: {"kernel": "rbf", "C": 9.890608077526169, "degree": 3, "shrinking": false, "gamma": "auto"}
+  Trial 10: Score=0.1049 | Hiperparâmetros: {"kernel": "sigmoid", "C": 90.26224461870542, "degree": 6, "shrinking": true}
+  Trial 11: Score=0.1047 | Hiperparâmetros: {"kernel": "sigmoid", "C": 66.13505494734832, "degree": 6, "shrinking": true}
+  Trial 12: Score=0.1049 | Hiperparâmetros: {"kernel": "sigmoid", "C": 84.59302959187619, "degree": 6, "shrinking": true}
+  Trial 13: Score=0.1045 | Hiperparâmetros: {"kernel": "sigmoid", "C": 18.826830063936015, "degree": 5, "shrinking": true}
+  Trial 14: Score=0.1049 | Hiperparâmetros: {"kernel": "sigmoid", "C": 88.33844057024318, "degree": 5, "shrinking": true}
+  Trial 15: Score=0.0511 | Hiperparâmetros: {"kernel": "rbf", "C": 21.526552538164076, "degree": 6, "shrinking": true, "gamma": "scale"}
+  Trial 16: Score=0.1046 | Hiperparâmetros: {"kernel": "sigmoid", "C": 7.3946146549752925, "degree": 5, "shrinking": true}
+  Trial 17: Score=0.1045 | Hiperparâmetros: {"kernel": "sigmoid", "C": 32.856368318572976, "degree": 6, "shrinking": true}
+  Trial 18: Score=0.1045 | Hiperparâmetros: {"kernel": "sigmoid", "C": 10.137177283587393, "degree": 4, "shrinking": true}
+  Trial 19: Score=0.0524 | Hiperparâmetros: {"kernel": "rbf", "C": 0.5638532895009595, "degree": 6, "shrinking": true, "gamma": "auto"}
+  Trial 20: Score=0.0664 | Hiperparâmetros: {"kernel": "poly", "C": 95.92910422636432, "degree": 5, "shrinking": true}
+  Trial 21: Score=0.1049 | Hiperparâmetros: {"kernel": "sigmoid", "C": 97.76998050037402, "degree": 5, "shrinking": true}
+  Trial 22: Score=0.1041 | Hiperparâmetros: {"kernel": "sigmoid", "C": 36.6532106521793, "degree": 6, "shrinking": true}
+  Trial 23: Score=0.1043 | Hiperparâmetros: {"kernel": "sigmoid", "C": 32.795466754218836, "degree": 4, "shrinking": true}
+  Trial 24: Score=0.1049 | Hiperparâmetros: {"kernel": "sigmoid", "C": 88.20269909286152, "degree": 5, "shrinking": true}
+  Trial 25: Score=0.1049 | Hiperparâmetros: {"kernel": "sigmoid", "C": 15.041877012331833, "degree": 6, "shrinking": true}
+  Trial 26: Score=0.1041 | Hiperparâmetros: {"kernel": "sigmoid", "C": 5.244441931754621, "degree": 6, "shrinking": false}
+  Trial 27: Score=0.1047 | Hiperparâmetros: {"kernel": "sigmoid", "C": 13.18098109020822, "degree": 6, "shrinking": true}
+  Trial 28: Score=0.0568 | Hiperparâmetros: {"kernel": "rbf", "C": 43.86565858752858, "degree": 6, "shrinking": true, "gamma": "scale"}
+  Trial 29: Score=0.1041 | Hiperparâmetros: {"kernel": "sigmoid", "C": 3.0346742892362344, "degree": 4, "shrinking": true}
+
+Melhor trial (Optuna): 12
+  kernel: sigmoid
+  C: 84.59302959187619
+  degree: 6
+  shrinking: True
+  probability: True
+  class_weight: balanced
+
+Importância dos parâmetros (Optuna):
+  kernel: 0.9889
+  C: 0.0083
+  shrinking: 0.0016
+  degree: 0.0012
+
+Resultado do treino:
+  accuracy: 0.5908
+  precision: 0.0763
+  recall: 0.5954
+  f1: 0.1353
+  roc_auc: 0.3841
+  pr_auc: 0.0744
+
+Resultado do teste:
+  accuracy: 0.5930
+  precision: 0.0798
+  recall: 0.6291
+  f1: 0.1417
+  roc_auc: 0.3930
+  pr_auc: 0.0633
+
+============================================================
+
+FOLD 2 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.0667 | Hiperparâmetros: {"kernel": "rbf", "C": 56.240524057861776, "degree": 2, "shrinking": false, "gamma": "scale"}
+  Trial 1: Score=0.0947 | Hiperparâmetros: {"kernel": "sigmoid", "C": 1.214762740732149, "degree": 3, "shrinking": false}
+  Trial 2: Score=0.0491 | Hiperparâmetros: {"kernel": "rbf", "C": 0.5347582005424254, "degree": 3, "shrinking": true, "gamma": "scale"}
+  Trial 3: Score=0.0709 | Hiperparâmetros: {"kernel": "linear", "C": 50.74812528768185, "degree": 2, "shrinking": false}
+  Trial 4: Score=0.0955 | Hiperparâmetros: {"kernel": "sigmoid", "C": 3.135840401609788, "degree": 5, "shrinking": true}
+  Trial 5: Score=0.0949 | Hiperparâmetros: {"kernel": "sigmoid", "C": 78.34898629693939, "degree": 6, "shrinking": false}
+  Trial 6: Score=0.0949 | Hiperparâmetros: {"kernel": "sigmoid", "C": 55.660874861878675, "degree": 2, "shrinking": false}
+  Trial 7: Score=0.0499 | Hiperparâmetros: {"kernel": "poly", "C": 1.6411350497729265, "degree": 6, "shrinking": false}
+  Trial 8: Score=0.0531 | Hiperparâmetros: {"kernel": "poly", "C": 3.5930020658077972, "degree": 5, "shrinking": true}
+  Trial 9: Score=0.0947 | Hiperparâmetros: {"kernel": "sigmoid", "C": 1.9708642581899456, "degree": 6, "shrinking": false}
+  Trial 10: Score=0.0693 | Hiperparâmetros: {"kernel": "linear", "C": 9.07170769607071, "degree": 4, "shrinking": true}
+  Trial 11: Score=0.0935 | Hiperparâmetros: {"kernel": "sigmoid", "C": 0.1168420152442904, "degree": 5, "shrinking": true}
+  Trial 12: Score=0.0948 | Hiperparâmetros: {"kernel": "sigmoid", "C": 12.852533750165962, "degree": 5, "shrinking": true}
+  Trial 13: Score=0.0946 | Hiperparâmetros: {"kernel": "sigmoid", "C": 15.102337973312755, "degree": 6, "shrinking": true}
+  Trial 14: Score=0.0953 | Hiperparâmetros: {"kernel": "sigmoid", "C": 0.39777735677848114, "degree": 5, "shrinking": false}
+  Trial 15: Score=0.0941 | Hiperparâmetros: {"kernel": "sigmoid", "C": 0.2310089873712811, "degree": 4, "shrinking": true}
+  Trial 16: Score=0.0579 | Hiperparâmetros: {"kernel": "linear", "C": 0.4802156640401839, "degree": 5, "shrinking": false}
+  Trial 17: Score=0.0523 | Hiperparâmetros: {"kernel": "rbf", "C": 6.00299683601165, "degree": 4, "shrinking": true, "gamma": "auto"}
+  Trial 18: Score=0.0508 | Hiperparâmetros: {"kernel": "poly", "C": 0.6010751931947456, "degree": 5, "shrinking": true}
+  Trial 19: Score=0.0939 | Hiperparâmetros: {"kernel": "sigmoid", "C": 0.1799390010639819, "degree": 3, "shrinking": false}
+  Trial 20: Score=0.0948 | Hiperparâmetros: {"kernel": "sigmoid", "C": 3.8596455061532544, "degree": 5, "shrinking": false}
+  Trial 21: Score=0.0944 | Hiperparâmetros: {"kernel": "sigmoid", "C": 23.93708208972339, "degree": 6, "shrinking": false}
+  Trial 22: Score=0.0948 | Hiperparâmetros: {"kernel": "sigmoid", "C": 31.380078507373376, "degree": 6, "shrinking": false}
+  Trial 23: Score=0.0950 | Hiperparâmetros: {"kernel": "sigmoid", "C": 0.7924999386360825, "degree": 4, "shrinking": false}
+  Trial 24: Score=0.0948 | Hiperparâmetros: {"kernel": "sigmoid", "C": 0.9194527068616144, "degree": 4, "shrinking": false}
+  Trial 25: Score=0.0941 | Hiperparâmetros: {"kernel": "sigmoid", "C": 0.26251112299406476, "degree": 4, "shrinking": false}
+  Trial 26: Score=0.0713 | Hiperparâmetros: {"kernel": "linear", "C": 2.3059607901679247, "degree": 4, "shrinking": true}
+  Trial 27: Score=0.0499 | Hiperparâmetros: {"kernel": "poly", "C": 0.4167046729163, "degree": 5, "shrinking": false}
+  Trial 28: Score=0.0518 | Hiperparâmetros: {"kernel": "rbf", "C": 1.1126081918945623, "degree": 3, "shrinking": true, "gamma": "auto"}
+  Trial 29: Score=0.0518 | Hiperparâmetros: {"kernel": "rbf", "C": 4.971434254370797, "degree": 5, "shrinking": false, "gamma": "scale"}
+
+Melhor trial (Optuna): 4
+  kernel: sigmoid
+  C: 3.135840401609788
+  degree: 5
+  shrinking: True
+  probability: True
+  class_weight: balanced
+
+Importância dos parâmetros (Optuna):
+  kernel: 0.9850
+  C: 0.0103
+  degree: 0.0038
+  shrinking: 0.0008
+
+Resultado do treino:
+  accuracy: 0.5855
+  precision: 0.0739
+  recall: 0.5832
+  f1: 0.1312
+  roc_auc: 0.5997
+  pr_auc: 0.0832
+
+Resultado do teste:
+  accuracy: 0.5976
+  precision: 0.0720
+  recall: 0.5461
+  f1: 0.1273
+  roc_auc: 0.5863
+  pr_auc: 0.0879
+
+============================================================
+
+FOLD 3 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.0634 | Hiperparâmetros: {"kernel": "linear", "C": 0.19523686970663431, "degree": 6, "shrinking": false}
+  Trial 1: Score=0.0600 | Hiperparâmetros: {"kernel": "poly", "C": 27.34393737035852, "degree": 6, "shrinking": false}
+  Trial 2: Score=0.0508 | Hiperparâmetros: {"kernel": "rbf", "C": 0.15992586399770592, "degree": 3, "shrinking": false, "gamma": "scale"}
+  Trial 3: Score=0.0493 | Hiperparâmetros: {"kernel": "rbf", "C": 0.4301648600910015, "degree": 6, "shrinking": false, "gamma": "scale"}
+  Trial 4: Score=0.0586 | Hiperparâmetros: {"kernel": "linear", "C": 0.2394351037212107, "degree": 6, "shrinking": false}
+  Trial 5: Score=0.0953 | Hiperparâmetros: {"kernel": "sigmoid", "C": 24.70934376571201, "degree": 4, "shrinking": true}
+  Trial 6: Score=0.0517 | Hiperparâmetros: {"kernel": "rbf", "C": 90.55486337428528, "degree": 5, "shrinking": true, "gamma": "scale"}
+  Trial 7: Score=0.0732 | Hiperparâmetros: {"kernel": "linear", "C": 0.31495299602550847, "degree": 6, "shrinking": false}
+  Trial 8: Score=0.0430 | Hiperparâmetros: {"kernel": "linear", "C": 22.782728494150554, "degree": 4, "shrinking": true}
+  Trial 9: Score=0.0949 | Hiperparâmetros: {"kernel": "sigmoid", "C": 18.498923729355557, "degree": 5, "shrinking": true}
+  Trial 10: Score=0.0952 | Hiperparâmetros: {"kernel": "sigmoid", "C": 2.260669817146858, "degree": 2, "shrinking": true}
+  Trial 11: Score=0.0949 | Hiperparâmetros: {"kernel": "sigmoid", "C": 1.8370431667066196, "degree": 2, "shrinking": true}
+  Trial 12: Score=0.0952 | Hiperparâmetros: {"kernel": "sigmoid", "C": 2.3211687711545377, "degree": 2, "shrinking": true}
+  Trial 13: Score=0.0951 | Hiperparâmetros: {"kernel": "sigmoid", "C": 6.029792593758428, "degree": 3, "shrinking": true}
+  Trial 14: Score=0.0950 | Hiperparâmetros: {"kernel": "sigmoid", "C": 6.68315829897879, "degree": 3, "shrinking": true}
+  Trial 15: Score=0.0532 | Hiperparâmetros: {"kernel": "poly", "C": 0.9928306771946032, "degree": 4, "shrinking": true}
+  Trial 16: Score=0.0949 | Hiperparâmetros: {"kernel": "sigmoid", "C": 61.02010661570553, "degree": 2, "shrinking": true}
+  Trial 17: Score=0.0950 | Hiperparâmetros: {"kernel": "sigmoid", "C": 7.207992395213377, "degree": 5, "shrinking": true}
+  Trial 18: Score=0.0945 | Hiperparâmetros: {"kernel": "sigmoid", "C": 0.8099764273620468, "degree": 3, "shrinking": true}
+  Trial 19: Score=0.0548 | Hiperparâmetros: {"kernel": "poly", "C": 10.8132312143611, "degree": 4, "shrinking": true}
+  Trial 20: Score=0.0950 | Hiperparâmetros: {"kernel": "sigmoid", "C": 3.363914311562317, "degree": 4, "shrinking": true}
+  Trial 21: Score=0.0951 | Hiperparâmetros: {"kernel": "sigmoid", "C": 2.6115692911007007, "degree": 2, "shrinking": true}
+  Trial 22: Score=0.0946 | Hiperparâmetros: {"kernel": "sigmoid", "C": 1.0655993990229256, "degree": 2, "shrinking": true}
+  Trial 23: Score=0.0948 | Hiperparâmetros: {"kernel": "sigmoid", "C": 3.2939555064921597, "degree": 2, "shrinking": true}
+  Trial 24: Score=0.0950 | Hiperparâmetros: {"kernel": "sigmoid", "C": 1.7465092210109574, "degree": 3, "shrinking": true}
+  Trial 25: Score=0.0951 | Hiperparâmetros: {"kernel": "sigmoid", "C": 42.18103250836331, "degree": 2, "shrinking": true}
+  Trial 26: Score=0.0939 | Hiperparâmetros: {"kernel": "sigmoid", "C": 0.5614015582848615, "degree": 3, "shrinking": true}
+  Trial 27: Score=0.0488 | Hiperparâmetros: {"kernel": "rbf", "C": 0.10088923513328137, "degree": 2, "shrinking": true, "gamma": "auto"}
+  Trial 28: Score=0.0518 | Hiperparâmetros: {"kernel": "poly", "C": 10.620254625801275, "degree": 5, "shrinking": true}
+  Trial 29: Score=0.0530 | Hiperparâmetros: {"kernel": "linear", "C": 4.141278223554758, "degree": 4, "shrinking": false}
+
+Melhor trial (Optuna): 5
+  kernel: sigmoid
+  C: 24.70934376571201
+  degree: 4
+  shrinking: True
+  probability: True
+  class_weight: balanced
+
+Importância dos parâmetros (Optuna):
+  kernel: 0.9897
+  degree: 0.0073
+  C: 0.0020
+  shrinking: 0.0010
+
+Resultado do treino:
+  accuracy: 0.5895
+  precision: 0.0757
+  recall: 0.5931
+  f1: 0.1342
+  roc_auc: 0.3979
+  pr_auc: 0.0759
+
+Resultado do teste:
+  accuracy: 0.5852
+  precision: 0.0685
+  recall: 0.5329
+  f1: 0.1213
+  roc_auc: 0.4058
+  pr_auc: 0.0873
+
+============================================================
+
+FOLD 4 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.0476 | Hiperparâmetros: {"kernel": "rbf", "C": 4.9917560242251175, "degree": 4, "shrinking": false, "gamma": "auto"}
+  Trial 1: Score=0.0455 | Hiperparâmetros: {"kernel": "poly", "C": 0.24208225084870522, "degree": 3, "shrinking": true}
+  Trial 2: Score=0.0465 | Hiperparâmetros: {"kernel": "poly", "C": 0.13090454288167863, "degree": 2, "shrinking": false}
+  Trial 3: Score=0.0507 | Hiperparâmetros: {"kernel": "poly", "C": 8.04571669529566, "degree": 4, "shrinking": true}
+  Trial 4: Score=0.0568 | Hiperparâmetros: {"kernel": "linear", "C": 9.833976947011763, "degree": 3, "shrinking": true}
+  Trial 5: Score=0.0975 | Hiperparâmetros: {"kernel": "sigmoid", "C": 0.8982286863359185, "degree": 4, "shrinking": false}
+  Trial 6: Score=0.0968 | Hiperparâmetros: {"kernel": "sigmoid", "C": 0.13910654678614337, "degree": 6, "shrinking": true}
+  Trial 7: Score=0.0483 | Hiperparâmetros: {"kernel": "rbf", "C": 0.748275808981006, "degree": 4, "shrinking": false, "gamma": "scale"}
+  Trial 8: Score=0.0979 | Hiperparâmetros: {"kernel": "sigmoid", "C": 68.81578951408045, "degree": 6, "shrinking": false}
+  Trial 9: Score=0.0506 | Hiperparâmetros: {"kernel": "rbf", "C": 18.02377235076058, "degree": 3, "shrinking": true, "gamma": "auto"}
+  Trial 10: Score=0.0979 | Hiperparâmetros: {"kernel": "sigmoid", "C": 99.05126686024585, "degree": 6, "shrinking": false}
+  Trial 11: Score=0.0980 | Hiperparâmetros: {"kernel": "sigmoid", "C": 65.19932739676261, "degree": 6, "shrinking": false}
+  Trial 12: Score=0.0976 | Hiperparâmetros: {"kernel": "sigmoid", "C": 90.042894568299, "degree": 6, "shrinking": false}
+  Trial 13: Score=0.0979 | Hiperparâmetros: {"kernel": "sigmoid", "C": 43.40895173645144, "degree": 5, "shrinking": false}
+  Trial 14: Score=0.0546 | Hiperparâmetros: {"kernel": "linear", "C": 24.99987456528671, "degree": 5, "shrinking": false}
+  Trial 15: Score=0.0982 | Hiperparâmetros: {"kernel": "sigmoid", "C": 2.20402022294517, "degree": 5, "shrinking": false}
+  Trial 16: Score=0.0983 | Hiperparâmetros: {"kernel": "sigmoid", "C": 1.789213521688763, "degree": 5, "shrinking": false}
+  Trial 17: Score=0.0978 | Hiperparâmetros: {"kernel": "sigmoid", "C": 1.5964105784665652, "degree": 5, "shrinking": false}
+  Trial 18: Score=0.0491 | Hiperparâmetros: {"kernel": "linear", "C": 2.438248239110109, "degree": 5, "shrinking": false}
+  Trial 19: Score=0.0975 | Hiperparâmetros: {"kernel": "sigmoid", "C": 0.5130569881165523, "degree": 5, "shrinking": false}
+  Trial 20: Score=0.0977 | Hiperparâmetros: {"kernel": "sigmoid", "C": 2.892976750799059, "degree": 5, "shrinking": false}
+  Trial 21: Score=0.0978 | Hiperparâmetros: {"kernel": "sigmoid", "C": 1.8385233479398173, "degree": 6, "shrinking": false}
+  Trial 22: Score=0.0976 | Hiperparâmetros: {"kernel": "sigmoid", "C": 5.560896438013093, "degree": 5, "shrinking": false}
+  Trial 23: Score=0.0973 | Hiperparâmetros: {"kernel": "sigmoid", "C": 1.134896442635563, "degree": 6, "shrinking": false}
+  Trial 24: Score=0.0980 | Hiperparâmetros: {"kernel": "sigmoid", "C": 0.4187379898329516, "degree": 6, "shrinking": false}
+  Trial 25: Score=0.0980 | Hiperparâmetros: {"kernel": "sigmoid", "C": 0.4187367171309349, "degree": 5, "shrinking": false}
+  Trial 26: Score=0.0482 | Hiperparâmetros: {"kernel": "rbf", "C": 0.27411935671969473, "degree": 4, "shrinking": true, "gamma": "scale"}
+  Trial 27: Score=0.0651 | Hiperparâmetros: {"kernel": "linear", "C": 4.140986965791432, "degree": 5, "shrinking": false}
+  Trial 28: Score=0.0495 | Hiperparâmetros: {"kernel": "poly", "C": 1.2604566909239954, "degree": 6, "shrinking": false}
+  Trial 29: Score=0.0496 | Hiperparâmetros: {"kernel": "rbf", "C": 0.6813962977506492, "degree": 4, "shrinking": false, "gamma": "scale"}
+
+Melhor trial (Optuna): 16
+  kernel: sigmoid
+  C: 1.789213521688763
+  degree: 5
+  shrinking: False
+  probability: True
+  class_weight: balanced
+
+Importância dos parâmetros (Optuna):
+  kernel: 0.9967
+  C: 0.0012
+  degree: 0.0011
+  shrinking: 0.0009
+
+Resultado do treino:
+  accuracy: 0.5935
+  precision: 0.0768
+  recall: 0.5964
+  f1: 0.1360
+  roc_auc: 0.6159
+  pr_auc: 0.0906
+
+Resultado do teste:
+  accuracy: 0.5934
+  precision: 0.0785
+  recall: 0.6118
+  f1: 0.1392
+  roc_auc: 0.6240
+  pr_auc: 0.0944
+
+============================================================
+
+FOLD 5 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.0558 | Hiperparâmetros: {"kernel": "linear", "C": 6.8838001826130135, "degree": 4, "shrinking": false}
+  Trial 1: Score=0.0676 | Hiperparâmetros: {"kernel": "linear", "C": 0.10505404494056453, "degree": 2, "shrinking": true}
+  Trial 2: Score=0.0527 | Hiperparâmetros: {"kernel": "rbf", "C": 5.279469216699063, "degree": 5, "shrinking": false, "gamma": "auto"}
+  Trial 3: Score=0.0515 | Hiperparâmetros: {"kernel": "rbf", "C": 0.15605572682305666, "degree": 3, "shrinking": false, "gamma": "scale"}
+  Trial 4: Score=0.0516 | Hiperparâmetros: {"kernel": "rbf", "C": 0.28068269485853187, "degree": 2, "shrinking": false, "gamma": "auto"}
+  Trial 5: Score=0.0525 | Hiperparâmetros: {"kernel": "linear", "C": 3.0657184512234585, "degree": 6, "shrinking": false}
+  Trial 6: Score=0.0529 | Hiperparâmetros: {"kernel": "poly", "C": 7.87507482089154, "degree": 5, "shrinking": true}
+  Trial 7: Score=0.0847 | Hiperparâmetros: {"kernel": "sigmoid", "C": 2.3650039463077293, "degree": 3, "shrinking": false}
+  Trial 8: Score=0.0839 | Hiperparâmetros: {"kernel": "sigmoid", "C": 0.11158390323239165, "degree": 3, "shrinking": true}
+  Trial 9: Score=0.0746 | Hiperparâmetros: {"kernel": "linear", "C": 0.47270819240147616, "degree": 5, "shrinking": true}
+  Trial 10: Score=0.0845 | Hiperparâmetros: {"kernel": "sigmoid", "C": 50.5652811522614, "degree": 3, "shrinking": false}
+  Trial 11: Score=0.0844 | Hiperparâmetros: {"kernel": "sigmoid", "C": 92.6894040613625, "degree": 3, "shrinking": false}
+  Trial 12: Score=0.0844 | Hiperparâmetros: {"kernel": "sigmoid", "C": 99.24411451377195, "degree": 4, "shrinking": false}
+  Trial 13: Score=0.0844 | Hiperparâmetros: {"kernel": "sigmoid", "C": 25.489722464552536, "degree": 3, "shrinking": false}
+  Trial 14: Score=0.0843 | Hiperparâmetros: {"kernel": "sigmoid", "C": 1.133713696188019, "degree": 2, "shrinking": false}
+  Trial 15: Score=0.0483 | Hiperparâmetros: {"kernel": "poly", "C": 24.599514750028987, "degree": 4, "shrinking": false}
+  Trial 16: Score=0.0844 | Hiperparâmetros: {"kernel": "sigmoid", "C": 1.7466048097204463, "degree": 3, "shrinking": false}
+  Trial 17: Score=0.0844 | Hiperparâmetros: {"kernel": "sigmoid", "C": 16.733175345631498, "degree": 2, "shrinking": false}
+  Trial 18: Score=0.0845 | Hiperparâmetros: {"kernel": "sigmoid", "C": 1.1324450021413837, "degree": 4, "shrinking": true}
+  Trial 19: Score=0.0573 | Hiperparâmetros: {"kernel": "poly", "C": 51.08591998208293, "degree": 3, "shrinking": false}
+  Trial 20: Score=0.0844 | Hiperparâmetros: {"kernel": "sigmoid", "C": 14.309803157792444, "degree": 6, "shrinking": false}
+  Trial 21: Score=0.0844 | Hiperparâmetros: {"kernel": "sigmoid", "C": 1.5531095535237986, "degree": 4, "shrinking": true}
+  Trial 22: Score=0.0841 | Hiperparâmetros: {"kernel": "sigmoid", "C": 0.7163968159744488, "degree": 4, "shrinking": true}
+  Trial 23: Score=0.0842 | Hiperparâmetros: {"kernel": "sigmoid", "C": 3.95626786888432, "degree": 3, "shrinking": true}
+  Trial 24: Score=0.0848 | Hiperparâmetros: {"kernel": "sigmoid", "C": 2.5304594969309773, "degree": 5, "shrinking": true}
+  Trial 25: Score=0.0847 | Hiperparâmetros: {"kernel": "sigmoid", "C": 2.507324763112014, "degree": 5, "shrinking": true}
+  Trial 26: Score=0.0846 | Hiperparâmetros: {"kernel": "sigmoid", "C": 3.1533026879609865, "degree": 5, "shrinking": true}
+  Trial 27: Score=0.0505 | Hiperparâmetros: {"kernel": "poly", "C": 2.301285625603691, "degree": 6, "shrinking": true}
+  Trial 28: Score=0.0486 | Hiperparâmetros: {"kernel": "rbf", "C": 0.7021585943141293, "degree": 5, "shrinking": true, "gamma": "scale"}
+  Trial 29: Score=0.0558 | Hiperparâmetros: {"kernel": "linear", "C": 7.987785014224024, "degree": 5, "shrinking": true}
+
+Melhor trial (Optuna): 24
+  kernel: sigmoid
+  C: 2.5304594969309773
+  degree: 5
+  shrinking: True
+  probability: True
+  class_weight: balanced
+
+Importância dos parâmetros (Optuna):
+  kernel: 0.9878
+  shrinking: 0.0056
+  C: 0.0037
+  degree: 0.0029
+
+Resultado do treino:
+  accuracy: 0.5888
+  precision: 0.0748
+  recall: 0.5865
+  f1: 0.1327
+  roc_auc: 0.4037
+  pr_auc: 0.0753
+
+Resultado do teste:
+  accuracy: 0.5859
+  precision: 0.0793
+  recall: 0.6316
+  f1: 0.1409
+  roc_auc: 0.3695
+  pr_auc: 0.0750
+
+============================================================
+
+TABELA DE MÉTRICAS DE TREINO E TESTE POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treino: 1     | 0.5908     | 0.0763     | 0.5954     | 0.1353     | 0.3841     | 0.0744    
+Teste:  1     | 0.5930     | 0.0798     | 0.6291     | 0.1417     | 0.3930     | 0.0633    
+Treino: 2     | 0.5855     | 0.0739     | 0.5832     | 0.1312     | 0.5997     | 0.0832    
+Teste:  2     | 0.5976     | 0.0720     | 0.5461     | 0.1273     | 0.5863     | 0.0879    
+Treino: 3     | 0.5895     | 0.0757     | 0.5931     | 0.1342     | 0.3979     | 0.0759    
+Teste:  3     | 0.5852     | 0.0685     | 0.5329     | 0.1213     | 0.4058     | 0.0873    
+Treino: 4     | 0.5935     | 0.0768     | 0.5964     | 0.1360     | 0.6159     | 0.0906    
+Teste:  4     | 0.5934     | 0.0785     | 0.6118     | 0.1392     | 0.6240     | 0.0944    
+Treino: 5     | 0.5888     | 0.0748     | 0.5865     | 0.1327     | 0.4037     | 0.0753    
+Teste:  5     | 0.5859     | 0.0793     | 0.6316     | 0.1409     | 0.3695     | 0.0750    
+
+MÉDIAS E DESVIOS PADRÃO DAS MÉTRICAS POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treinos: 0.5896+-0.00 0.0755+-0.00 0.5909+-0.01 0.1339+-0.00 0.4802+-0.10 0.0799+-0.01 
+Testes:  0.5910+-0.00 0.0756+-0.00 0.5903+-0.04 0.1341+-0.01 0.4757+-0.11 0.0816+-0.01 
+
+MELHOR CONJUNTO DE HIPERPARÂMETROS GLOBAL (selecionado pelo maior PR AUC  ):
+------------------------------------------------------------
+{
+  "kernel": "sigmoid",
+  "C": 1.789213521688763,
+  "degree": 5,
+  "shrinking": false,
+  "probability": true,
+  "class_weight": "balanced"
+}
+

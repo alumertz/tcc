@@ -1,0 +1,67 @@
+Holdout Evaluation Results for histogram_gradient_boosting
+==================================================
+
+Results for each fold's best parameters on holdout set:
+--------------------------------------------------
+
+Fold 1:
+  Best Parameters: {'max_iter': 149, 'learning_rate': 0.04534080180021764, 'max_depth': 3, 'min_samples_leaf': 37, 'l2_regularization': 0.6696568485561646}
+  Holdout Metrics:
+    Accuracy: 0.9463
+    Precision: 0.0000
+    Recall: 0.0000
+    F1-Score: 0.0000
+    ROC-AUC: 0.7097
+    PR-AUC: 0.1722
+
+Fold 2:
+  Best Parameters: {'max_iter': 143, 'learning_rate': 0.03671671748166403, 'max_depth': 3, 'min_samples_leaf': 27, 'l2_regularization': 0.9923312334995915}
+  Holdout Metrics:
+    Accuracy: 0.9463
+    Precision: 0.0000
+    Recall: 0.0000
+    F1-Score: 0.0000
+    ROC-AUC: 0.7278
+    PR-AUC: 0.1878
+
+Fold 3:
+  Best Parameters: {'max_iter': 184, 'learning_rate': 0.0477766097625405, 'max_depth': 3, 'min_samples_leaf': 15, 'l2_regularization': 0.4777050389344287}
+  Holdout Metrics:
+    Accuracy: 0.9468
+    Precision: 0.7500
+    Recall: 0.0158
+    F1-Score: 0.0309
+    ROC-AUC: 0.7307
+    PR-AUC: 0.1879
+
+Fold 4:
+  Best Parameters: {'max_iter': 76, 'learning_rate': 0.04280693161785966, 'max_depth': 3, 'min_samples_leaf': 1, 'l2_regularization': 0.8943485295348234}
+  Holdout Metrics:
+    Accuracy: 0.9463
+    Precision: 0.0000
+    Recall: 0.0000
+    F1-Score: 0.0000
+    ROC-AUC: 0.7181
+    PR-AUC: 0.1876
+
+Fold 5:
+  Best Parameters: {'max_iter': 151, 'learning_rate': 0.04393813726682162, 'max_depth': 3, 'min_samples_leaf': 32, 'l2_regularization': 0.11367603238094591}
+  Holdout Metrics:
+    Accuracy: 0.9465
+    Precision: 0.6667
+    Recall: 0.0105
+    F1-Score: 0.0207
+    ROC-AUC: 0.7350
+    PR-AUC: 0.2001
+
+==================================================
+BEST PERFORMING MODEL ON HOLDOUT SET:
+Fold 5 (PR-AUC: 0.2001)
+Parameters: {'max_iter': 151, 'learning_rate': 0.04393813726682162, 'max_depth': 3, 'min_samples_leaf': 32, 'l2_regularization': 0.11367603238094591}
+Final Holdout Performance:
+  Accuracy: 0.9465
+  Precision: 0.6667
+  Recall: 0.0105
+  F1-Score: 0.0207
+  ROC-AUC: 0.7350
+  PR-AUC: 0.2001
