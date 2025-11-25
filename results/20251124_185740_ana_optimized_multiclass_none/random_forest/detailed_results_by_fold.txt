@@ -1,0 +1,393 @@
+RESULTADOS DO MODELO: RANDOM_FOREST
+================================================================================
+
+Data/Hora: 2025-11-24 20:05:03
+
+FOLD 1 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3603 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 13, "min_samples_split": 3, "min_samples_leaf": 4, "max_features": null, "criterion": "entropy", "bootstrap": true}
+  Trial 1: Score=0.3733 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 19, "min_samples_split": 11, "min_samples_leaf": 11, "max_features": "log2", "criterion": "log_loss", "bootstrap": false}
+  Trial 2: Score=0.3516 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 5, "min_samples_split": 4, "min_samples_leaf": 15, "max_features": null, "criterion": "log_loss", "bootstrap": false}
+  Trial 3: Score=0.3760 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 5, "min_samples_split": 15, "min_samples_leaf": 9, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 4: Score=0.3721 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 9, "min_samples_split": 9, "min_samples_leaf": 20, "max_features": "log2", "criterion": "gini", "bootstrap": true}
+  Trial 5: Score=0.3534 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 6, "min_samples_split": 7, "min_samples_leaf": 10, "max_features": null, "criterion": "gini", "bootstrap": false}
+  Trial 6: Score=0.3679 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 26, "min_samples_split": 13, "min_samples_leaf": 7, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 7: Score=0.3582 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 19, "min_samples_split": 5, "min_samples_leaf": 4, "max_features": null, "criterion": "log_loss", "bootstrap": true}
+  Trial 8: Score=0.3703 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 14, "min_samples_split": 17, "min_samples_leaf": 8, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 9: Score=0.3451 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 15, "min_samples_split": 20, "min_samples_leaf": 4, "max_features": null, "criterion": "entropy", "bootstrap": false}
+  Trial 10: Score=0.3753 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 29, "min_samples_split": 15, "min_samples_leaf": 15, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 11: Score=0.3748 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 28, "min_samples_split": 16, "min_samples_leaf": 14, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 12: Score=0.3763 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 24, "min_samples_split": 14, "min_samples_leaf": 16, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 13: Score=0.3782 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 23, "min_samples_split": 19, "min_samples_leaf": 19, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 14: Score=0.3775 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 23, "min_samples_split": 20, "min_samples_leaf": 20, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 15: Score=0.3766 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 23, "min_samples_split": 20, "min_samples_leaf": 20, "max_features": "sqrt", "criterion": "gini", "bootstrap": false}
+  Trial 16: Score=0.3766 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 22, "min_samples_split": 18, "min_samples_leaf": 18, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 17: Score=0.3776 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 21, "min_samples_split": 18, "min_samples_leaf": 18, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 18: Score=0.3739 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 17, "min_samples_split": 12, "min_samples_leaf": 12, "max_features": "sqrt", "criterion": "log_loss", "bootstrap": false}
+  Trial 19: Score=0.3739 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 20, "min_samples_split": 18, "min_samples_leaf": 17, "max_features": "sqrt", "criterion": "gini", "bootstrap": false}
+  Trial 20: Score=0.3773 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 27, "min_samples_split": 9, "min_samples_leaf": 18, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 21: Score=0.3783 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 25, "min_samples_split": 20, "min_samples_leaf": 20, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 22: Score=0.3754 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 25, "min_samples_split": 18, "min_samples_leaf": 13, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 23: Score=0.3762 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 21, "min_samples_split": 19, "min_samples_leaf": 18, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 24: Score=0.3760 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 17, "min_samples_split": 16, "min_samples_leaf": 19, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 25: Score=0.3664 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 30, "min_samples_split": 17, "min_samples_leaf": 1, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 26: Score=0.3744 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 25, "min_samples_split": 19, "min_samples_leaf": 16, "max_features": "sqrt", "criterion": "entropy", "bootstrap": true}
+  Trial 27: Score=0.3770 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 21, "min_samples_split": 17, "min_samples_leaf": 17, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 28: Score=0.3769 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 27, "min_samples_split": 14, "min_samples_leaf": 19, "max_features": "log2", "criterion": "gini", "bootstrap": false}
+  Trial 29: Score=0.3741 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 16, "min_samples_split": 19, "min_samples_leaf": 14, "max_features": "sqrt", "criterion": "log_loss", "bootstrap": true}
+
+Melhor trial (Optuna): 21
+  n_estimators: 250
+  max_depth: 25
+  min_samples_split: 20
+  min_samples_leaf: 20
+  max_features: sqrt
+  criterion: entropy
+  bootstrap: False
+  class_weight: balanced
+
+Importância dos parâmetros (Optuna):
+  max_features: 0.7508
+  min_samples_split: 0.1253
+  min_samples_leaf: 0.0745
+  bootstrap: 0.0285
+  max_depth: 0.0113
+  n_estimators: 0.0061
+  criterion: 0.0036
+
+Resultado do treino:
+  accuracy: 0.9701
+  precision: 0.8029
+  recall: 0.9565
+  f1: 0.8601
+  roc_auc: 0.9941
+  pr_auc: 0.9718
+
+Resultado do teste:
+  accuracy: 0.9112
+  precision: 0.3673
+  recall: 0.3997
+  f1: 0.3796
+  roc_auc: 0.6610
+  pr_auc: 0.3708
+
+============================================================
+
+FOLD 2 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3666 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 23, "min_samples_split": 3, "min_samples_leaf": 6, "max_features": "sqrt", "criterion": "gini", "bootstrap": false}
+  Trial 1: Score=0.3638 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 23, "min_samples_split": 6, "min_samples_leaf": 4, "max_features": "log2", "criterion": "gini", "bootstrap": false}
+  Trial 2: Score=0.3732 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 20, "min_samples_split": 9, "min_samples_leaf": 18, "max_features": "sqrt", "criterion": "gini", "bootstrap": false}
+  Trial 3: Score=0.3725 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 6, "min_samples_split": 3, "min_samples_leaf": 20, "max_features": "log2", "criterion": "log_loss", "bootstrap": false}
+  Trial 4: Score=0.3740 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 10, "min_samples_split": 15, "min_samples_leaf": 14, "max_features": "sqrt", "criterion": "gini", "bootstrap": true}
+  Trial 5: Score=0.3742 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 18, "min_samples_split": 18, "min_samples_leaf": 14, "max_features": "log2", "criterion": "entropy", "bootstrap": false}
+  Trial 6: Score=0.3735 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 10, "min_samples_split": 13, "min_samples_leaf": 12, "max_features": "sqrt", "criterion": "gini", "bootstrap": false}
+  Trial 7: Score=0.3501 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 7, "min_samples_split": 8, "min_samples_leaf": 12, "max_features": null, "criterion": "entropy", "bootstrap": false}
+  Trial 8: Score=0.3766 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 22, "min_samples_split": 4, "min_samples_leaf": 17, "max_features": "log2", "criterion": "gini", "bootstrap": false}
+  Trial 9: Score=0.3720 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 11, "min_samples_split": 20, "min_samples_leaf": 10, "max_features": "log2", "criterion": "entropy", "bootstrap": false}
+  Trial 10: Score=0.3581 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 29, "min_samples_split": 2, "min_samples_leaf": 1, "max_features": null, "criterion": "log_loss", "bootstrap": true}
+  Trial 11: Score=0.3729 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 16, "min_samples_split": 18, "min_samples_leaf": 16, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 12: Score=0.3725 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 16, "min_samples_split": 15, "min_samples_leaf": 15, "max_features": "log2", "criterion": "entropy", "bootstrap": false}
+  Trial 13: Score=0.3699 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 29, "min_samples_split": 11, "min_samples_leaf": 9, "max_features": "log2", "criterion": "entropy", "bootstrap": false}
+  Trial 14: Score=0.3709 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 20, "min_samples_split": 6, "min_samples_leaf": 18, "max_features": "log2", "criterion": "log_loss", "bootstrap": true}
+  Trial 15: Score=0.3740 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 25, "min_samples_split": 17, "min_samples_leaf": 17, "max_features": "log2", "criterion": "gini", "bootstrap": false}
+  Trial 16: Score=0.3442 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 14, "min_samples_split": 11, "min_samples_leaf": 20, "max_features": null, "criterion": "entropy", "bootstrap": false}
+  Trial 17: Score=0.3727 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 19, "min_samples_split": 20, "min_samples_leaf": 14, "max_features": "log2", "criterion": "gini", "bootstrap": false}
+  Trial 18: Score=0.3691 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 26, "min_samples_split": 5, "min_samples_leaf": 7, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 19: Score=0.3463 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 23, "min_samples_split": 13, "min_samples_leaf": 13, "max_features": null, "criterion": "log_loss", "bootstrap": false}
+  Trial 20: Score=0.3688 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 13, "min_samples_split": 8, "min_samples_leaf": 11, "max_features": "log2", "criterion": "entropy", "bootstrap": false}
+  Trial 21: Score=0.3736 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 27, "min_samples_split": 18, "min_samples_leaf": 17, "max_features": "log2", "criterion": "gini", "bootstrap": false}
+  Trial 22: Score=0.3731 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 25, "min_samples_split": 17, "min_samples_leaf": 16, "max_features": "log2", "criterion": "gini", "bootstrap": false}
+  Trial 23: Score=0.3743 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 22, "min_samples_split": 16, "min_samples_leaf": 18, "max_features": "log2", "criterion": "gini", "bootstrap": false}
+  Trial 24: Score=0.3743 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 18, "min_samples_split": 15, "min_samples_leaf": 19, "max_features": "log2", "criterion": "gini", "bootstrap": false}
+  Trial 25: Score=0.3756 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 21, "min_samples_split": 15, "min_samples_leaf": 19, "max_features": "log2", "criterion": "gini", "bootstrap": false}
+  Trial 26: Score=0.3736 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 21, "min_samples_split": 14, "min_samples_leaf": 20, "max_features": "log2", "criterion": "gini", "bootstrap": true}
+  Trial 27: Score=0.3736 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 21, "min_samples_split": 12, "min_samples_leaf": 17, "max_features": "log2", "criterion": "gini", "bootstrap": false}
+  Trial 28: Score=0.3451 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 22, "min_samples_split": 10, "min_samples_leaf": 18, "max_features": null, "criterion": "gini", "bootstrap": false}
+  Trial 29: Score=0.3737 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 16, "min_samples_split": 16, "min_samples_leaf": 19, "max_features": "sqrt", "criterion": "gini", "bootstrap": false}
+
+Melhor trial (Optuna): 8
+  n_estimators: 300
+  max_depth: 22
+  min_samples_split: 4
+  min_samples_leaf: 17
+  max_features: log2
+  criterion: gini
+  bootstrap: False
+  class_weight: balanced
+
+Importância dos parâmetros (Optuna):
+  max_features: 0.9304
+  min_samples_leaf: 0.0361
+  bootstrap: 0.0152
+  min_samples_split: 0.0065
+  max_depth: 0.0055
+  criterion: 0.0046
+  n_estimators: 0.0017
+
+Resultado do treino:
+  accuracy: 0.9781
+  precision: 0.8551
+  recall: 0.9632
+  f1: 0.8950
+  roc_auc: 0.9948
+  pr_auc: 0.9760
+
+Resultado do teste:
+  accuracy: 0.9282
+  precision: 0.3747
+  recall: 0.3782
+  f1: 0.3763
+  roc_auc: 0.6627
+  pr_auc: 0.3752
+
+============================================================
+
+FOLD 3 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3710 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 12, "min_samples_split": 10, "min_samples_leaf": 12, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 1: Score=0.3385 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 14, "min_samples_split": 4, "min_samples_leaf": 1, "max_features": null, "criterion": "log_loss", "bootstrap": false}
+  Trial 2: Score=0.3725 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 27, "min_samples_split": 5, "min_samples_leaf": 9, "max_features": "log2", "criterion": "gini", "bootstrap": false}
+  Trial 3: Score=0.3651 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 19, "min_samples_split": 4, "min_samples_leaf": 7, "max_features": "log2", "criterion": "gini", "bootstrap": true}
+  Trial 4: Score=0.3708 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 27, "min_samples_split": 18, "min_samples_leaf": 10, "max_features": "sqrt", "criterion": "log_loss", "bootstrap": true}
+  Trial 5: Score=0.3644 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 7, "min_samples_split": 18, "min_samples_leaf": 9, "max_features": null, "criterion": "log_loss", "bootstrap": true}
+  Trial 6: Score=0.3684 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 9, "min_samples_split": 2, "min_samples_leaf": 6, "max_features": "sqrt", "criterion": "log_loss", "bootstrap": false}
+  Trial 7: Score=0.3599 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 27, "min_samples_split": 12, "min_samples_leaf": 2, "max_features": "sqrt", "criterion": "entropy", "bootstrap": true}
+  Trial 8: Score=0.3728 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 11, "min_samples_split": 13, "min_samples_leaf": 16, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 9: Score=0.3623 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 30, "min_samples_split": 17, "min_samples_leaf": 3, "max_features": "sqrt", "criterion": "gini", "bootstrap": false}
+  Trial 10: Score=0.3730 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 19, "min_samples_split": 13, "min_samples_leaf": 18, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 11: Score=0.3759 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 19, "min_samples_split": 13, "min_samples_leaf": 19, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 12: Score=0.3725 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 20, "min_samples_split": 9, "min_samples_leaf": 20, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 13: Score=0.3732 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 22, "min_samples_split": 15, "min_samples_leaf": 20, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 14: Score=0.3745 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 22, "min_samples_split": 15, "min_samples_leaf": 14, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 15: Score=0.3734 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 15, "min_samples_split": 20, "min_samples_leaf": 14, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 16: Score=0.3688 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 23, "min_samples_split": 14, "min_samples_leaf": 15, "max_features": null, "criterion": "entropy", "bootstrap": true}
+  Trial 17: Score=0.3735 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 16, "min_samples_split": 9, "min_samples_leaf": 17, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 18: Score=0.3729 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 23, "min_samples_split": 16, "min_samples_leaf": 12, "max_features": "log2", "criterion": "entropy", "bootstrap": false}
+  Trial 19: Score=0.3707 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 5, "min_samples_split": 11, "min_samples_leaf": 13, "max_features": null, "criterion": "gini", "bootstrap": true}
+  Trial 20: Score=0.3767 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 25, "min_samples_split": 7, "min_samples_leaf": 18, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 21: Score=0.3733 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 25, "min_samples_split": 7, "min_samples_leaf": 19, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 22: Score=0.3752 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 21, "min_samples_split": 8, "min_samples_leaf": 17, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 23: Score=0.3726 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 30, "min_samples_split": 7, "min_samples_leaf": 17, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 24: Score=0.3729 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 18, "min_samples_split": 8, "min_samples_leaf": 18, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 25: Score=0.3731 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 25, "min_samples_split": 6, "min_samples_leaf": 16, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 26: Score=0.3718 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 21, "min_samples_split": 11, "min_samples_leaf": 20, "max_features": "log2", "criterion": "entropy", "bootstrap": false}
+  Trial 27: Score=0.3738 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 17, "min_samples_split": 8, "min_samples_leaf": 18, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 28: Score=0.3679 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 25, "min_samples_split": 2, "min_samples_leaf": 15, "max_features": null, "criterion": "gini", "bootstrap": true}
+  Trial 29: Score=0.3711 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 13, "min_samples_split": 10, "min_samples_leaf": 12, "max_features": "sqrt", "criterion": "log_loss", "bootstrap": true}
+
+Melhor trial (Optuna): 20
+  n_estimators: 150
+  max_depth: 25
+  min_samples_split: 7
+  min_samples_leaf: 18
+  max_features: log2
+  criterion: entropy
+  bootstrap: True
+  class_weight: balanced
+
+Importância dos parâmetros (Optuna):
+  min_samples_leaf: 0.7368
+  max_features: 0.1457
+  criterion: 0.0434
+  n_estimators: 0.0299
+  min_samples_split: 0.0237
+  max_depth: 0.0132
+  bootstrap: 0.0072
+
+Resultado do treino:
+  accuracy: 0.9754
+  precision: 0.8448
+  recall: 0.9518
+  f1: 0.8833
+  roc_auc: 0.9898
+  pr_auc: 0.9489
+
+Resultado do teste:
+  accuracy: 0.9254
+  precision: 0.3779
+  recall: 0.3930
+  f1: 0.3851
+  roc_auc: 0.6863
+  pr_auc: 0.3782
+
+============================================================
+
+FOLD 4 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3373 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 20, "min_samples_split": 3, "min_samples_leaf": 6, "max_features": null, "criterion": "log_loss", "bootstrap": false}
+  Trial 1: Score=0.3708 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 6, "min_samples_split": 14, "min_samples_leaf": 4, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 2: Score=0.3637 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 25, "min_samples_split": 19, "min_samples_leaf": 12, "max_features": null, "criterion": "gini", "bootstrap": true}
+  Trial 3: Score=0.3793 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 22, "min_samples_split": 14, "min_samples_leaf": 20, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 4: Score=0.3557 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 22, "min_samples_split": 12, "min_samples_leaf": 1, "max_features": "log2", "criterion": "log_loss", "bootstrap": false}
+  Trial 5: Score=0.3552 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 27, "min_samples_split": 9, "min_samples_leaf": 1, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 6: Score=0.3701 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 15, "min_samples_split": 16, "min_samples_leaf": 15, "max_features": "sqrt", "criterion": "log_loss", "bootstrap": false}
+  Trial 7: Score=0.3429 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 14, "min_samples_split": 7, "min_samples_leaf": 18, "max_features": null, "criterion": "entropy", "bootstrap": false}
+  Trial 8: Score=0.3731 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 29, "min_samples_split": 3, "min_samples_leaf": 14, "max_features": "log2", "criterion": "entropy", "bootstrap": false}
+  Trial 9: Score=0.3744 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 11, "min_samples_split": 19, "min_samples_leaf": 11, "max_features": "sqrt", "criterion": "entropy", "bootstrap": true}
+  Trial 10: Score=0.3768 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 19, "min_samples_split": 15, "min_samples_leaf": 20, "max_features": "log2", "criterion": "gini", "bootstrap": true}
+  Trial 11: Score=0.3733 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 19, "min_samples_split": 16, "min_samples_leaf": 20, "max_features": "log2", "criterion": "gini", "bootstrap": true}
+  Trial 12: Score=0.3743 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 22, "min_samples_split": 12, "min_samples_leaf": 20, "max_features": "log2", "criterion": "gini", "bootstrap": true}
+  Trial 13: Score=0.3719 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 16, "min_samples_split": 15, "min_samples_leaf": 17, "max_features": "log2", "criterion": "gini", "bootstrap": true}
+  Trial 14: Score=0.3676 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 24, "min_samples_split": 9, "min_samples_leaf": 8, "max_features": "log2", "criterion": "gini", "bootstrap": true}
+  Trial 15: Score=0.3714 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 10, "min_samples_split": 18, "min_samples_leaf": 17, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 16: Score=0.3728 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 30, "min_samples_split": 13, "min_samples_leaf": 14, "max_features": "log2", "criterion": "gini", "bootstrap": true}
+  Trial 17: Score=0.3716 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 19, "min_samples_split": 9, "min_samples_leaf": 20, "max_features": "log2", "criterion": "gini", "bootstrap": true}
+  Trial 18: Score=0.3760 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 23, "min_samples_split": 17, "min_samples_leaf": 16, "max_features": "sqrt", "criterion": "entropy", "bootstrap": true}
+  Trial 19: Score=0.3614 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 12, "min_samples_split": 20, "min_samples_leaf": 9, "max_features": null, "criterion": "log_loss", "bootstrap": true}
+  Trial 20: Score=0.3721 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 17, "min_samples_split": 14, "min_samples_leaf": 18, "max_features": "log2", "criterion": "gini", "bootstrap": true}
+  Trial 21: Score=0.3731 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 22, "min_samples_split": 17, "min_samples_leaf": 16, "max_features": "sqrt", "criterion": "entropy", "bootstrap": true}
+  Trial 22: Score=0.3740 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 26, "min_samples_split": 17, "min_samples_leaf": 19, "max_features": "sqrt", "criterion": "entropy", "bootstrap": true}
+  Trial 23: Score=0.3717 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 23, "min_samples_split": 11, "min_samples_leaf": 18, "max_features": "sqrt", "criterion": "entropy", "bootstrap": true}
+  Trial 24: Score=0.3721 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 20, "min_samples_split": 15, "min_samples_leaf": 15, "max_features": "sqrt", "criterion": "entropy", "bootstrap": true}
+  Trial 25: Score=0.3715 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 18, "min_samples_split": 17, "min_samples_leaf": 12, "max_features": "sqrt", "criterion": "entropy", "bootstrap": true}
+  Trial 26: Score=0.3758 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 27, "min_samples_split": 11, "min_samples_leaf": 20, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 27: Score=0.3750 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 21, "min_samples_split": 14, "min_samples_leaf": 16, "max_features": "log2", "criterion": "entropy", "bootstrap": true}
+  Trial 28: Score=0.3650 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 25, "min_samples_split": 7, "min_samples_leaf": 13, "max_features": null, "criterion": "log_loss", "bootstrap": true}
+  Trial 29: Score=0.3724 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 20, "min_samples_split": 20, "min_samples_leaf": 18, "max_features": "sqrt", "criterion": "gini", "bootstrap": false}
+
+Melhor trial (Optuna): 3
+  n_estimators: 150
+  max_depth: 22
+  min_samples_split: 14
+  min_samples_leaf: 20
+  max_features: log2
+  criterion: entropy
+  bootstrap: True
+  class_weight: balanced
+
+Importância dos parâmetros (Optuna):
+  max_features: 0.2886
+  min_samples_leaf: 0.2579
+  min_samples_split: 0.2575
+  bootstrap: 0.1033
+  max_depth: 0.0550
+  criterion: 0.0293
+  n_estimators: 0.0083
+
+Resultado do treino:
+  accuracy: 0.9717
+  precision: 0.8360
+  recall: 0.9466
+  f1: 0.8723
+  roc_auc: 0.9866
+  pr_auc: 0.9284
+
+Resultado do teste:
+  accuracy: 0.9243
+  precision: 0.4916
+  recall: 0.4130
+  f1: 0.4016
+  roc_auc: 0.6835
+  pr_auc: 0.3770
+
+============================================================
+
+FOLD 5 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3724 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 7, "min_samples_split": 9, "min_samples_leaf": 20, "max_features": null, "criterion": "entropy", "bootstrap": true}
+  Trial 1: Score=0.3706 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 27, "min_samples_split": 12, "min_samples_leaf": 15, "max_features": null, "criterion": "log_loss", "bootstrap": true}
+  Trial 2: Score=0.3664 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 12, "min_samples_split": 18, "min_samples_leaf": 6, "max_features": null, "criterion": "gini", "bootstrap": true}
+  Trial 3: Score=0.3789 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 10, "min_samples_split": 13, "min_samples_leaf": 17, "max_features": "log2", "criterion": "log_loss", "bootstrap": false}
+  Trial 4: Score=0.3760 | Hiperparâmetros: {"n_estimators": 100, "max_depth": 12, "min_samples_split": 3, "min_samples_leaf": 11, "max_features": "sqrt", "criterion": "log_loss", "bootstrap": false}
+  Trial 5: Score=0.3759 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 5, "min_samples_split": 16, "min_samples_leaf": 19, "max_features": "sqrt", "criterion": "gini", "bootstrap": true}
+  Trial 6: Score=0.3775 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 22, "min_samples_split": 17, "min_samples_leaf": 17, "max_features": "sqrt", "criterion": "log_loss", "bootstrap": true}
+  Trial 7: Score=0.3524 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 14, "min_samples_split": 3, "min_samples_leaf": 1, "max_features": null, "criterion": "entropy", "bootstrap": true}
+  Trial 8: Score=0.3480 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 9, "min_samples_split": 2, "min_samples_leaf": 13, "max_features": null, "criterion": "gini", "bootstrap": false}
+  Trial 9: Score=0.3765 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 28, "min_samples_split": 11, "min_samples_leaf": 13, "max_features": "log2", "criterion": "gini", "bootstrap": true}
+  Trial 10: Score=0.3726 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 19, "min_samples_split": 7, "min_samples_leaf": 7, "max_features": "log2", "criterion": "log_loss", "bootstrap": false}
+  Trial 11: Score=0.3803 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 21, "min_samples_split": 15, "min_samples_leaf": 17, "max_features": "sqrt", "criterion": "log_loss", "bootstrap": false}
+  Trial 12: Score=0.3795 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 22, "min_samples_split": 14, "min_samples_leaf": 16, "max_features": "log2", "criterion": "log_loss", "bootstrap": false}
+  Trial 13: Score=0.3797 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 23, "min_samples_split": 20, "min_samples_leaf": 16, "max_features": "sqrt", "criterion": "log_loss", "bootstrap": false}
+  Trial 14: Score=0.3769 | Hiperparâmetros: {"n_estimators": 300, "max_depth": 23, "min_samples_split": 20, "min_samples_leaf": 10, "max_features": "sqrt", "criterion": "log_loss", "bootstrap": false}
+  Trial 15: Score=0.3802 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 17, "min_samples_split": 20, "min_samples_leaf": 20, "max_features": "sqrt", "criterion": "log_loss", "bootstrap": false}
+  Trial 16: Score=0.3806 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 17, "min_samples_split": 15, "min_samples_leaf": 20, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 17: Score=0.3815 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 16, "min_samples_split": 15, "min_samples_leaf": 18, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 18: Score=0.3809 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 16, "min_samples_split": 10, "min_samples_leaf": 19, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 19: Score=0.3777 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 16, "min_samples_split": 8, "min_samples_leaf": 13, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 20: Score=0.3746 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 15, "min_samples_split": 6, "min_samples_leaf": 8, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 21: Score=0.3817 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 19, "min_samples_split": 11, "min_samples_leaf": 19, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 22: Score=0.3804 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 19, "min_samples_split": 9, "min_samples_leaf": 18, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 23: Score=0.3764 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 26, "min_samples_split": 11, "min_samples_leaf": 15, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 24: Score=0.3797 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 13, "min_samples_split": 10, "min_samples_leaf": 18, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 25: Score=0.3782 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 19, "min_samples_split": 5, "min_samples_leaf": 19, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 26: Score=0.3675 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 25, "min_samples_split": 12, "min_samples_leaf": 3, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 27: Score=0.3775 | Hiperparâmetros: {"n_estimators": 200, "max_depth": 20, "min_samples_split": 13, "min_samples_leaf": 15, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+  Trial 28: Score=0.3767 | Hiperparâmetros: {"n_estimators": 150, "max_depth": 15, "min_samples_split": 18, "min_samples_leaf": 11, "max_features": "log2", "criterion": "entropy", "bootstrap": false}
+  Trial 29: Score=0.3786 | Hiperparâmetros: {"n_estimators": 250, "max_depth": 11, "min_samples_split": 10, "min_samples_leaf": 20, "max_features": "sqrt", "criterion": "entropy", "bootstrap": false}
+
+Melhor trial (Optuna): 21
+  n_estimators: 200
+  max_depth: 19
+  min_samples_split: 11
+  min_samples_leaf: 19
+  max_features: sqrt
+  criterion: entropy
+  bootstrap: False
+  class_weight: balanced
+
+Importância dos parâmetros (Optuna):
+  min_samples_leaf: 0.4211
+  min_samples_split: 0.3125
+  max_features: 0.2131
+  max_depth: 0.0229
+  n_estimators: 0.0156
+  bootstrap: 0.0085
+  criterion: 0.0063
+
+Resultado do treino:
+  accuracy: 0.9700
+  precision: 0.8202
+  recall: 0.9615
+  f1: 0.8681
+  roc_auc: 0.9937
+  pr_auc: 0.9753
+
+Resultado do teste:
+  accuracy: 0.9229
+  precision: 0.3764
+  recall: 0.3952
+  f1: 0.3850
+  roc_auc: 0.6612
+  pr_auc: 0.3736
+
+============================================================
+
+TABELA DE MÉTRICAS DE TREINO E TESTE POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treino: 1     | 0.9701     | 0.8029     | 0.9565     | 0.8601     | 0.9941     | 0.9718    
+Teste:  1     | 0.9112     | 0.3673     | 0.3997     | 0.3796     | 0.6610     | 0.3708    
+Treino: 2     | 0.9781     | 0.8551     | 0.9632     | 0.8950     | 0.9948     | 0.9760    
+Teste:  2     | 0.9282     | 0.3747     | 0.3782     | 0.3763     | 0.6627     | 0.3752    
+Treino: 3     | 0.9754     | 0.8448     | 0.9518     | 0.8833     | 0.9898     | 0.9489    
+Teste:  3     | 0.9254     | 0.3779     | 0.3930     | 0.3851     | 0.6863     | 0.3782    
+Treino: 4     | 0.9717     | 0.8360     | 0.9466     | 0.8723     | 0.9866     | 0.9284    
+Teste:  4     | 0.9243     | 0.4916     | 0.4130     | 0.4016     | 0.6835     | 0.3770    
+Treino: 5     | 0.9700     | 0.8202     | 0.9615     | 0.8681     | 0.9937     | 0.9753    
+Teste:  5     | 0.9229     | 0.3764     | 0.3952     | 0.3850     | 0.6612     | 0.3736    
+
+MÉDIAS E DESVIOS PADRÃO DAS MÉTRICAS POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treinos: 0.9731+-0.00 0.8318+-0.02 0.9559+-0.01 0.8758+-0.01 0.9918+-0.00 0.9601+-0.02 
+Testes:  0.9224+-0.01 0.3976+-0.05 0.3958+-0.01 0.3855+-0.01 0.6709+-0.01 0.3750+-0.00 
+
+MELHOR CONJUNTO DE HIPERPARÂMETROS GLOBAL (selecionado pelo maior PR AUC  ):
+------------------------------------------------------------
+{
+  "n_estimators": 150,
+  "max_depth": 25,
+  "min_samples_split": 7,
+  "min_samples_leaf": 18,
+  "max_features": "log2",
+  "criterion": "entropy",
+  "bootstrap": true,
+  "class_weight": "balanced"
+}
+

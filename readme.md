@@ -99,6 +99,9 @@ source mlenv/bin/activate
 2. **Install required packages**:
 ```bash
 pip install pandas scikit-learn matplotlib seaborn numpy optuna catboost
+pip install cmaes scipy optunahub
+pip install torch  --index-url https://download.pytorch.org/whl/cpu
+pip instal xgboost
 ```
 
 3. **Verify data files exist**:

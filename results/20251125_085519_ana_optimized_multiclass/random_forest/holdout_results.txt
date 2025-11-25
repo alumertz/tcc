@@ -1,0 +1,67 @@
+Holdout Evaluation Results for random_forest
+==================================================
+
+Results for each fold's best parameters on holdout set:
+--------------------------------------------------
+
+Fold 1:
+  Best Parameters: {'n_estimators': 250, 'max_depth': 15, 'min_samples_split': 10, 'min_samples_leaf': 16, 'max_features': 'log2', 'criterion': 'gini', 'bootstrap': True, 'class_weight': 'balanced'}
+  Holdout Metrics:
+    Accuracy: 0.9273
+    Precision: 0.3707
+    Recall: 0.3831
+    F1-Score: 0.3768
+    ROC-AUC: 0.6767
+    PR-AUC: 0.3802
+
+Fold 2:
+  Best Parameters: {'n_estimators': 200, 'max_depth': 23, 'min_samples_split': 20, 'min_samples_leaf': 20, 'max_features': 'sqrt', 'criterion': 'entropy', 'bootstrap': False, 'class_weight': 'balanced'}
+  Holdout Metrics:
+    Accuracy: 0.9183
+    Precision: 0.3687
+    Recall: 0.3987
+    F1-Score: 0.3808
+    ROC-AUC: 0.6854
+    PR-AUC: 0.3826
+
+Fold 3:
+  Best Parameters: {'n_estimators': 150, 'max_depth': 5, 'min_samples_split': 7, 'min_samples_leaf': 20, 'max_features': 'sqrt', 'criterion': 'gini', 'bootstrap': True, 'class_weight': 'balanced'}
+  Holdout Metrics:
+    Accuracy: 0.6287
+    Precision: 0.3598
+    Recall: 0.4592
+    F1-Score: 0.3208
+    ROC-AUC: 0.6593
+    PR-AUC: 0.3780
+
+Fold 4:
+  Best Parameters: {'n_estimators': 150, 'max_depth': 15, 'min_samples_split': 16, 'min_samples_leaf': 18, 'max_features': 'log2', 'criterion': 'log_loss', 'bootstrap': False, 'class_weight': 'balanced'}
+  Holdout Metrics:
+    Accuracy: 0.9118
+    Precision: 0.3630
+    Recall: 0.3965
+    F1-Score: 0.3753
+    ROC-AUC: 0.6667
+    PR-AUC: 0.3733
+
+Fold 5:
+  Best Parameters: {'n_estimators': 150, 'max_depth': 26, 'min_samples_split': 19, 'min_samples_leaf': 18, 'max_features': 'sqrt', 'criterion': 'entropy', 'bootstrap': False, 'class_weight': 'balanced'}
+  Holdout Metrics:
+    Accuracy: 0.9234
+    Precision: 0.4395
+    Recall: 0.3980
+    F1-Score: 0.3897
+    ROC-AUC: 0.6765
+    PR-AUC: 0.3736
+
+==================================================
+BEST PERFORMING MODEL ON HOLDOUT SET:
+Fold 2 (PR-AUC: 0.3826)
+Parameters: {'n_estimators': 200, 'max_depth': 23, 'min_samples_split': 20, 'min_samples_leaf': 20, 'max_features': 'sqrt', 'criterion': 'entropy', 'bootstrap': False, 'class_weight': 'balanced'}
+Final Holdout Performance:
+  Accuracy: 0.9183
+  Precision: 0.3687
+  Recall: 0.3987
+  F1-Score: 0.3808
+  ROC-AUC: 0.6854
+  PR-AUC: 0.3826
