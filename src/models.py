@@ -180,7 +180,8 @@ def calculate_metrics(y_true, y_pred, y_pred_proba, classification_type):
 
 def optimize_single_outer_fold(fold_number, X_train, X_test, y_train, y_test, 
                         classifier_class, param_suggestions_func, custom_params_processor,
-                        fixed_params, classification_type, model_name, n_trials):
+                        fixed_params, classification_type, model_name, n_trials, 
+                        data_source="ana"):
     """Optimize hyperparameters for a single fold"""
     
     print(f"Fold {fold_number}")
@@ -211,6 +212,38 @@ def optimize_single_outer_fold(fold_number, X_train, X_test, y_train, y_test,
     except Exception as e:
         print(f"Não foi possível calcular importâncias dos parâmetros: {e}")
         param_importances = {}
+
+    # Save Optuna visualization plots
+    try:
+        import optuna.visualization as vis
+        from pathlib import Path
+        
+        # Create directory for plots inside the experiment folder
+        experiment_folder = generate_experiment_folder_name(data_source, "optimized", classification_type)
+        experiment_dir = os.path.join("./results", experiment_folder)
+        model_dir_name = model_name.lower().replace(' ', '_')
+        plots_dir = Path(experiment_dir) / model_dir_name / "optuna_plots"
+        plots_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Save optimization history
+        fig = vis.plot_optimization_history(study)
+        fig.write_html(str(plots_dir / f"{model_dir_name}_fold_{fold_number}_history.html"))
+        
+        # Save parameter importances
+        fig = vis.plot_param_importances(study)
+        fig.write_html(str(plots_dir / f"{model_dir_name}_fold_{fold_number}_importances.html"))
+        
+        # Save parallel coordinate plot
+        fig = vis.plot_parallel_coordinate(study)
+        fig.write_html(str(plots_dir / f"{model_dir_name}_fold_{fold_number}_parallel.html"))
+        
+        # Save slice plot
+        fig = vis.plot_slice(study)
+        fig.write_html(str(plots_dir / f"{model_dir_name}_fold_{fold_number}_slice.html"))
+        
+        print(f"Saved Optuna plots to {plots_dir}")
+    except Exception as e:
+        print(f"Could not save Optuna plots: {e}")
 
     # Train final model for this fold training set
     final_pipeline = Pipeline([
@@ -391,7 +424,7 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
         fold_result = optimize_single_outer_fold(
             fold_number, X_fold_train, X_fold_test, y_fold_train, y_fold_test,
             classifier_class, param_suggestions_func, custom_params_processor,
-            fixed_params, classification_type, model_name, n_trials
+            fixed_params, classification_type, model_name, n_trials, data_source
         )
         # Only append if not None
         if fold_result is not None:
