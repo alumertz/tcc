@@ -241,6 +241,10 @@ def optimize_single_outer_fold(fold_number, X_train, X_test, y_train, y_test,
         fig = vis.plot_slice(study)
         fig.write_html(str(plots_dir / f"{model_dir_name}_fold_{fold_number}_slice.html"))
         
+        # Save contour plot
+        fig = vis.plot_contour(study)
+        fig.write_html(str(plots_dir / f"{model_dir_name}_fold_{fold_number}_contour.html"))
+        
         print(f"Saved Optuna plots to {plots_dir}")
     except Exception as e:
         print(f"Could not save Optuna plots: {e}")
