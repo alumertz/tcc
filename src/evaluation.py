@@ -7,6 +7,12 @@ from src.reports import default_report, format_5fold_report
 from sklearn.model_selection import KFold
 import numpy as np
 from sklearn.metrics import confusion_matrix
+import numpy as np
+from sklearn.metrics import (
+    accuracy_score, precision_score, recall_score, f1_score,
+    roc_auc_score, average_precision_score, confusion_matrix
+)
+from sklearn.preprocessing import label_binarize
 
 
 def evaluate_model_holdout_cv(
@@ -138,7 +144,6 @@ def evaluate_model_holdout_cv(
         "aggregated": aggregated
     }
 
-
 def evaluate_model_holdout(model, model_name, X, y, experiment_dir, classification_type="binary", balance_strategy="none"):
     """
     Avalia modelo usando holdout 80%/20%
@@ -225,14 +230,6 @@ def evaluate_model_default(model, model_name, X, y, experiment_dir, classificati
         balance_strategy=balance_strategy
     )
 
-import numpy as np
-from sklearn.metrics import (
-    accuracy_score, precision_score, recall_score, f1_score,
-    roc_auc_score, average_precision_score, confusion_matrix
-)
-from sklearn.preprocessing import label_binarize
-
-
 def get_metrics(y_true, y_pred, y_proba, classification_type):
     """
     Returns:
@@ -248,7 +245,7 @@ def get_metrics(y_true, y_pred, y_proba, classification_type):
     # Common metrics
     # =============================
     if classification_type == "multiclass":
-        average = "weighted"
+        average = "macro"
     else:
         average = "binary"
 

@@ -76,6 +76,7 @@ def balance_fold(X_train, y_train, balance_strategy):
         balancer = TomekLinks()
     else:
         raise ValueError(f"Unknown balance_strategy: {balance_strategy}")
+    print("Balance strategy:", balance_strategy)
     return balancer.fit_resample(X_train, y_train)
 
 def create_objective_function(classifier_class, param_suggestions_func, custom_params_processor, 
@@ -163,14 +164,14 @@ def calculate_metrics(y_true, y_pred, y_pred_proba, classification_type):
     
     accuracy = accuracy_score(y_true, y_pred)
     
-    average_type = 'weighted' if classification_type == "multiclass" else 'binary'
+    average_type = 'macro' if classification_type == "multiclass" else 'binary'
     precision, recall, f1, _ = precision_recall_fscore_support(
         y_true, y_pred, average=average_type
     )
     
     if classification_type == "multiclass":
-        roc_auc = roc_auc_score(y_true, y_pred_proba, multi_class='ovr', average='weighted')
-        pr_auc = average_precision_score(y_true, y_pred_proba, average='weighted')
+        roc_auc = roc_auc_score(y_true, y_pred_proba, multi_class='ovr', average='macro')
+        pr_auc = average_precision_score(y_true, y_pred_proba, average='macro')
     else:
         roc_auc = roc_auc_score(y_true, y_pred_proba[:, 1])
         pr_auc = average_precision_score(y_true, y_pred_proba[:, 1])
@@ -354,9 +355,12 @@ def save_optimization_results(model_name, fold_results,
 
 def _optimize_classifier_generic(classifier_class, param_suggestions_func, model_name, X, y,
                                n_trials=100, custom_params_processor=None, fixed_params=None, data_source="ana",
-                               classification_type="binary", outer_cv_folds=5):
+                               classification_type="binary", outer_cv_folds=5, use_less_params=False):
     """
     Refactored version of the classifier optimization function.
+    
+    Args:
+        use_less_params: If True, uses simplified parameter suggestion functions (ignored, handled by caller)
     """
     print(f"\nStarting Nested Cross-Validation for {model_name}...")
     print(f"Configuration: {outer_cv_folds} outer folds, {n_trials} trials per fold")
@@ -457,6 +461,52 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
 # Funções de sugestão de parâmetros para cada modelo #
 
 
+def _suggest_catboost_params(trial, classification_type="binary"):
+    """Sugestões de parâmetros para CatBoost"""
+    params = {
+        "iterations": trial.suggest_int("iterations", 100, 1000),
+        "learning_rate": trial.suggest_float("learning_rate", 0.01, 0.3),
+        "depth": trial.suggest_int("depth", 4, 10),
+        "l2_leaf_reg": trial.suggest_float("l2_leaf_reg", 1, 10),
+        "border_count": trial.suggest_int("border_count", 32, 255),
+        "bagging_temperature": trial.suggest_float("bagging_temperature", 0.0, 1.0),
+        "random_strength": trial.suggest_float("random_strength", 0.0, 1.0),
+        "verbose": False,  # Silenciar logs durante otimização
+        "allow_writing_files": False,  # Não escrever arquivos de log
+        "thread_count": THREADS,
+    }
+    
+    # Configure loss function and weights based on classification type
+    if classification_type == "multiclass":
+        params["loss_function"] = "MultiClass"
+        # Don't use scale_pos_weight for multiclass
+    else:
+        params["loss_function"] = "Logloss"
+        params["scale_pos_weight"] = trial.suggest_float("scale_pos_weight", IMBALANCE_RATIO * 0.4, IMBALANCE_RATIO * 4)
+    
+    return params
+
+
+def _suggest_catboost_params_less(trial, classification_type="binary"):
+    """Sugestões de parâmetros reduzidos para CatBoost"""
+    params = {
+        "iterations": trial.suggest_int("iterations", 50, 1500),
+        "learning_rate": trial.suggest_float("learning_rate", 0.005, 0.1, log=True),
+        "verbose": False,
+        "allow_writing_files": False,
+        "thread_count": THREADS,
+    }
+    
+    # Configure loss function and weights based on classification type
+    if classification_type == "multiclass":
+        params["loss_function"] = "MultiClass"
+    else:
+        params["loss_function"] = "Logloss"
+        params["scale_pos_weight"] = IMBALANCE_RATIO
+    
+    return params
+
+
 def _suggest_decision_tree_params(trial):
     """Sugestões de parâmetros para Decision Tree"""
     return {
@@ -469,17 +519,11 @@ def _suggest_decision_tree_params(trial):
     }
 
 
-def _suggest_random_forest_params(trial):
-    """Sugestões de parâmetros para Random Forest"""
+def _suggest_decision_tree_params_less(trial):
+    """Sugestões de parâmetros reduzidos para Decision Tree"""
     return {
-        "n_estimators": trial.suggest_int("n_estimators", 100, 300, step=50),
-        "max_depth": trial.suggest_int("max_depth", 5, 30),
-        "min_samples_split": trial.suggest_int("min_samples_split", 2, 20),
-        "min_samples_leaf": trial.suggest_int("min_samples_leaf", 1, 20),
-        "max_features": trial.suggest_categorical("max_features", ["sqrt", "log2", None]),
-        "criterion": trial.suggest_categorical("criterion", ["gini", "entropy", "log_loss"]),
-        "bootstrap": trial.suggest_categorical("bootstrap", [True, False]),
-        "n_jobs": -1
+        "max_depth": trial.suggest_int("max_depth", 2, 40),
+        "min_samples_split": trial.suggest_int("min_samples_split", 2, 50),
     }
 
 
@@ -496,6 +540,14 @@ def _suggest_gradient_boosting_params(trial):
     }
 
 
+def _suggest_gradient_boosting_params_less(trial):
+    """Sugestões de parâmetros reduzidos para Gradient Boosting"""
+    return {
+        "learning_rate": trial.suggest_float("learning_rate", 0.005, 0.1, log=True),
+        "max_depth": trial.suggest_int("max_depth", 2, 30)
+    }
+
+
 def _suggest_hist_gradient_boosting_params(trial):
     """Sugestões de parâmetros para Histogram Gradient Boosting"""
     return {
@@ -507,6 +559,14 @@ def _suggest_hist_gradient_boosting_params(trial):
     }
 
 
+def _suggest_hist_gradient_boosting_params_less(trial):
+    """Sugestões de parâmetros reduzidos para Histogram Gradient Boosting"""
+    return {
+        "learning_rate": trial.suggest_float("learning_rate", 0.005, 0.5, log=True),
+        "max_depth": trial.suggest_int("max_depth", 2, 30)
+    }
+
+
 def _suggest_knn_params(trial):
     """Sugestões de parâmetros para KNN"""
     return {
@@ -515,6 +575,14 @@ def _suggest_knn_params(trial):
         "algorithm": trial.suggest_categorical("algorithm", ["auto", "ball_tree", "kd_tree", "brute"]),
         "p": trial.suggest_int("p", 1, 2),  # 1 for manhattan, 2 for euclidean
         "leaf_size": trial.suggest_int("leaf_size", 20, 40)
+    }
+
+
+def _suggest_knn_params_less(trial):
+    """Sugestões de parâmetros reduzidos para KNN"""
+    return {
+        "n_neighbors": trial.suggest_int("n_neighbors", 1, 100),
+        "p": trial.suggest_int("p", 1, 4),  # 1 for manhattan, 2 for euclidean
     }
 
 
@@ -535,6 +603,42 @@ def _suggest_mlp_params(trial):
         "solver": trial.suggest_categorical("solver", ["adam", "sgd", "lbfgs"]),
         "learning_rate_init": trial.suggest_float("learning_rate_init", 1e-4, 1e-1, log=True),
         "max_iter": trial.suggest_int("max_iter", 200, 1000)
+    }
+
+
+def _suggest_mlp_params_less(trial):
+    """Sugestões de parâmetros reduzidos para MLP"""
+    # Arquitetura simples: apenas uma camada oculta
+    layer_0_size = trial.suggest_int("layer_0_size", 10, 400)
+    
+    return {
+        "hidden_layer_sizes": (layer_0_size, 50),
+        "activation": trial.suggest_categorical("activation", ["tanh", 'logistic', "relu"]),
+        "max_iter": trial.suggest_int("max_iter", 100, 1500)
+    }
+
+
+def _suggest_random_forest_params(trial):
+    """Sugestões de parâmetros para Random Forest"""
+    return {
+        "n_estimators": trial.suggest_int("n_estimators", 100, 300, step=50),
+        "max_depth": trial.suggest_int("max_depth", 5, 30),
+        "min_samples_split": trial.suggest_int("min_samples_split", 2, 20),
+        "min_samples_leaf": trial.suggest_int("min_samples_leaf", 1, 20),
+        "max_features": trial.suggest_categorical("max_features", ["sqrt", "log2", None]),
+        "criterion": trial.suggest_categorical("criterion", ["gini", "entropy", "log_loss"]),
+        "bootstrap": trial.suggest_categorical("bootstrap", [True, False]),
+        "n_jobs": -1
+    }
+
+
+def _suggest_random_forest_params_less(trial):
+    """Sugestões de parâmetros reduzidos para Random Forest"""
+    return {
+        "min_samples_leaf": trial.suggest_int("min_samples_leaf", 1, 50),
+        "max_features": trial.suggest_categorical("max_features", ["sqrt", "log2", None, 0.3, 0.5, 0.7]),
+        "max_depth": trial.suggest_int("max_depth", 5, 50),
+        "n_jobs": -1
     }
 
 
@@ -560,28 +664,13 @@ def _suggest_svc_params(trial):
     return params
 
 
-def _suggest_catboost_params(trial, classification_type="binary"):
-    """Sugestões de parâmetros para CatBoost"""
-    params = {
-        "iterations": trial.suggest_int("iterations", 100, 1000),
-        "learning_rate": trial.suggest_float("learning_rate", 0.01, 0.3),
-        "depth": trial.suggest_int("depth", 4, 10),
-        "l2_leaf_reg": trial.suggest_float("l2_leaf_reg", 1, 10),
-        "border_count": trial.suggest_int("border_count", 32, 255),
-        "bagging_temperature": trial.suggest_float("bagging_temperature", 0.0, 1.0),
-        "random_strength": trial.suggest_float("random_strength", 0.0, 1.0),
-        "verbose": False,  # Silenciar logs durante otimização
-        "allow_writing_files": False,  # Não escrever arquivos de log
-        "thread_count": THREADS,
-    }
+def _suggest_svc_params_less(trial):
+    """Sugestões de parâmetros reduzidos para SVC"""
+    kernel = trial.suggest_categorical("kernel", ["linear", "poly", "rbf", "sigmoid"])
     
-    # Configure loss function and weights based on classification type
-    if classification_type == "multiclass":
-        params["loss_function"] = "MultiClass"
-        # Don't use scale_pos_weight for multiclass
-    else:
-        params["loss_function"] = "Logloss"
-        params["scale_pos_weight"] = trial.suggest_float("scale_pos_weight", IMBALANCE_RATIO * 0.4, IMBALANCE_RATIO * 4)
+    params = {
+        "kernel": kernel,
+    }
     
     return params
 
@@ -612,6 +701,28 @@ def _suggest_xgboost_params(trial, classification_type="binary"):
         params["objective"] = "binary:logistic"
         params["eval_metric"] = "logloss"
         params["scale_pos_weight"] = trial.suggest_float("scale_pos_weight", IMBALANCE_RATIO * 0.4, IMBALANCE_RATIO * 4)
+    
+    return params
+
+
+def _suggest_xgboost_params_less(trial, classification_type="binary"):
+    """Sugestões de parâmetros reduzidos para XGBoost"""
+    params = {
+        "learning_rate": trial.suggest_float("learning_rate", 0.005, 0.3, log=True),
+        "max_depth": trial.suggest_int("max_depth", 2, 30),
+        "random_state": 42,
+        "n_jobs": -1,
+        "verbosity": 0,
+    }
+    
+    # Configure objective and weights based on classification type
+    if classification_type == "multiclass":
+        params["objective"] = "multi:softprob"
+        params["eval_metric"] = "mlogloss"
+    else:
+        params["objective"] = "binary:logistic"
+        params["eval_metric"] = "logloss"
+        params["scale_pos_weight"] = IMBALANCE_RATIO
     
     return params
 
@@ -649,152 +760,161 @@ def _process_mlp_params(best_params):
 
 def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, 
                                     data_source="ana", classification_type="binary", 
-                                    use_nested_cv=True, outer_cv_folds=5):
+                                    use_nested_cv=True, outer_cv_folds=5, use_less_params=False):
     """Otimização de hiperparâmetros para Decision Tree Classifier usando Optuna"""
     if fixed_params is None:
         fixed_params = {}
     fixed_params["class_weight"] = "balanced"
+    param_func = _suggest_decision_tree_params_less if use_less_params else _suggest_decision_tree_params
     return _optimize_classifier_generic(
         DecisionTreeClassifier,
-        _suggest_decision_tree_params,
+        param_func,
         'decision_tree',
         X, y, n_trials,
         custom_params_processor=None,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
-        outer_cv_folds=outer_cv_folds
+        outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
     )
 
 
 def optimize_random_forest_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
                                      data_source="ana", classification_type="binary", 
-                                     use_nested_cv=True, outer_cv_folds=5):
+                                     use_nested_cv=True, outer_cv_folds=5, use_less_params=False):
     """Otimização de hiperparâmetros para Random Forest Classifier usando Optuna"""
     if fixed_params is None:
         fixed_params = {}
     fixed_params["class_weight"] = "balanced"
+    param_func = _suggest_random_forest_params_less if use_less_params else _suggest_random_forest_params
     return _optimize_classifier_generic(
         RandomForestClassifier,
-        _suggest_random_forest_params,
+        param_func,
         'random_forest',
         X, y, n_trials,
         custom_params_processor=None,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
-        outer_cv_folds=outer_cv_folds
+        outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
     )
 
 
 def optimize_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
                                         data_source="ana", classification_type="binary", 
-                                        use_nested_cv=True, outer_cv_folds=5):
+                                        use_nested_cv=True, outer_cv_folds=5, use_less_params=False):
     """Otimização de hiperparâmetros para Gradient Boosting Classifier usando Optuna"""
+    param_func = _suggest_gradient_boosting_params_less if use_less_params else _suggest_gradient_boosting_params
     return _optimize_classifier_generic(
         GradientBoostingClassifier,
-        _suggest_gradient_boosting_params,
+        param_func,
         'gradient_boosting',
         X, y, n_trials,
         custom_params_processor=None,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
-        outer_cv_folds=outer_cv_folds
+        outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
     )
 
 
 def optimize_hist_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
                                              data_source="ana", classification_type="binary", 
-                                             use_nested_cv=True, outer_cv_folds=5):
+                                             use_nested_cv=True, outer_cv_folds=5, use_less_params=False):
     """Otimização de hiperparâmetros para Histogram Gradient Boosting Classifier usando Optuna"""
+    param_func = _suggest_hist_gradient_boosting_params_less if use_less_params else _suggest_hist_gradient_boosting_params
     return _optimize_classifier_generic(
         HistGradientBoostingClassifier,
-        _suggest_hist_gradient_boosting_params,
+        param_func,
         'histogram_gradient_boosting',
         X, y, n_trials,
         custom_params_processor=None,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
-        outer_cv_folds=outer_cv_folds
+        outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
     )
 
 
 def optimize_knn_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
                            data_source="ana", classification_type="binary", 
-                           use_nested_cv=True, outer_cv_folds=5):
+                           use_nested_cv=True, outer_cv_folds=5, use_less_params=False):
     """Otimização de hiperparâmetros para KNN Classifier usando Optuna"""
+    param_func = _suggest_knn_params_less if use_less_params else _suggest_knn_params
     return _optimize_classifier_generic(
         KNeighborsClassifier,
-        _suggest_knn_params,
+        param_func,
         'k_nearest_neighbors',
         X, y, n_trials,
         custom_params_processor=None,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
-        outer_cv_folds=outer_cv_folds
+        outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
     )
 
 
 def optimize_mlp_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
                           data_source="ana", classification_type="binary", 
-                          use_nested_cv=True, outer_cv_folds=5):
+                          use_nested_cv=True, outer_cv_folds=5, use_less_params=False):
     """Otimização de hiperparâmetros para MLP Classifier usando Optuna"""
+    param_func = _suggest_mlp_params_less if use_less_params else _suggest_mlp_params
     return _optimize_classifier_generic(
         MLPClassifier,
-        _suggest_mlp_params,
+        param_func,
         'multi_layer_perceptron',
         X, y, n_trials,
         custom_params_processor=_process_mlp_params,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
-        outer_cv_folds=outer_cv_folds
+        outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
     )
 
 
 def optimize_svc_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
                           data_source="ana", classification_type="binary", 
-                          use_nested_cv=True, outer_cv_folds=5):
+                          use_nested_cv=True, outer_cv_folds=5, use_less_params=False):
     """Otimização de hiperparâmetros para SVC usando Optuna"""
     enforced_params = {"probability": True, "class_weight": "balanced"}
     if fixed_params:
         enforced_params.update(fixed_params)
+    param_func = _suggest_svc_params_less if use_less_params else _suggest_svc_params
     return _optimize_classifier_generic(
         SVC,
-        _suggest_svc_params,
+        param_func,
         'svc',
         X, y, n_trials,
         custom_params_processor=None,
         fixed_params=enforced_params,
         data_source=data_source, classification_type=classification_type,
-        outer_cv_folds=outer_cv_folds
+        outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
     )
 
 
 def optimize_catboost_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
                                data_source="ana", classification_type="binary", 
-                               use_nested_cv=True, outer_cv_folds=5):
+                               use_nested_cv=True, outer_cv_folds=5, use_less_params=False):
     """Otimização de hiperparâmetros para CatBoost Classifier usando Optuna"""
+    param_func = _suggest_catboost_params_less if use_less_params else _suggest_catboost_params
     return _optimize_classifier_generic(
         CatBoostClassifier,
-        _suggest_catboost_params,
+        param_func,
         'catboost',
         X, y, n_trials,
         custom_params_processor=None,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
-        outer_cv_folds=outer_cv_folds,
+        outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
     )
 
 
 def optimize_xgboost_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
                               data_source="ana", classification_type="binary", 
-                              use_nested_cv=True, outer_cv_folds=5):
+                              use_nested_cv=True, outer_cv_folds=5, use_less_params=False):
     """Otimização de hiperparâmetros para XGBoost Classifier usando Optuna"""
+    param_func = _suggest_xgboost_params_less if use_less_params else _suggest_xgboost_params
     return _optimize_classifier_generic(
         XGBClassifier,
-        _suggest_xgboost_params,
+        param_func,
         'xgboost',
         X, y, n_trials,
         custom_params_processor=None,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
-        outer_cv_folds=outer_cv_folds
+        outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
     )
