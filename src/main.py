@@ -119,9 +119,10 @@ Exemplos de uso:
     parser.add_argument(
         '-model', '--model',
         type=str,
+        nargs='+',
         choices=['catboost', 'decisiontree', 'gradientboosting', 'histgradientboosting', 'knn', 'mlp', 'randomforest', 'svc', 'xgboost'],
         default=None,
-        help='Executa apenas um modelo específico (ex: -model randomforest)'
+        help='Executa um ou mais modelos específicos (ex: -model randomforest knn mlp)'
     )
     parser.add_argument(
         '-lessparams', '--lessparams',
@@ -285,7 +286,7 @@ def run_all_default_models(X, y, data_source="ana", classification_type="binary"
     save_default_experiment_summary(experiment_dir, results, balance_strategy)
     return results
 
-def main(use_renan=False, use_multiclass=False, use_default=False, balance_strategy='none', model_name=None, use_less_params=False):
+def main(use_renan=False, use_multiclass=False, use_default=False, balance_strategy='none', model_names=None, use_less_params=False):
     """
     Função principal do experimento
     
@@ -294,7 +295,7 @@ def main(use_renan=False, use_multiclass=False, use_default=False, balance_strat
         use_multiclass (bool): Se True, usa classificação multiclasse; se False, usa binária
         use_default (bool): Se True, usa parâmetros padrão; se False, otimiza com Optuna
         balance_strategy (str): Estratégia de balanceamento de dados
-        model_name (str): Nome do modelo a executar (None para todos)
+        model_names (list): Lista de nomes dos modelos a executar (None para todos)
         use_less_params (bool): Se True, usa conjunto reduzido de parâmetros
     """
     print("CLASSIFICAÇÃO DE GENES-ALVO USANDO DADOS ÔMICOS")
@@ -361,40 +362,50 @@ def main(use_renan=False, use_multiclass=False, use_default=False, balance_strat
     # Configuração do experimento baseado no modo escolhido
     classification_type = "multiclass" if use_multiclass else "binary"
     
-    if model_name:
-        # Executar apenas um modelo específico
-        if use_default:
-            # Executar modelo padrão específico
-            model_display_name, model_instance = default_model_map[model_name]
-            print(f"\nCONFIGURAÇÃO DO EXPERIMENTO (PARÂMETROS PADRÃO):")
-            print(f"  Modelo: {model_display_name}")
-            print(f"  Tipo: {classification_type}")
-            print(f"  Balanceamento: {balance_strategy}")
-            
-            experiment_folder = generate_experiment_folder_name(data_source, "default", classification_type)
-            experiment_folder = experiment_folder + "_" + balance_strategy if balance_strategy != 'none' else experiment_folder
-            experiment_dir = os.path.join("./results", experiment_folder)
-            os.makedirs(experiment_dir, exist_ok=True)
-            
-            try:
-                result = evaluate_model_default(model_instance, model_display_name, X, y, experiment_dir, classification_type, balance_strategy)
-                print(f"✓ {model_display_name} executado com sucesso!")
+    if model_names:
+        # Executar modelos específicos
+        results = []
+        for model_name in model_names:
+            if use_default:
+                # Executar modelo padrão específico
+                model_display_name, model_instance = default_model_map[model_name]
+                print(f"\nCONFIGURAÇÃO DO EXPERIMENTO (PARÂMETROS PADRÃO):")
+                print(f"  Modelo: {model_display_name}")
+                print(f"  Tipo: {classification_type}")
+                print(f"  Balanceamento: {balance_strategy}")
                 
-                # Save summary file
-                from src.reports import save_default_experiment_summary
-                save_default_experiment_summary(experiment_dir, [result], balance_strategy)
-            except Exception as e:
-                print(f"✗ Erro ao executar {model_display_name}: {e}")
-        else:
-            # Executar otimização de modelo específico
-            model_display_name, optimizer_func = model_map[model_name]
-            print(f"\nCONFIGURAÇÃO DO EXPERIMENTO (OTIMIZAÇÃO):")
-            print(f"  Modelo: {model_display_name}")
-            print(f"  Trials: {N_TRIALS}")
-            print(f"  Tipo: {classification_type}")
-            print(f"  Parâmetros: {'Reduzido' if use_less_params else 'Completo'}")
-            
-            run_single_model_optimize(model_display_name, optimizer_func, X, y, n_trials=N_TRIALS, data_source=data_source, classification_type=classification_type, use_less_params=use_less_params)
+                experiment_folder = generate_experiment_folder_name(data_source, "default", classification_type)
+                experiment_folder = experiment_folder + "_" + balance_strategy if balance_strategy != 'none' else experiment_folder
+                experiment_dir = os.path.join("./results", experiment_folder)
+                os.makedirs(experiment_dir, exist_ok=True)
+                
+                try:
+                    result = evaluate_model_default(model_instance, model_display_name, X, y, experiment_dir, classification_type, balance_strategy)
+                    results.append(result)
+                    print(f"✓ {model_display_name} executado com sucesso!")
+                except Exception as e:
+                    print(f"✗ Erro ao executar {model_display_name}: {e}")
+                    results.append({
+                        'model_name': model_display_name,
+                        'status': 'error',
+                        'error': str(e)
+                    })
+            else:
+                # Executar otimização de modelo específico
+                model_display_name, optimizer_func = model_map[model_name]
+                print(f"\nCONFIGURAÇÃO DO EXPERIMENTO (OTIMIZAÇÃO):")
+                print(f"  Modelo: {model_display_name}")
+                print(f"  Trials: {N_TRIALS}")
+                print(f"  Tipo: {classification_type}")
+                print(f"  Parâmetros: {'Reduzido' if use_less_params else 'Completo'}")
+                
+                result = run_single_model_optimize(model_display_name, optimizer_func, X, y, n_trials=N_TRIALS, data_source=data_source, classification_type=classification_type, use_less_params=use_less_params)
+                results.append(result)
+        
+        # Save summary for default models if applicable
+        if use_default:
+            from src.reports import save_default_experiment_summary
+            save_default_experiment_summary(experiment_dir, results, balance_strategy)
     else:
         # Executar todos os modelos
         if use_default:
