@@ -84,7 +84,8 @@ def create_objective_function(classifier_class, param_suggestions_func, custom_p
     """Create the objective function for Optuna optimization"""
     def objective(trial):
         # Get parameter suggestions
-        if param_suggestions_func.__name__ in ['_suggest_catboost_params', '_suggest_xgboost_params']:
+        if param_suggestions_func.__name__ in ['_suggest_catboost_params', '_suggest_catboost_params_less', 
+                                                '_suggest_xgboost_params', '_suggest_xgboost_params_less']:
             params = param_suggestions_func(trial, classification_type)
         else:
             params = param_suggestions_func(trial)
@@ -225,25 +226,25 @@ def optimize_single_outer_fold(fold_number, X_train, X_test, y_train, y_test,
         plots_dir = Path(experiment_dir) / model_dir_name / "optuna_plots"
         plots_dir.mkdir(parents=True, exist_ok=True)
         
-        # Save optimization history
-        fig = vis.plot_optimization_history(study)
-        fig.write_html(str(plots_dir / f"{model_dir_name}_fold_{fold_number}_history.html"))
+        # # Save optimization history
+        # fig = vis.plot_optimization_history(study)
+        # fig.write_html(str(plots_dir / f"{model_dir_name}_fold_{fold_number}_history.html"))
         
-        # Save parameter importances
-        fig = vis.plot_param_importances(study)
-        fig.write_html(str(plots_dir / f"{model_dir_name}_fold_{fold_number}_importances.html"))
+        # # Save parameter importances
+        # fig = vis.plot_param_importances(study)
+        # fig.write_html(str(plots_dir / f"{model_dir_name}_fold_{fold_number}_importances.html"))
         
-        # Save parallel coordinate plot
-        fig = vis.plot_parallel_coordinate(study)
-        fig.write_html(str(plots_dir / f"{model_dir_name}_fold_{fold_number}_parallel.html"))
+        # # Save parallel coordinate plot
+        # fig = vis.plot_parallel_coordinate(study)
+        # fig.write_html(str(plots_dir / f"{model_dir_name}_fold_{fold_number}_parallel.html"))
         
-        # Save slice plot
-        fig = vis.plot_slice(study)
-        fig.write_html(str(plots_dir / f"{model_dir_name}_fold_{fold_number}_slice.html"))
+        # # Save slice plot
+        # fig = vis.plot_slice(study)
+        # fig.write_html(str(plots_dir / f"{model_dir_name}_fold_{fold_number}_slice.html"))
         
-        # Save contour plot
-        fig = vis.plot_contour(study)
-        fig.write_html(str(plots_dir / f"{model_dir_name}_fold_{fold_number}_contour.html"))
+        # # Save contour plot
+        # fig = vis.plot_contour(study)
+        # fig.write_html(str(plots_dir / f"{model_dir_name}_fold_{fold_number}_contour.html"))
         
         print(f"Saved Optuna plots to {plots_dir}")
     except Exception as e:
@@ -516,6 +517,7 @@ def _suggest_catboost_params(trial, classification_type="binary"):
     # Configure loss function and weights based on classification type
     if classification_type == "multiclass":
         params["loss_function"] = "MultiClass"
+        params["classes_count"] = 3  # TSG=1, Oncogene=2, Passenger=0
         # Don't use scale_pos_weight for multiclass
     else:
         params["loss_function"] = "Logloss"
@@ -527,8 +529,18 @@ def _suggest_catboost_params(trial, classification_type="binary"):
 def _suggest_catboost_params_less(trial, classification_type="binary"):
     """Sugestões de parâmetros reduzidos para CatBoost"""
     params = {
-        "iterations": trial.suggest_int("iterations", 50, 1500),
-        "learning_rate": trial.suggest_float("learning_rate", 0.005, 0.1, log=True),
+        # "iterations": trial.suggest_int("iterations", 50, 1500)
+        # "learning_rate": trial.suggest_float("learning_rate", 0.005, 0.1, log=True),
+
+        "iterations": trial.suggest_int("iterations", 100, 1000, step=100),
+        "learning_rate": trial.suggest_float("learning_rate", 0.001, 0.02),
+        "depth": trial.suggest_int("depth", 2, 4),
+
+        "l2_leaf_reg": trial.suggest_float("l2_leaf_reg", 1, 10),
+        "border_count": trial.suggest_int("border_count", 150, 255),
+        "bagging_temperature": trial.suggest_float("bagging_temperature", 0, 1.0),
+        "random_strength": trial.suggest_float("random_strength", 0, 1.0),
+
         "verbose": False,
         "allow_writing_files": False,
         "thread_count": THREADS,
@@ -537,9 +549,11 @@ def _suggest_catboost_params_less(trial, classification_type="binary"):
     # Configure loss function and weights based on classification type
     if classification_type == "multiclass":
         params["loss_function"] = "MultiClass"
+        params["classes_count"] = 3  # TSG=1, Oncogene=2, Passenger=0
     else:
+        # params["scale_pos_weight"] = IMBALANCE_RATIO
         params["loss_function"] = "Logloss"
-        params["scale_pos_weight"] = IMBALANCE_RATIO
+        params["scale_pos_weight"] = trial.suggest_float("scale_pos_weight", 5.0,6.0)
     
     return params
 
@@ -559,8 +573,15 @@ def _suggest_decision_tree_params(trial):
 def _suggest_decision_tree_params_less(trial):
     """Sugestões de parâmetros reduzidos para Decision Tree"""
     return {
-        "max_depth": trial.suggest_int("max_depth", 2, 40),
-        "min_samples_split": trial.suggest_int("min_samples_split", 2, 50),
+        "max_depth": trial.suggest_int("max_depth", 2, 32),
+        "min_samples_split": trial.suggest_int("min_samples_split", 5, 20),
+        "min_samples_leaf": trial.suggest_int("min_samples_leaf", 15, 20),
+        "criterion": trial.suggest_categorical("criterion", ["gini", "entropy", "log_loss"]),
+        "max_features": trial.suggest_categorical("max_features", [None, "sqrt", "log2"]),
+        "splitter": trial.suggest_categorical("splitter", ["best", "random"])
+
+        # "max_depth": trial.suggest_int("max_depth", 2, 40),
+        # "min_samples_split": trial.suggest_int("min_samples_split", 2, 50),
     }
 
 
@@ -580,8 +601,16 @@ def _suggest_gradient_boosting_params(trial):
 def _suggest_gradient_boosting_params_less(trial):
     """Sugestões de parâmetros reduzidos para Gradient Boosting"""
     return {
-        "learning_rate": trial.suggest_float("learning_rate", 0.005, 0.1, log=True),
-        "max_depth": trial.suggest_int("max_depth", 2, 30)
+        # "learning_rate": trial.suggest_float("learning_rate", 0.005, 0.1, log=True),
+        # "max_depth": trial.suggest_int("max_depth", 2, 30)
+        "n_estimators": trial.suggest_int("n_estimators", 100, 300, step=50),
+        "learning_rate": trial.suggest_float("learning_rate", 0.009, 0.1),
+        "max_depth": trial.suggest_int("max_depth", 2, 8),
+        "min_samples_split": trial.suggest_int("min_samples_split", 2, 20),
+        "min_samples_leaf": trial.suggest_int("min_samples_leaf", 1, 20),
+        "subsample": trial.suggest_float("subsample", 0.8, 1.0),
+        "max_features": trial.suggest_categorical("max_features", [None, "sqrt", "log2"])
+
     }
 
 
@@ -599,8 +628,14 @@ def _suggest_hist_gradient_boosting_params(trial):
 def _suggest_hist_gradient_boosting_params_less(trial):
     """Sugestões de parâmetros reduzidos para Histogram Gradient Boosting"""
     return {
-        "learning_rate": trial.suggest_float("learning_rate", 0.005, 0.5, log=True),
-        "max_depth": trial.suggest_int("max_depth", 2, 30)
+        # "learning_rate": trial.suggest_float("learning_rate", 0.005, 0.5, log=True),
+        # "max_depth": trial.suggest_int("max_depth", 2, 30)
+        "max_iter": trial.suggest_int("max_iter", 50, 200),
+        "learning_rate": trial.suggest_float("learning_rate", 0.009, 0.1),
+        "max_depth": trial.suggest_int("max_depth", 2, 5),
+        "min_samples_leaf": trial.suggest_int("min_samples_leaf", 1, 30),
+        "l2_regularization": trial.suggest_float("l2_regularization", 0.0, 1.0)
+
     }
 
 
@@ -618,8 +653,13 @@ def _suggest_knn_params(trial):
 def _suggest_knn_params_less(trial):
     """Sugestões de parâmetros reduzidos para KNN"""
     return {
-        "n_neighbors": trial.suggest_int("n_neighbors", 1, 100),
-        "p": trial.suggest_int("p", 1, 4),  # 1 for manhattan, 2 for euclidean
+        # "n_neighbors": trial.suggest_int("n_neighbors", 1, 100),
+        # "p": trial.suggest_int("p", 1, 4),  # 1 for manhattan, 2 for euclidean
+        "n_neighbors": trial.suggest_int("n_neighbors", 25, 125, step=10),
+        "weights": "distance",
+        "algorithm": trial.suggest_categorical("algorithm", ["auto", "ball_tree", "kd_tree", "brute"]),
+        "p": trial.suggest_int("p", 1, 2),  # 1 for manhattan, 2 for euclidean
+        "leaf_size": trial.suggest_int("leaf_size", 20, 40)
     }
 
 
@@ -646,19 +686,32 @@ def _suggest_mlp_params(trial):
 def _suggest_mlp_params_less(trial):
     """Sugestões de parâmetros reduzidos para MLP"""
     # Arquitetura simples: apenas uma camada oculta
-    layer_0_size = trial.suggest_int("layer_0_size", 10, 400)
+    # layer_0_size = trial.suggest_int("layer_0_size", 10, 400)
+    n_layers = trial.suggest_int("n_layers", 1, 2)
+    hidden_layer_sizes = []
+    for i in range(n_layers):
+        layer_size = trial.suggest_int(f"layer_{i}_size", 100, 200, step=25)
+        hidden_layer_sizes.append(layer_size)
     
     return {
-        "hidden_layer_sizes": (layer_0_size, 50),
-        "activation": trial.suggest_categorical("activation", ["tanh", 'logistic', "relu"]),
-        "max_iter": trial.suggest_int("max_iter", 100, 1500)
+        # "hidden_layer_sizes": (layer_0_size, 50),
+        # "activation": trial.suggest_categorical("activation", ["tanh", 'logistic', "relu"]),
+        # "max_iter": trial.suggest_int("max_iter", 100, 1500)
+
+        "hidden_layer_sizes": tuple(hidden_layer_sizes),
+        "activation": trial.suggest_categorical("activation", ["tanh", "logistic"]),
+        "alpha": trial.suggest_float("alpha", 1e-4, 0.01, log=True),
+        "learning_rate": trial.suggest_categorical("learning_rate", ["constant", "invscaling", "adaptive"]),
+        "solver": trial.suggest_categorical("solver", ["adam", "sgd", "lbfgs"]),
+        "learning_rate_init": trial.suggest_float("learning_rate_init", 1e-4, 1e-1, log=True),
+        "max_iter": trial.suggest_int("max_iter", 200, 1500)
     }
 
 
 def _suggest_random_forest_params(trial):
     """Sugestões de parâmetros para Random Forest"""
     return {
-        "n_estimators": trial.suggest_int("n_estimators", 100, 300, step=50),
+        "n_estimators": trial.suggest_int("n_estimators", 100, 300, step=25),
         "max_depth": trial.suggest_int("max_depth", 5, 30),
         "min_samples_split": trial.suggest_int("min_samples_split", 2, 20),
         "min_samples_leaf": trial.suggest_int("min_samples_leaf", 1, 20),
@@ -672,9 +725,17 @@ def _suggest_random_forest_params(trial):
 def _suggest_random_forest_params_less(trial):
     """Sugestões de parâmetros reduzidos para Random Forest"""
     return {
-        "min_samples_leaf": trial.suggest_int("min_samples_leaf", 1, 50),
-        "max_features": trial.suggest_categorical("max_features", ["sqrt", "log2", None, 0.3, 0.5, 0.7]),
-        "max_depth": trial.suggest_int("max_depth", 5, 50),
+        # "min_samples_leaf": trial.suggest_int("min_samples_leaf", 1, 50),
+        # "max_features": trial.suggest_categorical("max_features", ["sqrt", "log2", None, 0.3, 0.5, 0.7]),
+        # "max_depth": trial.suggest_int("max_depth", 5, 50),
+        "n_estimators": trial.suggest_int("n_estimators", 100, 300, step=25),
+        "max_depth": trial.suggest_int("max_depth", 3, 20),
+        "min_samples_split": trial.suggest_int("min_samples_split", 5, 20, step=2),
+        "min_samples_leaf": trial.suggest_int("min_samples_leaf", 15, 25, step=2),
+        "max_features": trial.suggest_categorical("max_features", ["sqrt", "log2", None]),
+        "criterion": trial.suggest_categorical("criterion", ["gini", "entropy", "log_loss"]),
+        "bootstrap": trial.suggest_categorical("bootstrap", [True, False]),
+
         "n_jobs": -1
     }
 
@@ -685,14 +746,14 @@ def _suggest_svc_params(trial):
     kernel = trial.suggest_categorical("kernel", ["linear", "poly", "rbf", "sigmoid"])
     
     params = {
-        "kernel": kernel,
-        "C": trial.suggest_float("C", 0.1, 100.0, log=True), 
-        "probability": True, 
-        "max_iter": 1000,  
-        "tol": 1e-3,  
-        "cache_size": 200,  
-        "degree": trial.suggest_int("degree", 2, 6),
-        "shrinking": trial.suggest_categorical("shrinking", [True, False])
+            "kernel": kernel,
+            "C": trial.suggest_float("C", 0.1, 100.0, log=True), 
+            "probability": True, 
+            "max_iter": 1000,  
+            "tol": 1e-3,  
+            "cache_size": 200,  
+            "degree": trial.suggest_int("degree", 2, 6),
+            "shrinking": trial.suggest_categorical("shrinking", [True, False])
     }
     
     if kernel == "rbf":
@@ -745,8 +806,22 @@ def _suggest_xgboost_params(trial, classification_type="binary"):
 def _suggest_xgboost_params_less(trial, classification_type="binary"):
     """Sugestões de parâmetros reduzidos para XGBoost"""
     params = {
-        "learning_rate": trial.suggest_float("learning_rate", 0.005, 0.3, log=True),
-        "max_depth": trial.suggest_int("max_depth", 2, 30),
+        # "learning_rate": trial.suggest_float("learning_rate", 0.005, 0.3, log=True),
+        # "max_depth": trial.suggest_int("max_depth", 2, 30),
+
+        "n_estimators": trial.suggest_int("n_estimators", 100, 1000, step = 50),
+        "learning_rate": trial.suggest_float("learning_rate", 0.009, 0.1),
+        "max_depth": trial.suggest_int("max_depth", 2, 20, step = 2),
+        "min_child_weight": trial.suggest_int("min_child_weight", 1, 10),
+        "subsample": trial.suggest_float("subsample", 0.9, 1),
+        "colsample_bytree": trial.suggest_float("colsample_bytree", 0.4, 0.6),
+        "reg_alpha": trial.suggest_float("reg_alpha", 0.0, 1.0),
+        "reg_lambda": trial.suggest_float("reg_lambda", 1.0, 10.0),
+        "gamma": trial.suggest_float("gamma", 0.0, 5.0, step=1.0),
+        "random_state": 42,
+        "n_jobs": -1,  # Use all available cores
+        "verbosity": 0,  # Silenciar logs durante otimização
+
         "random_state": 42,
         "n_jobs": -1,
         "verbosity": 0,
@@ -759,40 +834,10 @@ def _suggest_xgboost_params_less(trial, classification_type="binary"):
     else:
         params["objective"] = "binary:logistic"
         params["eval_metric"] = "logloss"
-        params["scale_pos_weight"] = IMBALANCE_RATIO
+        params["scale_pos_weight"] = trial.suggest_float("scale_pos_weight", 5.0,6.0)
+        # params["scale_pos_weight"] = IMBALANCE_RATIO
     
     return params
-
-
-def _process_mlp_params(best_params):
-    """Processa parâmetros do MLP para o modelo final.
-
-    Espera um dicionário de parâmetros (ex.: param_suggestions_func(trial) ou study.best_params).
-    Retorna dicionário pronto para passar ao MLPClassifier.
-    """
-    if not isinstance(best_params, dict):
-        raise ValueError("_process_mlp_params espera um dict com parâmetros do MLP")
-
-    # Prefer explicit hidden_layer_sizes if present, senão montar a partir de n_layers / layer_{i}_size
-    if "hidden_layer_sizes" in best_params and best_params.get("hidden_layer_sizes") is not None:
-        hidden = tuple(best_params["hidden_layer_sizes"])
-    else:
-        n_layers = int(best_params.get("n_layers", 0) or 0)
-        hidden_list = []
-        for i in range(n_layers):
-            key = f"layer_{i}_size"
-            if key in best_params:
-                hidden_list.append(int(best_params[key]))
-        hidden = tuple(hidden_list)
-
-    return {
-        "hidden_layer_sizes": hidden,
-        "activation": best_params.get("activation", "relu"),
-        "alpha": float(best_params.get("alpha", 1e-4)),
-        "learning_rate": best_params.get("learning_rate", "constant"),
-        "max_iter": int(best_params.get("max_iter", 200)),
-        "early_stopping": bool(best_params.get("early_stopping", True))
-    }
 
 
 def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, 
@@ -896,7 +941,7 @@ def optimize_mlp_classifier(X, y, n_trials=30, save_results=True, fixed_params=N
         param_func,
         'multi_layer_perceptron',
         X, y, n_trials,
-        custom_params_processor=_process_mlp_params,
+        custom_params_processor=None,
         fixed_params=fixed_params,
         data_source=data_source, classification_type=classification_type,
         outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
