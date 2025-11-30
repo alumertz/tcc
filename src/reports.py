@@ -225,12 +225,12 @@ def save_detailed_results_txt_by_fold(model_name, all_folds_trials, output_path=
             f.write("\n")
         
 
-def save_holdout_results(model_name, holdout_results, data_source, classification_type):
+def save_holdout_results(model_name, holdout_results, data_source, classification_type, balance_strategy="none"):
     """Save holdout evaluation results to files"""
     
     
     # Get the same experiment directory as the optimization results
-    experiment_folder = generate_experiment_folder_name(data_source, "optimized", classification_type)
+    experiment_folder = generate_experiment_folder_name(data_source, "optimized", classification_type, balance_strategy)
     experiment_dir = os.path.join("./results", experiment_folder)
     model_dir_name = model_name.lower().replace(' ', '_')
     model_dir = os.path.join(experiment_dir, model_dir_name)

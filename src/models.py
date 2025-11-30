@@ -478,7 +478,8 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
     print("Saving holdout results...")
     save_holdout_results(
         model_name, holdout_results,
-        data_source, classification_type
+        data_source, classification_type,
+        balance_strategy=fixed_params.get('balance_strategy', 'none') if fixed_params else 'none'
     )
     print("Saved!")
 
