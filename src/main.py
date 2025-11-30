@@ -132,7 +132,7 @@ Exemplos de uso:
     
     return parser.parse_args()
 
-def run_single_model_optimize(model_name, optimizer_func, X, y, n_trials=10, data_source="ana", classification_type="binary", use_less_params=False):
+def run_single_model_optimize(model_name, optimizer_func, X, y, n_trials=10, data_source="ana", classification_type="binary", use_less_params=False, balance_strategy='none'):
     """
     Executa um único modelo de classificação
     
@@ -145,6 +145,7 @@ def run_single_model_optimize(model_name, optimizer_func, X, y, n_trials=10, dat
         data_source (str): "ana" ou "renan"
         classification_type (str): "binary" ou "multiclass"
         use_less_params (bool): Se True, usa conjunto reduzido de parâmetros
+        balance_strategy (str): Estratégia de balanceamento de dados
         
     Returns:
         dict: Resultados do modelo
@@ -154,8 +155,12 @@ def run_single_model_optimize(model_name, optimizer_func, X, y, n_trials=10, dat
     print("="*80)
     
     try:
+        # Prepare fixed_params with balance_strategy
+        fixed_params = {'balance_strategy': balance_strategy} if balance_strategy != 'none' else None
+        
         # Executa otimização (com salvamento automático)
         best_model, test_metrics = optimizer_func(X, y, n_trials=n_trials, save_results=True, 
+                                                fixed_params=fixed_params,
                                                 data_source=data_source, classification_type=classification_type,
                                                 use_nested_cv=True, outer_cv_folds=5, use_less_params=use_less_params)
         
@@ -178,7 +183,7 @@ def run_single_model_optimize(model_name, optimizer_func, X, y, n_trials=10, dat
             'model': None
         }
 
-def run_all_models_optimize(X, y, n_trials=10, data_source="ana", classification_type="binary", use_less_params=False):
+def run_all_models_optimize(X, y, n_trials=10, data_source="ana", classification_type="binary", use_less_params=False, balance_strategy='none'):
     """
     Executa todos os modelos de classificação
     
@@ -189,6 +194,7 @@ def run_all_models_optimize(X, y, n_trials=10, data_source="ana", classification
         data_source (str): "ana" ou "renan"
         classification_type (str): "binary" ou "multiclass"
         use_less_params (bool): Se True, usa conjunto reduzido de parâmetros
+        balance_strategy (str): Estratégia de balanceamento de dados
         
     Returns:
         list: Lista com resultados de todos os modelos
@@ -222,7 +228,7 @@ def run_all_models_optimize(X, y, n_trials=10, data_source="ana", classification
         else:
             n_trials = N_TRIALS
         
-        result = run_single_model_optimize(model_name, optimizer_func, X, y, n_trials, data_source, classification_type, use_less_params)
+        result = run_single_model_optimize(model_name, optimizer_func, X, y, n_trials, data_source, classification_type, use_less_params, balance_strategy)
         results.append(result)
         
     return results
@@ -398,8 +404,9 @@ def main(use_renan=False, use_multiclass=False, use_default=False, balance_strat
                 print(f"  Trials: {N_TRIALS}")
                 print(f"  Tipo: {classification_type}")
                 print(f"  Parâmetros: {'Reduzido' if use_less_params else 'Completo'}")
+                print(f"  Balanceamento: {balance_strategy}")
                 
-                result = run_single_model_optimize(model_display_name, optimizer_func, X, y, n_trials=N_TRIALS, data_source=data_source, classification_type=classification_type, use_less_params=use_less_params)
+                result = run_single_model_optimize(model_display_name, optimizer_func, X, y, n_trials=N_TRIALS, data_source=data_source, classification_type=classification_type, use_less_params=use_less_params, balance_strategy=balance_strategy)
                 results.append(result)
         
         # Save summary for default models if applicable
@@ -420,7 +427,8 @@ def main(use_renan=False, use_multiclass=False, use_default=False, balance_strat
             print(f"  Trials por modelo: {N_TRIALS}")
             print(f"  Tipo: {classification_type}")
             print(f"  Parâmetros: {'Reduzido' if use_less_params else 'Completo'}")
-            results = run_all_models_optimize(X, y, n_trials=N_TRIALS, data_source=data_source, classification_type=classification_type, use_less_params=use_less_params)
+            print(f"  Balanceamento: {balance_strategy}")
+            results = run_all_models_optimize(X, y, n_trials=N_TRIALS, data_source=data_source, classification_type=classification_type, use_less_params=use_less_params, balance_strategy=balance_strategy)
     
     
     
