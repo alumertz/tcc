@@ -94,9 +94,10 @@ def create_objective_function(classifier_class, param_suggestions_func, custom_p
         if custom_params_processor:
             params = custom_params_processor(params)
 
-        # Add fixed parameters
+        # Add fixed parameters (excluding balance_strategy which is not a model parameter)
         if fixed_params:
-            params.update(fixed_params)
+            model_params = {k: v for k, v in fixed_params.items() if k != 'balance_strategy'}
+            params.update(model_params)
 
         # Create and evaluate pipeline
         pipeline = Pipeline([
@@ -204,7 +205,9 @@ def optimize_single_outer_fold(fold_number, X_train, X_test, y_train, y_test,
     if custom_params_processor:
         best_params = custom_params_processor(best_params)
     if fixed_params:
-        best_params.update(fixed_params)
+        # Only add model parameters, exclude balance_strategy
+        model_params = {k: v for k, v in fixed_params.items() if k != 'balance_strategy'}
+        best_params.update(model_params)
 
     # Calcular importâncias dos parâmetros após otimização
     try:

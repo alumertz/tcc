@@ -152,6 +152,8 @@ def run_single_model_optimize(model_name, optimizer_func, X, y, n_trials=10, dat
     """
     print("="*80)
     print(f"EXECUTANDO MODELO: {model_name}")
+    if balance_strategy != 'none':
+        print(f"Balance strategy: {balance_strategy}")
     print("="*80)
     
     try:
@@ -199,17 +201,17 @@ def run_all_models_optimize(X, y, n_trials=10, data_source="ana", classification
     Returns:
         list: Lista com resultados de todos os modelos
     """
-    # Definição dos modelos e suas funções de otimização
+    # Definição dos modelos e suas funções de otimização (ordenados do mais rápido ao mais lento)
     models_config = [
-        ("Decision Tree", optimize_decision_tree_classifier),
         ("K-Nearest Neighbors", optimize_knn_classifier),
-        ("Support Vector Classifier", optimize_svc_classifier),
+        ("Decision Tree", optimize_decision_tree_classifier),
         ("Random Forest", optimize_random_forest_classifier),
         ("Gradient Boosting", optimize_gradient_boosting_classifier),
         ("Histogram Gradient Boosting", optimize_hist_gradient_boosting_classifier),
-        ("Multi-Layer Perceptron", optimize_mlp_classifier),
         ("XGBoost", optimize_xgboost_classifier),
-        ("CatBoost", optimize_catboost_classifier)
+        ("CatBoost", optimize_catboost_classifier),
+        ("Multi-Layer Perceptron", optimize_mlp_classifier),
+        ("Support Vector Classifier", optimize_svc_classifier)
     ]
     
     results = []
@@ -218,6 +220,8 @@ def run_all_models_optimize(X, y, n_trials=10, data_source="ana", classification
     print(f"Dataset: {X.shape[0]} amostras x {X.shape[1]} features")
     print(f"Número de trials por modelo: {n_trials}")
     print(f"Conjunto de parâmetros: {'Reduzido' if use_less_params else 'Completo'}")
+    if balance_strategy != 'none':
+        print(f"Balance strategy: {balance_strategy}")
     
     
     for i, (model_name, optimizer_func) in enumerate(models_config, 1):
