@@ -199,8 +199,13 @@ def optimize_single_outer_fold(fold_number, X_train, X_test, y_train, y_test,
     study = optuna.create_study(direction='maximize', study_name=study_name)
     study.optimize(objective, n_trials=n_trials, show_progress_bar=False, gc_after_trial=True)
 
-    # Get best parameters
-    best_params = study.best_trial.params.copy()
+    # Get best parameters - recreate them using the suggestion function
+    # to avoid including intermediate trial parameters (like n_layers for MLP)
+    if param_suggestions_func.__name__ in ['_suggest_catboost_params', '_suggest_catboost_params_less', 
+                                            '_suggest_xgboost_params', '_suggest_xgboost_params_less']:
+        best_params = param_suggestions_func(study.best_trial, classification_type)
+    else:
+        best_params = param_suggestions_func(study.best_trial)
 
     if custom_params_processor:
         best_params = custom_params_processor(best_params)
