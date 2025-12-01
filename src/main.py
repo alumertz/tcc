@@ -26,12 +26,20 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
-from catboost import CatBoostClassifier
 from xgboost import XGBClassifier
+from catboost import CatBoostClassifier
+
 from evaluation import evaluate_model_default
 from src.reports import generate_experiment_folder_name
 import warnings
 warnings.filterwarnings('ignore')
+
+# Check if GPU is available for XGBoost
+try:
+    import torch
+    GPU_AVAILABLE = torch.cuda.is_available()
+except ImportError:
+    GPU_AVAILABLE = False
 
 N_TRIALS = 30
 
@@ -262,7 +270,7 @@ def run_all_default_models(X, y, data_source="ana", classification_type="binary"
         ("Multi-Layer Perceptron", MLPClassifier(random_state=42, max_iter=1000)),
         ("Support Vector Classifier", SVC(probability=True, random_state=42)),
         ("CatBoost", CatBoostClassifier(random_state=42, verbose=False)),
-        ("XGBoost", XGBClassifier(random_state=42, verbosity=0, eval_metric='logloss'))
+        ("XGBoost", XGBClassifier(random_state=42, verbosity=0, eval_metric='logloss', tree_method="gpu_hist" if GPU_AVAILABLE else "hist"))
     ]
     
     results = []
@@ -365,7 +373,7 @@ def main(use_renan=False, use_multiclass=False, use_default=False, balance_strat
         'gradientboosting': ("Gradient Boosting", GradientBoostingClassifier(random_state=42)),
         'histgradientboosting': ("Histogram Gradient Boosting", HistGradientBoostingClassifier(random_state=42)),
         'mlp': ("Multi-Layer Perceptron", MLPClassifier(random_state=42, max_iter=1000)),
-        'xgboost': ("XGBoost", XGBClassifier(random_state=42, verbosity=0, eval_metric='logloss')),
+        'xgboost': ("XGBoost", XGBClassifier(random_state=42, verbosity=0, eval_metric='logloss', tree_method="gpu_hist" if GPU_AVAILABLE else "hist")),
         'catboost': ("CatBoost", CatBoostClassifier(random_state=42, verbose=False))
     }
     

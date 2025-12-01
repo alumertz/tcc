@@ -31,7 +31,7 @@ def get_experiment_timestamp():
         _experiment_timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     return _experiment_timestamp
 
-def generate_experiment_folder_name(data_source="ana", mode="default", classification_type="binary", balance_strategy="none"):
+def generate_experiment_folder_name(data_source="ana", mode="default", classification_type="binary", balance_strategy="none", use_less_params=False):
     """
     Gera nome da pasta do experimento baseado na data e configurações
     Usa o timestamp global definido no início da execução
@@ -41,9 +41,10 @@ def generate_experiment_folder_name(data_source="ana", mode="default", classific
         mode (str): "default" ou "optimized"  
         classification_type (str): "binary" ou "multiclass"
         balance_strategy (str): Estratégia de balanceamento utilizada
+        use_less_params (bool): Se True, adiciona "_less" ao nome da pasta
         
     Returns:
-        str: Nome da pasta no formato "YYYYMMDD_HHMMSS_ana_default_binary_smoten"
+        str: Nome da pasta no formato "YYYYMMDD_HHMMSS_ana_default_binary_smoten_less"
     """
     timestamp = get_experiment_timestamp()
     
@@ -53,11 +54,18 @@ def generate_experiment_folder_name(data_source="ana", mode="default", classific
     classification_type = classification_type.lower()
     balance_strategy = balance_strategy.lower()
     
+    # Build folder name parts
+    parts = [timestamp, data_source, mode, classification_type]
+    
     # Incluir estratégia de balanceamento apenas se não for "none"
-    if balance_strategy == "none":
-        folder_name = f"{timestamp}_{data_source}_{mode}_{classification_type}"
-    else:
-        folder_name = f"{timestamp}_{data_source}_{mode}_{classification_type}_{balance_strategy}"
+    if balance_strategy != "none":
+        parts.append(balance_strategy)
+    
+    # Incluir "less" se usar parâmetros reduzidos
+    if use_less_params:
+        parts.append("less")
+    
+    folder_name = "_".join(parts)
     
     return folder_name
 
@@ -225,12 +233,12 @@ def save_detailed_results_txt_by_fold(model_name, all_folds_trials, output_path=
             f.write("\n")
         
 
-def save_holdout_results(model_name, holdout_results, data_source, classification_type, balance_strategy="none"):
+def save_holdout_results(model_name, holdout_results, data_source, classification_type, balance_strategy="none", use_less_params=False):
     """Save holdout evaluation results to files"""
     
     
     # Get the same experiment directory as the optimization results
-    experiment_folder = generate_experiment_folder_name(data_source, "optimized", classification_type, balance_strategy)
+    experiment_folder = generate_experiment_folder_name(data_source, "optimized", classification_type, balance_strategy, use_less_params)
     experiment_dir = os.path.join("./results", experiment_folder)
     model_dir_name = model_name.lower().replace(' ', '_')
     model_dir = os.path.join(experiment_dir, model_dir_name)
