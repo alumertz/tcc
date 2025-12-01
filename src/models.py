@@ -73,7 +73,7 @@ def balance_fold(X_train, y_train, balance_strategy):
         balancer = SMOTEENN(random_state=42)
     elif balance_strategy == 'tomeklinks':
         from imblearn.under_sampling import TomekLinks
-        balancer = TomekLinks(random_state=42)
+        balancer = TomekLinks()
     else:
         raise ValueError(f"Unknown balance_strategy: {balance_strategy}")
     print("Balance strategy:", balance_strategy)
