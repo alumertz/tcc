@@ -173,11 +173,11 @@ def run_single_model_optimize(model_name, optimizer_func, X, y, n_trials=10, dat
             'test_metrics': test_metrics
         }
         
-        print(f"✓ {model_name} executado com sucesso!")
+        print(f"[OK] {model_name} executado com sucesso!")
         return results
         
     except Exception as e:
-        print(f"✗ Erro ao executar {model_name}: {e}")
+        print(f"[ERRO] Erro ao executar {model_name}: {e}")
         return {
             'model_name': model_name,
             'status': 'error',
@@ -281,9 +281,9 @@ def run_all_default_models(X, y, data_source="ana", classification_type="binary"
         try:
             result = evaluate_model_default(model, model_name, X, y, experiment_dir, classification_type, balance_strategy)
             results.append(result)
-            print(f"✓ {model_name} executado com sucesso!")
+            print(f"[OK] {model_name} executado com sucesso!")
         except Exception as e:
-            print(f"✗ Erro ao executar {model_name}: {e}")
+            print(f"[ERRO] Erro ao executar {model_name}: {e}")
             results.append({
                 'model_name': model_name,
                 'status': 'error',
@@ -392,9 +392,9 @@ def main(use_renan=False, use_multiclass=False, use_default=False, balance_strat
                 try:
                     result = evaluate_model_default(model_instance, model_display_name, X, y, experiment_dir, classification_type, balance_strategy)
                     results.append(result)
-                    print(f"✓ {model_display_name} executado com sucesso!")
+                    print(f"[OK] {model_display_name} executado com sucesso!")
                 except Exception as e:
-                    print(f"✗ Erro ao executar {model_display_name}: {e}")
+                    print(f"[ERRO] Erro ao executar {model_display_name}: {e}")
                     results.append({
                         'model_name': model_display_name,
                         'status': 'error',
