@@ -234,7 +234,7 @@ def save_detailed_results_txt_by_fold(model_name, all_folds_trials, output_path=
         
 
 def save_holdout_results(model_name, holdout_results, data_source, classification_type, balance_strategy="none", use_less_params=False):
-    """Save holdout evaluation results to files"""
+    """Save holdout evaluation results to files with multiple balancing strategies tested"""
     
     
     # Get the same experiment directory as the optimization results
@@ -248,37 +248,74 @@ def save_holdout_results(model_name, holdout_results, data_source, classificatio
     holdout_results_path = os.path.join(model_dir, "holdout_results.txt")
     with open(holdout_results_path, 'w') as f:
         f.write(f"Holdout Evaluation Results for {model_name}\n")
-        f.write("="*50 + "\n\n")
+        f.write("="*80 + "\n\n")
         
-        f.write("Results for each fold's best parameters on holdout set:\n")
-        f.write("-"*50 + "\n")
+        f.write("Results for each fold's best parameters on holdout set\n")
+        f.write("Testing with different balancing strategies on training data (80%)\n")
+        f.write("Evaluated on unbalanced holdout set (20%)\n")
+        f.write("-"*80 + "\n")
         
         for hr in holdout_results:
-            f.write(f"\nFold {hr['fold']}:\n")
-            f.write(f"  Best Parameters: {hr['best_params']}\n")
-            f.write(f"  Holdout Metrics:\n")
-            f.write(f"    Accuracy: {hr['holdout_metrics'].accuracy:.4f}\n")
-            f.write(f"    Precision: {hr['holdout_metrics'].precision:.4f}\n")
-            f.write(f"    Recall: {hr['holdout_metrics'].recall:.4f}\n")
-            f.write(f"    F1-Score: {hr['holdout_metrics'].f1:.4f}\n")
-            f.write(f"    ROC-AUC: {hr['holdout_metrics'].roc_auc:.4f}\n")
-            f.write(f"    PR-AUC: {hr['holdout_metrics'].pr_auc:.4f}\n")
+            f.write(f"\n{'='*80}\n")
+            f.write(f"FOLD {hr['fold']}\n")
+            f.write(f"{'='*80}\n")
+            f.write(f"Best Parameters: {hr['best_params']}\n\n")
+            
+            # Write results for each balancing strategy
+            for balance_strat, metrics in hr['balance_strategies'].items():
+                f.write(f"\n{'-'*80}\n")
+                f.write(f"BALANCING STRATEGY: {balance_strat.upper()}\n")
+                f.write(f"{'-'*80}\n")
+                f.write(f"  Accuracy:  {metrics.accuracy:.4f}\n")
+                f.write(f"  Precision: {metrics.precision:.4f}\n")
+                f.write(f"  Recall:    {metrics.recall:.4f}\n")
+                f.write(f"  F1-Score:  {metrics.f1:.4f}\n")
+                f.write(f"  ROC-AUC:   {metrics.roc_auc:.4f}\n")
+                f.write(f"  PR-AUC:    {metrics.pr_auc:.4f}\n")
         
-        # Find and write best performing model
-        best_holdout_idx = np.argmax([hr['holdout_metrics'].pr_auc for hr in holdout_results])
-        best_holdout = holdout_results[best_holdout_idx]
+        # Find best performing combination (fold + balancing strategy)
+        f.write(f"\n\n{'='*80}\n")
+        f.write(f"BEST PERFORMING COMBINATIONS ON HOLDOUT SET (by PR-AUC)\n")
+        f.write(f"{'='*80}\n\n")
         
-        f.write(f"\n" + "="*50 + "\n")
-        f.write(f"BEST PERFORMING MODEL ON HOLDOUT SET:\n")
-        f.write(f"Fold {best_holdout['fold']} (PR-AUC: {best_holdout['holdout_metrics'].pr_auc:.4f})\n")
-        f.write(f"Parameters: {best_holdout['best_params']}\n")
-        f.write(f"Final Holdout Performance:\n")
-        f.write(f"  Accuracy: {best_holdout['holdout_metrics'].accuracy:.4f}\n")
-        f.write(f"  Precision: {best_holdout['holdout_metrics'].precision:.4f}\n")
-        f.write(f"  Recall: {best_holdout['holdout_metrics'].recall:.4f}\n")
-        f.write(f"  F1-Score: {best_holdout['holdout_metrics'].f1:.4f}\n")
-        f.write(f"  ROC-AUC: {best_holdout['holdout_metrics'].roc_auc:.4f}\n")
-        f.write(f"  PR-AUC: {best_holdout['holdout_metrics'].pr_auc:.4f}\n")
+        # Collect all combinations
+        all_combinations = []
+        for hr in holdout_results:
+            for balance_strat, metrics in hr['balance_strategies'].items():
+                all_combinations.append({
+                    'fold': hr['fold'],
+                    'balance_strategy': balance_strat,
+                    'params': hr['best_params'],
+                    'metrics': metrics
+                })
+        
+        # Sort by PR-AUC
+        all_combinations.sort(key=lambda x: x['metrics'].pr_auc, reverse=True)
+        
+        # Write top 5 combinations
+        f.write("Top 5 combinations:\n")
+        f.write("-"*80 + "\n")
+        for i, combo in enumerate(all_combinations[:5], 1):
+            f.write(f"\n{i}. Fold {combo['fold']} + {combo['balance_strategy'].upper()}\n")
+            f.write(f"   PR-AUC: {combo['metrics'].pr_auc:.4f} | ")
+            f.write(f"ROC-AUC: {combo['metrics'].roc_auc:.4f} | ")
+            f.write(f"F1: {combo['metrics'].f1:.4f}\n")
+        
+        # Write best overall
+        best_combo = all_combinations[0]
+        f.write(f"\n\n{'='*80}\n")
+        f.write(f"OVERALL BEST COMBINATION:\n")
+        f.write(f"{'='*80}\n")
+        f.write(f"Fold: {best_combo['fold']}\n")
+        f.write(f"Balancing Strategy: {best_combo['balance_strategy'].upper()}\n")
+        f.write(f"Parameters: {best_combo['params']}\n\n")
+        f.write(f"Performance:\n")
+        f.write(f"  Accuracy:  {best_combo['metrics'].accuracy:.4f}\n")
+        f.write(f"  Precision: {best_combo['metrics'].precision:.4f}\n")
+        f.write(f"  Recall:    {best_combo['metrics'].recall:.4f}\n")
+        f.write(f"  F1-Score:  {best_combo['metrics'].f1:.4f}\n")
+        f.write(f"  ROC-AUC:   {best_combo['metrics'].roc_auc:.4f}\n")
+        f.write(f"  PR-AUC:    {best_combo['metrics'].pr_auc:.4f}\n")
     
     print(f"Holdout evaluation results saved to: {holdout_results_path}")
 

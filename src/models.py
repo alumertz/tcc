@@ -70,7 +70,14 @@ def balance_fold(X_train, y_train, balance_strategy):
         balancer = RandomUnderSampler(random_state=42)
     elif balance_strategy == 'smoteenn':
         from imblearn.combine import SMOTEENN
-        balancer = SMOTEENN(random_state=42)
+        from imblearn.over_sampling import SMOTE
+        from imblearn.under_sampling import EditedNearestNeighbours
+        # Reduce k_neighbors to 3 for faster computation (default is 5)
+        balancer = SMOTEENN(
+            random_state=42,
+            smote=SMOTE(k_neighbors=3, random_state=42),
+            enn=EditedNearestNeighbours(n_neighbors=3)
+        )
     elif balance_strategy == 'tomeklinks':
         from imblearn.under_sampling import TomekLinks
         balancer = TomekLinks()
@@ -451,29 +458,48 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
     print(f"\nNested CV completed. The 20% holdout set ({X_test.shape[0]} samples) remains untouched.")
     print("This holdout set can be used for final unbiased evaluation.")
     
+    # Define balancing strategies to test on holdout
+    holdout_balance_strategies = ['none', 'randomundersampler', 'smoteenn', 'tomeklinks']
+    
     # Now train and evaluate each of the best parameter sets on the holdout data
+    # with different balancing strategies
     print(f"\nTraining and evaluating {len(fold_results_list)} best parameter sets on holdout data...")
+    print(f"Testing with {len(holdout_balance_strategies)} balancing strategies: {', '.join(holdout_balance_strategies)}")
     
     holdout_results = []
     for i, fold_result in enumerate(fold_results_list, 1):
-        print(f"Evaluating fold {i} best params on holdout set...")
+        print(f"\nEvaluating fold {i} best params on holdout set...")
         
-        # Train model with best params from this fold on the full 80% training data
-        final_pipeline = Pipeline([
-            ('scaler', StandardScaler()),
-            ('classifier', classifier_class(**fold_result.best_params))
-        ])
-        final_pipeline.fit(X_train, y_train)
-        
-        # Evaluate on holdout set
-        y_pred_holdout, y_pred_proba_holdout = get_model_predictions(final_pipeline, X_test)
-        holdout_metrics = calculate_metrics(y_test, y_pred_holdout, y_pred_proba_holdout, classification_type)
-        
-        holdout_results.append({
+        fold_holdout_results = {
             'fold': i,
             'best_params': fold_result.best_params,
-            'holdout_metrics': holdout_metrics
-        })
+            'balance_strategies': {}
+        }
+        
+        # Test with each balancing strategy
+        for balance_strat in holdout_balance_strategies:
+            print(f"  - Testing with balance strategy: {balance_strat}")
+            
+            # Apply balancing only to the 80% training data
+            if balance_strat == 'none':
+                X_train_balanced, y_train_balanced = X_train, y_train
+            else:
+                X_train_balanced, y_train_balanced = balance_fold(X_train, y_train, balance_strat)
+            
+            # Train model with best params from this fold on the balanced 80% training data
+            final_pipeline = Pipeline([
+                ('scaler', StandardScaler()),
+                ('classifier', classifier_class(**fold_result.best_params))
+            ])
+            final_pipeline.fit(X_train_balanced, y_train_balanced)
+            
+            # Evaluate on holdout set (unbalanced 20%)
+            y_pred_holdout, y_pred_proba_holdout = get_model_predictions(final_pipeline, X_test)
+            holdout_metrics = calculate_metrics(y_test, y_pred_holdout, y_pred_proba_holdout, classification_type)
+            
+            fold_holdout_results['balance_strategies'][balance_strat] = holdout_metrics
+        
+        holdout_results.append(fold_holdout_results)
 
     print("Saving optimization and holdout results...")
     save_optimization_results(
