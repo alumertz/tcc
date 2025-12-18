@@ -44,7 +44,6 @@ def load_union_features(features_path):
         print(f"Erro ao carregar features: {e}")
         return None, None, None
 
-
 def load_union_labels(labels_path, classification_type='binary'):
     """
     Carrega o arquivo UNION_labels.tsv e processa os labels
@@ -119,7 +118,6 @@ def load_union_labels(labels_path, classification_type='binary'):
         print(f"Erro ao carregar labels: {e}")
         return None
 
-
 def align_features_and_labels(features_df, labels_df):
     """
     Alinha as features e labels, mantendo apenas genes presentes em ambos
@@ -169,18 +167,18 @@ def align_features_and_labels(features_df, labels_df):
     
     return X, y, gene_names
 
-
-def prepare_dataset(features_path, labels_path, classification_type='binary'):
+def prepare_dataset(features_path, labels_path, classification_type='binary', omics_to_use=None):
     """
-    Função principal para preparar o dataset completo
-    
+    Prepara o dataset completo e permite selecionar quais ômicas usar.
+
     Args:
         features_path (str): Caminho para UNION_features.tsv
         labels_path (str): Caminho para UNION_labels.tsv
-        classification_type (str): Tipo de classificação - 'binary' ou 'multiclass'
-        
+        classification_type (str): 'binary' ou 'multiclass'
+        omics_to_use (list[str] | None): Lista de ômicas a usar. Se None, usa todas.
+
     Returns:
-        tuple: (X, y, gene_names, feature_names) - dataset completo preparado
+        tuple: (X, y, gene_names, feature_names)
     """
     print("="*60)
     print(f"PREPARANDO DATASET PARA CLASSIFICAÇÃO ({classification_type.upper()})")
@@ -191,21 +189,23 @@ def prepare_dataset(features_path, labels_path, classification_type='binary'):
     if features_df is None:
         return None, None, None, None
 
-    print("-"*40)
-    
+    # Filtra as ômicas desejadas
+    if omics_to_use is not None:
+        features_df = features_df[['gene'] + [col for col in features_df.columns if any(o in col for o in omics_to_use)]]
+        
+    print(f"Ômicas selecionadas: {omics_to_use}")
+    print(f"Colunas efetivamente usadas: {features_df.columns.tolist()}")
+
     # Carrega labels
     labels_df = load_union_labels(labels_path, classification_type)
     if labels_df is None:
         return None, None, None, None
-    
-    print("-"*40)
     
     # Alinha features e labels
     X, y, gene_names = align_features_and_labels(features_df, labels_df)
     if X is None:
         return None, None, None, None
     
-    # Nomes das features
     feature_names = features_df.drop('gene', axis=1).columns.tolist()
     
     print("-"*40)
@@ -215,8 +215,7 @@ def prepare_dataset(features_path, labels_path, classification_type='binary'):
     print(f"Features: {len(feature_names)}")
     print("="*60)
     
-    return X, y, gene_names
-
+    return X, y, gene_names, feature_names
 
 def prepare_renan_data(labels_path = "./renan/data_files/labels/UNION_labels.tsv", features_path = "./renan/data_files/omics_features/UNION_features.tsv"):
     """

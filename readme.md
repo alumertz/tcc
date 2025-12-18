@@ -135,12 +135,12 @@ python3 src/main.py -renan -default
 
 #### Command Line Options
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `-multiclass` | Use multiclass classification (TSG vs Oncogene vs Passenger) | Binary (Cancer vs Passenger) |
-| `-renan` | Use original data format from renan/ directory | Use processed data from data/ |
-| `-default` | Use default model parameters (fast) | Use Optuna optimization (slow) |
-| `-h, --help` | Show help message and examples | - |
+| Option        | Description                                                  | Default                        |         
+|---------------|--------------------------------------------------------------|--------------------------------|
+| `-multiclass` | Use multiclass classification (TSG vs Oncogene vs Passenger) | Binary (Cancer vs Passenger)   |
+| `-renan`      | Use original data format from renan/ directory               | Use processed data from data/  |
+| `-default`    | Use default model parameters (fast)                          | Use Optuna optimization (slow) |
+| `-h, --help`  | Show help message and examples                               | -                              |
 
 #### Expected Runtime
 - **Default mode**: ~2-5 minutes (8 models with default parameters)

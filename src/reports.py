@@ -320,7 +320,7 @@ def save_holdout_results(model_name, holdout_results, data_source, classificatio
     print(f"Holdout evaluation results saved to: {holdout_results_path}")
 
 
-def default_report(model_name, folds_metrics, test_metrics, output_path=None, balance_strategy="none"):
+def default_report(model_name, folds_metrics, test_metrics, output_path=None, balance_strategy="none", omics_used=None):    
     """
     Gera um relatório simples para avaliação padrão de um modelo.
     Args:
@@ -337,7 +337,13 @@ def default_report(model_name, folds_metrics, test_metrics, output_path=None, ba
         'pr_auc_macro', 'pr_auc_weighted', 'pr_auc_micro',
         'roc_auc_macro', 'roc_auc_weighted', 'roc_auc_micro'
     ]
+
     report = f"RELATÓRIO PADRÃO DO MODELO: {model_name} com {balance_strategy}\n" + "="*80 + "\n\n"
+
+    # Inserir ômicas
+    if omics_used:
+        report += "ÔMICAS UTILIZADAS: " + ", ".join(omics_used) + "\n\n"
+
     report += "MÉTRICAS DE TREINO (HOLDOUT):\n"
     if folds_metrics and isinstance(folds_metrics, dict):
         train_metrics = folds_metrics.get('train_metrics', {})

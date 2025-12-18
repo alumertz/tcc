@@ -28,7 +28,7 @@ from catboost import CatBoostClassifier
 from xgboost import XGBClassifier
 from sklearn.model_selection import StratifiedKFold, cross_val_score, train_test_split
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support, roc_auc_score, average_precision_score
-from src.reports import save_detailed_results_txt_by_fold, generate_experiment_folder_name, save_holdout_results
+from reports import save_detailed_results_txt_by_fold, generate_experiment_folder_name, save_holdout_results
 
 
 IMBALANCE_RATIO = 93.0/7.0
@@ -55,6 +55,7 @@ class FoldResults:
     trials: List[Dict[str, Any]]
     best_trial_number: int = None
     test_predictions: dict = None
+
 
 def balance_fold(X_train, y_train, balance_strategy):
     if not balance_strategy or balance_strategy == 'none':
@@ -536,9 +537,7 @@ def _optimize_classifier_generic(classifier_class, param_suggestions_func, model
         return None, None
     
 
-# Funções de sugestão de parâmetros para cada modelo #
-
-
+# Funções de sugestão de parâmetros para cada modelo
 def _suggest_catboost_params(trial, classification_type="binary"):
     """Sugestões de parâmetros para CatBoost"""
     params = {
@@ -564,7 +563,6 @@ def _suggest_catboost_params(trial, classification_type="binary"):
         params["scale_pos_weight"] = trial.suggest_float("scale_pos_weight", IMBALANCE_RATIO * 0.4, IMBALANCE_RATIO * 4)
     
     return params
-
 
 def _suggest_catboost_params_less(trial, classification_type="binary"):
     """Sugestões de parâmetros reduzidos para CatBoost"""
@@ -596,7 +594,6 @@ def _suggest_catboost_params_less(trial, classification_type="binary"):
     
     return params
 
-
 def _suggest_decision_tree_params(trial):
     """Sugestões de parâmetros para Decision Tree"""
     return {
@@ -607,7 +604,6 @@ def _suggest_decision_tree_params(trial):
         "max_features": trial.suggest_categorical("max_features", [None, "sqrt", "log2"]),
         "splitter": trial.suggest_categorical("splitter", ["best", "random"])
     }
-
 
 def _suggest_decision_tree_params_less(trial):
     """Sugestões de parâmetros reduzidos para Decision Tree"""
@@ -625,7 +621,6 @@ def _suggest_decision_tree_params_less(trial):
 
     }
 
-
 def _suggest_gradient_boosting_params(trial):
     """Sugestões de parâmetros para Gradient Boosting"""
     return {
@@ -637,7 +632,6 @@ def _suggest_gradient_boosting_params(trial):
         "subsample": trial.suggest_float("subsample", 0.8, 1.0),
         "max_features": trial.suggest_categorical("max_features", [None, "sqrt", "log2"])
     }
-
 
 def _suggest_gradient_boosting_params_less(trial):
     """Sugestões de parâmetros reduzidos para Gradient Boosting"""
@@ -655,7 +649,6 @@ def _suggest_gradient_boosting_params_less(trial):
 
     }
 
-
 def _suggest_hist_gradient_boosting_params(trial):
     """Sugestões de parâmetros para Histogram Gradient Boosting"""
     return {
@@ -665,7 +658,6 @@ def _suggest_hist_gradient_boosting_params(trial):
         "min_samples_leaf": trial.suggest_int("min_samples_leaf", 1, 50),
         "l2_regularization": trial.suggest_float("l2_regularization", 0.0, 1.0)
     }
-
 
 def _suggest_hist_gradient_boosting_params_less(trial):
     """Sugestões de parâmetros reduzidos para Histogram Gradient Boosting"""
@@ -681,7 +673,6 @@ def _suggest_hist_gradient_boosting_params_less(trial):
 
     }
 
-
 def _suggest_knn_params(trial):
     """Sugestões de parâmetros para KNN"""
     return {
@@ -691,7 +682,6 @@ def _suggest_knn_params(trial):
         "p": trial.suggest_int("p", 1, 2),  # 1 for manhattan, 2 for euclidean
         "leaf_size": trial.suggest_int("leaf_size", 20, 40)
     }
-
 
 def _suggest_knn_params_less(trial):
     """Sugestões de parâmetros reduzidos para KNN"""
@@ -705,7 +695,6 @@ def _suggest_knn_params_less(trial):
         "p": trial.suggest_int("p", 1, 2),  # 1 for manhattan, 2 for euclidean
         "leaf_size": trial.suggest_int("leaf_size", 20, 40)
     }
-
 
 def _suggest_mlp_params(trial):
     """Sugestões de parâmetros para MLP"""
@@ -726,7 +715,6 @@ def _suggest_mlp_params(trial):
         "max_iter": trial.suggest_int("max_iter", 200, 1000)
     }
 
-
 def _suggest_mlp_params_less(trial):
     """Sugestões de parâmetros reduzidos para MLP"""
     n_layers = trial.suggest_int("n_layers", 1, 2)
@@ -745,7 +733,6 @@ def _suggest_mlp_params_less(trial):
         "max_iter": trial.suggest_int("max_iter", 200, 1500)
     }
 
-
 def _suggest_random_forest_params(trial):
     """Sugestões de parâmetros para Random Forest"""
     return {
@@ -758,7 +745,6 @@ def _suggest_random_forest_params(trial):
         "bootstrap": trial.suggest_categorical("bootstrap", [True, False]),
         "n_jobs": -1
     }
-
 
 def _suggest_random_forest_params_less(trial):
     """Sugestões de parâmetros reduzidos para Random Forest"""
@@ -777,7 +763,6 @@ def _suggest_random_forest_params_less(trial):
 
         "n_jobs": -1
     }
-
 
 def _suggest_svc_params(trial):
     """Sugestões de parâmetros para SVC otimizadas para evitar execução infinita"""
@@ -800,7 +785,6 @@ def _suggest_svc_params(trial):
     
     return params
 
-
 def _suggest_svc_params_less(trial):
     """Sugestões de parâmetros reduzidos para SVC"""
     kernel = trial.suggest_categorical("kernel", ["linear", "poly", "rbf", "sigmoid"])
@@ -810,7 +794,6 @@ def _suggest_svc_params_less(trial):
     }
     
     return params
-
 
 def _suggest_xgboost_params(trial, classification_type="binary"):
     """Sugestões de parâmetros para XGBoost"""
@@ -840,7 +823,6 @@ def _suggest_xgboost_params(trial, classification_type="binary"):
         params["scale_pos_weight"] = trial.suggest_float("scale_pos_weight", IMBALANCE_RATIO * 0.4, IMBALANCE_RATIO * 4)
     
     return params
-
 
 def _suggest_xgboost_params_less(trial, classification_type="binary"):
     """Sugestões de parâmetros reduzidos para XGBoost"""
@@ -878,7 +860,6 @@ def _suggest_xgboost_params_less(trial, classification_type="binary"):
     
     return params
 
-
 def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True, fixed_params=None, 
                                     data_source="ana", classification_type="binary", 
                                     use_nested_cv=True, outer_cv_folds=5, use_less_params=False):
@@ -897,7 +878,6 @@ def optimize_decision_tree_classifier(X, y, n_trials=30, save_results=True, fixe
         data_source=data_source, classification_type=classification_type,
         outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
     )
-
 
 def optimize_random_forest_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
                                      data_source="ana", classification_type="binary", 
@@ -918,7 +898,6 @@ def optimize_random_forest_classifier(X, y, n_trials=30, save_results=True, fixe
         outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
     )
 
-
 def optimize_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
                                         data_source="ana", classification_type="binary", 
                                         use_nested_cv=True, outer_cv_folds=5, use_less_params=False):
@@ -934,7 +913,6 @@ def optimize_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, 
         data_source=data_source, classification_type=classification_type,
         outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
     )
-
 
 def optimize_hist_gradient_boosting_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
                                              data_source="ana", classification_type="binary", 
@@ -952,7 +930,6 @@ def optimize_hist_gradient_boosting_classifier(X, y, n_trials=30, save_results=T
         outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
     )
 
-
 def optimize_knn_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
                            data_source="ana", classification_type="binary", 
                            use_nested_cv=True, outer_cv_folds=5, use_less_params=False):
@@ -969,7 +946,6 @@ def optimize_knn_classifier(X, y, n_trials=30, save_results=True, fixed_params=N
         outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
     )
 
-
 def optimize_mlp_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
                           data_source="ana", classification_type="binary", 
                           use_nested_cv=True, outer_cv_folds=5, use_less_params=False):
@@ -985,7 +961,6 @@ def optimize_mlp_classifier(X, y, n_trials=30, save_results=True, fixed_params=N
         data_source=data_source, classification_type=classification_type,
         outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
     )
-
 
 def optimize_svc_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
                           data_source="ana", classification_type="binary", 
@@ -1006,7 +981,6 @@ def optimize_svc_classifier(X, y, n_trials=30, save_results=True, fixed_params=N
         outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
     )
 
-
 def optimize_catboost_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
                                data_source="ana", classification_type="binary", 
                                use_nested_cv=True, outer_cv_folds=5, use_less_params=False):
@@ -1022,7 +996,6 @@ def optimize_catboost_classifier(X, y, n_trials=30, save_results=True, fixed_par
         data_source=data_source, classification_type=classification_type,
         outer_cv_folds=outer_cv_folds, use_less_params=use_less_params
     )
-
 
 def optimize_xgboost_classifier(X, y, n_trials=30, save_results=True, fixed_params=None,
                               data_source="ana", classification_type="binary", 
