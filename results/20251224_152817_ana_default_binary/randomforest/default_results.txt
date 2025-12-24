@@ -1,6 +1,8 @@
 RELATÓRIO PADRÃO DO MODELO: randomforest com none
 ================================================================================
 
+ÔMICAS UTILIZADAS: CNA
+
 MÉTRICAS DE TREINO (HOLDOUT):
 Accuracy: 0.9517
 Precision: 0.8878

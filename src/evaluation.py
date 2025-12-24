@@ -169,7 +169,7 @@ def evaluate_model_default( model, model_name, X, y, experiment_dir, classificat
 
     return {
         "holdout": evaluate_model_holdout(model, model_name, X, y, experiment_dir,
-                                          classification_type, balance_strategy),
+                                          classification_type, balance_strategy, omics_used=omics_used),
         "cv": evaluate_model_holdout_cv(model, model_name, X, y, experiment_dir,
-                                        classification_type, balance_strategy)
+                                        classification_type, balance_strategy, omics_used=omics_used)
     }

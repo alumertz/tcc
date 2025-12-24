@@ -72,7 +72,7 @@ def parse_arguments():
 
 
 def run_single_model(model_name, func_or_model, X, y, n_trials=N_TRIALS, is_default=False,
-                     classification_type='binary', use_less_params=False, balance_strategy='none', data_source='ANA'):
+                     classification_type='binary', use_less_params=False, balance_strategy='none', data_source='ANA', omics_to_use=None):
     print("="*80)
     print(f"EXECUTANDO MODELO: {model_name} | Default: {is_default}")
     print(f"Balanceamento: {balance_strategy}")
@@ -86,7 +86,7 @@ def run_single_model(model_name, func_or_model, X, y, n_trials=N_TRIALS, is_defa
 
     try:
         if is_default:
-            result = evaluate_model_default(func_or_model, model_name, X, y, experiment_dir, classification_type, balance_strategy)
+            result = evaluate_model_default(func_or_model, model_name, X, y, experiment_dir, classification_type, balance_strategy, omics_used=omics_to_use)
         else:
             fixed_params = {'balance_strategy': balance_strategy} if balance_strategy != 'none' else None
             result_model, test_metrics = func_or_model(
@@ -162,7 +162,8 @@ def main(use_renan=False, use_multiclass=False, use_default=False, balance_strat
             results.append(run_single_model(m, default_models[m], X, y, is_default=True,
                                             classification_type=classification_type,
                                             balance_strategy=balance_strategy,
-                                            data_source=data_source))
+                                            data_source=data_source,
+                                            omics_to_use=omics_to_use))
         else:
             results.append(run_single_model(m, optimize_models[m], X, y, n_trials=N_TRIALS,
                                             is_default=False,
