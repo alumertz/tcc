@@ -70,6 +70,20 @@ def generate_experiment_folder_name(data_source="ana", mode="default", classific
     return folder_name
 
 
+def format_omics_folder_name(omics_list):
+    """
+    Converte lista de ômicas em nome de pasta formatado.
+    
+    Args:
+        omics_list (list or None): Lista de ômicas (ex: ['CNA', 'METH'])
+    
+    Returns:
+        str: Nome formatado (ex: 'CNA-METH') ou 'ALL' se None ou vazio
+    """
+    if omics_list is None or len(omics_list) == 0:
+        return "ALL"
+    return "-".join(sorted([str(o).upper() for o in omics_list]))
+
 def save_detailed_results_txt(model_name, trials, test_metrics, best_params, optimization_info, output_path, param_importances_per_fold=None, aggregated_importances=None):
     """
     Salva um arquivo results.txt detalhado com todas as métricas de CV por trial, ordenado por PR AUC, para qualquer modelo.

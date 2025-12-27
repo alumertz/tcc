@@ -7,7 +7,7 @@ from sklearn.metrics import (
     accuracy_score, precision_score, recall_score, f1_score,
     roc_auc_score, average_precision_score, confusion_matrix
 )
-from reports import default_report, format_5fold_report
+from reports import default_report, format_5fold_report, format_omics_folder_name
 
 def get_balancer(strategy: str):
     """Retorna o balanceador correspondente à estratégia escolhida."""
@@ -102,8 +102,9 @@ def evaluate_model_holdout(model, model_name, X, y, experiment_dir, classificati
         'y_pred_proba': pipeline.predict_proba(X_test).tolist()
     })
 
-    # Salvar relatório
-    model_dir = os.path.join(experiment_dir, model_name.lower().replace(' ', '_'))
+    # Salvar relatório com subpasta de ômicas
+    omics_folder = format_omics_folder_name(omics_used)
+    model_dir = os.path.join(experiment_dir, model_name.lower().replace(' ', '_'), omics_folder)
     os.makedirs(model_dir, exist_ok=True)
     default_report(
         model_name=model_name,
@@ -154,8 +155,9 @@ def evaluate_model_holdout_cv(  model, model_name, X, y, experiment_dir, classif
         if isinstance(folds_results[0]["val"][key], (int, float, np.floating)):
             aggregated[key] = float(np.mean([fold["val"][key] for fold in folds_results]))
 
-    # Salvar relatório
-    model_dir = os.path.join(experiment_dir, model_name.lower().replace(" ", "_"))
+    # Salvar relatório com subpasta de ômicas
+    omics_folder = format_omics_folder_name(omics_used)
+    model_dir = os.path.join(experiment_dir, model_name.lower().replace(" ", "_"), omics_folder)
     os.makedirs(model_dir, exist_ok=True)
     with open(os.path.join(model_dir, "5fold_on_80_results.txt"), "w") as f:
         f.write(format_5fold_report(model_name, folds_results, aggregated, classification_type))
