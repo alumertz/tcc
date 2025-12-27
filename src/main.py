@@ -8,6 +8,7 @@ import os
 import sys
 import argparse
 import warnings
+from itertools import combinations
 sys.path.append('/Users/i583975/git/tcc')
 
 from processing import prepare_dataset, prepare_renan_data
@@ -68,6 +69,8 @@ def parse_arguments():
                         choices=['catboost', 'decisiontree', 'gradientboosting', 'histgradientboosting', 'knn',
                                  'mlp', 'randomforest', 'svc', 'xgboost'], default=None)
     parser.add_argument('-lessparams', '--lessparams', action='store_true', help='Conjunto reduzido de parâmetros')
+    parser.add_argument('-all-omics-combinations', '--all-omics-combinations', action='store_true', 
+                        help='Executa todas as combinações de 2 e 3 ômicas')
     return parser.parse_args()
 
 
@@ -105,7 +108,7 @@ def run_single_model(model_name, func_or_model, X, y, n_trials=N_TRIALS, is_defa
     return result
 
 
-def main(use_renan=False, use_multiclass=False, use_default=False, balance_strategy='none', model_names=None, use_less_params=False):
+def main(use_renan=False, use_multiclass=False, use_default=False, balance_strategy='none', model_names=None, use_less_params=False, omics_to_use=None):
     print("CLASSIFICAÇÃO DE GENES-ALVO USANDO DADOS ÔMICOS")
     print("="*80)
     print(f"Timestamp: {set_experiment_timestamp()}")
@@ -123,7 +126,8 @@ def main(use_renan=False, use_multiclass=False, use_default=False, balance_strat
 
         # Copy Number Alteration, Gene Expression, DNA Methylation, Molecular Function
         # omics_to_use = ['CNA', 'GE', 'METH', 'MF']
-        omics_to_use = ['CNA']
+        if omics_to_use is None:
+            omics_to_use = ['CNA']
 
         X, y, gene_names, feature_names = prepare_dataset(features_path, labels_path, classification_type, omics_to_use=omics_to_use)
 
@@ -184,4 +188,24 @@ def main(use_renan=False, use_multiclass=False, use_default=False, balance_strat
 
 if __name__ == "__main__":
     args = parse_arguments()
-    main(args.renan, args.multiclass, args.default, args.balancedata, args.model, args.lessparams)
+    
+    if args.all_omics_combinations:
+        # Gera todas as combinações de 2 e 3 ômicas
+        all_omics = ['CNA', 'GE', 'METH', 'MF']
+        omics_combinations = list(combinations(all_omics, 2)) + list(combinations(all_omics, 3))
+        
+        print("EXECUTANDO TODAS AS COMBINAÇÕES DE ÔMICAS")
+        print("="*80)
+        print(f"Total de combinações: {len(omics_combinations)}")
+        print(f"Combinações: {omics_combinations}")
+        print("="*80 + "\n")
+        
+        for i, omics_combo in enumerate(omics_combinations, 1):
+            print(f"\n{'#'*80}")
+            print(f"COMBINAÇÃO {i}/{len(omics_combinations)}: {', '.join(omics_combo)}")
+            print(f"{'#'*80}\n")
+            
+            main(args.renan, args.multiclass, args.default, args.balancedata, args.model, 
+                 args.lessparams, omics_to_use=list(omics_combo))
+    else:
+        main(args.renan, args.multiclass, args.default, args.balancedata, args.model, args.lessparams)
