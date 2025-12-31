@@ -1,0 +1,215 @@
+INICIANDO PROCESSAMENTO DE DADOS DE GENES
+==================================================
+Carregando mapeamento HGNC...
+HGNC: Carregados 19586 mapeamentos de símbolos
+HGNC: 2 genes não encontrados
+HGNC: 16 genes retirados
+
+=== GENES NÃO ENCONTRADOS (UNMATCHED) ===
+Input: IQCA1, Tipo: Unmatched, Aprovado: N/A
+Input: IQCD, Tipo: Unmatched, Aprovado: N/A
+
+=== GENES RETIRADOS (WITHDRAWN) ===
+Input: C14orf181, Tipo: Entry withdrawn, Aprovado: C14orf181
+Input: CBSL, Tipo: Entry withdrawn, Aprovado: CBSL
+Input: COP, Tipo: Entry withdrawn, Aprovado: COP
+Input: CORD1, Tipo: Entry withdrawn, Aprovado: CORD1
+Input: CRIPAK, Tipo: Entry withdrawn, Aprovado: CRIPAK
+Input: CTD, Tipo: Entry withdrawn, Aprovado: CTD
+Input: EPR1, Tipo: Entry withdrawn, Aprovado: EPR1
+Input: FCP1, Tipo: Entry withdrawn, Aprovado: FCP1
+Input: HIST2H3B, Tipo: Entry withdrawn, Aprovado: HIST2H3B
+Input: OCLM, Tipo: Entry withdrawn, Aprovado: OCLM
+Input: RNU86, Tipo: Entry withdrawn, Aprovado: RNU86
+Input: SMIM11B, Tipo: Entry withdrawn, Aprovado: SMIM11B
+Input: SPHAR, Tipo: Entry withdrawn, Aprovado: SPHAR
+Input: TMEM155, Tipo: Entry withdrawn, Aprovado: TMEM155
+Input: TRNAG1, Tipo: Entry withdrawn, Aprovado: TRNAG1
+Input: U2AF1L5, Tipo: Entry withdrawn, Aprovado: U2AF1L5
+
+=== PROCESSANDO GENES CANÔNICOS ===
+Carregando mapeamento HGNC...
+HGNC: Carregados 19586 mapeamentos de símbolos
+HGNC: 2 genes não encontrados
+HGNC: 16 genes retirados
+
+=== GENES NÃO ENCONTRADOS (UNMATCHED) ===
+Input: IQCA1, Tipo: Unmatched, Aprovado: N/A
+Input: IQCD, Tipo: Unmatched, Aprovado: N/A
+
+=== GENES RETIRADOS (WITHDRAWN) ===
+Input: C14orf181, Tipo: Entry withdrawn, Aprovado: C14orf181
+Input: CBSL, Tipo: Entry withdrawn, Aprovado: CBSL
+Input: COP, Tipo: Entry withdrawn, Aprovado: COP
+Input: CORD1, Tipo: Entry withdrawn, Aprovado: CORD1
+Input: CRIPAK, Tipo: Entry withdrawn, Aprovado: CRIPAK
+Input: CTD, Tipo: Entry withdrawn, Aprovado: CTD
+Input: EPR1, Tipo: Entry withdrawn, Aprovado: EPR1
+Input: FCP1, Tipo: Entry withdrawn, Aprovado: FCP1
+Input: HIST2H3B, Tipo: Entry withdrawn, Aprovado: HIST2H3B
+Input: OCLM, Tipo: Entry withdrawn, Aprovado: OCLM
+Input: RNU86, Tipo: Entry withdrawn, Aprovado: RNU86
+Input: SMIM11B, Tipo: Entry withdrawn, Aprovado: SMIM11B
+Input: SPHAR, Tipo: Entry withdrawn, Aprovado: SPHAR
+Input: TMEM155, Tipo: Entry withdrawn, Aprovado: TMEM155
+Input: TRNAG1, Tipo: Entry withdrawn, Aprovado: TRNAG1
+Input: U2AF1L5, Tipo: Entry withdrawn, Aprovado: U2AF1L5
+Processando OncoKB...
+Processando NCG...
+NCG: Encontrados 510 genes canonical.
+Processando COSMIC Cancer Gene Census (Tier 1)...
+CGC (Tier 1): Encontrados 587 genes.
+
+Aplicando mapeamento HGNC aos genes OncoKB...
+Removendo 2 genes não mapeados: ['TRD', 'TRG']
+Mapeamento aplicado: 791 → 784 genes (removidos: 7)
+Aplicando mapeamento HGNC aos genes NCG...
+Mapeamento aplicado: 510 → 510 genes (removidos: 0)
+Aplicando mapeamento HGNC aos genes CGC...
+Removendo 10 genes não mapeados: ['CARS', 'FGFR1OP', 'H3F3A', 'H3F3B', 'HIST1H3B', 'HIST1H4I', 'IGH', 'IGK', 'NUTM2D', 'TRD']
+Mapeamento aplicado: 587 → 575 genes (removidos: 12)
+
+Combinando as listas de genes canônicos...
+Total de entradas antes da deduplicação: 1869
+Total de genes canônicos únicos (após filtrar No/No): 957
+
+=== PROCESSANDO GENES CANDIDATOS ===
+Carregando mapeamento HGNC...
+HGNC: Carregados 19586 mapeamentos de símbolos
+HGNC: 2 genes não encontrados
+HGNC: 16 genes retirados
+
+=== GENES NÃO ENCONTRADOS (UNMATCHED) ===
+Input: IQCA1, Tipo: Unmatched, Aprovado: N/A
+Input: IQCD, Tipo: Unmatched, Aprovado: N/A
+
+=== GENES RETIRADOS (WITHDRAWN) ===
+Input: C14orf181, Tipo: Entry withdrawn, Aprovado: C14orf181
+Input: CBSL, Tipo: Entry withdrawn, Aprovado: CBSL
+Input: COP, Tipo: Entry withdrawn, Aprovado: COP
+Input: CORD1, Tipo: Entry withdrawn, Aprovado: CORD1
+Input: CRIPAK, Tipo: Entry withdrawn, Aprovado: CRIPAK
+Input: CTD, Tipo: Entry withdrawn, Aprovado: CTD
+Input: EPR1, Tipo: Entry withdrawn, Aprovado: EPR1
+Input: FCP1, Tipo: Entry withdrawn, Aprovado: FCP1
+Input: HIST2H3B, Tipo: Entry withdrawn, Aprovado: HIST2H3B
+Input: OCLM, Tipo: Entry withdrawn, Aprovado: OCLM
+Input: RNU86, Tipo: Entry withdrawn, Aprovado: RNU86
+Input: SMIM11B, Tipo: Entry withdrawn, Aprovado: SMIM11B
+Input: SPHAR, Tipo: Entry withdrawn, Aprovado: SPHAR
+Input: TMEM155, Tipo: Entry withdrawn, Aprovado: TMEM155
+Input: TRNAG1, Tipo: Entry withdrawn, Aprovado: TRNAG1
+Input: U2AF1L5, Tipo: Entry withdrawn, Aprovado: U2AF1L5
+Processando COSMIC Cancer Gene Census (Tier 2)...
+CGC (Tier 2): Encontrados 171 genes.
+Processando OncoKB...
+Processando NCG...
+NCG: Encontrados 81 genes candidate.
+Processando OMIM...
+OMIM: Encontrados 2143 genes.
+Processando Bushman_group_allOnco.tsv...
+Bushman: Encontrados 2492 genes candidatos.
+Removendo 11 genes não mapeados: ['prevSymbols', 'IGK', 'CARS', 'IGH', 'TRD', 'TRG', 'PHB', 'NOV', 'CTGF', 'LRMP', 'MARS']
+Mapeamento aplicado: 2492 → 2457 genes (removidos: 35)
+Processando CPDB_pathways_genes.tsv para pathways de câncer...
+CPDB: Encontrados 1670 genes relacionados a pathways de câncer.
+
+Aplicando mapeamento HGNC aos genes CGC Tier 2...
+Removendo 5 genes não mapeados: ['FAM47C', 'HMGN2P46', 'SEPT5', 'SEPT6', 'SEPT9']
+Mapeamento aplicado: 171 → 166 genes (removidos: 5)
+Aplicando mapeamento HGNC aos genes OncoKB candidatos...
+Removendo 6 genes não mapeados: ['IGH', 'IGK', 'H3P6', 'NBEAP1', 'NUTM2D', 'RNF217-AS1']
+Mapeamento aplicado: 404 → 397 genes (removidos: 7)
+Aplicando mapeamento HGNC aos genes NCG candidatos...
+Removendo 1 genes não mapeados: ['FAM47C']
+Mapeamento aplicado: 81 → 80 genes (removidos: 1)
+Aplicando mapeamento HGNC aos genes OMIM...
+Removendo 71 genes não mapeados: ['TAZ', 'RPL35AP15', 'RPS23P3', 'MRPL49P2', 'OR7H2P', 'LINC01548', 'ABCD1P4', 'PABPC1P9', 'RNU7-34P', 'HADHAP1', 'MALRD1', 'ND1', 'ND2', 'RPL23AP12', 'RPL13AP14', 'RPL31P10', 'HLA-S', 'DHFRP2', 'LOC400867', 'HCG22', 'RPL3P2', 'RPL23AP1', 'HCG9', 'MICE', 'LOC353007', 'HLA-X', 'SUMO2P1', 'WASF5P', 'LOC353010', 'FGFR1OP', 'ND6', 'ND5', 'ND4', 'ND3', 'ATP6', 'G6PC', 'KCP', 'RPL39P28', 'RPL35P3', 'CYCSP42', 'GATD3A', 'RPS14P1', 'RPL37AP1', 'HLA-DRB9', 'RPS20P32', 'COX1', 'ND4L', 'LOR', 'LIPI', 'CYTB', 'COX2', 'COX3', 'C7orf69', 'HLA-DRB6', 'C1orf141', 'NRAD1', 'RPL30P9', 'RPL28P4', 'RPS3AP42', 'SNORA47', 'RPL3P11', 'LINC01235', 'RPS3AP46', 'RPL23P4', 'RPL6P5', 'RNU7-31P', 'RPL31P13', 'GAPDHP26', 'RNU7-2P', 'ST13P1', 'ST13P12']
+Mapeamento aplicado: 2143 → 2053 genes (removidos: 90)
+
+Combinando as listas de genes candidatos...
+Total de entradas antes da deduplicação: 6823
+Total de genes candidatos únicos: 4910
+
+=== CRIANDO UNION_LABELS ===
+Total de genes no UNION_labels: 19796
+
+Classificação Binária:
+  Cancer (1): 957
+  Candidatos (NaN): 4091
+  Passengers (0): 14748
+
+Classificação 3classe:
+  TSG (1): 517
+  Oncogenes (2): 440
+  Candidatos (NaN): 4091
+  Passengers (0): 14748
+
+=== SALVANDO RESULTADOS EM ./data/processed ===
+Genes canônicos salvos em: ./data/processed/canonical_genes.tsv
+Genes candidatos salvos em: ./data/processed/candidate_genes.tsv
+UNION_labels salvos em: ./data/processed/UNION_labels.tsv
+
+Processo concluído com sucesso!
+
+=== AMOSTRAS DOS RESULTADOS ===
+
+Genes canônicos (primeiras 10 linhas):
+     symbol Oncogene  TSG
+0      A1CF      Yes   No
+1     ABCB1      Yes   No
+2      ABI1       No  Yes
+3      ABL1      Yes   No
+4      ABL2      Yes   No
+5  ABRAXAS1       No  Yes
+6     ACKR3      Yes  Yes
+7     ACTG1       No  Yes
+8     ACVR1      Yes   No
+9    ACVR1B       No  Yes
+
+Genes candidatos (primeiras 10 linhas):
+   symbol Oncogene TSG
+0    A1CF      Yes  No
+1    AAAS       No  No
+2    AAMP       No  No
+3   AANAT       No  No
+4   AARS1       No  No
+5   AARS2       No  No
+6    AASS       No  No
+7    AATF       No  No
+8   ABCA1       No  No
+9  ABCA12       No  No
+
+UNION_labels (primeiras 15 linhas):
+      genes  2class  3class
+0      A1BG     0.0     0.0
+1      A1CF     1.0     2.0
+2       A2M     0.0     0.0
+3     A2ML1     0.0     0.0
+4   A3GALT2     0.0     0.0
+5    A4GALT     0.0     0.0
+6     A4GNT     0.0     0.0
+7      AAAS     NaN     NaN
+8      AACS     0.0     0.0
+9     AADAC     0.0     0.0
+10  AADACL2     0.0     0.0
+11  AADACL3     0.0     0.0
+12  AADACL4     0.0     0.0
+13    AADAT     0.0     0.0
+14    AAGAB     0.0     0.0
+
+Resumo das classificações:
+Classificação binária - Distribuição:
+2class
+0.0    14748
+NaN     4091
+1.0      957
+Name: count, dtype: int64
+
+Classificação multiclasse - Distribuição:
+3class
+0.0    14748
+NaN     4091
+1.0      517
+2.0      440
+Name: count, dtype: int64
