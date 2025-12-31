@@ -21,7 +21,7 @@ This project aims to classify genes based on their role in cancer using machine 
 - **Binary Classification**: Cancer genes (1) vs Passenger genes (0), with candidates as NaN
 - **Multiclass Classification**: TSG (1) vs Oncogenes (2) vs Passenger genes (0), with candidates as NaN
 - **Multiple Data Sources**: Support for both processed (Ana) and original (Renan) data formats
-- **8 Machine Learning Models**: From simple decision trees to advanced ensemble methods
+- **9 Machine Learning Models**: From simple decision trees to advanced ensemble methods including XGBoost
 - **Two Operation Modes**: Default parameters for quick testing or Optuna optimization for best performance
 
 ## Project Structure
@@ -30,6 +30,7 @@ This project aims to classify genes based on their role in cancer using machine 
 tcc/
 ├── src/                           # Source code
 │   ├── main.py                    # Main execution script
+│   ├── predict_unlabeled.py       # Prediction script for unlabeled genes
 │   ├── process_data.py            # Data preprocessing pipeline
 │   ├── processing.py              # Dataset preparation utilities
 │   ├── models.py                  # ML model implementations with optimization
@@ -38,8 +39,10 @@ tcc/
 │   ├── plot_curves_multiclass.py  # Multiclass visualization
 │   └── reports.py                 # Results summarization
 ├── data/                          # Main data directory (Ana's format)
-│   ├── UNION_features.tsv         # Gene features matrix
+│   ├── UNION_features.tsv         # Gene features matrix (~17,676 genes)
+│   ├── hgnc-symbol-check_combined.csv  # HGNC gene validation (~20,000 genes)
 │   ├── processed/                 # Processed data files
+│   │   ├── UNION_features.tsv     # Processed gene features
 │   │   ├── UNION_labels.tsv       # Gene labels (2class, 3class)
 │   │   ├── canonical_genes.tsv    # Known cancer genes
 │   │   └── candidate_genes.tsv    # Candidate genes
@@ -49,7 +52,8 @@ tcc/
 │       ├── omics_features/        # Original features
 │       └── labels/                # Original labels
 ├── results/                       # Experiment results
-│   └── [timestamp_experiment]/    # Timestamped experiment folders
+│   ├── [timestamp_experiment]/    # Timestamped experiment folders
+│   └── predictions/               # Predictions for unlabeled genes
 └── README.md                      # This file
 ```
 
@@ -61,10 +65,16 @@ Raw Sources → HGNC Validation → Gene Classification → Feature Processing
      ↓              ↓                    ↓                  ↓
 - OncoKB        Symbol       Canonical/Candidate    UNION_features.tsv
 - NCG           Mapping       Classification        UNION_labels.tsv  
-- COSMIC        ↓                    ↓                  ↓
+- COSMIC        (~20,000)           ↓                  ↓
 - OMIM          Approved      canonical_genes.tsv   processed/
 - HGNC          Symbols       candidate_genes.tsv
 ```
+
+**HGNC Mapping Process**:
+- Uses `hgnc-symbol-check_combined.csv` with ~20,000 gene validations
+- Maps gene symbols to approved HGNC symbols
+- Removes only explicitly unmatched or withdrawn genes
+- Preserves all genes not in the HGNC file (no false removals)
 
 ### 2. Dataset Preparation (`processing.py`)
 ```
@@ -98,10 +108,9 @@ source mlenv/bin/activate
 
 2. **Install required packages**:
 ```bash
-pip install pandas scikit-learn matplotlib seaborn numpy optuna catboost
-pip install cmaes scipy optunahub
-pip install torch  --index-url https://download.pytorch.org/whl/cpu
-pip instal xgboost
+pip install pandas scikit-learn matplotlib seaborn numpy optuna catboost xgboost imbalanced-learn
+pip install cmaes optunahub
+pip install torch --index-url https://download.pytorch.org/whl/cpu
 ```
 
 3. **Verify data files exist**:
@@ -143,8 +152,8 @@ python3 src/main.py -renan -default
 | `-h, --help` | Show help message and examples | - |
 
 #### Expected Runtime
-- **Default mode**: ~2-5 minutes (8 models with default parameters)
-- **Optimization mode**: ~30 minutes per model (~4 hours total for 8 models)
+- **Default mode**: ~2-5 minutes (9 models with default parameters)
+- **Optimization mode**: ~30 minutes per model (~4.5 hours total for 9 models)
 
 ### Data Processing (`src/process_data.py`)
 
@@ -155,23 +164,61 @@ python3 src/process_data.py
 
 **What it does**:
 - Loads raw data from OncoKB, NCG, COSMIC, OMIM
-- Validates gene symbols using HGNC
+- Validates gene symbols using HGNC (~20,000 genes in combined file)
+- Maps genes to approved HGNC symbols where available
+- Removes only unmatched or withdrawn genes (not all unmapped genes)
 - Creates canonical_genes.tsv and candidate_genes.tsv
 - Generates UNION_labels.tsv with binary (2class) and multiclass (3class) labels
-- Processes UNION_features.tsv with approved gene symbols
+- Saves processed files to data/processed/
 
-### Visualization (`src/plot_curves.py`)
+**Important**: The HGNC mapping uses `hgnc-symbol-check_combined.csv` which contains
+~20,000 gene validations. Genes not in this file are preserved unchanged.
 
+### Visualization
+
+#### Binary Classification Plots (`src/plot_curves.py`)
 ```bash
-# Generate ROC and PR curves from saved results
+# Generate ROC and PR curves for binary classification
 python3 src/plot_curves.py
+```
+
+#### Multiclass Plots (`src/plot_curves_multiclass.py`)
+```bash
+# Generate OvR curves for multiclass classification
+python3 src/plot_curves_multiclass.py
+```
+
+#### Combined OvR Curves (`plot_ovr_curves_gb_mlp.py`)
+```bash
+# Generate combined One-vs-Rest curves for Gradient Boosting and MLP
+python3 plot_ovr_curves_gb_mlp.py
 ```
 
 **Features**:
 - Interactive experiment selection
 - Automatic detection of binary vs multiclass
+- One-vs-Rest (OvR) and One-vs-One (OvO) curves for multiclass
 - High-quality PDF and PNG outputs
-- Standardized color schemes
+- Standardized color schemes with distinct model differentiation
+
+### Predictions for Unlabeled Genes (`src/predict_unlabeled.py`)
+
+```bash
+# Predict labels for unlabeled/candidate genes
+python3 src/predict_unlabeled.py
+```
+
+**What it does**:
+- Loads best performing models (Gradient Boosting or MLP)
+- Predicts labels for genes marked as NaN (candidates)
+- Saves predictions to `results/predictions/`
+- Supports both binary and multiclass classification
+- Includes probability scores for each prediction
+
+**Output files**:
+- `results/predictions/predictions_unlabeled_binary.csv`
+- `results/predictions/predictions_unlabeled_MulticlassGB.csv`
+- `results/predictions/predictions_unlabeled_multiclassMLP.csv`
 
 ## Data Sources
 
@@ -204,7 +251,7 @@ python3 src/plot_curves.py
 
 ## Machine Learning Models
 
-### Available Models (8 total)
+### Available Models (9 total)
 
 1. **Decision Tree** - Simple interpretable model
 2. **Random Forest** - Ensemble of decision trees
@@ -213,7 +260,8 @@ python3 src/plot_curves.py
 5. **K-Nearest Neighbors** - Instance-based learning
 6. **Multi-Layer Perceptron** - Neural network
 7. **Support Vector Classifier** - SVM with RBF kernel
-8. **CatBoost** - Gradient boosting optimized for categorical features
+8. **XGBoost** - Extreme gradient boosting with regularization
+9. **CatBoost** - Gradient boosting optimized for categorical features
 
 ### Optimization Details
 
@@ -242,15 +290,20 @@ python3 src/plot_curves.py
 
 ### Results Directory
 ```
-results/YYYYMMDD_HHMMSS_[source]_[mode]_[classification]/
-├── [model_name]/
-│   ├── metrics.json           # Detailed metrics and predictions
-│   └── results.txt            # Human-readable summary
-├── curves/                    # Generated visualizations
-│   ├── roc_comparison_*.png   # ROC curves comparison
-│   ├── pr_comparison_*.png    # PR curves comparison
-│   └── [multiclass curves]/   # Additional curves for multiclass
-└── summary_*.txt              # Overall experiment summary
+results/
+├── YYYYMMDD_HHMMSS_[source]_[mode]_[classification]/
+│   ├── [model_name]/
+│   │   ├── metrics.json           # Detailed metrics and predictions
+│   │   └── results.txt            # Human-readable summary
+│   ├── curves/                    # Generated visualizations
+│   │   ├── roc_comparison_*.png   # ROC curves comparison
+│   │   ├── pr_comparison_*.png    # PR curves comparison
+│   │   └── [multiclass curves]/   # Additional curves for multiclass
+│   └── summary_*.txt              # Overall experiment summary
+└── predictions/                   # Predictions for unlabeled genes
+    ├── predictions_unlabeled_binary.csv
+    ├── predictions_unlabeled_MulticlassGB.csv
+    └── predictions_unlabeled_multiclassMLP.csv
 ```
 
 ### Key Output Files
@@ -339,10 +392,23 @@ python3 src/process_data.py
 # 2. Run classification
 python3 src/main.py -multiclass
 
-# 3. Generate additional plots
-python3 src/plot_curves.py
+# 3. Generate visualizations
+python3 src/plot_curves_multiclass.py
+python3 plot_ovr_curves_gb_mlp.py
 
-# Expected output: Complete analysis with all visualizations
+# 4. Predict unlabeled genes
+python3 src/predict_unlabeled.py
+
+# Expected output: Complete analysis with all visualizations and predictions
+```
+
+### Example 5: Predict Unlabeled Genes
+```bash
+# After training models, predict labels for candidate genes
+python3 src/predict_unlabeled.py
+
+# Expected output: CSV files in results/predictions/
+# Contains gene names, predicted classes, and probabilities
 ```
 
 ## Troubleshooting
