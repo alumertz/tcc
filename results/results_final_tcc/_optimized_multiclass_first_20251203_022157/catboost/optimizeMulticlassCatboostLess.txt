@@ -1,0 +1,289 @@
+[I 2025-12-04 22:51:32,427] A new study created in memory with name: catboost_fold_1
+[I 2025-12-04 22:51:38,851] Trial 0 finished with value: 0.3769811702488918 and parameters: {'iterations': 239, 'learning_rate': 0.006127490857728858}. Best is trial 0 with value: 0.3769811702488918.
+[I 2025-12-04 22:51:59,085] Trial 1 finished with value: 0.38222106869267114 and parameters: {'iterations': 952, 'learning_rate': 0.04609039740510206}. Best is trial 1 with value: 0.38222106869267114.
+[I 2025-12-04 22:52:09,671] Trial 2 finished with value: 0.38242891838567744 and parameters: {'iterations': 463, 'learning_rate': 0.08727241787033974}. Best is trial 2 with value: 0.38242891838567744.
+[I 2025-12-04 22:52:39,599] Trial 3 finished with value: 0.38543501473694597 and parameters: {'iterations': 1429, 'learning_rate': 0.005433816752276312}. Best is trial 3 with value: 0.38543501473694597.
+[I 2025-12-04 22:52:48,477] Trial 4 finished with value: 0.3874445599255714 and parameters: {'iterations': 385, 'learning_rate': 0.02478429463841889}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:53:01,733] Trial 5 finished with value: 0.3862626559527357 and parameters: {'iterations': 607, 'learning_rate': 0.016913543992604464}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:53:04,692] Trial 6 finished with value: 0.3731686954613923 and parameters: {'iterations': 104, 'learning_rate': 0.008116148520438607}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:53:13,791] Trial 7 finished with value: 0.38349134311590777 and parameters: {'iterations': 396, 'learning_rate': 0.008857058179176118}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:53:26,155] Trial 8 finished with value: 0.3845217575813418 and parameters: {'iterations': 577, 'learning_rate': 0.009654129731461715}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:53:30,336] Trial 9 finished with value: 0.375263996871841 and parameters: {'iterations': 170, 'learning_rate': 0.007487205208647431}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:53:50,830] Trial 10 finished with value: 0.38517295851034217 and parameters: {'iterations': 985, 'learning_rate': 0.027669567616960287}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:54:06,401] Trial 11 finished with value: 0.3867960651168047 and parameters: {'iterations': 705, 'learning_rate': 0.017369994229177437}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:54:23,418] Trial 12 finished with value: 0.3863540272933578 and parameters: {'iterations': 809, 'learning_rate': 0.018705710801477694}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:54:48,114] Trial 13 finished with value: 0.384443101959802 and parameters: {'iterations': 1201, 'learning_rate': 0.032856091314932015}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:55:03,569] Trial 14 finished with value: 0.38592910951935216 and parameters: {'iterations': 727, 'learning_rate': 0.013454534744068184}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:55:12,015] Trial 15 finished with value: 0.3839493117927929 and parameters: {'iterations': 387, 'learning_rate': 0.04806110701457775}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:55:30,462] Trial 16 finished with value: 0.38582354769483057 and parameters: {'iterations': 848, 'learning_rate': 0.012379736363835618}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:55:54,843] Trial 17 finished with value: 0.38602091104495995 and parameters: {'iterations': 1140, 'learning_rate': 0.0255526207280509}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:56:01,676] Trial 18 finished with value: 0.3852668494939558 and parameters: {'iterations': 284, 'learning_rate': 0.03885275975648376}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:56:15,046] Trial 19 finished with value: 0.3845384505450814 and parameters: {'iterations': 604, 'learning_rate': 0.06525298659858958}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:56:26,725] Trial 20 finished with value: 0.38634713483135735 and parameters: {'iterations': 501, 'learning_rate': 0.020450631914080118}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:56:44,822] Trial 21 finished with value: 0.386579136662332 and parameters: {'iterations': 771, 'learning_rate': 0.02031456949087931}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:57:01,676] Trial 22 finished with value: 0.38607427186593907 and parameters: {'iterations': 707, 'learning_rate': 0.014769964880916255}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:57:22,382] Trial 23 finished with value: 0.38655237858248437 and parameters: {'iterations': 949, 'learning_rate': 0.023029474419388418}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:57:37,806] Trial 24 finished with value: 0.3855742565795707 and parameters: {'iterations': 690, 'learning_rate': 0.01157691967858717}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:57:45,165] Trial 25 finished with value: 0.3864448694805254 and parameters: {'iterations': 327, 'learning_rate': 0.031051341841361012}. Best is trial 4 with value: 0.3874445599255714.
+[I 2025-12-04 22:58:10,664] Trial 26 finished with value: 0.38747326247526653 and parameters: {'iterations': 1167, 'learning_rate': 0.016600123226782632}. Best is trial 26 with value: 0.38747326247526653.
+[I 2025-12-04 22:58:40,584] Trial 27 finished with value: 0.3878265761328036 and parameters: {'iterations': 1430, 'learning_rate': 0.0159657163498204}. Best is trial 27 with value: 0.3878265761328036.
+[I 2025-12-04 22:59:12,057] Trial 28 finished with value: 0.3869764136600354 and parameters: {'iterations': 1483, 'learning_rate': 0.011077833115627041}. Best is trial 27 with value: 0.3878265761328036.
+[I 2025-12-04 22:59:39,689] Trial 29 finished with value: 0.3880872551326816 and parameters: {'iterations': 1317, 'learning_rate': 0.01564132105335361}. Best is trial 29 with value: 0.3880872551326816.
+[I 2025-12-04 22:59:46,479] A new study created in memory with name: catboost_fold_2
+[I 2025-12-04 23:00:15,551] Trial 0 finished with value: 0.38983707678860013 and parameters: {'iterations': 1385, 'learning_rate': 0.032354533297184504}. Best is trial 0 with value: 0.38983707678860013.
+[I 2025-12-04 23:00:35,182] Trial 1 finished with value: 0.39063943936294765 and parameters: {'iterations': 921, 'learning_rate': 0.0151778339579873}. Best is trial 1 with value: 0.39063943936294765.
+[I 2025-12-04 23:00:47,761] Trial 2 finished with value: 0.3815204354493293 and parameters: {'iterations': 561, 'learning_rate': 0.005463123826524329}. Best is trial 1 with value: 0.39063943936294765.
+[I 2025-12-04 23:01:11,154] Trial 3 finished with value: 0.38785200726978364 and parameters: {'iterations': 1031, 'learning_rate': 0.006748967718122401}. Best is trial 1 with value: 0.39063943936294765.
+[I 2025-12-04 23:01:32,690] Trial 4 finished with value: 0.39220761242601143 and parameters: {'iterations': 1020, 'learning_rate': 0.017998345176344265}. Best is trial 4 with value: 0.39220761242601143.
+[I 2025-12-04 23:01:40,766] Trial 5 finished with value: 0.3903708275184835 and parameters: {'iterations': 373, 'learning_rate': 0.09147634404210864}. Best is trial 4 with value: 0.39220761242601143.
+[I 2025-12-04 23:02:06,930] Trial 6 finished with value: 0.3931368073494585 and parameters: {'iterations': 1262, 'learning_rate': 0.023114049943221006}. Best is trial 6 with value: 0.3931368073494585.
+[I 2025-12-04 23:02:26,384] Trial 7 finished with value: 0.38841452418222455 and parameters: {'iterations': 890, 'learning_rate': 0.010095374548532876}. Best is trial 6 with value: 0.3931368073494585.
+[I 2025-12-04 23:02:52,813] Trial 8 finished with value: 0.38796633490653826 and parameters: {'iterations': 1117, 'learning_rate': 0.04806910025135737}. Best is trial 6 with value: 0.3931368073494585.
+[I 2025-12-04 23:03:16,369] Trial 9 finished with value: 0.39104152218181987 and parameters: {'iterations': 1085, 'learning_rate': 0.031711917259759005}. Best is trial 6 with value: 0.3931368073494585.
+[I 2025-12-04 23:03:18,501] Trial 10 finished with value: 0.38542890905432436 and parameters: {'iterations': 71, 'learning_rate': 0.07158305270118417}. Best is trial 6 with value: 0.3931368073494585.
+[I 2025-12-04 23:03:50,159] Trial 11 finished with value: 0.39374091557121776 and parameters: {'iterations': 1479, 'learning_rate': 0.017846650657106743}. Best is trial 11 with value: 0.39374091557121776.
+[I 2025-12-04 23:04:21,980] Trial 12 finished with value: 0.39299858873579774 and parameters: {'iterations': 1487, 'learning_rate': 0.012424021546211656}. Best is trial 11 with value: 0.39374091557121776.
+[I 2025-12-04 23:04:49,479] Trial 13 finished with value: 0.39055584005880917 and parameters: {'iterations': 1281, 'learning_rate': 0.028023742970672828}. Best is trial 11 with value: 0.39374091557121776.
+[I 2025-12-04 23:05:16,362] Trial 14 finished with value: 0.39233036859368287 and parameters: {'iterations': 1285, 'learning_rate': 0.021357179430853603}. Best is trial 11 with value: 0.39374091557121776.
+[I 2025-12-04 23:05:32,412] Trial 15 finished with value: 0.3866867962011976 and parameters: {'iterations': 702, 'learning_rate': 0.009601950659602017}. Best is trial 11 with value: 0.39374091557121776.
+[I 2025-12-04 23:05:59,639] Trial 16 finished with value: 0.3889826375224811 and parameters: {'iterations': 1246, 'learning_rate': 0.04717913852625256}. Best is trial 11 with value: 0.39374091557121776.
+[I 2025-12-04 23:06:30,430] Trial 17 finished with value: 0.3924860760083041 and parameters: {'iterations': 1482, 'learning_rate': 0.023950314811341352}. Best is trial 11 with value: 0.39374091557121776.
+[I 2025-12-04 23:06:57,309] Trial 18 finished with value: 0.3886645362911997 and parameters: {'iterations': 1206, 'learning_rate': 0.04567438344053836}. Best is trial 11 with value: 0.39374091557121776.
+[I 2025-12-04 23:07:12,925] Trial 19 finished with value: 0.3886680543545089 and parameters: {'iterations': 717, 'learning_rate': 0.014965360169088332}. Best is trial 11 with value: 0.39374091557121776.
+[I 2025-12-04 23:07:41,905] Trial 20 finished with value: 0.388697806225868 and parameters: {'iterations': 1400, 'learning_rate': 0.03812425782514837}. Best is trial 11 with value: 0.39374091557121776.
+[I 2025-12-04 23:08:12,374] Trial 21 finished with value: 0.3928285646951362 and parameters: {'iterations': 1483, 'learning_rate': 0.01146968185060635}. Best is trial 11 with value: 0.39374091557121776.
+[I 2025-12-04 23:08:40,918] Trial 22 finished with value: 0.39173502752957 and parameters: {'iterations': 1362, 'learning_rate': 0.013004135976158782}. Best is trial 11 with value: 0.39374091557121776.
+[I 2025-12-04 23:09:16,363] Trial 23 finished with value: 0.3942976284710688 and parameters: {'iterations': 1500, 'learning_rate': 0.01909575853282433}. Best is trial 23 with value: 0.3942976284710688.
+[I 2025-12-04 23:09:41,389] Trial 24 finished with value: 0.39332960745836343 and parameters: {'iterations': 1202, 'learning_rate': 0.01900609232173724}. Best is trial 23 with value: 0.3942976284710688.
+[I 2025-12-04 23:10:06,991] Trial 25 finished with value: 0.39226860266364416 and parameters: {'iterations': 1158, 'learning_rate': 0.017877563842034445}. Best is trial 23 with value: 0.3942976284710688.
+[I 2025-12-04 23:10:36,697] Trial 26 finished with value: 0.390240833048096 and parameters: {'iterations': 1367, 'learning_rate': 0.008492095907310144}. Best is trial 23 with value: 0.3942976284710688.
+[I 2025-12-04 23:10:55,935] Trial 27 finished with value: 0.3909040918066086 and parameters: {'iterations': 909, 'learning_rate': 0.018939249385955925}. Best is trial 23 with value: 0.3942976284710688.
+[I 2025-12-04 23:11:28,876] Trial 28 finished with value: 0.39011180767497616 and parameters: {'iterations': 1492, 'learning_rate': 0.02646589032120111}. Best is trial 23 with value: 0.3942976284710688.
+[I 2025-12-04 23:11:59,292] Trial 29 finished with value: 0.38924008159375534 and parameters: {'iterations': 1368, 'learning_rate': 0.03593845135940756}. Best is trial 23 with value: 0.3942976284710688.
+[I 2025-12-04 23:12:08,113] A new study created in memory with name: catboost_fold_3
+[I 2025-12-04 23:12:40,129] Trial 0 finished with value: 0.38760573209886595 and parameters: {'iterations': 1183, 'learning_rate': 0.03537970745684371}. Best is trial 0 with value: 0.38760573209886595.
+[I 2025-12-04 23:12:59,198] Trial 1 finished with value: 0.3892209068766074 and parameters: {'iterations': 739, 'learning_rate': 0.02343970700816945}. Best is trial 1 with value: 0.3892209068766074.
+[I 2025-12-04 23:13:29,886] Trial 2 finished with value: 0.3869985929142891 and parameters: {'iterations': 1162, 'learning_rate': 0.03444561816024746}. Best is trial 1 with value: 0.3892209068766074.
+[I 2025-12-04 23:14:06,928] Trial 3 finished with value: 0.3872894407504408 and parameters: {'iterations': 1161, 'learning_rate': 0.0121245385261253}. Best is trial 1 with value: 0.3892209068766074.
+[I 2025-12-04 23:14:42,464] Trial 4 finished with value: 0.3842216985671103 and parameters: {'iterations': 1417, 'learning_rate': 0.0649797767464175}. Best is trial 1 with value: 0.3892209068766074.
+[I 2025-12-04 23:15:04,421] Trial 5 finished with value: 0.38211913298984207 and parameters: {'iterations': 881, 'learning_rate': 0.005354955955548448}. Best is trial 1 with value: 0.3892209068766074.
+[I 2025-12-04 23:15:37,089] Trial 6 finished with value: 0.385746086741808 and parameters: {'iterations': 1296, 'learning_rate': 0.04319111825952272}. Best is trial 1 with value: 0.3892209068766074.
+[I 2025-12-04 23:15:46,795] Trial 7 finished with value: 0.3857099619504298 and parameters: {'iterations': 353, 'learning_rate': 0.020824611543188206}. Best is trial 1 with value: 0.3892209068766074.
+[I 2025-12-04 23:15:54,243] Trial 8 finished with value: 0.38300966651167684 and parameters: {'iterations': 289, 'learning_rate': 0.017089423076910103}. Best is trial 1 with value: 0.3892209068766074.
+[I 2025-12-04 23:16:25,203] Trial 9 finished with value: 0.38900973414645634 and parameters: {'iterations': 1277, 'learning_rate': 0.029320477972908262}. Best is trial 1 with value: 0.3892209068766074.
+[I 2025-12-04 23:16:39,904] Trial 10 finished with value: 0.3833658562359306 and parameters: {'iterations': 596, 'learning_rate': 0.009566182415225142}. Best is trial 1 with value: 0.3892209068766074.
+[I 2025-12-04 23:17:00,152] Trial 11 finished with value: 0.3817341677642036 and parameters: {'iterations': 875, 'learning_rate': 0.0935539957071546}. Best is trial 1 with value: 0.3892209068766074.
+[I 2025-12-04 23:17:15,765] Trial 12 finished with value: 0.38822439891483407 and parameters: {'iterations': 661, 'learning_rate': 0.026283302731913205}. Best is trial 1 with value: 0.3892209068766074.
+[I 2025-12-04 23:17:37,042] Trial 13 finished with value: 0.38592852115612614 and parameters: {'iterations': 959, 'learning_rate': 0.013190157527816975}. Best is trial 1 with value: 0.3892209068766074.
+[I 2025-12-04 23:17:50,710] Trial 14 finished with value: 0.38800546381356 and parameters: {'iterations': 497, 'learning_rate': 0.05691146737515261}. Best is trial 1 with value: 0.3892209068766074.
+[I 2025-12-04 23:18:24,991] Trial 15 finished with value: 0.38983491637347384 and parameters: {'iterations': 1487, 'learning_rate': 0.024805172269185737}. Best is trial 15 with value: 0.38983491637347384.
+[I 2025-12-04 23:18:28,041] Trial 16 finished with value: 0.3727312584276705 and parameters: {'iterations': 86, 'learning_rate': 0.008061821341831686}. Best is trial 15 with value: 0.38983491637347384.
+[I 2025-12-04 23:19:01,157] Trial 17 finished with value: 0.39270858958548555 and parameters: {'iterations': 1492, 'learning_rate': 0.020163354495153357}. Best is trial 17 with value: 0.39270858958548555.
+[I 2025-12-04 23:19:33,837] Trial 18 finished with value: 0.3877140169749096 and parameters: {'iterations': 1487, 'learning_rate': 0.017155341209190163}. Best is trial 17 with value: 0.39270858958548555.
+[I 2025-12-04 23:20:09,003] Trial 19 finished with value: 0.38595295431785004 and parameters: {'iterations': 1489, 'learning_rate': 0.05124251141624379}. Best is trial 17 with value: 0.39270858958548555.
+[I 2025-12-04 23:20:31,303] Trial 20 finished with value: 0.3875571748266459 and parameters: {'iterations': 1030, 'learning_rate': 0.016916260344474247}. Best is trial 17 with value: 0.39270858958548555.
+[I 2025-12-04 23:20:46,715] Trial 21 finished with value: 0.39001756331814325 and parameters: {'iterations': 707, 'learning_rate': 0.02428547863687876}. Best is trial 17 with value: 0.39270858958548555.
+[I 2025-12-04 23:21:20,037] Trial 22 finished with value: 0.3906664912383353 and parameters: {'iterations': 1319, 'learning_rate': 0.023332547412278307}. Best is trial 17 with value: 0.39270858958548555.
+[I 2025-12-04 23:21:52,660] Trial 23 finished with value: 0.38817349614674235 and parameters: {'iterations': 1339, 'learning_rate': 0.012024981328636653}. Best is trial 17 with value: 0.39270858958548555.
+[I 2025-12-04 23:22:19,813] Trial 24 finished with value: 0.3909833840585589 and parameters: {'iterations': 1021, 'learning_rate': 0.03658403056370839}. Best is trial 17 with value: 0.39270858958548555.
+[I 2025-12-04 23:22:46,563] Trial 25 finished with value: 0.38994470216221383 and parameters: {'iterations': 1090, 'learning_rate': 0.0375890723415525}. Best is trial 17 with value: 0.39270858958548555.
+[I 2025-12-04 23:23:19,478] Trial 26 finished with value: 0.3804897286421455 and parameters: {'iterations': 1354, 'learning_rate': 0.08085227596416546}. Best is trial 17 with value: 0.39270858958548555.
+[I 2025-12-04 23:23:50,764] Trial 27 finished with value: 0.3853675478557835 and parameters: {'iterations': 1237, 'learning_rate': 0.0456754173357236}. Best is trial 17 with value: 0.39270858958548555.
+[I 2025-12-04 23:24:16,663] Trial 28 finished with value: 0.3895785360758323 and parameters: {'iterations': 1021, 'learning_rate': 0.01952855209626686}. Best is trial 17 with value: 0.39270858958548555.
+[I 2025-12-04 23:24:44,001] Trial 29 finished with value: 0.38908256747064185 and parameters: {'iterations': 1145, 'learning_rate': 0.0320370254540116}. Best is trial 17 with value: 0.39270858958548555.
+[I 2025-12-04 23:24:51,631] A new study created in memory with name: catboost_fold_4
+[I 2025-12-04 23:25:20,087] Trial 0 finished with value: 0.38328774037635016 and parameters: {'iterations': 1221, 'learning_rate': 0.025353503724958287}. Best is trial 0 with value: 0.38328774037635016.
+[I 2025-12-04 23:25:32,648] Trial 1 finished with value: 0.380193490872538 and parameters: {'iterations': 555, 'learning_rate': 0.005162367774758223}. Best is trial 0 with value: 0.38328774037635016.
+[I 2025-12-04 23:25:39,995] Trial 2 finished with value: 0.37739285131016065 and parameters: {'iterations': 301, 'learning_rate': 0.00565967553923637}. Best is trial 0 with value: 0.38328774037635016.
+[I 2025-12-04 23:25:58,156] Trial 3 finished with value: 0.38422874944035257 and parameters: {'iterations': 762, 'learning_rate': 0.012710830066916987}. Best is trial 3 with value: 0.38422874944035257.
+[I 2025-12-04 23:26:18,092] Trial 4 finished with value: 0.38375025273644814 and parameters: {'iterations': 894, 'learning_rate': 0.013654534729034263}. Best is trial 3 with value: 0.38422874944035257.
+[I 2025-12-04 23:26:48,950] Trial 5 finished with value: 0.3834087588515042 and parameters: {'iterations': 1284, 'learning_rate': 0.006125677859515104}. Best is trial 3 with value: 0.38422874944035257.
+[I 2025-12-04 23:27:10,087] Trial 6 finished with value: 0.3848291972395137 and parameters: {'iterations': 893, 'learning_rate': 0.03005459901257012}. Best is trial 6 with value: 0.3848291972395137.
+[I 2025-12-04 23:27:40,792] Trial 7 finished with value: 0.3804913923419905 and parameters: {'iterations': 1383, 'learning_rate': 0.03856866362390192}. Best is trial 6 with value: 0.3848291972395137.
+[I 2025-12-04 23:28:04,551] Trial 8 finished with value: 0.3828740579288054 and parameters: {'iterations': 1031, 'learning_rate': 0.007718339552621178}. Best is trial 6 with value: 0.3848291972395137.
+[I 2025-12-04 23:28:31,601] Trial 9 finished with value: 0.375621582911939 and parameters: {'iterations': 1237, 'learning_rate': 0.061321923775939285}. Best is trial 6 with value: 0.3848291972395137.
+[I 2025-12-04 23:28:39,151] Trial 10 finished with value: 0.3811231533853509 and parameters: {'iterations': 298, 'learning_rate': 0.09966273234634719}. Best is trial 6 with value: 0.3848291972395137.
+[I 2025-12-04 23:28:54,425] Trial 11 finished with value: 0.38345273071745434 and parameters: {'iterations': 640, 'learning_rate': 0.01307829175100366}. Best is trial 6 with value: 0.3848291972395137.
+[I 2025-12-04 23:29:11,608] Trial 12 finished with value: 0.385277058848001 and parameters: {'iterations': 782, 'learning_rate': 0.020713996887951024}. Best is trial 12 with value: 0.385277058848001.
+[I 2025-12-04 23:29:32,617] Trial 13 finished with value: 0.38513230104967655 and parameters: {'iterations': 983, 'learning_rate': 0.026913307881197713}. Best is trial 12 with value: 0.385277058848001.
+[I 2025-12-04 23:29:34,735] Trial 14 finished with value: 0.3744550562952361 and parameters: {'iterations': 65, 'learning_rate': 0.02012836320769999}. Best is trial 12 with value: 0.385277058848001.
+[I 2025-12-04 23:29:57,412] Trial 15 finished with value: 0.38120257377065575 and parameters: {'iterations': 1050, 'learning_rate': 0.04533717159468676}. Best is trial 12 with value: 0.385277058848001.
+[I 2025-12-04 23:30:09,665] Trial 16 finished with value: 0.3847959610947539 and parameters: {'iterations': 526, 'learning_rate': 0.019182825239183708}. Best is trial 12 with value: 0.385277058848001.
+[I 2025-12-04 23:30:34,103] Trial 17 finished with value: 0.38006297537144096 and parameters: {'iterations': 1031, 'learning_rate': 0.058840518716853994}. Best is trial 12 with value: 0.385277058848001.
+[I 2025-12-04 23:30:51,939] Trial 18 finished with value: 0.3842024795752286 and parameters: {'iterations': 767, 'learning_rate': 0.009598109780836243}. Best is trial 12 with value: 0.385277058848001.
+[I 2025-12-04 23:31:27,244] Trial 19 finished with value: 0.3813832868533146 and parameters: {'iterations': 1485, 'learning_rate': 0.03130956245217139}. Best is trial 12 with value: 0.385277058848001.
+[I 2025-12-04 23:31:38,035] Trial 20 finished with value: 0.38307430567760525 and parameters: {'iterations': 451, 'learning_rate': 0.0161763491264762}. Best is trial 12 with value: 0.385277058848001.
+[I 2025-12-04 23:31:58,423] Trial 21 finished with value: 0.3848813030680037 and parameters: {'iterations': 908, 'learning_rate': 0.027456519468865168}. Best is trial 12 with value: 0.385277058848001.
+[I 2025-12-04 23:32:19,300] Trial 22 finished with value: 0.38522862332021823 and parameters: {'iterations': 894, 'learning_rate': 0.02513837720572915}. Best is trial 12 with value: 0.385277058848001.
+[I 2025-12-04 23:32:43,217] Trial 23 finished with value: 0.3860649870391225 and parameters: {'iterations': 1122, 'learning_rate': 0.021441296144569414}. Best is trial 23 with value: 0.3860649870391225.
+[I 2025-12-04 23:32:59,503] Trial 24 finished with value: 0.38449095866754873 and parameters: {'iterations': 705, 'learning_rate': 0.017870725025911475}. Best is trial 23 with value: 0.3860649870391225.
+[I 2025-12-04 23:33:24,367] Trial 25 finished with value: 0.3817922218908718 and parameters: {'iterations': 1132, 'learning_rate': 0.03812842922938943}. Best is trial 23 with value: 0.3860649870391225.
+[I 2025-12-04 23:33:45,167] Trial 26 finished with value: 0.3837911584356612 and parameters: {'iterations': 853, 'learning_rate': 0.009484943075943861}. Best is trial 23 with value: 0.3860649870391225.
+[I 2025-12-04 23:34:09,439] Trial 27 finished with value: 0.3843852496057888 and parameters: {'iterations': 1111, 'learning_rate': 0.015038226822536319}. Best is trial 23 with value: 0.3860649870391225.
+[I 2025-12-04 23:34:22,940] Trial 28 finished with value: 0.3856436262520982 and parameters: {'iterations': 603, 'learning_rate': 0.022116093650461084}. Best is trial 23 with value: 0.3860649870391225.
+[I 2025-12-04 23:34:32,022] Trial 29 finished with value: 0.38488610273577206 and parameters: {'iterations': 386, 'learning_rate': 0.022281441021112}. Best is trial 23 with value: 0.3860649870391225.
+[I 2025-12-04 23:34:37,841] A new study created in memory with name: catboost_fold_5
+[I 2025-12-04 23:35:06,889] Trial 0 finished with value: 0.3936299588933026 and parameters: {'iterations': 1352, 'learning_rate': 0.02111749762496315}. Best is trial 0 with value: 0.3936299588933026.
+[I 2025-12-04 23:35:38,038] Trial 1 finished with value: 0.38884310150464824 and parameters: {'iterations': 1230, 'learning_rate': 0.00953783733163741}. Best is trial 0 with value: 0.3936299588933026.
+[I 2025-12-04 23:35:51,924] Trial 2 finished with value: 0.3865542481212703 and parameters: {'iterations': 592, 'learning_rate': 0.014353626548778593}. Best is trial 0 with value: 0.3936299588933026.
+[I 2025-12-04 23:35:58,669] Trial 3 finished with value: 0.38393433982747294 and parameters: {'iterations': 298, 'learning_rate': 0.01605533404020968}. Best is trial 0 with value: 0.3936299588933026.
+[I 2025-12-04 23:36:06,849] Trial 4 finished with value: 0.38094313723652107 and parameters: {'iterations': 324, 'learning_rate': 0.006154883102393766}. Best is trial 0 with value: 0.3936299588933026.
+[I 2025-12-04 23:36:10,180] Trial 5 finished with value: 0.37661312391381385 and parameters: {'iterations': 113, 'learning_rate': 0.007857575687178611}. Best is trial 0 with value: 0.3936299588933026.
+[I 2025-12-04 23:36:14,984] Trial 6 finished with value: 0.38772005904312506 and parameters: {'iterations': 189, 'learning_rate': 0.04369340085038513}. Best is trial 0 with value: 0.3936299588933026.
+[I 2025-12-04 23:36:43,813] Trial 7 finished with value: 0.3860427696627824 and parameters: {'iterations': 1225, 'learning_rate': 0.07662694030855868}. Best is trial 0 with value: 0.3936299588933026.
+[I 2025-12-04 23:37:06,529] Trial 8 finished with value: 0.38875919537922665 and parameters: {'iterations': 972, 'learning_rate': 0.013123977858667184}. Best is trial 0 with value: 0.3936299588933026.
+[I 2025-12-04 23:37:30,716] Trial 9 finished with value: 0.3936850244971418 and parameters: {'iterations': 1113, 'learning_rate': 0.02575153967531869}. Best is trial 9 with value: 0.3936850244971418.
+[I 2025-12-04 23:37:49,454] Trial 10 finished with value: 0.3951095598194278 and parameters: {'iterations': 824, 'learning_rate': 0.039498941421332236}. Best is trial 10 with value: 0.3951095598194278.
+[I 2025-12-04 23:38:08,882] Trial 11 finished with value: 0.3937136369791845 and parameters: {'iterations': 873, 'learning_rate': 0.037268404972999346}. Best is trial 10 with value: 0.3951095598194278.
+[I 2025-12-04 23:38:25,750] Trial 12 finished with value: 0.3963850309910335 and parameters: {'iterations': 785, 'learning_rate': 0.044203608114445805}. Best is trial 12 with value: 0.3963850309910335.
+[I 2025-12-04 23:38:40,346] Trial 13 finished with value: 0.3885894860352291 and parameters: {'iterations': 636, 'learning_rate': 0.07840735535510703}. Best is trial 12 with value: 0.3963850309910335.
+[I 2025-12-04 23:38:53,221] Trial 14 finished with value: 0.39739734094074325 and parameters: {'iterations': 595, 'learning_rate': 0.054769168595924275}. Best is trial 14 with value: 0.39739734094074325.
+[I 2025-12-04 23:39:05,381] Trial 15 finished with value: 0.3951216614485031 and parameters: {'iterations': 550, 'learning_rate': 0.05930746639847101}. Best is trial 14 with value: 0.39739734094074325.
+[I 2025-12-04 23:39:20,614] Trial 16 finished with value: 0.39533741132922423 and parameters: {'iterations': 689, 'learning_rate': 0.05391293002576094}. Best is trial 14 with value: 0.39739734094074325.
+[I 2025-12-04 23:39:30,518] Trial 17 finished with value: 0.39400831285459625 and parameters: {'iterations': 444, 'learning_rate': 0.09563233747539118}. Best is trial 14 with value: 0.39739734094074325.
+[I 2025-12-04 23:39:54,083] Trial 18 finished with value: 0.3912626669071285 and parameters: {'iterations': 1045, 'learning_rate': 0.027884590598346946}. Best is trial 14 with value: 0.39739734094074325.
+[I 2025-12-04 23:40:26,727] Trial 19 finished with value: 0.3934010275921506 and parameters: {'iterations': 1495, 'learning_rate': 0.03263248588657703}. Best is trial 14 with value: 0.39739734094074325.
+[I 2025-12-04 23:40:43,571] Trial 20 finished with value: 0.3945087610670758 and parameters: {'iterations': 771, 'learning_rate': 0.052631281972564045}. Best is trial 14 with value: 0.39739734094074325.
+[I 2025-12-04 23:40:59,341] Trial 21 finished with value: 0.39380801600152043 and parameters: {'iterations': 724, 'learning_rate': 0.059022040672141146}. Best is trial 14 with value: 0.39739734094074325.
+[I 2025-12-04 23:41:09,935] Trial 22 finished with value: 0.3951659722233906 and parameters: {'iterations': 469, 'learning_rate': 0.04719553646574315}. Best is trial 14 with value: 0.39739734094074325.
+[I 2025-12-04 23:41:26,057] Trial 23 finished with value: 0.3896332490956811 and parameters: {'iterations': 699, 'learning_rate': 0.07480599899260842}. Best is trial 14 with value: 0.39739734094074325.
+[I 2025-12-04 23:41:36,378] Trial 24 finished with value: 0.38728438275778815 and parameters: {'iterations': 456, 'learning_rate': 0.021342311627430624}. Best is trial 14 with value: 0.39739734094074325.
+[I 2025-12-04 23:41:56,547] Trial 25 finished with value: 0.38469847098519416 and parameters: {'iterations': 907, 'learning_rate': 0.09647490154833267}. Best is trial 14 with value: 0.39739734094074325.
+[I 2025-12-04 23:42:11,163] Trial 26 finished with value: 0.3935416436067159 and parameters: {'iterations': 648, 'learning_rate': 0.06166349949430004}. Best is trial 14 with value: 0.39739734094074325.
+[I 2025-12-04 23:42:19,017] Trial 27 finished with value: 0.3892300059711592 and parameters: {'iterations': 351, 'learning_rate': 0.03232380510539613}. Best is trial 14 with value: 0.39739734094074325.
+[I 2025-12-04 23:42:30,519] Trial 28 finished with value: 0.3953743720379554 and parameters: {'iterations': 533, 'learning_rate': 0.043992952087568156}. Best is trial 14 with value: 0.39739734094074325.
+[I 2025-12-04 23:42:42,814] Trial 29 finished with value: 0.3873850142812381 and parameters: {'iterations': 522, 'learning_rate': 0.019811983080351935}. Best is trial 14 with value: 0.39739734094074325.
+CLASSIFICAÇÃO DE GENES-ALVO USANDO DADOS ÔMICOS
+================================================================================
+Timestamp do experimento: 20251204_225132
+ Usando dados da ANA:
+   Features: data/UNION_features.tsv
+   Labels: data/processed/UNION_labels.tsv
+   Formato labels: genes, 2class (binary), 3class (multiclass)
+
+Arquivos encontrados com sucesso!
+Carregando e preparando dados...
+============================================================
+PREPARANDO DATASET PARA CLASSIFICAÇÃO (MULTICLASS)
+============================================================
+Carregando UNION_features.tsv
+Features carregadas: 19602 genes x 64 features
+Tipos de dados das features: {dtype('float64'): 64}
+Range das features: [0.0000, 1.0000]
+----------------------------------------
+Carregando UNION_labels.tsv (classificação: multiclass)
+Labels carregados: 19680 genes
+Valores únicos em 3class: label
+0.0    16727
+NaN     1997
+1.0      515
+2.0      441
+Name: count, dtype: int64
+Genes with NaN dropped: 1997
+Distribuição das classes:
+  Classe 0 (passenger): 16727 genes
+  Classe 1 (TSG): 515 genes
+  Classe 2 (Oncogene): 441 genes
+----------------------------------------
+Alinhando features e labels
+Genes comuns entre features e labels: 17676
+Dataset final: 17676 genes x 64 features
+Distribuição final das classes: [16727   514   435]
+----------------------------------------
+DATASET PREPARADO COM SUCESSO!
+Shape final: X=(17676, 64), y=(17676,)
+Genes: 17676
+Features: 64
+============================================================
+
+CONFIGURAÇÃO DO EXPERIMENTO (OTIMIZAÇÃO):
+  Modelo: CatBoost
+  Trials: 30
+  Tipo: multiclass
+  Parâmetros: Reduzido
+  Balanceamento: none
+================================================================================
+EXECUTANDO MODELO: CatBoost
+================================================================================
+
+Starting Nested Cross-Validation for catboost...
+Configuration: 5 outer folds, 30 trials per fold
+Performing 80/20 holdout split...
+Holdout split completed:
+  - Training set: 14140 samples (80%)
+  - Holdout test set: 3536 samples (20%)
+Fold 1
+Importâncias dos parâmetros para fold 1: {'iterations': np.float64(0.76517279297716), 'learning_rate': np.float64(0.23482720702283988)}
+Saved Optuna plots to results/20251204_225132_ana_optimized_multiclass_less/catboost/optuna_plots
+Fold 2
+Importâncias dos parâmetros para fold 2: {'iterations': np.float64(0.58808536809676), 'learning_rate': np.float64(0.4119146319032399)}
+Saved Optuna plots to results/20251204_225132_ana_optimized_multiclass_less/catboost/optuna_plots
+Fold 3
+Importâncias dos parâmetros para fold 3: {'learning_rate': np.float64(0.5498409309296984), 'iterations': np.float64(0.4501590690703015)}
+Saved Optuna plots to results/20251204_225132_ana_optimized_multiclass_less/catboost/optuna_plots
+Fold 4
+Importâncias dos parâmetros para fold 4: {'learning_rate': np.float64(0.6321565358061895), 'iterations': np.float64(0.36784346419381053)}
+Saved Optuna plots to results/20251204_225132_ana_optimized_multiclass_less/catboost/optuna_plots
+Fold 5
+Importâncias dos parâmetros para fold 5: {'learning_rate': np.float64(0.6361175820440189), 'iterations': np.float64(0.36388241795598114)}
+Saved Optuna plots to results/20251204_225132_ana_optimized_multiclass_less/catboost/optuna_plots
+
+Nested CV completed. The 20% holdout set (3536 samples) remains untouched.
+This holdout set can be used for final unbiased evaluation.
+
+Training and evaluating 5 best parameter sets on holdout data...
+Testing with 4 balancing strategies: none, randomundersampler, smoteenn, tomeklinks
+
+Evaluating fold 1 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+Balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+Balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+Balance strategy: tomeklinks
+
+Evaluating fold 2 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+Balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+Balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+Balance strategy: tomeklinks
+
+Evaluating fold 3 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+Balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+Balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+Balance strategy: tomeklinks
+
+Evaluating fold 4 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+Balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+Balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+Balance strategy: tomeklinks
+
+Evaluating fold 5 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+Balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+Balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+Balance strategy: tomeklinks
+Saving optimization and holdout results...
+Detailed results by fold saved to: ./results/20251204_225132_ana_optimized_multiclass_less/catboost/detailed_results_by_fold.txt
+Test predictions for all folds saved to: ./results/20251204_225132_ana_optimized_multiclass_less/catboost/metrics.json
+Saving holdout results...
+Holdout evaluation results saved to: ./results/20251204_225132_ana_optimized_multiclass_less/catboost/holdout_results.txt
+Saved!
+[OK] CatBoost executado com sucesso!
+
+EXPERIMENTO CONCLUÍDO!

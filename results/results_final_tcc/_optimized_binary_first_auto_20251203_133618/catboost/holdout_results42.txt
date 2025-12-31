@@ -1,0 +1,277 @@
+Holdout Evaluation Results for catboost (with random_seed=42)
+================================================================================
+
+Results for each fold's best parameters on holdout set
+Testing with different balancing strategies on training data (80%)
+Evaluated on unbalanced holdout set (20%)
+NOTE: All models trained with random_seed=42 or random_state=42
+--------------------------------------------------------------------------------
+
+================================================================================
+FOLD 1
+================================================================================
+Best Parameters: {'iterations': 100, 'learning_rate': 0.01, 'depth': 8, 'l2_leaf_reg': 10.0, 'border_count': 161, 'bagging_temperature': 0.16897050526056964, 'random_strength': 0.0, 'verbose': False, 'allow_writing_files': False, 'thread_count': 11, 'loss_function': 'Logloss', 'scale_pos_weight': 5.314285714285715, 'random_seed': 42}
+
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: NONE
+--------------------------------------------------------------------------------
+  Accuracy:  0.9460
+  Precision: 0.4857
+  Recall:    0.0895
+  F1-Score:  0.1511
+  ROC-AUC:   0.7263
+  PR-AUC:    0.1823
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: RANDOMUNDERSAMPLER
+--------------------------------------------------------------------------------
+  Accuracy:  0.1080
+  Precision: 0.0563
+  Recall:    0.9895
+  F1-Score:  0.1065
+  ROC-AUC:   0.7155
+  PR-AUC:    0.1679
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: SMOTEENN
+--------------------------------------------------------------------------------
+  Accuracy:  0.6615
+  Precision: 0.1007
+  Recall:    0.6684
+  F1-Score:  0.1751
+  ROC-AUC:   0.7195
+  PR-AUC:    0.1630
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: TOMEKLINKS
+--------------------------------------------------------------------------------
+  Accuracy:  0.9446
+  Precision: 0.4211
+  Recall:    0.0842
+  F1-Score:  0.1404
+  ROC-AUC:   0.7251
+  PR-AUC:    0.1787
+
+================================================================================
+FOLD 2
+================================================================================
+Best Parameters: {'iterations': 1000, 'learning_rate': 0.01, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 118, 'bagging_temperature': 0.0, 'random_strength': 1.0, 'verbose': False, 'allow_writing_files': False, 'thread_count': 11, 'loss_function': 'Logloss', 'scale_pos_weight': 5.314285714285715, 'random_seed': 42}
+
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: NONE
+--------------------------------------------------------------------------------
+  Accuracy:  0.9406
+  Precision: 0.3611
+  Recall:    0.1368
+  F1-Score:  0.1985
+  ROC-AUC:   0.7335
+  PR-AUC:    0.2026
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: RANDOMUNDERSAMPLER
+--------------------------------------------------------------------------------
+  Accuracy:  0.1137
+  Precision: 0.0564
+  Recall:    0.9842
+  F1-Score:  0.1066
+  ROC-AUC:   0.7255
+  PR-AUC:    0.1857
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: SMOTEENN
+--------------------------------------------------------------------------------
+  Accuracy:  0.8012
+  Precision: 0.1351
+  Recall:    0.5000
+  F1-Score:  0.2128
+  ROC-AUC:   0.7263
+  PR-AUC:    0.1676
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: TOMEKLINKS
+--------------------------------------------------------------------------------
+  Accuracy:  0.9420
+  Precision: 0.4026
+  Recall:    0.1632
+  F1-Score:  0.2322
+  ROC-AUC:   0.7363
+  PR-AUC:    0.2046
+
+================================================================================
+FOLD 3
+================================================================================
+Best Parameters: {'iterations': 100, 'learning_rate': 0.01, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 255, 'bagging_temperature': 0.661691211979593, 'random_strength': 0.0, 'verbose': False, 'allow_writing_files': False, 'thread_count': 11, 'loss_function': 'Logloss', 'scale_pos_weight': 5.314285714285715, 'random_seed': 42}
+
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: NONE
+--------------------------------------------------------------------------------
+  Accuracy:  0.9403
+  Precision: 0.3600
+  Recall:    0.1421
+  F1-Score:  0.2038
+  ROC-AUC:   0.7189
+  PR-AUC:    0.1943
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: RANDOMUNDERSAMPLER
+--------------------------------------------------------------------------------
+  Accuracy:  0.0848
+  Precision: 0.0552
+  Recall:    0.9947
+  F1-Score:  0.1046
+  ROC-AUC:   0.7155
+  PR-AUC:    0.1780
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: SMOTEENN
+--------------------------------------------------------------------------------
+  Accuracy:  0.4777
+  Precision: 0.0775
+  Recall:    0.8000
+  F1-Score:  0.1413
+  ROC-AUC:   0.7106
+  PR-AUC:    0.1682
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: TOMEKLINKS
+--------------------------------------------------------------------------------
+  Accuracy:  0.9403
+  Precision: 0.3562
+  Recall:    0.1368
+  F1-Score:  0.1977
+  ROC-AUC:   0.7192
+  PR-AUC:    0.1915
+
+================================================================================
+FOLD 4
+================================================================================
+Best Parameters: {'iterations': 100, 'learning_rate': 0.01, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 92, 'bagging_temperature': 0.0, 'random_strength': 0.0, 'verbose': False, 'allow_writing_files': False, 'thread_count': 11, 'loss_function': 'Logloss', 'scale_pos_weight': 5.314285714285715, 'random_seed': 42}
+
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: NONE
+--------------------------------------------------------------------------------
+  Accuracy:  0.9426
+  Precision: 0.4030
+  Recall:    0.1421
+  F1-Score:  0.2101
+  ROC-AUC:   0.7219
+  PR-AUC:    0.1906
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: RANDOMUNDERSAMPLER
+--------------------------------------------------------------------------------
+  Accuracy:  0.0783
+  Precision: 0.0548
+  Recall:    0.9947
+  F1-Score:  0.1039
+  ROC-AUC:   0.7158
+  PR-AUC:    0.1814
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: SMOTEENN
+--------------------------------------------------------------------------------
+  Accuracy:  0.4751
+  Precision: 0.0763
+  Recall:    0.7895
+  F1-Score:  0.1391
+  ROC-AUC:   0.7104
+  PR-AUC:    0.1662
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: TOMEKLINKS
+--------------------------------------------------------------------------------
+  Accuracy:  0.9406
+  Precision: 0.3611
+  Recall:    0.1368
+  F1-Score:  0.1985
+  ROC-AUC:   0.7191
+  PR-AUC:    0.1950
+
+================================================================================
+FOLD 5
+================================================================================
+Best Parameters: {'iterations': 945, 'learning_rate': 0.01, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.36159189470023945, 'verbose': False, 'allow_writing_files': False, 'thread_count': 11, 'loss_function': 'Logloss', 'scale_pos_weight': 5.314285714285715, 'random_seed': 42}
+
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: NONE
+--------------------------------------------------------------------------------
+  Accuracy:  0.9417
+  Precision: 0.3824
+  Recall:    0.1368
+  F1-Score:  0.2016
+  ROC-AUC:   0.7360
+  PR-AUC:    0.2030
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: RANDOMUNDERSAMPLER
+--------------------------------------------------------------------------------
+  Accuracy:  0.1247
+  Precision: 0.0570
+  Recall:    0.9842
+  F1-Score:  0.1078
+  ROC-AUC:   0.7251
+  PR-AUC:    0.1917
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: SMOTEENN
+--------------------------------------------------------------------------------
+  Accuracy:  0.8182
+  Precision: 0.1376
+  Recall:    0.4526
+  F1-Score:  0.2110
+  ROC-AUC:   0.7278
+  PR-AUC:    0.1681
+
+--------------------------------------------------------------------------------
+BALANCING STRATEGY: TOMEKLINKS
+--------------------------------------------------------------------------------
+  Accuracy:  0.9429
+  Precision: 0.4091
+  Recall:    0.1421
+  F1-Score:  0.2109
+  ROC-AUC:   0.7399
+  PR-AUC:    0.2058
+
+
+================================================================================
+BEST PERFORMING COMBINATIONS ON HOLDOUT SET (by PR-AUC)
+================================================================================
+
+Top 5 combinations:
+--------------------------------------------------------------------------------
+
+1. Fold 5 + TOMEKLINKS
+   PR-AUC: 0.2058 | ROC-AUC: 0.7399 | F1: 0.2109
+
+2. Fold 2 + TOMEKLINKS
+   PR-AUC: 0.2046 | ROC-AUC: 0.7363 | F1: 0.2322
+
+3. Fold 5 + NONE
+   PR-AUC: 0.2030 | ROC-AUC: 0.7360 | F1: 0.2016
+
+4. Fold 2 + NONE
+   PR-AUC: 0.2026 | ROC-AUC: 0.7335 | F1: 0.1985
+
+5. Fold 4 + TOMEKLINKS
+   PR-AUC: 0.1950 | ROC-AUC: 0.7191 | F1: 0.1985
+
+
+================================================================================
+OVERALL BEST COMBINATION:
+================================================================================
+Fold: 5
+Balancing Strategy: TOMEKLINKS
+Parameters: {'iterations': 945, 'learning_rate': 0.01, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.36159189470023945, 'verbose': False, 'allow_writing_files': False, 'thread_count': 11, 'loss_function': 'Logloss', 'scale_pos_weight': 5.314285714285715, 'random_seed': 42}
+
+Performance:
+  Accuracy:  0.9429
+  Precision: 0.4091
+  Recall:    0.1421
+  F1-Score:  0.2109
+  ROC-AUC:   0.7399
+  PR-AUC:    0.2058

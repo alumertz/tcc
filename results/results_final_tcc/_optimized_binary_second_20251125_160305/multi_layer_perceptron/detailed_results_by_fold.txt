@@ -1,0 +1,361 @@
+RESULTADOS DO MODELO: MULTI_LAYER_PERCEPTRON
+================================================================================
+
+Data/Hora: 2025-11-26 02:10:57
+
+FOLD 1 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.1201 | Hiperparâmetros: {"layer_0_size": 31, "activation": "logistic", "max_iter": 1099}
+  Trial 1: Score=0.1563 | Hiperparâmetros: {"layer_0_size": 342, "activation": "logistic", "max_iter": 295}
+  Trial 2: Score=0.1630 | Hiperparâmetros: {"layer_0_size": 364, "activation": "tanh", "max_iter": 1102}
+  Trial 3: Score=0.1609 | Hiperparâmetros: {"layer_0_size": 390, "activation": "tanh", "max_iter": 822}
+  Trial 4: Score=0.1571 | Hiperparâmetros: {"layer_0_size": 200, "activation": "tanh", "max_iter": 1412}
+  Trial 5: Score=0.1537 | Hiperparâmetros: {"layer_0_size": 205, "activation": "logistic", "max_iter": 188}
+  Trial 6: Score=0.1504 | Hiperparâmetros: {"layer_0_size": 169, "activation": "logistic", "max_iter": 1229}
+  Trial 7: Score=0.1311 | Hiperparâmetros: {"layer_0_size": 200, "activation": "relu", "max_iter": 1051}
+  Trial 8: Score=0.1308 | Hiperparâmetros: {"layer_0_size": 57, "activation": "logistic", "max_iter": 201}
+  Trial 9: Score=0.1496 | Hiperparâmetros: {"layer_0_size": 26, "activation": "tanh", "max_iter": 1300}
+  Trial 10: Score=0.1439 | Hiperparâmetros: {"layer_0_size": 303, "activation": "relu", "max_iter": 583}
+  Trial 11: Score=0.1467 | Hiperparâmetros: {"layer_0_size": 386, "activation": "tanh", "max_iter": 795}
+  Trial 12: Score=0.1710 | Hiperparâmetros: {"layer_0_size": 286, "activation": "tanh", "max_iter": 837}
+  Trial 13: Score=0.1659 | Hiperparâmetros: {"layer_0_size": 289, "activation": "tanh", "max_iter": 894}
+  Trial 14: Score=0.1621 | Hiperparâmetros: {"layer_0_size": 276, "activation": "tanh", "max_iter": 734}
+  Trial 15: Score=0.1701 | Hiperparâmetros: {"layer_0_size": 261, "activation": "tanh", "max_iter": 499}
+  Trial 16: Score=0.1672 | Hiperparâmetros: {"layer_0_size": 121, "activation": "tanh", "max_iter": 482}
+  Trial 17: Score=0.1571 | Hiperparâmetros: {"layer_0_size": 252, "activation": "relu", "max_iter": 433}
+  Trial 18: Score=0.1546 | Hiperparâmetros: {"layer_0_size": 249, "activation": "tanh", "max_iter": 660}
+  Trial 19: Score=0.1629 | Hiperparâmetros: {"layer_0_size": 109, "activation": "tanh", "max_iter": 395}
+  Trial 20: Score=0.1459 | Hiperparâmetros: {"layer_0_size": 332, "activation": "relu", "max_iter": 952}
+  Trial 21: Score=0.1717 | Hiperparâmetros: {"layer_0_size": 125, "activation": "tanh", "max_iter": 553}
+  Trial 22: Score=0.1561 | Hiperparâmetros: {"layer_0_size": 139, "activation": "tanh", "max_iter": 549}
+  Trial 23: Score=0.1742 | Hiperparâmetros: {"layer_0_size": 234, "activation": "tanh", "max_iter": 663}
+  Trial 24: Score=0.1570 | Hiperparâmetros: {"layer_0_size": 77, "activation": "tanh", "max_iter": 638}
+  Trial 25: Score=0.1491 | Hiperparâmetros: {"layer_0_size": 227, "activation": "tanh", "max_iter": 732}
+  Trial 26: Score=0.1584 | Hiperparâmetros: {"layer_0_size": 173, "activation": "tanh", "max_iter": 946}
+  Trial 27: Score=0.1534 | Hiperparâmetros: {"layer_0_size": 163, "activation": "tanh", "max_iter": 324}
+  Trial 28: Score=0.1527 | Hiperparâmetros: {"layer_0_size": 309, "activation": "relu", "max_iter": 671}
+  Trial 29: Score=0.1622 | Hiperparâmetros: {"layer_0_size": 225, "activation": "tanh", "max_iter": 848}
+
+Melhor trial (Optuna): 23
+  hidden_layer_sizes: ()
+  activation: tanh
+  alpha: 0.0001
+  learning_rate: constant
+  max_iter: 663
+  early_stopping: True
+
+Importância dos parâmetros (Optuna):
+  activation: 0.4544
+  layer_0_size: 0.3998
+  max_iter: 0.1458
+
+Resultado do treino:
+  accuracy: 0.9456
+  precision: 0.4507
+  recall: 0.0526
+  f1: 0.0943
+  roc_auc: 0.7117
+  pr_auc: 0.1852
+
+Resultado do teste:
+  accuracy: 0.9448
+  precision: 0.3333
+  recall: 0.0331
+  f1: 0.0602
+  roc_auc: 0.6647
+  pr_auc: 0.1150
+
+============================================================
+
+FOLD 2 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.1616 | Hiperparâmetros: {"layer_0_size": 265, "activation": "tanh", "max_iter": 1307}
+  Trial 1: Score=0.1429 | Hiperparâmetros: {"layer_0_size": 157, "activation": "logistic", "max_iter": 876}
+  Trial 2: Score=0.1565 | Hiperparâmetros: {"layer_0_size": 330, "activation": "tanh", "max_iter": 1037}
+  Trial 3: Score=0.1517 | Hiperparâmetros: {"layer_0_size": 232, "activation": "tanh", "max_iter": 325}
+  Trial 4: Score=0.1223 | Hiperparâmetros: {"layer_0_size": 58, "activation": "logistic", "max_iter": 403}
+  Trial 5: Score=0.1635 | Hiperparâmetros: {"layer_0_size": 299, "activation": "tanh", "max_iter": 1090}
+  Trial 6: Score=0.1460 | Hiperparâmetros: {"layer_0_size": 384, "activation": "logistic", "max_iter": 454}
+  Trial 7: Score=0.1719 | Hiperparâmetros: {"layer_0_size": 374, "activation": "tanh", "max_iter": 870}
+  Trial 8: Score=0.1545 | Hiperparâmetros: {"layer_0_size": 266, "activation": "tanh", "max_iter": 191}
+  Trial 9: Score=0.1284 | Hiperparâmetros: {"layer_0_size": 178, "activation": "relu", "max_iter": 243}
+  Trial 10: Score=0.1370 | Hiperparâmetros: {"layer_0_size": 394, "activation": "relu", "max_iter": 589}
+  Trial 11: Score=0.1541 | Hiperparâmetros: {"layer_0_size": 325, "activation": "tanh", "max_iter": 1191}
+  Trial 12: Score=0.1623 | Hiperparâmetros: {"layer_0_size": 324, "activation": "tanh", "max_iter": 1489}
+  Trial 13: Score=0.1564 | Hiperparâmetros: {"layer_0_size": 342, "activation": "tanh", "max_iter": 767}
+  Trial 14: Score=0.1639 | Hiperparâmetros: {"layer_0_size": 272, "activation": "tanh", "max_iter": 942}
+  Trial 15: Score=0.1268 | Hiperparâmetros: {"layer_0_size": 116, "activation": "relu", "max_iter": 791}
+  Trial 16: Score=0.1497 | Hiperparâmetros: {"layer_0_size": 238, "activation": "tanh", "max_iter": 629}
+  Trial 17: Score=0.1570 | Hiperparâmetros: {"layer_0_size": 362, "activation": "tanh", "max_iter": 941}
+  Trial 18: Score=0.1044 | Hiperparâmetros: {"layer_0_size": 26, "activation": "logistic", "max_iter": 650}
+  Trial 19: Score=0.1345 | Hiperparâmetros: {"layer_0_size": 282, "activation": "relu", "max_iter": 1337}
+  Trial 20: Score=0.1685 | Hiperparâmetros: {"layer_0_size": 201, "activation": "tanh", "max_iter": 977}
+  Trial 21: Score=0.1635 | Hiperparâmetros: {"layer_0_size": 205, "activation": "tanh", "max_iter": 999}
+  Trial 22: Score=0.1660 | Hiperparâmetros: {"layer_0_size": 127, "activation": "tanh", "max_iter": 1171}
+  Trial 23: Score=0.1516 | Hiperparâmetros: {"layer_0_size": 108, "activation": "tanh", "max_iter": 1181}
+  Trial 24: Score=0.1537 | Hiperparâmetros: {"layer_0_size": 146, "activation": "tanh", "max_iter": 1161}
+  Trial 25: Score=0.1442 | Hiperparâmetros: {"layer_0_size": 87, "activation": "tanh", "max_iter": 1350}
+  Trial 26: Score=0.1569 | Hiperparâmetros: {"layer_0_size": 186, "activation": "tanh", "max_iter": 815}
+  Trial 27: Score=0.1586 | Hiperparâmetros: {"layer_0_size": 214, "activation": "tanh", "max_iter": 1083}
+  Trial 28: Score=0.1347 | Hiperparâmetros: {"layer_0_size": 136, "activation": "logistic", "max_iter": 1269}
+  Trial 29: Score=0.0981 | Hiperparâmetros: {"layer_0_size": 69, "activation": "relu", "max_iter": 1496}
+
+Melhor trial (Optuna): 7
+  hidden_layer_sizes: ()
+  activation: tanh
+  alpha: 0.0001
+  learning_rate: constant
+  max_iter: 870
+  early_stopping: True
+
+Importância dos parâmetros (Optuna):
+  activation: 0.6065
+  layer_0_size: 0.3535
+  max_iter: 0.0400
+
+Resultado do treino:
+  accuracy: 0.9455
+  precision: 0.4359
+  recall: 0.0560
+  f1: 0.0993
+  roc_auc: 0.7150
+  pr_auc: 0.1784
+
+Resultado do teste:
+  accuracy: 0.9431
+  precision: 0.3636
+  recall: 0.0789
+  f1: 0.1297
+  roc_auc: 0.6644
+  pr_auc: 0.1663
+
+============================================================
+
+FOLD 3 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.1395 | Hiperparâmetros: {"layer_0_size": 139, "activation": "relu", "max_iter": 701}
+  Trial 1: Score=0.1648 | Hiperparâmetros: {"layer_0_size": 135, "activation": "tanh", "max_iter": 1461}
+  Trial 2: Score=0.1586 | Hiperparâmetros: {"layer_0_size": 377, "activation": "logistic", "max_iter": 826}
+  Trial 3: Score=0.1489 | Hiperparâmetros: {"layer_0_size": 398, "activation": "logistic", "max_iter": 1043}
+  Trial 4: Score=0.1484 | Hiperparâmetros: {"layer_0_size": 363, "activation": "relu", "max_iter": 268}
+  Trial 5: Score=0.0892 | Hiperparâmetros: {"layer_0_size": 18, "activation": "relu", "max_iter": 719}
+  Trial 6: Score=0.1433 | Hiperparâmetros: {"layer_0_size": 280, "activation": "logistic", "max_iter": 1257}
+  Trial 7: Score=0.1543 | Hiperparâmetros: {"layer_0_size": 104, "activation": "tanh", "max_iter": 1385}
+  Trial 8: Score=0.1324 | Hiperparâmetros: {"layer_0_size": 144, "activation": "logistic", "max_iter": 109}
+  Trial 9: Score=0.1544 | Hiperparâmetros: {"layer_0_size": 203, "activation": "tanh", "max_iter": 835}
+  Trial 10: Score=0.1409 | Hiperparâmetros: {"layer_0_size": 28, "activation": "tanh", "max_iter": 1496}
+  Trial 11: Score=0.1435 | Hiperparâmetros: {"layer_0_size": 287, "activation": "logistic", "max_iter": 501}
+  Trial 12: Score=0.1546 | Hiperparâmetros: {"layer_0_size": 240, "activation": "tanh", "max_iter": 1078}
+  Trial 13: Score=0.1333 | Hiperparâmetros: {"layer_0_size": 89, "activation": "logistic", "max_iter": 1066}
+  Trial 14: Score=0.1636 | Hiperparâmetros: {"layer_0_size": 332, "activation": "tanh", "max_iter": 452}
+  Trial 15: Score=0.1715 | Hiperparâmetros: {"layer_0_size": 322, "activation": "tanh", "max_iter": 475}
+  Trial 16: Score=0.1627 | Hiperparâmetros: {"layer_0_size": 202, "activation": "tanh", "max_iter": 539}
+  Trial 17: Score=0.1548 | Hiperparâmetros: {"layer_0_size": 163, "activation": "tanh", "max_iter": 318}
+  Trial 18: Score=0.1667 | Hiperparâmetros: {"layer_0_size": 312, "activation": "tanh", "max_iter": 1268}
+  Trial 19: Score=0.1573 | Hiperparâmetros: {"layer_0_size": 322, "activation": "tanh", "max_iter": 1241}
+  Trial 20: Score=0.1500 | Hiperparâmetros: {"layer_0_size": 258, "activation": "tanh", "max_iter": 914}
+  Trial 21: Score=0.1619 | Hiperparâmetros: {"layer_0_size": 328, "activation": "tanh", "max_iter": 1474}
+  Trial 22: Score=0.1538 | Hiperparâmetros: {"layer_0_size": 233, "activation": "tanh", "max_iter": 1274}
+  Trial 23: Score=0.1463 | Hiperparâmetros: {"layer_0_size": 67, "activation": "tanh", "max_iter": 1347}
+  Trial 24: Score=0.1713 | Hiperparâmetros: {"layer_0_size": 174, "activation": "tanh", "max_iter": 1166}
+  Trial 25: Score=0.1588 | Hiperparâmetros: {"layer_0_size": 298, "activation": "relu", "max_iter": 1162}
+  Trial 26: Score=0.1584 | Hiperparâmetros: {"layer_0_size": 358, "activation": "tanh", "max_iter": 609}
+  Trial 27: Score=0.1602 | Hiperparâmetros: {"layer_0_size": 188, "activation": "tanh", "max_iter": 953}
+  Trial 28: Score=0.1761 | Hiperparâmetros: {"layer_0_size": 252, "activation": "tanh", "max_iter": 1153}
+  Trial 29: Score=0.1328 | Hiperparâmetros: {"layer_0_size": 259, "activation": "relu", "max_iter": 958}
+
+Melhor trial (Optuna): 28
+  hidden_layer_sizes: ()
+  activation: tanh
+  alpha: 0.0001
+  learning_rate: constant
+  max_iter: 1153
+  early_stopping: True
+
+Importância dos parâmetros (Optuna):
+  layer_0_size: 0.6394
+  activation: 0.3117
+  max_iter: 0.0489
+
+Resultado do treino:
+  accuracy: 0.9467
+  precision: 0.5500
+  recall: 0.0362
+  f1: 0.0680
+  roc_auc: 0.7003
+  pr_auc: 0.1723
+
+Resultado do teste:
+  accuracy: 0.9473
+  precision: 0.6154
+  recall: 0.0526
+  f1: 0.0970
+  roc_auc: 0.6951
+  pr_auc: 0.1719
+
+============================================================
+
+FOLD 4 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.1565 | Hiperparâmetros: {"layer_0_size": 205, "activation": "logistic", "max_iter": 286}
+  Trial 1: Score=0.0824 | Hiperparâmetros: {"layer_0_size": 23, "activation": "relu", "max_iter": 373}
+  Trial 2: Score=0.1516 | Hiperparâmetros: {"layer_0_size": 231, "activation": "logistic", "max_iter": 959}
+  Trial 3: Score=0.1033 | Hiperparâmetros: {"layer_0_size": 51, "activation": "relu", "max_iter": 224}
+  Trial 4: Score=0.1413 | Hiperparâmetros: {"layer_0_size": 191, "activation": "relu", "max_iter": 636}
+  Trial 5: Score=0.1571 | Hiperparâmetros: {"layer_0_size": 221, "activation": "relu", "max_iter": 1050}
+  Trial 6: Score=0.1245 | Hiperparâmetros: {"layer_0_size": 12, "activation": "tanh", "max_iter": 1321}
+  Trial 7: Score=0.1689 | Hiperparâmetros: {"layer_0_size": 182, "activation": "tanh", "max_iter": 620}
+  Trial 8: Score=0.1819 | Hiperparâmetros: {"layer_0_size": 394, "activation": "tanh", "max_iter": 1386}
+  Trial 9: Score=0.1263 | Hiperparâmetros: {"layer_0_size": 55, "activation": "logistic", "max_iter": 175}
+  Trial 10: Score=0.1636 | Hiperparâmetros: {"layer_0_size": 387, "activation": "tanh", "max_iter": 1362}
+  Trial 11: Score=0.1564 | Hiperparâmetros: {"layer_0_size": 397, "activation": "tanh", "max_iter": 642}
+  Trial 12: Score=0.1700 | Hiperparâmetros: {"layer_0_size": 303, "activation": "tanh", "max_iter": 763}
+  Trial 13: Score=0.1782 | Hiperparâmetros: {"layer_0_size": 319, "activation": "tanh", "max_iter": 1493}
+  Trial 14: Score=0.1732 | Hiperparâmetros: {"layer_0_size": 326, "activation": "tanh", "max_iter": 1488}
+  Trial 15: Score=0.1687 | Hiperparâmetros: {"layer_0_size": 328, "activation": "tanh", "max_iter": 1179}
+  Trial 16: Score=0.1705 | Hiperparâmetros: {"layer_0_size": 279, "activation": "tanh", "max_iter": 1496}
+  Trial 17: Score=0.1724 | Hiperparâmetros: {"layer_0_size": 356, "activation": "tanh", "max_iter": 1199}
+  Trial 18: Score=0.1661 | Hiperparâmetros: {"layer_0_size": 124, "activation": "tanh", "max_iter": 935}
+  Trial 19: Score=0.1533 | Hiperparâmetros: {"layer_0_size": 261, "activation": "logistic", "max_iter": 1289}
+  Trial 20: Score=0.1779 | Hiperparâmetros: {"layer_0_size": 360, "activation": "tanh", "max_iter": 1114}
+  Trial 21: Score=0.1738 | Hiperparâmetros: {"layer_0_size": 351, "activation": "tanh", "max_iter": 1098}
+  Trial 22: Score=0.1700 | Hiperparâmetros: {"layer_0_size": 365, "activation": "tanh", "max_iter": 1394}
+  Trial 23: Score=0.1655 | Hiperparâmetros: {"layer_0_size": 297, "activation": "tanh", "max_iter": 1231}
+  Trial 24: Score=0.1747 | Hiperparâmetros: {"layer_0_size": 400, "activation": "tanh", "max_iter": 1407}
+  Trial 25: Score=0.1766 | Hiperparâmetros: {"layer_0_size": 255, "activation": "tanh", "max_iter": 1100}
+  Trial 26: Score=0.1767 | Hiperparâmetros: {"layer_0_size": 327, "activation": "tanh", "max_iter": 942}
+  Trial 27: Score=0.1546 | Hiperparâmetros: {"layer_0_size": 369, "activation": "logistic", "max_iter": 1266}
+  Trial 28: Score=0.1344 | Hiperparâmetros: {"layer_0_size": 163, "activation": "relu", "max_iter": 1433}
+  Trial 29: Score=0.1761 | Hiperparâmetros: {"layer_0_size": 340, "activation": "tanh", "max_iter": 799}
+
+Melhor trial (Optuna): 8
+  hidden_layer_sizes: ()
+  activation: tanh
+  alpha: 0.0001
+  learning_rate: constant
+  max_iter: 1386
+  early_stopping: True
+
+Importância dos parâmetros (Optuna):
+  layer_0_size: 0.7236
+  activation: 0.1631
+  max_iter: 0.1133
+
+Resultado do treino:
+  accuracy: 0.9473
+  precision: 0.5902
+  recall: 0.0593
+  f1: 0.1078
+  roc_auc: 0.7214
+  pr_auc: 0.1953
+
+Resultado do teste:
+  accuracy: 0.9438
+  precision: 0.1111
+  recall: 0.0066
+  f1: 0.0124
+  roc_auc: 0.6392
+  pr_auc: 0.1030
+
+============================================================
+
+FOLD 5 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.1376 | Hiperparâmetros: {"layer_0_size": 391, "activation": "logistic", "max_iter": 886}
+  Trial 1: Score=0.1298 | Hiperparâmetros: {"layer_0_size": 136, "activation": "logistic", "max_iter": 1258}
+  Trial 2: Score=0.1573 | Hiperparâmetros: {"layer_0_size": 210, "activation": "tanh", "max_iter": 1325}
+  Trial 3: Score=0.0842 | Hiperparâmetros: {"layer_0_size": 41, "activation": "relu", "max_iter": 633}
+  Trial 4: Score=0.1292 | Hiperparâmetros: {"layer_0_size": 369, "activation": "relu", "max_iter": 1479}
+  Trial 5: Score=0.1028 | Hiperparâmetros: {"layer_0_size": 32, "activation": "relu", "max_iter": 507}
+  Trial 6: Score=0.0864 | Hiperparâmetros: {"layer_0_size": 28, "activation": "relu", "max_iter": 909}
+  Trial 7: Score=0.1318 | Hiperparâmetros: {"layer_0_size": 167, "activation": "logistic", "max_iter": 651}
+  Trial 8: Score=0.1412 | Hiperparâmetros: {"layer_0_size": 131, "activation": "tanh", "max_iter": 1434}
+  Trial 9: Score=0.1378 | Hiperparâmetros: {"layer_0_size": 333, "activation": "logistic", "max_iter": 984}
+  Trial 10: Score=0.1461 | Hiperparâmetros: {"layer_0_size": 259, "activation": "tanh", "max_iter": 165}
+  Trial 11: Score=0.1292 | Hiperparâmetros: {"layer_0_size": 271, "activation": "tanh", "max_iter": 115}
+  Trial 12: Score=0.1390 | Hiperparâmetros: {"layer_0_size": 258, "activation": "tanh", "max_iter": 156}
+  Trial 13: Score=0.1482 | Hiperparâmetros: {"layer_0_size": 242, "activation": "tanh", "max_iter": 1184}
+  Trial 14: Score=0.1346 | Hiperparâmetros: {"layer_0_size": 202, "activation": "tanh", "max_iter": 1158}
+  Trial 15: Score=0.1384 | Hiperparâmetros: {"layer_0_size": 299, "activation": "tanh", "max_iter": 1219}
+  Trial 16: Score=0.1428 | Hiperparâmetros: {"layer_0_size": 215, "activation": "tanh", "max_iter": 1108}
+  Trial 17: Score=0.1399 | Hiperparâmetros: {"layer_0_size": 92, "activation": "tanh", "max_iter": 1345}
+  Trial 18: Score=0.1408 | Hiperparâmetros: {"layer_0_size": 210, "activation": "tanh", "max_iter": 1073}
+  Trial 19: Score=0.1371 | Hiperparâmetros: {"layer_0_size": 319, "activation": "tanh", "max_iter": 1343}
+  Trial 20: Score=0.1331 | Hiperparâmetros: {"layer_0_size": 171, "activation": "tanh", "max_iter": 773}
+  Trial 21: Score=0.1424 | Hiperparâmetros: {"layer_0_size": 248, "activation": "tanh", "max_iter": 369}
+  Trial 22: Score=0.1511 | Hiperparâmetros: {"layer_0_size": 238, "activation": "tanh", "max_iter": 291}
+  Trial 23: Score=0.1397 | Hiperparâmetros: {"layer_0_size": 227, "activation": "tanh", "max_iter": 425}
+  Trial 24: Score=0.1429 | Hiperparâmetros: {"layer_0_size": 168, "activation": "tanh", "max_iter": 737}
+  Trial 25: Score=0.1479 | Hiperparâmetros: {"layer_0_size": 301, "activation": "tanh", "max_iter": 1323}
+  Trial 26: Score=0.1442 | Hiperparâmetros: {"layer_0_size": 283, "activation": "tanh", "max_iter": 307}
+  Trial 27: Score=0.1275 | Hiperparâmetros: {"layer_0_size": 185, "activation": "tanh", "max_iter": 987}
+  Trial 28: Score=0.1376 | Hiperparâmetros: {"layer_0_size": 236, "activation": "logistic", "max_iter": 548}
+  Trial 29: Score=0.1096 | Hiperparâmetros: {"layer_0_size": 133, "activation": "relu", "max_iter": 1030}
+
+Melhor trial (Optuna): 2
+  hidden_layer_sizes: ()
+  activation: tanh
+  alpha: 0.0001
+  learning_rate: constant
+  max_iter: 1325
+  early_stopping: True
+
+Importância dos parâmetros (Optuna):
+  layer_0_size: 0.4863
+  activation: 0.4729
+  max_iter: 0.0407
+
+Resultado do treino:
+  accuracy: 0.9456
+  precision: 0.4412
+  recall: 0.0494
+  f1: 0.0889
+  roc_auc: 0.6915
+  pr_auc: 0.1619
+
+Resultado do teste:
+  accuracy: 0.9463
+  precision: 0.5000
+  recall: 0.0395
+  f1: 0.0732
+  roc_auc: 0.6924
+  pr_auc: 0.1925
+
+============================================================
+
+TABELA DE MÉTRICAS DE TREINO E TESTE POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treino: 1     | 0.9456     | 0.4507     | 0.0526     | 0.0943     | 0.7117     | 0.1852    
+Teste:  1     | 0.9448     | 0.3333     | 0.0331     | 0.0602     | 0.6647     | 0.1150    
+Treino: 2     | 0.9455     | 0.4359     | 0.0560     | 0.0993     | 0.7150     | 0.1784    
+Teste:  2     | 0.9431     | 0.3636     | 0.0789     | 0.1297     | 0.6644     | 0.1663    
+Treino: 3     | 0.9467     | 0.5500     | 0.0362     | 0.0680     | 0.7003     | 0.1723    
+Teste:  3     | 0.9473     | 0.6154     | 0.0526     | 0.0970     | 0.6951     | 0.1719    
+Treino: 4     | 0.9473     | 0.5902     | 0.0593     | 0.1078     | 0.7214     | 0.1953    
+Teste:  4     | 0.9438     | 0.1111     | 0.0066     | 0.0124     | 0.6392     | 0.1030    
+Treino: 5     | 0.9456     | 0.4412     | 0.0494     | 0.0889     | 0.6915     | 0.1619    
+Teste:  5     | 0.9463     | 0.5000     | 0.0395     | 0.0732     | 0.6924     | 0.1925    
+
+MÉDIAS E DESVIOS PADRÃO DAS MÉTRICAS POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treinos: 0.9461+-0.00 0.4936+-0.06 0.0507+-0.01 0.0916+-0.01 0.7080+-0.01 0.1786+-0.01 
+Testes:  0.9450+-0.00 0.3847+-0.17 0.0421+-0.02 0.0745+-0.04 0.6712+-0.02 0.1497+-0.03 
+
+MELHOR CONJUNTO DE HIPERPARÂMETROS GLOBAL (selecionado pelo maior PR AUC  ):
+------------------------------------------------------------
+{
+  "hidden_layer_sizes": [],
+  "activation": "tanh",
+  "alpha": 0.0001,
+  "learning_rate": "constant",
+  "max_iter": 1325,
+  "early_stopping": true
+}
+

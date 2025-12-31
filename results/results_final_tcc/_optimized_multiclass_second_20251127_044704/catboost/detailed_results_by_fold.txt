@@ -1,0 +1,362 @@
+RESULTADOS DO MODELO: CATBOOST
+================================================================================
+
+Data/Hora: 2025-12-04 23:44:56
+
+FOLD 1 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3770 | Hiperparâmetros: {"iterations": 239, "learning_rate": 0.006127490857728858}
+  Trial 1: Score=0.3822 | Hiperparâmetros: {"iterations": 952, "learning_rate": 0.04609039740510206}
+  Trial 2: Score=0.3824 | Hiperparâmetros: {"iterations": 463, "learning_rate": 0.08727241787033974}
+  Trial 3: Score=0.3854 | Hiperparâmetros: {"iterations": 1429, "learning_rate": 0.005433816752276312}
+  Trial 4: Score=0.3874 | Hiperparâmetros: {"iterations": 385, "learning_rate": 0.02478429463841889}
+  Trial 5: Score=0.3863 | Hiperparâmetros: {"iterations": 607, "learning_rate": 0.016913543992604464}
+  Trial 6: Score=0.3732 | Hiperparâmetros: {"iterations": 104, "learning_rate": 0.008116148520438607}
+  Trial 7: Score=0.3835 | Hiperparâmetros: {"iterations": 396, "learning_rate": 0.008857058179176118}
+  Trial 8: Score=0.3845 | Hiperparâmetros: {"iterations": 577, "learning_rate": 0.009654129731461715}
+  Trial 9: Score=0.3753 | Hiperparâmetros: {"iterations": 170, "learning_rate": 0.007487205208647431}
+  Trial 10: Score=0.3852 | Hiperparâmetros: {"iterations": 985, "learning_rate": 0.027669567616960287}
+  Trial 11: Score=0.3868 | Hiperparâmetros: {"iterations": 705, "learning_rate": 0.017369994229177437}
+  Trial 12: Score=0.3864 | Hiperparâmetros: {"iterations": 809, "learning_rate": 0.018705710801477694}
+  Trial 13: Score=0.3844 | Hiperparâmetros: {"iterations": 1201, "learning_rate": 0.032856091314932015}
+  Trial 14: Score=0.3859 | Hiperparâmetros: {"iterations": 727, "learning_rate": 0.013454534744068184}
+  Trial 15: Score=0.3839 | Hiperparâmetros: {"iterations": 387, "learning_rate": 0.04806110701457775}
+  Trial 16: Score=0.3858 | Hiperparâmetros: {"iterations": 848, "learning_rate": 0.012379736363835618}
+  Trial 17: Score=0.3860 | Hiperparâmetros: {"iterations": 1140, "learning_rate": 0.0255526207280509}
+  Trial 18: Score=0.3853 | Hiperparâmetros: {"iterations": 284, "learning_rate": 0.03885275975648376}
+  Trial 19: Score=0.3845 | Hiperparâmetros: {"iterations": 604, "learning_rate": 0.06525298659858958}
+  Trial 20: Score=0.3863 | Hiperparâmetros: {"iterations": 501, "learning_rate": 0.020450631914080118}
+  Trial 21: Score=0.3866 | Hiperparâmetros: {"iterations": 771, "learning_rate": 0.02031456949087931}
+  Trial 22: Score=0.3861 | Hiperparâmetros: {"iterations": 707, "learning_rate": 0.014769964880916255}
+  Trial 23: Score=0.3866 | Hiperparâmetros: {"iterations": 949, "learning_rate": 0.023029474419388418}
+  Trial 24: Score=0.3856 | Hiperparâmetros: {"iterations": 690, "learning_rate": 0.01157691967858717}
+  Trial 25: Score=0.3864 | Hiperparâmetros: {"iterations": 327, "learning_rate": 0.031051341841361012}
+  Trial 26: Score=0.3875 | Hiperparâmetros: {"iterations": 1167, "learning_rate": 0.016600123226782632}
+  Trial 27: Score=0.3878 | Hiperparâmetros: {"iterations": 1430, "learning_rate": 0.0159657163498204}
+  Trial 28: Score=0.3870 | Hiperparâmetros: {"iterations": 1483, "learning_rate": 0.011077833115627041}
+  Trial 29: Score=0.3881 | Hiperparâmetros: {"iterations": 1317, "learning_rate": 0.01564132105335361}
+
+Melhor trial (Optuna): 29
+  iterations: 1317
+  learning_rate: 0.01564132105335361
+  verbose: False
+  allow_writing_files: False
+  thread_count: 11
+  loss_function: MultiClass
+  classes_count: 3
+
+Importância dos parâmetros (Optuna):
+  iterations: 0.7652
+  learning_rate: 0.2348
+
+Resultado do treino:
+  accuracy: 0.9509
+  precision: 0.9836
+  recall: 0.3883
+  f1: 0.4230
+  roc_auc: 0.8567
+  pr_auc: 0.6402
+
+Resultado do teste:
+  accuracy: 0.9463
+  precision: 0.3155
+  recall: 0.3332
+  f1: 0.3241
+  roc_auc: 0.7240
+  pr_auc: 0.3945
+
+============================================================
+
+FOLD 2 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3898 | Hiperparâmetros: {"iterations": 1385, "learning_rate": 0.032354533297184504}
+  Trial 1: Score=0.3906 | Hiperparâmetros: {"iterations": 921, "learning_rate": 0.0151778339579873}
+  Trial 2: Score=0.3815 | Hiperparâmetros: {"iterations": 561, "learning_rate": 0.005463123826524329}
+  Trial 3: Score=0.3879 | Hiperparâmetros: {"iterations": 1031, "learning_rate": 0.006748967718122401}
+  Trial 4: Score=0.3922 | Hiperparâmetros: {"iterations": 1020, "learning_rate": 0.017998345176344265}
+  Trial 5: Score=0.3904 | Hiperparâmetros: {"iterations": 373, "learning_rate": 0.09147634404210864}
+  Trial 6: Score=0.3931 | Hiperparâmetros: {"iterations": 1262, "learning_rate": 0.023114049943221006}
+  Trial 7: Score=0.3884 | Hiperparâmetros: {"iterations": 890, "learning_rate": 0.010095374548532876}
+  Trial 8: Score=0.3880 | Hiperparâmetros: {"iterations": 1117, "learning_rate": 0.04806910025135737}
+  Trial 9: Score=0.3910 | Hiperparâmetros: {"iterations": 1085, "learning_rate": 0.031711917259759005}
+  Trial 10: Score=0.3854 | Hiperparâmetros: {"iterations": 71, "learning_rate": 0.07158305270118417}
+  Trial 11: Score=0.3937 | Hiperparâmetros: {"iterations": 1479, "learning_rate": 0.017846650657106743}
+  Trial 12: Score=0.3930 | Hiperparâmetros: {"iterations": 1487, "learning_rate": 0.012424021546211656}
+  Trial 13: Score=0.3906 | Hiperparâmetros: {"iterations": 1281, "learning_rate": 0.028023742970672828}
+  Trial 14: Score=0.3923 | Hiperparâmetros: {"iterations": 1285, "learning_rate": 0.021357179430853603}
+  Trial 15: Score=0.3867 | Hiperparâmetros: {"iterations": 702, "learning_rate": 0.009601950659602017}
+  Trial 16: Score=0.3890 | Hiperparâmetros: {"iterations": 1246, "learning_rate": 0.04717913852625256}
+  Trial 17: Score=0.3925 | Hiperparâmetros: {"iterations": 1482, "learning_rate": 0.023950314811341352}
+  Trial 18: Score=0.3887 | Hiperparâmetros: {"iterations": 1206, "learning_rate": 0.04567438344053836}
+  Trial 19: Score=0.3887 | Hiperparâmetros: {"iterations": 717, "learning_rate": 0.014965360169088332}
+  Trial 20: Score=0.3887 | Hiperparâmetros: {"iterations": 1400, "learning_rate": 0.03812425782514837}
+  Trial 21: Score=0.3928 | Hiperparâmetros: {"iterations": 1483, "learning_rate": 0.01146968185060635}
+  Trial 22: Score=0.3917 | Hiperparâmetros: {"iterations": 1362, "learning_rate": 0.013004135976158782}
+  Trial 23: Score=0.3943 | Hiperparâmetros: {"iterations": 1500, "learning_rate": 0.01909575853282433}
+  Trial 24: Score=0.3933 | Hiperparâmetros: {"iterations": 1202, "learning_rate": 0.01900609232173724}
+  Trial 25: Score=0.3923 | Hiperparâmetros: {"iterations": 1158, "learning_rate": 0.017877563842034445}
+  Trial 26: Score=0.3902 | Hiperparâmetros: {"iterations": 1367, "learning_rate": 0.008492095907310144}
+  Trial 27: Score=0.3909 | Hiperparâmetros: {"iterations": 909, "learning_rate": 0.018939249385955925}
+  Trial 28: Score=0.3901 | Hiperparâmetros: {"iterations": 1492, "learning_rate": 0.02646589032120111}
+  Trial 29: Score=0.3892 | Hiperparâmetros: {"iterations": 1368, "learning_rate": 0.03593845135940756}
+
+Melhor trial (Optuna): 23
+  iterations: 1500
+  learning_rate: 0.01909575853282433
+  verbose: False
+  allow_writing_files: False
+  thread_count: 11
+  loss_function: MultiClass
+  classes_count: 3
+
+Importância dos parâmetros (Optuna):
+  iterations: 0.5881
+  learning_rate: 0.4119
+
+Resultado do treino:
+  accuracy: 0.9544
+  precision: 0.9847
+  recall: 0.4289
+  f1: 0.4871
+  roc_auc: 0.8917
+  pr_auc: 0.7254
+
+Resultado do teste:
+  accuracy: 0.9463
+  precision: 0.4267
+  recall: 0.3373
+  f1: 0.3320
+  roc_auc: 0.7092
+  pr_auc: 0.3829
+
+============================================================
+
+FOLD 3 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3876 | Hiperparâmetros: {"iterations": 1183, "learning_rate": 0.03537970745684371}
+  Trial 1: Score=0.3892 | Hiperparâmetros: {"iterations": 739, "learning_rate": 0.02343970700816945}
+  Trial 2: Score=0.3870 | Hiperparâmetros: {"iterations": 1162, "learning_rate": 0.03444561816024746}
+  Trial 3: Score=0.3873 | Hiperparâmetros: {"iterations": 1161, "learning_rate": 0.0121245385261253}
+  Trial 4: Score=0.3842 | Hiperparâmetros: {"iterations": 1417, "learning_rate": 0.0649797767464175}
+  Trial 5: Score=0.3821 | Hiperparâmetros: {"iterations": 881, "learning_rate": 0.005354955955548448}
+  Trial 6: Score=0.3857 | Hiperparâmetros: {"iterations": 1296, "learning_rate": 0.04319111825952272}
+  Trial 7: Score=0.3857 | Hiperparâmetros: {"iterations": 353, "learning_rate": 0.020824611543188206}
+  Trial 8: Score=0.3830 | Hiperparâmetros: {"iterations": 289, "learning_rate": 0.017089423076910103}
+  Trial 9: Score=0.3890 | Hiperparâmetros: {"iterations": 1277, "learning_rate": 0.029320477972908262}
+  Trial 10: Score=0.3834 | Hiperparâmetros: {"iterations": 596, "learning_rate": 0.009566182415225142}
+  Trial 11: Score=0.3817 | Hiperparâmetros: {"iterations": 875, "learning_rate": 0.0935539957071546}
+  Trial 12: Score=0.3882 | Hiperparâmetros: {"iterations": 661, "learning_rate": 0.026283302731913205}
+  Trial 13: Score=0.3859 | Hiperparâmetros: {"iterations": 959, "learning_rate": 0.013190157527816975}
+  Trial 14: Score=0.3880 | Hiperparâmetros: {"iterations": 497, "learning_rate": 0.05691146737515261}
+  Trial 15: Score=0.3898 | Hiperparâmetros: {"iterations": 1487, "learning_rate": 0.024805172269185737}
+  Trial 16: Score=0.3727 | Hiperparâmetros: {"iterations": 86, "learning_rate": 0.008061821341831686}
+  Trial 17: Score=0.3927 | Hiperparâmetros: {"iterations": 1492, "learning_rate": 0.020163354495153357}
+  Trial 18: Score=0.3877 | Hiperparâmetros: {"iterations": 1487, "learning_rate": 0.017155341209190163}
+  Trial 19: Score=0.3860 | Hiperparâmetros: {"iterations": 1489, "learning_rate": 0.05124251141624379}
+  Trial 20: Score=0.3876 | Hiperparâmetros: {"iterations": 1030, "learning_rate": 0.016916260344474247}
+  Trial 21: Score=0.3900 | Hiperparâmetros: {"iterations": 707, "learning_rate": 0.02428547863687876}
+  Trial 22: Score=0.3907 | Hiperparâmetros: {"iterations": 1319, "learning_rate": 0.023332547412278307}
+  Trial 23: Score=0.3882 | Hiperparâmetros: {"iterations": 1339, "learning_rate": 0.012024981328636653}
+  Trial 24: Score=0.3910 | Hiperparâmetros: {"iterations": 1021, "learning_rate": 0.03658403056370839}
+  Trial 25: Score=0.3899 | Hiperparâmetros: {"iterations": 1090, "learning_rate": 0.0375890723415525}
+  Trial 26: Score=0.3805 | Hiperparâmetros: {"iterations": 1354, "learning_rate": 0.08085227596416546}
+  Trial 27: Score=0.3854 | Hiperparâmetros: {"iterations": 1237, "learning_rate": 0.0456754173357236}
+  Trial 28: Score=0.3896 | Hiperparâmetros: {"iterations": 1021, "learning_rate": 0.01952855209626686}
+  Trial 29: Score=0.3891 | Hiperparâmetros: {"iterations": 1145, "learning_rate": 0.0320370254540116}
+
+Melhor trial (Optuna): 17
+  iterations: 1492
+  learning_rate: 0.020163354495153357
+  verbose: False
+  allow_writing_files: False
+  thread_count: 11
+  loss_function: MultiClass
+  classes_count: 3
+
+Importância dos parâmetros (Optuna):
+  learning_rate: 0.5498
+  iterations: 0.4502
+
+Resultado do treino:
+  accuracy: 0.9535
+  precision: 0.9844
+  recall: 0.4184
+  f1: 0.4716
+  roc_auc: 0.8973
+  pr_auc: 0.7311
+
+Resultado do teste:
+  accuracy: 0.9459
+  precision: 0.3155
+  recall: 0.3332
+  f1: 0.3241
+  roc_auc: 0.7003
+  pr_auc: 0.3918
+
+============================================================
+
+FOLD 4 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3833 | Hiperparâmetros: {"iterations": 1221, "learning_rate": 0.025353503724958287}
+  Trial 1: Score=0.3802 | Hiperparâmetros: {"iterations": 555, "learning_rate": 0.005162367774758223}
+  Trial 2: Score=0.3774 | Hiperparâmetros: {"iterations": 301, "learning_rate": 0.00565967553923637}
+  Trial 3: Score=0.3842 | Hiperparâmetros: {"iterations": 762, "learning_rate": 0.012710830066916987}
+  Trial 4: Score=0.3838 | Hiperparâmetros: {"iterations": 894, "learning_rate": 0.013654534729034263}
+  Trial 5: Score=0.3834 | Hiperparâmetros: {"iterations": 1284, "learning_rate": 0.006125677859515104}
+  Trial 6: Score=0.3848 | Hiperparâmetros: {"iterations": 893, "learning_rate": 0.03005459901257012}
+  Trial 7: Score=0.3805 | Hiperparâmetros: {"iterations": 1383, "learning_rate": 0.03856866362390192}
+  Trial 8: Score=0.3829 | Hiperparâmetros: {"iterations": 1031, "learning_rate": 0.007718339552621178}
+  Trial 9: Score=0.3756 | Hiperparâmetros: {"iterations": 1237, "learning_rate": 0.061321923775939285}
+  Trial 10: Score=0.3811 | Hiperparâmetros: {"iterations": 298, "learning_rate": 0.09966273234634719}
+  Trial 11: Score=0.3835 | Hiperparâmetros: {"iterations": 640, "learning_rate": 0.01307829175100366}
+  Trial 12: Score=0.3853 | Hiperparâmetros: {"iterations": 782, "learning_rate": 0.020713996887951024}
+  Trial 13: Score=0.3851 | Hiperparâmetros: {"iterations": 983, "learning_rate": 0.026913307881197713}
+  Trial 14: Score=0.3745 | Hiperparâmetros: {"iterations": 65, "learning_rate": 0.02012836320769999}
+  Trial 15: Score=0.3812 | Hiperparâmetros: {"iterations": 1050, "learning_rate": 0.04533717159468676}
+  Trial 16: Score=0.3848 | Hiperparâmetros: {"iterations": 526, "learning_rate": 0.019182825239183708}
+  Trial 17: Score=0.3801 | Hiperparâmetros: {"iterations": 1031, "learning_rate": 0.058840518716853994}
+  Trial 18: Score=0.3842 | Hiperparâmetros: {"iterations": 767, "learning_rate": 0.009598109780836243}
+  Trial 19: Score=0.3814 | Hiperparâmetros: {"iterations": 1485, "learning_rate": 0.03130956245217139}
+  Trial 20: Score=0.3831 | Hiperparâmetros: {"iterations": 451, "learning_rate": 0.0161763491264762}
+  Trial 21: Score=0.3849 | Hiperparâmetros: {"iterations": 908, "learning_rate": 0.027456519468865168}
+  Trial 22: Score=0.3852 | Hiperparâmetros: {"iterations": 894, "learning_rate": 0.02513837720572915}
+  Trial 23: Score=0.3861 | Hiperparâmetros: {"iterations": 1122, "learning_rate": 0.021441296144569414}
+  Trial 24: Score=0.3845 | Hiperparâmetros: {"iterations": 705, "learning_rate": 0.017870725025911475}
+  Trial 25: Score=0.3818 | Hiperparâmetros: {"iterations": 1132, "learning_rate": 0.03812842922938943}
+  Trial 26: Score=0.3838 | Hiperparâmetros: {"iterations": 853, "learning_rate": 0.009484943075943861}
+  Trial 27: Score=0.3844 | Hiperparâmetros: {"iterations": 1111, "learning_rate": 0.015038226822536319}
+  Trial 28: Score=0.3856 | Hiperparâmetros: {"iterations": 603, "learning_rate": 0.022116093650461084}
+  Trial 29: Score=0.3849 | Hiperparâmetros: {"iterations": 386, "learning_rate": 0.022281441021112}
+
+Melhor trial (Optuna): 23
+  iterations: 1122
+  learning_rate: 0.021441296144569414
+  verbose: False
+  allow_writing_files: False
+  thread_count: 11
+  loss_function: MultiClass
+  classes_count: 3
+
+Importância dos parâmetros (Optuna):
+  learning_rate: 0.6322
+  iterations: 0.3678
+
+Resultado do treino:
+  accuracy: 0.9510
+  precision: 0.9836
+  recall: 0.3880
+  f1: 0.4216
+  roc_auc: 0.8782
+  pr_auc: 0.6875
+
+Resultado do teste:
+  accuracy: 0.9459
+  precision: 0.3154
+  recall: 0.3332
+  f1: 0.3241
+  roc_auc: 0.7059
+  pr_auc: 0.3894
+
+============================================================
+
+FOLD 5 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3936 | Hiperparâmetros: {"iterations": 1352, "learning_rate": 0.02111749762496315}
+  Trial 1: Score=0.3888 | Hiperparâmetros: {"iterations": 1230, "learning_rate": 0.00953783733163741}
+  Trial 2: Score=0.3866 | Hiperparâmetros: {"iterations": 592, "learning_rate": 0.014353626548778593}
+  Trial 3: Score=0.3839 | Hiperparâmetros: {"iterations": 298, "learning_rate": 0.01605533404020968}
+  Trial 4: Score=0.3809 | Hiperparâmetros: {"iterations": 324, "learning_rate": 0.006154883102393766}
+  Trial 5: Score=0.3766 | Hiperparâmetros: {"iterations": 113, "learning_rate": 0.007857575687178611}
+  Trial 6: Score=0.3877 | Hiperparâmetros: {"iterations": 189, "learning_rate": 0.04369340085038513}
+  Trial 7: Score=0.3860 | Hiperparâmetros: {"iterations": 1225, "learning_rate": 0.07662694030855868}
+  Trial 8: Score=0.3888 | Hiperparâmetros: {"iterations": 972, "learning_rate": 0.013123977858667184}
+  Trial 9: Score=0.3937 | Hiperparâmetros: {"iterations": 1113, "learning_rate": 0.02575153967531869}
+  Trial 10: Score=0.3951 | Hiperparâmetros: {"iterations": 824, "learning_rate": 0.039498941421332236}
+  Trial 11: Score=0.3937 | Hiperparâmetros: {"iterations": 873, "learning_rate": 0.037268404972999346}
+  Trial 12: Score=0.3964 | Hiperparâmetros: {"iterations": 785, "learning_rate": 0.044203608114445805}
+  Trial 13: Score=0.3886 | Hiperparâmetros: {"iterations": 636, "learning_rate": 0.07840735535510703}
+  Trial 14: Score=0.3974 | Hiperparâmetros: {"iterations": 595, "learning_rate": 0.054769168595924275}
+  Trial 15: Score=0.3951 | Hiperparâmetros: {"iterations": 550, "learning_rate": 0.05930746639847101}
+  Trial 16: Score=0.3953 | Hiperparâmetros: {"iterations": 689, "learning_rate": 0.05391293002576094}
+  Trial 17: Score=0.3940 | Hiperparâmetros: {"iterations": 444, "learning_rate": 0.09563233747539118}
+  Trial 18: Score=0.3913 | Hiperparâmetros: {"iterations": 1045, "learning_rate": 0.027884590598346946}
+  Trial 19: Score=0.3934 | Hiperparâmetros: {"iterations": 1495, "learning_rate": 0.03263248588657703}
+  Trial 20: Score=0.3945 | Hiperparâmetros: {"iterations": 771, "learning_rate": 0.052631281972564045}
+  Trial 21: Score=0.3938 | Hiperparâmetros: {"iterations": 724, "learning_rate": 0.059022040672141146}
+  Trial 22: Score=0.3952 | Hiperparâmetros: {"iterations": 469, "learning_rate": 0.04719553646574315}
+  Trial 23: Score=0.3896 | Hiperparâmetros: {"iterations": 699, "learning_rate": 0.07480599899260842}
+  Trial 24: Score=0.3873 | Hiperparâmetros: {"iterations": 456, "learning_rate": 0.021342311627430624}
+  Trial 25: Score=0.3847 | Hiperparâmetros: {"iterations": 907, "learning_rate": 0.09647490154833267}
+  Trial 26: Score=0.3935 | Hiperparâmetros: {"iterations": 648, "learning_rate": 0.06166349949430004}
+  Trial 27: Score=0.3892 | Hiperparâmetros: {"iterations": 351, "learning_rate": 0.03232380510539613}
+  Trial 28: Score=0.3954 | Hiperparâmetros: {"iterations": 533, "learning_rate": 0.043992952087568156}
+  Trial 29: Score=0.3874 | Hiperparâmetros: {"iterations": 522, "learning_rate": 0.019811983080351935}
+
+Melhor trial (Optuna): 14
+  iterations: 595
+  learning_rate: 0.054769168595924275
+  verbose: False
+  allow_writing_files: False
+  thread_count: 11
+  loss_function: MultiClass
+  classes_count: 3
+
+Importância dos parâmetros (Optuna):
+  learning_rate: 0.6361
+  iterations: 0.3639
+
+Resultado do treino:
+  accuracy: 0.9539
+  precision: 0.9845
+  recall: 0.4243
+  f1: 0.4817
+  roc_auc: 0.9029
+  pr_auc: 0.7417
+
+Resultado do teste:
+  accuracy: 0.9470
+  precision: 0.5380
+  recall: 0.3414
+  f1: 0.3398
+  roc_auc: 0.6773
+  pr_auc: 0.3860
+
+============================================================
+
+TABELA DE MÉTRICAS DE TREINO E TESTE POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treino: 1     | 0.9509     | 0.9836     | 0.3883     | 0.4230     | 0.8567     | 0.6402    
+Teste:  1     | 0.9463     | 0.3155     | 0.3332     | 0.3241     | 0.7240     | 0.3945    
+Treino: 2     | 0.9544     | 0.9847     | 0.4289     | 0.4871     | 0.8917     | 0.7254    
+Teste:  2     | 0.9463     | 0.4267     | 0.3373     | 0.3320     | 0.7092     | 0.3829    
+Treino: 3     | 0.9535     | 0.9844     | 0.4184     | 0.4716     | 0.8973     | 0.7311    
+Teste:  3     | 0.9459     | 0.3155     | 0.3332     | 0.3241     | 0.7003     | 0.3918    
+Treino: 4     | 0.9510     | 0.9836     | 0.3880     | 0.4216     | 0.8782     | 0.6875    
+Teste:  4     | 0.9459     | 0.3154     | 0.3332     | 0.3241     | 0.7059     | 0.3894    
+Treino: 5     | 0.9539     | 0.9845     | 0.4243     | 0.4817     | 0.9029     | 0.7417    
+Teste:  5     | 0.9470     | 0.5380     | 0.3414     | 0.3398     | 0.6773     | 0.3860    
+
+MÉDIAS E DESVIOS PADRÃO DAS MÉTRICAS POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treinos: 0.9528+-0.00 0.9842+-0.00 0.4096+-0.02 0.4570+-0.03 0.8854+-0.02 0.7052+-0.04 
+Testes:  0.9463+-0.00 0.3822+-0.09 0.3357+-0.00 0.3288+-0.01 0.7033+-0.02 0.3889+-0.00 
+
+MELHOR CONJUNTO DE HIPERPARÂMETROS GLOBAL (selecionado pelo maior PR AUC  ):
+------------------------------------------------------------
+{
+  "iterations": 1317,
+  "learning_rate": 0.01564132105335361,
+  "verbose": false,
+  "allow_writing_files": false,
+  "thread_count": 11,
+  "loss_function": "MultiClass",
+  "classes_count": 3
+}
+

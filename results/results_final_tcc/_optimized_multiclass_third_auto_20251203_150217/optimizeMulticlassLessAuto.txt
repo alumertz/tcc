@@ -1,0 +1,1184 @@
+[I 2025-12-03 15:02:17,931] A new study created in memory with name: catboost_fold_1
+[D 2025-12-03 15:02:17,931] Sample trial#0 with RandomSampler.
+[I 2025-12-03 15:02:21,710] Trial 0 finished with value: 0.386536737913051 and parameters: {'iterations': 500, 'learning_rate': 0.009211733678925593, 'depth': 4, 'l2_leaf_reg': 2.147110727845194, 'border_count': 231, 'bagging_temperature': 0.5636294097629309, 'random_strength': 0.16330579903086362}. Best is trial 0 with value: 0.386536737913051.
+[D 2025-12-03 15:02:21,760] Sample trial#1 with GPSampler.
+[I 2025-12-03 15:02:22,722] Trial 1 finished with value: 0.37626673274182243 and parameters: {'iterations': 100, 'learning_rate': 0.012012149225331403, 'depth': 2, 'l2_leaf_reg': 7.275574211719059, 'border_count': 234, 'bagging_temperature': 0.6274419192389686, 'random_strength': 0.8406935723116596}. Best is trial 0 with value: 0.386536737913051.
+[D 2025-12-03 15:02:22,774] Sample trial#2 with GPSampler.
+[I 2025-12-03 15:02:26,364] Trial 2 finished with value: 0.38503534392885136 and parameters: {'iterations': 800, 'learning_rate': 0.01634941542493986, 'depth': 2, 'l2_leaf_reg': 6.072199993289827, 'border_count': 253, 'bagging_temperature': 0.9925074635782677, 'random_strength': 0.4483623055008289}. Best is trial 0 with value: 0.386536737913051.
+[D 2025-12-03 15:02:26,415] Sample trial#3 with GPSampler.
+[I 2025-12-03 15:02:30,345] Trial 3 finished with value: 0.3853382832343095 and parameters: {'iterations': 600, 'learning_rate': 0.006264400798745676, 'depth': 4, 'l2_leaf_reg': 7.136408662614745, 'border_count': 169, 'bagging_temperature': 0.9128005580997385, 'random_strength': 0.5925091176169572}. Best is trial 0 with value: 0.386536737913051.
+[D 2025-12-03 15:02:30,396] Sample trial#4 with GPSampler.
+[I 2025-12-03 15:02:32,057] Trial 4 finished with value: 0.3830610484784585 and parameters: {'iterations': 300, 'learning_rate': 0.010519711446657056, 'depth': 2, 'l2_leaf_reg': 9.952109464153796, 'border_count': 166, 'bagging_temperature': 0.5551742616053076, 'random_strength': 0.8728323183455856}. Best is trial 0 with value: 0.386536737913051.
+[D 2025-12-03 15:02:32,108] Sample trial#5 with GPSampler.
+[I 2025-12-03 15:02:35,298] Trial 5 finished with value: 0.3859309218395962 and parameters: {'iterations': 700, 'learning_rate': 0.01599554604001007, 'depth': 2, 'l2_leaf_reg': 8.266410013267134, 'border_count': 229, 'bagging_temperature': 0.2270007808502461, 'random_strength': 0.15192831479721158}. Best is trial 0 with value: 0.386536737913051.
+[D 2025-12-03 15:02:35,356] Sample trial#6 with GPSampler.
+[I 2025-12-03 15:02:38,564] Trial 6 finished with value: 0.3874318401505798 and parameters: {'iterations': 700, 'learning_rate': 0.008941436476909571, 'depth': 2, 'l2_leaf_reg': 6.841684506807444, 'border_count': 230, 'bagging_temperature': 0.8523951939987204, 'random_strength': 0.9311235624728906}. Best is trial 6 with value: 0.3874318401505798.
+[D 2025-12-03 15:02:38,613] Sample trial#7 with GPSampler.
+[I 2025-12-03 15:02:43,706] Trial 7 finished with value: 0.38733692932128533 and parameters: {'iterations': 700, 'learning_rate': 0.008361438446728873, 'depth': 4, 'l2_leaf_reg': 5.087193365915094, 'border_count': 244, 'bagging_temperature': 0.7323253974332538, 'random_strength': 0.3861732414646458}. Best is trial 6 with value: 0.3874318401505798.
+[D 2025-12-03 15:02:43,757] Sample trial#8 with GPSampler.
+[I 2025-12-03 15:02:45,221] Trial 8 finished with value: 0.386532349866926 and parameters: {'iterations': 200, 'learning_rate': 0.019444569831444884, 'depth': 3, 'l2_leaf_reg': 9.190121529802019, 'border_count': 189, 'bagging_temperature': 0.08401981059268293, 'random_strength': 0.2627408690200279}. Best is trial 6 with value: 0.3874318401505798.
+[D 2025-12-03 15:02:45,273] Sample trial#9 with GPSampler.
+[I 2025-12-03 15:02:47,708] Trial 9 finished with value: 0.37559124888974615 and parameters: {'iterations': 500, 'learning_rate': 0.0022101474995439912, 'depth': 2, 'l2_leaf_reg': 6.897424914534327, 'border_count': 171, 'bagging_temperature': 0.3403039986761387, 'random_strength': 0.9698521891516513}. Best is trial 6 with value: 0.3874318401505798.
+[D 2025-12-03 15:02:47,759] Sample trial#10 with GPSampler.
+[I 2025-12-03 15:02:53,181] Trial 10 finished with value: 0.38589310868987636 and parameters: {'iterations': 800, 'learning_rate': 0.011950652099537235, 'depth': 4, 'l2_leaf_reg': 4.794788706982356, 'border_count': 195, 'bagging_temperature': 0.8986101141857651, 'random_strength': 0.6043022275289879}. Best is trial 6 with value: 0.3874318401505798.
+[D 2025-12-03 15:02:53,232] Sample trial#11 with GPSampler.
+[I 2025-12-03 15:02:57,274] Trial 11 finished with value: 0.3861127392942693 and parameters: {'iterations': 900, 'learning_rate': 0.006291354562182774, 'depth': 2, 'l2_leaf_reg': 7.964533144778403, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.796755668326987}. Best is trial 6 with value: 0.3874318401505798.
+[D 2025-12-03 15:02:57,326] Sample trial#12 with GPSampler.
+[I 2025-12-03 15:03:00,558] Trial 12 finished with value: 0.38776344002451957 and parameters: {'iterations': 500, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 150, 'bagging_temperature': 0.26749437843734303, 'random_strength': 0.0}. Best is trial 12 with value: 0.38776344002451957.
+[D 2025-12-03 15:03:00,609] Sample trial#13 with GPSampler.
+[I 2025-12-03 15:03:03,813] Trial 13 finished with value: 0.3858759179591256 and parameters: {'iterations': 500, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 2.4322123868439824, 'border_count': 150, 'bagging_temperature': 0.0, 'random_strength': 0.0}. Best is trial 12 with value: 0.38776344002451957.
+[D 2025-12-03 15:03:03,864] Sample trial#14 with GPSampler.
+[I 2025-12-03 15:03:07,015] Trial 14 finished with value: 0.38734175407465926 and parameters: {'iterations': 700, 'learning_rate': 0.009602559115829329, 'depth': 2, 'l2_leaf_reg': 10.0, 'border_count': 182, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 12 with value: 0.38776344002451957.
+[D 2025-12-03 15:03:07,066] Sample trial#15 with GPSampler.
+[I 2025-12-03 15:03:09,805] Trial 15 finished with value: 0.38394090224883004 and parameters: {'iterations': 600, 'learning_rate': 0.02, 'depth': 2, 'l2_leaf_reg': 10.0, 'border_count': 150, 'bagging_temperature': 0.0, 'random_strength': 1.0}. Best is trial 12 with value: 0.38776344002451957.
+[D 2025-12-03 15:03:09,858] Sample trial#16 with GPSampler.
+[I 2025-12-03 15:03:12,097] Trial 16 finished with value: 0.38929206500423164 and parameters: {'iterations': 300, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.38929206500423164.
+[D 2025-12-03 15:03:12,148] Sample trial#17 with GPSampler.
+[I 2025-12-03 15:03:15,285] Trial 17 finished with value: 0.38913640403334426 and parameters: {'iterations': 400, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 238, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.38929206500423164.
+[D 2025-12-03 15:03:15,335] Sample trial#18 with GPSampler.
+[I 2025-12-03 15:03:17,383] Trial 18 finished with value: 0.38833029516917034 and parameters: {'iterations': 400, 'learning_rate': 0.02, 'depth': 2, 'l2_leaf_reg': 10.0, 'border_count': 166, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.38929206500423164.
+[D 2025-12-03 15:03:17,435] Sample trial#19 with GPSampler.
+[I 2025-12-03 15:03:21,617] Trial 19 finished with value: 0.38806128607210766 and parameters: {'iterations': 1000, 'learning_rate': 0.009111463832049145, 'depth': 2, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 0.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.38929206500423164.
+[D 2025-12-03 15:03:21,666] Sample trial#20 with GPSampler.
+[I 2025-12-03 15:03:27,631] Trial 20 finished with value: 0.3852451837312866 and parameters: {'iterations': 1000, 'learning_rate': 0.009274826187962746, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 150, 'bagging_temperature': 0.0, 'random_strength': 1.0}. Best is trial 16 with value: 0.38929206500423164.
+[D 2025-12-03 15:03:27,682] Sample trial#21 with GPSampler.
+[I 2025-12-03 15:03:28,956] Trial 21 finished with value: 0.388536926351674 and parameters: {'iterations': 100, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.38929206500423164.
+[D 2025-12-03 15:03:29,008] Sample trial#22 with GPSampler.
+[I 2025-12-03 15:03:33,409] Trial 22 finished with value: 0.3864456250017826 and parameters: {'iterations': 1000, 'learning_rate': 0.009180390498956966, 'depth': 2, 'l2_leaf_reg': 1.0, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.38929206500423164.
+[D 2025-12-03 15:03:33,460] Sample trial#23 with GPSampler.
+[I 2025-12-03 15:03:40,611] Trial 23 finished with value: 0.3869742581825961 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.38929206500423164.
+[D 2025-12-03 15:03:40,663] Sample trial#24 with GPSampler.
+[I 2025-12-03 15:03:44,830] Trial 24 finished with value: 0.38624556595060533 and parameters: {'iterations': 1000, 'learning_rate': 0.013018439800077927, 'depth': 2, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 0.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.38929206500423164.
+[D 2025-12-03 15:03:44,880] Sample trial#25 with GPSampler.
+[I 2025-12-03 15:03:48,359] Trial 25 finished with value: 0.38732336811762785 and parameters: {'iterations': 800, 'learning_rate': 0.008632962798611012, 'depth': 2, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 0.9999999999999999, 'random_strength': 0.5443859055831273}. Best is trial 16 with value: 0.38929206500423164.
+[D 2025-12-03 15:03:48,410] Sample trial#26 with GPSampler.
+[I 2025-12-03 15:03:51,551] Trial 26 finished with value: 0.38703727629243206 and parameters: {'iterations': 700, 'learning_rate': 0.00877509231003286, 'depth': 2, 'l2_leaf_reg': 4.593843016101012, 'border_count': 150, 'bagging_temperature': 0.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.38929206500423164.
+[D 2025-12-03 15:03:51,602] Sample trial#27 with GPSampler.
+[I 2025-12-03 15:03:52,752] Trial 27 finished with value: 0.3875846188149254 and parameters: {'iterations': 100, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 150, 'bagging_temperature': 0.9999999999999999, 'random_strength': 0.0}. Best is trial 16 with value: 0.38929206500423164.
+[D 2025-12-03 15:03:52,804] Sample trial#28 with GPSampler.
+[I 2025-12-03 15:03:55,268] Trial 28 finished with value: 0.38904196161853455 and parameters: {'iterations': 300, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 227, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.38929206500423164.
+[D 2025-12-03 15:03:55,319] Sample trial#29 with GPSampler.
+[I 2025-12-03 15:03:58,608] Trial 29 finished with value: 0.38897051011624634 and parameters: {'iterations': 500, 'learning_rate': 0.018815665061595623, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.38929206500423164.
+[I 2025-12-03 15:04:00,111] A new study created in memory with name: catboost_fold_2
+[D 2025-12-03 15:04:00,111] Sample trial#0 with RandomSampler.
+[I 2025-12-03 15:04:04,026] Trial 0 finished with value: 0.38392481689502445 and parameters: {'iterations': 900, 'learning_rate': 0.007617569094307438, 'depth': 2, 'l2_leaf_reg': 8.627937585375001, 'border_count': 229, 'bagging_temperature': 0.8414071114318162, 'random_strength': 0.030803737703133938}. Best is trial 0 with value: 0.38392481689502445.
+[D 2025-12-03 15:04:04,093] Sample trial#1 with GPSampler.
+[I 2025-12-03 15:04:08,227] Trial 1 finished with value: 0.3861662258688787 and parameters: {'iterations': 800, 'learning_rate': 0.006600582797609491, 'depth': 3, 'l2_leaf_reg': 4.091377821443542, 'border_count': 181, 'bagging_temperature': 0.6372645982214881, 'random_strength': 0.568693645743088}. Best is trial 1 with value: 0.3861662258688787.
+[D 2025-12-03 15:04:08,296] Sample trial#2 with GPSampler.
+[I 2025-12-03 15:04:13,569] Trial 2 finished with value: 0.38753586780552995 and parameters: {'iterations': 1000, 'learning_rate': 0.011004843446265414, 'depth': 3, 'l2_leaf_reg': 7.4451433318269835, 'border_count': 253, 'bagging_temperature': 0.692114731398435, 'random_strength': 0.5557584520497898}. Best is trial 2 with value: 0.38753586780552995.
+[D 2025-12-03 15:04:13,638] Sample trial#3 with GPSampler.
+[I 2025-12-03 15:04:14,587] Trial 3 finished with value: 0.38122923831861744 and parameters: {'iterations': 100, 'learning_rate': 0.007091401333297009, 'depth': 2, 'l2_leaf_reg': 3.519048008144972, 'border_count': 218, 'bagging_temperature': 0.9908694753878878, 'random_strength': 0.07563552731429546}. Best is trial 2 with value: 0.38753586780552995.
+[D 2025-12-03 15:04:14,654] Sample trial#4 with GPSampler.
+[I 2025-12-03 15:04:15,712] Trial 4 finished with value: 0.3717911527461048 and parameters: {'iterations': 100, 'learning_rate': 0.010770743296316356, 'depth': 3, 'l2_leaf_reg': 9.228685390307124, 'border_count': 237, 'bagging_temperature': 0.3401941649166159, 'random_strength': 0.9093553393416886}. Best is trial 2 with value: 0.38753586780552995.
+[D 2025-12-03 15:04:15,779] Sample trial#5 with GPSampler.
+[I 2025-12-03 15:04:21,510] Trial 5 finished with value: 0.3892352751825278 and parameters: {'iterations': 900, 'learning_rate': 0.007109785567648656, 'depth': 4, 'l2_leaf_reg': 5.864610452853827, 'border_count': 188, 'bagging_temperature': 0.9532360656244918, 'random_strength': 0.37345059413240156}. Best is trial 5 with value: 0.3892352751825278.
+[D 2025-12-03 15:04:21,578] Sample trial#6 with GPSampler.
+[I 2025-12-03 15:04:23,914] Trial 6 finished with value: 0.3871023454365161 and parameters: {'iterations': 300, 'learning_rate': 0.016924955783348083, 'depth': 4, 'l2_leaf_reg': 6.917901852035083, 'border_count': 198, 'bagging_temperature': 0.8695323336534314, 'random_strength': 0.4119715511379559}. Best is trial 5 with value: 0.3892352751825278.
+[D 2025-12-03 15:04:23,982] Sample trial#7 with GPSampler.
+[I 2025-12-03 15:04:26,761] Trial 7 finished with value: 0.3844294988675011 and parameters: {'iterations': 600, 'learning_rate': 0.01442058052487365, 'depth': 2, 'l2_leaf_reg': 5.403795242118504, 'border_count': 197, 'bagging_temperature': 0.7413080363011516, 'random_strength': 0.8006511992952609}. Best is trial 5 with value: 0.3892352751825278.
+[D 2025-12-03 15:04:26,828] Sample trial#8 with GPSampler.
+[I 2025-12-03 15:04:29,230] Trial 8 finished with value: 0.37011716496056135 and parameters: {'iterations': 300, 'learning_rate': 0.002089600118959154, 'depth': 4, 'l2_leaf_reg': 7.830178247612311, 'border_count': 205, 'bagging_temperature': 0.7138362658564932, 'random_strength': 0.5089205005063647}. Best is trial 5 with value: 0.3892352751825278.
+[D 2025-12-03 15:04:29,298] Sample trial#9 with GPSampler.
+[I 2025-12-03 15:04:30,627] Trial 9 finished with value: 0.3788316973976037 and parameters: {'iterations': 200, 'learning_rate': 0.007634515329074496, 'depth': 2, 'l2_leaf_reg': 7.337951433546535, 'border_count': 237, 'bagging_temperature': 0.8821989442831885, 'random_strength': 0.3862390091686051}. Best is trial 5 with value: 0.3892352751825278.
+[D 2025-12-03 15:04:30,694] Sample trial#10 with GPSampler.
+[I 2025-12-03 15:04:36,907] Trial 10 finished with value: 0.39376293000690543 and parameters: {'iterations': 1000, 'learning_rate': 0.01305819745096292, 'depth': 4, 'l2_leaf_reg': 2.3637335647386104, 'border_count': 174, 'bagging_temperature': 1.0, 'random_strength': 0.395673066754605}. Best is trial 10 with value: 0.39376293000690543.
+[D 2025-12-03 15:04:36,975] Sample trial#11 with GPSampler.
+[I 2025-12-03 15:04:42,418] Trial 11 finished with value: 0.3974846406700151 and parameters: {'iterations': 900, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 2.711096698378606, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 11 with value: 0.3974846406700151.
+[D 2025-12-03 15:04:42,485] Sample trial#12 with GPSampler.
+[I 2025-12-03 15:04:48,507] Trial 12 finished with value: 0.3965913656178608 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 0.5103309175025267, 'random_strength': 0.0}. Best is trial 11 with value: 0.3974846406700151.
+[D 2025-12-03 15:04:48,575] Sample trial#13 with GPSampler.
+[I 2025-12-03 15:04:54,513] Trial 13 finished with value: 0.39375095776912244 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 9.022524155207151, 'border_count': 150, 'bagging_temperature': 0.9166889008573015, 'random_strength': 0.0}. Best is trial 11 with value: 0.3974846406700151.
+[D 2025-12-03 15:04:54,582] Sample trial#14 with GPSampler.
+[I 2025-12-03 15:04:59,981] Trial 14 finished with value: 0.3974547288739667 and parameters: {'iterations': 800, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 213, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 11 with value: 0.3974846406700151.
+[D 2025-12-03 15:05:00,048] Sample trial#15 with GPSampler.
+[I 2025-12-03 15:05:04,439] Trial 15 finished with value: 0.3970454218493936 and parameters: {'iterations': 700, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 11 with value: 0.3974846406700151.
+[D 2025-12-03 15:05:04,506] Sample trial#16 with GPSampler.
+[I 2025-12-03 15:05:10,699] Trial 16 finished with value: 0.39813087282228005 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 173, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.39813087282228005.
+[D 2025-12-03 15:05:10,768] Sample trial#17 with GPSampler.
+[I 2025-12-03 15:05:15,718] Trial 17 finished with value: 0.39589864222654525 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 3, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.39813087282228005.
+[D 2025-12-03 15:05:15,788] Sample trial#18 with GPSampler.
+[I 2025-12-03 15:05:21,884] Trial 18 finished with value: 0.39598991026310426 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 1.0}. Best is trial 16 with value: 0.39813087282228005.
+[D 2025-12-03 15:05:21,956] Sample trial#19 with GPSampler.
+[I 2025-12-03 15:05:29,296] Trial 19 finished with value: 0.3995239246326078 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 19 with value: 0.3995239246326078.
+[D 2025-12-03 15:05:29,364] Sample trial#20 with GPSampler.
+[I 2025-12-03 15:05:36,539] Trial 20 finished with value: 0.3930540090453987 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 255, 'bagging_temperature': 0.0, 'random_strength': 0.0}. Best is trial 19 with value: 0.3995239246326078.
+[D 2025-12-03 15:05:36,609] Sample trial#21 with GPSampler.
+[I 2025-12-03 15:05:43,844] Trial 21 finished with value: 0.39703600378985926 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.5001504454709367}. Best is trial 19 with value: 0.3995239246326078.
+[D 2025-12-03 15:05:43,912] Sample trial#22 with GPSampler.
+[I 2025-12-03 15:05:51,167] Trial 22 finished with value: 0.3995239246326078 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 19 with value: 0.3995239246326078.
+[D 2025-12-03 15:05:51,235] Sample trial#23 with GPSampler.
+[I 2025-12-03 15:05:56,744] Trial 23 finished with value: 0.39399773142438305 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 3, 'l2_leaf_reg': 1.0, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 19 with value: 0.3995239246326078.
+[D 2025-12-03 15:05:56,813] Sample trial#24 with GPSampler.
+[I 2025-12-03 15:06:00,974] Trial 24 finished with value: 0.38886055298855127 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 2, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 0.0, 'random_strength': 1.0}. Best is trial 19 with value: 0.3995239246326078.
+[D 2025-12-03 15:06:01,042] Sample trial#25 with GPSampler.
+[I 2025-12-03 15:06:01,991] Trial 25 finished with value: 0.3855857183421204 and parameters: {'iterations': 100, 'learning_rate': 0.02, 'depth': 2, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 0.9958069307306723, 'random_strength': 0.0}. Best is trial 19 with value: 0.3995239246326078.
+[D 2025-12-03 15:06:02,059] Sample trial#26 with GPSampler.
+[I 2025-12-03 15:06:09,546] Trial 26 finished with value: 0.3951363427070508 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 3.7179175705772254, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 19 with value: 0.3995239246326078.
+[D 2025-12-03 15:06:09,613] Sample trial#27 with GPSampler.
+[I 2025-12-03 15:06:15,443] Trial 27 finished with value: 0.38884902712210384 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 150, 'bagging_temperature': 0.0, 'random_strength': 1.0}. Best is trial 19 with value: 0.3995239246326078.
+[D 2025-12-03 15:06:15,512] Sample trial#28 with GPSampler.
+[I 2025-12-03 15:06:22,531] Trial 28 finished with value: 0.3887634032736357 and parameters: {'iterations': 1000, 'learning_rate': 0.001, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 19 with value: 0.3995239246326078.
+[D 2025-12-03 15:06:22,598] Sample trial#29 with GPSampler.
+[I 2025-12-03 15:06:29,717] Trial 29 finished with value: 0.39809157734353623 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 240, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 19 with value: 0.3995239246326078.
+[I 2025-12-03 15:06:31,997] A new study created in memory with name: catboost_fold_3
+[D 2025-12-03 15:06:31,997] Sample trial#0 with RandomSampler.
+[I 2025-12-03 15:06:33,717] Trial 0 finished with value: 0.37461421991545085 and parameters: {'iterations': 300, 'learning_rate': 0.0034097224448851574, 'depth': 2, 'l2_leaf_reg': 6.769857783593797, 'border_count': 226, 'bagging_temperature': 0.7039125026872672, 'random_strength': 0.7013672594172287}. Best is trial 0 with value: 0.37461421991545085.
+[D 2025-12-03 15:06:33,787] Sample trial#1 with GPSampler.
+[I 2025-12-03 15:06:39,937] Trial 1 finished with value: 0.38268679003770667 and parameters: {'iterations': 1000, 'learning_rate': 0.004958819956894665, 'depth': 4, 'l2_leaf_reg': 3.6891691286444677, 'border_count': 162, 'bagging_temperature': 0.14776896662296102, 'random_strength': 0.576023336089785}. Best is trial 1 with value: 0.38268679003770667.
+[D 2025-12-03 15:06:40,006] Sample trial#2 with GPSampler.
+[I 2025-12-03 15:06:42,441] Trial 2 finished with value: 0.38170571825545957 and parameters: {'iterations': 500, 'learning_rate': 0.010307789689227836, 'depth': 2, 'l2_leaf_reg': 7.752135975651225, 'border_count': 246, 'bagging_temperature': 0.863960753045926, 'random_strength': 0.07299585533545039}. Best is trial 1 with value: 0.38268679003770667.
+[D 2025-12-03 15:06:42,512] Sample trial#3 with GPSampler.
+[I 2025-12-03 15:06:46,124] Trial 3 finished with value: 0.377288131343363 and parameters: {'iterations': 800, 'learning_rate': 0.0010673422388197446, 'depth': 2, 'l2_leaf_reg': 2.746934716516251, 'border_count': 230, 'bagging_temperature': 0.530395929888529, 'random_strength': 0.21912895815181566}. Best is trial 1 with value: 0.38268679003770667.
+[D 2025-12-03 15:06:46,194] Sample trial#4 with GPSampler.
+[I 2025-12-03 15:06:50,514] Trial 4 finished with value: 0.3841135434998843 and parameters: {'iterations': 800, 'learning_rate': 0.008365106854184871, 'depth': 3, 'l2_leaf_reg': 8.139272913262378, 'border_count': 233, 'bagging_temperature': 0.9804742304213561, 'random_strength': 0.40973802063895015}. Best is trial 4 with value: 0.3841135434998843.
+[D 2025-12-03 15:06:50,585] Sample trial#5 with GPSampler.
+[I 2025-12-03 15:06:52,036] Trial 5 finished with value: 0.3751411138829149 and parameters: {'iterations': 200, 'learning_rate': 0.0019107426278834974, 'depth': 3, 'l2_leaf_reg': 4.213919390513954, 'border_count': 153, 'bagging_temperature': 0.5199039717685918, 'random_strength': 0.6431703891778943}. Best is trial 4 with value: 0.3841135434998843.
+[D 2025-12-03 15:06:52,105] Sample trial#6 with GPSampler.
+[I 2025-12-03 15:06:54,163] Trial 6 finished with value: 0.3820279414570181 and parameters: {'iterations': 400, 'learning_rate': 0.015170390685414856, 'depth': 2, 'l2_leaf_reg': 5.077972203879294, 'border_count': 208, 'bagging_temperature': 0.05334078920950003, 'random_strength': 0.3417626729049237}. Best is trial 4 with value: 0.3841135434998843.
+[D 2025-12-03 15:06:54,235] Sample trial#7 with GPSampler.
+[I 2025-12-03 15:06:59,320] Trial 7 finished with value: 0.38762858292071195 and parameters: {'iterations': 800, 'learning_rate': 0.016234729425826086, 'depth': 4, 'l2_leaf_reg': 4.389592313672987, 'border_count': 182, 'bagging_temperature': 0.4508792343089405, 'random_strength': 0.12349934805986795}. Best is trial 7 with value: 0.38762858292071195.
+[D 2025-12-03 15:06:59,392] Sample trial#8 with GPSampler.
+[I 2025-12-03 15:07:01,347] Trial 8 finished with value: 0.38196710096659325 and parameters: {'iterations': 300, 'learning_rate': 0.013417043492608152, 'depth': 3, 'l2_leaf_reg': 4.146313769608139, 'border_count': 200, 'bagging_temperature': 0.8864292252699671, 'random_strength': 0.9163004194993659}. Best is trial 7 with value: 0.38762858292071195.
+[D 2025-12-03 15:07:01,416] Sample trial#9 with GPSampler.
+[I 2025-12-03 15:07:02,386] Trial 9 finished with value: 0.3756792945820054 and parameters: {'iterations': 100, 'learning_rate': 0.019611564289584073, 'depth': 2, 'l2_leaf_reg': 9.568031053178727, 'border_count': 252, 'bagging_temperature': 0.986452264953752, 'random_strength': 0.5114856937783333}. Best is trial 7 with value: 0.38762858292071195.
+[D 2025-12-03 15:07:02,456] Sample trial#10 with GPSampler.
+[I 2025-12-03 15:07:08,832] Trial 10 finished with value: 0.3888330284357496 and parameters: {'iterations': 1000, 'learning_rate': 0.014339635703876776, 'depth': 4, 'l2_leaf_reg': 4.240206993758488, 'border_count': 184, 'bagging_temperature': 0.8221804173832067, 'random_strength': 0.3496406383200088}. Best is trial 10 with value: 0.3888330284357496.
+[D 2025-12-03 15:07:08,901] Sample trial#11 with GPSampler.
+[I 2025-12-03 15:07:14,947] Trial 11 finished with value: 0.3906268685186779 and parameters: {'iterations': 1000, 'learning_rate': 0.014391338601551978, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 0.9999999999999999, 'random_strength': 0.0}. Best is trial 11 with value: 0.3906268685186779.
+[D 2025-12-03 15:07:15,016] Sample trial#12 with GPSampler.
+[I 2025-12-03 15:07:19,196] Trial 12 finished with value: 0.3860025816018256 and parameters: {'iterations': 1000, 'learning_rate': 0.01531577021092674, 'depth': 2, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 11 with value: 0.3906268685186779.
+[D 2025-12-03 15:07:19,266] Sample trial#13 with GPSampler.
+[I 2025-12-03 15:07:25,262] Trial 13 finished with value: 0.3897135898031992 and parameters: {'iterations': 1000, 'learning_rate': 0.011951072433833965, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 11 with value: 0.3906268685186779.
+[D 2025-12-03 15:07:25,331] Sample trial#14 with GPSampler.
+[I 2025-12-03 15:07:32,498] Trial 14 finished with value: 0.39005299316752884 and parameters: {'iterations': 1000, 'learning_rate': 0.01435551074929008, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 245, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 11 with value: 0.3906268685186779.
+[D 2025-12-03 15:07:32,568] Sample trial#15 with GPSampler.
+[I 2025-12-03 15:07:38,705] Trial 15 finished with value: 0.3923785739712102 and parameters: {'iterations': 1000, 'learning_rate': 0.018011984980947, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 15 with value: 0.3923785739712102.
+[D 2025-12-03 15:07:38,776] Sample trial#16 with GPSampler.
+[I 2025-12-03 15:07:44,780] Trial 16 finished with value: 0.3926429047222997 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.3926429047222997.
+[D 2025-12-03 15:07:44,851] Sample trial#17 with GPSampler.
+[I 2025-12-03 15:07:50,915] Trial 17 finished with value: 0.39121104598667616 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 0.7262688484103133}. Best is trial 16 with value: 0.3926429047222997.
+[D 2025-12-03 15:07:50,986] Sample trial#18 with GPSampler.
+[I 2025-12-03 15:07:55,938] Trial 18 finished with value: 0.39142442434022273 and parameters: {'iterations': 800, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 0.9999999999999999, 'random_strength': 0.0}. Best is trial 16 with value: 0.3926429047222997.
+[D 2025-12-03 15:07:56,009] Sample trial#19 with GPSampler.
+[I 2025-12-03 15:08:02,487] Trial 19 finished with value: 0.39223284713618906 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 198, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.3926429047222997.
+[D 2025-12-03 15:08:02,557] Sample trial#20 with GPSampler.
+[I 2025-12-03 15:08:08,581] Trial 20 finished with value: 0.3926429047222997 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.3926429047222997.
+[D 2025-12-03 15:08:08,651] Sample trial#21 with GPSampler.
+[I 2025-12-03 15:08:14,722] Trial 21 finished with value: 0.3854705367141008 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 0.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.3926429047222997.
+[D 2025-12-03 15:08:14,793] Sample trial#22 with GPSampler.
+[I 2025-12-03 15:08:20,716] Trial 22 finished with value: 0.3905559745499364 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 6.17316719242183, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.3926429047222997.
+[D 2025-12-03 15:08:20,785] Sample trial#23 with GPSampler.
+[I 2025-12-03 15:08:27,912] Trial 23 finished with value: 0.38323005295089907 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 9.999999999999998, 'border_count': 255, 'bagging_temperature': 0.0, 'random_strength': 1.0}. Best is trial 16 with value: 0.3926429047222997.
+[D 2025-12-03 15:08:27,983] Sample trial#24 with GPSampler.
+[I 2025-12-03 15:08:34,200] Trial 24 finished with value: 0.3918564668878925 and parameters: {'iterations': 1000, 'learning_rate': 0.019809627112677246, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 0.8776069863863717, 'random_strength': 0.0}. Best is trial 16 with value: 0.3926429047222997.
+[D 2025-12-03 15:08:34,270] Sample trial#25 with GPSampler.
+[I 2025-12-03 15:08:39,206] Trial 25 finished with value: 0.3902655205089398 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 3, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.3926429047222997.
+[D 2025-12-03 15:08:39,277] Sample trial#26 with GPSampler.
+[I 2025-12-03 15:08:45,339] Trial 26 finished with value: 0.3926429047222997 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.3926429047222997.
+[D 2025-12-03 15:08:45,411] Sample trial#27 with GPSampler.
+[I 2025-12-03 15:08:51,763] Trial 27 finished with value: 0.3926429047222997 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.3926429047222997.
+[D 2025-12-03 15:08:51,835] Sample trial#28 with GPSampler.
+[I 2025-12-03 15:08:53,084] Trial 28 finished with value: 0.3826983203747274 and parameters: {'iterations': 100, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 0.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.3926429047222997.
+[D 2025-12-03 15:08:53,155] Sample trial#29 with GPSampler.
+[I 2025-12-03 15:08:59,439] Trial 29 finished with value: 0.3926429047222997 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.3926429047222997.
+[I 2025-12-03 15:09:01,433] A new study created in memory with name: catboost_fold_4
+[D 2025-12-03 15:09:01,434] Sample trial#0 with RandomSampler.
+[I 2025-12-03 15:09:02,384] Trial 0 finished with value: 0.37478477895572293 and parameters: {'iterations': 100, 'learning_rate': 0.01197316886928369, 'depth': 2, 'l2_leaf_reg': 2.728451229923613, 'border_count': 170, 'bagging_temperature': 0.8729772488783514, 'random_strength': 0.6832572905197173}. Best is trial 0 with value: 0.37478477895572293.
+[D 2025-12-03 15:09:02,456] Sample trial#1 with GPSampler.
+[I 2025-12-03 15:09:06,284] Trial 1 finished with value: 0.3815472198153859 and parameters: {'iterations': 900, 'learning_rate': 0.003036089064886894, 'depth': 2, 'l2_leaf_reg': 6.259820934702118, 'border_count': 169, 'bagging_temperature': 0.11966858964928606, 'random_strength': 0.3532970880487435}. Best is trial 1 with value: 0.3815472198153859.
+[D 2025-12-03 15:09:06,356] Sample trial#2 with GPSampler.
+[I 2025-12-03 15:09:08,646] Trial 2 finished with value: 0.3840091385387809 and parameters: {'iterations': 400, 'learning_rate': 0.01780230383464266, 'depth': 3, 'l2_leaf_reg': 9.470513677199088, 'border_count': 150, 'bagging_temperature': 0.02971759857719891, 'random_strength': 0.02114933223644666}. Best is trial 2 with value: 0.3840091385387809.
+[D 2025-12-03 15:09:08,728] Sample trial#3 with GPSampler.
+[I 2025-12-03 15:09:12,461] Trial 3 finished with value: 0.38351412059146756 and parameters: {'iterations': 700, 'learning_rate': 0.01825538222670281, 'depth': 3, 'l2_leaf_reg': 9.612287246568272, 'border_count': 210, 'bagging_temperature': 0.14262677986398886, 'random_strength': 0.4573955110789172}. Best is trial 2 with value: 0.3840091385387809.
+[D 2025-12-03 15:09:12,533] Sample trial#4 with GPSampler.
+[I 2025-12-03 15:09:16,113] Trial 4 finished with value: 0.38238129100211016 and parameters: {'iterations': 800, 'learning_rate': 0.004663382993334591, 'depth': 2, 'l2_leaf_reg': 6.264786453667977, 'border_count': 235, 'bagging_temperature': 0.12705892006540886, 'random_strength': 0.6954959513492948}. Best is trial 2 with value: 0.3840091385387809.
+[D 2025-12-03 15:09:16,185] Sample trial#5 with GPSampler.
+[I 2025-12-03 15:09:20,877] Trial 5 finished with value: 0.38121775530578367 and parameters: {'iterations': 700, 'learning_rate': 0.0019117457201622548, 'depth': 4, 'l2_leaf_reg': 4.418301680686719, 'border_count': 180, 'bagging_temperature': 0.1223030721670707, 'random_strength': 0.13188410036891285}. Best is trial 2 with value: 0.3840091385387809.
+[D 2025-12-03 15:09:20,952] Sample trial#6 with GPSampler.
+[I 2025-12-03 15:09:21,979] Trial 6 finished with value: 0.38416096918755555 and parameters: {'iterations': 100, 'learning_rate': 0.010609023090376604, 'depth': 3, 'l2_leaf_reg': 3.357781798342767, 'border_count': 189, 'bagging_temperature': 0.9763832183045885, 'random_strength': 0.07825011414993555}. Best is trial 6 with value: 0.38416096918755555.
+[D 2025-12-03 15:09:22,049] Sample trial#7 with GPSampler.
+[I 2025-12-03 15:09:23,093] Trial 7 finished with value: 0.378676281568836 and parameters: {'iterations': 100, 'learning_rate': 0.0070020829503899245, 'depth': 3, 'l2_leaf_reg': 6.356377490615094, 'border_count': 220, 'bagging_temperature': 0.18831245936953966, 'random_strength': 0.9925008682190969}. Best is trial 6 with value: 0.38416096918755555.
+[D 2025-12-03 15:09:23,166] Sample trial#8 with GPSampler.
+[I 2025-12-03 15:09:28,504] Trial 8 finished with value: 0.3852296064412176 and parameters: {'iterations': 800, 'learning_rate': 0.005602843146678363, 'depth': 4, 'l2_leaf_reg': 9.728352748913812, 'border_count': 208, 'bagging_temperature': 0.8607971823834749, 'random_strength': 0.12483729134600263}. Best is trial 8 with value: 0.3852296064412176.
+[D 2025-12-03 15:09:28,577] Sample trial#9 with GPSampler.
+[I 2025-12-03 15:09:31,070] Trial 9 finished with value: 0.3842409860108018 and parameters: {'iterations': 300, 'learning_rate': 0.010473345019593454, 'depth': 4, 'l2_leaf_reg': 9.55240550828365, 'border_count': 240, 'bagging_temperature': 0.542417183043739, 'random_strength': 0.16734976038034755}. Best is trial 8 with value: 0.3852296064412176.
+[D 2025-12-03 15:09:31,145] Sample trial#10 with GPSampler.
+[I 2025-12-03 15:09:34,977] Trial 10 finished with value: 0.3857673246454181 and parameters: {'iterations': 700, 'learning_rate': 0.01967734057454048, 'depth': 3, 'l2_leaf_reg': 10.0, 'border_count': 212, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 10 with value: 0.3857673246454181.
+[D 2025-12-03 15:09:35,049] Sample trial#11 with GPSampler.
+[I 2025-12-03 15:09:39,000] Trial 11 finished with value: 0.38477893975849214 and parameters: {'iterations': 900, 'learning_rate': 0.004245313834142197, 'depth': 2, 'l2_leaf_reg': 10.0, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 10 with value: 0.3857673246454181.
+[D 2025-12-03 15:09:39,072] Sample trial#12 with GPSampler.
+[I 2025-12-03 15:09:41,315] Trial 12 finished with value: 0.3842756281939667 and parameters: {'iterations': 300, 'learning_rate': 0.014477596207974983, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 158, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 10 with value: 0.3857673246454181.
+[D 2025-12-03 15:09:41,386] Sample trial#13 with GPSampler.
+[I 2025-12-03 15:09:48,619] Trial 13 finished with value: 0.38546632031700667 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.14990906091765294}. Best is trial 10 with value: 0.3857673246454181.
+[D 2025-12-03 15:09:48,693] Sample trial#14 with GPSampler.
+[I 2025-12-03 15:09:54,888] Trial 14 finished with value: 0.3849621175115289 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 176, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 10 with value: 0.3857673246454181.
+[D 2025-12-03 15:09:54,960] Sample trial#15 with GPSampler.
+[I 2025-12-03 15:09:58,888] Trial 15 finished with value: 0.38574064559702875 and parameters: {'iterations': 500, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 7.137526370881702, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 10 with value: 0.3857673246454181.
+[D 2025-12-03 15:09:58,962] Sample trial#16 with GPSampler.
+[I 2025-12-03 15:10:03,563] Trial 16 finished with value: 0.38583220672776375 and parameters: {'iterations': 600, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 255, 'bagging_temperature': 0.9999999999999999, 'random_strength': 0.0}. Best is trial 16 with value: 0.38583220672776375.
+[D 2025-12-03 15:10:03,636] Sample trial#17 with GPSampler.
+[I 2025-12-03 15:10:09,214] Trial 17 finished with value: 0.38566755139365627 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 3, 'l2_leaf_reg': 10.0, 'border_count': 245, 'bagging_temperature': 0.6254198963379075, 'random_strength': 0.0}. Best is trial 16 with value: 0.38583220672776375.
+[D 2025-12-03 15:10:09,287] Sample trial#18 with GPSampler.
+[I 2025-12-03 15:10:10,539] Trial 18 finished with value: 0.3844195721907774 and parameters: {'iterations': 100, 'learning_rate': 0.02, 'depth': 2, 'l2_leaf_reg': 6.003235254180924, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.38583220672776375.
+[D 2025-12-03 15:10:10,612] Sample trial#19 with GPSampler.
+[I 2025-12-03 15:10:15,848] Trial 19 finished with value: 0.3857529080402692 and parameters: {'iterations': 700, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 255, 'bagging_temperature': 0.572138515904215, 'random_strength': 0.0}. Best is trial 16 with value: 0.38583220672776375.
+[D 2025-12-03 15:10:15,922] Sample trial#20 with GPSampler.
+[I 2025-12-03 15:10:21,930] Trial 20 finished with value: 0.38557608590811776 and parameters: {'iterations': 800, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 8.396485020313817, 'border_count': 254, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 16 with value: 0.38583220672776375.
+[D 2025-12-03 15:10:22,003] Sample trial#21 with GPSampler.
+[I 2025-12-03 15:10:26,399] Trial 21 finished with value: 0.3830676295311146 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 2, 'l2_leaf_reg': 9.999999999999998, 'border_count': 255, 'bagging_temperature': 0.0, 'random_strength': 0.19901594583062224}. Best is trial 16 with value: 0.38583220672776375.
+[D 2025-12-03 15:10:26,472] Sample trial#22 with GPSampler.
+[I 2025-12-03 15:10:30,888] Trial 22 finished with value: 0.38686202699653105 and parameters: {'iterations': 600, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 229, 'bagging_temperature': 0.7933902972832301, 'random_strength': 0.0}. Best is trial 22 with value: 0.38686202699653105.
+[D 2025-12-03 15:10:30,961] Sample trial#23 with GPSampler.
+[I 2025-12-03 15:10:32,299] Trial 23 finished with value: 0.3853317077323865 and parameters: {'iterations': 100, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 219, 'bagging_temperature': 0.7587099492053586, 'random_strength': 0.0}. Best is trial 22 with value: 0.38686202699653105.
+[D 2025-12-03 15:10:32,372] Sample trial#24 with GPSampler.
+[I 2025-12-03 15:10:37,096] Trial 24 finished with value: 0.38615715279870183 and parameters: {'iterations': 700, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 202, 'bagging_temperature': 0.7091254554878031, 'random_strength': 0.0}. Best is trial 22 with value: 0.38686202699653105.
+[D 2025-12-03 15:10:37,168] Sample trial#25 with GPSampler.
+[I 2025-12-03 15:10:41,643] Trial 25 finished with value: 0.38681331345882175 and parameters: {'iterations': 600, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 242, 'bagging_temperature': 0.7977896393177759, 'random_strength': 0.0737162990244948}. Best is trial 22 with value: 0.38686202699653105.
+[D 2025-12-03 15:10:41,716] Sample trial#26 with GPSampler.
+[I 2025-12-03 15:10:45,166] Trial 26 finished with value: 0.3871120551783721 and parameters: {'iterations': 600, 'learning_rate': 0.019999999999999997, 'depth': 3, 'l2_leaf_reg': 10.0, 'border_count': 244, 'bagging_temperature': 0.7848473678362485, 'random_strength': 0.015477588524897022}. Best is trial 26 with value: 0.3871120551783721.
+[D 2025-12-03 15:10:45,239] Sample trial#27 with GPSampler.
+[I 2025-12-03 15:10:48,308] Trial 27 finished with value: 0.3837256691592645 and parameters: {'iterations': 600, 'learning_rate': 0.02, 'depth': 2, 'l2_leaf_reg': 10.0, 'border_count': 255, 'bagging_temperature': 0.7785646002636278, 'random_strength': 0.0}. Best is trial 26 with value: 0.3871120551783721.
+[D 2025-12-03 15:10:48,383] Sample trial#28 with GPSampler.
+[I 2025-12-03 15:10:51,568] Trial 28 finished with value: 0.3864563729479521 and parameters: {'iterations': 500, 'learning_rate': 0.01444249024390757, 'depth': 3, 'l2_leaf_reg': 9.999999999999998, 'border_count': 255, 'bagging_temperature': 0.8172229841489487, 'random_strength': 0.0}. Best is trial 26 with value: 0.3871120551783721.
+[D 2025-12-03 15:10:51,641] Sample trial#29 with GPSampler.
+[I 2025-12-03 15:10:55,138] Trial 29 finished with value: 0.38504719186859504 and parameters: {'iterations': 600, 'learning_rate': 0.02, 'depth': 3, 'l2_leaf_reg': 4.010320916507459, 'border_count': 255, 'bagging_temperature': 0.7940002447869782, 'random_strength': 0.0}. Best is trial 26 with value: 0.3871120551783721.
+[I 2025-12-03 15:10:56,591] A new study created in memory with name: catboost_fold_5
+[D 2025-12-03 15:10:56,591] Sample trial#0 with RandomSampler.
+[I 2025-12-03 15:10:57,827] Trial 0 finished with value: 0.37989020707129495 and parameters: {'iterations': 100, 'learning_rate': 0.006568406854576685, 'depth': 4, 'l2_leaf_reg': 3.9321159959188248, 'border_count': 228, 'bagging_temperature': 0.9619092998877659, 'random_strength': 0.45159365537802265}. Best is trial 0 with value: 0.37989020707129495.
+[D 2025-12-03 15:10:57,902] Sample trial#1 with GPSampler.
+[I 2025-12-03 15:11:01,094] Trial 1 finished with value: 0.3864444105120788 and parameters: {'iterations': 400, 'learning_rate': 0.017726229199949504, 'depth': 4, 'l2_leaf_reg': 4.8126617868476895, 'border_count': 248, 'bagging_temperature': 0.9746149928364994, 'random_strength': 0.4620046631091411}. Best is trial 1 with value: 0.3864444105120788.
+[D 2025-12-03 15:11:01,172] Sample trial#2 with GPSampler.
+[I 2025-12-03 15:11:03,917] Trial 2 finished with value: 0.3823012041018693 and parameters: {'iterations': 600, 'learning_rate': 0.006735085455678591, 'depth': 2, 'l2_leaf_reg': 9.818667952394499, 'border_count': 151, 'bagging_temperature': 0.7443541203994964, 'random_strength': 0.8978516187140306}. Best is trial 1 with value: 0.3864444105120788.
+[D 2025-12-03 15:11:03,992] Sample trial#3 with GPSampler.
+[I 2025-12-03 15:11:06,908] Trial 3 finished with value: 0.3797144204464257 and parameters: {'iterations': 400, 'learning_rate': 0.004777378402995573, 'depth': 4, 'l2_leaf_reg': 7.19769656411771, 'border_count': 186, 'bagging_temperature': 0.9567236740513465, 'random_strength': 0.8922241826752629}. Best is trial 1 with value: 0.3864444105120788.
+[D 2025-12-03 15:11:06,982] Sample trial#4 with GPSampler.
+[I 2025-12-03 15:11:11,284] Trial 4 finished with value: 0.38534457422281515 and parameters: {'iterations': 800, 'learning_rate': 0.01220142151196607, 'depth': 3, 'l2_leaf_reg': 8.64784340472422, 'border_count': 235, 'bagging_temperature': 0.3790452967243122, 'random_strength': 0.5289722308316983}. Best is trial 1 with value: 0.3864444105120788.
+[D 2025-12-03 15:11:11,360] Sample trial#5 with GPSampler.
+[I 2025-12-03 15:11:17,890] Trial 5 finished with value: 0.38572808257332275 and parameters: {'iterations': 900, 'learning_rate': 0.010975442712857567, 'depth': 4, 'l2_leaf_reg': 6.463564395863209, 'border_count': 252, 'bagging_temperature': 0.8517686222392794, 'random_strength': 0.9053798273278897}. Best is trial 1 with value: 0.3864444105120788.
+[D 2025-12-03 15:11:17,964] Sample trial#6 with GPSampler.
+[I 2025-12-03 15:11:20,726] Trial 6 finished with value: 0.3867346039498959 and parameters: {'iterations': 600, 'learning_rate': 0.016520829185993027, 'depth': 2, 'l2_leaf_reg': 2.9632600761255556, 'border_count': 178, 'bagging_temperature': 0.5948111798138639, 'random_strength': 0.05053278761707858}. Best is trial 6 with value: 0.3867346039498959.
+[D 2025-12-03 15:11:20,800] Sample trial#7 with GPSampler.
+[I 2025-12-03 15:11:24,697] Trial 7 finished with value: 0.3846464054357582 and parameters: {'iterations': 700, 'learning_rate': 0.009805856600016323, 'depth': 3, 'l2_leaf_reg': 5.329228189797535, 'border_count': 246, 'bagging_temperature': 0.16049271019282274, 'random_strength': 0.6449006253669712}. Best is trial 6 with value: 0.3867346039498959.
+[D 2025-12-03 15:11:24,773] Sample trial#8 with GPSampler.
+[I 2025-12-03 15:11:26,440] Trial 8 finished with value: 0.3850810019601828 and parameters: {'iterations': 300, 'learning_rate': 0.013048973374259781, 'depth': 2, 'l2_leaf_reg': 1.1368292717487558, 'border_count': 183, 'bagging_temperature': 0.06123854125899264, 'random_strength': 0.04022524370312941}. Best is trial 6 with value: 0.3867346039498959.
+[D 2025-12-03 15:11:26,515] Sample trial#9 with GPSampler.
+[I 2025-12-03 15:11:27,711] Trial 9 finished with value: 0.3893058284935379 and parameters: {'iterations': 100, 'learning_rate': 0.012741206977083294, 'depth': 4, 'l2_leaf_reg': 4.144761125242491, 'border_count': 230, 'bagging_temperature': 0.8503381360696798, 'random_strength': 0.03947576664917618}. Best is trial 9 with value: 0.3893058284935379.
+[D 2025-12-03 15:11:27,786] Sample trial#10 with GPSampler.
+[I 2025-12-03 15:11:29,038] Trial 10 finished with value: 0.3914172744783764 and parameters: {'iterations': 100, 'learning_rate': 0.013968007319995774, 'depth': 4, 'l2_leaf_reg': 1.5268146740385495, 'border_count': 230, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 10 with value: 0.3914172744783764.
+[D 2025-12-03 15:11:29,113] Sample trial#11 with GPSampler.
+[I 2025-12-03 15:11:30,382] Trial 11 finished with value: 0.39109550425635864 and parameters: {'iterations': 100, 'learning_rate': 0.014423060035041419, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 10 with value: 0.3914172744783764.
+[D 2025-12-03 15:11:30,457] Sample trial#12 with GPSampler.
+[I 2025-12-03 15:11:31,625] Trial 12 finished with value: 0.39108752776233924 and parameters: {'iterations': 100, 'learning_rate': 0.014484843164994769, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 169, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 10 with value: 0.3914172744783764.
+[D 2025-12-03 15:11:31,699] Sample trial#13 with GPSampler.
+[I 2025-12-03 15:11:35,305] Trial 13 finished with value: 0.39227686408719753 and parameters: {'iterations': 500, 'learning_rate': 0.013830255066010828, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 212, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 13 with value: 0.39227686408719753.
+[D 2025-12-03 15:11:35,380] Sample trial#14 with GPSampler.
+[I 2025-12-03 15:11:41,982] Trial 14 finished with value: 0.39518008317417935 and parameters: {'iterations': 1000, 'learning_rate': 0.013777718598593315, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 210, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 14 with value: 0.39518008317417935.
+[D 2025-12-03 15:11:42,057] Sample trial#15 with GPSampler.
+[I 2025-12-03 15:11:49,032] Trial 15 finished with value: 0.39655295751461445 and parameters: {'iterations': 1000, 'learning_rate': 0.01992849370300323, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 235, 'bagging_temperature': 0.9999999999999999, 'random_strength': 0.0}. Best is trial 15 with value: 0.39655295751461445.
+[D 2025-12-03 15:11:49,107] Sample trial#16 with GPSampler.
+[I 2025-12-03 15:11:55,165] Trial 16 finished with value: 0.3961211261701244 and parameters: {'iterations': 1000, 'learning_rate': 0.019999999999999997, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 159, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 15 with value: 0.39655295751461445.
+[D 2025-12-03 15:11:55,241] Sample trial#17 with GPSampler.
+[I 2025-12-03 15:12:02,370] Trial 17 finished with value: 0.3926299723965997 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 7.54451625913988, 'border_count': 248, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 15 with value: 0.39655295751461445.
+[D 2025-12-03 15:12:02,444] Sample trial#18 with GPSampler.
+[I 2025-12-03 15:12:09,472] Trial 18 finished with value: 0.39337839223835563 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 237, 'bagging_temperature': 0.33464750364116164, 'random_strength': 0.0}. Best is trial 15 with value: 0.39655295751461445.
+[D 2025-12-03 15:12:09,548] Sample trial#19 with GPSampler.
+[I 2025-12-03 15:12:16,808] Trial 19 finished with value: 0.3957929374192107 and parameters: {'iterations': 1000, 'learning_rate': 0.01992849370300323, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 255, 'bagging_temperature': 0.9999999999999999, 'random_strength': 0.0}. Best is trial 15 with value: 0.39655295751461445.
+[D 2025-12-03 15:12:16,885] Sample trial#20 with GPSampler.
+[I 2025-12-03 15:12:23,436] Trial 20 finished with value: 0.39541410720133474 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 202, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 15 with value: 0.39655295751461445.
+[D 2025-12-03 15:12:23,512] Sample trial#21 with GPSampler.
+[I 2025-12-03 15:12:29,468] Trial 21 finished with value: 0.3910828352838097 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 0.0, 'random_strength': 1.0}. Best is trial 15 with value: 0.39655295751461445.
+[D 2025-12-03 15:12:29,544] Sample trial#22 with GPSampler.
+[I 2025-12-03 15:12:35,500] Trial 22 finished with value: 0.39434745572864716 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 1.0, 'random_strength': 0.2261573665234151}. Best is trial 15 with value: 0.39655295751461445.
+[D 2025-12-03 15:12:35,576] Sample trial#23 with GPSampler.
+[I 2025-12-03 15:12:41,307] Trial 23 finished with value: 0.38316818604247416 and parameters: {'iterations': 1000, 'learning_rate': 0.001, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 0.0, 'random_strength': 0.0}. Best is trial 15 with value: 0.39655295751461445.
+[D 2025-12-03 15:12:41,383] Sample trial#24 with GPSampler.
+[I 2025-12-03 15:12:45,765] Trial 24 finished with value: 0.3893708991056676 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 2, 'l2_leaf_reg': 1.0, 'border_count': 255, 'bagging_temperature': 0.0, 'random_strength': 1.0}. Best is trial 15 with value: 0.39655295751461445.
+[D 2025-12-03 15:12:45,839] Sample trial#25 with GPSampler.
+[I 2025-12-03 15:12:51,215] Trial 25 finished with value: 0.39608436938952246 and parameters: {'iterations': 1000, 'learning_rate': 0.01992849370300323, 'depth': 3, 'l2_leaf_reg': 1.0, 'border_count': 255, 'bagging_temperature': 0.9999999999999999, 'random_strength': 0.0}. Best is trial 15 with value: 0.39655295751461445.
+[D 2025-12-03 15:12:51,292] Sample trial#26 with GPSampler.
+[I 2025-12-03 15:12:58,542] Trial 26 finished with value: 0.3957929374192107 and parameters: {'iterations': 1000, 'learning_rate': 0.01992849370300323, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 255, 'bagging_temperature': 0.9999999999999999, 'random_strength': 0.0}. Best is trial 15 with value: 0.39655295751461445.
+[D 2025-12-03 15:12:58,622] Sample trial#27 with GPSampler.
+[I 2025-12-03 15:13:03,515] Trial 27 finished with value: 0.3942500464608319 and parameters: {'iterations': 1000, 'learning_rate': 0.01992849370300323, 'depth': 3, 'l2_leaf_reg': 1.0, 'border_count': 150, 'bagging_temperature': 0.9999999999999999, 'random_strength': 0.0}. Best is trial 15 with value: 0.39655295751461445.
+[D 2025-12-03 15:13:03,589] Sample trial#28 with GPSampler.
+[I 2025-12-03 15:13:10,681] Trial 28 finished with value: 0.38527235015843375 and parameters: {'iterations': 1000, 'learning_rate': 0.02, 'depth': 4, 'l2_leaf_reg': 10.0, 'border_count': 255, 'bagging_temperature': 0.0, 'random_strength': 1.0}. Best is trial 15 with value: 0.39655295751461445.
+[D 2025-12-03 15:13:10,755] Sample trial#29 with GPSampler.
+[I 2025-12-03 15:13:18,006] Trial 29 finished with value: 0.3961400793296578 and parameters: {'iterations': 1000, 'learning_rate': 0.016860953752755037, 'depth': 4, 'l2_leaf_reg': 1.0, 'border_count': 255, 'bagging_temperature': 1.0, 'random_strength': 0.0}. Best is trial 15 with value: 0.39655295751461445.
+[I 2025-12-03 15:13:56,914] A new study created in memory with name: xgboost_fold_1
+[D 2025-12-03 15:13:56,915] Sample trial#0 with RandomSampler.
+[I 2025-12-03 15:14:01,966] Trial 0 finished with value: 0.3856408044546522 and parameters: {'n_estimators': 150, 'learning_rate': 0.04601993575913739, 'max_depth': 20, 'min_child_weight': 8, 'subsample': 0.976408412943015, 'colsample_bytree': 0.4363933192338848, 'reg_alpha': 0.9385278434878938, 'reg_lambda': 2.2061145988218813, 'gamma': 5.0}. Best is trial 0 with value: 0.3856408044546522.
+[D 2025-12-03 15:14:02,052] Sample trial#1 with GPSampler.
+[I 2025-12-03 15:14:09,067] Trial 1 finished with value: 0.3839045590457003 and parameters: {'n_estimators': 650, 'learning_rate': 0.06269542469843337, 'max_depth': 14, 'min_child_weight': 2, 'subsample': 0.9405115664935769, 'colsample_bytree': 0.4205481382373294, 'reg_alpha': 0.8413281138139131, 'reg_lambda': 9.856719453928863, 'gamma': 4.0}. Best is trial 0 with value: 0.3856408044546522.
+[D 2025-12-03 15:14:09,148] Sample trial#2 with GPSampler.
+[I 2025-12-03 15:14:26,341] Trial 2 finished with value: 0.3877720129185576 and parameters: {'n_estimators': 800, 'learning_rate': 0.01408316563731815, 'max_depth': 16, 'min_child_weight': 2, 'subsample': 0.96194475490998, 'colsample_bytree': 0.5821034769822991, 'reg_alpha': 0.08585161202254088, 'reg_lambda': 2.347306916125445, 'gamma': 5.0}. Best is trial 2 with value: 0.3877720129185576.
+[D 2025-12-03 15:14:26,421] Sample trial#3 with GPSampler.
+[I 2025-12-03 15:14:39,841] Trial 3 finished with value: 0.3868142131850596 and parameters: {'n_estimators': 850, 'learning_rate': 0.08045983837285588, 'max_depth': 8, 'min_child_weight': 8, 'subsample': 0.9147327555065676, 'colsample_bytree': 0.44459319284893856, 'reg_alpha': 0.06616359572613162, 'reg_lambda': 3.676675765385033, 'gamma': 2.0}. Best is trial 2 with value: 0.3877720129185576.
+[D 2025-12-03 15:14:39,928] Sample trial#4 with GPSampler.
+[I 2025-12-03 15:15:09,966] Trial 4 finished with value: 0.38482038972292243 and parameters: {'n_estimators': 250, 'learning_rate': 0.029020061563802706, 'max_depth': 18, 'min_child_weight': 10, 'subsample': 0.9806514618186544, 'colsample_bytree': 0.5979455863036537, 'reg_alpha': 0.329990902057239, 'reg_lambda': 5.519859269012262, 'gamma': 0.0}. Best is trial 2 with value: 0.3877720129185576.
+[D 2025-12-03 15:15:10,052] Sample trial#5 with GPSampler.
+[I 2025-12-03 15:15:21,447] Trial 5 finished with value: 0.3871279038216967 and parameters: {'n_estimators': 200, 'learning_rate': 0.042297824769175776, 'max_depth': 10, 'min_child_weight': 9, 'subsample': 0.9015299903969259, 'colsample_bytree': 0.5014874534965039, 'reg_alpha': 0.3515014547509654, 'reg_lambda': 4.065222627657912, 'gamma': 2.0}. Best is trial 2 with value: 0.3877720129185576.
+[D 2025-12-03 15:15:21,531] Sample trial#6 with GPSampler.
+[I 2025-12-03 15:15:32,068] Trial 6 finished with value: 0.3867325430894844 and parameters: {'n_estimators': 600, 'learning_rate': 0.027835515976731166, 'max_depth': 16, 'min_child_weight': 8, 'subsample': 0.9198556443537502, 'colsample_bytree': 0.5536722692287839, 'reg_alpha': 0.9705525304077735, 'reg_lambda': 5.7347960893398415, 'gamma': 3.0}. Best is trial 2 with value: 0.3877720129185576.
+[D 2025-12-03 15:15:32,152] Sample trial#7 with GPSampler.
+[I 2025-12-03 15:15:38,828] Trial 7 finished with value: 0.38571475319328025 and parameters: {'n_estimators': 150, 'learning_rate': 0.04781248910790196, 'max_depth': 16, 'min_child_weight': 1, 'subsample': 0.9929490758260003, 'colsample_bytree': 0.5401241358327078, 'reg_alpha': 0.8114237032223279, 'reg_lambda': 7.331586191607764, 'gamma': 4.0}. Best is trial 2 with value: 0.3877720129185576.
+[D 2025-12-03 15:15:38,908] Sample trial#8 with GPSampler.
+[I 2025-12-03 15:16:46,937] Trial 8 finished with value: 0.38246535996356334 and parameters: {'n_estimators': 900, 'learning_rate': 0.012859024717753308, 'max_depth': 18, 'min_child_weight': 9, 'subsample': 0.9349518537880593, 'colsample_bytree': 0.47108995892055744, 'reg_alpha': 0.6021269884337163, 'reg_lambda': 8.240499303969223, 'gamma': 0.0}. Best is trial 2 with value: 0.3877720129185576.
+[D 2025-12-03 15:16:47,022] Sample trial#9 with GPSampler.
+[I 2025-12-03 15:16:52,280] Trial 9 finished with value: 0.3865416795101798 and parameters: {'n_estimators': 100, 'learning_rate': 0.04796555199447813, 'max_depth': 10, 'min_child_weight': 8, 'subsample': 0.9652837421219232, 'colsample_bytree': 0.4384305207942558, 'reg_alpha': 0.4354100235106989, 'reg_lambda': 9.99303962653613, 'gamma': 2.0}. Best is trial 2 with value: 0.3877720129185576.
+[D 2025-12-03 15:16:52,365] Sample trial#10 with GPSampler.
+[I 2025-12-03 15:17:07,716] Trial 10 finished with value: 0.3873252944429384 and parameters: {'n_estimators': 500, 'learning_rate': 0.021394277236865607, 'max_depth': 12, 'min_child_weight': 7, 'subsample': 0.9360429668334997, 'colsample_bytree': 0.6, 'reg_alpha': 0.049391383614387795, 'reg_lambda': 1.0, 'gamma': 4.0}. Best is trial 2 with value: 0.3877720129185576.
+[D 2025-12-03 15:17:07,797] Sample trial#11 with GPSampler.
+[I 2025-12-03 15:17:31,090] Trial 11 finished with value: 0.3879020076419494 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 20, 'min_child_weight': 3, 'subsample': 0.9, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 11 with value: 0.3879020076419494.
+[D 2025-12-03 15:17:31,174] Sample trial#12 with GPSampler.
+[I 2025-12-03 15:17:38,909] Trial 12 finished with value: 0.3859395331997766 and parameters: {'n_estimators': 200, 'learning_rate': 0.009, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 0.9, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 11 with value: 0.3879020076419494.
+[D 2025-12-03 15:17:38,996] Sample trial#13 with GPSampler.
+[I 2025-12-03 15:17:58,121] Trial 13 finished with value: 0.3890620797733784 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 14, 'min_child_weight': 7, 'subsample': 0.9804041130218725, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 13 with value: 0.3890620797733784.
+[D 2025-12-03 15:17:58,209] Sample trial#14 with GPSampler.
+[I 2025-12-03 15:18:15,415] Trial 14 finished with value: 0.38800202903484926 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 4, 'min_child_weight': 10, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 13 with value: 0.3890620797733784.
+[D 2025-12-03 15:18:15,505] Sample trial#15 with GPSampler.
+[I 2025-12-03 15:18:34,027] Trial 15 finished with value: 0.3886124540033602 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 20, 'min_child_weight': 10, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 13 with value: 0.3890620797733784.
+[D 2025-12-03 15:18:34,110] Sample trial#16 with GPSampler.
+[I 2025-12-03 15:18:50,846] Trial 16 finished with value: 0.38812744104261004 and parameters: {'n_estimators': 1000, 'learning_rate': 0.038291468270592585, 'max_depth': 14, 'min_child_weight': 7, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 13 with value: 0.3890620797733784.
+[D 2025-12-03 15:18:50,936] Sample trial#17 with GPSampler.
+[I 2025-12-03 15:19:11,343] Trial 17 finished with value: 0.38784354025761913 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 14, 'min_child_weight': 9, 'subsample': 0.9678251002079666, 'colsample_bytree': 0.6, 'reg_alpha': 0.5866570211682287, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 13 with value: 0.3890620797733784.
+[D 2025-12-03 15:19:11,428] Sample trial#18 with GPSampler.
+[I 2025-12-03 15:19:27,104] Trial 18 finished with value: 0.3888686140133764 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 16, 'min_child_weight': 6, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 4.0}. Best is trial 13 with value: 0.3890620797733784.
+[D 2025-12-03 15:19:27,184] Sample trial#19 with GPSampler.
+[I 2025-12-03 15:19:42,932] Trial 19 finished with value: 0.3888045584240906 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 16, 'min_child_weight': 5, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 13 with value: 0.3890620797733784.
+[D 2025-12-03 15:19:43,011] Sample trial#20 with GPSampler.
+[I 2025-12-03 15:20:07,686] Trial 20 finished with value: 0.3880766364905041 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 12, 'min_child_weight': 10, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 4.0}. Best is trial 13 with value: 0.3890620797733784.
+[D 2025-12-03 15:20:07,773] Sample trial#21 with GPSampler.
+[I 2025-12-03 15:20:20,192] Trial 21 finished with value: 0.38819917399925796 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 18, 'min_child_weight': 7, 'subsample': 0.9723929984535142, 'colsample_bytree': 0.5206550161347544, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 13 with value: 0.3890620797733784.
+[D 2025-12-03 15:20:20,271] Sample trial#22 with GPSampler.
+[I 2025-12-03 15:20:34,752] Trial 22 finished with value: 0.3873711990149779 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 18, 'min_child_weight': 7, 'subsample': 0.9867282570283705, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 6.65644654934531, 'gamma': 5.0}. Best is trial 13 with value: 0.3890620797733784.
+[D 2025-12-03 15:20:34,837] Sample trial#23 with GPSampler.
+[I 2025-12-03 15:20:56,204] Trial 23 finished with value: 0.3891674277925809 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 6, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 4.0}. Best is trial 23 with value: 0.3891674277925809.
+[D 2025-12-03 15:20:56,289] Sample trial#24 with GPSampler.
+[I 2025-12-03 15:21:12,900] Trial 24 finished with value: 0.3897725919602916 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 12, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 3.0}. Best is trial 24 with value: 0.3897725919602916.
+[D 2025-12-03 15:21:12,986] Sample trial#25 with GPSampler.
+[I 2025-12-03 15:21:35,132] Trial 25 finished with value: 0.38965545648674016 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 3.0}. Best is trial 24 with value: 0.3897725919602916.
+[D 2025-12-03 15:21:35,217] Sample trial#26 with GPSampler.
+[I 2025-12-03 15:22:02,294] Trial 26 finished with value: 0.38921253831532815 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 10, 'min_child_weight': 1, 'subsample': 0.9605847089268114, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 3.0}. Best is trial 24 with value: 0.3897725919602916.
+[D 2025-12-03 15:22:02,390] Sample trial#27 with GPSampler.
+[I 2025-12-03 15:22:07,885] Trial 27 finished with value: 0.3880237533262433 and parameters: {'n_estimators': 450, 'learning_rate': 0.009, 'max_depth': 2, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 2.0}. Best is trial 24 with value: 0.3897725919602916.
+[D 2025-12-03 15:22:07,971] Sample trial#28 with GPSampler.
+[I 2025-12-03 15:22:19,194] Trial 28 finished with value: 0.388064307301251 and parameters: {'n_estimators': 1000, 'learning_rate': 0.050152733855859236, 'max_depth': 16, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 3.0}. Best is trial 24 with value: 0.3897725919602916.
+[D 2025-12-03 15:22:19,277] Sample trial#29 with GPSampler.
+[I 2025-12-03 15:22:23,207] Trial 29 finished with value: 0.3863475127911594 and parameters: {'n_estimators': 100, 'learning_rate': 0.1, 'max_depth': 2, 'min_child_weight': 10, 'subsample': 0.9, 'colsample_bytree': 0.6, 'reg_alpha': 1.0, 'reg_lambda': 1.0, 'gamma': 2.0}. Best is trial 24 with value: 0.3897725919602916.
+[I 2025-12-03 15:22:27,464] A new study created in memory with name: xgboost_fold_2
+[D 2025-12-03 15:22:27,464] Sample trial#0 with RandomSampler.
+[I 2025-12-03 15:22:38,485] Trial 0 finished with value: 0.3883160845418958 and parameters: {'n_estimators': 950, 'learning_rate': 0.04026065674806509, 'max_depth': 16, 'min_child_weight': 7, 'subsample': 0.9677872191369018, 'colsample_bytree': 0.5704472413237509, 'reg_alpha': 0.005105082385164383, 'reg_lambda': 2.5357549720864467, 'gamma': 4.0}. Best is trial 0 with value: 0.3883160845418958.
+[D 2025-12-03 15:22:38,570] Sample trial#1 with GPSampler.
+[I 2025-12-03 15:22:52,338] Trial 1 finished with value: 0.38347192294512067 and parameters: {'n_estimators': 300, 'learning_rate': 0.04505434384070407, 'max_depth': 8, 'min_child_weight': 1, 'subsample': 0.9625031186285844, 'colsample_bytree': 0.478352396527046, 'reg_alpha': 0.21191826847706874, 'reg_lambda': 9.338316110572729, 'gamma': 1.0}. Best is trial 0 with value: 0.3883160845418958.
+[D 2025-12-03 15:22:52,427] Sample trial#2 with GPSampler.
+[I 2025-12-03 15:23:00,848] Trial 2 finished with value: 0.38453048938345435 and parameters: {'n_estimators': 550, 'learning_rate': 0.022871737434354722, 'max_depth': 8, 'min_child_weight': 7, 'subsample': 0.9103632031095568, 'colsample_bytree': 0.4660865867808431, 'reg_alpha': 0.42908301819386907, 'reg_lambda': 8.239432589082021, 'gamma': 4.0}. Best is trial 0 with value: 0.3883160845418958.
+[D 2025-12-03 15:23:00,936] Sample trial#3 with GPSampler.
+[I 2025-12-03 15:23:09,689] Trial 3 finished with value: 0.38523441829282745 and parameters: {'n_estimators': 550, 'learning_rate': 0.04260013391139663, 'max_depth': 18, 'min_child_weight': 3, 'subsample': 0.9889032847501323, 'colsample_bytree': 0.5087839622917526, 'reg_alpha': 0.6383207901232628, 'reg_lambda': 9.2131764337001, 'gamma': 4.0}. Best is trial 0 with value: 0.3883160845418958.
+[D 2025-12-03 15:23:09,777] Sample trial#4 with GPSampler.
+[I 2025-12-03 15:23:17,133] Trial 4 finished with value: 0.38793564482885035 and parameters: {'n_estimators': 100, 'learning_rate': 0.06759417189232925, 'max_depth': 4, 'min_child_weight': 4, 'subsample': 0.9129045036798407, 'colsample_bytree': 0.5414938000482492, 'reg_alpha': 0.7412890405695681, 'reg_lambda': 9.22172946240895, 'gamma': 2.0}. Best is trial 0 with value: 0.3883160845418958.
+[D 2025-12-03 15:23:17,218] Sample trial#5 with GPSampler.
+[I 2025-12-03 15:23:22,550] Trial 5 finished with value: 0.3833872092148893 and parameters: {'n_estimators': 250, 'learning_rate': 0.0720619837685713, 'max_depth': 6, 'min_child_weight': 9, 'subsample': 0.9120570364891433, 'colsample_bytree': 0.4181761151797445, 'reg_alpha': 0.49000994073263016, 'reg_lambda': 9.51919163313373, 'gamma': 4.0}. Best is trial 0 with value: 0.3883160845418958.
+[D 2025-12-03 15:23:22,639] Sample trial#6 with GPSampler.
+[I 2025-12-03 15:23:32,954] Trial 6 finished with value: 0.37982839973214544 and parameters: {'n_estimators': 350, 'learning_rate': 0.0946866324145711, 'max_depth': 6, 'min_child_weight': 3, 'subsample': 0.9239325005247552, 'colsample_bytree': 0.5477201522191684, 'reg_alpha': 0.29050623365828676, 'reg_lambda': 7.302840391130316, 'gamma': 1.0}. Best is trial 0 with value: 0.3883160845418958.
+[D 2025-12-03 15:23:33,042] Sample trial#7 with GPSampler.
+[I 2025-12-03 15:24:12,429] Trial 7 finished with value: 0.36840817944691145 and parameters: {'n_estimators': 750, 'learning_rate': 0.0766660815105301, 'max_depth': 18, 'min_child_weight': 8, 'subsample': 0.9280400911836335, 'colsample_bytree': 0.5829622631206056, 'reg_alpha': 0.7882460672908709, 'reg_lambda': 8.071873327944108, 'gamma': 0.0}. Best is trial 0 with value: 0.3883160845418958.
+[D 2025-12-03 15:24:12,516] Sample trial#8 with GPSampler.
+[I 2025-12-03 15:24:28,479] Trial 8 finished with value: 0.3858641388850024 and parameters: {'n_estimators': 700, 'learning_rate': 0.009472853492077587, 'max_depth': 16, 'min_child_weight': 6, 'subsample': 0.9093069748401295, 'colsample_bytree': 0.42741491610411, 'reg_alpha': 0.5118715729746997, 'reg_lambda': 4.816611163928539, 'gamma': 4.0}. Best is trial 0 with value: 0.3883160845418958.
+[D 2025-12-03 15:24:28,564] Sample trial#9 with GPSampler.
+[I 2025-12-03 15:24:41,728] Trial 9 finished with value: 0.3891809791474459 and parameters: {'n_estimators': 750, 'learning_rate': 0.09322286154485121, 'max_depth': 18, 'min_child_weight': 6, 'subsample': 0.9928966337449366, 'colsample_bytree': 0.48595997161788496, 'reg_alpha': 0.4929826433262672, 'reg_lambda': 5.010230492257668, 'gamma': 3.0}. Best is trial 9 with value: 0.3891809791474459.
+[D 2025-12-03 15:24:41,814] Sample trial#10 with GPSampler.
+[I 2025-12-03 15:24:50,814] Trial 10 finished with value: 0.38868731929381256 and parameters: {'n_estimators': 350, 'learning_rate': 0.05158080759048307, 'max_depth': 6, 'min_child_weight': 1, 'subsample': 0.9946242257420943, 'colsample_bytree': 0.5167128457264841, 'reg_alpha': 0.1713791268836079, 'reg_lambda': 1.0, 'gamma': 3.0}. Best is trial 9 with value: 0.3891809791474459.
+[D 2025-12-03 15:24:50,906] Sample trial#11 with GPSampler.
+[I 2025-12-03 15:25:12,005] Trial 11 finished with value: 0.38978506877252433 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 20, 'min_child_weight': 5, 'subsample': 1.0, 'colsample_bytree': 0.4609421050943463, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 3.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:25:12,092] Sample trial#12 with GPSampler.
+[I 2025-12-03 15:25:29,222] Trial 12 finished with value: 0.3879120943408555 and parameters: {'n_estimators': 350, 'learning_rate': 0.009, 'max_depth': 20, 'min_child_weight': 10, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 3.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:25:29,309] Sample trial#13 with GPSampler.
+[I 2025-12-03 15:25:44,046] Trial 13 finished with value: 0.38660639989761403 and parameters: {'n_estimators': 1000, 'learning_rate': 0.06294104508684191, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 0.911636256092391, 'colsample_bytree': 0.5550603220365349, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 3.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:25:44,133] Sample trial#14 with GPSampler.
+[I 2025-12-03 15:25:59,348] Trial 14 finished with value: 0.3839835215855136 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 2, 'min_child_weight': 8, 'subsample': 1.0, 'colsample_bytree': 0.41116749936063324, 'reg_alpha': 0.6958961757483576, 'reg_lambda': 1.0, 'gamma': 3.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:25:59,439] Sample trial#15 with GPSampler.
+[I 2025-12-03 15:26:06,184] Trial 15 finished with value: 0.38883793902204733 and parameters: {'n_estimators': 250, 'learning_rate': 0.07448147749060693, 'max_depth': 20, 'min_child_weight': 2, 'subsample': 1.0, 'colsample_bytree': 0.4, 'reg_alpha': 0.0, 'reg_lambda': 3.5233441432558648, 'gamma': 3.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:26:06,269] Sample trial#16 with GPSampler.
+[I 2025-12-03 15:26:10,679] Trial 16 finished with value: 0.3796318616141945 and parameters: {'n_estimators': 100, 'learning_rate': 0.009, 'max_depth': 2, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.48840360250705234, 'reg_alpha': 0.0, 'reg_lambda': 10.0, 'gamma': 2.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:26:10,768] Sample trial#17 with GPSampler.
+[I 2025-12-03 15:26:25,932] Trial 17 finished with value: 0.38755681775016554 and parameters: {'n_estimators': 950, 'learning_rate': 0.09769402634647338, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 0.9964010735410608, 'colsample_bytree': 0.5334648330392653, 'reg_alpha': 0.049210411505276386, 'reg_lambda': 1.0, 'gamma': 3.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:26:26,019] Sample trial#18 with GPSampler.
+[I 2025-12-03 15:26:30,526] Trial 18 finished with value: 0.38897181031189254 and parameters: {'n_estimators': 100, 'learning_rate': 0.07003771245335837, 'max_depth': 20, 'min_child_weight': 4, 'subsample': 1.0, 'colsample_bytree': 0.4705123837919223, 'reg_alpha': 0.4172644468565136, 'reg_lambda': 1.0, 'gamma': 3.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:26:30,611] Sample trial#19 with GPSampler.
+[I 2025-12-03 15:26:40,406] Trial 19 finished with value: 0.3861391898860529 and parameters: {'n_estimators': 850, 'learning_rate': 0.089964704357054, 'max_depth': 20, 'min_child_weight': 9, 'subsample': 1.0, 'colsample_bytree': 0.4, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 3.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:26:40,489] Sample trial#20 with GPSampler.
+[I 2025-12-03 15:26:45,157] Trial 20 finished with value: 0.38636658888348185 and parameters: {'n_estimators': 100, 'learning_rate': 0.1, 'max_depth': 10, 'min_child_weight': 1, 'subsample': 0.9079296321172391, 'colsample_bytree': 0.5542108459877341, 'reg_alpha': 1.0, 'reg_lambda': 5.9763257768398725, 'gamma': 3.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:26:45,239] Sample trial#21 with GPSampler.
+[I 2025-12-03 15:26:58,916] Trial 21 finished with value: 0.3886430958514342 and parameters: {'n_estimators': 450, 'learning_rate': 0.009, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.45590372924915545, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 4.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:26:59,004] Sample trial#22 with GPSampler.
+[I 2025-12-03 15:27:13,797] Trial 22 finished with value: 0.3885211672373814 and parameters: {'n_estimators': 750, 'learning_rate': 0.013165368125896226, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.48067089215125797, 'reg_alpha': 0.28283920397241163, 'reg_lambda': 2.233711077646572, 'gamma': 3.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:27:13,879] Sample trial#23 with GPSampler.
+[I 2025-12-03 15:27:19,534] Trial 23 finished with value: 0.3871923238735161 and parameters: {'n_estimators': 100, 'learning_rate': 0.08754672422549398, 'max_depth': 12, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.17449417674889156, 'reg_lambda': 7.592875445253383, 'gamma': 3.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:27:19,620] Sample trial#24 with GPSampler.
+[I 2025-12-03 15:27:31,834] Trial 24 finished with value: 0.38556132125435866 and parameters: {'n_estimators': 900, 'learning_rate': 0.08316110597918232, 'max_depth': 14, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.4196435932458754, 'reg_alpha': 1.0, 'reg_lambda': 4.3501836021410325, 'gamma': 3.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:27:31,924] Sample trial#25 with GPSampler.
+[I 2025-12-03 15:27:49,673] Trial 25 finished with value: 0.38674686214356285 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 20, 'min_child_weight': 10, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:27:49,758] Sample trial#26 with GPSampler.
+[I 2025-12-03 15:27:54,138] Trial 26 finished with value: 0.38683915521940115 and parameters: {'n_estimators': 100, 'learning_rate': 0.1, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.25594374292456323, 'reg_lambda': 1.0, 'gamma': 4.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:27:54,225] Sample trial#27 with GPSampler.
+[I 2025-12-03 15:27:59,068] Trial 27 finished with value: 0.3852001324763046 and parameters: {'n_estimators': 100, 'learning_rate': 0.1, 'max_depth': 20, 'min_child_weight': 10, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.7667773387338163, 'reg_lambda': 10.0, 'gamma': 3.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:27:59,157] Sample trial#28 with GPSampler.
+[I 2025-12-03 15:28:10,647] Trial 28 finished with value: 0.38760323650327055 and parameters: {'n_estimators': 350, 'learning_rate': 0.1, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.4, 'reg_alpha': 0.4127353538269458, 'reg_lambda': 5.7722130283879345, 'gamma': 3.0}. Best is trial 11 with value: 0.38978506877252433.
+[D 2025-12-03 15:28:10,736] Sample trial#29 with GPSampler.
+[I 2025-12-03 15:28:28,628] Trial 29 finished with value: 0.3891746297383836 and parameters: {'n_estimators': 400, 'learning_rate': 0.009, 'max_depth': 20, 'min_child_weight': 4, 'subsample': 0.9741045109629197, 'colsample_bytree': 0.5255756374891688, 'reg_alpha': 0.0, 'reg_lambda': 1.565603971206229, 'gamma': 3.0}. Best is trial 11 with value: 0.38978506877252433.
+CLASSIFICAÇÃO DE GENES-ALVO USANDO DADOS ÔMICOS
+================================================================================
+Timestamp do experimento: 20251203_150217
+ Usando dados da ANA:
+   Features: data/UNION_features.tsv
+   Labels: data/processed/UNION_labels.tsv
+   Formato labels: genes, 2class (binary), 3class (multiclass)
+
+Arquivos encontrados com sucesso!
+Carregando e preparando dados...
+============================================================
+PREPARANDO DATASET PARA CLASSIFICAÇÃO (MULTICLASS)
+============================================================
+Carregando UNION_features.tsv
+Features carregadas: 19602 genes x 64 features
+Tipos de dados das features: {dtype('float64'): 64}
+Range das features: [0.0000, 1.0000]
+----------------------------------------
+Carregando UNION_labels.tsv (classificação: multiclass)
+Labels carregados: 19680 genes
+Valores únicos em 3class: label
+0.0    16727
+NaN     1997
+1.0      515
+2.0      441
+Name: count, dtype: int64
+Genes with NaN dropped: 1997
+Distribuição das classes:
+  Classe 0 (passenger): 16727 genes
+  Classe 1 (TSG): 515 genes
+  Classe 2 (Oncogene): 441 genes
+----------------------------------------
+Alinhando features e labels
+Genes comuns entre features e labels: 17676
+Dataset final: 17676 genes x 64 features
+Distribuição final das classes: [16727   514   435]
+----------------------------------------
+DATASET PREPARADO COM SUCESSO!
+Shape final: X=(17676, 64), y=(17676,)
+Genes: 17676
+Features: 64
+============================================================
+
+CONFIGURAÇÃO DO EXPERIMENTO (OTIMIZAÇÃO):
+  Modelo: CatBoost
+  Trials: 30
+  Tipo: multiclass
+  Parâmetros: Reduzido
+  Balanceamento: none
+================================================================================
+EXECUTANDO MODELO: CatBoost
+================================================================================
+
+Starting Nested Cross-Validation for catboost...
+Configuration: 5 outer folds, 30 trials per fold
+Performing 80/20 holdout split...
+Holdout split completed:
+  - Training set: 14140 samples (80%)
+  - Holdout test set: 3536 samples (20%)
+Fold 1
+Importâncias dos parâmetros para fold 1: {'random_strength': np.float64(0.5267170100357701), 'learning_rate': np.float64(0.275707634733357), 'iterations': np.float64(0.11804322181651157), 'l2_leaf_reg': np.float64(0.04877597371705178), 'bagging_temperature': np.float64(0.021049074143181704), 'border_count': np.float64(0.008988842020577686), 'depth': np.float64(0.0007182435335502246)}
+Saved Optuna plots to results/20251203_150217_ana_optimized_multiclass_less/catboost/optuna_plots
+Fold 2
+Importâncias dos parâmetros para fold 2: {'iterations': np.float64(0.3406363473798152), 'l2_leaf_reg': np.float64(0.2086364700492001), 'learning_rate': np.float64(0.18024286219011096), 'bagging_temperature': np.float64(0.09559480175298073), 'border_count': np.float64(0.07280025207849725), 'random_strength': np.float64(0.05966584087751094), 'depth': np.float64(0.04242342567188489)}
+Saved Optuna plots to results/20251203_150217_ana_optimized_multiclass_less/catboost/optuna_plots
+Fold 3
+Importâncias dos parâmetros para fold 3: {'learning_rate': np.float64(0.28198300938730114), 'iterations': np.float64(0.2739068225456729), 'depth': np.float64(0.14390625701008197), 'bagging_temperature': np.float64(0.11562569872340747), 'random_strength': np.float64(0.10422445698573342), 'l2_leaf_reg': np.float64(0.0552415632483987), 'border_count': np.float64(0.025112192099404337)}
+Saved Optuna plots to results/20251203_150217_ana_optimized_multiclass_less/catboost/optuna_plots
+Fold 4
+Importâncias dos parâmetros para fold 4: {'random_strength': np.float64(0.38085745428970763), 'l2_leaf_reg': np.float64(0.32711324151372223), 'bagging_temperature': np.float64(0.1527439072749142), 'learning_rate': np.float64(0.07240185679956472), 'iterations': np.float64(0.04990223422520466), 'border_count': np.float64(0.009169101618960644), 'depth': np.float64(0.007812204277925715)}
+Saved Optuna plots to results/20251203_150217_ana_optimized_multiclass_less/catboost/optuna_plots
+Fold 5
+Importâncias dos parâmetros para fold 5: {'learning_rate': np.float64(0.6728719454597326), 'bagging_temperature': np.float64(0.09798292773746912), 'l2_leaf_reg': np.float64(0.09449387508641954), 'random_strength': np.float64(0.0625364429574864), 'iterations': np.float64(0.03844153677822457), 'border_count': np.float64(0.02147139113971201), 'depth': np.float64(0.01220188084095566)}
+Saved Optuna plots to results/20251203_150217_ana_optimized_multiclass_less/catboost/optuna_plots
+
+Nested CV completed. The 20% holdout set (3536 samples) remains untouched.
+This holdout set can be used for final unbiased evaluation.
+
+Training and evaluating 5 best parameter sets on holdout data...
+Testing with 4 balancing strategies: none, randomundersampler, smoteenn, tomeklinks
+
+Evaluating fold 1 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+
+Evaluating fold 2 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+
+Evaluating fold 3 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+
+Evaluating fold 4 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+
+Evaluating fold 5 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+Saving optimization and holdout results...
+Detailed results by fold saved to: ./results/20251203_150217_ana_optimized_multiclass_less/catboost/detailed_results_by_fold.txt
+Test predictions for all folds saved to: ./results/20251203_150217_ana_optimized_multiclass_less/catboost/metrics.json
+Saving holdout results...
+Holdout evaluation results saved to: ./results/20251203_150217_ana_optimized_multiclass_less/catboost/holdout_results.txt
+Saved!
+[OK] CatBoost executado com sucesso!
+
+CONFIGURAÇÃO DO EXPERIMENTO (OTIMIZAÇÃO):
+  Modelo: XGBoost
+  Trials: 30
+  Tipo: multiclass
+  Parâmetros: Reduzido
+  Balanceamento: none
+================================================================================
+EXECUTANDO MODELO: XGBoost
+================================================================================
+
+Starting Nested Cross-Validation for xgboost...
+Configuration: 5 outer folds, 30 trials per fold
+Performing 80/20 holdout split...
+Holdout split completed:
+  - Training set: 14140 samples (80%)
+  - Holdout test set: 3536 samples (20%)
+Fold 1
+Importâncias dos parâmetros para fold 1: {'n_estimators': np.float64(0.27353555031024923), 'reg_lambda': np.float64(0.2027717472765597), 'reg_alpha': np.float64(0.1421487392419293), 'gamma': np.float64(0.12313980564827366), 'subsample': np.float64(0.07634711053691305), 'colsample_bytree': np.float64(0.06949444117642789), 'max_depth': np.float64(0.05664939460449085), 'learning_rate': np.float64(0.046229220759213985), 'min_child_weight': np.float64(0.009683990445942276)}
+Saved Optuna plots to results/20251203_150217_ana_optimized_multiclass_less/xgboost/optuna_plots
+Fold 2
+Importâncias dos parâmetros para fold 2: {'gamma': np.float64(0.5869527075827591), 'reg_alpha': np.float64(0.12791092726632025), 'reg_lambda': np.float64(0.12169713530069526), 'max_depth': np.float64(0.09610060860638016), 'colsample_bytree': np.float64(0.024415040255511132), 'subsample': np.float64(0.018628979104274634), 'learning_rate': np.float64(0.011171784973881287), 'min_child_weight': np.float64(0.00860806287396145), 'n_estimators': np.float64(0.004514754036216594)}
+[I 2025-12-03 15:28:35,225] A new study created in memory with name: xgboost_fold_3
+[D 2025-12-03 15:28:35,225] Sample trial#0 with RandomSampler.
+[I 2025-12-03 15:28:44,657] Trial 0 finished with value: 0.38480001142616815 and parameters: {'n_estimators': 600, 'learning_rate': 0.07566401641865367, 'max_depth': 14, 'min_child_weight': 3, 'subsample': 0.936639587492764, 'colsample_bytree': 0.46709761990112364, 'reg_alpha': 0.30035866350038176, 'reg_lambda': 4.176329365620192, 'gamma': 4.0}. Best is trial 0 with value: 0.38480001142616815.
+[D 2025-12-03 15:28:44,748] Sample trial#1 with GPSampler.
+[I 2025-12-03 15:28:56,511] Trial 1 finished with value: 0.38341125632033785 and parameters: {'n_estimators': 800, 'learning_rate': 0.05280672491244586, 'max_depth': 12, 'min_child_weight': 4, 'subsample': 0.9326716533408691, 'colsample_bytree': 0.42229590602761735, 'reg_alpha': 0.8999561479431705, 'reg_lambda': 9.857253359714678, 'gamma': 3.0}. Best is trial 0 with value: 0.38480001142616815.
+[D 2025-12-03 15:28:56,603] Sample trial#2 with GPSampler.
+[I 2025-12-03 15:29:09,542] Trial 2 finished with value: 0.3745353398697029 and parameters: {'n_estimators': 800, 'learning_rate': 0.07634930678612471, 'max_depth': 2, 'min_child_weight': 10, 'subsample': 0.9207326994928849, 'colsample_bytree': 0.5305472058984794, 'reg_alpha': 0.6107396259356882, 'reg_lambda': 5.41505274579966, 'gamma': 1.0}. Best is trial 0 with value: 0.38480001142616815.
+[D 2025-12-03 15:29:09,632] Sample trial#3 with GPSampler.
+[I 2025-12-03 15:29:18,226] Trial 3 finished with value: 0.38569621018617817 and parameters: {'n_estimators': 300, 'learning_rate': 0.016480496567556624, 'max_depth': 4, 'min_child_weight': 9, 'subsample': 0.972846472676227, 'colsample_bytree': 0.41134343429608033, 'reg_alpha': 0.12102415200665273, 'reg_lambda': 4.555470401827698, 'gamma': 0.0}. Best is trial 3 with value: 0.38569621018617817.
+[D 2025-12-03 15:29:18,321] Sample trial#4 with GPSampler.
+[I 2025-12-03 15:29:48,294] Trial 4 finished with value: 0.38225118619886467 and parameters: {'n_estimators': 550, 'learning_rate': 0.014750422426548945, 'max_depth': 16, 'min_child_weight': 10, 'subsample': 0.9050314818795108, 'colsample_bytree': 0.5033633136037395, 'reg_alpha': 0.9593109640989391, 'reg_lambda': 6.852762351044196, 'gamma': 1.0}. Best is trial 3 with value: 0.38569621018617817.
+[D 2025-12-03 15:29:48,381] Sample trial#5 with GPSampler.
+[I 2025-12-03 15:29:59,290] Trial 5 finished with value: 0.38461705006125385 and parameters: {'n_estimators': 900, 'learning_rate': 0.016811126252332827, 'max_depth': 10, 'min_child_weight': 1, 'subsample': 0.9654843827892815, 'colsample_bytree': 0.44870452622639506, 'reg_alpha': 0.33044748859584705, 'reg_lambda': 3.3928159372473603, 'gamma': 4.0}. Best is trial 3 with value: 0.38569621018617817.
+[D 2025-12-03 15:29:59,379] Sample trial#6 with GPSampler.
+[I 2025-12-03 15:30:11,990] Trial 6 finished with value: 0.3713457654124267 and parameters: {'n_estimators': 650, 'learning_rate': 0.09919803624611151, 'max_depth': 2, 'min_child_weight': 10, 'subsample': 0.946184934456774, 'colsample_bytree': 0.4774978153914085, 'reg_alpha': 0.061337234266894525, 'reg_lambda': 9.931741964469472, 'gamma': 0.0}. Best is trial 3 with value: 0.38569621018617817.
+[D 2025-12-03 15:30:12,082] Sample trial#7 with GPSampler.
+[I 2025-12-03 15:30:25,520] Trial 7 finished with value: 0.38249240131322393 and parameters: {'n_estimators': 750, 'learning_rate': 0.07582153425199502, 'max_depth': 20, 'min_child_weight': 7, 'subsample': 0.9903980784514933, 'colsample_bytree': 0.4986848094235248, 'reg_alpha': 0.4577537816332925, 'reg_lambda': 4.39431526141835, 'gamma': 5.0}. Best is trial 3 with value: 0.38569621018617817.
+[D 2025-12-03 15:30:25,612] Sample trial#8 with GPSampler.
+[I 2025-12-03 15:30:40,045] Trial 8 finished with value: 0.38295045089104474 and parameters: {'n_estimators': 850, 'learning_rate': 0.012904249219685955, 'max_depth': 6, 'min_child_weight': 8, 'subsample': 0.9974809052656011, 'colsample_bytree': 0.5837992995619904, 'reg_alpha': 0.32320875052343656, 'reg_lambda': 1.8384667450003125, 'gamma': 3.0}. Best is trial 3 with value: 0.38569621018617817.
+[D 2025-12-03 15:30:40,134] Sample trial#9 with GPSampler.
+[I 2025-12-03 15:30:50,234] Trial 9 finished with value: 0.37700596867259206 and parameters: {'n_estimators': 800, 'learning_rate': 0.03346809810744614, 'max_depth': 2, 'min_child_weight': 8, 'subsample': 0.952803015840177, 'colsample_bytree': 0.4945140518706097, 'reg_alpha': 0.15102414226790561, 'reg_lambda': 6.774808352657398, 'gamma': 0.0}. Best is trial 3 with value: 0.38569621018617817.
+[D 2025-12-03 15:30:50,318] Sample trial#10 with GPSampler.
+[I 2025-12-03 15:31:00,140] Trial 10 finished with value: 0.38408284217800925 and parameters: {'n_estimators': 200, 'learning_rate': 0.009, 'max_depth': 8, 'min_child_weight': 6, 'subsample': 0.9836334047382493, 'colsample_bytree': 0.4, 'reg_alpha': 0.25507101501872836, 'reg_lambda': 1.7158392086314609, 'gamma': 2.0}. Best is trial 3 with value: 0.38569621018617817.
+[D 2025-12-03 15:31:00,227] Sample trial#11 with GPSampler.
+[I 2025-12-03 15:31:04,308] Trial 11 finished with value: 0.37972595422858885 and parameters: {'n_estimators': 100, 'learning_rate': 0.009, 'max_depth': 2, 'min_child_weight': 10, 'subsample': 0.9948442323423263, 'colsample_bytree': 0.4, 'reg_alpha': 0.0, 'reg_lambda': 3.240121179244781, 'gamma': 0.0}. Best is trial 3 with value: 0.38569621018617817.
+[D 2025-12-03 15:31:04,397] Sample trial#12 with GPSampler.
+[I 2025-12-03 15:31:26,343] Trial 12 finished with value: 0.38645492927043235 and parameters: {'n_estimators': 450, 'learning_rate': 0.009, 'max_depth': 10, 'min_child_weight': 4, 'subsample': 0.9661307251131547, 'colsample_bytree': 0.4, 'reg_alpha': 0.28431410639540594, 'reg_lambda': 3.3711661561961637, 'gamma': 2.0}. Best is trial 12 with value: 0.38645492927043235.
+[D 2025-12-03 15:31:26,435] Sample trial#13 with GPSampler.
+[I 2025-12-03 15:31:33,305] Trial 13 finished with value: 0.38338375663100405 and parameters: {'n_estimators': 600, 'learning_rate': 0.022133940583370034, 'max_depth': 14, 'min_child_weight': 1, 'subsample': 0.9466919721475645, 'colsample_bytree': 0.40175492002378477, 'reg_alpha': 0.8785290900295083, 'reg_lambda': 2.985593507728507, 'gamma': 5.0}. Best is trial 12 with value: 0.38645492927043235.
+[D 2025-12-03 15:31:33,396] Sample trial#14 with GPSampler.
+[I 2025-12-03 15:31:59,485] Trial 14 finished with value: 0.38537223016462774 and parameters: {'n_estimators': 400, 'learning_rate': 0.009, 'max_depth': 8, 'min_child_weight': 7, 'subsample': 0.9605908172795535, 'colsample_bytree': 0.4, 'reg_alpha': 0.0, 'reg_lambda': 3.475142378736211, 'gamma': 0.0}. Best is trial 12 with value: 0.38645492927043235.
+[D 2025-12-03 15:31:59,577] Sample trial#15 with GPSampler.
+[I 2025-12-03 15:32:11,806] Trial 15 finished with value: 0.38519778737936206 and parameters: {'n_estimators': 400, 'learning_rate': 0.009, 'max_depth': 6, 'min_child_weight': 4, 'subsample': 0.9976497767419114, 'colsample_bytree': 0.4177636071226133, 'reg_alpha': 0.5199423662474668, 'reg_lambda': 6.4206799047308785, 'gamma': 2.0}. Best is trial 12 with value: 0.38645492927043235.
+[D 2025-12-03 15:32:11,897] Sample trial#16 with GPSampler.
+[I 2025-12-03 15:32:27,739] Trial 16 finished with value: 0.38683188967608434 and parameters: {'n_estimators': 400, 'learning_rate': 0.009683925098762201, 'max_depth': 12, 'min_child_weight': 4, 'subsample': 0.9277299328338758, 'colsample_bytree': 0.5079369035087105, 'reg_alpha': 0.0, 'reg_lambda': 1.0667424986383693, 'gamma': 3.0}. Best is trial 16 with value: 0.38683188967608434.
+[D 2025-12-03 15:32:27,830] Sample trial#17 with GPSampler.
+[I 2025-12-03 15:32:44,739] Trial 17 finished with value: 0.3855558098545697 and parameters: {'n_estimators': 400, 'learning_rate': 0.03390386326871066, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 0.9248074712821536, 'colsample_bytree': 0.42908358181474004, 'reg_alpha': 0.0, 'reg_lambda': 1.1116267343728228, 'gamma': 2.0}. Best is trial 16 with value: 0.38683188967608434.
+[D 2025-12-03 15:32:44,829] Sample trial#18 with GPSampler.
+[I 2025-12-03 15:32:51,653] Trial 18 finished with value: 0.384333420031029 and parameters: {'n_estimators': 400, 'learning_rate': 0.009, 'max_depth': 18, 'min_child_weight': 7, 'subsample': 0.9412724375117321, 'colsample_bytree': 0.4, 'reg_alpha': 0.0, 'reg_lambda': 2.0285235374982404, 'gamma': 4.0}. Best is trial 16 with value: 0.38683188967608434.
+[D 2025-12-03 15:32:51,745] Sample trial#19 with GPSampler.
+[I 2025-12-03 15:32:59,795] Trial 19 finished with value: 0.38130690444827187 and parameters: {'n_estimators': 400, 'learning_rate': 0.009, 'max_depth': 2, 'min_child_weight': 2, 'subsample': 0.9, 'colsample_bytree': 0.44966799363722104, 'reg_alpha': 0.08979369714663557, 'reg_lambda': 1.0, 'gamma': 2.0}. Best is trial 16 with value: 0.38683188967608434.
+[D 2025-12-03 15:32:59,885] Sample trial#20 with GPSampler.
+[I 2025-12-03 15:33:14,748] Trial 20 finished with value: 0.38564827585443723 and parameters: {'n_estimators': 400, 'learning_rate': 0.030822961451394806, 'max_depth': 14, 'min_child_weight': 1, 'subsample': 0.9886026814599495, 'colsample_bytree': 0.5426975989673375, 'reg_alpha': 0.0, 'reg_lambda': 1.2833465557322505, 'gamma': 2.0}. Best is trial 16 with value: 0.38683188967608434.
+[D 2025-12-03 15:33:14,839] Sample trial#21 with GPSampler.
+[I 2025-12-03 15:33:28,442] Trial 21 finished with value: 0.3851832754413481 and parameters: {'n_estimators': 350, 'learning_rate': 0.024344152684859587, 'max_depth': 12, 'min_child_weight': 1, 'subsample': 0.9181983797023548, 'colsample_bytree': 0.40044957175390933, 'reg_alpha': 0.0, 'reg_lambda': 7.04450476172428, 'gamma': 3.0}. Best is trial 16 with value: 0.38683188967608434.
+[D 2025-12-03 15:33:28,534] Sample trial#22 with GPSampler.
+[I 2025-12-03 15:33:38,016] Trial 22 finished with value: 0.3826814474938831 and parameters: {'n_estimators': 400, 'learning_rate': 0.009, 'max_depth': 10, 'min_child_weight': 8, 'subsample': 0.989904577797843, 'colsample_bytree': 0.49434210545364393, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 16 with value: 0.38683188967608434.
+[D 2025-12-03 15:33:38,104] Sample trial#23 with GPSampler.
+[I 2025-12-03 15:33:53,962] Trial 23 finished with value: 0.3872885078483946 and parameters: {'n_estimators': 400, 'learning_rate': 0.009, 'max_depth': 14, 'min_child_weight': 4, 'subsample': 0.9432383623890308, 'colsample_bytree': 0.5205361844929332, 'reg_alpha': 0.37178292061487145, 'reg_lambda': 4.413667736986756, 'gamma': 2.0}. Best is trial 23 with value: 0.3872885078483946.
+[D 2025-12-03 15:33:54,054] Sample trial#24 with GPSampler.
+[I 2025-12-03 15:34:12,253] Trial 24 finished with value: 0.38557323936409627 and parameters: {'n_estimators': 500, 'learning_rate': 0.009, 'max_depth': 18, 'min_child_weight': 3, 'subsample': 0.9314518949629681, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 8.651528035383887, 'gamma': 2.0}. Best is trial 23 with value: 0.3872885078483946.
+[D 2025-12-03 15:34:12,340] Sample trial#25 with GPSampler.
+[I 2025-12-03 15:34:43,999] Trial 25 finished with value: 0.3852077774524079 and parameters: {'n_estimators': 350, 'learning_rate': 0.009, 'max_depth': 14, 'min_child_weight': 5, 'subsample': 0.9720292019928822, 'colsample_bytree': 0.42021274085799, 'reg_alpha': 1.0, 'reg_lambda': 1.0, 'gamma': 1.0}. Best is trial 23 with value: 0.3872885078483946.
+[D 2025-12-03 15:34:44,087] Sample trial#26 with GPSampler.
+[I 2025-12-03 15:35:04,809] Trial 26 finished with value: 0.384137535839162 and parameters: {'n_estimators': 300, 'learning_rate': 0.009, 'max_depth': 14, 'min_child_weight': 6, 'subsample': 0.9379440256628816, 'colsample_bytree': 0.5938679175762267, 'reg_alpha': 0.0, 'reg_lambda': 10.0, 'gamma': 1.0}. Best is trial 23 with value: 0.3872885078483946.
+[D 2025-12-03 15:35:04,901] Sample trial#27 with GPSampler.
+[I 2025-12-03 15:35:15,996] Trial 27 finished with value: 0.38559709869105635 and parameters: {'n_estimators': 400, 'learning_rate': 0.009, 'max_depth': 16, 'min_child_weight': 3, 'subsample': 0.9, 'colsample_bytree': 0.6, 'reg_alpha': 0.7137213918997851, 'reg_lambda': 1.0, 'gamma': 3.0}. Best is trial 23 with value: 0.3872885078483946.
+[D 2025-12-03 15:35:16,087] Sample trial#28 with GPSampler.
+[I 2025-12-03 15:35:38,989] Trial 28 finished with value: 0.3874318106273787 and parameters: {'n_estimators': 400, 'learning_rate': 0.009, 'max_depth': 14, 'min_child_weight': 4, 'subsample': 0.9703616438752609, 'colsample_bytree': 0.457930972866663, 'reg_alpha': 0.0, 'reg_lambda': 3.429458247505959, 'gamma': 2.0}. Best is trial 28 with value: 0.3874318106273787.
+[D 2025-12-03 15:35:39,079] Sample trial#29 with GPSampler.
+[I 2025-12-03 15:38:17,887] Trial 29 finished with value: 0.38246513978029795 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 1.0, 'reg_lambda': 1.0, 'gamma': 0.0}. Best is trial 28 with value: 0.3874318106273787.
+[I 2025-12-03 15:38:20,592] A new study created in memory with name: xgboost_fold_4
+[D 2025-12-03 15:38:20,593] Sample trial#0 with RandomSampler.
+[I 2025-12-03 15:38:30,117] Trial 0 finished with value: 0.3808175862598516 and parameters: {'n_estimators': 500, 'learning_rate': 0.0997733427165255, 'max_depth': 18, 'min_child_weight': 3, 'subsample': 0.9312104376909371, 'colsample_bytree': 0.43408410770154693, 'reg_alpha': 0.6891573633778131, 'reg_lambda': 1.0142537343834679, 'gamma': 5.0}. Best is trial 0 with value: 0.3808175862598516.
+[D 2025-12-03 15:38:30,207] Sample trial#1 with GPSampler.
+[I 2025-12-03 15:38:42,721] Trial 1 finished with value: 0.3798120935337188 and parameters: {'n_estimators': 800, 'learning_rate': 0.08905119252753443, 'max_depth': 18, 'min_child_weight': 1, 'subsample': 0.9607543975900128, 'colsample_bytree': 0.5057458895382094, 'reg_alpha': 0.5219929104203823, 'reg_lambda': 2.367009122201178, 'gamma': 1.0}. Best is trial 0 with value: 0.3808175862598516.
+[D 2025-12-03 15:38:42,804] Sample trial#2 with GPSampler.
+[I 2025-12-03 15:38:54,365] Trial 2 finished with value: 0.3803836177009491 and parameters: {'n_estimators': 850, 'learning_rate': 0.030169172492404264, 'max_depth': 2, 'min_child_weight': 10, 'subsample': 0.9988674373589559, 'colsample_bytree': 0.44532754320749973, 'reg_alpha': 0.1703919114836373, 'reg_lambda': 7.997123699930995, 'gamma': 2.0}. Best is trial 0 with value: 0.3808175862598516.
+[D 2025-12-03 15:38:54,453] Sample trial#3 with GPSampler.
+[I 2025-12-03 15:39:05,679] Trial 3 finished with value: 0.3830375499637476 and parameters: {'n_estimators': 850, 'learning_rate': 0.047592419524432585, 'max_depth': 2, 'min_child_weight': 4, 'subsample': 0.972313293115973, 'colsample_bytree': 0.5628337944341658, 'reg_alpha': 0.5425370485930628, 'reg_lambda': 4.935670331872414, 'gamma': 5.0}. Best is trial 3 with value: 0.3830375499637476.
+[D 2025-12-03 15:39:05,768] Sample trial#4 with GPSampler.
+[I 2025-12-03 15:39:17,039] Trial 4 finished with value: 0.3817757661354996 and parameters: {'n_estimators': 900, 'learning_rate': 0.022181831447642915, 'max_depth': 10, 'min_child_weight': 8, 'subsample': 0.9628815593798513, 'colsample_bytree': 0.5489163388264656, 'reg_alpha': 0.32840609109297436, 'reg_lambda': 8.630895058853252, 'gamma': 5.0}. Best is trial 3 with value: 0.3830375499637476.
+[D 2025-12-03 15:39:17,123] Sample trial#5 with GPSampler.
+[I 2025-12-03 15:39:39,652] Trial 5 finished with value: 0.3738065253411129 and parameters: {'n_estimators': 800, 'learning_rate': 0.026208640865159602, 'max_depth': 6, 'min_child_weight': 5, 'subsample': 0.997114167545696, 'colsample_bytree': 0.5871820240858355, 'reg_alpha': 0.7859683180356046, 'reg_lambda': 8.208635989650281, 'gamma': 0.0}. Best is trial 3 with value: 0.3830375499637476.
+[D 2025-12-03 15:39:39,735] Sample trial#6 with GPSampler.
+[I 2025-12-03 15:39:52,627] Trial 6 finished with value: 0.3781909015312504 and parameters: {'n_estimators': 900, 'learning_rate': 0.06047332592936294, 'max_depth': 4, 'min_child_weight': 4, 'subsample': 0.96812304170704, 'colsample_bytree': 0.5399677318958037, 'reg_alpha': 0.5348103781046187, 'reg_lambda': 7.500847631038635, 'gamma': 1.0}. Best is trial 3 with value: 0.3830375499637476.
+[D 2025-12-03 15:39:52,709] Sample trial#7 with GPSampler.
+[I 2025-12-03 15:40:02,139] Trial 7 finished with value: 0.38168242551912235 and parameters: {'n_estimators': 800, 'learning_rate': 0.03639890108361868, 'max_depth': 4, 'min_child_weight': 8, 'subsample': 0.9767460693677981, 'colsample_bytree': 0.430052116723987, 'reg_alpha': 0.6525805086805045, 'reg_lambda': 4.7154163972935255, 'gamma': 4.0}. Best is trial 3 with value: 0.3830375499637476.
+[D 2025-12-03 15:40:02,227] Sample trial#8 with GPSampler.
+[I 2025-12-03 15:40:10,662] Trial 8 finished with value: 0.3800749769037478 and parameters: {'n_estimators': 850, 'learning_rate': 0.09650285844141115, 'max_depth': 14, 'min_child_weight': 9, 'subsample': 0.989392212128365, 'colsample_bytree': 0.5824963782635473, 'reg_alpha': 0.44487421964314655, 'reg_lambda': 9.931016645402119, 'gamma': 1.0}. Best is trial 3 with value: 0.3830375499637476.
+[D 2025-12-03 15:40:10,748] Sample trial#9 with GPSampler.
+[I 2025-12-03 15:40:22,780] Trial 9 finished with value: 0.3813775448265504 and parameters: {'n_estimators': 650, 'learning_rate': 0.05091227071053777, 'max_depth': 10, 'min_child_weight': 9, 'subsample': 0.9874320349181183, 'colsample_bytree': 0.45005639928049807, 'reg_alpha': 0.8710176919165399, 'reg_lambda': 5.838178936270863, 'gamma': 2.0}. Best is trial 3 with value: 0.3830375499637476.
+[D 2025-12-03 15:40:22,866] Sample trial#10 with GPSampler.
+[I 2025-12-03 15:40:29,594] Trial 10 finished with value: 0.38256255224616464 and parameters: {'n_estimators': 900, 'learning_rate': 0.08569988759176321, 'max_depth': 2, 'min_child_weight': 8, 'subsample': 1.0, 'colsample_bytree': 0.5642927805027017, 'reg_alpha': 0.5949017907771503, 'reg_lambda': 6.323786714050972, 'gamma': 5.0}. Best is trial 3 with value: 0.3830375499637476.
+[D 2025-12-03 15:40:29,678] Sample trial#11 with GPSampler.
+[I 2025-12-03 15:40:41,785] Trial 11 finished with value: 0.3813815121143782 and parameters: {'n_estimators': 1000, 'learning_rate': 0.0644269232176661, 'max_depth': 2, 'min_child_weight': 6, 'subsample': 0.9316282818189843, 'colsample_bytree': 0.6, 'reg_alpha': 0.9995578389462048, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 3 with value: 0.3830375499637476.
+[D 2025-12-03 15:40:41,870] Sample trial#12 with GPSampler.
+[I 2025-12-03 15:40:54,468] Trial 12 finished with value: 0.3827493617883039 and parameters: {'n_estimators': 500, 'learning_rate': 0.06360011190636937, 'max_depth': 2, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.5554852882033553, 'reg_alpha': 0.07088849081877684, 'reg_lambda': 6.235819342801096, 'gamma': 5.0}. Best is trial 3 with value: 0.3830375499637476.
+[D 2025-12-03 15:40:54,555] Sample trial#13 with GPSampler.
+[I 2025-12-03 15:41:07,299] Trial 13 finished with value: 0.38277738669731043 and parameters: {'n_estimators': 900, 'learning_rate': 0.0582401221016555, 'max_depth': 2, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.5334467268500451, 'reg_alpha': 1.0, 'reg_lambda': 9.580612447075902, 'gamma': 5.0}. Best is trial 3 with value: 0.3830375499637476.
+[D 2025-12-03 15:41:07,387] Sample trial#14 with GPSampler.
+[I 2025-12-03 15:41:17,669] Trial 14 finished with value: 0.38414875255087677 and parameters: {'n_estimators': 1000, 'learning_rate': 0.04883852300636685, 'max_depth': 2, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.5395760463704121, 'reg_alpha': 0.2916019101173873, 'reg_lambda': 1.7273087157543592, 'gamma': 5.0}. Best is trial 14 with value: 0.38414875255087677.
+[D 2025-12-03 15:41:17,759] Sample trial#15 with GPSampler.
+[I 2025-12-03 15:41:30,869] Trial 15 finished with value: 0.38503051226325236 and parameters: {'n_estimators': 1000, 'learning_rate': 0.020969125035763973, 'max_depth': 2, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 15 with value: 0.38503051226325236.
+[D 2025-12-03 15:41:30,957] Sample trial#16 with GPSampler.
+[I 2025-12-03 15:41:39,163] Trial 16 finished with value: 0.3854091387321395 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 2, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.6371196623606112, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 16 with value: 0.3854091387321395.
+[D 2025-12-03 15:41:39,252] Sample trial#17 with GPSampler.
+[I 2025-12-03 15:41:50,843] Trial 17 finished with value: 0.3837801926998891 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 18, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.8845828361945899, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 16 with value: 0.3854091387321395.
+[D 2025-12-03 15:41:50,930] Sample trial#18 with GPSampler.
+[I 2025-12-03 15:41:59,209] Trial 18 finished with value: 0.3829991442549313 and parameters: {'n_estimators': 350, 'learning_rate': 0.009, 'max_depth': 2, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 1.0, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 16 with value: 0.3854091387321395.
+[D 2025-12-03 15:41:59,298] Sample trial#19 with GPSampler.
+[I 2025-12-03 15:42:13,469] Trial 19 finished with value: 0.3842392333966554 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 2, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.4903335591975554, 'reg_lambda': 1.0, 'gamma': 4.0}. Best is trial 16 with value: 0.3854091387321395.
+[D 2025-12-03 15:42:13,556] Sample trial#20 with GPSampler.
+[I 2025-12-03 15:42:29,525] Trial 20 finished with value: 0.38364562218275594 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 2, 'min_child_weight': 6, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.5000459087794266, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 16 with value: 0.3854091387321395.
+[D 2025-12-03 15:42:29,613] Sample trial#21 with GPSampler.
+[I 2025-12-03 15:42:41,815] Trial 21 finished with value: 0.38446738901287525 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 2, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.49963690496471946, 'reg_alpha': 0.25434529095809816, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 16 with value: 0.3854091387321395.
+[D 2025-12-03 15:42:41,905] Sample trial#22 with GPSampler.
+[I 2025-12-03 15:42:48,679] Trial 22 finished with value: 0.37946719388031075 and parameters: {'n_estimators': 100, 'learning_rate': 0.1, 'max_depth': 20, 'min_child_weight': 10, 'subsample': 0.9, 'colsample_bytree': 0.4, 'reg_alpha': 0.0, 'reg_lambda': 10.0, 'gamma': 2.0}. Best is trial 16 with value: 0.3854091387321395.
+[D 2025-12-03 15:42:48,764] Sample trial#23 with GPSampler.
+[I 2025-12-03 15:42:59,982] Trial 23 finished with value: 0.38459974372581923 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 2, 'min_child_weight': 1, 'subsample': 0.9737019503447054, 'colsample_bytree': 0.6, 'reg_alpha': 0.39859407386134516, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 16 with value: 0.3854091387321395.
+[D 2025-12-03 15:43:00,069] Sample trial#24 with GPSampler.
+[I 2025-12-03 15:43:17,559] Trial 24 finished with value: 0.38479858695258434 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 2, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 1.0, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 16 with value: 0.3854091387321395.
+[D 2025-12-03 15:43:17,642] Sample trial#25 with GPSampler.
+[I 2025-12-03 15:43:29,023] Trial 25 finished with value: 0.3830646342363033 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 2, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.2277378182910711, 'reg_lambda': 6.071943516147732, 'gamma': 5.0}. Best is trial 16 with value: 0.3854091387321395.
+[D 2025-12-03 15:43:29,117] Sample trial#26 with GPSampler.
+[I 2025-12-03 15:43:43,194] Trial 26 finished with value: 0.37957545346635657 and parameters: {'n_estimators': 1000, 'learning_rate': 0.1, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 1.0, 'reg_lambda': 10.0, 'gamma': 3.0}. Best is trial 16 with value: 0.3854091387321395.
+[D 2025-12-03 15:43:43,282] Sample trial#27 with GPSampler.
+[I 2025-12-03 15:43:55,166] Trial 27 finished with value: 0.3848168585109394 and parameters: {'n_estimators': 1000, 'learning_rate': 0.009, 'max_depth': 2, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.5851009447959357, 'reg_alpha': 0.3786419284612063, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 16 with value: 0.3854091387321395.
+[D 2025-12-03 15:43:55,250] Sample trial#28 with GPSampler.
+[I 2025-12-03 15:44:03,436] Trial 28 finished with value: 0.3806323961650342 and parameters: {'n_estimators': 100, 'learning_rate': 0.09999999999999999, 'max_depth': 2, 'min_child_weight': 10, 'subsample': 1.0, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 3.0}. Best is trial 16 with value: 0.3854091387321395.
+[D 2025-12-03 15:44:03,520] Sample trial#29 with GPSampler.
+[I 2025-12-03 15:44:10,908] Trial 29 finished with value: 0.37791896313794504 and parameters: {'n_estimators': 100, 'learning_rate': 0.009, 'max_depth': 2, 'min_child_weight': 1, 'subsample': 0.9, 'colsample_bytree': 0.4, 'reg_alpha': 0.0, 'reg_lambda': 10.0, 'gamma': 5.0}. Best is trial 16 with value: 0.3854091387321395.
+[I 2025-12-03 15:44:12,792] A new study created in memory with name: xgboost_fold_5
+[D 2025-12-03 15:44:12,792] Sample trial#0 with RandomSampler.
+[I 2025-12-03 15:44:31,439] Trial 0 finished with value: 0.36865401232154815 and parameters: {'n_estimators': 900, 'learning_rate': 0.06996424185526838, 'max_depth': 4, 'min_child_weight': 4, 'subsample': 0.9899632392018214, 'colsample_bytree': 0.49291817772481644, 'reg_alpha': 0.9669112637256717, 'reg_lambda': 8.21022843907642, 'gamma': 0.0}. Best is trial 0 with value: 0.36865401232154815.
+[D 2025-12-03 15:44:31,540] Sample trial#1 with GPSampler.
+[I 2025-12-03 15:44:39,529] Trial 1 finished with value: 0.3860414878104096 and parameters: {'n_estimators': 300, 'learning_rate': 0.060002918976410406, 'max_depth': 4, 'min_child_weight': 2, 'subsample': 0.9038117010908604, 'colsample_bytree': 0.5274335660368372, 'reg_alpha': 0.03811986161535419, 'reg_lambda': 5.701188059393853, 'gamma': 4.0}. Best is trial 1 with value: 0.3860414878104096.
+[D 2025-12-03 15:44:39,619] Sample trial#2 with GPSampler.
+[I 2025-12-03 15:45:03,048] Trial 2 finished with value: 0.3859122960591759 and parameters: {'n_estimators': 1000, 'learning_rate': 0.019195062621590382, 'max_depth': 6, 'min_child_weight': 7, 'subsample': 0.9197054352444598, 'colsample_bytree': 0.5758936185940501, 'reg_alpha': 0.549195050672337, 'reg_lambda': 8.110536290514919, 'gamma': 3.0}. Best is trial 1 with value: 0.3860414878104096.
+[D 2025-12-03 15:45:03,137] Sample trial#3 with GPSampler.
+[I 2025-12-03 15:45:16,697] Trial 3 finished with value: 0.3834553365581145 and parameters: {'n_estimators': 1000, 'learning_rate': 0.08309305276242443, 'max_depth': 8, 'min_child_weight': 4, 'subsample': 0.9415862410452078, 'colsample_bytree': 0.42271542744388696, 'reg_alpha': 0.6772477773546536, 'reg_lambda': 2.5589122404798923, 'gamma': 5.0}. Best is trial 1 with value: 0.3860414878104096.
+[D 2025-12-03 15:45:16,787] Sample trial#4 with GPSampler.
+[I 2025-12-03 15:45:25,911] Trial 4 finished with value: 0.3907654397430006 and parameters: {'n_estimators': 150, 'learning_rate': 0.02223071025677567, 'max_depth': 20, 'min_child_weight': 4, 'subsample': 0.9620858698017726, 'colsample_bytree': 0.5719637772818313, 'reg_alpha': 0.1656881549596273, 'reg_lambda': 5.291659179149958, 'gamma': 2.0}. Best is trial 4 with value: 0.3907654397430006.
+[D 2025-12-03 15:45:25,996] Sample trial#5 with GPSampler.
+[I 2025-12-03 15:45:32,350] Trial 5 finished with value: 0.38461668969781737 and parameters: {'n_estimators': 300, 'learning_rate': 0.051552728574508905, 'max_depth': 12, 'min_child_weight': 1, 'subsample': 0.9907298699544217, 'colsample_bytree': 0.5204657395728577, 'reg_alpha': 0.25460374395988505, 'reg_lambda': 4.011525601692004, 'gamma': 5.0}. Best is trial 4 with value: 0.3907654397430006.
+[D 2025-12-03 15:45:32,436] Sample trial#6 with GPSampler.
+[I 2025-12-03 15:45:39,367] Trial 6 finished with value: 0.3841418369917827 and parameters: {'n_estimators': 350, 'learning_rate': 0.09301749544287517, 'max_depth': 6, 'min_child_weight': 1, 'subsample': 0.9384653181827459, 'colsample_bytree': 0.49308395206581596, 'reg_alpha': 0.9438165977212536, 'reg_lambda': 1.7556389624485815, 'gamma': 4.0}. Best is trial 4 with value: 0.3907654397430006.
+[D 2025-12-03 15:45:39,460] Sample trial#7 with GPSampler.
+[I 2025-12-03 15:45:45,432] Trial 7 finished with value: 0.3822173277783252 and parameters: {'n_estimators': 800, 'learning_rate': 0.08905994791451233, 'max_depth': 2, 'min_child_weight': 1, 'subsample': 0.905179791178678, 'colsample_bytree': 0.4421857109634882, 'reg_alpha': 0.16318778385108879, 'reg_lambda': 9.620926461050258, 'gamma': 5.0}. Best is trial 4 with value: 0.3907654397430006.
+[D 2025-12-03 15:45:45,523] Sample trial#8 with GPSampler.
+[I 2025-12-03 15:45:50,177] Trial 8 finished with value: 0.3847108657479358 and parameters: {'n_estimators': 250, 'learning_rate': 0.01934499209308114, 'max_depth': 14, 'min_child_weight': 4, 'subsample': 0.9587540863671292, 'colsample_bytree': 0.5967423254104687, 'reg_alpha': 0.5801111455487583, 'reg_lambda': 6.625017319886885, 'gamma': 4.0}. Best is trial 4 with value: 0.3907654397430006.
+[D 2025-12-03 15:45:50,268] Sample trial#9 with GPSampler.
+[I 2025-12-03 15:45:57,340] Trial 9 finished with value: 0.38491151903714216 and parameters: {'n_estimators': 100, 'learning_rate': 0.08657545957934937, 'max_depth': 4, 'min_child_weight': 10, 'subsample': 0.9063068778481571, 'colsample_bytree': 0.5839072786440996, 'reg_alpha': 0.9662057212562817, 'reg_lambda': 9.99533709496297, 'gamma': 1.0}. Best is trial 4 with value: 0.3907654397430006.
+[D 2025-12-03 15:45:57,431] Sample trial#10 with GPSampler.
+[I 2025-12-03 15:46:03,776] Trial 10 finished with value: 0.3909067574231853 and parameters: {'n_estimators': 100, 'learning_rate': 0.01249528099467038, 'max_depth': 20, 'min_child_weight': 5, 'subsample': 0.9390378412407819, 'colsample_bytree': 0.5937284342973068, 'reg_alpha': 0.0, 'reg_lambda': 2.3818961896953748, 'gamma': 2.0}. Best is trial 10 with value: 0.3909067574231853.
+[D 2025-12-03 15:46:03,862] Sample trial#11 with GPSampler.
+[I 2025-12-03 15:46:12,206] Trial 11 finished with value: 0.38796311116777804 and parameters: {'n_estimators': 100, 'learning_rate': 0.009, 'max_depth': 20, 'min_child_weight': 9, 'subsample': 0.9410068429885371, 'colsample_bytree': 0.5743803720676024, 'reg_alpha': 0.0, 'reg_lambda': 7.939123091417745, 'gamma': 2.0}. Best is trial 10 with value: 0.3909067574231853.
+[D 2025-12-03 15:46:12,293] Sample trial#12 with GPSampler.
+[I 2025-12-03 15:46:22,681] Trial 12 finished with value: 0.3943752843929022 and parameters: {'n_estimators': 100, 'learning_rate': 0.026541361888587522, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 0.9608787833030943, 'colsample_bytree': 0.5856145473830048, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 2.0}. Best is trial 12 with value: 0.3943752843929022.
+[D 2025-12-03 15:46:22,771] Sample trial#13 with GPSampler.
+[I 2025-12-03 15:46:30,310] Trial 13 finished with value: 0.39253164891846504 and parameters: {'n_estimators': 100, 'learning_rate': 0.08717568799273882, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 0.957709385742588, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 3.0}. Best is trial 12 with value: 0.3943752843929022.
+[D 2025-12-03 15:46:30,402] Sample trial#14 with GPSampler.
+[I 2025-12-03 15:46:36,461] Trial 14 finished with value: 0.3872165688536029 and parameters: {'n_estimators': 100, 'learning_rate': 0.009, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 0.970670891113751, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 12 with value: 0.3943752843929022.
+[D 2025-12-03 15:46:36,552] Sample trial#15 with GPSampler.
+[I 2025-12-03 15:46:49,354] Trial 15 finished with value: 0.3911903373770297 and parameters: {'n_estimators': 100, 'learning_rate': 0.06637530280808349, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 0.966431691739582, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 1.0}. Best is trial 12 with value: 0.3943752843929022.
+[D 2025-12-03 15:46:49,445] Sample trial#16 with GPSampler.
+[I 2025-12-03 15:46:54,383] Trial 16 finished with value: 0.39853900810519216 and parameters: {'n_estimators': 100, 'learning_rate': 0.009, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 0.9593063774478691, 'colsample_bytree': 0.4638220578319972, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 2.0}. Best is trial 16 with value: 0.39853900810519216.
+[D 2025-12-03 15:46:54,473] Sample trial#17 with GPSampler.
+[I 2025-12-03 15:47:03,510] Trial 17 finished with value: 0.3965063759386634 and parameters: {'n_estimators': 100, 'learning_rate': 0.009, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 0.9373869284832095, 'colsample_bytree': 0.4, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 2.0}. Best is trial 16 with value: 0.39853900810519216.
+[D 2025-12-03 15:47:03,601] Sample trial#18 with GPSampler.
+[I 2025-12-03 15:47:10,037] Trial 18 finished with value: 0.3992614618804217 and parameters: {'n_estimators': 100, 'learning_rate': 0.009, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 0.9852119284192916, 'colsample_bytree': 0.40170041311923255, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 2.0}. Best is trial 18 with value: 0.3992614618804217.
+[D 2025-12-03 15:47:10,122] Sample trial#19 with GPSampler.
+[I 2025-12-03 15:47:16,579] Trial 19 finished with value: 0.39934083169215995 and parameters: {'n_estimators': 100, 'learning_rate': 0.009, 'max_depth': 20, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.44661573599639787, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 2.0}. Best is trial 19 with value: 0.39934083169215995.
+[D 2025-12-03 15:47:16,664] Sample trial#20 with GPSampler.
+[I 2025-12-03 15:47:24,264] Trial 20 finished with value: 0.400363176229828 and parameters: {'n_estimators': 100, 'learning_rate': 0.009, 'max_depth': 10, 'min_child_weight': 1, 'subsample': 0.9989356112000911, 'colsample_bytree': 0.4185131604024552, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 2.0}. Best is trial 20 with value: 0.400363176229828.
+[D 2025-12-03 15:47:24,355] Sample trial#21 with GPSampler.
+[I 2025-12-03 15:47:32,601] Trial 21 finished with value: 0.3890876251744381 and parameters: {'n_estimators': 100, 'learning_rate': 0.009, 'max_depth': 2, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.4, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 1.0}. Best is trial 20 with value: 0.400363176229828.
+[D 2025-12-03 15:47:32,694] Sample trial#22 with GPSampler.
+[I 2025-12-03 15:47:39,587] Trial 22 finished with value: 0.39390172685352126 and parameters: {'n_estimators': 100, 'learning_rate': 0.009, 'max_depth': 10, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.4, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 3.0}. Best is trial 20 with value: 0.400363176229828.
+[D 2025-12-03 15:47:39,679] Sample trial#23 with GPSampler.
+[I 2025-12-03 15:47:47,341] Trial 23 finished with value: 0.39053994423701116 and parameters: {'n_estimators': 100, 'learning_rate': 0.0772900398339186, 'max_depth': 12, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.42544428296205095, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 2.0}. Best is trial 20 with value: 0.400363176229828.
+[D 2025-12-03 15:47:47,431] Sample trial#24 with GPSampler.
+[I 2025-12-03 15:48:04,818] Trial 24 finished with value: 0.39286048377774796 and parameters: {'n_estimators': 400, 'learning_rate': 0.009, 'max_depth': 12, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.4250273920088241, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 2.0}. Best is trial 20 with value: 0.400363176229828.
+[D 2025-12-03 15:48:04,911] Sample trial#25 with GPSampler.
+[I 2025-12-03 15:48:11,001] Trial 25 finished with value: 0.39624328703543116 and parameters: {'n_estimators': 100, 'learning_rate': 0.009, 'max_depth': 12, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.4251724099558568, 'reg_alpha': 0.5053591766833428, 'reg_lambda': 1.0, 'gamma': 2.0}. Best is trial 20 with value: 0.400363176229828.
+[D 2025-12-03 15:48:11,093] Sample trial#26 with GPSampler.
+[I 2025-12-03 15:48:19,083] Trial 26 finished with value: 0.3987349924183957 and parameters: {'n_estimators': 100, 'learning_rate': 0.009, 'max_depth': 10, 'min_child_weight': 1, 'subsample': 0.9891546628627921, 'colsample_bytree': 0.4542888250151046, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 2.0}. Best is trial 20 with value: 0.400363176229828.
+[D 2025-12-03 15:48:19,169] Sample trial#27 with GPSampler.
+[I 2025-12-03 15:48:25,603] Trial 27 finished with value: 0.3920627258883842 and parameters: {'n_estimators': 100, 'learning_rate': 0.009, 'max_depth': 16, 'min_child_weight': 1, 'subsample': 1.0, 'colsample_bytree': 0.4, 'reg_alpha': 0.0, 'reg_lambda': 7.464465250214719, 'gamma': 2.0}. Best is trial 20 with value: 0.400363176229828.
+[D 2025-12-03 15:48:25,695] Sample trial#28 with GPSampler.
+[I 2025-12-03 15:48:36,195] Trial 28 finished with value: 0.39273411959465987 and parameters: {'n_estimators': 100, 'learning_rate': 0.009, 'max_depth': 16, 'min_child_weight': 6, 'subsample': 1.0, 'colsample_bytree': 0.4, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 2.0}. Best is trial 20 with value: 0.400363176229828.
+[D 2025-12-03 15:48:36,282] Sample trial#29 with GPSampler.
+[I 2025-12-03 15:48:44,435] Trial 29 finished with value: 0.3851952498183959 and parameters: {'n_estimators': 100, 'learning_rate': 0.1, 'max_depth': 20, 'min_child_weight': 10, 'subsample': 0.9, 'colsample_bytree': 0.6, 'reg_alpha': 0.0, 'reg_lambda': 1.0, 'gamma': 5.0}. Best is trial 20 with value: 0.400363176229828.
+[I 2025-12-03 15:51:18,699] A new study created in memory with name: histogram_gradient_boosting_fold_1
+[D 2025-12-03 15:51:18,699] Sample trial#0 with RandomSampler.
+[I 2025-12-03 15:51:19,585] Trial 0 finished with value: 0.3757474224853302 and parameters: {'max_iter': 55, 'learning_rate': 0.09002630856634257, 'max_depth': 4, 'min_samples_leaf': 4, 'l2_regularization': 0.211151408328502}. Best is trial 0 with value: 0.3757474224853302.
+[D 2025-12-03 15:51:19,676] Sample trial#1 with GPSampler.
+[I 2025-12-03 15:51:20,779] Trial 1 finished with value: 0.3840184807987711 and parameters: {'max_iter': 97, 'learning_rate': 0.04986858713707082, 'max_depth': 3, 'min_samples_leaf': 10, 'l2_regularization': 0.8820532954319055}. Best is trial 1 with value: 0.3840184807987711.
+[D 2025-12-03 15:51:20,868] Sample trial#2 with GPSampler.
+[I 2025-12-03 15:51:21,708] Trial 2 finished with value: 0.38008064119954355 and parameters: {'max_iter': 65, 'learning_rate': 0.062240973420138346, 'max_depth': 3, 'min_samples_leaf': 4, 'l2_regularization': 0.02696395501017934}. Best is trial 1 with value: 0.3840184807987711.
+[D 2025-12-03 15:51:21,799] Sample trial#3 with GPSampler.
+[I 2025-12-03 15:51:24,028] Trial 3 finished with value: 0.37679407451139996 and parameters: {'max_iter': 165, 'learning_rate': 0.035050912772813914, 'max_depth': 4, 'min_samples_leaf': 25, 'l2_regularization': 0.9033310497717048}. Best is trial 1 with value: 0.3840184807987711.
+[D 2025-12-03 15:51:24,126] Sample trial#4 with GPSampler.
+[I 2025-12-03 15:51:27,626] Trial 4 finished with value: 0.3831108709301702 and parameters: {'max_iter': 169, 'learning_rate': 0.016989132672387657, 'max_depth': 5, 'min_samples_leaf': 6, 'l2_regularization': 0.513356990489216}. Best is trial 1 with value: 0.3840184807987711.
+[D 2025-12-03 15:51:27,716] Sample trial#5 with GPSampler.
+[I 2025-12-03 15:51:29,876] Trial 5 finished with value: 0.3694419214225776 and parameters: {'max_iter': 175, 'learning_rate': 0.06706071988014588, 'max_depth': 4, 'min_samples_leaf': 25, 'l2_regularization': 0.12217268240247725}. Best is trial 1 with value: 0.3840184807987711.
+[D 2025-12-03 15:51:29,966] Sample trial#6 with GPSampler.
+[I 2025-12-03 15:51:32,572] Trial 6 finished with value: 0.3687737490156577 and parameters: {'max_iter': 173, 'learning_rate': 0.07023588880072769, 'max_depth': 5, 'min_samples_leaf': 29, 'l2_regularization': 0.07124950223687687}. Best is trial 1 with value: 0.3840184807987711.
+[D 2025-12-03 15:51:32,660] Sample trial#7 with GPSampler.
+[I 2025-12-03 15:51:34,697] Trial 7 finished with value: 0.37131946361920676 and parameters: {'max_iter': 115, 'learning_rate': 0.06318414976277142, 'max_depth': 5, 'min_samples_leaf': 1, 'l2_regularization': 0.36442806508614156}. Best is trial 1 with value: 0.3840184807987711.
+[D 2025-12-03 15:51:34,784] Sample trial#8 with GPSampler.
+[I 2025-12-03 15:51:35,582] Trial 8 finished with value: 0.381774392193958 and parameters: {'max_iter': 129, 'learning_rate': 0.08167166896250529, 'max_depth': 2, 'min_samples_leaf': 26, 'l2_regularization': 0.4703784716983863}. Best is trial 1 with value: 0.3840184807987711.
+[D 2025-12-03 15:51:35,670] Sample trial#9 with GPSampler.
+[I 2025-12-03 15:51:36,567] Trial 9 finished with value: 0.3825288090233806 and parameters: {'max_iter': 152, 'learning_rate': 0.08853974863516692, 'max_depth': 2, 'min_samples_leaf': 6, 'l2_regularization': 0.6796538321244115}. Best is trial 1 with value: 0.3840184807987711.
+[D 2025-12-03 15:51:36,655] Sample trial#10 with GPSampler.
+[I 2025-12-03 15:51:37,297] Trial 10 finished with value: 0.3850702764629276 and parameters: {'max_iter': 69, 'learning_rate': 0.05089705185900278, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.9999999999999999}. Best is trial 10 with value: 0.3850702764629276.
+[D 2025-12-03 15:51:37,385] Sample trial#11 with GPSampler.
+[I 2025-12-03 15:51:38,060] Trial 11 finished with value: 0.38415538502897817 and parameters: {'max_iter': 50, 'learning_rate': 0.020003770276912698, 'max_depth': 3, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 10 with value: 0.3850702764629276.
+[D 2025-12-03 15:51:38,148] Sample trial#12 with GPSampler.
+[I 2025-12-03 15:51:39,033] Trial 12 finished with value: 0.3860576463888488 and parameters: {'max_iter': 138, 'learning_rate': 0.03443170312391202, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 12 with value: 0.3860576463888488.
+[D 2025-12-03 15:51:39,119] Sample trial#13 with GPSampler.
+[I 2025-12-03 15:51:40,128] Trial 13 finished with value: 0.383745871929818 and parameters: {'max_iter': 164, 'learning_rate': 0.009, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.29664133688346234}. Best is trial 12 with value: 0.3860576463888488.
+[D 2025-12-03 15:51:40,215] Sample trial#14 with GPSampler.
+[I 2025-12-03 15:51:40,923] Trial 14 finished with value: 0.3833329876476544 and parameters: {'max_iter': 93, 'learning_rate': 0.030632347603128197, 'max_depth': 2, 'min_samples_leaf': 26, 'l2_regularization': 1.0}. Best is trial 12 with value: 0.3860576463888488.
+[D 2025-12-03 15:51:41,010] Sample trial#15 with GPSampler.
+[I 2025-12-03 15:51:42,161] Trial 15 finished with value: 0.3852687297046466 and parameters: {'max_iter': 200, 'learning_rate': 0.0477889751203897, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 12 with value: 0.3860576463888488.
+[D 2025-12-03 15:51:42,248] Sample trial#16 with GPSampler.
+[I 2025-12-03 15:51:43,417] Trial 16 finished with value: 0.3848471361480892 and parameters: {'max_iter': 200, 'learning_rate': 0.01915629927566196, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 12 with value: 0.3860576463888488.
+[D 2025-12-03 15:51:43,503] Sample trial#17 with GPSampler.
+[I 2025-12-03 15:51:44,902] Trial 17 finished with value: 0.3825463272368027 and parameters: {'max_iter': 50, 'learning_rate': 0.009, 'max_depth': 5, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 12 with value: 0.3860576463888488.
+[D 2025-12-03 15:51:44,991] Sample trial#18 with GPSampler.
+[I 2025-12-03 15:51:45,944] Trial 18 finished with value: 0.3842953705906672 and parameters: {'max_iter': 138, 'learning_rate': 0.03683164517230466, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.4535280103053714}. Best is trial 12 with value: 0.3860576463888488.
+[D 2025-12-03 15:51:46,030] Sample trial#19 with GPSampler.
+[I 2025-12-03 15:51:49,810] Trial 19 finished with value: 0.38633000102874526 and parameters: {'max_iter': 200, 'learning_rate': 0.009, 'max_depth': 5, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 19 with value: 0.38633000102874526.
+[D 2025-12-03 15:51:49,901] Sample trial#20 with GPSampler.
+[I 2025-12-03 15:51:52,767] Trial 20 finished with value: 0.38494580239000215 and parameters: {'max_iter': 200, 'learning_rate': 0.009, 'max_depth': 4, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 19 with value: 0.38633000102874526.
+[D 2025-12-03 15:51:52,857] Sample trial#21 with GPSampler.
+[I 2025-12-03 15:51:54,382] Trial 21 finished with value: 0.3853602281745609 and parameters: {'max_iter': 176, 'learning_rate': 0.009, 'max_depth': 3, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 19 with value: 0.38633000102874526.
+[D 2025-12-03 15:51:54,472] Sample trial#22 with GPSampler.
+[I 2025-12-03 15:51:55,124] Trial 22 finished with value: 0.3835057041340312 and parameters: {'max_iter': 50, 'learning_rate': 0.1, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 19 with value: 0.38633000102874526.
+[D 2025-12-03 15:51:55,213] Sample trial#23 with GPSampler.
+[I 2025-12-03 15:51:59,871] Trial 23 finished with value: 0.38593138780426084 and parameters: {'max_iter': 200, 'learning_rate': 0.009, 'max_depth': 5, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 19 with value: 0.38633000102874526.
+[D 2025-12-03 15:51:59,960] Sample trial#24 with GPSampler.
+[I 2025-12-03 15:52:04,191] Trial 24 finished with value: 0.3876065629111562 and parameters: {'max_iter': 200, 'learning_rate': 0.009, 'max_depth': 5, 'min_samples_leaf': 1, 'l2_regularization': 0.6132544643178256}. Best is trial 24 with value: 0.3876065629111562.
+[D 2025-12-03 15:52:04,283] Sample trial#25 with GPSampler.
+[I 2025-12-03 15:52:07,551] Trial 25 finished with value: 0.3825980319400546 and parameters: {'max_iter': 200, 'learning_rate': 0.009, 'max_depth': 4, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 24 with value: 0.3876065629111562.
+[D 2025-12-03 15:52:07,643] Sample trial#26 with GPSampler.
+[I 2025-12-03 15:52:08,179] Trial 26 finished with value: 0.38503269431630865 and parameters: {'max_iter': 50, 'learning_rate': 0.009, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 24 with value: 0.3876065629111562.
+[D 2025-12-03 15:52:08,266] Sample trial#27 with GPSampler.
+[I 2025-12-03 15:52:11,966] Trial 27 finished with value: 0.3875776558952008 and parameters: {'max_iter': 200, 'learning_rate': 0.009, 'max_depth': 5, 'min_samples_leaf': 1, 'l2_regularization': 0.5455159526701969}. Best is trial 24 with value: 0.3876065629111562.
+[D 2025-12-03 15:52:12,054] Sample trial#28 with GPSampler.
+[I 2025-12-03 15:52:12,710] Trial 28 finished with value: 0.3841564691007707 and parameters: {'max_iter': 50, 'learning_rate': 0.009, 'max_depth': 2, 'min_samples_leaf': 30, 'l2_regularization': 0.0}. Best is trial 24 with value: 0.3876065629111562.
+[D 2025-12-03 15:52:12,798] Sample trial#29 with GPSampler.
+[I 2025-12-03 15:52:13,405] Trial 29 finished with value: 0.3842858945657843 and parameters: {'max_iter': 50, 'learning_rate': 0.009, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 24 with value: 0.3876065629111562.
+[I 2025-12-03 15:52:14,308] A new study created in memory with name: histogram_gradient_boosting_fold_2
+[D 2025-12-03 15:52:14,308] Sample trial#0 with RandomSampler.
+[I 2025-12-03 15:52:16,142] Trial 0 finished with value: 0.3743992963222001 and parameters: {'max_iter': 183, 'learning_rate': 0.06484803974103905, 'max_depth': 3, 'min_samples_leaf': 4, 'l2_regularization': 0.12258822440020256}. Best is trial 0 with value: 0.3743992963222001.
+[D 2025-12-03 15:52:16,238] Sample trial#1 with GPSampler.
+[I 2025-12-03 15:52:17,129] Trial 1 finished with value: 0.38274569128803043 and parameters: {'max_iter': 107, 'learning_rate': 0.026496557953157036, 'max_depth': 2, 'min_samples_leaf': 27, 'l2_regularization': 0.760966023271747}. Best is trial 1 with value: 0.38274569128803043.
+[D 2025-12-03 15:52:17,223] Sample trial#2 with GPSampler.
+[I 2025-12-03 15:52:18,179] Trial 2 finished with value: 0.37870149441621137 and parameters: {'max_iter': 120, 'learning_rate': 0.07284349968438134, 'max_depth': 2, 'min_samples_leaf': 20, 'l2_regularization': 0.2499491233242549}. Best is trial 1 with value: 0.38274569128803043.
+[D 2025-12-03 15:52:18,275] Sample trial#3 with GPSampler.
+[I 2025-12-03 15:52:19,542] Trial 3 finished with value: 0.3774696508277241 and parameters: {'max_iter': 148, 'learning_rate': 0.05397769438078385, 'max_depth': 3, 'min_samples_leaf': 30, 'l2_regularization': 0.34415813283918073}. Best is trial 1 with value: 0.38274569128803043.
+[D 2025-12-03 15:52:19,632] Sample trial#4 with GPSampler.
+[I 2025-12-03 15:52:21,350] Trial 4 finished with value: 0.38674730785240574 and parameters: {'max_iter': 124, 'learning_rate': 0.01138548735074638, 'max_depth': 4, 'min_samples_leaf': 14, 'l2_regularization': 0.417224645094733}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:21,441] Sample trial#5 with GPSampler.
+[I 2025-12-03 15:52:23,401] Trial 5 finished with value: 0.3752344205674031 and parameters: {'max_iter': 82, 'learning_rate': 0.0690240729347443, 'max_depth': 5, 'min_samples_leaf': 2, 'l2_regularization': 0.04290773150572447}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:23,495] Sample trial#6 with GPSampler.
+[I 2025-12-03 15:52:24,378] Trial 6 finished with value: 0.38093858906199807 and parameters: {'max_iter': 118, 'learning_rate': 0.07069092906031188, 'max_depth': 2, 'min_samples_leaf': 19, 'l2_regularization': 0.7006132328229155}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:24,480] Sample trial#7 with GPSampler.
+[I 2025-12-03 15:52:28,279] Trial 7 finished with value: 0.3821052950965964 and parameters: {'max_iter': 199, 'learning_rate': 0.013411098307123332, 'max_depth': 5, 'min_samples_leaf': 17, 'l2_regularization': 0.5108329909223767}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:28,376] Sample trial#8 with GPSampler.
+[I 2025-12-03 15:52:31,503] Trial 8 finished with value: 0.37264537580742485 and parameters: {'max_iter': 161, 'learning_rate': 0.0488273542309309, 'max_depth': 5, 'min_samples_leaf': 23, 'l2_regularization': 0.07847276526736702}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:31,594] Sample trial#9 with GPSampler.
+[I 2025-12-03 15:52:33,962] Trial 9 finished with value: 0.36888098572088246 and parameters: {'max_iter': 102, 'learning_rate': 0.07861503353498249, 'max_depth': 5, 'min_samples_leaf': 12, 'l2_regularization': 0.868115820706077}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:34,055] Sample trial#10 with GPSampler.
+[I 2025-12-03 15:52:35,108] Trial 10 finished with value: 0.38508464449497043 and parameters: {'max_iter': 65, 'learning_rate': 0.009, 'max_depth': 4, 'min_samples_leaf': 2, 'l2_regularization': 0.5105906398397788}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:35,201] Sample trial#11 with GPSampler.
+[I 2025-12-03 15:52:36,450] Trial 11 finished with value: 0.38505394390843234 and parameters: {'max_iter': 142, 'learning_rate': 0.009, 'max_depth': 3, 'min_samples_leaf': 9, 'l2_regularization': 0.2928362387624288}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:36,540] Sample trial#12 with GPSampler.
+[I 2025-12-03 15:52:37,721] Trial 12 finished with value: 0.38338498814925126 and parameters: {'max_iter': 88, 'learning_rate': 0.009, 'max_depth': 4, 'min_samples_leaf': 29, 'l2_regularization': 0.43132677493629173}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:37,811] Sample trial#13 with GPSampler.
+[I 2025-12-03 15:52:39,274] Trial 13 finished with value: 0.3850057805409023 and parameters: {'max_iter': 118, 'learning_rate': 0.009, 'max_depth': 4, 'min_samples_leaf': 13, 'l2_regularization': 0.8926801885573934}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:39,365] Sample trial#14 with GPSampler.
+[I 2025-12-03 15:52:40,562] Trial 14 finished with value: 0.38483157335595264 and parameters: {'max_iter': 89, 'learning_rate': 0.009, 'max_depth': 4, 'min_samples_leaf': 12, 'l2_regularization': 0.023183140914184643}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:40,652] Sample trial#15 with GPSampler.
+[I 2025-12-03 15:52:42,398] Trial 15 finished with value: 0.3860958216133363 and parameters: {'max_iter': 144, 'learning_rate': 0.009, 'max_depth': 4, 'min_samples_leaf': 3, 'l2_regularization': 0.41027142871022065}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:42,488] Sample trial#16 with GPSampler.
+[I 2025-12-03 15:52:43,641] Trial 16 finished with value: 0.382373906956054 and parameters: {'max_iter': 200, 'learning_rate': 0.009, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:43,731] Sample trial#17 with GPSampler.
+[I 2025-12-03 15:52:45,398] Trial 17 finished with value: 0.38604388640131 and parameters: {'max_iter': 139, 'learning_rate': 0.009, 'max_depth': 4, 'min_samples_leaf': 12, 'l2_regularization': 0.4279281736154222}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:45,489] Sample trial#18 with GPSampler.
+[I 2025-12-03 15:52:46,138] Trial 18 finished with value: 0.3819719646033993 and parameters: {'max_iter': 50, 'learning_rate': 0.03762697543789769, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.9999999999999999}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:46,230] Sample trial#19 with GPSampler.
+[I 2025-12-03 15:52:48,826] Trial 19 finished with value: 0.3854012853615908 and parameters: {'max_iter': 106, 'learning_rate': 0.009, 'max_depth': 5, 'min_samples_leaf': 1, 'l2_regularization': 0.35483078683939034}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:48,918] Sample trial#20 with GPSampler.
+[I 2025-12-03 15:52:49,468] Trial 20 finished with value: 0.3855773486910158 and parameters: {'max_iter': 50, 'learning_rate': 0.009, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:49,558] Sample trial#21 with GPSampler.
+[I 2025-12-03 15:52:51,205] Trial 21 finished with value: 0.38508866130817615 and parameters: {'max_iter': 115, 'learning_rate': 0.009, 'max_depth': 4, 'min_samples_leaf': 1, 'l2_regularization': 0.42948669327065203}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:51,297] Sample trial#22 with GPSampler.
+[I 2025-12-03 15:52:51,859] Trial 22 finished with value: 0.3818796517067239 and parameters: {'max_iter': 50, 'learning_rate': 0.009, 'max_depth': 2, 'min_samples_leaf': 22, 'l2_regularization': 0.0}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:51,950] Sample trial#23 with GPSampler.
+[I 2025-12-03 15:52:53,381] Trial 23 finished with value: 0.38664575085742614 and parameters: {'max_iter': 200, 'learning_rate': 0.009, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 4 with value: 0.38674730785240574.
+[D 2025-12-03 15:52:53,472] Sample trial#24 with GPSampler.
+[I 2025-12-03 15:52:55,289] Trial 24 finished with value: 0.3869875605532596 and parameters: {'max_iter': 200, 'learning_rate': 0.009, 'max_depth': 3, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 24 with value: 0.3869875605532596.
+[D 2025-12-03 15:52:55,381] Sample trial#25 with GPSampler.
+[I 2025-12-03 15:52:57,965] Trial 25 finished with value: 0.3874136447964155 and parameters: {'max_iter': 200, 'learning_rate': 0.009, 'max_depth': 4, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 25 with value: 0.3874136447964155.
+[D 2025-12-03 15:52:58,055] Sample trial#26 with GPSampler.
+[I 2025-12-03 15:53:00,626] Trial 26 finished with value: 0.3874136447964155 and parameters: {'max_iter': 200, 'learning_rate': 0.009, 'max_depth': 4, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 25 with value: 0.3874136447964155.
+[D 2025-12-03 15:53:00,716] Sample trial#27 with GPSampler.
+[I 2025-12-03 15:53:05,408] Trial 27 finished with value: 0.38677035664060505 and parameters: {'max_iter': 200, 'learning_rate': 0.009, 'max_depth': 5, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 25 with value: 0.3874136447964155.
+[D 2025-12-03 15:53:05,499] Sample trial#28 with GPSampler.
+[I 2025-12-03 15:53:06,131] Trial 28 finished with value: 0.38218479375811554 and parameters: {'max_iter': 50, 'learning_rate': 0.1, 'max_depth': 2, 'min_samples_leaf': 30, 'l2_regularization': 1.0}. Best is trial 25 with value: 0.3874136447964155.
+[D 2025-12-03 15:53:06,223] Sample trial#29 with GPSampler.
+[I 2025-12-03 15:53:08,958] Trial 29 finished with value: 0.3874136447964155 and parameters: {'max_iter': 200, 'learning_rate': 0.009, 'max_depth': 4, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 25 with value: 0.3874136447964155.
+[I 2025-12-03 15:53:09,704] A new study created in memory with name: histogram_gradient_boosting_fold_3
+[D 2025-12-03 15:53:09,704] Sample trial#0 with RandomSampler.
+[I 2025-12-03 15:53:11,076] Trial 0 finished with value: 0.3733836028075198 and parameters: {'max_iter': 71, 'learning_rate': 0.08924729610260221, 'max_depth': 5, 'min_samples_leaf': 29, 'l2_regularization': 0.7172889704876616}. Best is trial 0 with value: 0.3733836028075198.
+[D 2025-12-03 15:53:11,174] Sample trial#1 with GPSampler.
+[I 2025-12-03 15:53:12,597] Trial 1 finished with value: 0.37759615669850954 and parameters: {'max_iter': 164, 'learning_rate': 0.05060813920705547, 'max_depth': 3, 'min_samples_leaf': 22, 'l2_regularization': 0.7511294387782652}. Best is trial 1 with value: 0.37759615669850954.
+[D 2025-12-03 15:53:12,691] Sample trial#2 with GPSampler.
+[I 2025-12-03 15:53:14,380] Trial 2 finished with value: 0.3766503704083207 and parameters: {'max_iter': 95, 'learning_rate': 0.025345059255303712, 'max_depth': 5, 'min_samples_leaf': 11, 'l2_regularization': 0.16791359134207273}. Best is trial 1 with value: 0.37759615669850954.
+[D 2025-12-03 15:53:14,475] Sample trial#3 with GPSampler.
+[I 2025-12-03 15:53:18,036] Trial 3 finished with value: 0.3636420067226108 and parameters: {'max_iter': 181, 'learning_rate': 0.09076093817528277, 'max_depth': 5, 'min_samples_leaf': 21, 'l2_regularization': 0.3017174827982505}. Best is trial 1 with value: 0.37759615669850954.
+[D 2025-12-03 15:53:18,129] Sample trial#4 with GPSampler.
+[I 2025-12-03 15:53:21,491] Trial 4 finished with value: 0.36728256344830956 and parameters: {'max_iter': 196, 'learning_rate': 0.057598400080359914, 'max_depth': 5, 'min_samples_leaf': 24, 'l2_regularization': 0.5736463090858583}. Best is trial 1 with value: 0.37759615669850954.
+[D 2025-12-03 15:53:21,585] Sample trial#5 with GPSampler.
+[I 2025-12-03 15:53:23,692] Trial 5 finished with value: 0.368797815742289 and parameters: {'max_iter': 143, 'learning_rate': 0.07126789492182878, 'max_depth': 4, 'min_samples_leaf': 24, 'l2_regularization': 0.7475926648768915}. Best is trial 1 with value: 0.37759615669850954.
+[D 2025-12-03 15:53:23,791] Sample trial#6 with GPSampler.
+[I 2025-12-03 15:53:25,792] Trial 6 finished with value: 0.36960332609558855 and parameters: {'max_iter': 132, 'learning_rate': 0.0809942243913462, 'max_depth': 4, 'min_samples_leaf': 15, 'l2_regularization': 0.6685213863084954}. Best is trial 1 with value: 0.37759615669850954.
+[D 2025-12-03 15:53:25,889] Sample trial#7 with GPSampler.
+[I 2025-12-03 15:53:27,503] Trial 7 finished with value: 0.38125384060306095 and parameters: {'max_iter': 184, 'learning_rate': 0.02187294761010205, 'max_depth': 3, 'min_samples_leaf': 6, 'l2_regularization': 0.42669647336768324}. Best is trial 7 with value: 0.38125384060306095.
+[D 2025-12-03 15:53:27,597] Sample trial#8 with GPSampler.
+[I 2025-12-03 15:53:30,626] Trial 8 finished with value: 0.36524869879296185 and parameters: {'max_iter': 197, 'learning_rate': 0.05920774225716225, 'max_depth': 5, 'min_samples_leaf': 10, 'l2_regularization': 0.045370659474948116}. Best is trial 7 with value: 0.38125384060306095.
+[D 2025-12-03 15:53:30,717] Sample trial#9 with GPSampler.
+[I 2025-12-03 15:53:31,653] Trial 9 finished with value: 0.37973066365538777 and parameters: {'max_iter': 139, 'learning_rate': 0.050216182353976006, 'max_depth': 2, 'min_samples_leaf': 7, 'l2_regularization': 0.3659038703370986}. Best is trial 7 with value: 0.38125384060306095.
+[D 2025-12-03 15:53:31,746] Sample trial#10 with GPSampler.
+[I 2025-12-03 15:53:32,875] Trial 10 finished with value: 0.3819995252290707 and parameters: {'max_iter': 174, 'learning_rate': 0.009, 'max_depth': 2, 'min_samples_leaf': 11, 'l2_regularization': 0.7756627038515953}. Best is trial 10 with value: 0.3819995252290707.
+[D 2025-12-03 15:53:32,966] Sample trial#11 with GPSampler.
+[I 2025-12-03 15:53:34,186] Trial 11 finished with value: 0.3814048453294773 and parameters: {'max_iter': 139, 'learning_rate': 0.009, 'max_depth': 3, 'min_samples_leaf': 1, 'l2_regularization': 0.8636284648221145}. Best is trial 10 with value: 0.3819995252290707.
+[D 2025-12-03 15:53:34,279] Sample trial#12 with GPSampler.
+[I 2025-12-03 15:53:35,379] Trial 12 finished with value: 0.3807893063533748 and parameters: {'max_iter': 143, 'learning_rate': 0.020944671038867962, 'max_depth': 2, 'min_samples_leaf': 30, 'l2_regularization': 0.5948179466433859}. Best is trial 10 with value: 0.3819995252290707.
+[D 2025-12-03 15:53:35,474] Sample trial#13 with GPSampler.
+[I 2025-12-03 15:53:36,840] Trial 13 finished with value: 0.3804362203808192 and parameters: {'max_iter': 200, 'learning_rate': 0.027324957119861992, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 10 with value: 0.3819995252290707.
+[D 2025-12-03 15:53:36,932] Sample trial#14 with GPSampler.
+[I 2025-12-03 15:53:38,252] Trial 14 finished with value: 0.3834850171003029 and parameters: {'max_iter': 170, 'learning_rate': 0.009, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 14 with value: 0.3834850171003029.
+[D 2025-12-03 15:53:38,348] Sample trial#15 with GPSampler.
+[I 2025-12-03 15:53:39,760] Trial 15 finished with value: 0.3814584026061273 and parameters: {'max_iter': 200, 'learning_rate': 0.009, 'max_depth': 2, 'min_samples_leaf': 25, 'l2_regularization': 0.0}. Best is trial 14 with value: 0.3834850171003029.
+[D 2025-12-03 15:53:39,858] Sample trial#16 with GPSampler.
+[I 2025-12-03 15:53:40,499] Trial 16 finished with value: 0.38029820937097125 and parameters: {'max_iter': 50, 'learning_rate': 0.009, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 14 with value: 0.3834850171003029.
+[D 2025-12-03 15:53:40,592] Sample trial#17 with GPSampler.
+[I 2025-12-03 15:53:41,662] Trial 17 finished with value: 0.38292428084341756 and parameters: {'max_iter': 140, 'learning_rate': 0.009, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 14 with value: 0.3834850171003029.
+[D 2025-12-03 15:53:41,758] Sample trial#18 with GPSampler.
+[I 2025-12-03 15:53:42,977] Trial 18 finished with value: 0.3811113983074841 and parameters: {'max_iter': 132, 'learning_rate': 0.009, 'max_depth': 3, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 14 with value: 0.3834850171003029.
+[D 2025-12-03 15:53:43,068] Sample trial#19 with GPSampler.
+[I 2025-12-03 15:53:44,426] Trial 19 finished with value: 0.38316819973625266 and parameters: {'max_iter': 200, 'learning_rate': 0.009, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 14 with value: 0.3834850171003029.
+[D 2025-12-03 15:53:44,522] Sample trial#20 with GPSampler.
+[I 2025-12-03 15:53:45,814] Trial 20 finished with value: 0.3770518863356437 and parameters: {'max_iter': 50, 'learning_rate': 0.009, 'max_depth': 5, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 14 with value: 0.3834850171003029.
+[D 2025-12-03 15:53:45,911] Sample trial#21 with GPSampler.
+[I 2025-12-03 15:53:46,501] Trial 21 finished with value: 0.37874887698404935 and parameters: {'max_iter': 50, 'learning_rate': 0.1, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 14 with value: 0.3834850171003029.
+[D 2025-12-03 15:53:46,595] Sample trial#22 with GPSampler.
+[I 2025-12-03 15:53:47,276] Trial 22 finished with value: 0.3768455135814033 and parameters: {'max_iter': 50, 'learning_rate': 0.009, 'max_depth': 3, 'min_samples_leaf': 30, 'l2_regularization': 1.0}. Best is trial 14 with value: 0.3834850171003029.
+[D 2025-12-03 15:53:47,370] Sample trial#23 with GPSampler.
+[I 2025-12-03 15:53:48,602] Trial 23 finished with value: 0.38351756626434486 and parameters: {'max_iter': 175, 'learning_rate': 0.009, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 23 with value: 0.38351756626434486.
+[D 2025-12-03 15:53:48,695] Sample trial#24 with GPSampler.
+[I 2025-12-03 15:53:50,174] Trial 24 finished with value: 0.3745113482729657 and parameters: {'max_iter': 200, 'learning_rate': 0.1, 'max_depth': 2, 'min_samples_leaf': 30, 'l2_regularization': 0.0}. Best is trial 23 with value: 0.38351756626434486.
+[D 2025-12-03 15:53:50,267] Sample trial#25 with GPSampler.
+[I 2025-12-03 15:53:51,365] Trial 25 finished with value: 0.3835306187874533 and parameters: {'max_iter': 176, 'learning_rate': 0.017222096651745764, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 25 with value: 0.3835306187874533.
+[D 2025-12-03 15:53:51,457] Sample trial#26 with GPSampler.
+[I 2025-12-03 15:53:52,574] Trial 26 finished with value: 0.3842021396704147 and parameters: {'max_iter': 176, 'learning_rate': 0.013407569379120556, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 26 with value: 0.3842021396704147.
+[D 2025-12-03 15:53:52,666] Sample trial#27 with GPSampler.
+[I 2025-12-03 15:53:53,351] Trial 27 finished with value: 0.38225097384208895 and parameters: {'max_iter': 50, 'learning_rate': 0.046337326648706774, 'max_depth': 2, 'min_samples_leaf': 30, 'l2_regularization': 1.0}. Best is trial 26 with value: 0.3842021396704147.
+[D 2025-12-03 15:53:53,444] Sample trial#28 with GPSampler.
+[I 2025-12-03 15:53:54,134] Trial 28 finished with value: 0.3821038644361879 and parameters: {'max_iter': 50, 'learning_rate': 0.034805078249586084, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 26 with value: 0.3842021396704147.
+[D 2025-12-03 15:53:54,231] Sample trial#29 with GPSampler.
+[I 2025-12-03 15:53:54,793] Trial 29 finished with value: 0.3819846470557077 and parameters: {'max_iter': 50, 'learning_rate': 0.05745903827208174, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 26 with value: 0.3842021396704147.
+[I 2025-12-03 15:53:55,432] A new study created in memory with name: histogram_gradient_boosting_fold_4
+[D 2025-12-03 15:53:55,432] Sample trial#0 with RandomSampler.
+[I 2025-12-03 15:53:57,360] Trial 0 finished with value: 0.3781101219824106 and parameters: {'max_iter': 133, 'learning_rate': 0.026885771638848067, 'max_depth': 4, 'min_samples_leaf': 15, 'l2_regularization': 0.9131775371880418}. Best is trial 0 with value: 0.3781101219824106.
+[D 2025-12-03 15:53:57,462] Sample trial#1 with GPSampler.
+[I 2025-12-03 15:53:58,206] Trial 1 finished with value: 0.3795175417847866 and parameters: {'max_iter': 72, 'learning_rate': 0.04409314041424353, 'max_depth': 3, 'min_samples_leaf': 28, 'l2_regularization': 0.9493461585624953}. Best is trial 1 with value: 0.3795175417847866.
+[D 2025-12-03 15:53:58,304] Sample trial#2 with GPSampler.
+[I 2025-12-03 15:53:59,354] Trial 2 finished with value: 0.37926330800997843 and parameters: {'max_iter': 188, 'learning_rate': 0.02048334926282477, 'max_depth': 2, 'min_samples_leaf': 19, 'l2_regularization': 0.345882063546164}. Best is trial 1 with value: 0.3795175417847866.
+[D 2025-12-03 15:53:59,449] Sample trial#3 with GPSampler.
+[I 2025-12-03 15:54:01,003] Trial 3 finished with value: 0.3683958523114276 and parameters: {'max_iter': 123, 'learning_rate': 0.09361213373002002, 'max_depth': 4, 'min_samples_leaf': 1, 'l2_regularization': 0.6141765346072972}. Best is trial 1 with value: 0.3795175417847866.
+[D 2025-12-03 15:54:01,099] Sample trial#4 with GPSampler.
+[I 2025-12-03 15:54:02,003] Trial 4 finished with value: 0.3754338477215727 and parameters: {'max_iter': 73, 'learning_rate': 0.045629076093805634, 'max_depth': 4, 'min_samples_leaf': 27, 'l2_regularization': 0.5979437399400658}. Best is trial 1 with value: 0.3795175417847866.
+[D 2025-12-03 15:54:02,103] Sample trial#5 with GPSampler.
+[I 2025-12-03 15:54:03,556] Trial 5 finished with value: 0.37581276407072667 and parameters: {'max_iter': 92, 'learning_rate': 0.039389206848138146, 'max_depth': 4, 'min_samples_leaf': 13, 'l2_regularization': 0.7519110032121045}. Best is trial 1 with value: 0.3795175417847866.
+[D 2025-12-03 15:54:03,660] Sample trial#6 with GPSampler.
+[I 2025-12-03 15:54:04,720] Trial 6 finished with value: 0.381245696389385 and parameters: {'max_iter': 88, 'learning_rate': 0.034906388542783086, 'max_depth': 3, 'min_samples_leaf': 3, 'l2_regularization': 0.09231892437484868}. Best is trial 6 with value: 0.381245696389385.
+[D 2025-12-03 15:54:04,823] Sample trial#7 with GPSampler.
+[I 2025-12-03 15:54:06,501] Trial 7 finished with value: 0.3729496686459527 and parameters: {'max_iter': 164, 'learning_rate': 0.06584004571819829, 'max_depth': 3, 'min_samples_leaf': 15, 'l2_regularization': 0.904274900088038}. Best is trial 6 with value: 0.381245696389385.
+[D 2025-12-03 15:54:06,601] Sample trial#8 with GPSampler.
+[I 2025-12-03 15:54:07,221] Trial 8 finished with value: 0.3809090469346431 and parameters: {'max_iter': 59, 'learning_rate': 0.08932385089240358, 'max_depth': 2, 'min_samples_leaf': 11, 'l2_regularization': 0.08252916322835058}. Best is trial 6 with value: 0.381245696389385.
+[D 2025-12-03 15:54:07,323] Sample trial#9 with GPSampler.
+[I 2025-12-03 15:54:08,611] Trial 9 finished with value: 0.37664876375152156 and parameters: {'max_iter': 173, 'learning_rate': 0.058789188758970504, 'max_depth': 2, 'min_samples_leaf': 21, 'l2_regularization': 0.8651759439436573}. Best is trial 6 with value: 0.381245696389385.
+[D 2025-12-03 15:54:08,713] Sample trial#10 with GPSampler.
+[I 2025-12-03 15:54:09,426] Trial 10 finished with value: 0.38036974188195927 and parameters: {'max_iter': 50, 'learning_rate': 0.045841920104408206, 'max_depth': 2, 'min_samples_leaf': 9, 'l2_regularization': 0.0}. Best is trial 6 with value: 0.381245696389385.
+[D 2025-12-03 15:54:09,527] Sample trial#11 with GPSampler.
+[I 2025-12-03 15:54:10,145] Trial 11 finished with value: 0.3755587500526848 and parameters: {'max_iter': 50, 'learning_rate': 0.009, 'max_depth': 2, 'min_samples_leaf': 30, 'l2_regularization': 1.0}. Best is trial 6 with value: 0.381245696389385.
+[D 2025-12-03 15:54:10,247] Sample trial#12 with GPSampler.
+[I 2025-12-03 15:54:12,435] Trial 12 finished with value: 0.3831721105251465 and parameters: {'max_iter': 197, 'learning_rate': 0.01929873816349239, 'max_depth': 3, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 12 with value: 0.3831721105251465.
+[D 2025-12-03 15:54:12,530] Sample trial#13 with GPSampler.
+[I 2025-12-03 15:54:16,927] Trial 13 finished with value: 0.37868465039264876 and parameters: {'max_iter': 200, 'learning_rate': 0.009, 'max_depth': 5, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 12 with value: 0.3831721105251465.
+[D 2025-12-03 15:54:17,025] Sample trial#14 with GPSampler.
+[I 2025-12-03 15:54:18,437] Trial 14 finished with value: 0.38065516602659666 and parameters: {'max_iter': 195, 'learning_rate': 0.009, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 12 with value: 0.3831721105251465.
+[D 2025-12-03 15:54:18,545] Sample trial#15 with GPSampler.
+[I 2025-12-03 15:54:20,592] Trial 15 finished with value: 0.37915094944826644 and parameters: {'max_iter': 200, 'learning_rate': 0.019832622637303614, 'max_depth': 3, 'min_samples_leaf': 22, 'l2_regularization': 0.0}. Best is trial 12 with value: 0.3831721105251465.
+[D 2025-12-03 15:54:20,695] Sample trial#16 with GPSampler.
+[I 2025-12-03 15:54:22,799] Trial 16 finished with value: 0.37947216126482847 and parameters: {'max_iter': 200, 'learning_rate': 0.03487504907757171, 'max_depth': 3, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 12 with value: 0.3831721105251465.
+[D 2025-12-03 15:54:22,900] Sample trial#17 with GPSampler.
+[I 2025-12-03 15:54:24,655] Trial 17 finished with value: 0.38192211884678506 and parameters: {'max_iter': 160, 'learning_rate': 0.009, 'max_depth': 3, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 12 with value: 0.3831721105251465.
+[D 2025-12-03 15:54:24,756] Sample trial#18 with GPSampler.
+[I 2025-12-03 15:54:26,737] Trial 18 finished with value: 0.3796015814168858 and parameters: {'max_iter': 200, 'learning_rate': 0.01529072215268516, 'max_depth': 3, 'min_samples_leaf': 1, 'l2_regularization': 0.9308734852546694}. Best is trial 12 with value: 0.3831721105251465.
+[D 2025-12-03 15:54:26,836] Sample trial#19 with GPSampler.
+[I 2025-12-03 15:54:27,862] Trial 19 finished with value: 0.38286082619329326 and parameters: {'max_iter': 107, 'learning_rate': 0.020640187689042137, 'max_depth': 3, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 12 with value: 0.3831721105251465.
+[D 2025-12-03 15:54:27,961] Sample trial#20 with GPSampler.
+[I 2025-12-03 15:54:28,517] Trial 20 finished with value: 0.37880897344514036 and parameters: {'max_iter': 50, 'learning_rate': 0.09999999999999999, 'max_depth': 2, 'min_samples_leaf': 30, 'l2_regularization': 0.0}. Best is trial 12 with value: 0.3831721105251465.
+[D 2025-12-03 15:54:28,612] Sample trial#21 with GPSampler.
+[I 2025-12-03 15:54:29,205] Trial 21 finished with value: 0.38112539476085117 and parameters: {'max_iter': 50, 'learning_rate': 0.02521640111530149, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 12 with value: 0.3831721105251465.
+[D 2025-12-03 15:54:29,303] Sample trial#22 with GPSampler.
+[I 2025-12-03 15:54:30,726] Trial 22 finished with value: 0.38365604145213306 and parameters: {'max_iter': 160, 'learning_rate': 0.019437950274201456, 'max_depth': 3, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 22 with value: 0.38365604145213306.
+[D 2025-12-03 15:54:30,822] Sample trial#23 with GPSampler.
+[I 2025-12-03 15:54:31,433] Trial 23 finished with value: 0.37957827633744723 and parameters: {'max_iter': 50, 'learning_rate': 0.07032424569202328, 'max_depth': 2, 'min_samples_leaf': 30, 'l2_regularization': 0.0}. Best is trial 22 with value: 0.38365604145213306.
+[D 2025-12-03 15:54:31,532] Sample trial#24 with GPSampler.
+[I 2025-12-03 15:54:32,121] Trial 24 finished with value: 0.37870424681862846 and parameters: {'max_iter': 50, 'learning_rate': 0.03852592156363655, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 22 with value: 0.38365604145213306.
+[D 2025-12-03 15:54:32,216] Sample trial#25 with GPSampler.
+[I 2025-12-03 15:54:32,807] Trial 25 finished with value: 0.3783553180204017 and parameters: {'max_iter': 50, 'learning_rate': 0.1, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 22 with value: 0.38365604145213306.
+[D 2025-12-03 15:54:32,904] Sample trial#26 with GPSampler.
+[I 2025-12-03 15:54:34,307] Trial 26 finished with value: 0.3841394339465636 and parameters: {'max_iter': 156, 'learning_rate': 0.020836190317427998, 'max_depth': 3, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 26 with value: 0.3841394339465636.
+[D 2025-12-03 15:54:34,411] Sample trial#27 with GPSampler.
+[I 2025-12-03 15:54:35,473] Trial 27 finished with value: 0.38201277115740817 and parameters: {'max_iter': 145, 'learning_rate': 0.026645703936961043, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 26 with value: 0.3841394339465636.
+[D 2025-12-03 15:54:35,572] Sample trial#28 with GPSampler.
+[I 2025-12-03 15:54:36,765] Trial 28 finished with value: 0.3775262357759962 and parameters: {'max_iter': 50, 'learning_rate': 0.009, 'max_depth': 5, 'min_samples_leaf': 30, 'l2_regularization': 0.0}. Best is trial 26 with value: 0.3841394339465636.
+[D 2025-12-03 15:54:36,865] Sample trial#29 with GPSampler.
+[I 2025-12-03 15:54:38,226] Trial 29 finished with value: 0.3772262679644034 and parameters: {'max_iter': 200, 'learning_rate': 0.1, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 26 with value: 0.3841394339465636.
+[I 2025-12-03 15:54:38,826] A new study created in memory with name: histogram_gradient_boosting_fold_5
+[D 2025-12-03 15:54:38,826] Sample trial#0 with RandomSampler.
+[I 2025-12-03 15:54:39,658] Trial 0 finished with value: 0.38295723773285945 and parameters: {'max_iter': 129, 'learning_rate': 0.033903968999986114, 'max_depth': 2, 'min_samples_leaf': 2, 'l2_regularization': 0.278248849808548}. Best is trial 0 with value: 0.38295723773285945.
+[D 2025-12-03 15:54:39,755] Sample trial#1 with GPSampler.
+[I 2025-12-03 15:54:40,817] Trial 1 finished with value: 0.3763266552209847 and parameters: {'max_iter': 121, 'learning_rate': 0.06130785277208584, 'max_depth': 3, 'min_samples_leaf': 11, 'l2_regularization': 0.5882167408125432}. Best is trial 0 with value: 0.38295723773285945.
+[D 2025-12-03 15:54:40,920] Sample trial#2 with GPSampler.
+[I 2025-12-03 15:54:42,834] Trial 2 finished with value: 0.38082609960500907 and parameters: {'max_iter': 113, 'learning_rate': 0.018298706842534276, 'max_depth': 5, 'min_samples_leaf': 23, 'l2_regularization': 0.7413887060225524}. Best is trial 0 with value: 0.38295723773285945.
+[D 2025-12-03 15:54:42,937] Sample trial#3 with GPSampler.
+[I 2025-12-03 15:54:44,420] Trial 3 finished with value: 0.38090589829139876 and parameters: {'max_iter': 83, 'learning_rate': 0.03490280596723752, 'max_depth': 5, 'min_samples_leaf': 16, 'l2_regularization': 0.9056908406457175}. Best is trial 0 with value: 0.38295723773285945.
+[D 2025-12-03 15:54:44,519] Sample trial#4 with GPSampler.
+[I 2025-12-03 15:54:45,580] Trial 4 finished with value: 0.38228535350172027 and parameters: {'max_iter': 105, 'learning_rate': 0.04182824816666489, 'max_depth': 3, 'min_samples_leaf': 1, 'l2_regularization': 0.7371709727630611}. Best is trial 0 with value: 0.38295723773285945.
+[D 2025-12-03 15:54:45,680] Sample trial#5 with GPSampler.
+[I 2025-12-03 15:54:47,404] Trial 5 finished with value: 0.37417652151980485 and parameters: {'max_iter': 184, 'learning_rate': 0.061249527173327226, 'max_depth': 3, 'min_samples_leaf': 28, 'l2_regularization': 0.6119307649492647}. Best is trial 0 with value: 0.38295723773285945.
+[D 2025-12-03 15:54:47,507] Sample trial#6 with GPSampler.
+[I 2025-12-03 15:54:49,601] Trial 6 finished with value: 0.37829940032904724 and parameters: {'max_iter': 107, 'learning_rate': 0.037244371924775824, 'max_depth': 5, 'min_samples_leaf': 14, 'l2_regularization': 0.7789785199725866}. Best is trial 0 with value: 0.38295723773285945.
+[D 2025-12-03 15:54:49,698] Sample trial#7 with GPSampler.
+[I 2025-12-03 15:54:52,657] Trial 7 finished with value: 0.3787959187787508 and parameters: {'max_iter': 194, 'learning_rate': 0.019887461267376873, 'max_depth': 5, 'min_samples_leaf': 21, 'l2_regularization': 0.3214543806630854}. Best is trial 0 with value: 0.38295723773285945.
+[D 2025-12-03 15:54:52,759] Sample trial#8 with GPSampler.
+[I 2025-12-03 15:54:53,474] Trial 8 finished with value: 0.3777230900105632 and parameters: {'max_iter': 75, 'learning_rate': 0.07165314322247152, 'max_depth': 3, 'min_samples_leaf': 25, 'l2_regularization': 0.5663182287294273}. Best is trial 0 with value: 0.38295723773285945.
+[D 2025-12-03 15:54:53,571] Sample trial#9 with GPSampler.
+[I 2025-12-03 15:54:54,345] Trial 9 finished with value: 0.37926414162228844 and parameters: {'max_iter': 79, 'learning_rate': 0.07888203889497739, 'max_depth': 3, 'min_samples_leaf': 18, 'l2_regularization': 0.8887931119645706}. Best is trial 0 with value: 0.38295723773285945.
+[D 2025-12-03 15:54:54,448] Sample trial#10 with GPSampler.
+[I 2025-12-03 15:54:55,188] Trial 10 finished with value: 0.3807661486182649 and parameters: {'max_iter': 77, 'learning_rate': 0.022396763481722513, 'max_depth': 2, 'min_samples_leaf': 1, 'l2_regularization': 0.7222400158484226}. Best is trial 0 with value: 0.38295723773285945.
+[D 2025-12-03 15:54:55,285] Sample trial#11 with GPSampler.
+[I 2025-12-03 15:54:56,816] Trial 11 finished with value: 0.37821029504104237 and parameters: {'max_iter': 172, 'learning_rate': 0.04601853737297401, 'max_depth': 3, 'min_samples_leaf': 1, 'l2_regularization': 0.1855350368309866}. Best is trial 0 with value: 0.38295723773285945.
+[D 2025-12-03 15:54:56,914] Sample trial#12 with GPSampler.
+[I 2025-12-03 15:54:58,050] Trial 12 finished with value: 0.38424082906883494 and parameters: {'max_iter': 50, 'learning_rate': 0.020099001428399585, 'max_depth': 5, 'min_samples_leaf': 14, 'l2_regularization': 1.0}. Best is trial 12 with value: 0.38424082906883494.
+[D 2025-12-03 15:54:58,148] Sample trial#13 with GPSampler.
+[I 2025-12-03 15:54:59,000] Trial 13 finished with value: 0.3840615596203409 and parameters: {'max_iter': 50, 'learning_rate': 0.026865178296092966, 'max_depth': 4, 'min_samples_leaf': 1, 'l2_regularization': 1.0}. Best is trial 12 with value: 0.38424082906883494.
+[D 2025-12-03 15:54:59,098] Sample trial#14 with GPSampler.
+[I 2025-12-03 15:54:59,886] Trial 14 finished with value: 0.3848763354754788 and parameters: {'max_iter': 50, 'learning_rate': 0.02363378210449789, 'max_depth': 4, 'min_samples_leaf': 28, 'l2_regularization': 1.0}. Best is trial 14 with value: 0.3848763354754788.
+[D 2025-12-03 15:54:59,984] Sample trial#15 with GPSampler.
+[I 2025-12-03 15:55:00,802] Trial 15 finished with value: 0.38405702392119373 and parameters: {'max_iter': 50, 'learning_rate': 0.022365618583263164, 'max_depth': 4, 'min_samples_leaf': 30, 'l2_regularization': 0.3102292833497043}. Best is trial 14 with value: 0.3848763354754788.
+[D 2025-12-03 15:55:00,899] Sample trial#16 with GPSampler.
+[I 2025-12-03 15:55:01,836] Trial 16 finished with value: 0.3794678519071949 and parameters: {'max_iter': 50, 'learning_rate': 0.009, 'max_depth': 4, 'min_samples_leaf': 30, 'l2_regularization': 1.0}. Best is trial 14 with value: 0.3848763354754788.
+[D 2025-12-03 15:55:01,934] Sample trial#17 with GPSampler.
+[I 2025-12-03 15:55:02,578] Trial 17 finished with value: 0.3820816103056428 and parameters: {'max_iter': 50, 'learning_rate': 0.033778362618210586, 'max_depth': 3, 'min_samples_leaf': 30, 'l2_regularization': 0.9999999999999999}. Best is trial 14 with value: 0.3848763354754788.
+[D 2025-12-03 15:55:02,675] Sample trial#18 with GPSampler.
+[I 2025-12-03 15:55:03,660] Trial 18 finished with value: 0.3809112360145629 and parameters: {'max_iter': 50, 'learning_rate': 0.025446422599873113, 'max_depth': 5, 'min_samples_leaf': 30, 'l2_regularization': 1.0}. Best is trial 14 with value: 0.3848763354754788.
+[D 2025-12-03 15:55:03,757] Sample trial#19 with GPSampler.
+[I 2025-12-03 15:55:04,810] Trial 19 finished with value: 0.3840609819790035 and parameters: {'max_iter': 50, 'learning_rate': 0.02552652187837711, 'max_depth': 4, 'min_samples_leaf': 18, 'l2_regularization': 0.8649668296725216}. Best is trial 14 with value: 0.3848763354754788.
+[D 2025-12-03 15:55:04,912] Sample trial#20 with GPSampler.
+[I 2025-12-03 15:55:06,443] Trial 20 finished with value: 0.38909819141987956 and parameters: {'max_iter': 50, 'learning_rate': 0.019511270274716986, 'max_depth': 5, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 20 with value: 0.38909819141987956.
+[D 2025-12-03 15:55:06,543] Sample trial#21 with GPSampler.
+[I 2025-12-03 15:55:07,892] Trial 21 finished with value: 0.3882149488465778 and parameters: {'max_iter': 50, 'learning_rate': 0.012732553896831528, 'max_depth': 5, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 20 with value: 0.38909819141987956.
+[D 2025-12-03 15:55:07,993] Sample trial#22 with GPSampler.
+[I 2025-12-03 15:55:09,247] Trial 22 finished with value: 0.3888596286865854 and parameters: {'max_iter': 50, 'learning_rate': 0.021073782037147396, 'max_depth': 5, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 20 with value: 0.38909819141987956.
+[D 2025-12-03 15:55:09,348] Sample trial#23 with GPSampler.
+[I 2025-12-03 15:55:11,298] Trial 23 finished with value: 0.39057502206537775 and parameters: {'max_iter': 75, 'learning_rate': 0.017745466613183738, 'max_depth': 5, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 23 with value: 0.39057502206537775.
+[D 2025-12-03 15:55:11,395] Sample trial#24 with GPSampler.
+[I 2025-12-03 15:55:13,786] Trial 24 finished with value: 0.38944642123969186 and parameters: {'max_iter': 97, 'learning_rate': 0.015425338440539688, 'max_depth': 5, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 23 with value: 0.39057502206537775.
+[D 2025-12-03 15:55:13,884] Sample trial#25 with GPSampler.
+[I 2025-12-03 15:55:15,256] Trial 25 finished with value: 0.3733139394187729 and parameters: {'max_iter': 50, 'learning_rate': 0.1, 'max_depth': 5, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 23 with value: 0.39057502206537775.
+[D 2025-12-03 15:55:15,353] Sample trial#26 with GPSampler.
+[I 2025-12-03 15:55:17,188] Trial 26 finished with value: 0.38813594107070526 and parameters: {'max_iter': 80, 'learning_rate': 0.019996581707626818, 'max_depth': 5, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 23 with value: 0.39057502206537775.
+[D 2025-12-03 15:55:17,287] Sample trial#27 with GPSampler.
+[I 2025-12-03 15:55:18,810] Trial 27 finished with value: 0.3909400542388808 and parameters: {'max_iter': 81, 'learning_rate': 0.01469197577657252, 'max_depth': 4, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 27 with value: 0.3909400542388808.
+[D 2025-12-03 15:55:18,907] Sample trial#28 with GPSampler.
+[I 2025-12-03 15:55:20,505] Trial 28 finished with value: 0.3914982297700103 and parameters: {'max_iter': 94, 'learning_rate': 0.009, 'max_depth': 4, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 28 with value: 0.3914982297700103.
+[D 2025-12-03 15:55:20,605] Sample trial#29 with GPSampler.
+[I 2025-12-03 15:55:22,398] Trial 29 finished with value: 0.39188923154036 and parameters: {'max_iter': 107, 'learning_rate': 0.009, 'max_depth': 4, 'min_samples_leaf': 1, 'l2_regularization': 0.0}. Best is trial 29 with value: 0.39188923154036.
+Saved Optuna plots to results/20251203_150217_ana_optimized_multiclass_less/xgboost/optuna_plots
+Fold 3
+Importâncias dos parâmetros para fold 3: {'max_depth': np.float64(0.5134337683329357), 'learning_rate': np.float64(0.2183594058329425), 'min_child_weight': np.float64(0.09748413705433422), 'n_estimators': np.float64(0.07853993307142679), 'gamma': np.float64(0.03654860533195868), 'subsample': np.float64(0.021751650464122446), 'reg_alpha': np.float64(0.02092504095695409), 'colsample_bytree': np.float64(0.007549722685891175), 'reg_lambda': np.float64(0.005407736269434486)}
+Saved Optuna plots to results/20251203_150217_ana_optimized_multiclass_less/xgboost/optuna_plots
+Fold 4
+Importâncias dos parâmetros para fold 4: {'gamma': np.float64(0.42550735828868347), 'learning_rate': np.float64(0.15763164340825045), 'reg_lambda': np.float64(0.12972456504085086), 'subsample': np.float64(0.07751131875395248), 'reg_alpha': np.float64(0.07137780010679085), 'n_estimators': np.float64(0.06805919199522985), 'min_child_weight': np.float64(0.031106804106511263), 'colsample_bytree': np.float64(0.023379750949069644), 'max_depth': np.float64(0.015701567350661288)}
+Saved Optuna plots to results/20251203_150217_ana_optimized_multiclass_less/xgboost/optuna_plots
+Fold 5
+Importâncias dos parâmetros para fold 5: {'reg_alpha': np.float64(0.2140790227775551), 'gamma': np.float64(0.20126130249435925), 'max_depth': np.float64(0.1458836449030883), 'subsample': np.float64(0.11218429597799556), 'colsample_bytree': np.float64(0.090214714363636), 'reg_lambda': np.float64(0.0899047609232742), 'learning_rate': np.float64(0.06890269720754094), 'n_estimators': np.float64(0.060090990986093946), 'min_child_weight': np.float64(0.017478570366456714)}
+Saved Optuna plots to results/20251203_150217_ana_optimized_multiclass_less/xgboost/optuna_plots
+
+Nested CV completed. The 20% holdout set (3536 samples) remains untouched.
+This holdout set can be used for final unbiased evaluation.
+
+Training and evaluating 5 best parameter sets on holdout data...
+Testing with 4 balancing strategies: none, randomundersampler, smoteenn, tomeklinks
+
+Evaluating fold 1 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+
+Evaluating fold 2 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+
+Evaluating fold 3 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+
+Evaluating fold 4 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+
+Evaluating fold 5 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+Saving optimization and holdout results...
+Detailed results by fold saved to: ./results/20251203_150217_ana_optimized_multiclass_less/xgboost/detailed_results_by_fold.txt
+Test predictions for all folds saved to: ./results/20251203_150217_ana_optimized_multiclass_less/xgboost/metrics.json
+Saving holdout results...
+Holdout evaluation results saved to: ./results/20251203_150217_ana_optimized_multiclass_less/xgboost/holdout_results.txt
+Saved!
+[OK] XGBoost executado com sucesso!
+
+CONFIGURAÇÃO DO EXPERIMENTO (OTIMIZAÇÃO):
+  Modelo: Histogram Gradient Boosting
+  Trials: 30
+  Tipo: multiclass
+  Parâmetros: Reduzido
+  Balanceamento: none
+================================================================================
+EXECUTANDO MODELO: Histogram Gradient Boosting
+================================================================================
+
+Starting Nested Cross-Validation for histogram_gradient_boosting...
+Configuration: 5 outer folds, 30 trials per fold
+Performing 80/20 holdout split...
+Holdout split completed:
+  - Training set: 14140 samples (80%)
+  - Holdout test set: 3536 samples (20%)
+Fold 1
+Importâncias dos parâmetros para fold 1: {'learning_rate': np.float64(0.4923215718572273), 'max_depth': np.float64(0.22702573678604088), 'min_samples_leaf': np.float64(0.14168325859845776), 'l2_regularization': np.float64(0.10145459409456013), 'max_iter': np.float64(0.03751483866371411)}
+Saved Optuna plots to results/20251203_150217_ana_optimized_multiclass_less/histogram_gradient_boosting/optuna_plots
+Fold 2
+Importâncias dos parâmetros para fold 2: {'learning_rate': np.float64(0.7419766693944784), 'max_depth': np.float64(0.11261310921433428), 'l2_regularization': np.float64(0.09332981219961002), 'min_samples_leaf': np.float64(0.03531659974766103), 'max_iter': np.float64(0.0167638094439162)}
+Saved Optuna plots to results/20251203_150217_ana_optimized_multiclass_less/histogram_gradient_boosting/optuna_plots
+Fold 3
+Importâncias dos parâmetros para fold 3: {'learning_rate': np.float64(0.5251612149198859), 'max_depth': np.float64(0.3744613173518343), 'max_iter': np.float64(0.0488228088173012), 'min_samples_leaf': np.float64(0.03735891731217763), 'l2_regularization': np.float64(0.014195741598801036)}
+Saved Optuna plots to results/20251203_150217_ana_optimized_multiclass_less/histogram_gradient_boosting/optuna_plots
+Fold 4
+Importâncias dos parâmetros para fold 4: {'l2_regularization': np.float64(0.4700685968698878), 'min_samples_leaf': np.float64(0.2486903757491969), 'learning_rate': np.float64(0.16828707637623022), 'max_depth': np.float64(0.09209696371195465), 'max_iter': np.float64(0.020856987292730472)}
+Saved Optuna plots to results/20251203_150217_ana_optimized_multiclass_less/histogram_gradient_boosting/optuna_plots
+Fold 5
+Importâncias dos parâmetros para fold 5: {'learning_rate': np.float64(0.5584054993860049), 'l2_regularization': np.float64(0.34230149788640357), 'max_iter': np.float64(0.060397001336617843), 'min_samples_leaf': np.float64(0.022508084754276136), 'max_depth': np.float64(0.01638791663669754)}
+Saved Optuna plots to results/20251203_150217_ana_optimized_multiclass_less/histogram_gradient_boosting/optuna_plots
+
+Nested CV completed. The 20% holdout set (3536 samples) remains untouched.
+This holdout set can be used for final unbiased evaluation.
+
+Training and evaluating 5 best parameter sets on holdout data...
+Testing with 4 balancing strategies: none, randomundersampler, smoteenn, tomeklinks
+
+Evaluating fold 1 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+
+Evaluating fold 2 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+
+Evaluating fold 3 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+
+Evaluating fold 4 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+
+Evaluating fold 5 best params on holdout set...
+  - Testing with balance strategy: none
+  - Testing with balance strategy: randomundersampler
+  - Testing with balance strategy: smoteenn
+  - Testing with balance strategy: tomeklinks
+Saving optimization and holdout results...
+Detailed results by fold saved to: ./results/20251203_150217_ana_optimized_multiclass_less/histogram_gradient_boosting/detailed_results_by_fold.txt
+Test predictions for all folds saved to: ./results/20251203_150217_ana_optimized_multiclass_less/histogram_gradient_boosting/metrics.json
+Saving holdout results...
+Holdout evaluation results saved to: ./results/20251203_150217_ana_optimized_multiclass_less/histogram_gradient_boosting/holdout_results.txt
+Saved!
+[OK] Histogram Gradient Boosting executado com sucesso!
+
+EXPERIMENTO CONCLUÍDO!

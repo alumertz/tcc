@@ -1,0 +1,332 @@
+RESULTADOS DO MODELO: K_NEAREST_NEIGHBORS
+================================================================================
+
+Data/Hora: 2025-11-27 05:01:08
+
+FOLD 1 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3628 | Hiperparâmetros: {"n_neighbors": 36, "p": 3}
+  Trial 1: Score=0.3553 | Hiperparâmetros: {"n_neighbors": 34, "p": 1}
+  Trial 2: Score=0.3678 | Hiperparâmetros: {"n_neighbors": 56, "p": 4}
+  Trial 3: Score=0.3478 | Hiperparâmetros: {"n_neighbors": 13, "p": 1}
+  Trial 4: Score=0.3620 | Hiperparâmetros: {"n_neighbors": 27, "p": 4}
+  Trial 5: Score=0.3653 | Hiperparâmetros: {"n_neighbors": 98, "p": 1}
+  Trial 6: Score=0.3659 | Hiperparâmetros: {"n_neighbors": 53, "p": 3}
+  Trial 7: Score=0.3598 | Hiperparâmetros: {"n_neighbors": 64, "p": 1}
+  Trial 8: Score=0.3508 | Hiperparâmetros: {"n_neighbors": 8, "p": 4}
+  Trial 9: Score=0.3483 | Hiperparâmetros: {"n_neighbors": 6, "p": 4}
+  Trial 10: Score=0.3674 | Hiperparâmetros: {"n_neighbors": 77, "p": 2}
+  Trial 11: Score=0.3673 | Hiperparâmetros: {"n_neighbors": 78, "p": 2}
+  Trial 12: Score=0.3673 | Hiperparâmetros: {"n_neighbors": 76, "p": 2}
+  Trial 13: Score=0.3692 | Hiperparâmetros: {"n_neighbors": 100, "p": 3}
+  Trial 14: Score=0.3687 | Hiperparâmetros: {"n_neighbors": 95, "p": 3}
+  Trial 15: Score=0.3687 | Hiperparâmetros: {"n_neighbors": 96, "p": 3}
+  Trial 16: Score=0.3691 | Hiperparâmetros: {"n_neighbors": 89, "p": 3}
+  Trial 17: Score=0.3693 | Hiperparâmetros: {"n_neighbors": 87, "p": 3}
+  Trial 18: Score=0.3666 | Hiperparâmetros: {"n_neighbors": 85, "p": 2}
+  Trial 19: Score=0.3657 | Hiperparâmetros: {"n_neighbors": 67, "p": 3}
+  Trial 20: Score=0.3675 | Hiperparâmetros: {"n_neighbors": 86, "p": 2}
+  Trial 21: Score=0.3696 | Hiperparâmetros: {"n_neighbors": 86, "p": 3}
+  Trial 22: Score=0.3663 | Hiperparâmetros: {"n_neighbors": 68, "p": 3}
+  Trial 23: Score=0.3695 | Hiperparâmetros: {"n_neighbors": 90, "p": 3}
+  Trial 24: Score=0.3689 | Hiperparâmetros: {"n_neighbors": 87, "p": 4}
+  Trial 25: Score=0.3674 | Hiperparâmetros: {"n_neighbors": 74, "p": 3}
+  Trial 26: Score=0.3669 | Hiperparâmetros: {"n_neighbors": 63, "p": 2}
+  Trial 27: Score=0.3693 | Hiperparâmetros: {"n_neighbors": 83, "p": 3}
+  Trial 28: Score=0.3659 | Hiperparâmetros: {"n_neighbors": 44, "p": 4}
+  Trial 29: Score=0.3685 | Hiperparâmetros: {"n_neighbors": 80, "p": 3}
+
+Melhor trial (Optuna): 21
+  n_neighbors: 86
+  p: 3
+
+Importância dos parâmetros (Optuna):
+  n_neighbors: 0.9616
+  p: 0.0384
+
+Resultado do treino:
+  accuracy: 0.9463
+  precision: 0.3154
+  recall: 0.3333
+  f1: 0.3241
+  roc_auc: 0.7386
+  pr_auc: 0.3903
+
+Resultado do teste:
+  accuracy: 0.9466
+  precision: 0.3155
+  recall: 0.3333
+  f1: 0.3242
+  roc_auc: 0.6231
+  pr_auc: 0.3730
+
+============================================================
+
+FOLD 2 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3616 | Hiperparâmetros: {"n_neighbors": 34, "p": 3}
+  Trial 1: Score=0.3649 | Hiperparâmetros: {"n_neighbors": 56, "p": 2}
+  Trial 2: Score=0.3675 | Hiperparâmetros: {"n_neighbors": 78, "p": 2}
+  Trial 3: Score=0.3551 | Hiperparâmetros: {"n_neighbors": 16, "p": 2}
+  Trial 4: Score=0.3636 | Hiperparâmetros: {"n_neighbors": 29, "p": 4}
+  Trial 5: Score=0.3590 | Hiperparâmetros: {"n_neighbors": 32, "p": 2}
+  Trial 6: Score=0.3558 | Hiperparâmetros: {"n_neighbors": 48, "p": 1}
+  Trial 7: Score=0.3659 | Hiperparâmetros: {"n_neighbors": 43, "p": 3}
+  Trial 8: Score=0.3616 | Hiperparâmetros: {"n_neighbors": 86, "p": 1}
+  Trial 9: Score=0.3366 | Hiperparâmetros: {"n_neighbors": 3, "p": 1}
+  Trial 10: Score=0.3722 | Hiperparâmetros: {"n_neighbors": 99, "p": 4}
+  Trial 11: Score=0.3719 | Hiperparâmetros: {"n_neighbors": 100, "p": 4}
+  Trial 12: Score=0.3719 | Hiperparâmetros: {"n_neighbors": 100, "p": 4}
+  Trial 13: Score=0.3692 | Hiperparâmetros: {"n_neighbors": 69, "p": 4}
+  Trial 14: Score=0.3705 | Hiperparâmetros: {"n_neighbors": 100, "p": 3}
+  Trial 15: Score=0.3716 | Hiperparâmetros: {"n_neighbors": 88, "p": 4}
+  Trial 16: Score=0.3671 | Hiperparâmetros: {"n_neighbors": 65, "p": 3}
+  Trial 17: Score=0.3708 | Hiperparâmetros: {"n_neighbors": 87, "p": 4}
+  Trial 18: Score=0.3709 | Hiperparâmetros: {"n_neighbors": 76, "p": 4}
+  Trial 19: Score=0.3705 | Hiperparâmetros: {"n_neighbors": 100, "p": 3}
+  Trial 20: Score=0.3690 | Hiperparâmetros: {"n_neighbors": 62, "p": 4}
+  Trial 21: Score=0.3730 | Hiperparâmetros: {"n_neighbors": 93, "p": 4}
+  Trial 22: Score=0.3731 | Hiperparâmetros: {"n_neighbors": 91, "p": 4}
+  Trial 23: Score=0.3703 | Hiperparâmetros: {"n_neighbors": 88, "p": 3}
+  Trial 24: Score=0.3702 | Hiperparâmetros: {"n_neighbors": 75, "p": 4}
+  Trial 25: Score=0.3733 | Hiperparâmetros: {"n_neighbors": 92, "p": 4}
+  Trial 26: Score=0.3687 | Hiperparâmetros: {"n_neighbors": 83, "p": 3}
+  Trial 27: Score=0.3733 | Hiperparâmetros: {"n_neighbors": 92, "p": 4}
+  Trial 28: Score=0.3673 | Hiperparâmetros: {"n_neighbors": 71, "p": 3}
+  Trial 29: Score=0.3703 | Hiperparâmetros: {"n_neighbors": 80, "p": 4}
+
+Melhor trial (Optuna): 25
+  n_neighbors: 92
+  p: 4
+
+Importância dos parâmetros (Optuna):
+  n_neighbors: 0.8195
+  p: 0.1805
+
+Resultado do treino:
+  accuracy: 0.9463
+  precision: 0.3154
+  recall: 0.3333
+  f1: 0.3241
+  roc_auc: 0.7386
+  pr_auc: 0.3963
+
+Resultado do teste:
+  accuracy: 0.9463
+  precision: 0.3154
+  recall: 0.3333
+  f1: 0.3241
+  roc_auc: 0.6347
+  pr_auc: 0.3764
+
+============================================================
+
+FOLD 3 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3620 | Hiperparâmetros: {"n_neighbors": 75, "p": 2}
+  Trial 1: Score=0.3509 | Hiperparâmetros: {"n_neighbors": 6, "p": 4}
+  Trial 2: Score=0.3631 | Hiperparâmetros: {"n_neighbors": 51, "p": 3}
+  Trial 3: Score=0.3496 | Hiperparâmetros: {"n_neighbors": 11, "p": 2}
+  Trial 4: Score=0.3698 | Hiperparâmetros: {"n_neighbors": 98, "p": 1}
+  Trial 5: Score=0.3541 | Hiperparâmetros: {"n_neighbors": 27, "p": 1}
+  Trial 6: Score=0.3621 | Hiperparâmetros: {"n_neighbors": 40, "p": 3}
+  Trial 7: Score=0.3681 | Hiperparâmetros: {"n_neighbors": 89, "p": 1}
+  Trial 8: Score=0.3681 | Hiperparâmetros: {"n_neighbors": 89, "p": 1}
+  Trial 9: Score=0.3609 | Hiperparâmetros: {"n_neighbors": 69, "p": 2}
+  Trial 10: Score=0.3622 | Hiperparâmetros: {"n_neighbors": 61, "p": 4}
+  Trial 11: Score=0.3701 | Hiperparâmetros: {"n_neighbors": 99, "p": 1}
+  Trial 12: Score=0.3699 | Hiperparâmetros: {"n_neighbors": 100, "p": 1}
+  Trial 13: Score=0.3689 | Hiperparâmetros: {"n_neighbors": 97, "p": 1}
+  Trial 14: Score=0.3613 | Hiperparâmetros: {"n_neighbors": 79, "p": 2}
+  Trial 15: Score=0.3655 | Hiperparâmetros: {"n_neighbors": 83, "p": 1}
+  Trial 16: Score=0.3671 | Hiperparâmetros: {"n_neighbors": 100, "p": 3}
+  Trial 17: Score=0.3584 | Hiperparâmetros: {"n_neighbors": 57, "p": 2}
+  Trial 18: Score=0.3584 | Hiperparâmetros: {"n_neighbors": 38, "p": 1}
+  Trial 19: Score=0.3612 | Hiperparâmetros: {"n_neighbors": 65, "p": 2}
+  Trial 20: Score=0.3681 | Hiperparâmetros: {"n_neighbors": 89, "p": 1}
+  Trial 21: Score=0.3699 | Hiperparâmetros: {"n_neighbors": 100, "p": 1}
+  Trial 22: Score=0.3699 | Hiperparâmetros: {"n_neighbors": 100, "p": 1}
+  Trial 23: Score=0.3656 | Hiperparâmetros: {"n_neighbors": 86, "p": 1}
+  Trial 24: Score=0.3610 | Hiperparâmetros: {"n_neighbors": 74, "p": 2}
+  Trial 25: Score=0.3686 | Hiperparâmetros: {"n_neighbors": 93, "p": 1}
+  Trial 26: Score=0.3623 | Hiperparâmetros: {"n_neighbors": 81, "p": 2}
+  Trial 27: Score=0.3636 | Hiperparâmetros: {"n_neighbors": 71, "p": 1}
+  Trial 28: Score=0.3661 | Hiperparâmetros: {"n_neighbors": 92, "p": 3}
+  Trial 29: Score=0.3615 | Hiperparâmetros: {"n_neighbors": 77, "p": 2}
+
+Melhor trial (Optuna): 11
+  n_neighbors: 99
+  p: 1
+
+Importância dos parâmetros (Optuna):
+  n_neighbors: 0.9684
+  p: 0.0316
+
+Resultado do treino:
+  accuracy: 0.9463
+  precision: 0.3154
+  recall: 0.3333
+  f1: 0.3241
+  roc_auc: 0.7598
+  pr_auc: 0.3864
+
+Resultado do teste:
+  accuracy: 0.9463
+  precision: 0.3154
+  recall: 0.3333
+  f1: 0.3241
+  roc_auc: 0.6550
+  pr_auc: 0.3719
+
+============================================================
+
+FOLD 4 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3684 | Hiperparâmetros: {"n_neighbors": 70, "p": 3}
+  Trial 1: Score=0.3635 | Hiperparâmetros: {"n_neighbors": 76, "p": 2}
+  Trial 2: Score=0.3610 | Hiperparâmetros: {"n_neighbors": 51, "p": 2}
+  Trial 3: Score=0.3668 | Hiperparâmetros: {"n_neighbors": 60, "p": 3}
+  Trial 4: Score=0.3606 | Hiperparâmetros: {"n_neighbors": 37, "p": 2}
+  Trial 5: Score=0.3698 | Hiperparâmetros: {"n_neighbors": 80, "p": 3}
+  Trial 6: Score=0.3739 | Hiperparâmetros: {"n_neighbors": 92, "p": 4}
+  Trial 7: Score=0.3677 | Hiperparâmetros: {"n_neighbors": 63, "p": 3}
+  Trial 8: Score=0.3514 | Hiperparâmetros: {"n_neighbors": 5, "p": 4}
+  Trial 9: Score=0.3525 | Hiperparâmetros: {"n_neighbors": 11, "p": 2}
+  Trial 10: Score=0.3755 | Hiperparâmetros: {"n_neighbors": 100, "p": 4}
+  Trial 11: Score=0.3740 | Hiperparâmetros: {"n_neighbors": 91, "p": 4}
+  Trial 12: Score=0.3752 | Hiperparâmetros: {"n_neighbors": 99, "p": 4}
+  Trial 13: Score=0.3635 | Hiperparâmetros: {"n_neighbors": 100, "p": 1}
+  Trial 14: Score=0.3633 | Hiperparâmetros: {"n_neighbors": 34, "p": 4}
+  Trial 15: Score=0.3752 | Hiperparâmetros: {"n_neighbors": 99, "p": 4}
+  Trial 16: Score=0.3600 | Hiperparâmetros: {"n_neighbors": 83, "p": 1}
+  Trial 17: Score=0.3746 | Hiperparâmetros: {"n_neighbors": 86, "p": 4}
+  Trial 18: Score=0.3596 | Hiperparâmetros: {"n_neighbors": 19, "p": 3}
+  Trial 19: Score=0.3726 | Hiperparâmetros: {"n_neighbors": 72, "p": 4}
+  Trial 20: Score=0.3662 | Hiperparâmetros: {"n_neighbors": 52, "p": 3}
+  Trial 21: Score=0.3752 | Hiperparâmetros: {"n_neighbors": 99, "p": 4}
+  Trial 22: Score=0.3743 | Hiperparâmetros: {"n_neighbors": 93, "p": 4}
+  Trial 23: Score=0.3752 | Hiperparâmetros: {"n_neighbors": 99, "p": 4}
+  Trial 24: Score=0.3745 | Hiperparâmetros: {"n_neighbors": 87, "p": 4}
+  Trial 25: Score=0.3702 | Hiperparâmetros: {"n_neighbors": 81, "p": 3}
+  Trial 26: Score=0.3743 | Hiperparâmetros: {"n_neighbors": 94, "p": 4}
+  Trial 27: Score=0.3652 | Hiperparâmetros: {"n_neighbors": 38, "p": 3}
+  Trial 28: Score=0.3704 | Hiperparâmetros: {"n_neighbors": 62, "p": 4}
+  Trial 29: Score=0.3678 | Hiperparâmetros: {"n_neighbors": 72, "p": 3}
+
+Melhor trial (Optuna): 10
+  n_neighbors: 100
+  p: 4
+
+Importância dos parâmetros (Optuna):
+  n_neighbors: 0.7418
+  p: 0.2582
+
+Resultado do treino:
+  accuracy: 0.9463
+  precision: 0.3154
+  recall: 0.3333
+  f1: 0.3241
+  roc_auc: 0.7428
+  pr_auc: 0.3970
+
+Resultado do teste:
+  accuracy: 0.9463
+  precision: 0.3154
+  recall: 0.3333
+  f1: 0.3241
+  roc_auc: 0.6205
+  pr_auc: 0.3587
+
+============================================================
+
+FOLD 5 (loop externo):
+------------------------------------------------------------
+Loop interno - Trials de hiperparâmetros testados:
+  Trial 0: Score=0.3690 | Hiperparâmetros: {"n_neighbors": 55, "p": 3}
+  Trial 1: Score=0.3702 | Hiperparâmetros: {"n_neighbors": 74, "p": 3}
+  Trial 2: Score=0.3747 | Hiperparâmetros: {"n_neighbors": 69, "p": 4}
+  Trial 3: Score=0.3623 | Hiperparâmetros: {"n_neighbors": 22, "p": 4}
+  Trial 4: Score=0.3614 | Hiperparâmetros: {"n_neighbors": 72, "p": 1}
+  Trial 5: Score=0.3474 | Hiperparâmetros: {"n_neighbors": 12, "p": 1}
+  Trial 6: Score=0.3582 | Hiperparâmetros: {"n_neighbors": 35, "p": 1}
+  Trial 7: Score=0.3745 | Hiperparâmetros: {"n_neighbors": 89, "p": 4}
+  Trial 8: Score=0.3562 | Hiperparâmetros: {"n_neighbors": 29, "p": 1}
+  Trial 9: Score=0.3435 | Hiperparâmetros: {"n_neighbors": 2, "p": 2}
+  Trial 10: Score=0.3762 | Hiperparâmetros: {"n_neighbors": 97, "p": 4}
+  Trial 11: Score=0.3749 | Hiperparâmetros: {"n_neighbors": 94, "p": 4}
+  Trial 12: Score=0.3734 | Hiperparâmetros: {"n_neighbors": 100, "p": 3}
+  Trial 13: Score=0.3762 | Hiperparâmetros: {"n_neighbors": 97, "p": 4}
+  Trial 14: Score=0.3693 | Hiperparâmetros: {"n_neighbors": 83, "p": 2}
+  Trial 15: Score=0.3696 | Hiperparâmetros: {"n_neighbors": 54, "p": 3}
+  Trial 16: Score=0.3749 | Hiperparâmetros: {"n_neighbors": 83, "p": 4}
+  Trial 17: Score=0.3697 | Hiperparâmetros: {"n_neighbors": 45, "p": 4}
+  Trial 18: Score=0.3710 | Hiperparâmetros: {"n_neighbors": 100, "p": 2}
+  Trial 19: Score=0.3701 | Hiperparâmetros: {"n_neighbors": 64, "p": 3}
+  Trial 20: Score=0.3743 | Hiperparâmetros: {"n_neighbors": 82, "p": 4}
+  Trial 21: Score=0.3746 | Hiperparâmetros: {"n_neighbors": 92, "p": 4}
+  Trial 22: Score=0.3746 | Hiperparâmetros: {"n_neighbors": 92, "p": 4}
+  Trial 23: Score=0.3732 | Hiperparâmetros: {"n_neighbors": 99, "p": 3}
+  Trial 24: Score=0.3748 | Hiperparâmetros: {"n_neighbors": 81, "p": 4}
+  Trial 25: Score=0.3744 | Hiperparâmetros: {"n_neighbors": 90, "p": 4}
+  Trial 26: Score=0.3701 | Hiperparâmetros: {"n_neighbors": 64, "p": 3}
+  Trial 27: Score=0.3736 | Hiperparâmetros: {"n_neighbors": 76, "p": 4}
+  Trial 28: Score=0.3729 | Hiperparâmetros: {"n_neighbors": 92, "p": 3}
+  Trial 29: Score=0.3730 | Hiperparâmetros: {"n_neighbors": 63, "p": 4}
+
+Melhor trial (Optuna): 10
+  n_neighbors: 97
+  p: 4
+
+Importância dos parâmetros (Optuna):
+  n_neighbors: 0.7970
+  p: 0.2030
+
+Resultado do treino:
+  accuracy: 0.9463
+  precision: 0.3154
+  recall: 0.3333
+  f1: 0.3241
+  roc_auc: 0.7466
+  pr_auc: 0.3980
+
+Resultado do teste:
+  accuracy: 0.9463
+  precision: 0.3154
+  recall: 0.3333
+  f1: 0.3241
+  roc_auc: 0.6001
+  pr_auc: 0.3653
+
+============================================================
+
+TABELA DE MÉTRICAS DE TREINO E TESTE POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treino: 1     | 0.9463     | 0.3154     | 0.3333     | 0.3241     | 0.7386     | 0.3903    
+Teste:  1     | 0.9466     | 0.3155     | 0.3333     | 0.3242     | 0.6231     | 0.3730    
+Treino: 2     | 0.9463     | 0.3154     | 0.3333     | 0.3241     | 0.7386     | 0.3963    
+Teste:  2     | 0.9463     | 0.3154     | 0.3333     | 0.3241     | 0.6347     | 0.3764    
+Treino: 3     | 0.9463     | 0.3154     | 0.3333     | 0.3241     | 0.7598     | 0.3864    
+Teste:  3     | 0.9463     | 0.3154     | 0.3333     | 0.3241     | 0.6550     | 0.3719    
+Treino: 4     | 0.9463     | 0.3154     | 0.3333     | 0.3241     | 0.7428     | 0.3970    
+Teste:  4     | 0.9463     | 0.3154     | 0.3333     | 0.3241     | 0.6205     | 0.3587    
+Treino: 5     | 0.9463     | 0.3154     | 0.3333     | 0.3241     | 0.7466     | 0.3980    
+Teste:  5     | 0.9463     | 0.3154     | 0.3333     | 0.3241     | 0.6001     | 0.3653    
+
+MÉDIAS E DESVIOS PADRÃO DAS MÉTRICAS POR FOLD:
+Fold  | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+-----------------------------------------------------------------------------------
+Treinos: 0.9463+-0.00 0.3154+-0.00 0.3333+-0.00 0.3241+-0.00 0.7453+-0.01 0.3936+-0.00 
+Testes:  0.9463+-0.00 0.3154+-0.00 0.3333+-0.00 0.3241+-0.00 0.6267+-0.02 0.3691+-0.01 
+
+MELHOR CONJUNTO DE HIPERPARÂMETROS GLOBAL (selecionado pelo maior PR AUC  ):
+------------------------------------------------------------
+{
+  "n_neighbors": 92,
+  "p": 4
+}
+
