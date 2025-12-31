@@ -236,7 +236,7 @@ def run_all_models_optimize(X, y, n_trials=10, data_source="ana", classification
         print(f"Progresso: {i}/{len(models_config)} modelos")
         
         if model_name == "Support Vector Classifier":
-            n_trials = 5
+            n_trials = 10
         else:
             n_trials = N_TRIALS
         

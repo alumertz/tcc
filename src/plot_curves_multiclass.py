@@ -9,7 +9,7 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.metrics import roc_curve, precision_recall_curve, auc, roc_auc_score, average_precision_score
+from sklearn.metrics import roc_curve, precision_recall_curve, auc, roc_auc_score, average_precision_score, confusion_matrix
 from sklearn.preprocessing import label_binarize
 from itertools import cycle, combinations
 import warnings
@@ -24,26 +24,89 @@ plt.rcParams['savefig.dpi'] = 300
 plt.rcParams['font.size'] = 10
 plt.rcParams['axes.labelsize'] = 12
 plt.rcParams['axes.titlesize'] = 14
-plt.rcParams['legend.fontsize'] = 10
+plt.rcParams['legend.fontsize'] = 22
 
 # Configuração do seaborn
 sns.set_style("whitegrid")
 sns.set_palette("husl")
 
-# Paleta de cores padronizada para todos os modelos
+# Paleta de cores padronizada para todos os modelos (rainbow colors)
 STANDARD_COLORS = {
-    'decision_tree': '#1f77b4',           # Azul
-    'random_forest': '#ff7f0e',           # Laranja
-    'gradient_boosting': '#2ca02c',       # Verde
-    'histogram_gradient_boosting': '#d62728',  # Vermelho
-    'k_nearest_neighbors': '#9467bd',     # Roxo
-    'multi_layer_perceptron': '#8c564b',  # Marrom
-    'support_vector_classifier': '#e377c2',  # Rosa
-    'catboost': '#17becf',                # Ciano
+    'decisiontree': '#FF0000',           # Vermelho
+    'randomforest': '#FF7F00',           # Laranja
+    'gradientboosting': '#FFFF00',       # Amarelo
+    'histogramgradientboosting': '#00FF00',  # Verde
+    'knearestneighbors': '#0000FF',     # Azul
+    'multilayerperceptron': '#4B0082',  # Índigo
+    'supportvectorclassifier': '#9400D3',  # Violeta
+    'catboost': '#FF1493',                # Rosa forte
+    'xgboost': '#00CED1',                 # Turquesa
 }
 
-# Cores adicionais para classes em gráficos multiclasse
-MULTICLASS_COLORS = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#17becf']
+# Cores adicionais para classes em gráficos multiclasse (rainbow)
+MULTICLASS_COLORS = ['#FF0000', '#FF7F00', '#FFFF00', '#00FF00', '#0000FF', '#4B0082', '#9400D3', '#FF1493']
+
+# Mapeamento de nomes de modelo para nomes de exibição
+MODEL_DISPLAY_NAMES = {
+    'catboost': 'CatBoost',
+    'Catboost': 'CatBoost',
+    'decision_tree': 'Decision Tree',
+    'DT': 'Decision Tree',
+    'dt': 'Decision Tree',
+    'gradient_boosting': 'Gradient Boosting',
+    'GB': 'Gradient Boosting',
+    'gb': 'Gradient Boosting',
+    'histogram_gradient_boosting': 'Histogram Gradient Boosting',
+    'HGB': 'Histogram Gradient Boosting',
+    'hgb': 'Histogram Gradient Boosting',
+    'k_nearest_neighbors': 'K-Nearest Neighbors',
+    'KNN': 'K-Nearest Neighbors',
+    'Knn': 'K-Nearest Neighbors',
+    'knn': 'K-Nearest Neighbors',
+    'multi_layer_perceptron': 'Multi-Layer Perceptron',
+    'MLP': 'Multi-Layer Perceptron',
+    'Mlp': 'Multi-Layer Perceptron',
+    'mlp': 'Multi-Layer Perceptron',
+    'random_forest': 'Random Forest',
+    'RF': 'Random Forest',
+    'rf': 'Random Forest',
+    'support_vector_classifier': 'Support Vector Classifier',
+    'SVC': 'Support Vector Classifier',
+    'Svc': 'Support Vector Classifier',
+    'svc': 'Support Vector Classifier',
+    'xgboost': 'XGBoost',
+    'Xgboost': 'XGBoost',
+}
+
+
+def format_model_name(model_name):
+    """
+    Formata o nome do modelo para exibição, removendo prefixos como 'metrics' ou 'Metrics'
+    
+    Args:
+        model_name (str): Nome do modelo (pode incluir prefixos)
+        
+    Returns:
+        str: Nome formatado para exibição
+    """
+    # Remover prefixos comuns (case-insensitive)
+    clean_name = model_name
+    prefixes_to_remove = ['metrics_', 'metrics', 'Metrics']
+    
+    for prefix in prefixes_to_remove:
+        if clean_name.lower().startswith(prefix.lower()):
+            clean_name = clean_name[len(prefix):]
+            break
+    
+    # Buscar no dicionário de nomes de exibição (exact match first)
+    if clean_name in MODEL_DISPLAY_NAMES:
+        return MODEL_DISPLAY_NAMES[clean_name]
+    
+    # Se não encontrou no dicionário, formatar manualmente
+    # Substituir underscores e hífens por espaços e capitalizar
+    formatted = clean_name.replace('_', ' ').replace('-', ' ').title()
+    
+    return formatted
 
 ##### AUC-PR ######
 
@@ -82,10 +145,10 @@ def plot_pr_individual_models(model_results, curves_dir, n_classes, class_names)
             # Add weighted average
             weighted_ap = average_precision_score(y_true_bin, y_pred_proba, average='weighted')
             
-            plt.xlabel("Recall", fontsize=14)
-            plt.ylabel("Precision", fontsize=14)
-            plt.title(f"PR Curves per Class - {model_name.replace('_', ' ').title()}\nWeighted AP = {weighted_ap:.3f}", fontsize=16)
-            plt.legend(loc="lower left", fontsize=12)
+            model_display_name = format_model_name(model_name)
+            plt.xlabel("Recall", fontsize=22)
+            plt.ylabel("Precision", fontsize=22)
+            plt.legend(loc="lower left", fontsize=22)
             plt.grid(True, alpha=0.3)
             plt.xlim([0.0, 1.0])
             plt.ylim([0.0, 1.05])
@@ -143,7 +206,7 @@ def plot_auc_comparison_all_models(model_results, save_path, metric_type="roc", 
             else:  # metric_type == "pr"
                 auc_value = average_precision_score(y_true, y_pred_proba, average='weighted')
 
-            model_names.append(model_name.replace('_', ' ').title())
+            model_names.append(format_model_name(model_name))
             auc_values.append(auc_value)
 
         except Exception as e:
@@ -166,13 +229,12 @@ def plot_auc_comparison_all_models(model_results, save_path, metric_type="roc", 
     # Adiciona valores no topo das barras
     for i, (bar, auc) in enumerate(zip(bars, auc_values)):
         plt.text(bar.get_x() + bar.get_width()/2., bar.get_height() + 0.01, 
-                 f'{auc:.3f}', ha='center', va='bottom', fontsize=11, fontweight='bold')
+                 f'{auc:.3f}', ha='center', va='bottom', fontsize=22, fontweight='bold')
 
     # Título e eixos dinâmicos
-    metric_label = "ROC AUC" if metric_type == "roc" else "PR AUC"
-    plt.xlabel('Modelos', fontsize=14)
-    plt.ylabel(f'{metric_label} (weighted)', fontsize=14)
-    plt.title(f'Comparação de {metric_label} - Todos os Modelos', fontsize=16, fontweight='bold')
+    metric_label = "ROC-AUC" if metric_type == "roc" else "PR-AUC"
+    plt.xlabel('Modelos', fontsize=22)
+    plt.ylabel(f'{metric_label} (weighted)', fontsize=22)
     plt.xticks(range(len(model_names)), model_names, rotation=45, ha='right')
 
     # Linha de referência
@@ -209,7 +271,7 @@ def plot_ovr_vs_ovo_weighted_comparison(model_results, save_path, n_classes):
             ovr_weighted = roc_auc_score(y_true, y_pred_proba, multi_class='ovr', average='weighted')
             ovo_weighted = roc_auc_score(y_true, y_pred_proba, multi_class='ovo', average='weighted')
             
-            models_names.append(model_name.replace('_', ' ').title())
+            models_names.append(format_model_name(model_name))
             ovr_weighted_scores.append(ovr_weighted)
             ovo_weighted_scores.append(ovo_weighted)
         except Exception as e:
@@ -223,11 +285,10 @@ def plot_ovr_vs_ovo_weighted_comparison(model_results, save_path, n_classes):
     plt.bar(x - width/2, ovr_weighted_scores, width, label='OvR Weighted AUC', alpha=0.8)
     plt.bar(x + width/2, ovo_weighted_scores, width, label='OvO Weighted AUC', alpha=0.8)
     
-    plt.xlabel('Models', fontsize=14)
-    plt.ylabel('Weighted ROC AUC Score', fontsize=14)
-    plt.title('OvR vs OvO Weighted ROC AUC Comparison', fontsize=16)
+    plt.xlabel('Models', fontsize=22)
+    plt.ylabel('Weighted ROC-AUC Score', fontsize=22)
     plt.xticks(x, models_names, rotation=45, ha='right')
-    plt.legend(fontsize=12)
+    plt.legend(fontsize=22)
     plt.grid(True, alpha=0.3)
     plt.ylim([0, 1])
     plt.tight_layout()
@@ -380,9 +441,10 @@ def plot_individual_model_ovr_roc(model_name, predictions, save_path, n_classes,
     
     # Plot curvas individuais para cada classe vs resto
     for i in range(n_classes):
+        class_label = class_names[i] if i < len(class_names) else f'Class {i}'
         plt.plot(ovr_metrics['fpr'][i], ovr_metrics['tpr'][i], 
                 color=colors[i], lw=3,
-                label=f'{i} (AUC = {ovr_metrics["roc_auc"][i]:.3f})')
+                label=f'{class_label} (AUC = {ovr_metrics["roc_auc"][i]:.3f})')
     
     # Weighted average usando sklearn
     weighted_auc = roc_auc_score(y_true, y_pred_proba, multi_class='ovr', average='weighted')
@@ -395,10 +457,10 @@ def plot_individual_model_ovr_roc(model_name, predictions, save_path, n_classes,
     
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.05])
-    plt.xlabel('False Positive Rate', fontsize=14)
-    plt.ylabel('True Positive Rate', fontsize=14)
-    plt.title(f'One-vs-Rest ROC - {model_name.replace("_", " ").title()}\nWeighted AUC = {weighted_auc:.3f}', fontsize=16)
-    plt.legend(loc="lower right", fontsize=10)
+    plt.xlabel('False Positive Rate', fontsize=22)
+    plt.ylabel('True Positive Rate', fontsize=22)
+    model_display_name = format_model_name(model_name)
+    plt.legend(loc="lower right", fontsize=22)
     plt.grid(True, alpha=0.3)
     plt.tight_layout()
     
@@ -447,10 +509,10 @@ def plot_individual_model_ovo_roc(model_name, predictions, save_path, n_classes,
     
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.05])
-    plt.xlabel('False Positive Rate', fontsize=14)
-    plt.ylabel('True Positive Rate', fontsize=14)
-    plt.title(f'One-vs-One ROC - {model_name.replace("_", " ").title()}\nWeighted AUC = {weighted_auc:.3f}', fontsize=16)
-    plt.legend(loc="lower right", fontsize=10)
+    plt.xlabel('False Positive Rate', fontsize=22)
+    plt.ylabel('True Positive Rate', fontsize=22)
+    model_display_name = format_model_name(model_name)
+    plt.legend(loc="lower right", fontsize=22)
     plt.grid(True, alpha=0.3)
     plt.tight_layout()
     
@@ -544,8 +606,8 @@ def plot_average_curves_all_models(model_results, curves_dir, average_type='macr
             if n_classes == 2 and y_true_bin.shape[1] == 1:
                 y_true_bin = np.hstack([1 - y_true_bin, y_true_bin])
             
-            model_display_name = model_name.replace('_', ' ').title()
-            color = STANDARD_COLORS.get(model_name, f'C{models_plotted}')
+            model_display_name = format_model_name(model_name)
+            color = STANDARD_COLORS.get(model_name.lower().replace('metrics', '').replace('_', '').replace('-', ''), f'C{models_plotted}')
             
             if curve_type == 'roc':
                 if average_type == 'micro':
@@ -571,7 +633,7 @@ def plot_average_curves_all_models(model_results, curves_dir, average_type='macr
                     macro_auc = np.mean(aucs)
                     
                     plt.plot(fpr_grid, mean_tpr, color=color, lw=3,
-                            label=f'{model_display_name} (Macro AUC = {macro_auc:.3f})')
+                            label=f'{model_display_name} (AUC = {macro_auc:.3f})')
                             
             elif curve_type == 'pr':
                 if average_type == 'micro':
@@ -602,7 +664,7 @@ def plot_average_curves_all_models(model_results, curves_dir, average_type='macr
                     macro_auc = np.mean(aucs)
                     
                     plt.plot(recall_grid, mean_precision, color=color, lw=3,
-                            label=f'{model_display_name} (Macro AUC = {macro_auc:.3f})')
+                            label=f'{model_display_name} (AUC = {macro_auc:.3f})')
             
             models_plotted += 1
             print(f"  ✓ {model_name} processado com sucesso")
@@ -622,9 +684,8 @@ def plot_average_curves_all_models(model_results, curves_dir, average_type='macr
         plt.plot([0, 1], [0, 1], 'k--', lw=2, alpha=0.8, label='Random Classifier')
         plt.xlim([0.0, 1.0])
         plt.ylim([0.0, 1.05])
-        plt.xlabel('False Positive Rate', fontsize=14)
-        plt.ylabel('True Positive Rate', fontsize=14)
-        title_text = f'ROC Curves - {average_type.title()} Average (All Models)'
+        plt.xlabel('False Positive Rate', fontsize=22)
+        plt.ylabel('True Positive Rate', fontsize=22)
         
     elif curve_type == 'pr':
         # Baseline para PR (proporção da classe positiva)
@@ -633,12 +694,10 @@ def plot_average_curves_all_models(model_results, curves_dir, average_type='macr
                     label=f'Random Classifier (AP = {pos_rate:.3f})')
         plt.xlim([0.0, 1.0])
         plt.ylim([0.0, 1.05])
-        plt.xlabel('Recall', fontsize=14)
-        plt.ylabel('Precision', fontsize=14)
-        title_text = f'PR Curves - {average_type.title()} Average (All Models)'
+        plt.xlabel('Recall', fontsize=22)
+        plt.ylabel('Precision', fontsize=22)
     
-    plt.title(title_text, fontsize=16, fontweight='bold')
-    plt.legend(loc="best", fontsize=10)
+    plt.legend(loc="best", fontsize=22)
     plt.grid(True, alpha=0.3)
     plt.tight_layout()
     
@@ -717,6 +776,126 @@ def generate_multiclass_plots(model_results, class_names, experiment_dir, n_clas
                                  average_type='macro', curve_type='pr', 
                                  n_classes=n_classes, class_names=class_names)
     
+    # Gerar matrizes de confusão
+    print("\nGerando Confusion Matrices...")
+    cm_path = os.path.join(experiment_dir, "confusion_matrices")
+    os.makedirs(cm_path, exist_ok=True)
+    plot_confusion_matrices_multiclass(model_results, cm_path, class_names)
 
     
     print("✅ Todos os gráficos multiclasse foram gerados com sucesso!")
+
+
+def plot_confusion_matrices_multiclass(model_results, save_dir, class_names):
+    """
+    Cria gráficos de matriz de confusão para todos os modelos multiclasse
+    
+    Args:
+        model_results (dict): Resultados dos modelos com predições
+        save_dir (str): Diretório para salvar os gráficos
+        class_names (list): Nomes das classes
+    """
+    models_plotted = 0
+    models_with_errors = []
+    
+    # If class_names not provided or generic, use proper labels
+    if class_names is None or (len(class_names) > 0 and 'Class' in class_names[0]):
+        class_names = ['Passenger', 'TSG', 'Oncogenes']
+    
+    for model_name, data in sorted(model_results.items()):
+        print(f"  Processando matriz de confusão para {model_name}...")
+        
+        try:
+            predictions = data['predictions']
+            y_true = np.array(predictions['y_true'])
+            y_pred = np.array(predictions.get('y_pred', []))
+            
+            # Se não tiver y_pred, usar y_pred_proba para gerar predições
+            if len(y_pred) == 0:
+                y_pred_proba = np.array(predictions['y_pred_proba'])
+                y_pred = np.argmax(y_pred_proba, axis=1)
+            
+            model_display_name = format_model_name(model_name)
+            
+            # Calcular matriz de confusão
+            cm = confusion_matrix(y_true, y_pred)
+            
+            # Criar figura maior para multiclasse
+            plt.figure(figsize=(12, 10))
+            
+            # Usar seaborn para plotar heatmap
+            sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
+                       xticklabels=class_names, yticklabels=class_names,
+                       cbar_kws={'label': 'Count'}, annot_kws={'fontsize': 22})
+            
+            plt.ylabel('True Label', fontsize=22)
+            plt.xlabel('Predicted Label', fontsize=22)
+            plt.tight_layout()
+            
+            model_save_path = os.path.join(save_dir, f'cm_{model_name}')
+            plt.savefig(model_save_path + '.png', dpi=300, bbox_inches='tight')
+            plt.savefig(model_save_path + '.pdf', bbox_inches='tight')
+            plt.close()
+            
+            models_plotted += 1
+            
+        except Exception as e:
+            models_with_errors.append(model_name)
+            print(f"    ❌ Erro: {e}")
+    
+    print(f"\n  Matrizes de confusão plotadas: {models_plotted}")
+    if models_with_errors:
+        print(f"  Modelos com erro: {', '.join(models_with_errors)}")
+
+
+if __name__ == "__main__":
+    """
+    Permite executar o script diretamente para gerar plots multiclasse
+    """
+    # Import functions from plot_curves.py for standalone execution
+    from plot_curves import browse_directories, load_from_forplots_directory, detect_classification_type
+    
+    print("\n" + "="*70, flush=True)
+    print("GERAÇÃO DE GRÁFICOS MULTICLASSE", flush=True)
+    print("="*70 + "\n", flush=True)
+    
+    print("Navegue até o diretório com os arquivos JSON dos modelos", flush=True)
+    selected_dir = browse_directories(base_dir="./results_final_tcc")
+    
+    if not selected_dir:
+        print("❌ Nenhum diretório selecionado. Encerrando.", flush=True)
+        sys.exit(1)
+    
+    print(f"\n📂 Carregando dados de: {selected_dir}", flush=True)
+    model_results = load_from_forplots_directory(selected_dir)
+    
+    if not model_results:
+        print("❌ Nenhum modelo encontrado!", flush=True)
+        sys.exit(1)
+    
+    # Detectar tipo de classificação
+    first_model = next(iter(model_results.values()))
+    predictions = first_model['predictions']
+    y_true = np.array(predictions['y_true'])
+    y_pred_proba = np.array(predictions['y_pred_proba'])
+    classification_type, n_classes, class_names = detect_classification_type(y_true, y_pred_proba)
+    
+    print(f"✅ {len(model_results)} modelos carregados", flush=True)
+    print(f"📊 Tipo: {classification_type} ({n_classes} classes)", flush=True)
+    
+    if classification_type != 'multiclass' or n_classes <= 2:
+        print("⚠️  Este script é para classificação multiclasse (>2 classes)", flush=True)
+        print(f"   Detectado: {classification_type} com {n_classes} classes", flush=True)
+        sys.exit(1)
+    
+    # Criar diretório de saída
+    curves_dir = os.path.join(selected_dir, "curves_multiclass")
+    os.makedirs(curves_dir, exist_ok=True)
+    
+    print(f"\n🎨 Gerando gráficos multiclasse...", flush=True)
+    generate_multiclass_plots(model_results, class_names, curves_dir, n_classes)
+    
+    print(f"\n💾 Gráficos salvos em: {curves_dir}", flush=True)
+    print("\n" + "="*70, flush=True)
+    print("PROCESSO FINALIZADO", flush=True)
+    print("="*70 + "\n", flush=True)

@@ -1,0 +1,277 @@
+[
+    {
+        "type": "binary",
+        "model": "catboost",
+        "experiment": "_optimized_binary_second_20251125_160305",
+        "balancing": "tomeklinks",
+        "hyperparameters": {
+            "iterations": 832,
+            "learning_rate": 0.007288252478020185,
+            "random_seed": 42
+        }
+    },
+    {
+        "type": "binary",
+        "model": "decision_tree",
+        "experiment": "_optimized_binary_first_20251203_215554",
+        "balancing": "none",
+        "hyperparameters": {
+            "max_depth": 12,
+            "min_samples_split": 9,
+            "min_samples_leaf": 9,
+            "criterion": "gini",
+            "max_features": "log2",
+            "splitter": "random",
+            "class_weight": "balanced",
+            "random_state": 42
+        }
+    },
+    {
+        "type": "binary",
+        "model": "gradient_boosting",
+        "experiment": "_optimized_binary_third_20251202_114155",
+        "balancing": "none",
+        "hyperparameters": {
+            "n_estimators": 250,
+            "learning_rate": 0.02914494758754147,
+            "max_depth": 3,
+            "min_samples_split": 7,
+            "min_samples_leaf": 4,
+            "subsample": 0.8578510331496536,
+            "max_features": "log2",
+            "random_state": 42
+        }
+    },
+    {
+        "type": "binary",
+        "model": "histogram_gradient_boosting",
+        "experiment": "_optimized_binary_third_auto_20251202_114155",
+        "balancing": "tomeklinks",
+        "hyperparameters": {
+            "max_iter": 136,
+            "learning_rate": 0.08787997623331949,
+            "max_depth": 3,
+            "min_samples_leaf": 17,
+            "l2_regularization": 0.02116630227904794,
+            "random_state": 42
+        }
+    },
+    {
+        "type": "binary",
+        "model": "knn",
+        "experiment": "_optimized_binary_second_20251125_160305",
+        "balancing": "none",
+        "hyperparameters": {
+            "n_neighbors": 92,
+            "p": 3
+        }
+    },
+    {
+        "type": "binary",
+        "model": "mlp",
+        "experiment": "_optimized_binary_first_20251203_215554",
+        "balancing": "none",
+        "hyperparameters": {
+            "hidden_layer_sizes": [
+                123,
+                139
+            ],
+            "activation": "logistic",
+            "alpha": 0.05073935357347718,
+            "learning_rate": "adaptive",
+            "solver": "sgd",
+            "learning_rate_init": 0.03452592500628362,
+            "max_iter": 212,
+            "random_state": 42
+        }
+    },
+    {
+        "type": "binary",
+        "model": "random_forest",
+        "experiment": "_optimized_binary_second_20251125_160305",
+        "balancing": "none",
+        "hyperparameters": {
+            "min_samples_leaf": 46,
+            "max_features": "log2",
+            "max_depth": 45,
+            "class_weight": "balanced",
+            "random_state": 42
+        }
+    },
+    {
+        "type": "binary",
+        "model": "svc",
+        "experiment": "_optimized_binary_second_20251125_160305",
+        "balancing": "smoteenn",
+        "hyperparameters": {
+            "kernel": "linear",
+            "probability": true,
+            "class_weight": "balanced",
+            "random_state": 42
+        }
+    },
+    {
+        "type": "binary",
+        "model": "xgboost",
+        "experiment": "_optimized_binary_third_auto_20251202_114155",
+        "balancing": "none",
+        "hyperparameters": {
+            "n_estimators": 250,
+            "learning_rate": 0.009,
+            "max_depth": 20,
+            "min_child_weight": 10,
+            "subsample": 0.9,
+            "colsample_bytree": 0.446434748022377,
+            "reg_alpha": 0.0,
+            "reg_lambda": 1.0,
+            "gamma": 5.0,
+            "random_state": 42,
+            "n_jobs": -1,
+            "verbosity": 0,
+            "objective": "binary:logistic",
+            "eval_metric": "logloss",
+            "scale_pos_weight": 5.0
+        }
+    },
+    {
+        "type": "multiclass",
+        "model": "catboost",
+        "experiment": "_optimized_multiclass_second_auto_20251205_161015",
+        "balancing": "tomeklinks",
+        "hyperparameters": {
+            "iterations": 1000,
+            "learning_rate": 0.02,
+            "depth": 4,
+            "l2_leaf_reg": 1.0,
+            "border_count": 255,
+            "bagging_temperature": 1.0,
+            "random_strength": 0.0,
+            "verbose": false,
+            "allow_writing_files": false,
+            "thread_count": 11,
+            "loss_function": "MultiClass",
+            "classes_count": 3,
+            "random_seed": 42
+        }
+    },
+    {
+        "type": "multiclass",
+        "model": "decision_tree",
+        "experiment": "_optimized_multiclass_second_20251127_044704",
+        "balancing": "none",
+        "hyperparameters": {
+            "max_depth": 6,
+            "min_samples_split": 10,
+            "class_weight": "balanced",
+            "random_state": 42
+        }
+    },
+    {
+        "type": "multiclass",
+        "model": "gradient_boosting",
+        "experiment": "_optimized_multiclass_third_20251202_174216",
+        "balancing": "tomeklinks",
+        "hyperparameters": {
+            "n_estimators": 150,
+            "learning_rate": 0.028236885417126437,
+            "max_depth": 5,
+            "min_samples_split": 5,
+            "min_samples_leaf": 1,
+            "subsample": 0.9547690674272925,
+            "max_features": "sqrt",
+            "random_state": 42
+        }
+    },
+    {
+        "type": "multiclass",
+        "model": "histogram_gradient_boosting",
+        "experiment": "_optimized_multiclass_second_auto_20251205_161015",
+        "balancing": "none",
+        "hyperparameters": {
+            "learning_rate": 0.028246474179395315,
+            "max_depth": 3,
+            "random_state": 42
+        }
+    },
+    {
+        "type": "multiclass",
+        "model": "k_nearest_neighbors",
+        "experiment": "_optimized_multiclass_third_20251202_174216",
+        "balancing": "tomeklinks",
+        "hyperparameters": {
+            "n_neighbors": 115,
+            "weights": "distance",
+            "algorithm": "brute",
+            "p": 2,
+            "leaf_size": 30
+        }
+    },
+    {
+        "type": "multiclass",
+        "model": "multi_layer_perceptron",
+        "experiment": "_optimized_multiclass_third_20251202_174216",
+        "balancing": "tomeklinks",
+        "hyperparameters": {
+            "hidden_layer_sizes": [
+                175
+            ],
+            "activation": "tanh",
+            "alpha": 0.000636325488567819,
+            "learning_rate": "constant",
+            "solver": "sgd",
+            "learning_rate_init": 0.023473801881703782,
+            "max_iter": 389,
+            "early_stopping": true,
+            "n_iter_no_change": 10,
+            "tol": 0.0001,
+            "random_state": 42
+        }
+    },
+    {
+        "type": "multiclass",
+        "model": "random_forest",
+        "experiment": "_optimized_multiclass_second_20251127_044704",
+        "balancing": "none",
+        "hyperparameters": {
+            "min_samples_leaf": 36,
+            "max_features": "sqrt",
+            "max_depth": 27,
+            "class_weight": "balanced",
+            "random_state": 42
+        }
+    },
+    {
+        "type": "multiclass",
+        "model": "svc",
+        "experiment": "_optimized_multiclass_second_20251127_044704",
+        "balancing": "none",
+        "hyperparameters": {
+            "kernel": "linear",
+            "probability": true,
+            "class_weight": "balanced",
+            "random_state": 42
+        }
+    },
+    {
+        "type": "multiclass",
+        "model": "xgboost",
+        "experiment": "_optimized_multiclass_first_auto_20251202_215107",
+        "balancing": "tomeklinks",
+        "hyperparameters": {
+            "n_estimators": 486,
+            "learning_rate": 0.01,
+            "max_depth": 14,
+            "min_child_weight": 1,
+            "subsample": 0.8994586285689254,
+            "colsample_bytree": 0.8531300123360023,
+            "reg_alpha": 0.0,
+            "reg_lambda": 1.0,
+            "gamma": 3.017585204710897,
+            "random_state": 42,
+            "n_jobs": -1,
+            "verbosity": 0,
+            "objective": "multi:softprob",
+            "eval_metric": "mlogloss"
+        }
+    }
+]

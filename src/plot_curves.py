@@ -10,7 +10,7 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.metrics import roc_curve, precision_recall_curve, auc
+from sklearn.metrics import roc_curve, precision_recall_curve, auc, average_precision_score, confusion_matrix
 from plot_curves_multiclass import generate_multiclass_plots
 import warnings
 warnings.filterwarnings('ignore')
@@ -32,15 +32,78 @@ sns.set_palette("husl")
 
 # Paleta de cores padronizada para todos os modelos
 STANDARD_COLORS = {
-    'decision_tree': '#1f77b4',           # Azul
-    'random_forest': '#ff7f0e',           # Laranja
-    'gradient_boosting': '#2ca02c',       # Verde
-    'histogram_gradient_boosting': '#d62728',  # Vermelho
-    'k_nearest_neighbors': '#9467bd',     # Roxo
-    'multi_layer_perceptron': '#8c564b',  # Marrom
-    'support_vector_classifier': '#e377c2',  # Rosa
-    'catboost': '#17becf',                # Ciano
+    'decisiontree': '#FF0000',           # Vermelho
+    'randomforest': '#FF7F00',           # Laranja
+    'gradientboosting': '#FFFF00',       # Amarelo
+    'histogramgradientboosting': '#00FF00',  # Verde
+    'knearestneighbors': '#0000FF',     # Azul
+    'multilayerperceptron': '#4B0082',  # Índigo
+    'supportvectorclassifier': '#9400D3',  # Violeta
+    'catboost': '#FF1493',                # Rosa forte
+    'xgboost': '#00CED1',                 # Turquesa
 }
+
+# Mapeamento de nomes de modelo para nomes de exibição
+MODEL_DISPLAY_NAMES = {
+    'catboost': 'CatBoost',
+    'Catboost': 'CatBoost',
+    'decision_tree': 'Decision Tree',
+    'DT': 'Decision Tree',
+    'dt': 'Decision Tree',
+    'gradient_boosting': 'Gradient Boosting',
+    'GB': 'Gradient Boosting',
+    'gb': 'Gradient Boosting',
+    'histogram_gradient_boosting': 'Histogram Gradient Boosting',
+    'HGB': 'Histogram Gradient Boosting',
+    'hgb': 'Histogram Gradient Boosting',
+    'k_nearest_neighbors': 'K-Nearest Neighbors',
+    'KNN': 'K-Nearest Neighbors',
+    'Knn': 'K-Nearest Neighbors',
+    'knn': 'K-Nearest Neighbors',
+    'multi_layer_perceptron': 'Multi-Layer Perceptron',
+    'MLP': 'Multi-Layer Perceptron',
+    'Mlp': 'Multi-Layer Perceptron',
+    'mlp': 'Multi-Layer Perceptron',
+    'random_forest': 'Random Forest',
+    'RF': 'Random Forest',
+    'rf': 'Random Forest',
+    'support_vector_classifier': 'Support Vector Classifier',
+    'SVC': 'Support Vector Classifier',
+    'Svc': 'Support Vector Classifier',
+    'svc': 'Support Vector Classifier',
+    'xgboost': 'XGBoost',
+    'Xgboost': 'XGBoost',
+}
+
+
+def format_model_name(model_name):
+    """
+    Formata o nome do modelo para exibição, removendo prefixos como 'metrics' ou 'Metrics'
+    
+    Args:
+        model_name (str): Nome do modelo (pode incluir prefixos)
+        
+    Returns:
+        str: Nome formatado para exibição
+    """
+    # Remover prefixos comuns (case-insensitive)
+    clean_name = model_name
+    prefixes_to_remove = ['metrics_', 'metrics', 'Metrics']
+    
+    for prefix in prefixes_to_remove:
+        if clean_name.lower().startswith(prefix.lower()):
+            clean_name = clean_name[len(prefix):]
+            break
+    
+    # Buscar no dicionário de nomes de exibição (exact match first)
+    if clean_name in MODEL_DISPLAY_NAMES:
+        return MODEL_DISPLAY_NAMES[clean_name]
+    
+    # Se não encontrou no dicionário, formatar manualmente
+    # Substituir underscores e hífens por espaços e capitalizar
+    formatted = clean_name.replace('_', ' ').replace('-', ' ').title()
+    
+    return formatted
 
 
 def create_plots_directory(experiment_dir):
@@ -51,12 +114,101 @@ def create_plots_directory(experiment_dir):
     return curves_dir
 
 
-def load_saved_predictions(results_dir="./results"):
+def load_from_forplots_directory(forplots_dir):
+    """
+    Carrega predições de um diretório forplots com arquivos metrics.json nomeados por modelo
+    
+    Args:
+        forplots_dir (str): Diretório contendo arquivos metrics_[model_name].json
+        
+    Returns:
+        dict: Dicionário com predições por modelo
+    """
+    models_data = {}
+    
+    if not os.path.exists(forplots_dir):
+        print(f"❌ Diretório {forplots_dir} não existe")
+        return models_data
+    
+    print(f"📂 Carregando arquivos de: {forplots_dir}")
+    
+    # Listar todos os arquivos .json no diretório
+    json_files = [f for f in os.listdir(forplots_dir) if f.endswith('.json')]
+    
+    if not json_files:
+        print(f"⚠️  Nenhum arquivo JSON encontrado em {forplots_dir}")
+        return models_data
+    
+    print(f"Encontrados {len(json_files)} arquivos JSON")
+    
+    for json_file in json_files:
+        file_path = os.path.join(forplots_dir, json_file)
+        
+        # Extrair nome do modelo do arquivo (remover extensão .json)
+        model_name = json_file.replace('.json', '')
+        
+        # Se o arquivo começa com "metrics_", remover esse prefixo
+        if model_name.startswith('metrics_'):
+            model_name = model_name.replace('metrics_', '', 1)
+        
+        print(f"  Carregando {json_file} como '{model_name}'...")
+        
+        try:
+            with open(file_path, 'r') as f:
+                data = json.load(f)
+            
+            # Verificar se tem as métricas esperadas no arquivo
+            has_metrics = False
+            stored_pr_auc = None
+            stored_roc_auc = None
+            
+            # Tentar extrair métricas salvas do arquivo
+            if 'test_metrics' in data:
+                test_metrics = data['test_metrics']
+                if 'average_precision' in test_metrics:
+                    stored_pr_auc = test_metrics['average_precision']
+                    has_metrics = True
+                if 'roc_auc' in test_metrics:
+                    stored_roc_auc = test_metrics['roc_auc']
+                    has_metrics = True
+            
+            if has_metrics:
+                print(f"    📊 Métricas encontradas no arquivo:")
+                if stored_pr_auc is not None:
+                    print(f"       PR AUC: {stored_pr_auc:.4f}")
+                if stored_roc_auc is not None:
+                    print(f"       ROC AUC: {stored_roc_auc:.4f}")
+            
+            if 'test_predictions' in data:
+                predictions = data['test_predictions']
+                if predictions and 'y_true' in predictions and 'y_pred_proba' in predictions:
+                    models_data[model_name] = {
+                        'predictions': predictions,
+                        'file_path': file_path,
+                        'stored_metrics': {
+                            'pr_auc': stored_pr_auc,
+                            'roc_auc': stored_roc_auc
+                        }
+                    }
+                    print(f"    ✓ {len(predictions['y_true'])} amostras carregadas")
+                else:
+                    print(f"    ⚠️  test_predictions incompleto")
+            else:
+                print(f"    ⚠️  sem test_predictions")
+        except Exception as e:
+            print(f"    ❌ Erro ao carregar: {e}")
+    
+    return models_data
+
+
+def load_saved_predictions(results_dir="./results", use_forplots=False, forplots_path=None):
     """
     Carrega predições salvas de todos os modelos testados (modo default ou optimized)
     
     Args:
         results_dir (str): Diretório para procurar resultados
+        use_forplots (bool): Se True, usa o diretório forplots_path
+        forplots_path (str): Caminho para o diretório forplots
         
     Returns:
         tuple: (models_data, experiment_dir, mode) - Dicionário com predições, caminho do experimento e modo (default/optimized)
@@ -64,6 +216,13 @@ def load_saved_predictions(results_dir="./results"):
     models_data = {}
     experiment_dir = None
     detected_mode = None
+    
+    # Se use_forplots está ativo, carregar do diretório forplots
+    if use_forplots and forplots_path:
+        models_data = load_from_forplots_directory(forplots_path)
+        experiment_dir = os.path.dirname(forplots_path)
+        detected_mode = 'forplots'
+        return models_data, experiment_dir, detected_mode
     
     # Lista de modelos padronizada (sem variações)
     model_names = [
@@ -304,19 +463,19 @@ def detect_classification_type(y_true, y_pred_proba):
     # Verificar se y_pred_proba é 1D (binário) ou 2D (multiclasse)
     if len(np.array(y_pred_proba).shape) == 1:
         # Binário com apenas probabilidades da classe positiva
-        return 'binary', 2, ['Class 0', 'Class 1']
+        return 'binary', 2, ['Passenger', 'Cancer Genes']
     else:
         y_pred_proba_array = np.array(y_pred_proba)
         n_prob_classes = y_pred_proba_array.shape[1] if len(y_pred_proba_array.shape) > 1 else 1
         
         if n_unique_classes == 2 and n_prob_classes == 2:
-            return 'binary', 2, ['Class 0', 'Class 1']
+            return 'binary', 2, ['Passenger', 'Cancer Genes']
         elif n_unique_classes > 2 and n_prob_classes > 2:
-            class_names = [f'Class {i}' for i in range(n_unique_classes)]
+            class_names = ['Passenger', 'TSG', 'Oncogenes'] if n_unique_classes == 3 else [f'Class {i}' for i in range(n_unique_classes)]
             return 'multiclass', n_unique_classes, class_names
         else:
             # Fallback para binário
-            return 'binary', 2, ['Class 0', 'Class 1']
+            return 'binary', 2, ['Passenger', 'Cancer Genes']
 
 
 def plot_roc_curve(model_results, save_path=None):
@@ -349,8 +508,8 @@ def plot_roc_curve(model_results, save_path=None):
                 classification_type, n_classes, class_names = detect_classification_type(y_true, y_pred_proba)
                 print(f"  Tipo de classificação detectado: {classification_type} ({n_classes} classes)")
             
-            model_display_name = model_name.replace('_', ' ').title()
-            color = STANDARD_COLORS.get(model_name, f'C{models_plotted}')
+            model_display_name = format_model_name(model_name)
+            color = STANDARD_COLORS.get(model_name.lower().replace('metrics', '').replace('_', '').replace('-', ''), f'C{models_plotted}')
             
             if classification_type == 'binary':
                 # Classificação binária
@@ -363,6 +522,13 @@ def plot_roc_curve(model_results, save_path=None):
                 
                 fpr, tpr, _ = roc_curve(y_true, y_pred_proba_pos)
                 roc_auc = auc(fpr, tpr)
+                
+                # Check if we have stored metrics and compare
+                if 'stored_metrics' in data and data['stored_metrics'].get('roc_auc') is not None:
+                    stored_roc = data['stored_metrics']['roc_auc']
+                    print(f"    ⚠️  Calculado: {roc_auc:.4f}, Arquivo: {stored_roc:.4f}, Diff: {abs(roc_auc - stored_roc):.4f}")
+                    # Use the stored metric if available (it's the test set metric)
+                    roc_auc = stored_roc
                 
                 plt.plot(fpr, tpr, color=color, lw=3, 
                         label=f'{model_display_name} (AUC = {roc_auc:.3f})')
@@ -384,9 +550,7 @@ def plot_roc_curve(model_results, save_path=None):
     plt.xlabel('False Positive Rate (FPR)', fontsize=22)
     plt.ylabel('True Positive Rate (TPR)', fontsize=22)
     
-    plt.title('ROC Curves (Binary Classification)', fontsize=24)
-    
-    plt.legend(loc="lower right", fontsize=18, framealpha=0.9)
+    plt.legend(loc="lower right", fontsize=22, framealpha=0.9)
     plt.grid(True, alpha=0.3)
     
     plt.tight_layout()
@@ -435,8 +599,8 @@ def plot_precision_recall_curve(model_results, save_path=None):
                 classification_type, n_classes, class_names = detect_classification_type(y_true, y_pred_proba)
                 print(f"  Tipo de classificação detectado: {classification_type} ({n_classes} classes)")
             
-            model_display_name = model_name.replace('_', ' ').title()
-            color = STANDARD_COLORS.get(model_name, f'C{models_plotted}')
+            model_display_name = format_model_name(model_name)
+            color = STANDARD_COLORS.get(model_name.lower().replace('metrics', '').replace('_', '').replace('-', ''), f'C{models_plotted}')
             
             if classification_type == 'binary':
                 # Classificação binária
@@ -450,8 +614,20 @@ def plot_precision_recall_curve(model_results, save_path=None):
                     # Se temos apenas probabilidades da classe positiva
                     y_pred_proba_pos = y_pred_proba
                 
+                # Debug: verificar range de probabilidades
+                print(f"    Probabilidades - min: {y_pred_proba_pos.min():.4f}, max: {y_pred_proba_pos.max():.4f}, mean: {y_pred_proba_pos.mean():.4f}")
+                print(f"    Classes - positivos: {y_true.sum()}, negativos: {len(y_true) - y_true.sum()}")
+                
                 precision, recall, _ = precision_recall_curve(y_true, y_pred_proba_pos)
-                pr_auc = auc(recall, precision)
+                # Use average_precision_score instead of auc for PR curves
+                pr_auc = average_precision_score(y_true, y_pred_proba_pos)
+                
+                # Check if we have stored metrics and compare
+                if 'stored_metrics' in data and data['stored_metrics'].get('pr_auc') is not None:
+                    stored_pr = data['stored_metrics']['pr_auc']
+                    print(f"    ⚠️  Calculado: {pr_auc:.4f}, Arquivo: {stored_pr:.4f}, Diff: {abs(pr_auc - stored_pr):.4f}")
+                    # Use the stored metric if available (it's the test set metric)
+                    pr_auc = stored_pr
                 
                 plt.plot(recall, precision, color=color, lw=3, 
                         label=f'{model_display_name} (AUC = {pr_auc:.3f})')
@@ -474,9 +650,7 @@ def plot_precision_recall_curve(model_results, save_path=None):
     plt.xlabel('Recall', fontsize=22)
     plt.ylabel('Precision', fontsize=22)
     
-    plt.title('Precision-Recall Curves (Binary Classification)', fontsize=24)
-    
-    plt.legend(loc="lower left", fontsize=18, framealpha=0.9)
+    plt.legend(loc="upper right", fontsize=22, framealpha=0.9)
     plt.grid(True, alpha=0.3)
     
     plt.tight_layout()
@@ -493,16 +667,208 @@ def plot_precision_recall_curve(model_results, save_path=None):
         print(f"  Modelos com erro: {', '.join(models_with_errors)}")
 
 
+def plot_confusion_matrices(model_results, save_path=None, class_names=None):
+    """
+    Cria gráficos de matriz de confusão para todos os modelos
+    
+    Args:
+        model_results (dict): Resultados dos modelos com predições
+        save_path (str): Caminho para salvar os gráficos
+        class_names (list): Nomes das classes (opcional)
+    """
+    models_plotted = 0
+    models_with_errors = []
+    
+    # Ordenar modelos para plotagem consistente
+    sorted_models = sorted(model_results.items())
+    
+    for model_name, data in sorted_models:
+        print(f"Processando matriz de confusão para {model_name}...")
+        
+        try:
+            predictions = data['predictions']
+            y_true = np.array(predictions['y_true'])
+            y_pred = np.array(predictions.get('y_pred', []))
+            
+            # Se não tiver y_pred, usar y_pred_proba para gerar predições
+            if len(y_pred) == 0:
+                y_pred_proba = np.array(predictions['y_pred_proba'])
+                if len(y_pred_proba.shape) == 2:
+                    # Multiclasse ou binário com probabilidades de ambas as classes
+                    y_pred = np.argmax(y_pred_proba, axis=1)
+                else:
+                    # Binário com apenas probabilidade da classe positiva
+                    y_pred = (y_pred_proba > 0.5).astype(int)
+            
+            model_display_name = format_model_name(model_name)
+            
+            # Calcular matriz de confusão
+            cm = confusion_matrix(y_true, y_pred)
+            
+            # Criar figura
+            plt.figure(figsize=(10, 8))
+            
+            # Usar seaborn para plotar heatmap
+            if class_names is None:
+                # Determinar se é binário ou multiclasse baseado no tamanho da matriz
+                n_classes_cm = len(cm)
+                if n_classes_cm == 2:
+                    class_names = ['Passenger', 'Cancer Genes']
+                elif n_classes_cm == 3:
+                    class_names = ['Passenger', 'TSG', 'Oncogenes']
+                else:
+                    class_names = [f'Class {i}' for i in range(n_classes_cm)]
+            
+            sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
+                       xticklabels=class_names, yticklabels=class_names,
+                       cbar_kws={'label': 'Count'}, annot_kws={'fontsize': 22})
+            
+            plt.ylabel('True Label', fontsize=22)
+            plt.xlabel('Predicted Label', fontsize=22)
+            plt.tight_layout()
+            
+            if save_path:
+                # Criar subpasta para confusion matrices
+                cm_dir = os.path.dirname(save_path)
+                cm_subdir = os.path.join(cm_dir, 'confusion_matrices')
+                os.makedirs(cm_subdir, exist_ok=True)
+                
+                model_save_path = os.path.join(cm_subdir, f'cm_{model_name}')
+                plt.savefig(model_save_path + '.png', dpi=300, bbox_inches='tight')
+                plt.savefig(model_save_path + '.pdf', bbox_inches='tight')
+                print(f"  Matriz de confusão salva: {model_save_path}")
+            
+            plt.close()
+            models_plotted += 1
+            
+        except Exception as e:
+            models_with_errors.append(model_name)
+            print(f"  ❌ {model_name}: Erro ao processar - {e}")
+    
+    print(f"\nRelatório Confusion Matrices:")
+    print(f"  Modelos plotados: {models_plotted}")
+    if models_with_errors:
+        print(f"  Modelos com erro: {', '.join(models_with_errors)}")
+
+
+def browse_directories(base_dir="./results_final_tcc"):
+    """
+    Permite navegar pelos diretórios interativamente para selecionar de onde carregar os dados
+    
+    Returns:
+        str: Caminho completo do diretório selecionado ou None se cancelado
+    """
+    current_dir = os.path.abspath(base_dir)
+    
+    while True:
+        print(f"\n{'='*80}")
+        print(f"Diretório atual: {current_dir}")
+        print(f"{'='*80}")
+        
+        if not os.path.exists(current_dir):
+            print(f"❌ Diretório não existe: {current_dir}")
+            return None
+        
+        # Listar conteúdo do diretório
+        try:
+            items = os.listdir(current_dir)
+            dirs = sorted([d for d in items if os.path.isdir(os.path.join(current_dir, d))])
+            files = sorted([f for f in items if f.endswith('.json')])
+        except PermissionError:
+            print("❌ Sem permissão para acessar este diretório")
+            return None
+        
+        # Mostrar opções
+        print("\nOpções:")
+        print("0. Voltar ao diretório pai")
+        print("S. Selecionar este diretório (USAR ESTE)")
+        print("Q. Cancelar e voltar\n")
+        
+        # Mostrar subdiretórios
+        if dirs:
+            print("Subdiretórios:")
+            for i, d in enumerate(dirs, 1):
+                print(f"{i}. 📁 {d}")
+        else:
+            print("(Nenhum subdiretório)")
+        
+        # Mostrar arquivos JSON encontrados
+        if files:
+            print(f"\nArquivos JSON encontrados: {len(files)}")
+            for f in files[:5]:  # Mostrar apenas os primeiros 5
+                print(f"  • {f}")
+            if len(files) > 5:
+                print(f"  ... e mais {len(files) - 5} arquivos")
+        
+        # Solicitar escolha
+        choice = input("\nEscolha uma opção: ").strip().upper()
+        
+        if choice == 'Q':
+            print("Cancelado")
+            return None
+        elif choice == 'S':
+            print(f"✅ Selecionado: {current_dir}")
+            return current_dir
+        elif choice == '0':
+            # Voltar ao diretório pai
+            parent_dir = os.path.dirname(current_dir)
+            if parent_dir == current_dir:  # Já está na raiz
+                print("⚠️  Já está no diretório raiz")
+            else:
+                current_dir = parent_dir
+        else:
+            # Tentar converter para número e entrar no subdiretório
+            try:
+                dir_num = int(choice)
+                if 1 <= dir_num <= len(dirs):
+                    current_dir = os.path.join(current_dir, dirs[dir_num - 1])
+                else:
+                    print(f"❌ Número inválido. Escolha entre 1 e {len(dirs)}")
+            except ValueError:
+                print("❌ Opção inválida")
+
+
 def generate_all_plots():
     """
-    Função principal para gerar todos os gráficos usando predições salvas
-    Suporta tanto modo default quanto optimized (com ou sem test_predictions)
+    Gera todos os gráficos ROC e PR curves para os modelos testados.
+    Carrega predições salvas dos arquivos metrics.json.
     """
-    print("Gerando gráficos de performance dos modelos usando predições salvas...")
-    print("="*70)
+    print("="*70, flush=True)
+    print("Gerando gráficos de performance dos modelos usando predições salvas...", flush=True)
+    print("="*70, flush=True)
     
-    print("Carregando predições salvas dos modelos...")
-    model_results, experiment_dir, detected_mode = load_saved_predictions()
+    use_forplots = False
+    forplots_path = None
+    
+    # Perguntar ao usuário qual modo usar
+    print("\nEscolha o modo de carregamento:", flush=True)
+    print("1. Experimentos normais (diretório results/)", flush=True)
+    print("2. Navegar diretórios (escolher manualmente)", flush=True)
+    print("", flush=True)
+    
+    mode_choice = input("Selecione uma opção [1-2] (Enter = 1): ").strip()
+    
+    if mode_choice == "2":
+        # Modo navegação
+        print("\n🗂️  Modo Navegação de Diretórios")
+        selected_dir = browse_directories()
+        
+        if selected_dir:
+            use_forplots = True
+            forplots_path = selected_dir
+            print(f"Usando: {forplots_path}")
+        else:
+            print("Voltando ao modo normal...")
+            use_forplots = False
+    else:
+        print("Usando modo normal (experimentos)")
+        use_forplots = False
+    
+    print("\nCarregando predições salvas dos modelos...")
+    model_results, experiment_dir, detected_mode = load_saved_predictions(
+        use_forplots=use_forplots, 
+        forplots_path=forplots_path
+    )
     
     if not model_results:
         print("❌ Nenhuma predição encontrada!")
@@ -556,8 +922,18 @@ def generate_all_plots():
         pr_save_path = os.path.join(curves_dir, "pr_comparison")
         plot_precision_recall_curve(models_with_predictions, save_path=pr_save_path)
     
+    # Gerar matrizes de confusão para todos os tipos de classificação
+    print("\nGerando Confusion Matrices...")
+    cm_save_path = os.path.join(curves_dir, "confusion_matrices")
+    plot_confusion_matrices(models_with_predictions, save_path=cm_save_path, class_names=class_names)
+    
     print(f"\n🎉 Todos os gráficos gerados com sucesso!")
 
 if __name__ == "__main__":
-    print("Executando geração de gráficos...")
+    print("\n" + "="*70, flush=True)
+    print("INICIANDO GERAÇÃO DE GRÁFICOS", flush=True)
+    print("="*70 + "\n", flush=True)
     generate_all_plots()
+    print("\n" + "="*70, flush=True)
+    print("PROCESSO FINALIZADO", flush=True)
+    print("="*70 + "\n", flush=True)
