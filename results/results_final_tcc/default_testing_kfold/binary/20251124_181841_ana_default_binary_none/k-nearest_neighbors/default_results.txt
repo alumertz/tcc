@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: K-Nearest Neighbors com none
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9484
+Precision: 0.7419
+Recall: 0.0606
+F1: 0.1121
+Roc_auc: 0.9199
+Pr_auc: 0.3538
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9468
+Precision: 0.6000
+Recall: 0.0316
+F1: 0.0600
+Roc_auc: 0.5721
+Pr_auc: 0.0918

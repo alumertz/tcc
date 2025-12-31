@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: CatBoost com randomundersampler
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9713
+Precision: 0.9735
+Recall: 0.9713
+F1: 0.9715
+Roc_auc: 0.9984
+Pr_auc: 0.9941
+Per class roc auc:
+  Classe 0: 0.9980
+  Classe 1: 0.9985
+  Classe 2: 0.9985
+Per class pr auc:
+  Classe 0: 0.9927
+  Classe 1: 0.9949
+  Classe 2: 0.9949
+Pr auc macro: 0.9941
+Pr auc weighted: 0.9941
+Pr auc micro: 0.9941
+Roc auc macro: 0.9984
+Roc auc weighted: 0.9984
+Roc auc micro: 0.9987
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.5187
+Precision: 0.3534
+Recall: 0.4234
+F1: 0.2797
+Roc_auc: 0.6882
+Pr_auc: 0.3635
+Per class roc auc:
+  Classe 0: 0.6928
+  Classe 1: 0.6556
+  Classe 2: 0.5509
+Per class pr auc:
+  Classe 0: 0.9734
+  Classe 1: 0.0899
+  Classe 2: 0.0271
+Pr auc macro: 0.3635
+Pr auc weighted: 0.9244
+Pr auc micro: 0.3635
+Roc auc macro: 0.6331
+Roc auc weighted: 0.6882
+Roc auc micro: 0.6682

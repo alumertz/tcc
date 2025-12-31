@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Histogram Gradient Boosting com tomeklinks
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9730
+Precision: 0.9908
+Recall: 0.6319
+F1: 0.7392
+Roc_auc: 0.9508
+Pr_auc: 0.9138
+Per class roc auc:
+  Classe 0: 0.9508
+  Classe 1: 0.9573
+  Classe 2: 0.9424
+Per class pr auc:
+  Classe 0: 0.9957
+  Classe 1: 0.8848
+  Classe 2: 0.8610
+Pr auc macro: 0.9138
+Pr auc weighted: 0.9897
+Pr auc micro: 0.9138
+Roc auc macro: 0.9502
+Roc auc weighted: 0.9508
+Roc auc micro: 0.9957
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9471
+Precision: 0.5824
+Recall: 0.3462
+F1: 0.3490
+Roc_auc: 0.6860
+Pr_auc: 0.3784
+Per class roc auc:
+  Classe 0: 0.6868
+  Classe 1: 0.6864
+  Classe 2: 0.6548
+Per class pr auc:
+  Classe 0: 0.9717
+  Classe 1: 0.1185
+  Classe 2: 0.0449
+Pr auc macro: 0.3784
+Pr auc weighted: 0.9240
+Pr auc micro: 0.3784
+Roc auc macro: 0.6760
+Roc auc weighted: 0.6860
+Roc auc micro: 0.9731

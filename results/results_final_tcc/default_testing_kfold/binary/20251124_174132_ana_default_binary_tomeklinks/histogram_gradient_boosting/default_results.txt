@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: Histogram Gradient Boosting com tomeklinks
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9503
+Precision: 0.9701
+Recall: 0.0856
+F1: 0.1574
+Roc_auc: 0.8856
+Pr_auc: 0.6280
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9468
+Precision: 0.7500
+Recall: 0.0158
+F1: 0.0309
+Roc_auc: 0.6936
+Pr_auc: 0.1554

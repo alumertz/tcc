@@ -1,0 +1,101 @@
+MODEL: Support Vector Classifier
+======================================================================
+
+Fold 1
+------------------------------
+ TRAINING METRICS:
+   accuracy: 0.9518210749646393
+   precision: 1.0
+   recall: 0.08249158249158249
+   f1: 0.15241057542768274
+   roc_auc: 0.9459184901198336
+   pr_auc: 0.876874872655811
+
+ VALIDATION METRICS:
+   accuracy: 0.9416548797736917
+   precision: 0.0
+   recall: 0.0
+   f1: 0.0
+   roc_auc: 0.620050296430319
+   pr_auc: 0.14110961635469688
+
+Fold 2
+------------------------------
+ TRAINING METRICS:
+   accuracy: 0.9501414427157001
+   precision: 1.0
+   recall: 0.06467661691542288
+   f1: 0.12149532710280374
+   roc_auc: 0.9510857639464768
+   pr_auc: 0.8872702198688566
+
+ VALIDATION METRICS:
+   accuracy: 0.9448373408769448
+   precision: 0.0
+   recall: 0.0
+   f1: 0.0
+   roc_auc: 0.6473447336097037
+   pr_auc: 0.15385889003803968
+
+Fold 3
+------------------------------
+ TRAINING METRICS:
+   accuracy: 0.9513790664780764
+   precision: 1.0
+   recall: 0.087893864013267
+   f1: 0.16158536585365854
+   roc_auc: 0.9478053285723775
+   pr_auc: 0.8860080227728092
+
+ VALIDATION METRICS:
+   accuracy: 0.9448373408769448
+   precision: 0.0
+   recall: 0.0
+   f1: 0.0
+   roc_auc: 0.5807735490557346
+   pr_auc: 0.10859187091081018
+
+Fold 4
+------------------------------
+ TRAINING METRICS:
+   accuracy: 0.9497878359264498
+   precision: 1.0
+   recall: 0.07941653160453808
+   f1: 0.14714714714714713
+   roc_auc: 0.9479645209026165
+   pr_auc: 0.8806341230313126
+
+ VALIDATION METRICS:
+   accuracy: 0.9497878359264498
+   precision: 0.0
+   recall: 0.0
+   f1: 0.0
+   roc_auc: 0.5602996235042422
+   pr_auc: 0.1170137198701856
+
+Fold 5
+------------------------------
+ TRAINING METRICS:
+   accuracy: 0.9490806223479491
+   precision: 1.0
+   recall: 0.06946688206785137
+   f1: 0.1299093655589124
+   roc_auc: 0.9539298201668025
+   pr_auc: 0.8888582687892899
+
+ VALIDATION METRICS:
+   accuracy: 0.9504950495049505
+   precision: 0.0
+   recall: 0.0
+   f1: 0.0
+   roc_auc: 0.6807663690476191
+   pr_auc: 0.1676029798997234
+
+AGGREGATED VALIDATION METRICS (MEAN OF 5 FOLDS)
+======================================================================
+accuracy: 0.9463224893917962
+precision: 0.0
+recall: 0.0
+f1: 0.0
+roc_auc: 0.6178469143295237
+pr_auc: 0.13763541541469113

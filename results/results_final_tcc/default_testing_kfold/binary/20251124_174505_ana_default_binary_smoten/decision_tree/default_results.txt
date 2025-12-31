@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: Decision Tree com smoten
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9767
+Precision: 1.0000
+Recall: 0.9534
+F1: 0.9762
+Roc_auc: 0.9981
+Pr_auc: 0.9964
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.8756
+Precision: 0.0968
+Recall: 0.1579
+F1: 0.1200
+Roc_auc: 0.5153
+Pr_auc: 0.0607

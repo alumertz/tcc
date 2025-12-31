@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: Decision Tree com randomundersampler
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9769
+Precision: 1.0000
+Recall: 0.9539
+F1: 0.9764
+Roc_auc: 0.9978
+Pr_auc: 0.9959
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.6162
+Precision: 0.0763
+Recall: 0.5526
+F1: 0.1340
+Roc_auc: 0.5765
+Pr_auc: 0.0665

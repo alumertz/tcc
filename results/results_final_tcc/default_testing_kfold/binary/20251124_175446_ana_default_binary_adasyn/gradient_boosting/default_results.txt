@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: Gradient Boosting com adasyn
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9403
+Precision: 0.9914
+Recall: 0.8883
+F1: 0.9370
+Roc_auc: 0.9792
+Pr_auc: 0.9822
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9432
+Precision: 0.3721
+Recall: 0.0842
+F1: 0.1373
+Roc_auc: 0.6519
+Pr_auc: 0.1436

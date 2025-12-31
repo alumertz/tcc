@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: K-Nearest Neighbors com smoteenn
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9542
+Precision: 0.9614
+Recall: 0.9400
+F1: 0.9472
+Roc_auc: 1.0000
+Pr_auc: 0.9999
+Per class roc auc:
+  Classe 0: 0.9999
+  Classe 1: 1.0000
+  Classe 2: 1.0000
+Per class pr auc:
+  Classe 0: 0.9997
+  Classe 1: 1.0000
+  Classe 2: 1.0000
+Pr auc macro: 0.9999
+Pr auc weighted: 0.9999
+Pr auc micro: 0.9999
+Roc auc macro: 1.0000
+Roc auc weighted: 1.0000
+Roc auc micro: 0.9978
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.5209
+Precision: 0.3487
+Recall: 0.4021
+F1: 0.2740
+Roc_auc: 0.6260
+Pr_auc: 0.3425
+Per class roc auc:
+  Classe 0: 0.6301
+  Classe 1: 0.5519
+  Classe 2: 0.5557
+Per class pr auc:
+  Classe 0: 0.9645
+  Classe 1: 0.0340
+  Classe 2: 0.0289
+Pr auc macro: 0.3425
+Pr auc weighted: 0.9143
+Pr auc micro: 0.3425
+Roc auc macro: 0.5793
+Roc auc weighted: 0.6260
+Roc auc micro: 0.7053

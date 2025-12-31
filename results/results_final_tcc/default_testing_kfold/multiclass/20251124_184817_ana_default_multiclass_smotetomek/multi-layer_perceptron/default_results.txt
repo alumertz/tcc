@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Multi-Layer Perceptron com smotetomek
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9704
+Precision: 0.9727
+Recall: 0.9704
+F1: 0.9706
+Roc_auc: 0.9984
+Pr_auc: 0.9944
+Per class roc auc:
+  Classe 0: 0.9981
+  Classe 1: 0.9986
+  Classe 2: 0.9986
+Per class pr auc:
+  Classe 0: 0.9932
+  Classe 1: 0.9951
+  Classe 2: 0.9950
+Pr auc macro: 0.9944
+Pr auc weighted: 0.9944
+Pr auc micro: 0.9944
+Roc auc macro: 0.9984
+Roc auc weighted: 0.9984
+Roc auc micro: 0.9987
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.8942
+Precision: 0.3574
+Recall: 0.3613
+F1: 0.3591
+Roc_auc: 0.5620
+Pr_auc: 0.3501
+Per class roc auc:
+  Classe 0: 0.5642
+  Classe 1: 0.5374
+  Classe 2: 0.5066
+Per class pr auc:
+  Classe 0: 0.9543
+  Classe 1: 0.0692
+  Classe 2: 0.0269
+Pr auc macro: 0.3501
+Pr auc weighted: 0.9057
+Pr auc micro: 0.3501
+Roc auc macro: 0.5360
+Roc auc weighted: 0.5620
+Roc auc micro: 0.9492

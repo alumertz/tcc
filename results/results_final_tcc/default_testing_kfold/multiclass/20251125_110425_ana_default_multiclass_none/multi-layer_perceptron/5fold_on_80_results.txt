@@ -1,0 +1,242 @@
+MODEL: Multi-Layer Perceptron
+======================================================================
+
+Fold 1
+------------------------------
+ TRAINING METRICS:
+   accuracy: 0.9978783592644979
+   precision: 0.9992552597281698
+   recall: 0.9729532829432657
+   f1: 0.9858226593406205
+   roc_auc_macro: 0.9979789839277423
+   roc_auc_weighted: 0.9980990375380198
+   roc_auc_micro: 0.9998045542566355
+   pr_auc_macro: 0.9812579344087302
+   pr_auc_weighted: 0.9983530248174514
+   pr_auc_micro: 0.9812579344087302
+   pr_auc: 0.9812579344087302
+   roc_auc: 0.9980990375380198
+
+ VALIDATION METRICS:
+   accuracy: 0.9165487977369166
+   precision: 0.3498729945058841
+   recall: 0.3426172453288685
+   f1: 0.343700749504976
+   roc_auc_macro: 0.5567480373051932
+   roc_auc_weighted: 0.5700047607365296
+   roc_auc_micro: 0.9572932900736023
+   pr_auc_macro: 0.3492515540474601
+   pr_auc_weighted: 0.900559252425674
+   pr_auc_micro: 0.3492515540474601
+   pr_auc: 0.3492515540474601
+   roc_auc: 0.5700047607365296
+
+   Per class roc auc:
+     Classe 0: 0.5706778638810182
+     Classe 1: 0.6115469794134073
+     Classe 2: 0.488019268621154
+   Per class pr auc:
+     Classe 0: 0.9532841909838181
+     Classe 1: 0.06291329155197188
+     Classe 2: 0.03155717960659023
+   Pr auc macro: 0.3492515540474601
+   Pr auc weighted: 0.900559252425674
+   Pr auc micro: 0.3492515540474601
+   Roc auc macro: 0.5567480373051932
+   Roc auc weighted: 0.5700047607365296
+   Roc auc micro: 0.9572932900736023
+
+Fold 2
+------------------------------
+ TRAINING METRICS:
+   accuracy: 0.9970827439886846
+   precision: 0.9989759821262334
+   recall: 0.9635855887677159
+   f1: 0.9807681927188702
+   roc_auc_macro: 0.9971588462068954
+   roc_auc_weighted: 0.9972272999888444
+   roc_auc_micro: 0.9997255655582986
+   pr_auc_macro: 0.9748324095013782
+   pr_auc_weighted: 0.9977358183540603
+   pr_auc_micro: 0.9748324095013782
+   pr_auc: 0.9748324095013782
+   roc_auc: 0.9972272999888444
+
+ VALIDATION METRICS:
+   accuracy: 0.917963224893918
+   precision: 0.37043923818117364
+   recall: 0.3565952334461511
+   f1: 0.36093961554683424
+   roc_auc_macro: 0.5684753101027232
+   roc_auc_weighted: 0.5803909542721415
+   roc_auc_micro: 0.9591483503017911
+   pr_auc_macro: 0.3520995659969923
+   pr_auc_weighted: 0.905985932112292
+   pr_auc_micro: 0.3520995659969923
+   pr_auc: 0.3520995659969923
+   roc_auc: 0.5803909542721415
+
+   Per class roc auc:
+     Classe 0: 0.5811933824658375
+     Classe 1: 0.5873577739638953
+     Classe 2: 0.536874773878437
+   Per class pr auc:
+     Classe 0: 0.9557579209232206
+     Classe 1: 0.06815862765641305
+     Classe 2: 0.0323821494113432
+   Pr auc macro: 0.3520995659969923
+   Pr auc weighted: 0.905985932112292
+   Pr auc micro: 0.3520995659969923
+   Roc auc macro: 0.5684753101027232
+   Roc auc weighted: 0.5803909542721415
+   Roc auc micro: 0.9591483503017911
+
+Fold 3
+------------------------------
+ TRAINING METRICS:
+   accuracy: 0.9974363507779349
+   precision: 0.999099770286211
+   recall: 0.9677195868344226
+   f1: 0.9830067324261723
+   roc_auc_macro: 0.9969829099399289
+   roc_auc_weighted: 0.9973453441610677
+   roc_auc_micro: 0.9997256554291896
+   pr_auc_macro: 0.9750847444876225
+   pr_auc_weighted: 0.9977886765856014
+   pr_auc_micro: 0.9750847444876225
+   pr_auc: 0.9750847444876225
+   roc_auc: 0.9973453441610677
+
+ VALIDATION METRICS:
+   accuracy: 0.92008486562942
+   precision: 0.3808420429328642
+   recall: 0.3656569812864818
+   f1: 0.3707382733644986
+   roc_auc_macro: 0.5434041760877886
+   roc_auc_weighted: 0.5403884699502719
+   roc_auc_micro: 0.9577849698108829
+   pr_auc_macro: 0.3527787777160458
+   pr_auc_weighted: 0.9005982374479006
+   pr_auc_micro: 0.3527787777160458
+   pr_auc: 0.3527787777160458
+   roc_auc: 0.5403884699502719
+
+   Per class roc auc:
+     Classe 0: 0.5400964897128819
+     Classe 1: 0.5709187690805863
+     Classe 2: 0.5191972694698975
+   Per class pr auc:
+     Classe 0: 0.9499985100900941
+     Classe 1: 0.0768920832311116
+     Classe 2: 0.03144573982693183
+   Pr auc macro: 0.3527787777160458
+   Pr auc weighted: 0.9005982374479006
+   Pr auc micro: 0.3527787777160458
+   Roc auc macro: 0.5434041760877886
+   Roc auc weighted: 0.5403884699502719
+   Roc auc micro: 0.9577849698108829
+
+Fold 4
+------------------------------
+ TRAINING METRICS:
+   accuracy: 0.9974363507779349
+   precision: 0.9990985950515977
+   recall: 0.9677349884200418
+   f1: 0.9829721247562008
+   roc_auc_macro: 0.9975779119550823
+   roc_auc_weighted: 0.9977434608459544
+   roc_auc_micro: 0.9997776828602238
+   pr_auc_macro: 0.9770912975668827
+   pr_auc_weighted: 0.9979568094257155
+   pr_auc_micro: 0.9770912975668827
+   pr_auc: 0.9770912975668827
+   roc_auc: 0.9977434608459544
+
+ VALIDATION METRICS:
+   accuracy: 0.9278642149929278
+   precision: 0.403741797537418
+   recall: 0.3747549420927134
+   f1: 0.38134378086163695
+   roc_auc_macro: 0.5503011592823693
+   roc_auc_weighted: 0.5648475560199107
+   roc_auc_micro: 0.9617973377960144
+   pr_auc_macro: 0.3622997198321942
+   pr_auc_weighted: 0.9120948570120335
+   pr_auc_micro: 0.3622997198321942
+   pr_auc: 0.3622997198321942
+   roc_auc: 0.5648475560199107
+
+   Per class roc auc:
+     Classe 0: 0.5657976151772885
+     Classe 1: 0.6193001574040441
+     Classe 2: 0.46580570526577547
+   Per class pr auc:
+     Classe 0: 0.9568373101255857
+     Classe 1: 0.07813709060635325
+     Classe 2: 0.05192475876464368
+   Pr auc macro: 0.3622997198321942
+   Pr auc weighted: 0.9120948570120335
+   Pr auc micro: 0.3622997198321942
+   Roc auc macro: 0.5503011592823693
+   Roc auc weighted: 0.5648475560199107
+   Roc auc micro: 0.9617973377960144
+
+Fold 5
+------------------------------
+ TRAINING METRICS:
+   accuracy: 0.995049504950495
+   precision: 0.9959509075390632
+   recall: 0.9420566859639822
+   f1: 0.9677880804005561
+   roc_auc_macro: 0.9953857489607487
+   roc_auc_weighted: 0.995317554625789
+   roc_auc_micro: 0.9995292015688738
+   pr_auc_macro: 0.9718190330756761
+   pr_auc_weighted: 0.9973075874899198
+   pr_auc_micro: 0.9718190330756761
+   pr_auc: 0.9718190330756761
+   roc_auc: 0.995317554625789
+
+ VALIDATION METRICS:
+   accuracy: 0.9289250353606789
+   precision: 0.3825866635955315
+   recall: 0.3675099206349206
+   f1: 0.372794766236724
+   roc_auc_macro: 0.5481130605266641
+   roc_auc_weighted: 0.5752936936447193
+   roc_auc_micro: 0.9625124287534835
+   pr_auc_macro: 0.3547775734422405
+   pr_auc_weighted: 0.91460097167521
+   pr_auc_micro: 0.3547775734422405
+   pr_auc: 0.3547775734422405
+   roc_auc: 0.5752936936447193
+
+   Per class roc auc:
+     Classe 0: 0.5774739583333334
+     Classe 1: 0.5387496115197348
+     Classe 2: 0.5281156117269242
+   Per class pr auc:
+     Classe 0: 0.9595065918543254
+     Classe 1: 0.076603333347908
+     Classe 2: 0.028222795124488054
+   Pr auc macro: 0.3547775734422405
+   Pr auc weighted: 0.91460097167521
+   Pr auc micro: 0.3547775734422405
+   Roc auc macro: 0.5481130605266641
+   Roc auc weighted: 0.5752936936447193
+   Roc auc micro: 0.9625124287534835
+
+AGGREGATED VALIDATION METRICS (MEAN OF 5 FOLDS)
+======================================================================
+accuracy: 0.9222772277227724
+precision: 0.3774965473505743
+recall: 0.3614268645578271
+f1: 0.36590343710293394
+roc_auc_macro: 0.5534083486609476
+roc_auc_weighted: 0.5661850869247146
+roc_auc_micro: 0.9597072753471549
+pr_auc_macro: 0.3542414382069866
+pr_auc_weighted: 0.906767850134622
+pr_auc_micro: 0.3542414382069866
+pr_auc: 0.3542414382069866
+roc_auc: 0.5661850869247146

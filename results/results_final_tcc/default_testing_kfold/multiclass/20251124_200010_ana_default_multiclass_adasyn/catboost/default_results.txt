@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: CatBoost com adasyn
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9648
+Precision: 0.9680
+Recall: 0.9648
+F1: 0.9652
+Roc_auc: 0.9980
+Pr_auc: 0.9936
+Per class roc auc:
+  Classe 0: 0.9973
+  Classe 1: 0.9983
+  Classe 2: 0.9984
+Per class pr auc:
+  Classe 0: 0.9917
+  Classe 1: 0.9945
+  Classe 2: 0.9946
+Pr auc macro: 0.9936
+Pr auc weighted: 0.9936
+Pr auc micro: 0.9936
+Roc auc macro: 0.9980
+Roc auc weighted: 0.9980
+Roc auc micro: 0.9982
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9429
+Precision: 0.4117
+Recall: 0.3572
+F1: 0.3645
+Roc_auc: 0.6485
+Pr_auc: 0.3583
+Per class roc auc:
+  Classe 0: 0.6509
+  Classe 1: 0.6383
+  Classe 2: 0.5667
+Per class pr auc:
+  Classe 0: 0.9686
+  Classe 1: 0.0734
+  Classe 2: 0.0328
+Pr auc macro: 0.3583
+Pr auc weighted: 0.9195
+Pr auc micro: 0.3583
+Roc auc macro: 0.6186
+Roc auc weighted: 0.6485
+Roc auc micro: 0.9686

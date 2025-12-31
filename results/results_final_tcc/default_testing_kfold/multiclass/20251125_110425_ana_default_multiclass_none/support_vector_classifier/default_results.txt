@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Support Vector Classifier com none
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9494
+Precision: 0.9831
+Recall: 0.3700
+F1: 0.3929
+Roc_auc: 0.9303
+Pr_auc: 0.7719
+Per class roc auc:
+  Classe 0: 0.9293
+  Classe 1: 0.9500
+  Classe 2: 0.9454
+Per class pr auc:
+  Classe 0: 0.9947
+  Classe 1: 0.7694
+  Classe 2: 0.5516
+Pr auc macro: 0.7719
+Pr auc weighted: 0.9772
+Pr auc micro: 0.7719
+Roc auc macro: 0.9416
+Roc auc weighted: 0.9303
+Roc auc micro: 0.9940
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9463
+Precision: 0.3154
+Recall: 0.3333
+F1: 0.3241
+Roc_auc: 0.5753
+Pr_auc: 0.3707
+Per class roc auc:
+  Classe 0: 0.5764
+  Classe 1: 0.5859
+  Classe 2: 0.5210
+Per class pr auc:
+  Classe 0: 0.9531
+  Classe 1: 0.1166
+  Classe 2: 0.0424
+Pr auc macro: 0.3707
+Pr auc weighted: 0.9063
+Pr auc micro: 0.3707
+Roc auc macro: 0.5611
+Roc auc weighted: 0.5753
+Roc auc micro: 0.9646

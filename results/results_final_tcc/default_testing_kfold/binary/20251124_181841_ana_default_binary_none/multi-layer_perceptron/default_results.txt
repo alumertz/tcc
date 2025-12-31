@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: Multi-Layer Perceptron com none
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9970
+Precision: 1.0000
+Recall: 0.9433
+F1: 0.9708
+Roc_auc: 0.9960
+Pr_auc: 0.9701
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9217
+Precision: 0.2119
+Recall: 0.1684
+F1: 0.1877
+Roc_auc: 0.6047
+Pr_auc: 0.1554

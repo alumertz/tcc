@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: K-Nearest Neighbors com tomeklinks
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9523
+Precision: 0.8374
+Recall: 0.3532
+F1: 0.3631
+Roc_auc: 0.9242
+Pr_auc: 0.5373
+Per class roc auc:
+  Classe 0: 0.9231
+  Classe 1: 0.9488
+  Classe 2: 0.9440
+Per class pr auc:
+  Classe 0: 0.9927
+  Classe 1: 0.3475
+  Classe 2: 0.2716
+Pr auc macro: 0.5373
+Pr auc weighted: 0.9593
+Pr auc micro: 0.5373
+Roc auc macro: 0.9386
+Roc auc weighted: 0.9242
+Roc auc micro: 0.9945
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9480
+Precision: 0.6494
+Recall: 0.3559
+F1: 0.3668
+Roc_auc: 0.5893
+Pr_auc: 0.3659
+Per class roc auc:
+  Classe 0: 0.5906
+  Classe 1: 0.5965
+  Classe 2: 0.5301
+Per class pr auc:
+  Classe 0: 0.9557
+  Classe 1: 0.1140
+  Classe 2: 0.0281
+Pr auc macro: 0.3659
+Pr auc weighted: 0.9083
+Pr auc micro: 0.3659
+Roc auc macro: 0.5724
+Roc auc weighted: 0.5893
+Roc auc micro: 0.9655

@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Random Forest com smoteenn
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 1.0000
+Precision: 1.0000
+Recall: 1.0000
+F1: 1.0000
+Roc_auc: 1.0000
+Pr_auc: 1.0000
+Per class roc auc:
+  Classe 0: 1.0000
+  Classe 1: 1.0000
+  Classe 2: 1.0000
+Per class pr auc:
+  Classe 0: 1.0000
+  Classe 1: 1.0000
+  Classe 2: 1.0000
+Pr auc macro: 1.0000
+Pr auc weighted: 1.0000
+Pr auc micro: 1.0000
+Roc auc macro: 1.0000
+Roc auc weighted: 1.0000
+Roc auc micro: 1.0000
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9019
+Precision: 0.3866
+Recall: 0.4042
+F1: 0.3875
+Roc_auc: 0.7179
+Pr_auc: 0.3689
+Per class roc auc:
+  Classe 0: 0.7186
+  Classe 1: 0.7058
+  Classe 2: 0.7031
+Per class pr auc:
+  Classe 0: 0.9747
+  Classe 1: 0.0805
+  Classe 2: 0.0516
+Pr auc macro: 0.3689
+Pr auc weighted: 0.9260
+Pr auc micro: 0.3689
+Roc auc macro: 0.7092
+Roc auc weighted: 0.7179
+Roc auc micro: 0.9692

@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: K-Nearest Neighbors com randomundersampler
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.5757
+Precision: 0.5900
+Recall: 0.5757
+F1: 0.5675
+Roc_auc: 0.7715
+Pr_auc: 0.5716
+Per class roc auc:
+  Classe 0: 0.7870
+  Classe 1: 0.7733
+  Classe 2: 0.7541
+Per class pr auc:
+  Classe 0: 0.5585
+  Classe 1: 0.5997
+  Classe 2: 0.5564
+Pr auc macro: 0.5716
+Pr auc weighted: 0.5716
+Pr auc micro: 0.5716
+Roc auc macro: 0.7715
+Roc auc weighted: 0.7715
+Roc auc micro: 0.7713
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.5735
+Precision: 0.3480
+Recall: 0.4135
+F1: 0.2919
+Roc_auc: 0.5913
+Pr_auc: 0.3445
+Per class roc auc:
+  Classe 0: 0.5929
+  Classe 1: 0.6157
+  Classe 2: 0.4988
+Per class pr auc:
+  Classe 0: 0.9584
+  Classe 1: 0.0504
+  Classe 2: 0.0247
+Pr auc macro: 0.3445
+Pr auc weighted: 0.9090
+Pr auc micro: 0.3445
+Roc auc macro: 0.5692
+Roc auc weighted: 0.5913
+Roc auc micro: 0.6502

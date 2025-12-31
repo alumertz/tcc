@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: K-Nearest Neighbors com adasyn
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.8830
+Precision: 0.8838
+Recall: 0.8828
+F1: 0.8797
+Roc_auc: 0.9727
+Pr_auc: 0.9395
+Per class roc auc:
+  Classe 0: 0.9676
+  Classe 1: 0.9756
+  Classe 2: 0.9750
+Per class pr auc:
+  Classe 0: 0.8773
+  Classe 1: 0.9711
+  Classe 2: 0.9703
+Pr auc macro: 0.9395
+Pr auc weighted: 0.9396
+Pr auc micro: 0.9395
+Roc auc macro: 0.9727
+Roc auc weighted: 0.9727
+Roc auc micro: 0.9683
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.6247
+Precision: 0.3462
+Recall: 0.3869
+F1: 0.3016
+Roc_auc: 0.6376
+Pr_auc: 0.3425
+Per class roc auc:
+  Classe 0: 0.6423
+  Classe 1: 0.5522
+  Classe 2: 0.5608
+Per class pr auc:
+  Classe 0: 0.9642
+  Classe 1: 0.0342
+  Classe 2: 0.0292
+Pr auc macro: 0.3425
+Pr auc weighted: 0.9141
+Pr auc micro: 0.3425
+Roc auc macro: 0.5851
+Roc auc weighted: 0.6376
+Roc auc micro: 0.8020

@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: CatBoost com adasyn
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9611
+Precision: 0.9995
+Recall: 0.9226
+F1: 0.9595
+Roc_auc: 0.9960
+Pr_auc: 0.9943
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9457
+Precision: 0.4615
+Recall: 0.0632
+F1: 0.1111
+Roc_auc: 0.6696
+Pr_auc: 0.1264

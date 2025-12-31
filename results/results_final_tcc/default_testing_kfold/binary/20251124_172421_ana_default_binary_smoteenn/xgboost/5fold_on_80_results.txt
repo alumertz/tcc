@@ -1,0 +1,101 @@
+MODEL: XGBoost
+======================================================================
+
+Fold 1
+------------------------------
+ TRAINING METRICS:
+   accuracy: 1.0
+   precision: 1.0
+   recall: 1.0
+   f1: 1.0
+   roc_auc: 1.0
+   pr_auc: 1.0
+
+ VALIDATION METRICS:
+   accuracy: 0.9296322489391796
+   precision: 0.2638888888888889
+   recall: 0.11515151515151516
+   f1: 0.16033755274261605
+   roc_auc: 0.6475995402769718
+   pr_auc: 0.12523193768654692
+
+Fold 2
+------------------------------
+ TRAINING METRICS:
+   accuracy: 0.999942831008461
+   precision: 1.0
+   recall: 0.9999020088192063
+   f1: 0.9999510020089176
+   roc_auc: 0.9999999999999999
+   pr_auc: 1.0
+
+ VALIDATION METRICS:
+   accuracy: 0.9310466760961811
+   precision: 0.25316455696202533
+   recall: 0.1282051282051282
+   f1: 0.1702127659574468
+   roc_auc: 0.6756295102103486
+   pr_auc: 0.13522850118166058
+
+Fold 3
+------------------------------
+ TRAINING METRICS:
+   accuracy: 1.0
+   precision: 1.0
+   recall: 1.0
+   f1: 1.0
+   roc_auc: 1.0
+   pr_auc: 1.0
+
+ VALIDATION METRICS:
+   accuracy: 0.9218528995756718
+   precision: 0.14285714285714285
+   recall: 0.08333333333333333
+   f1: 0.10526315789473684
+   roc_auc: 0.6199955857515738
+   pr_auc: 0.09117853932898806
+
+Fold 4
+------------------------------
+ TRAINING METRICS:
+   accuracy: 1.0
+   precision: 1.0
+   recall: 1.0
+   f1: 1.0
+   roc_auc: 1.0
+   pr_auc: 1.0
+
+ VALIDATION METRICS:
+   accuracy: 0.9324611032531824
+   precision: 0.21176470588235294
+   recall: 0.1267605633802817
+   f1: 0.15859030837004406
+   roc_auc: 0.7056516313068284
+   pr_auc: 0.13583513963084035
+
+Fold 5
+------------------------------
+ TRAINING METRICS:
+   accuracy: 0.999942739349519
+   precision: 1.0
+   recall: 0.9999013806706114
+   f1: 0.9999506879037428
+   roc_auc: 1.0
+   pr_auc: 1.0
+
+ VALIDATION METRICS:
+   accuracy: 0.9345827439886846
+   precision: 0.2727272727272727
+   recall: 0.19285714285714287
+   f1: 0.22594142259414227
+   roc_auc: 0.6918553358843538
+   pr_auc: 0.17393751586868328
+
+AGGREGATED VALIDATION METRICS (MEAN OF 5 FOLDS)
+======================================================================
+accuracy: 0.9299151343705798
+precision: 0.2288805134635365
+recall: 0.12926153658548026
+f1: 0.16406904151179721
+roc_auc: 0.6681463206860153
+pr_auc: 0.13228232673934381

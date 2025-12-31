@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: CatBoost com smoten
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9633
+Precision: 0.9997
+Recall: 0.9270
+F1: 0.9620
+Roc_auc: 0.9964
+Pr_auc: 0.9949
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9432
+Precision: 0.3333
+Recall: 0.0579
+F1: 0.0987
+Roc_auc: 0.6687
+Pr_auc: 0.1233

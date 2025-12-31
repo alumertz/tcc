@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: Support Vector Classifier com randomundersampler
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.7859
+Precision: 0.8109
+Recall: 0.7457
+F1: 0.7769
+Roc_auc: 0.8579
+Pr_auc: 0.8571
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.6768
+Precision: 0.1006
+Recall: 0.6316
+F1: 0.1735
+Roc_auc: 0.7042
+Pr_auc: 0.1548

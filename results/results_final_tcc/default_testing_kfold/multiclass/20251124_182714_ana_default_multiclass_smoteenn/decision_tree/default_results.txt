@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Decision Tree com smoteenn
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 1.0000
+Precision: 1.0000
+Recall: 1.0000
+F1: 1.0000
+Roc_auc: 1.0000
+Pr_auc: 1.0000
+Per class roc auc:
+  Classe 0: 1.0000
+  Classe 1: 1.0000
+  Classe 2: 1.0000
+Per class pr auc:
+  Classe 0: 1.0000
+  Classe 1: 1.0000
+  Classe 2: 1.0000
+Pr auc macro: 1.0000
+Pr auc weighted: 1.0000
+Pr auc micro: 1.0000
+Roc auc macro: 1.0000
+Roc auc weighted: 1.0000
+Roc auc micro: 1.0000
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.7704
+Precision: 0.3520
+Recall: 0.3908
+F1: 0.3430
+Roc_auc: 0.5837
+Pr_auc: 0.3397
+Per class roc auc:
+  Classe 0: 0.5859
+  Classe 1: 0.5715
+  Classe 2: 0.5125
+Per class pr auc:
+  Classe 0: 0.9551
+  Classe 1: 0.0386
+  Classe 2: 0.0253
+Pr auc macro: 0.3397
+Pr auc weighted: 0.9055
+Pr auc micro: 0.3397
+Roc auc macro: 0.5566
+Roc auc weighted: 0.5837
+Roc auc micro: 0.8278

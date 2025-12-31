@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Histogram Gradient Boosting com smoteenn
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9970
+Precision: 0.9962
+Recall: 0.9972
+F1: 0.9967
+Roc_auc: 0.9999
+Pr_auc: 0.9999
+Per class roc auc:
+  Classe 0: 0.9999
+  Classe 1: 0.9999
+  Classe 2: 1.0000
+Per class pr auc:
+  Classe 0: 0.9997
+  Classe 1: 0.9999
+  Classe 2: 1.0000
+Pr auc macro: 0.9999
+Pr auc weighted: 0.9999
+Pr auc micro: 0.9999
+Roc auc macro: 0.9999
+Roc auc weighted: 0.9999
+Roc auc micro: 0.9999
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9330
+Precision: 0.4049
+Recall: 0.3700
+F1: 0.3770
+Roc_auc: 0.7062
+Pr_auc: 0.3818
+Per class roc auc:
+  Classe 0: 0.7085
+  Classe 1: 0.6786
+  Classe 2: 0.6483
+Per class pr auc:
+  Classe 0: 0.9738
+  Classe 1: 0.1256
+  Classe 2: 0.0460
+Pr auc macro: 0.3818
+Pr auc weighted: 0.9262
+Pr auc micro: 0.3818
+Roc auc macro: 0.6785
+Roc auc weighted: 0.7062
+Roc auc micro: 0.9728

@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: XGBoost com smoteenn
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9998
+Precision: 0.9998
+Recall: 0.9998
+F1: 0.9998
+Roc_auc: 1.0000
+Pr_auc: 1.0000
+Per class roc auc:
+  Classe 0: 1.0000
+  Classe 1: 1.0000
+  Classe 2: 1.0000
+Per class pr auc:
+  Classe 0: 1.0000
+  Classe 1: 1.0000
+  Classe 2: 1.0000
+Pr auc macro: 1.0000
+Pr auc weighted: 1.0000
+Pr auc micro: 1.0000
+Roc auc macro: 1.0000
+Roc auc weighted: 1.0000
+Roc auc micro: 1.0000
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9327
+Precision: 0.3649
+Recall: 0.3568
+F1: 0.3583
+Roc_auc: 0.6903
+Pr_auc: 0.3722
+Per class roc auc:
+  Classe 0: 0.6921
+  Classe 1: 0.6761
+  Classe 2: 0.6358
+Per class pr auc:
+  Classe 0: 0.9726
+  Classe 1: 0.1013
+  Classe 2: 0.0427
+Pr auc macro: 0.3722
+Pr auc weighted: 0.9244
+Pr auc micro: 0.3722
+Roc auc macro: 0.6680
+Roc auc weighted: 0.6903
+Roc auc micro: 0.9720

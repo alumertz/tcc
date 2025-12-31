@@ -1,0 +1,6 @@
+RESUMO DOS RESULTADOS - Balanceamento: randomundersampler
+================================================================================
+
+Modelo                   | accuracy   | precision  | recall     | f1         | roc_auc    | pr_auc    
+------------------------------------------------------------------------------------------------------
+

@@ -1,0 +1,47 @@
+RELATÓRIO PADRÃO DO MODELO: Random Forest com tomeklinks
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9976
+Precision: 0.9992
+Recall: 0.9676
+F1: 0.9830
+Roc_auc: 0.9844
+Pr_auc: 0.9704
+Per class roc auc:
+  Classe 0: 0.9843
+  Classe 1: 0.9867
+  Classe 2: 0.9865
+Per class pr auc:
+  Classe 0: 0.9989
+  Classe 1: 0.9525
+  Classe 2: 0.9598
+Pr auc macro: 0.9704
+Pr auc weighted: 0.9968
+Pr auc micro: 0.9704
+Roc auc macro: 0.9858
+Roc auc weighted: 0.9844
+Roc auc micro: 0.9989
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9477
+Precision: 0.6492
+Recall: 0.3495
+F1: 0.3552
+Roc_auc: 0.7008
+Pr_auc: 0.4002
+Per class roc auc:
+  Classe 0: 0.7022
+  Classe 1: 0.7115
+  Classe 2: 0.6348
+Per class pr auc:
+  Classe 0: 0.9726
+  Classe 1: 0.1744
+  Classe 2: 0.0535
+Pr auc macro: 0.4002
+Pr auc weighted: 0.9268
+Pr auc micro: 0.4002
+Roc auc macro: 0.6828
+Roc auc weighted: 0.7008
+Roc auc micro: 0.9741

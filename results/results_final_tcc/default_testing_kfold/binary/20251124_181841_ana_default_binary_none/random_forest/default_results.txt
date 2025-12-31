@@ -1,0 +1,19 @@
+RELATÓRIO PADRÃO DO MODELO: Random Forest com none
+================================================================================
+
+MÉTRICAS DE TREINO (HOLDOUT):
+Accuracy: 0.9975
+Precision: 1.0000
+Recall: 0.9539
+F1: 0.9764
+Roc_auc: 0.9885
+Pr_auc: 0.9614
+
+MÉTRICAS DE TESTE (HOLDOUT):
+------------------------------
+Accuracy: 0.9471
+Precision: 0.8000
+Recall: 0.0211
+F1: 0.0410
+Roc_auc: 0.6905
+Pr_auc: 0.2167
