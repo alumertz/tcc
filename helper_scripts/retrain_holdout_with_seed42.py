@@ -38,8 +38,8 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
 
-from src.models import balance_fold
-from src.process_data import load_hgnc_mapping
+from smodels import balance_fold
+from process_data import load_hgnc_mapping
 
 # Set random seed for reproducibility
 RANDOM_SEED = 42

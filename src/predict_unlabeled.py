@@ -20,8 +20,8 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
 from xgboost import XGBClassifier
 from catboost import CatBoostClassifier
-from src.processing import prepare_dataset
-from src.models import balance_fold
+from processing import prepare_dataset
+from models import balance_fold
 
 # Set random seed for reproducibility
 RANDOM_SEED = 42

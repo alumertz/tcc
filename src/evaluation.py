@@ -3,7 +3,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, average_precision_score
 import os
-from src.reports import default_report, format_5fold_report
+from reports import default_report, format_5fold_report, format_omics_folder_name
 from sklearn.model_selection import KFold
 import numpy as np
 from sklearn.metrics import confusion_matrix
@@ -22,7 +22,8 @@ def evaluate_model_holdout_cv(
     experiment_dir,
     classification_type="binary",
     balance_strategy="none",
-    n_folds=5
+    n_folds=5,
+    omics_used=None
 ):
     """
     80/20 split
@@ -132,7 +133,8 @@ def evaluate_model_holdout_cv(
     # ================================================
     # STEP 4 — SAVE REPORT
     # ================================================
-    model_dir = os.path.join(experiment_dir, model_name.lower().replace(" ", "_"))
+    omics_folder = format_omics_folder_name(omics_used)
+    model_dir = os.path.join(experiment_dir, model_name.lower().replace(" ", "_"), omics_folder)
     os.makedirs(model_dir, exist_ok=True)
 
     report_path = os.path.join(model_dir, "5fold_on_80_results.txt")
@@ -144,7 +146,7 @@ def evaluate_model_holdout_cv(
         "aggregated": aggregated
     }
 
-def evaluate_model_holdout(model, model_name, X, y, experiment_dir, classification_type="binary", balance_strategy="none"):
+def evaluate_model_holdout(model, model_name, X, y, experiment_dir, classification_type="binary", balance_strategy="none", omics_used=None):
     """
     Avalia modelo usando holdout 80%/20%
     """
@@ -201,7 +203,9 @@ def evaluate_model_holdout(model, model_name, X, y, experiment_dir, classificati
     test_metrics['y_pred'] = y_pred_test.tolist() if hasattr(y_pred_test, 'tolist') else list(y_pred_test)
     test_metrics['y_pred_proba'] = y_proba_test.tolist() if hasattr(y_proba_test, 'tolist') else list(y_proba_test)
 
-    model_dir = os.path.join(experiment_dir, model_name.lower().replace(' ', '_'))
+    # Save report
+    omics_folder = format_omics_folder_name(omics_used)
+    model_dir = os.path.join(experiment_dir, model_name.lower().replace(' ', '_'), omics_folder)
     os.makedirs(model_dir, exist_ok=True)
     report_path = os.path.join(model_dir, "default_results.txt")
     default_report(
@@ -209,8 +213,11 @@ def evaluate_model_holdout(model, model_name, X, y, experiment_dir, classificati
         folds_metrics={'train_metrics': train_metrics},
         test_metrics=test_metrics,
         output_path=report_path,
-        balance_strategy=balance_strategy
+        balance_strategy=balance_strategy,
+        omics_used=omics_used
     )
+
+
     return {
         'model_name': model_name,
         'test_metrics': test_metrics,
@@ -218,16 +225,18 @@ def evaluate_model_holdout(model, model_name, X, y, experiment_dir, classificati
         'balance_strategy': balance_strategy
     }
 
-def evaluate_model_default(model, model_name, X, y, experiment_dir, classification_type="binary", balance_strategy="none"):
+def evaluate_model_default(model, model_name, X, y, experiment_dir, classification_type="binary", balance_strategy="none", omics_used=None):
     evaluate_model_holdout(
         model, model_name, X, y, experiment_dir,
         classification_type=classification_type,
-        balance_strategy=balance_strategy
+        balance_strategy=balance_strategy,
+        omics_used=omics_used
     )
     evaluate_model_holdout_cv(
         model, model_name, X, y, experiment_dir,
         classification_type=classification_type,
-        balance_strategy=balance_strategy
+        balance_strategy=balance_strategy,
+        omics_used=omics_used,
     )
 
 def get_metrics(y_true, y_pred, y_proba, classification_type):

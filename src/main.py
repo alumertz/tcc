@@ -7,10 +7,11 @@ para predição de genes-alvo usando dados ômicos.
 import sys
 import os
 import argparse
+from itertools import combinations
 sys.path.append('/Users/i583975/git/tcc')
 
-from src.processing import prepare_dataset, prepare_renan_data
-from src.models import (
+from processing import prepare_dataset, prepare_renan_data
+from models import (
     optimize_decision_tree_classifier,
     optimize_random_forest_classifier,
     optimize_gradient_boosting_classifier,
@@ -30,7 +31,7 @@ from xgboost import XGBClassifier
 from catboost import CatBoostClassifier
 
 from evaluation import evaluate_model_default
-from src.reports import generate_experiment_folder_name
+from reports import generate_experiment_folder_name
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -83,19 +84,21 @@ def parse_arguments():
     parser = argparse.ArgumentParser(
         description='Experimentação com modelos de classificação para predição de genes-alvo',
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Exemplos de uso:
-  python main.py                    # Modelos otimizados, dados Ana, classificação binária
-  python main.py -default           # Modelos com parâmetros padrão (rápido)
-  python main.py -lessparams        # Otimização com conjunto reduzido de parâmetros (mais rápido)
-  python main.py -renan             # Usa arquivos do Renan (formato original)
-  python main.py -multiclass        # Classificação multiclasse (TSG vs Oncogene vs Passenger)
-  python main.py -default -multiclass # Parâmetros padrão + multiclasse
-  python main.py -balancedata smoteenn # Com balanceamento SMOTEENN
-  python main.py -default -balancedata adasyn # Parâmetros padrão + balanceamento ADASYN
-  python main.py -multiclass -balancedata kmeanssmote # Multiclasse + KMeansSMOTE
-  python main.py -lessparams -model catboost # Otimização rápida apenas CatBoost
-  python main.py --help             # Mostra esta ajuda
+        epilog=
+        """
+            Exemplos de uso:
+            python main.py                    # Modelos otimizados, dados Ana, classificação binária
+            python main.py -default           # Modelos com parâmetros padrão (rápido)
+            python main.py -lessparams        # Otimização com conjunto reduzido de parâmetros (mais rápido)
+            python main.py -renan             # Usa arquivos do Renan (formato original)
+            python main.py -multiclass        # Classificação multiclasse (TSG vs Oncogene vs Passenger)
+            python main.py -default -multiclass # Parâmetros padrão + multiclasse
+            python main.py -balancedata smoteenn # Com balanceamento SMOTEENN
+            python main.py -default -balancedata adasyn # Parâmetros padrão + balanceamento ADASYN
+            python main.py -multiclass -balancedata kmeanssmote # Multiclasse + KMeansSMOTE
+            python main.py -lessparams -model catboost # Otimização rápida apenas CatBoost
+            python main.py --help             # Mostra esta ajuda
+            python main.py -all-omics-combinations # Executa todas as combinações de 2 e 3 ômicas
         """
     )
     
@@ -136,6 +139,11 @@ Exemplos de uso:
         '-lessparams', '--lessparams',
         action='store_true',
         help='Usa conjunto reduzido de parâmetros para otimização (busca mais rápida)'
+    )
+    parser.add_argument(
+        '-all-omics-combinations', '--all-omics-combinations', 
+        action='store_true', 
+        help='Executa todas as combinações de 2 e 3 ômicas'
     )
     
     return parser.parse_args()
@@ -245,7 +253,7 @@ def run_all_models_optimize(X, y, n_trials=10, data_source="ana", classification
         
     return results
 
-def run_all_default_models(X, y, data_source="ana", classification_type="binary", balance_strategy=None):
+def run_all_default_models(X, y, data_source="ana", classification_type="binary", balance_strategy=None, omics_used=None):
     """
     Executa todos os modelos com parâmetros padrão
     Pipeline unificado para todos: StandardScaler + Classifier
@@ -287,7 +295,7 @@ def run_all_default_models(X, y, data_source="ana", classification_type="binary"
         experiment_dir = os.path.join("./results", experiment_folder)
         os.makedirs(experiment_dir, exist_ok=True)
         try:
-            result = evaluate_model_default(model, model_name, X, y, experiment_dir, classification_type, balance_strategy)
+            result = evaluate_model_default(model, model_name, X, y, experiment_dir, classification_type, balance_strategy, omics_used=omics_used)
             results.append(result)
             print(f"[OK] {model_name} executado com sucesso!")
         except Exception as e:
@@ -300,11 +308,11 @@ def run_all_default_models(X, y, data_source="ana", classification_type="binary"
             
     
     # Save summary file with all metrics for all algorithms
-    from src.reports import save_default_experiment_summary
+    from reports import save_default_experiment_summary
     save_default_experiment_summary(experiment_dir, results, balance_strategy)
     return results
 
-def main(use_renan=False, use_multiclass=False, use_default=False, balance_strategy='none', model_names=None, use_less_params=False):
+def main(use_renan=False, use_multiclass=False, use_default=False, balance_strategy='none', model_names=None, use_less_params=False, omics_to_use=None):
     """
     Função principal do experimento
     
@@ -320,7 +328,7 @@ def main(use_renan=False, use_multiclass=False, use_default=False, balance_strat
     print("="*80)
     
     # Inicializar timestamp do experimento para toda a sessão
-    from src.reports import set_experiment_timestamp
+    from reports import set_experiment_timestamp
     experiment_timestamp = set_experiment_timestamp()
     print(f"Timestamp do experimento: {experiment_timestamp}")
     
@@ -346,8 +354,12 @@ def main(use_renan=False, use_multiclass=False, use_default=False, balance_strat
         
     else:
         classification_type = 'multiclass' if use_multiclass else 'binary'
-        X, y, gene_names = prepare_dataset(features_path, labels_path, classification_type)
-    
+
+        if omics_to_use is None:
+            omics_to_use = ['CNA']
+
+        X, y, gene_names = prepare_dataset(features_path, labels_path, classification_type, omics_to_use=omics_to_use)    
+
     if X is None:
         print("Erro ao preparar dataset. Abortando.")
         return
@@ -398,7 +410,7 @@ def main(use_renan=False, use_multiclass=False, use_default=False, balance_strat
                 os.makedirs(experiment_dir, exist_ok=True)
                 
                 try:
-                    result = evaluate_model_default(model_instance, model_display_name, X, y, experiment_dir, classification_type, balance_strategy)
+                    result = evaluate_model_default(model_instance, model_display_name, X, y, experiment_dir, classification_type, balance_strategy, omics_used=omics_to_use)
                     results.append(result)
                     print(f"[OK] {model_display_name} executado com sucesso!")
                 except Exception as e:
@@ -423,7 +435,7 @@ def main(use_renan=False, use_multiclass=False, use_default=False, balance_strat
         
         # Save summary for default models if applicable
         if use_default:
-            from src.reports import save_default_experiment_summary
+            from reports import save_default_experiment_summary
             save_default_experiment_summary(experiment_dir, results, balance_strategy)
     else:
         # Executar todos os modelos
@@ -452,4 +464,22 @@ if __name__ == "__main__":
     args = parse_arguments()
     
     # Executa o experimento com as opções escolhidas
-    main(args.renan, args.multiclass, args.default, args.balancedata, args.model, args.lessparams)
+    if args.all_omics_combinations:
+        # Gera todas as combinações de 2 e 3 ômicas
+        all_omics = ['CNA', 'GE', 'METH', 'MF']
+        omics_combinations = list(combinations(all_omics, 2)) + list(combinations(all_omics, 3))
+        
+        print("EXECUTANDO TODAS AS COMBINAÇÕES DE ÔMICAS")
+        print("="*80)
+        print(f"Total de combinações: {len(omics_combinations)}")
+        print(f"Combinações: {omics_combinations}")
+        print("="*80 + "\n")
+        
+        for i, omics_combo in enumerate(omics_combinations, 1):
+            print(f"\n{'#'*80}")
+            print(f"COMBINAÇÃO {i}/{len(omics_combinations)}: {', '.join(omics_combo)}")
+            print(f"{'#'*80}\n")
+            
+            main(args.renan, args.multiclass, args.default, args.balancedata, args.model, args.lessparams, omics_to_use=list(omics_combo))
+    else:
+        main(args.renan, args.multiclass, args.default, args.balancedata, args.model, args.lessparams)

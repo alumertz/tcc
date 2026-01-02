@@ -70,6 +70,20 @@ def generate_experiment_folder_name(data_source="ana", mode="default", classific
     return folder_name
 
 
+def format_omics_folder_name(omics_list):
+    """
+    Converte lista de ômicas em nome de pasta formatado.
+    
+    Args:
+        omics_list (list or None): Lista de ômicas (ex: ['CNA', 'METH'])
+    
+    Returns:
+        str: Nome formatado (ex: 'CNA-METH') ou 'ALL' se None ou vazio
+    """
+    if omics_list is None or len(omics_list) == 0:
+        return "ALL"
+    return "-".join(sorted([str(o).upper() for o in omics_list]))
+
 def save_detailed_results_txt(model_name, trials, test_metrics, best_params, optimization_info, output_path, param_importances_per_fold=None, aggregated_importances=None):
     """
     Salva um arquivo results.txt detalhado com todas as métricas de CV por trial, ordenado por PR AUC, para qualquer modelo.
@@ -320,7 +334,7 @@ def save_holdout_results(model_name, holdout_results, data_source, classificatio
     print(f"Holdout evaluation results saved to: {holdout_results_path}")
 
 
-def default_report(model_name, folds_metrics, test_metrics, output_path=None, balance_strategy="none"):
+def default_report(model_name, folds_metrics, test_metrics, output_path=None, balance_strategy="none", omics_used=None):
     """
     Gera um relatório simples para avaliação padrão de um modelo.
     Args:
@@ -338,6 +352,11 @@ def default_report(model_name, folds_metrics, test_metrics, output_path=None, ba
         'roc_auc_macro', 'roc_auc_weighted', 'roc_auc_micro'
     ]
     report = f"RELATÓRIO PADRÃO DO MODELO: {model_name} com {balance_strategy}\n" + "="*80 + "\n\n"
+
+     # Inserir ômicas
+    if omics_used:
+        report += "ÔMICAS UTILIZADAS: " + ", ".join(omics_used) + "\n\n"
+        
     report += "MÉTRICAS DE TREINO (HOLDOUT):\n"
     if folds_metrics and isinstance(folds_metrics, dict):
         train_metrics = folds_metrics.get('train_metrics', {})

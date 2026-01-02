@@ -5,7 +5,7 @@ Test script to compare genes loaded with and without HGNC mapping
 
 import pandas as pd
 import numpy as np
-from src.process_data import load_hgnc_mapping
+from process_data import load_hgnc_mapping
 
 def load_without_mapping(classification_type='binary'):
     """Load dataset WITHOUT HGNC mapping"""

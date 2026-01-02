@@ -10,7 +10,7 @@ sys.path.append('/Users/i583975/git/tcc')
 
 import numpy as np
 import pandas as pd
-from src.processing import prepare_dataset
+from processing import prepare_dataset
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, HistGradientBoostingClassifier
 from sklearn.neighbors import KNeighborsClassifier
@@ -116,7 +116,7 @@ def evaluate_model_default(model, model_name, X, y, save_results=True):
         print(f"  {metric.upper()}: {value:.4f}")
     
     # Relatório de classificação detalhado
-    from src.reports import generate_enhanced_classification_report
+    from reports import generate_enhanced_classification_report
     class_report = generate_enhanced_classification_report(y_test, y_pred, y_pred_proba)
     print(f"\nRelatório de classificação:\n{class_report}")
     

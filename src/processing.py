@@ -170,7 +170,7 @@ def align_features_and_labels(features_df, labels_df):
     return X, y, gene_names
 
 
-def prepare_dataset(features_path, labels_path, classification_type='binary'):
+def prepare_dataset(features_path, labels_path, classification_type='binary', omics_to_use=None):
     """
     Função principal para preparar o dataset completo
     
@@ -178,7 +178,8 @@ def prepare_dataset(features_path, labels_path, classification_type='binary'):
         features_path (str): Caminho para UNION_features.tsv
         labels_path (str): Caminho para UNION_labels.tsv
         classification_type (str): Tipo de classificação - 'binary' ou 'multiclass'
-        
+        omics_to_use (list[str] | None): Lista de ômicas a usar. Se None, usa todas.
+
     Returns:
         tuple: (X, y, gene_names, feature_names) - dataset completo preparado
     """
@@ -192,7 +193,16 @@ def prepare_dataset(features_path, labels_path, classification_type='binary'):
         return None, None, None, None
 
     print("-"*40)
+
+    # Filtra as ômicas desejadas
+    if omics_to_use is not None:
+        features_df = features_df[['gene'] + [col for col in features_df.columns if any(o in col for o in omics_to_use)]]
+        
+    print(f"Ômicas selecionadas: {omics_to_use}")
+    print(f"Colunas efetivamente usadas: {features_df.columns.tolist()}")
     
+    print("-"*40)
+
     # Carrega labels
     labels_df = load_union_labels(labels_path, classification_type)
     if labels_df is None:

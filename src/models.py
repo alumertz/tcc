@@ -28,7 +28,7 @@ from catboost import CatBoostClassifier
 from xgboost import XGBClassifier
 from sklearn.model_selection import StratifiedKFold, cross_val_score, train_test_split
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support, roc_auc_score, average_precision_score
-from src.reports import save_detailed_results_txt_by_fold, generate_experiment_folder_name, save_holdout_results
+from reports import save_detailed_results_txt_by_fold, generate_experiment_folder_name, save_holdout_results
 
 
 IMBALANCE_RATIO = 93.0/7.0
