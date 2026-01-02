@@ -2,7 +2,7 @@ import pandas as pd
 
 # Load the files
 labels_path = '/home/kamille/Documentos/tcc/data/processed/UNION_labels.tsv'
-features_path = '/home/kamille/Documentos/tcc/renan/data_files/omics_features/UNION_features.tsv'
+features_path = '/home/kamille/Documentos/tcc/data/UNION_features.tsv'
 
 df_labels = pd.read_csv(labels_path, sep='\t')
 df_features = pd.read_csv(features_path, sep='\t')
@@ -29,11 +29,13 @@ new_data = []
 for _, row in df_labels.iterrows():
     gene = row['genes']
     classe = map_classe(row['3class'])
-    
+
+    # Get attributes from features dataframe
     if gene in df_features.index:
         atributos = ','.join(map(str, df_features.loc[gene].values))
     else:
         atributos = 'NaN'
+
     new_data.append({'gene': gene, 'classe': classe, 'atributos': atributos})
 
 df_new = pd.DataFrame(new_data)
