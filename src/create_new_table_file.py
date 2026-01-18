@@ -1,5 +1,14 @@
 import pandas as pd
 
+
+
+'''
+    The code below creates a new labels file combining information from UNION_labels.tsv and UNION_features.tsv.
+'''
+
+
+
+
 # Load the files
 labels_path = '/home/kamille/Documentos/tcc/data/processed/UNION_labels.tsv'
 features_path = '/home/kamille/Documentos/tcc/data/UNION_features.tsv'
@@ -30,18 +39,24 @@ for _, row in df_labels.iterrows():
     gene = row['genes']
     classe = map_classe(row['3class'])
 
+    # Skip 'Candidate' genes
+    if classe == 'Candidate':
+        continue
+
     # Get attributes from features dataframe
     if gene in df_features.index:
         atributos = ','.join(map(str, df_features.loc[gene].values))
-    else:
+        new_data.append({'gene': gene, 'classe': classe, 'atributos': atributos})
+
+    '''else:
         atributos = 'NaN'
 
-    new_data.append({'gene': gene, 'classe': classe, 'atributos': atributos})
+    new_data.append({'gene': gene, 'classe': classe, 'atributos': atributos})'''
 
 df_new = pd.DataFrame(new_data)
 
 # Save to new file
-output_path = '/home/kamille/Documentos/tcc/data/processed/new_labels_with_features.tsv'
+output_path = '/home/kamille/Documentos/tcc/data/processed/new_labels_with_features2.tsv'
 df_new.to_csv(output_path, sep='\t', index=False)
 
 print(f"Novo arquivo criado em {output_path}")

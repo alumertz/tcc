@@ -1,5 +1,14 @@
 import pandas as pd
 
+
+
+'''
+    The code below verifies the consistency of gene names across multiple files used in the project.
+'''
+
+
+
+
 # Paths to the files
 file1_path = '/home/kamille/Documentos/tcc/data/processed/UNION_labels.tsv'
 file2_path = '/home/kamille/Documentos/tcc/data/UNION_features.tsv'
